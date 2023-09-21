@@ -1,5 +1,12 @@
 {
   "dependencies": {
-    "next": "^13.5.2"
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "scripts": {
+    "start": "next start",
+    "build": "next build",
+    "dev": "next dev"
   }
 }
