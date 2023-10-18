@@ -1,0 +1,7 @@
+
+@use './animations';
+@use './colours';
+
+:export {
+    introduration: animations.$introduration;
+}

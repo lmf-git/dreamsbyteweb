@@ -2,7 +2,8 @@
   "dependencies": {
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "sass": "^1.69.3"
   },
   "scripts": {
     "start": "next start",

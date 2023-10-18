@@ -1,0 +1,65 @@
+
+@use '../animations';
+@use '../colours';
+
+.index {
+    height: 100%;
+}
+
+.header {
+    display: flex;
+    position: absolute;
+    justify-content: space-between;
+    padding: 1.85em 4.25em;
+    width: 100%;
+    box-sizing: border-box;
+    align-items: center;
+    z-index: 1;
+}
+
+.logo { 
+    width: 10em;
+}
+
+.headercta {
+    color: white;
+    text-decoration: none;
+    font-size: 1.35em;
+    font-weight: 900;
+    
+    &:hover {
+        color: colours.$hoverwhite;
+    }
+}
+
+
+/* introb and scroll icon disappear after scrolling, menu appears based on scrolling */
+.intro {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    box-sizing: border-box;
+    text-align: center;
+
+    animation: end-intro animations.$introduration linear forwards;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.introtitle {
+    width: 50%;
+    margin: 0;
+}
+
+.introblurb {
+    width: 30%;
+    margin: 0;
+    color: rgb(191, 191, 191);
+}
+

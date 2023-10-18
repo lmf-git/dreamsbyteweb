@@ -1,0 +1,36 @@
+
+@use './animations';
+@use './colours';
+
+
+.fab {
+    width: 5em;
+    position: fixed;
+    bottom: 1.85em;
+    right: 4.25em;
+    cursor: pointer;
+    z-index: 1;
+}
+.fab:hover {
+    & .fabtext > path {
+        fill: colours.$hoverwhite;
+    }
+    & .fabicon > path {
+        fill: colours.$hoverwhite;
+    }
+}
+
+.fabtext {
+    animation: spin animations.$fabspinduration linear infinite animations.$introduration;
+}
+
+.fabicon {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    animation: bulge animations.$fabspinduration linear infinite animations.$introduration forwards;
+    transform: translateY(.75em);
+}
+

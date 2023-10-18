@@ -1,0 +1,98 @@
+$introduration: 2.75s;
+$fabspinduration: 5.5s;
+
+@keyframes end-intro {
+    0% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes start-content {
+    0% {
+        opacity: 0;
+    }
+    45% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+  
+@keyframes bulge {
+    0% {
+        transform: translateY(.75em);
+    }
+    5% {
+        transform: translateY(.25em);
+    }
+    45% {
+        transform: translateY(-.425em);
+    }
+    100% {
+        transform: translateY(.75em);
+    }
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        background: red;
+        transform: translateY(1.4em);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+  
+
+
+@keyframes reveal-screen {
+    from {
+        transform: translateX(40%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes reveal-mobile {
+    from {
+        transform: translateY(40%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes reveal-projectdesc {
+    from {
+        transform: translateX(77%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
