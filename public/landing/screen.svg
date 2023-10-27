@@ -200,10 +200,10 @@
 </g>
 <defs>
 <linearGradient id="paint0_linear_452_611" x1="574.506" y1="675.512" x2="574.506" y2="0" gradientUnits="userSpaceOnUse">
-<stop stop-color="#EAEAEB"/>
-<stop offset="0.51" stop-color="#AAAAAE"/>
-<stop offset="0.66" stop-color="#C6C6C8"/>
-<stop offset="1" stop-color="white"/>
+<stop stopColor="#EAEAEB"/>
+<stop offset="0.51" stopColor="#AAAAAE"/>
+<stop offset="0.66" stopColor="#C6C6C8"/>
+<stop offset="1" stopColor="white"/>
 </linearGradient>
 <clipPath id="clip0_452_611">
 <rect width="1150" height="814" fill="white"/>

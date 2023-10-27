@@ -1,0 +1,66 @@
+@use '../animations';
+@use '../colours';
+
+.contact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.contactForm {
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.label {
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: bold;
+}
+
+.instructions {
+font-size: 1rem;
+color: #555;
+margin-top: 10px;
+}
+
+.emailInputGroup {
+display: flex;
+align-items: center;
+margin-top: 15px;
+}
+
+.emailInput {
+flex: 1;
+padding: 10px;
+border: 1px solid #ccc;
+border-radius: 5px;
+}
+
+.addMessageButton {
+background-color: #007bff; /* Blue color */
+color: #fff;
+border: none;
+padding: 10px 15px;
+border-radius: 5px;
+margin-left: 10px;
+cursor: pointer;
+}
+
+.submitButton {
+background-color: #28a745; /* Green color */
+color: #fff;
+border: none;
+padding: 10px 15px;
+border-radius: 5px;
+margin-top: 15px;
+cursor: pointer;
+}
+
+.sendicon {
+    width: 1em;
+    fill: none;
+}

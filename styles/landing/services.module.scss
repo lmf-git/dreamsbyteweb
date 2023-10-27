@@ -1,0 +1,63 @@
+@use '../animations';
+@use '../colours';
+
+.services {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3.5em;
+  color: white;
+}
+
+.heading {
+  font-size: 2em;
+  margin-bottom: 1.5em;
+}
+
+.preamble {
+  font-size: .5em;
+  font-weight: bold;
+}
+
+.title {
+  margin: 0;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; // Adjust the gap between services as needed
+}
+
+.service {
+  flex: 1;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+
+  .title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .list {
+    // list-style: none;
+    padding: 0;
+  }
+}
+
+.serviceList li {
+  margin-bottom: 5px;
+}
+
+p {
+  // Styles for the paragraphs
+}
+
+.copyright {
+  // Styles for copyright information
+}
+
+.privacyLink {
+  // Styles for the privacy policy link
+}

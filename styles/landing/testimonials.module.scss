@@ -1,0 +1,40 @@
+@use '../animations';
+@use '../colours';
+
+
+.testimonials {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3.5em;
+}
+
+.title {
+    color: white;
+    font-size: 3em;
+}
+
+.list {
+    display: flex;
+    align-items: center;
+}
+
+.testimonial {
+    display: flex;
+    flex: 55% 0;
+    align-items: center;
+    padding: 3em;
+    margin-right: 2.5vw;
+    background: linear-gradient(104deg, #FFF 1.24%, #DBDBDB 100%);
+
+    height: 27.4vh;
+}
+
+.brand {
+    flex: 30% 0;
+    padding-right: 1em;
+}
+
+.text {
+    align-self: flex-start;
+}

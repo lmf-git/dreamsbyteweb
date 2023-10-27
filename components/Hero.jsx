@@ -1,4 +1,9 @@
 import { useState } from 'react';
+import RightLine from './icons/controls/RightLine';
+import LeftLine from './icons/controls/LeftLine';
+import Dot from './icons/controls/Dot';
+import Screen from './icons/Screen';
+import ScreenBase from './icons/Base';
 import styles from '../styles/landing/hero.module.scss';
 
 const projects = [
@@ -28,6 +33,7 @@ export default function Hero() {
             }
         </div> */}
 
+
         <div className={styles.projects}>
             <div className={styles.projectdesc}>
                 <h1 className={styles.projectname}>
@@ -50,15 +56,43 @@ export default function Hero() {
             </div>
             <div className={styles.projectpreview}>
                 <div className={styles.screen}>
-                    <img src="/landing/screen.svg" />
+                    <iframe className={styles.screeniframe} src="https://www.lvolt.net" />
+                    {/* <img src="/landing/screen.svg" /> */}
                     <img className={styles.screenspinner} src="/landing/spinner.svg" />
+
+                    <div className={styles.arrows}>
+                        <button className={[styles.button, styles.buttonleft].join(' ')}>
+                            <LeftLine className={[styles.arrow, styles.arrowleft].join(' ')} />
+                        </button>
+                        <button className={[styles.button, styles.buttonright].join(' ')}>
+                            <RightLine className={[styles.arrow, styles.arrowright].join(' ')} />
+                        </button>
+                    </div>
+
+                    <Screen className={styles.screenmonitor} />
+                    <ScreenBase className={styles.screenbase} />
                 </div>
 
                 <div className={styles.mobile}>
                     <img src="/landing/mobile.svg" />
+                    <iframe className={styles.mobileiframe} src="https://www.lvolt.net" />
                     <img className={styles.mobilespinner} src="/landing/spinner.svg" />
                 </div>
+
+                <div className={styles.controls}>
+                    <a href="" className={styles.link}>GO TO SITE</a>
+                    <a href="" className={styles.link}>SEE SCORE</a>
+
+                    <div className={styles.dots}>
+                        <Dot className={styles.dot} />
+                        <Dot className={styles.dot} />
+                        <Dot className={styles.dot} />
+                        <Dot className={styles.dot} />
+                        <Dot className={styles.dot} />
+                    </div>
+                </div>
             </div>
+
         </div>
 
     </div>
