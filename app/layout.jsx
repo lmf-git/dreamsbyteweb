@@ -1,7 +1,5 @@
-import Head from 'next/head';
 import { Syne } from 'next/font/google';
-
-import "../style/globals.scss";
+import '../components/layout/global.scss';
 
 const syne = Syne({
   weight: ['400', '500', '600', '700', '800'],
@@ -10,11 +8,11 @@ const syne = Syne({
 
 export const metadata = {
   title: {
-    template: '%s | Allied Construction',
-    default: 'Allied Construction',
+    template: '%s | Dreamsbyte',
+    default: 'Dreamsbyte',
   },
   description: 'A really good Construction site',
-  keywords: 'based, construction, shop',
+  keywords: 'development, design, database, figma, javascript, html, css',
   themeColor: 'transparent'
 };
 

@@ -1,19 +1,19 @@
 // import { useRef } from "react";
 
-import ContactNowFab from "../components/icons/cta/ContactNowFab";
-import Logo from "../components/icons/branding/Logo";
-import ScrollIcon from "../components/icons/controls/Scroll";
+// import ContactNowFab from "../components/icons/cta/ContactNowFab";
+// import Logo from "../components/icons/branding/Logo";
+// import ScrollIcon from "../components/icons/controls/Scroll";
 
-import Hero from "../components/Hero";
-import Testimonials from "../components/Testimonials";
-import Services from "../components/Services";
-import Contact from "../components/Contact";
-import EmailMethod from "../components/icons/social/EmailMethod";
-import Socials from "../components/Socials";
-import Footer from "../components/Footer";
+// import Hero from "../components/Hero";
+// import Testimonials from "../components/Testimonials";
+// import Services from "../components/Services";
+// import Contact from "../components/Contact";
+// import EmailMethod from "../components/icons/social/EmailMethod";
+// import Socials from "../components/Socials";
+// import Footer from "../components/Footer";
 
-import exportStyle from "../styles/_export.module.scss";
-import styles from "../styles/landing/landing.module.scss";
+import exportStyles from '../components/layout/_export.module.scss';
+import styles from "../components/specific/Landing/Landing/landing.module.scss";
 
 export default function Index() {
     // const contentRef = useRef();
@@ -31,7 +31,7 @@ export default function Index() {
 
     return <main className={styles.index}>
         <div className={styles.header}>
-            <Logo extraClass={styles.logo} />
+            {/* <Logo extraClass={styles.logo} /> */}
             <a className={styles.headercta} href="#contact">CONTACT</a>
         </div>
 
@@ -50,7 +50,7 @@ export default function Index() {
 
             {/* <ContactNowFab /> */}
 
-            <Hero />
+            {/* <Hero /> */}
 
             {/* <Testimonials />
 
