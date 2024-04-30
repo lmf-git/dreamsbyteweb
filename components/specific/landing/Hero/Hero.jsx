@@ -1,9 +1,13 @@
+'use client';
+
 import { useState } from 'react';
+
 import RightLine from './icons/controls/RightLine';
 import LeftLine from './icons/controls/LeftLine';
 import Dot from './icons/controls/Dot';
 import Screen from './icons/Screen';
 import ScreenBase from './icons/Base';
+
 import styles from '../styles/landing/hero.module.scss';
 
 const projects = [

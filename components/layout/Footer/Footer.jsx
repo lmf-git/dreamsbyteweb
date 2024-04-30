@@ -1,10 +1,8 @@
+import { forwardRef } from 'react';
 import Contact from './Contact';
 import Socials from './Socials';
 import Logo from './icons/branding/Logo';
 import styles from '../styles/landing/footer.module.scss';
-import { forwardRef } from 'react';
-
-
 
 const Footer = forwardRef((props, ref) => {
   console.log(props, ref);
@@ -17,4 +15,5 @@ const Footer = forwardRef((props, ref) => {
     </div>
   );
 });
+
 export default Footer;

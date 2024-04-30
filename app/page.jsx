@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+// import { useRef } from "react";
 
 import ContactNowFab from "../components/icons/cta/ContactNowFab";
 import Logo from "../components/icons/branding/Logo";
@@ -7,27 +7,28 @@ import ScrollIcon from "../components/icons/controls/Scroll";
 import Hero from "../components/Hero";
 import Testimonials from "../components/Testimonials";
 import Services from "../components/Services";
-
-import exportStyle from "../styles/_export.module.scss";
-import styles from "../styles/landing/landing.module.scss";
 import Contact from "../components/Contact";
 import EmailMethod from "../components/icons/social/EmailMethod";
 import Socials from "../components/Socials";
 import Footer from "../components/Footer";
 
+import exportStyle from "../styles/_export.module.scss";
+import styles from "../styles/landing/landing.module.scss";
+
 export default function Index() {
-    const contentRef = useRef();
-    const footerRef = useRef();
+    // const contentRef = useRef();
+    // const footerRef = useRef();
     
-    useEffect(() => {
-        const delay = parseFloat(exportStyle.introduration) - 0.1;
-        const children = contentRef.current.querySelectorAll('.section');
+    // useEffect(() => {
+    //     const delay = parseFloat(exportStyle.introduration) - 0.1;
+    //     const children = contentRef.current.querySelectorAll('.section');
         
-        setTimeout(() => {
-            footerRef.current.style.height = `auto`;
-            contentRef.current.style.height = `${100 * children.length}vh`;
-        }, delay * 1000);
-    });
+    //     setTimeout(() => {
+    //         footerRef.current.style.height = `auto`;
+    //         contentRef.current.style.height = `${100 * children.length}vh`;
+    //     }, delay * 1000);
+    // });
+
     return <main className={styles.index}>
         <div className={styles.header}>
             <Logo extraClass={styles.logo} />
@@ -44,17 +45,18 @@ export default function Index() {
         </div>
 
         {/* By including items in .content elem, they're hidden until intro finished. */}
-        <div className="content" ref={contentRef}>
-            <ScrollIcon />
-            <ContactNowFab />
+        <div className="content">
+            {/* <ScrollIcon /> */}
+
+            {/* <ContactNowFab /> */}
 
             <Hero />
 
-            <Testimonials />
+            {/* <Testimonials />
 
-            <Services />
+            <Services /> */}
         </div>
 
-        <Footer ref={footerRef} />
+        {/* <Footer /> */}
     </main>;
 };

@@ -3,7 +3,7 @@
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "sass": "^1.69.3"
+    "sass": "^1.75.0"
   },
   "scripts": {
     "start": "next start",
