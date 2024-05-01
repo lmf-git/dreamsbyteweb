@@ -32,34 +32,3 @@
     }
 }
 
-
-/* introb and scroll icon disappear after scrolling, menu appears based on scrolling */
-.intro {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-    color: white;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5em;
-    box-sizing: border-box;
-    text-align: center;
-
-    animation: end-intro animations.$introduration linear forwards;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.introtitle {
-    width: 50%;
-    margin: 0;
-}
-
-.introblurb {
-    width: 30%;
-    margin: 0;
-    color: rgb(191, 191, 191);
-}
-

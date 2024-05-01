@@ -2,13 +2,14 @@
 
 import { useState } from 'react';
 
-import RightLine from './icons/controls/RightLine';
-import LeftLine from './icons/controls/LeftLine';
-import Dot from './icons/controls/Dot';
-import Screen from './icons/Screen';
-import ScreenBase from './icons/Base';
+import RightLine from '../../../icons/controls/RightLine';
+import LeftLine from '../../../icons/controls/LeftLine';
+import Dot from '../../../icons/controls/Dot';
 
-import styles from '../styles/landing/hero.module.scss';
+import Screen from '../../landing/Screen/Screen';
+import ScreenBase from '../../landing/Screen/Base';
+
+import styles from './hero.module.scss';
 
 const projects = [
     {
@@ -29,15 +30,6 @@ export default function Hero() {
     const [project, setProject] = useState(0);
 
     return <div className="section">
-        {/* <div className={styles.projects}>
-            {
-                projects.map(p => (
-                    <div>{p.name}</div>
-                ))
-            }
-        </div> */}
-
-
         <div className={styles.projects}>
             <div className={styles.projectdesc}>
                 <h1 className={styles.projectname}>
@@ -98,8 +90,7 @@ export default function Hero() {
             </div>
 
         </div>
-
-    </div>
+    </div>;
 };
 
 // Lvolt (Networking)

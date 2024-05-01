@@ -11,14 +11,14 @@ export const metadata = {
     template: '%s | Dreamsbyte',
     default: 'Dreamsbyte',
   },
-  description: 'A really good Construction site',
-  keywords: 'development, design, database, figma, javascript, html, css',
-  themeColor: 'transparent'
+  description: '',
+  keywords: 'development, design, database, figma, javascript, html, css'
 };
 
 export const viewport = {
   width: 'device-width',
-  initialScale: 1
+  initialScale: 1,
+  themeColor: 'transparent'
 };
 
 export default function RootLayout({ children }) {
