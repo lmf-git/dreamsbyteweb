@@ -53,7 +53,7 @@ export default function Hero() {
             <div className={styles.projectpreview}>
                 <div className={styles.screen}>
                     <iframe className={styles.screeniframe} src="https://www.lvolt.net" />
-                    {/* <img src="/landing/screen.svg" /> */}
+                    <img src="/landing/screen.svg" />
                     <img className={styles.screenspinner} src="/landing/spinner.svg" />
 
                     <div className={styles.arrows}>

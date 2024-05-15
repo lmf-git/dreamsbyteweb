@@ -32,7 +32,7 @@ export default function Index() {
 
             {/* <ContactNowFab /> */}
 
-            <Hero />
+            {/* <Hero /> */}
 
             {/* <Testimonials />
 
