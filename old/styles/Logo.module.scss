@@ -1,0 +1,14 @@
+.logo {
+    display: flex;
+    align-items: center;
+}
+.wordmark {
+    width: 5em;
+    margin-right: 1.15em;
+    font-weight: bold;
+}
+.name {
+    font-size: 2em;
+    font-family: var(--syne);
+    color: white;
+}
