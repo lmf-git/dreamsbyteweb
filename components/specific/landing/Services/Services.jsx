@@ -1,4 +1,4 @@
-import styles from '../styles/landing/services.module.scss';
+import styles from './services.module.scss';
 
 export default function Services() {
   return (

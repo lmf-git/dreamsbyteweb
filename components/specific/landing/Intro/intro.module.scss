@@ -4,21 +4,25 @@
 
 /* introb and scroll icon disappear after scrolling, menu appears based on scrolling */
 .intro {
-    position: absolute;
     display: flex;
     flex-direction: column;
     height: 100%;
     width: 100%;
-    color: white;
     align-items: center;
     justify-content: center;
+
+    position: absolute;
     font-size: 1.5em;
+    
+    color: white;
     box-sizing: border-box;
     text-align: center;
-
-    animation: end-intro animations.$introduration linear forwards;
     pointer-events: none;
     z-index: 1;
+
+    animation: end-intro .33s linear forwards;
+    animation-delay: 5s;
+    will-change: height, opacity;
 }
 
 .introtitle {

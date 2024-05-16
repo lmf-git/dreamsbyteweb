@@ -1,19 +1,14 @@
-import { forwardRef } from 'react';
-import Contact from './Contact';
-import Socials from './Socials';
-import Logo from './icons/branding/Logo';
-import styles from '../styles/landing/footer.module.scss';
+import Contact from './Contact/Contact';
+import Socials from './Socials/Socials';
 
-const Footer = forwardRef((props, ref) => {
-  console.log(props, ref);
+import Logo from '../../icons/branding/Logo';
 
-  return (
-    <div className={styles.footer} ref={ref}>
-      <Contact />
-      <Socials />
-      <Logo className={styles.footerlogo} />
-    </div>
-  );
-});
+import styles from './footer.module.scss';
 
-export default Footer;
+export default function Footer() {
+  return <div className={styles.footer}>
+    <Contact />
+    <Socials />
+    <Logo className={styles.footerlogo} />
+  </div>;
+};

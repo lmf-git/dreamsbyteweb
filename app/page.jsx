@@ -4,17 +4,19 @@ import Logo from "../components/icons/branding/Logo";
 
 import Intro from "../components/specific/landing/Intro/Intro";
 import Hero from "../components/specific/landing/Hero/Hero";
-// import Testimonials from "../components/Testimonials";
-// import Services from "../components/Services";
-// import Contact from "../components/Contact";
+
+
+import Testimonials from "../components/specific/landing/Testimonials/Testimonials";
+
 // import EmailMethod from "../components/icons/social/EmailMethod";
 // import Socials from "../components/Socials";
-// import Footer from "../components/Footer";
 
-// import ContactNowFab from "../components/icons/cta/ContactNowFab";
-// import Scroll from "../components/icons/controls/Scroll";
+import Services from "../components/specific/landing/Services/Services";
+import Footer from "../components/layout/Footer/Footer";
 
-import exportStyles from '../components/layout/_export.module.scss';
+import ContactNowFab from "../components/layout/ContactNowFab/ContactNowFab";
+import Scroll from "../components/icons/controls/Scroll";
+
 import styles from "../components/specific/Landing/Landing/landing.module.scss";
 
 export default function Index() {
@@ -24,21 +26,20 @@ export default function Index() {
             <a className={styles.headercta} href="#contact">CONTACT</a>
         </div>
 
-        {/* <Intro /> */}
+        <Intro />
 
         {/* By including items in .content elem, they're hidden until intro finished. */}
         <div className="content">
-            {/* <Scroll /> */}
+            <Scroll />
+            <ContactNowFab />
 
-            {/* <ContactNowFab /> */}
+            <Hero />
+            
+            <Testimonials />
 
-            {/* <Hero /> */}
+            <Services />
 
-            {/* <Testimonials />
-
-            <Services /> */}
+            <Footer />
         </div>
-
-        {/* <Footer /> */}
     </main>;
 };

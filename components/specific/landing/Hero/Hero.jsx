@@ -92,10 +92,3 @@ export default function Hero() {
         </div>
     </div>;
 };
-
-// Lvolt (Networking)
-// PROBLEMS:
-// Faced with outdated branding and a lackluster online presence, [Client Name] struggled to connect with their target audience and stand out in the competitive digital landscape.
-
-// SOLUTIONS:
-// Collaborating with [Client Name], we tackled a critical challenge head-on. By crafting an impactful website and cohesive digital brand identity, we not only addressed their need for a strong online presence but also ensured consistency and recognition across platforms, driving their growth

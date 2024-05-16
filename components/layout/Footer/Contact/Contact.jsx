@@ -1,6 +1,5 @@
-import styles from '../styles/landing/contact.module.scss';
-import Socials from '../Socials/Socials';
 import EmailSend from '../../../icons/EmailSend';
+import styles from './contact.module.scss';
 
 export default function Contact() {
   return <div className={styles.contact}>

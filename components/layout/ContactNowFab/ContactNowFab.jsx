@@ -1,6 +1,6 @@
 import ContactNowIcon from './ContactNowIcon';
 import ContactNowTextIcon from './ContactNowTextIcon';
-import styles from '../../../styles/_contactfab.module.scss';
+import styles from './contactnowfab.module.scss';
 
 export default function ContactNowFab() {
     return <div className={styles.fab}>

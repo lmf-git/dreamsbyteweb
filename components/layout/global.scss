@@ -7,11 +7,12 @@ html, body, #__next, #__next > div {
 
 html {
     background: #000000;
-    background: linear-gradient(to bottom, #141B35, #000000);
+    
 }
 
 body {
     margin: 0;
+    background: linear-gradient(to bottom, #141B35, #000000);
 }
 
 .scroll {
@@ -32,13 +33,13 @@ body {
 }
 
 .content {
-    // Calculate height with javascript.
-    height: 0;
-    animation: start-content animations.$introduration linear forwards animations.$introduration;
+    position: absolute;
+    // top: 0;
+    animation: start-content animations.$introduration linear forwards;
+    animation-delay: animations.$introduration * 2;
     opacity: 0;
     overflow: hidden;
-    
-    background: linear-gradient(to bottom, #141B35, #000000);
+    // background: linear-gradient(to bottom, #141B35, #000000);
 }
 
 .section {

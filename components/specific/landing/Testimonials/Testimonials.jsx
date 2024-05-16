@@ -1,5 +1,5 @@
-import styles from '../styles/landing/testimonials.module.scss';
 import LVolt from '../../../icons/branding/clients/LVolt';
+import styles from './testimonials.module.scss';
 
 export default function Testimonials() {
     return <div className={`section ${styles.testimonials}`}>

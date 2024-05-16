@@ -5,9 +5,6 @@ $fabspinduration: 5.5s;
     0% {
         opacity: 1;
     }
-    90% {
-        opacity: 1;
-    }
     100% {
         opacity: 0;
     }
@@ -16,9 +13,6 @@ $fabspinduration: 5.5s;
 @keyframes start-content {
     0% {
         opacity: 0;
-    }
-    45% {
-        opacity: 1;
     }
     100% {
         opacity: 1;
