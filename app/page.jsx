@@ -14,7 +14,7 @@ import Footer from "../components/layout/Footer/Footer";
 import ContactNowFab from "../components/layout/ContactNowFab/ContactNowFab";
 import Scroll from "../components/icons/controls/Scroll";
 
-import styles from "../components/specific/Landing/Landing/landing.module.scss";
+import styles from "../components/specific/Landing/landing.module.scss";
 
 
 export default function Index() {
