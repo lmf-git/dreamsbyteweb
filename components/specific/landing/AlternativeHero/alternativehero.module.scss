@@ -4,13 +4,24 @@
 
 .projects {
     display: flex;
-    flex-direction: column;
 }
 
 .projectdesc {
-    // display: flex;
+    display: flex;
+    flex: 37.5% 1;
+    flex-shrink: 0;
+    flex-direction: column;
+
     color: white;
+
+    padding: 11em 9.5em 0 3.5em;
+
+    animation: reveal-projectdesc animations.$introduration / 4.5 linear forwards animations.$introduration * 1.45;
+    transform: translateX(35%);
+    opacity: 0;
+
     box-sizing: border-box;
+
 }
 
 .projectpreview {
@@ -25,8 +36,8 @@
 
 .screen {
     display: none;
-    height: 47vh;
-    
+
+    height: 60vh;
     width: 100%;
 
     position: absolute;
@@ -44,23 +55,22 @@
 .screenmonitor {
     position: absolute;
     top: 0;
-    width: 100%;
-    z-index: 0;
     left: 0;
+    width: 100%;
+    // height: 100%;
+    z-index: -1;
 }
 
 .screenbase {
     position: absolute;
-    top: 32.5vw;
+    top: 100%;
     width: 35vh;
     left: 0;
     right: 0;
     margin: auto;
-    z-index: -1;
 }
 
 .mobile {
-    display: none;
     width: 14vw;
     
     position: absolute;
@@ -128,6 +138,7 @@
     width: 100%;
     margin: 0;
     border: 0;
+    height: 100%;
     top: 0;
     bottom: 0;
     padding: .5em;
@@ -231,47 +242,8 @@
 }
 
 
-@media screen and (min-width: 1200px) {
-    .projects {
-        flex-direction: row;
-    }
-
-    .projectdesc {
-        display: flex;
-        flex: 37.5% 1;
-        flex-shrink: 0;
-        flex-direction: column;
-    
-        color: white;
-    
-        padding: 11em 9.5em 0 3.5em;
-    
-        animation: reveal-projectdesc animations.$introduration / 4.5 linear forwards animations.$introduration * 1.45;
-        transform: translateX(35%);
-        opacity: 0;
-    }
-
+@media (min-width: 1000px) {
     .screen {
         display: block;
-    }
-
-    .mobile {
-        display: block;
-    }
-
-    .screeniframe {
-        height: 32.5vw;
-    }
-}
-
-
-@media screen and (min-width: 1400px) {
-
-    .screen {
-        height: 60vh;
-    }
-
-    .screeniframe {
-        // height: 89%;
     }
 }

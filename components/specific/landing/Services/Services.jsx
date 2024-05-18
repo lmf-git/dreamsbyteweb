@@ -56,11 +56,6 @@ export default function Services() {
         To start realizing your digital dreams, email us today at{' '}
         <a href="mailto:newclient@business.com">newclient@business.com</a>.
       </p>
-
-      <p className={styles.copyright}>
-        Copyright Information: &copy; 2023 Dreamsbyte. All rights reserved.{' '}
-        <a href="/privacy-policy">Privacy Policy</a>
-      </p>
     </div>
   );
 }

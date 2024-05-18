@@ -26,38 +26,21 @@
 .list {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px; // Adjust the gap between services as needed
+  gap: 1.3em;
 }
 
 .service {
   flex: 1;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 1.5em;
+  border-radius: .4em;
 
   .title {
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 1.25em;
+    font-weight: 600;
   }
 
   .list {
-    // list-style: none;
+    list-style: none;
     padding: 0;
   }
-}
-
-.serviceList li {
-  margin-bottom: 5px;
-}
-
-p {
-  // Styles for the paragraphs
-}
-
-.copyright {
-  // Styles for copyright information
-}
-
-.privacyLink {
-  // Styles for the privacy policy link
 }

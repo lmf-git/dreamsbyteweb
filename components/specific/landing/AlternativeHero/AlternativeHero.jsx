@@ -1,15 +1,8 @@
 'use client';
 
 import { useState } from 'react';
+import styles from './alternativehero.module.scss';
 
-import RightLine from '../../../icons/controls/RightLine';
-import LeftLine from '../../../icons/controls/LeftLine';
-import Dot from '../../../icons/controls/Dot';
-
-import Screen from '../../landing/Screen/Screen';
-import ScreenBase from '../../landing/Screen/Base';
-
-import styles from './hero.module.scss';
 
 const projects = [
     {
@@ -26,7 +19,7 @@ const projects = [
     },
 ];
 
-export default function Hero() {
+export default function AlternativeHero() {
     const [project, setProject] = useState(0);
 
     return <div className="section">
@@ -53,20 +46,17 @@ export default function Hero() {
             <div className={styles.projectpreview}>
                 <div className={styles.screen}>
                     <iframe className={styles.screeniframe} src="https://www.lvolt.net" />
-                    {/* <img src="/landing/screen.svg" /> */}
+                    <img src="/landing/screen.svg" />
                     <img className={styles.screenspinner} src="/landing/spinner.svg" />
 
                     <div className={styles.arrows}>
                         <button className={[styles.button, styles.buttonleft].join(' ')}>
-                            <LeftLine className={[styles.arrow, styles.arrowleft].join(' ')} />
+                            {/* <LeftLine className={[styles.arrow, styles.arrowleft].join(' ')} /> */}
                         </button>
                         <button className={[styles.button, styles.buttonright].join(' ')}>
-                            <RightLine className={[styles.arrow, styles.arrowright].join(' ')} />
+                            {/* <RightLine className={[styles.arrow, styles.arrowright].join(' ')} /> */}
                         </button>
                     </div>
-
-                    <Screen className={styles.screenmonitor} />
-                    <ScreenBase className={styles.screenbase} />
                 </div>
 
                 <div className={styles.mobile}>
@@ -80,11 +70,11 @@ export default function Hero() {
                     <a href="" className={styles.link}>SEE SCORE</a>
 
                     <div className={styles.dots}>
+                        {/* <Dot className={styles.dot} />
                         <Dot className={styles.dot} />
                         <Dot className={styles.dot} />
                         <Dot className={styles.dot} />
-                        <Dot className={styles.dot} />
-                        <Dot className={styles.dot} />
+                        <Dot className={styles.dot} /> */}
                     </div>
                 </div>
             </div>
