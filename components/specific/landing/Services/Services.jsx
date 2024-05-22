@@ -8,53 +8,51 @@ export default function Services() {
         <h2 className={styles.title}>Our Services</h2>
       </div>
 
-      <div className={styles.list}>
+    <div className={styles.list}>
         <div className={styles.service}>
-          <h3>Development</h3>
-          <ul>
-            <li>Full Stack Development</li>
-            <li>Website / App / DB Maintenance</li>
-            <li>UI Development</li>
-            <li>WordPress / Ghost / CMS Development</li>
-            <li>API Integrations / Custom API Development</li>
-          </ul>
+          <span className={styles.name}>Development</span>
+          
+          <span className={styles.example}>Full Stack Development</span>
+          <span className={styles.example}>Website / App / DB Maintenance</span>
+          <span className={styles.example}>UI Development</span>
+          <span className={styles.example}>WordPress / Ghost / CMS Development</span>
+          <span className={styles.example}>API Integrations / Custom API Development</span>
         </div>
 
         <div className={styles.service}>
-          <h3>Design</h3>
-          <ul>
-            <li>Captivating Logos</li>
-            <li>Landing Pages</li>
-            <li>Branding</li>
-            <li>Distinctive Typography</li>
-            <li>Compelling Colour Schemes</li>
-          </ul>
+          <span className={styles.name}>E-commerce</span>
+          
+          <span className={styles.example}>Shopify / Magento / Woocommerce / Custom Store Creation</span>
+          <span className={styles.example}>Multichannel / ERP and More Integrations</span>
         </div>
 
         <div className={styles.service}>
-          <h3>E-commerce</h3>
-          <ul>
-            <li>Shopify / Magento / Woocommerce / Custom Store Creation</li>
-            <li>Multichannel / ERP and More Integrations</li>
-          </ul>
+          <span className={styles.name}>Design</span>
+          
+          <span className={styles.example}>Captivating Logos</span>
+          <span className={styles.example}>Landing Pages</span>
+          <span className={styles.example}>Branding</span>
+          <span className={styles.example}>Distinctive Typography</span>
+          <span className={styles.example}>Compelling Colour Schemes</span>
         </div>
 
         <div className={styles.service}>
-          <h3>Miscellaneous</h3>
-          <ul>
-            <li>Figma to Website Conversion</li>
-            <li>PSD to HTML Conversion</li>
-            <li>Translation Services</li>
-            <li>Troubleshooting and Error Fixing</li>
-            <li>Tutoring in Web Development</li>
-            <li>Stripe/Paypal/Square Payments Integration</li>
-          </ul>
+          <span className={styles.name}>Miscellaneous</span>
+          
+          <span className={styles.example}>Figma to Website Conversion</span>
+          <span className={styles.example}>PSD to HTML Conversion</span>
+          <span className={styles.example}>Translation Services</span>
+          <span className={styles.example}>Troubleshooting and Error Fixing</span>
+          <span className={styles.example}>Tutoring in Web Development</span>
+          <span className={styles.example}>Stripe/Paypal/Square Payments Integration</span>
         </div>
       </div>
 
-      <p>
-        To start realizing your digital dreams, email us today at{' '}
-        <a href="mailto:newclient@business.com">newclient@business.com</a>.
+      <p className={styles.additional}>
+        To start realising your digital dreams, email us today at&nbsp;
+        <a className={styles.additionallink} href="mailto:contact@dreamsbyte.com">contact@dreamsbyte.com</a>
+        &nbsp;
+        or use <a className={styles.additionallink} href="#footer">this form</a>.
       </p>
     </div>
   );

@@ -30,17 +30,42 @@
 }
 
 .service {
-  flex: 1;
-  padding: 1.5em;
-  border-radius: .4em;
+  display: flex;
+  flex-direction: column;
+  flex: calc(25% - 1em) 0;
+  padding: 0 1em;
+  box-sizing: border-box;
+}
 
-  .title {
-    font-size: 1.25em;
-    font-weight: 600;
-  }
+.name {
+  font-size: 1.45em;
+  font-weight: 500;
+  margin-bottom: .925em;
+}
 
-  .list {
-    list-style: none;
-    padding: 0;
+.example {
+  margin-bottom: .5em;
+  font-weight: 200;
+  color: rgb(226, 226, 226);
+  line-height: 1.25em;
+}
+
+.additional {
+  font-weight: 100;
+  color: rgb(165, 165, 165);
+}
+
+.additionallink {
+  color: rgb(221, 221, 221);
+  text-decoration: none;
+  font-weight: 300;
+  padding: .2em;
+  transition: margin .25s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  &:hover {
+    color: color(srgb 0.0723 0.1028 0.2031);
+    text-decoration: underline;
+    background: white;
+    margin: 0 .35em;
   }
 }

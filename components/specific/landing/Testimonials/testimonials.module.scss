@@ -15,26 +15,95 @@
 }
 
 .list {
+    width: 100%;
+    overflow: hidden;
+    height: 27.4vh;
+    position: relative;
+    cursor: grab;
+    user-select: none;
+}
+
+.plane {
     display: flex;
     align-items: center;
+    position: absolute;
+
+    left: 0;
+    top: 0;
+    height: 100%;
 }
 
 .testimonial {
     display: flex;
-    flex: 55% 0;
+    width: 40em;
+    flex-grow: 0;
+    flex-shrink: 0;
     align-items: center;
     padding: 3em;
     margin-right: 2.5vw;
     background: linear-gradient(104deg, #FFF 1.24%, #DBDBDB 100%);
 
-    height: 27.4vh;
+    height: 100%;
 }
 
 .brand {
-    flex: 30% 0;
-    padding-right: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 6.5em 0 0;
+    flex-shrink: 0;
+    margin-right: 2.85em;
+    color: black;
+}
+
+.company {
+    font-weight: 300;
+    font-size: .925em;
+    margin-top: .35em;
+    margin-bottom: .125em;
+    color: rgb(44, 44, 44);
+}
+.name {
+    font-weight: 200;
+    font-size: .775em;
+    color: rgb(80, 80, 80);
 }
 
 .text {
-    align-self: flex-start;
+    // align-self: flex-start;
 }
+
+.quote {
+    line-height: 1.2em;
+
+    &:before, &:after {
+        display: inline-block;
+        content: '"';
+        font-size: 2em;
+        line-height: 0;
+        transform: translateY(.25em);
+    }
+
+    &:before {
+        padding-right: .15em;
+    }
+
+    &:after {
+        padding-left: .15em;
+    }
+}
+
+.report {
+    color: rgb(44, 44, 44);
+    text-decoration: none;
+    font-weight: 300;
+    transition: padding .25s cubic-bezier(0.075, 0.82, 0.165, 1);
+  
+    &:hover {
+      color: white;
+      text-decoration: underline;
+      background: rgb(44, 44, 44);
+      padding: .35em;
+    }
+}
+  

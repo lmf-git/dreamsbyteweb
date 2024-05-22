@@ -1,5 +1,10 @@
-$introduration: 2.75s;
-$fabspinduration: 5.5s;
+$introduration: 1.5s;
+$fabspinduration: 4.25s;
+
+:export {
+    introduration: #{$introduration};
+    test: 2;
+}
 
 @keyframes end-intro {
     0% {

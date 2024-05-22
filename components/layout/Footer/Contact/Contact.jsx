@@ -8,7 +8,7 @@ export default function Contact() {
         We'll contact you.
       </label>
       <p className={styles.instructions}>
-        To start realizing your digital dreams, email us today.
+        To start realising your digital dreams, email us today.
       </p>
       <div className={styles.emailInputGroup}>
         <input

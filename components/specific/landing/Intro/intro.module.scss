@@ -10,6 +10,7 @@
     width: 100%;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 
     position: absolute;
     font-size: 1.5em;
@@ -25,14 +26,23 @@
     will-change: height, opacity;
 }
 
+.logo {
+    width: 14em;
+    margin-bottom: 1.5em;
+}
+
 .introtitle {
-    width: 50%;
+    font-size: 1.85em;
+    width: 175em;
     margin: 0;
+    font-weight: 200;
 }
 
 .introblurb {
-    width: 30%;
+    font-size: 1.35em;
     margin: 0;
     color: rgb(191, 191, 191);
+    margin-bottom: 1em;
+    font-weight: 100;
 }
 
