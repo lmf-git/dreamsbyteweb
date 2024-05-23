@@ -97,6 +97,13 @@ const projects = [
         reporturl: ''
     },
     {
+        name: 'Gold IRA Guide',
+        problem: '',
+        solution: '',
+        url: "https://goldiraguide.vercel.app/",
+        reporturl: ''
+    },
+    {
         name: 'MoodCoach',
         problem: '...',
         solution: '...',
