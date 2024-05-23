@@ -30,7 +30,7 @@ export default function Index() {
             <Services />
             <Testimonials />
 
-            {/* <Footer /> */}
+            <Footer />
         </div>
     </main>;
 };

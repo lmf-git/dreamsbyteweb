@@ -48,6 +48,14 @@
   font-weight: 200;
   color: rgb(226, 226, 226);
   line-height: 1.25em;
+  position: relative;
+  
+  &:before {
+    position: absolute;
+    display: block;
+    content: '-';
+    left: -1em;
+  }
 }
 
 .additional {

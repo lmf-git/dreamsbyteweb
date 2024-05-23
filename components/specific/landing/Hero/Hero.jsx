@@ -23,77 +23,84 @@ const projects = [
         name: 'The Right Direction',
         problem: '',
         solution: '',
-        url: '',
+        url: 'https://trd.vercel.app',
         reporturl: ''
     },
     {
         name: 'Electric Doctors',
         problem: '...',
         solution: '...',
-        url: '',
+        url: 'https://www.electricdrs.com',
         reporturl: ''
     },
     {
         name: 'Astin Doherty',
         problem: '...',
         solution: '...',
-        url: '',
+        url: 'https://www.astindoherty.com',
         reporturl: ''
     },
     {
         name: 'MyLuxuryLodging',
         problem: '...',
         solution: '...',
-        url: '',
+        url: 'https://myluxurylodging.vercel.app/',
         reporturl: ''
     },
     {
         name: 'The Myre',
         problem: '...',
         solution: '...',
-        url: '',
+        url: 'https://themyre.com',
         reporturl: ''
     },
     {
         name: 'Luxe Blinds',
         problem: '...',
         solution: '...',
-        url: '',
+        url: 'https://luxeblinds.vercel.app/',
         reporturl: ''
     },
     {
         name: 'YabberGabber',
         problem: '...',
         solution: '...',
-        url: '',
+        url: 'https://yabbergabberclient.vercel.app/',
         reporturl: ''
     },
     {
         name: 'HouseCheckup',
-        problem: '...',
+        problem: 'Work in progress/active outdated placeholder.',
         solution: '...',
-        url: '',
+        url: 'https://housecheckupwebsite.vercel.app/',
         reporturl: ''
     },
     {
         name: 'Allied Construction',
         problem: '...',
         solution: '...',
-        url: '',
+        url: 'https://alliedconstruction.vercel.app/',
         reporturl: ''
     },
     {
         name: 'IMAA',
         problem: '...',
         solution: '...',
-        url: '',
+        url: 'https://imaainterface.vercel.app/',
         reporturl: ''
     },
     {
         name: 'The Coop',
         problem: '...',
         solution: '...',
-        url: '',
+        url: 'https://thecoop.group',
+        reporturl: ''
+    },
+    {
+        name: 'MoodCoach',
+        problem: '...',
+        solution: '...',
+        url: 'https://moodcoach.vercel.app/',
         reporturl: ''
     }
 ];
