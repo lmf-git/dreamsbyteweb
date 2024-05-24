@@ -1,7 +1,9 @@
 'use client';
 
 import { useRef, useState } from 'react';
+
 import LVolt from '../../../icons/branding/clients/LVolt';
+
 import styles from './testimonials.module.scss';
 
 const testimonials = [
