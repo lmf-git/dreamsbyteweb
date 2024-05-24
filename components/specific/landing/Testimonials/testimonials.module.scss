@@ -27,10 +27,11 @@
     display: flex;
     align-items: center;
     position: absolute;
+    user-select: none;
 
     left: 0;
     top: 0;
-    height: 100%;
+    height: calc(100% - .1em);
 }
 
 .testimonial {

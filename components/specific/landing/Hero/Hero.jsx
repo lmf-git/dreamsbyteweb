@@ -103,13 +103,14 @@ const projects = [
         url: 'https://alliedconstruction.vercel.app/',
         reporturl: ''
     },
-    {
-        name: 'IMAA',
-        problem: '...',
-        solution: '...',
-        url: 'https://imaainterface.vercel.app/',
-        reporturl: ''
-    },
+    // TODO: Leaks too much atm.
+    // {
+    //     name: 'IMAA',
+    //     problem: '...',
+    //     solution: '...',
+    //     url: 'https://imaainterface.vercel.app/',
+    //     reporturl: ''
+    // },
     {
         name: 'The Coop',
         problem: '...',
@@ -141,7 +142,7 @@ export default function Hero() {
 
     return <div className="section">
         <h1 className={styles.title}>Latest Work</h1>
-        <span className={styles.disclaimer}>Preview is experimental, please visit the website to view judge responsivity accurately.</span>
+        <span className={styles.disclaimer}>Preview is experimental, please visit the website to gauge responsivity accurately.</span>
 
         <div className={styles.projects}>
             <div className={styles.projectdesc}>

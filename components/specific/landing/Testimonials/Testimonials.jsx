@@ -11,7 +11,7 @@ const testimonials = [
         logo: <LVolt />,
         name: 'Theodore M',
         company: 'LVolt',
-        testimonial: 'Working with DreamsByte has been an absolute game-changer for our business. Their creative team\'s ability to turn our ideas into stunning digital solutions is nothing short of remarkable. They helped us not only improve our online presence but also boost our brand recognition. DreamsByte is more than a digital agency; they are partners in our success.',
+        testimonial: 'Working with DreamsByte has been an absolute game-changer for our business. They helped us not only improve our online presence but also boost our brand recognition. DreamsByte is more than a digital agency; they are partners in our success.',
         reporturl: 'link'
     },
     {
@@ -174,29 +174,6 @@ export default function Testimonials() {
                         </div>
                     </div>
                 )}
-                {/* <div className={styles.testimonial}>
-                    <div className={styles.brandl}>
-                        <LVolt />
-                    </div>
-                    <div className={styles.textl}>
-                        Theodore Michaud
-                        THE OWNER of LVOLT
-                        Working with DreamsByte has been an absolute game-changer for our business. Their creative team's ability to turn our ideas into stunning digital solutions is nothing short of remarkable. They helped us not only improve our online presence but also boost our brand recognition. DreamsByte is more than a digital agency; they are partners in our success.
-                        See results
-                    </div>
-                </div>
-
-                <div className={styles.testimonial}>
-                    <div className={styles.brandl}>
-                        <LVolt />
-                    </div>
-                    <div className={styles.textl}>
-                        Theodore Michaud
-                        THE OWNER of LVOLT
-                        
-                        See results
-                    </div>
-                </div> */}
             </div>
         </div>
     </div>;
