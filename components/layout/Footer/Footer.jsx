@@ -10,23 +10,33 @@ import Scroll from "../../icons/controls/Scroll";
 import EmailMethod from '../../icons/social/EmailMethod';
 import Whatsapp from '../../icons/social/Whatsapp';
 import EmailSend from '../../icons/EmailSend';
-
-import styles from './footer.module.scss';
 import X from '../../icons/social/X';
 import Instagram from '../../icons/social/Instagram';
 import Upwork from '../../icons/social/Upwork';
 import Youtube from '../../icons/social/Youtube';
 import Github from '../../icons/social/Github';
 
+import styles from './footer.module.scss';
+
+
 export default function Footer() {
   const footerRef = useRef();
   const [footerVisible, setFooterVisible] = useState(false);
   const [messageVisible, setMessageVisible] = useState(false);
 
-  const onSubmit = ev => {
+  const [formStatus, setFormStatus] = useState(null);
+
+  const onSubmit = async ev => {
     ev.preventDefault();
 
-    // alert('submit wip');
+    const endpoint = 'https://formcarry.com/s/OgJvVlDk0Mq';
+    const data = new FormData(ev.target);
+    const body = JSON.stringify({ email: data.get('email'), message: data.get('message') });
+    const headers = { "Accept": "application/json", "Content-Type": "application/json" };
+    const response = await fetch(endpoint, { headers, method: 'POST', body });
+    const result = await response.json();
+    setFormStatus(result.status);
+
     return false;
   };
 
@@ -50,36 +60,46 @@ export default function Footer() {
     }
 
     <div className={styles.footer} ref={footerRef}>
+      { formStatus !== 'success' ?
+        <form className={styles.contact} onSubmit={onSubmit}>
+          <label className={styles.label} htmlFor="contactform">
+            We'll contact you.
+          </label>
+          <p className={styles.instructions}>
+            To start realising your digital dreams, email us today.
+          </p>
 
-      <form className={styles.contact} onSubmit={onSubmit}>
-        <label className={styles.label} htmlFor="contactform">
-          We'll contact you.
-        </label>
-        <p className={styles.instructions}>
-          To start realising your digital dreams, email us today.
-        </p>
+          <input type="email" name="email" className={styles.input} placeholder="name@domain.tld" required />
 
-        <input type="email" name="email" className={styles.input} placeholder="name@domain.tld" />
-
-        { messageVisible && 
-          <textarea name="message" className={styles.textarea} placeholder="Your message here" />
-        }
-
-        <div className={styles.actions}>
-          { !messageVisible && 
-            <button type="button" 
-              className={`${styles.action} ${styles.add}`} 
-              onClick={() => setMessageVisible(true)}>
-              Add message
-            </button>
+          { messageVisible && 
+            <textarea name="message" className={styles.textarea} placeholder="Your message here" />
           }
-          <button type="submit" className={`${styles.action} ${styles.submit}`}>
-            Submit
-            <EmailSend className={styles.sendicon} />
-          </button>
-        </div>
-      </form>
 
+          <div className={styles.actions}>
+            { !messageVisible && 
+              <button type="button" 
+                className={`${styles.action} ${styles.add}`} 
+                onClick={() => setMessageVisible(true)}>
+                Add message
+              </button>
+            }
+            <button type="submit" className={`${styles.action} ${styles.submit}`}>
+              Submit
+              <EmailSend className={styles.sendicon} />
+            </button>
+          </div>
+        </form>
+        :
+        <div className={styles.contact} >
+          <label className={styles.label} htmlFor="contactform">
+            Message received!
+          </label>
+          <p className={styles.instructions}>
+            We'll be in touch with you shortly, feel free to also contact via social media/alternative methods.
+          </p>
+        </div>
+      }
+      
       <div className={styles.shill}>
         <div className={styles.socials}>
           <a href="" className={styles.social} rel="noopener noreferrer" target="_blank">
