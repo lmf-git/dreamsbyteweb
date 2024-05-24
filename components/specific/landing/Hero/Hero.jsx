@@ -41,6 +41,20 @@ const projects = [
         reporturl: ''
     },
     {
+        name: 'Mr G\'s Gyros',
+        problem: '...',
+        solution: '...',
+        url: 'https://mrgsgyroshop.com',
+        reporturl: ''
+    },
+    {
+        name: 'Mr G\'s Gyros',
+        problem: '...',
+        solution: '...',
+        url: 'https://keziandclay.co.uk',
+        reporturl: ''
+    },
+    {
         name: 'Astin Doherty',
         problem: '...',
         solution: '...',
