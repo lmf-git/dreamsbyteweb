@@ -24,9 +24,7 @@
 }
 
 .list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.3em;
+
 }
 
 .service {
@@ -35,6 +33,7 @@
   flex: calc(25% - 1em) 0;
   padding: 0 1em;
   box-sizing: border-box;
+  margin-bottom: 1.5em;
 }
 
 .name {
@@ -75,5 +74,14 @@
     text-decoration: underline;
     background: white;
     margin: 0 .35em;
+  }
+}
+
+
+@media screen and (min-width: 800px) {
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.3em;
   }
 }

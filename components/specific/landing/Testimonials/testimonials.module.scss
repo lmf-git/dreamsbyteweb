@@ -17,7 +17,7 @@
 .list {
     width: 100%;
     overflow: hidden;
-    height: 27.4vh;
+    height: 62.4vh;
     position: relative;
     cursor: grab;
     user-select: none;
@@ -36,7 +36,8 @@
 
 .testimonial {
     display: flex;
-    width: 39.5vw;
+    flex-direction: column;
+    width: 70.5vw;
     height: 100%;
     align-items: center;
     padding: 3em;
@@ -108,3 +109,16 @@
     }
 }
   
+
+@media screen and (min-width: 1200px) {
+
+    .list {
+        height: 27.4vh;
+    }
+
+    .testimonial {
+        width: 39.5vw;
+        flex-direction: row;
+    }
+
+}

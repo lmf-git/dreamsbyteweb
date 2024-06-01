@@ -32,28 +32,26 @@
 }
 
 .introtitle {
-    font-size: 1.85em;
-    width: 175em;
+    font-size: 1.35em;
     margin: 0;
     font-weight: 200;
 }
 
 .introblurb {
-    font-size: 1.35em;
+    font-size: 0.85em;
     margin: 0;
     color: rgb(191, 191, 191);
     margin-bottom: 1em;
     font-weight: 100;
 }
 
-@media screen and (max-width: 800px) {
-
+@media screen and (min-width: 800px) {
     .introtitle {
-        font-size: 1.35em;
-        width: auto;
+        font-size: 1.85em;
+        width: 175em;
     }
+
     .introblurb {
-        font-size: 0.85em;
-        width: auto;
+        font-size: 1.35em;
     }
 }
