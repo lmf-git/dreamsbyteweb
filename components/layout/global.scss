@@ -33,13 +33,10 @@ body {
 }
 
 .content {
-    position: absolute;
-    // top: 0;
     animation: start-content animations.$introduration linear forwards;
     animation-delay: animations.$introduration * 3.66;
     opacity: 0;
     overflow: hidden;
-    // background: linear-gradient(to bottom, #141B35, #000000);
 }
 
 .section {
