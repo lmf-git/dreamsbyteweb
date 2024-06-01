@@ -67,4 +67,11 @@
     font-weight: 900;
 }
 
+@media screen and (max-width: 600px) {
+    .headerctas {
+        gap: 0.5em;
+        flex-wrap: wrap;
+    }
+}
+
 
