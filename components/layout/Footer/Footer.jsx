@@ -119,10 +119,10 @@ export default function Footer() {
           <a href="" className={styles.social} rel="noopener noreferrer" target="_blank">
             <Github className={styles.socialicon} />
           </a>
-        </div>;
+        </div>
 
         <Logo extraClass={styles.logo} />
-
+        
         <div className={styles.meta}>
           <p className={styles.metatext}>
             We ensure that all our clients have all assets and source code available to them and under their ownership.

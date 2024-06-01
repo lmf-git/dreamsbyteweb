@@ -7,7 +7,6 @@ html, body, #__next, #__next > div {
 
 html {
     background: #000000;
-    
 }
 
 body {
@@ -46,3 +45,8 @@ body {
     box-sizing: border-box;
 }
 
+@media screen and (max-width: 645px) {
+    .content {
+        width: 100%;
+    }
+}
