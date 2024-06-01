@@ -194,3 +194,15 @@
 		margin: 0 .35em;
 	}
 }
+
+@media screen and (min-width: 300px) and (max-width: 950px) {
+	.shill {
+		flex-direction: column;
+		flex-wrap: wrap;
+	}
+	.logo {
+		top: 100%;
+		padding: 1.5em 0 0.5em 0;
+		left: 50%;
+	}
+}

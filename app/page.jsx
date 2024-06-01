@@ -25,6 +25,7 @@ export default function Index() {
         <Intro />
 
         {/* By including items in .content elem, they're hidden until intro finished. */}
+        
         <div className="content">
             <Hero />
             <Services />
@@ -32,5 +33,6 @@ export default function Index() {
 
             <Footer />
         </div>
+        
     </main>;
 };
