@@ -41,7 +41,7 @@
     height: 100%;
     align-items: center;
     padding: 3em;
-    margin-right: 2.5vw;
+    margin-right: .5em;
     background: linear-gradient(104deg, #FFF 1.24%, #DBDBDB 100%);
     border-radius: .5em 0 0 0;
     box-sizing: border-box;
@@ -119,6 +119,7 @@
     .testimonial {
         width: 39.5vw;
         flex-direction: row;
+        margin-right: 2.5vw;
     }
 
 }
