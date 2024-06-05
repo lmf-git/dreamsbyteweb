@@ -102,21 +102,21 @@ export default function Footer() {
       
       <div className={styles.shill}>
         <div className={styles.socials}>
-          <a href="" className={styles.social} rel="noopener noreferrer" target="_blank">
+          <a href="mailto:contact@dreamsbyte.com" className={styles.social} rel="noopener noreferrer" target="_blank">
             <EmailMethod className={styles.socialicon} />
           </a>
-          <a href="" className={styles.social} rel="noopener noreferrer" target="_blank">
+          <a href="https://api.whatsapp.com/send?phone=447389805421" className={styles.social} rel="noopener noreferrer" target="_blank">
             <Whatsapp className={styles.socialicon} />
           </a>
-          <a href="" className={styles.social} rel="noopener noreferrer" target="_blank">
+          <a href="https://www.youtube.com/@dreamsbyte" className={styles.social} rel="noopener noreferrer" target="_blank">
             <Youtube className={styles.socialicon} />
           </a>
-          <a href="" className={styles.social} rel="noopener noreferrer" target="_blank">
+          <a href="https://x.com/dreamsbytex" className={styles.social} rel="noopener noreferrer" target="_blank">
             <X className={styles.socialicon} />
           </a>
           {/* <Instagram className={styles.socialicon} /> */}
           {/* <Upwork className={styles.socialicon} /> */}
-          <a href="" className={styles.social} rel="noopener noreferrer" target="_blank">
+          <a href="https://github.com/lmf-git" className={styles.social} rel="noopener noreferrer" target="_blank">
             <Github className={styles.socialicon} />
           </a>
         </div>
