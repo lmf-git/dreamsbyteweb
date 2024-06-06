@@ -10,7 +10,7 @@
 
 .title {
     color: white;
-    font-size: 3em;
+    font-size: 2.35em;
 }
 
 .list {
@@ -110,6 +110,10 @@
   
 
 @media screen and (min-width: 1200px) {
+
+    .title {
+        font-size: 3em;
+    }
 
     .testimonials {
         padding: 3.5em 3.5em 7em;

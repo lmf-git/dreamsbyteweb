@@ -3,7 +3,7 @@
 
 .footer {
 	position: relative;
-	padding: 0 3.5em 0;
+	
 	margin: 0 0 4.5em;
 }
 
@@ -18,11 +18,10 @@
 }
 
 .label {
-	font-size: 2.65em;
+	font-size: 1.35em;
 	color: #fcfcfc;
 	font-weight: 300;
 	margin: 0 0 .35em;
-	padding-right: 1.125em;
 }
 
 .instructions {
@@ -159,10 +158,7 @@
 
 .logo {
 	width: 10em;
-	position: absolute;
-	bottom: 0;
-	left: 50%;
-	transform: translateX(-50%);
+
 }
 .logo path {
 	fill: #b3b3b3;
@@ -195,14 +191,26 @@
 	}
 }
 
-@media screen and (min-width: 300px) and (max-width: 950px) {
+@media screen and (min-width: 600px) {
+	.footer {
+		padding: 0 3.5em 0;
+	}
+
+	.label {
+		font-size: 2.65em;
+		padding-right: 1.125em;
+	}
+
 	.shill {
 		flex-direction: column;
 		flex-wrap: wrap;
 	}
+	
 	.logo {
-		top: 100%;
 		padding: 1.5em 0 0.5em 0;
 		left: 50%;
+		position: absolute;
+		bottom: 0;
+		transform: translateX(-50%);
 	}
 }

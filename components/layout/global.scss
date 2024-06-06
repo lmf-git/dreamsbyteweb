@@ -17,10 +17,12 @@ body {
 .scroll {
     width: 2em;
     position: fixed;
-    bottom: 1.85em;
-    left: 4.25em;
+
     cursor: pointer;
     z-index: 2;
+
+    bottom: .85em;
+    right: 2.125em;
 }
 
 .scroll:hover path {
@@ -45,5 +47,10 @@ body {
 @media screen and (max-width: 645px) {
     .content {
         width: 100%;
+    }
+
+    .scroll {
+        bottom: 1.85em;
+        left: 4.25em;
     }
 }
