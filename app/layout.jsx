@@ -1,6 +1,5 @@
 import { Syne } from 'next/font/google';
 import '../components/layout/global.scss';
-import Head from 'next/head';
 
 const syne = Syne({
   weight: ['400', '500', '600', '700', '800'],
@@ -15,14 +14,14 @@ export const metadata = {
   description: 'From concept to reality, we offer full stack development, e-commerce solutions, captivating design, and more. Email contact@dreamsbyte.com to start realizing your digital dreams.',
   keywords: 'development, design, database, figma, javascript, html, css',
   "msapplication-TileColor": "#ffc40d",
-  "apple-touch-icon": "",
-  "manifest": "",
+  "apple-touch-icon": "/favicons/mask-icon.svg",
+  "manifest": "/favicons/manifest.json"
 };
 
 export const viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#ffd800',
+  themeColor: 'white',
   maskIcon: "/favicons/mask-icon.svg"
 };
 

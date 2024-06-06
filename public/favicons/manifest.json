@@ -1,0 +1,16 @@
+{
+    "name": "Dreamsbyte",
+    "short_name": "Dreamsbyte",
+    "description": "From concept to reality, we offer full stack development, e-commerce solutions, captivating design, and more. Email contact@dreamsbyte.com to start realizing your digital dreams.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#ffc40d",
+    "icons": [
+        {
+            "src": "/favicons/mask-icon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml"
+        }
+    ]
+}  
