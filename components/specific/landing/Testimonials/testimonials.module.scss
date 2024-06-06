@@ -6,7 +6,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 3.5em 3.5em 7em;
 }
 
 .title {
@@ -111,6 +110,10 @@
   
 
 @media screen and (min-width: 1200px) {
+
+    .testimonials {
+        padding: 3.5em 3.5em 7em;
+    }
 
     .list {
         height: 27.4vh;
