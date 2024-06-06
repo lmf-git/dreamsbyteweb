@@ -10,7 +10,7 @@
     display: flex;
     position: absolute;
     justify-content: space-between;
-    padding: 1.85em 4.25em;
+    
     width: 100%;
     box-sizing: border-box;
     align-items: center;
@@ -69,6 +69,10 @@
 }
 
 @media screen and (min-width: 1000px) {
+
+    .header {
+        padding: 1.85em 4.25em;
+    }
 
     .headercta {
         display: block;
