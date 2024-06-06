@@ -8,6 +8,7 @@ import styles from './intro.module.scss';
 
 export default function Intro() {
     useEffect(() => {
+        window.scrollTo(0, 0); 
         document.body.style.overflow = 'hidden';
         setTimeout(() => document.body.style.overflow = 'auto', 4995);
     }, []);
