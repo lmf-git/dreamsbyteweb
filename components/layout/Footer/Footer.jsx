@@ -11,8 +11,6 @@ import EmailMethod from '../../icons/social/EmailMethod';
 import Whatsapp from '../../icons/social/Whatsapp';
 import EmailSend from '../../icons/EmailSend';
 import X from '../../icons/social/X';
-import Instagram from '../../icons/social/Instagram';
-import Upwork from '../../icons/social/Upwork';
 import Youtube from '../../icons/social/Youtube';
 import Github from '../../icons/social/Github';
 
