@@ -34,15 +34,37 @@ export default function Index() {
 
         { menuOpen && 
             <div className={styles.menu}>
+                <Logo extraClass={styles.menubglogo} />
                 <div className={styles.menuheader}>
                     <span className={styles.menutitle}>MENU</span>
                     <button className={styles.menuclose} onClick={() => setMenuOpen(false)}>
                         <MenuIcon extraClass={styles.menucloseicon} />
                     </button>
                 </div>
-                <a className={styles.menuitem} href="#services">Services</a>
-                <a className={styles.menuitem} href="#testimonials">Reviews</a>
-                <a className={styles.menuitem} href="#contact">Contact</a>
+
+                <div className={styles.items}>
+                    <a className={styles.item} href="#services">Services</a>
+                    <a className={styles.item} href="#testimonials">Reviews</a>
+                    <a className={styles.item} href="#contact">Contact</a>
+                </div>
+
+                <div className={styles.socials}>
+                    <a href="mailto:contact@dreamsbyte.com" className={styles.social} rel="noopener noreferrer" target="_blank">
+                        <EmailMethod className={styles.socialicon} />
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=447389805421" className={styles.social} rel="noopener noreferrer" target="_blank">
+                        <Whatsapp className={styles.socialicon} />
+                    </a>
+                    <a href="https://www.youtube.com/@dreamsbyte" className={styles.social} rel="noopener noreferrer" target="_blank">
+                        <Youtube className={styles.socialicon} />
+                    </a>
+                    <a href="https://x.com/dreamsbytex" className={styles.social} rel="noopener noreferrer" target="_blank">
+                        <X className={styles.socialicon} />
+                    </a>
+                    <a href="https://github.com/lmf-git" className={styles.social} rel="noopener noreferrer" target="_blank">
+                        <Github className={styles.socialicon} />
+                    </a>
+                </div>
             </div>
         }
 

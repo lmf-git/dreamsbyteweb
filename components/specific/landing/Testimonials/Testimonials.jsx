@@ -125,55 +125,62 @@ export default function Testimonials() {
     const handleMouseDown = ev => {
         setIsDragging(true);
         setStartX(ev.pageX - listRef.current.offsetLeft);
-        setScrollLeft(planeRef.current.offsetLeft);
+        setScrollLeft(listRef.current.scrollLeft);
+    };
+
+    const handleTouchStart = ev => {
+        setIsDragging(true);
+        setStartX(ev.touches[0].pageX - listRef.current.offsetLeft);
+        setScrollLeft(listRef.current.scrollLeft);
     };
 
     const handleMouseMove = ev => {
-        // Only drag when clicked/drag pressed.
         if (!isDragging) return;
-
-        // Calculate move position from last (difference via state).
         const x = ev.pageX - listRef.current.offsetLeft;
         const walk = x - startX;
-        const position = scrollLeft + walk;
-
-        // Block scrolling past first item, left.
-        if (position > 0) return;
-        planeRef.current.style.left = `${position}px`;
+        listRef.current.scrollLeft = scrollLeft - walk;
     };
+
+    const handleTouchMove = ev => {
+        if (!isDragging) return;
+        const x = ev.touches[0].pageX - listRef.current.offsetLeft;
+        const walk = x - startX;
+        listRef.current.scrollLeft = scrollLeft - walk;
+    };
+
+    const stopDragging = () => setIsDragging(false);
 
     return <div className={`section ${styles.testimonials}`} id="testimonials">
         <h2 className={styles.title}>Our client testimonials:</h2>
-        
-        <div className={styles.list} ref={listRef} 
-            onMouseDown={handleMouseDown} 
-            onMouseMove={handleMouseMove} 
-            onMouseUp={() => setIsDragging(false)}>
+        <div
+            className={styles.list}
+            ref={listRef}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={stopDragging}
+            onMouseLeave={stopDragging}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={stopDragging}
+        >
             <div className={styles.plane} ref={planeRef}>
-                { testimonials.map((t, i) => 
+                {testimonials.map((t, i) => (
                     <div className={styles.testimonial} key={i}>
                         <div className={styles.brand}>
-                            { t?.logo }
-                            <span className={styles.company}>
-                                { t.company }
-                            </span>
-                            <span className={styles.name}>
-                                { t.name }
-                            </span>
+                            {t?.logo}
+                            <span className={styles.company}>{t.company}</span>
+                            <span className={styles.name}>{t.name}</span>
                         </div>
                         <div className={styles.text}>
-                            <p className={styles.quote}>
-                                { t.testimonial }
-                            </p>
-
-                            { t?.reporturl &&
+                            <p className={styles.quote}>{t.testimonial}</p>
+                            {t?.reporturl && (
                                 <a href={t.reporturl} className={styles.report} target="_blank" rel="noopener noreferrer">
                                     See results
                                 </a>
-                            }
+                            )}
                         </div>
                     </div>
-                )}
+                ))}
             </div>
         </div>
     </div>;
