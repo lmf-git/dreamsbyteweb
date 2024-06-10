@@ -10,7 +10,7 @@ export default function Intro() {
     useEffect(() => {
         window.scrollTo(0, 0); 
         document.body.style.overflow = 'hidden';
-        setTimeout(() => document.body.style.overflow = 'auto', 4995);
+        setTimeout(() => document.body.style.overflow = '', 4995);
     }, []);
 
     return <div className={styles.intro}>

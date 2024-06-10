@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Intro from "../components/specific/landing/Intro/Intro";
 import Hero from "../components/specific/landing/Hero/Hero";
@@ -23,6 +23,12 @@ import styles from "../components/specific/landing/landing.module.scss";
 
 export default function Index() {
     const [menuOpen, setMenuOpen] = useState(false);
+
+    // Clip the page when menu is open.
+    useEffect(() => {
+        if (menuOpen) document.body.classList.add(styles.clipped);
+        else document.body.classList.remove(styles.clipped);
+    }, [menuOpen]);
 
     return <main className={styles.index}>
         <div className={styles.header}>
@@ -49,9 +55,9 @@ export default function Index() {
                 </div>
 
                 <div className={styles.items}>
-                    <a className={styles.item} href="#services">Services</a>
-                    <a className={styles.item} href="#testimonials">Reviews</a>
-                    <a className={styles.item} href="#contact">Contact</a>
+                    <a className={styles.item} onClick={() => setMenuOpen(false)} href="#services">Services</a>
+                    <a className={styles.item} onClick={() => setMenuOpen(false)} href="#testimonials">Reviews</a>
+                    <a className={styles.item} onClick={() => setMenuOpen(false)} href="#contact">Contact</a>
                 </div>
 
                 <div className={styles.socials}>
