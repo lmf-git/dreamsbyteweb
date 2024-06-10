@@ -129,6 +129,9 @@ export default function Testimonials() {
     };
 
     const handleTouchStart = ev => {
+        // Try to prevent the vertical shift while dragging on mobile.
+        ev.preventDefault();
+
         setIsDragging(true);
         setStartX(ev.touches[0].pageX - listRef.current.offsetLeft);
         setScrollLeft(listRef.current.scrollLeft);
