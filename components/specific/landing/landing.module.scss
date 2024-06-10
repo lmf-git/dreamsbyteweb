@@ -126,7 +126,12 @@
     fill: rgb(99, 99, 99);
 }
 
-.menuitem {
+.items {
+    display: flex;
+    flex-direction: column;
+}
+
+.item {
     display: block;
     text-align: center;
     text-decoration: none;
@@ -137,6 +142,10 @@
     &:hover {
         color: rgb(177, 177, 177);
     }
+}
+
+.socials {
+    margin-top: auto;
 }
 
 

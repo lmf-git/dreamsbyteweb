@@ -12,11 +12,11 @@ import Footer from "../components/layout/Footer/Footer";
 import MenuIcon from "../components/icons/social/Menu";
 import Logo from "../components/icons/branding/Logo";
 
-import EmailMethod from '../icons/social/EmailMethod';
-import Whatsapp from '../icons/social/Whatsapp';
-import X from '../icons/social/X';
-import Youtube from '../icons/social/Youtube';
-import Github from '../icons/social/Github';
+import EmailMethod from '../components/icons/social/EmailMethod';
+import Whatsapp from '../components/icons/social/Whatsapp';
+import X from '../components/icons/social/X';
+import Youtube from '../components/icons/social/Youtube';
+import Github from '../components/icons/social/Github';
 
 import styles from "../components/specific/landing/landing.module.scss";
 
