@@ -68,6 +68,78 @@
     font-weight: 900;
 }
 
+.menutoggle {
+    width: 3.5em;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+
+    &:hover {
+        .menutoggleicon {
+            fill: rgb(235, 235, 235);
+        }
+    }
+}
+
+.menutoggleicon {
+    width: 100%;
+    fill: rgb(176, 176, 176);
+}
+
+.menu {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    padding: 2em;
+    box-sizing: border-box;
+    background: white;
+    z-index: 4;
+}
+
+.menuheader {
+    display: flex;
+    justify-content: space-between;
+}
+
+.menutitle {
+    font-size: 1.65em;
+    font-weight: 100;
+    font-style: italic;
+}
+
+.menuclose {
+    width: 3.5em;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+
+    &:hover {
+        .menucloseicon {
+            fill: rgb(235, 235, 235);
+        }
+    }
+}
+
+.menucloseicon {
+    fill: rgb(99, 99, 99);
+}
+
+.menuitem {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.85em;
+    font-weight: 100;
+    color: rgb(99, 99, 99);
+
+    &:hover {
+        color: rgb(177, 177, 177);
+    }
+}
+
+
 @media screen and (min-width: 1000px) {
 
     .header {
@@ -76,6 +148,10 @@
 
     .headercta {
         display: block;
+    }
+
+    .menutoggle {
+        display: none;
     }
 }
 

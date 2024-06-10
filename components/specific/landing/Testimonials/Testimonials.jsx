@@ -142,7 +142,7 @@ export default function Testimonials() {
         planeRef.current.style.left = `${position}px`;
     };
 
-    return <div className={`section ${styles.testimonials}`}>
+    return <div className={`section ${styles.testimonials}`} id="testimonials">
         <h2 className={styles.title}>Our client testimonials:</h2>
         
         <div className={styles.list} ref={listRef} 

@@ -59,7 +59,7 @@ export default function Footer() {
       </>
     }
 
-    <div className={styles.footer} ref={footerRef}>
+    <div className={styles.footer} ref={footerRef} id="contact">
       { formStatus !== 'success' ?
         <form className={styles.contact} onSubmit={onSubmit}>
           <label className={styles.label} htmlFor="contactform">
