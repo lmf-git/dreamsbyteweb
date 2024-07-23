@@ -129,6 +129,8 @@ export default function Testimonials() {
     };
 
     const handleTouchStart = ev => {
+        ev.preventDefault();
+        
         setIsDragging(true);
         setStartX(ev.touches[0].pageX - listRef.current.offsetLeft);
         setScrollLeft(listRef.current.scrollLeft);
@@ -142,6 +144,8 @@ export default function Testimonials() {
     };
 
     const handleTouchMove = ev => {
+        ev.preventDefault();
+
         if (!isDragging) return;
         
         const x = ev.touches[0].pageX - listRef.current.offsetLeft;
@@ -150,6 +154,8 @@ export default function Testimonials() {
     };
 
     const stopDragging = () => setIsDragging(false);
+
+    const onPlaneDrag = ev => ev.preventDefault();
 
     // Prevent page scrolling while dragging.
     useEffect(() => {
@@ -175,7 +181,7 @@ export default function Testimonials() {
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={stopDragging}>
-            <div className={styles.plane} ref={planeRef}>
+            <div className={styles.plane} ref={planeRef} onTouchMove={onPlaneDrag}>
                 { testimonials.map((t, i) => (
                     <div className={styles.testimonial} key={i}>
                         <div className={styles.brand}>
