@@ -93,12 +93,14 @@
 }
 
 .menu {
-    position: absolute;
     width: 100vw;
     height: 100vh;
     padding: 2em;
-    box-sizing: border-box;
+
+    position: absolute;
+    top: 0;
     background: white;
+    box-sizing: border-box;
     z-index: 4;
 }
 
