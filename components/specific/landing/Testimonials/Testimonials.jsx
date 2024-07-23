@@ -12,7 +12,7 @@ const testimonials = [
         name: 'Theodore M',
         company: 'LVolt',
         testimonial: 'Working with DreamsByte has been an absolute game-changer for our business. They helped us not only improve our online presence but also boost our brand recognition. DreamsByte is more than a digital agency; they are partners in our success.',
-        reporturl: 'link'
+        reporturl: null
     },
     {
         logo: null,
@@ -167,10 +167,9 @@ export default function Testimonials() {
             onMouseLeave={stopDragging}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
-            onTouchEnd={stopDragging}
-        >
+            onTouchEnd={stopDragging}>
             <div className={styles.plane} ref={planeRef}>
-                {testimonials.map((t, i) => (
+                { testimonials.map((t, i) => (
                     <div className={styles.testimonial} key={i}>
                         <div className={styles.brand}>
                             {t?.logo}
