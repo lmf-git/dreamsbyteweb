@@ -146,6 +146,9 @@ export default function Testimonials() {
 
     const handleTouchMove = ev => {
         if (!isDragging) return;
+        
+        ev.preventDefault();
+        
         const x = ev.touches[0].pageX - listRef.current.offsetLeft;
         const walk = x - startX;
         listRef.current.scrollLeft = scrollLeft - walk;
