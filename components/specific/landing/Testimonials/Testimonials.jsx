@@ -130,7 +130,7 @@ export default function Testimonials() {
 
     const handleTouchStart = ev => {
         ev.preventDefault();
-        
+
         setIsDragging(true);
         setStartX(ev.touches[0].pageX - listRef.current.offsetLeft);
         setScrollLeft(listRef.current.scrollLeft);
@@ -167,7 +167,7 @@ export default function Testimonials() {
         return function cleanup() {
             document.removeEventListener('touchstart', pageDragHandler);
         };
-    }, []);
+    }, [isDragging]);
 
     return <div className={`section ${styles.testimonials}`} id="testimonials">
         <h2 className={styles.title}>Our client testimonials:</h2>
