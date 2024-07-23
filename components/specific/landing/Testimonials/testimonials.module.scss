@@ -18,7 +18,7 @@
 .list {
     width: 100%;
     overflow: hidden;
-    height: 38.4vh;
+    height: 44.4vh;
     position: relative;
     cursor: grab;
     user-select: none;
@@ -55,6 +55,7 @@
     flex-shrink: 0;
     color: black;
     margin-bottom: 1.35em;
+    margin-top: .85em;
 }
 
 .company {
