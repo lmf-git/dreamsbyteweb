@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import LVolt from '../../../icons/branding/clients/LVolt';
 
@@ -129,8 +129,6 @@ export default function Testimonials() {
     };
 
     const handleTouchStart = ev => {
-        ev.preventDefault();
-
         setIsDragging(true);
         setStartX(ev.touches[0].pageX - listRef.current.offsetLeft);
         setScrollLeft(listRef.current.scrollLeft);
@@ -144,8 +142,6 @@ export default function Testimonials() {
     };
 
     const handleTouchMove = ev => {
-        ev.preventDefault();
-
         if (!isDragging) return;
         
         const x = ev.touches[0].pageX - listRef.current.offsetLeft;
@@ -154,6 +150,18 @@ export default function Testimonials() {
     };
 
     const stopDragging = () => setIsDragging(false);
+
+    // Prevent page scrolling while dragging.
+    useEffect(() => {
+        const pageDragHandler = ev => {
+            if (isDragging) ev.preventDefault();
+        };
+        document.addEventListener('touchstart', pageDragHandler);
+
+        return function cleanup() {
+            document.removeEventListener('touchstart', pageDragHandler);
+        };
+    }, []);
 
     return <div className={`section ${styles.testimonials}`} id="testimonials">
         <h2 className={styles.title}>Our client testimonials:</h2>
