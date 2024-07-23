@@ -129,7 +129,7 @@ export default function Testimonials() {
     };
 
     const handleTouchStart = ev => {
-        ev.preventDefault();
+
 
         setIsDragging(true);
         setStartX(ev.touches[0].pageX - listRef.current.offsetLeft);
@@ -144,7 +144,7 @@ export default function Testimonials() {
     };
 
     const handleTouchMove = ev => {
-        ev.preventDefault();
+
 
         if (!isDragging) return;
         
@@ -155,19 +155,19 @@ export default function Testimonials() {
 
     const stopDragging = () => setIsDragging(false);
 
-    const onPlaneDrag = ev => ev.preventDefault();
+    // const onPlaneDrag = ev => ev.preventDefault();
 
     // Prevent page scrolling while dragging.
-    useEffect(() => {
-        const pageDragHandler = ev => {
-            if (isDragging) ev.preventDefault();
-        };
-        document.addEventListener('touchstart', pageDragHandler, { passive: false });
+    // useEffect(() => {
+    //     const pageDragHandler = ev => {
+    //         if (isDragging) ev.preventDefault();
+    //     };
+    //     document.addEventListener('touchstart', pageDragHandler, { passive: false });
 
-        return function cleanup() {
-            document.removeEventListener('touchstart', pageDragHandler);
-        };
-    }, [isDragging]);
+    //     return function cleanup() {
+    //         document.removeEventListener('touchstart', pageDragHandler);
+    //     };
+    // }, [isDragging]);
 
     return <div className={`section ${styles.testimonials}`} id="testimonials">
         <h2 className={styles.title}>Our client testimonials:</h2>
@@ -181,7 +181,7 @@ export default function Testimonials() {
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={stopDragging}>
-            <div className={styles.plane} ref={planeRef} onTouchMove={onPlaneDrag}>
+            <div className={styles.plane} ref={planeRef}>
                 { testimonials.map((t, i) => (
                     <div className={styles.testimonial} key={i}>
                         <div className={styles.brand}>
