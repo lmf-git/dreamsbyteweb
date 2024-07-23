@@ -109,6 +109,16 @@
 .menuheader {
     display: flex;
     justify-content: space-between;
+    position: absolute;
+    top: 0;
+}
+
+.menulogo {
+    width: 12.5em;
+}
+
+.menulogo path {
+    fill: rgb(72, 72, 72);
 }
 
 .menutitle {
