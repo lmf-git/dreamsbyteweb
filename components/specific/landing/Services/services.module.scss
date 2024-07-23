@@ -11,6 +11,7 @@
 .heading {
   font-size: 1.65em;
   margin-bottom: 1.5em;
+  margin-left: 2em;
 }
 
 .preamble {
@@ -23,7 +24,7 @@
 }
 
 .list {
-
+  margin-left: 1.5em;
 }
 
 .service {
@@ -85,11 +86,13 @@
 
   .heading {
     font-size: 2em;
+    margin-left: 0;
   }
 
   .list {
     display: flex;
     flex-wrap: wrap;
     gap: 1.3em;
+    margin-left: 0;
   }
 }

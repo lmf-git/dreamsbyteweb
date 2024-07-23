@@ -13,7 +13,7 @@
 
 .header {
     display: flex;
-    position: absolute;
+    
     justify-content: space-between;
     
     width: 100%;
@@ -158,6 +158,7 @@
 
     .header {
         padding: 1.85em 4.25em;
+        position: absolute;
     }
 
     .headercta {
