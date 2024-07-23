@@ -60,6 +60,7 @@
 .additional {
   font-weight: 100;
   color: rgb(165, 165, 165);
+  margin: 0 1.25em;
 }
 
 .additionallink {
@@ -94,5 +95,9 @@
     flex-wrap: wrap;
     gap: 1.3em;
     margin-left: 0;
+  }
+
+  .additional {
+    margin: 0;
   }
 }
