@@ -129,7 +129,6 @@ export default function Testimonials() {
     };
 
     const handleTouchStart = ev => {
-        // Try to prevent the vertical shift while dragging on mobile.
         ev.preventDefault();
 
         setIsDragging(true);
@@ -145,9 +144,9 @@ export default function Testimonials() {
     };
 
     const handleTouchMove = ev => {
-        if (!isDragging) return;
-        
         ev.preventDefault();
+
+        if (!isDragging) return;
         
         const x = ev.touches[0].pageX - listRef.current.offsetLeft;
         const walk = x - startX;
