@@ -50,12 +50,12 @@ export default function Footer() {
   }, []);
 
   return <>
-    { !footerVisible &&
-      <>
+    { !footerVisible && <ContactNowFab /> }
+      {/* <>
         <Scroll />
         <ContactNowFab />
       </>
-    }
+    } */}
 
     <div className={styles.footer} ref={footerRef} id="contact">
       { formStatus !== 'success' ?
