@@ -48,7 +48,6 @@ export default function Index() {
             <div className={styles.menu}>
                 <div className={styles.menuheader}>
                     <Logo extraClass={styles.menulogo} />
-                    <span className={styles.menutitle}>MENU</span>
                     <button className={styles.menuclose} onClick={() => setMenuOpen(false)}>
                         <MenuIcon extraClass={styles.menucloseicon} />
                     </button>

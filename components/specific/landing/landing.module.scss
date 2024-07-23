@@ -17,6 +17,8 @@
     justify-content: space-between;
 
     position: absolute;
+
+    padding: 2em;
     
     width: 100%;
     box-sizing: border-box;
@@ -109,8 +111,6 @@
 .menuheader {
     display: flex;
     justify-content: space-between;
-    position: absolute;
-    top: 0;
 }
 
 .menulogo {
@@ -119,12 +119,6 @@
 
 .menulogo path {
     fill: rgb(72, 72, 72);
-}
-
-.menutitle {
-    font-size: 1.65em;
-    font-weight: 100;
-    font-style: italic;
 }
 
 .menuclose {
@@ -165,6 +159,8 @@
 
 .socials {
     margin-top: auto;
+    position: absolute;
+    bottom: 1.75em;
 }
 
 .socialicon {
