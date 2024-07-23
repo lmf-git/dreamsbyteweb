@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 import LVolt from '../../../icons/branding/clients/LVolt';
 
@@ -116,8 +116,6 @@ const testimonials = [
 
 export default function Testimonials() {
     const listRef = useRef(null);
-    const planeRef = useRef(null);
-
     const [isDragging, setIsDragging] = useState(false);
     const [startX, setStartX] = useState(0);
     const [scrollLeft, setScrollLeft] = useState(0);
@@ -129,8 +127,6 @@ export default function Testimonials() {
     };
 
     const handleTouchStart = ev => {
-
-
         setIsDragging(true);
         setStartX(ev.touches[0].pageX - listRef.current.offsetLeft);
         setScrollLeft(listRef.current.scrollLeft);
@@ -144,30 +140,46 @@ export default function Testimonials() {
     };
 
     const handleTouchMove = ev => {
-
-
         if (!isDragging) return;
-        
         const x = ev.touches[0].pageX - listRef.current.offsetLeft;
         const walk = x - startX;
         listRef.current.scrollLeft = scrollLeft - walk;
     };
 
-    const stopDragging = () => setIsDragging(false);
+    const stopDragging = () => {
+        if (!isDragging) return;
+        setIsDragging(false);
+        snapToTestimonial();
+    };
 
-    // const onPlaneDrag = ev => ev.preventDefault();
+    const snapToTestimonial = () => {
+        const testimonials = listRef.current.querySelectorAll(`.${styles.testimonial}`);
+        const scrollPosition = listRef.current.scrollLeft;
+        let closest = testimonials[0];
+        let closestDistance = Math.abs(scrollPosition - testimonials[0].offsetLeft);
 
-    // Prevent page scrolling while dragging.
-    // useEffect(() => {
-    //     const pageDragHandler = ev => {
-    //         if (isDragging) ev.preventDefault();
-    //     };
-    //     document.addEventListener('touchstart', pageDragHandler, { passive: false });
+        testimonials.forEach(testimonial => {
+            const distance = Math.abs(scrollPosition - testimonial.offsetLeft);
+            if (distance < closestDistance) {
+                closest = testimonial;
+                closestDistance = distance;
+            }
+        });
 
-    //     return function cleanup() {
-    //         document.removeEventListener('touchstart', pageDragHandler);
-    //     };
-    // }, [isDragging]);
+        listRef.current.scrollTo({
+            left: closest.offsetLeft,
+            behavior: 'smooth'
+        });
+    };
+
+    useEffect(() => {
+        window.addEventListener('mouseup', stopDragging);
+        window.addEventListener('touchend', stopDragging);
+        return () => {
+            window.removeEventListener('mouseup', stopDragging);
+            window.removeEventListener('touchend', stopDragging);
+        };
+    }, []);
 
     return <div className={`section ${styles.testimonials}`} id="testimonials">
         <h2 className={styles.title}>Our client testimonials:</h2>
@@ -181,8 +193,8 @@ export default function Testimonials() {
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={stopDragging}>
-            <div className={styles.plane} ref={planeRef}>
-                { testimonials.map((t, i) => (
+            <div className={styles.plane}>
+                {testimonials.map((t, i) => (
                     <div className={styles.testimonial} key={i}>
                         <div className={styles.brand}>
                             {t?.logo}
