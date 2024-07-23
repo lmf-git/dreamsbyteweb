@@ -162,7 +162,7 @@ export default function Testimonials() {
         const pageDragHandler = ev => {
             if (isDragging) ev.preventDefault();
         };
-        document.addEventListener('touchstart', pageDragHandler);
+        document.addEventListener('touchstart', pageDragHandler, { passive: false });
 
         return function cleanup() {
             document.removeEventListener('touchstart', pageDragHandler);
