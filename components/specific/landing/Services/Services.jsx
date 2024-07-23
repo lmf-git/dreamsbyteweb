@@ -7,7 +7,7 @@ export default function Services() {
       <h2 className={styles.title}>Our Services</h2>
     </div>
 
-  <div className={styles.list}>
+    <div className={styles.list}>
       <div className={styles.service}>
         <span className={styles.name}>Development</span>
         
@@ -51,7 +51,7 @@ export default function Services() {
       To start realising your digital dreams, email us today at&nbsp;
       <a className={styles.additionallink} href="mailto:contact@dreamsbyte.com">contact@dreamsbyte.com</a>
       &nbsp;
-      or use <a className={styles.additionallink} href="#footer">this form</a>.
+      or use <a className={styles.additionallink} href="#contact">this form</a>.
     </p>
   </div>;
 };
