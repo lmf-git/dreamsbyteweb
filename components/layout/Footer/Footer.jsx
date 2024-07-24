@@ -106,9 +106,6 @@ export default function Footer() {
           <a href="https://api.whatsapp.com/send?phone=447389805421" className={styles.social} rel="noopener noreferrer" target="_blank">
             <Whatsapp className={styles.socialicon} />
           </a>
-          <a href="https://www.youtube.com/@dreamsbyte" className={styles.social} rel="noopener noreferrer" target="_blank">
-            <Youtube className={styles.socialicon} />
-          </a>
           <a href="https://x.com/dreamsbytex" className={styles.social} rel="noopener noreferrer" target="_blank">
             <X className={styles.socialicon} />
           </a>
@@ -116,6 +113,9 @@ export default function Footer() {
           {/* <Upwork className={styles.socialicon} /> */}
           <a href="https://github.com/lmf-git" className={styles.social} rel="noopener noreferrer" target="_blank">
             <Github className={styles.socialicon} />
+          </a>
+          <a href="https://www.youtube.com/@dreamsbyte" className={styles.social} rel="noopener noreferrer" target="_blank">
+            <Youtube className={styles.socialicon} />
           </a>
         </div>
 

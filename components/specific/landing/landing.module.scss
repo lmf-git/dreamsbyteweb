@@ -159,13 +159,21 @@
 }
 
 .socials {
-    margin-top: auto;
+    display: flex;
     position: absolute;
     bottom: 1.75em;
+    width: 100%;
+    margin-top: auto;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    right: 0;
+    gap: 1em;
 }
 
 .socialicon {
     width: 2.25em;
+    fill: rgb(92, 92, 92);
 }
 
 
