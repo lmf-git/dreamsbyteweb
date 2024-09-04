@@ -13,6 +13,41 @@ import styles from './hero.module.scss';
 
 const projects = [
     {
+        name: 'The Right Direction',
+        problem: '',
+        solution: '',
+        url: 'https://trd.vercel.app',
+        reporturl: ''
+    },
+    {
+        name: 'HouseCheckup',
+        problem: 'Work in progress/active outdated placeholder.',
+        solution: '...',
+        url: 'https://housecheckupwebsite.vercel.app/',
+        reporturl: ''
+    },
+    {
+        name: 'Allied Construction',
+        problem: '...',
+        solution: '...',
+        url: 'https://alliedconstruction.vercel.app/',
+        reporturl: ''
+    },
+    {
+        name: 'The Right Direction',
+        problem: '...',
+        solution: '...',
+        url: 'https://trd.vercel.app/',
+        reporturl: ''
+    },
+    {
+        name: 'Electric Doctors',
+        problem: '...',
+        solution: '...',
+        url: 'https://www.electricdrs.com',
+        reporturl: ''
+    },
+    {
         name: 'Skylar Lily',
         problem: 'Faced with outdated branding and a lackluster online presence, [Client Name] struggled to connect with their target audience and stand out in the competitive digital landscape',
         solution: 'Collaborating with [Client Name], we tackled a critical challenge head-on. By crafting an impactful website and cohesive digital brand identity, we not only addressed their need for a strong online presence but also ensured consistency and recognition across platforms, driving their growth',
@@ -27,20 +62,6 @@ const projects = [
         reporturl: ''
     },
     {
-        name: 'The Right Direction',
-        problem: '',
-        solution: '',
-        url: 'https://trd.vercel.app',
-        reporturl: ''
-    },
-    {
-        name: 'Electric Doctors',
-        problem: '...',
-        solution: '...',
-        url: 'https://www.electricdrs.com',
-        reporturl: ''
-    },
-    {
         name: 'Mr G\'s Gyros',
         problem: '...',
         solution: '...',
@@ -48,19 +69,19 @@ const projects = [
         reporturl: ''
     },
     {
-        name: 'Mr G\'s Gyros',
+        name: 'Kezi & Clay',
         problem: '...',
         solution: '...',
         url: 'https://keziandclay.co.uk',
         reporturl: ''
     },
-    {
-        name: 'Astin Doherty',
-        problem: '...',
-        solution: '...',
-        url: 'https://www.astindoherty.com',
-        reporturl: ''
-    },
+    // {
+    //     name: 'Astin Doherty',
+    //     problem: '...',
+    //     solution: '...',
+    //     url: 'https://www.astindoherty.com',
+    //     reporturl: ''
+    // },
     {
         name: 'MyLuxuryLodging',
         problem: '...',
@@ -89,20 +110,6 @@ const projects = [
         url: 'https://yabbergabberclient.vercel.app/',
         reporturl: ''
     },
-    {
-        name: 'HouseCheckup',
-        problem: 'Work in progress/active outdated placeholder.',
-        solution: '...',
-        url: 'https://housecheckupwebsite.vercel.app/',
-        reporturl: ''
-    },
-    {
-        name: 'Allied Construction',
-        problem: '...',
-        solution: '...',
-        url: 'https://alliedconstruction.vercel.app/',
-        reporturl: ''
-    },
     // TODO: Leaks too much atm.
     // {
     //     name: 'IMAA',
@@ -123,13 +130,6 @@ const projects = [
         problem: '',
         solution: '',
         url: "https://goldiraguide.vercel.app/",
-        reporturl: ''
-    },
-    {
-        name: 'MoodCoach',
-        problem: '...',
-        solution: '...',
-        url: 'https://moodcoach.vercel.app/',
         reporturl: ''
     }
 ];

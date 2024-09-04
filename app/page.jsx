@@ -31,7 +31,7 @@ export default function Index() {
     }, [menuOpen]);
 
     return <main className={styles.index}>
-        <div className={styles.header}>
+        <header className={styles.header}>
             <Logo extraClass={styles.logo} />
 
             <div className={styles.headerctas}>
@@ -42,7 +42,7 @@ export default function Index() {
                     <MenuIcon extraClass={styles.menutoggleicon} />
                 </button>
             </div>
-        </div>
+        </header>
 
         { menuOpen && 
             <div className={styles.menu}>
