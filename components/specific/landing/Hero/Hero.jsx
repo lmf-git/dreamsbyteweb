@@ -13,6 +13,13 @@ import styles from './hero.module.scss';
 
 const projects = [
     {
+        name: 'TRK Civils LTD',
+        problem: '',
+        solution: '',
+        url: 'https://trk-amber.vercel.app',
+        reporturl: ''
+    },
+    {
         name: 'The Right Direction',
         problem: '',
         solution: '',
