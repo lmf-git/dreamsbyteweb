@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import Intro from "../components/specific/landing/Intro/Intro";
+
 import Hero from "../components/specific/landing/Hero/Hero";
 import Testimonials from "../components/specific/landing/Testimonials/Testimonials";
 import Services from "../components/specific/landing/Services/Services";
@@ -79,16 +79,10 @@ export default function Index() {
             </div>
         }
 
-        <Intro />
+        {/* <Hero /> */}
+        <Services />
+        <Testimonials />
 
-        {/* By including items in .content elem, they're hidden until intro finished. */}
-        <div className="content">
-            <Hero />
-            <Services />
-            <Testimonials />
-
-            <Footer />
-        </div>
-        
+        <Footer />
     </main>;
 };
