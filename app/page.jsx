@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 
 
-import Hero from "../components/specific/landing/Hero/Hero";
+// import Hero from "../components/specific/landing/Hero/Hero";
+import HeroSimple from '../components/specific/landing/HeroSimple/HeroSimple';
 import Testimonials from "../components/specific/landing/Testimonials/Testimonials";
 import Services from "../components/specific/landing/Services/Services";
 
@@ -79,7 +80,7 @@ export default function Index() {
             </div>
         }
 
-        {/* <Hero /> */}
+        <HeroSimple />
         <Services />
         <Testimonials />
 
