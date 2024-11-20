@@ -128,7 +128,6 @@ const projects = [
 
 ];
 
-
 export default function HeroSimple() {
     const [project, setProject] = useState(0);
 
@@ -155,6 +154,7 @@ export default function HeroSimple() {
                     { projects[project].solution }
                 </p>
             </div>
+
             <div className={styles.projectpreview}>
                 <div className={styles.screen}>
                     <iframe className={styles.screeniframe} src={projects[project].url} />

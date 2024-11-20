@@ -1,18 +1,45 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { testimonials } from '../../../../data.mjs';
 import styles from './testimonials.module.scss';
-
-
 
 export default function Testimonials() {
     const listRef = useRef(null);
     const planeRef = useRef(null);
-
     const [isDragging, setIsDragging] = useState(false);
     const [startX, setStartX] = useState(0);
     const [scrollLeft, setScrollLeft] = useState(0);
+    const [scrollDirection, setScrollDirection] = useState(1);
+    const scrollSpeed = 1;
+
+    useEffect(() => {
+        let animationFrameId;
+        let isAtEdge = false;
+
+        const autoScroll = () => {
+            if (!isDragging && listRef.current) {
+                const container = listRef.current;
+                const maxScroll = container.scrollWidth - container.clientWidth;
+
+                // Check if we've hit the edges
+                if (container.scrollLeft >= maxScroll && scrollDirection > 0) {
+                    setScrollDirection(-1);
+                } else if (container.scrollLeft <= 0 && scrollDirection < 0) {
+                    setScrollDirection(1);
+                }
+
+                container.scrollLeft += scrollSpeed * scrollDirection;
+            }
+            animationFrameId = requestAnimationFrame(autoScroll);
+        };
+
+        animationFrameId = requestAnimationFrame(autoScroll);
+
+        return () => {
+            cancelAnimationFrame(animationFrameId);
+        };
+    }, [isDragging, scrollDirection]);
 
     const handleMouseDown = ev => {
         setIsDragging(true);
@@ -41,7 +68,10 @@ export default function Testimonials() {
         listRef.current.scrollLeft = scrollLeft - walk;
     };
 
-    const stopDragging = () => setIsDragging(false);
+    const stopDragging = () => {
+        setIsDragging(false);
+        // Auto-scrolling will resume automatically
+    };
 
     return <div className={`section ${styles.testimonials}`} id="testimonials">
         <h2 className={styles.title}>Our client testimonials:</h2>

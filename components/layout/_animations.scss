@@ -1,19 +1,5 @@
-$introduration: 1.5s;
 $fabspinduration: 4.25s;
 
-:export {
-    introduration: #{$introduration};
-    test: 2;
-}
-
-@keyframes end-intro {
-    0% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
-}
 
 @keyframes start-content {
     0% {

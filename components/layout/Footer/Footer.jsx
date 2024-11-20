@@ -20,7 +20,7 @@ import styles from './footer.module.scss';
 export default function Footer() {
   const footerRef = useRef();
   const [footerVisible, setFooterVisible] = useState(false);
-  const [messageVisible, setMessageVisible] = useState(false);
+  const [messageVisible, setMessageVisible] = useState(true);
 
   const [formStatus, setFormStatus] = useState(null);
 
@@ -51,17 +51,12 @@ export default function Footer() {
 
   return <>
     { !footerVisible && <ContactNowFab /> }
-      {/* <>
-        <Scroll />
-        <ContactNowFab />
-      </>
-    } */}
 
     <div className={styles.footer} ref={footerRef} id="contact">
       { formStatus !== 'success' ?
         <form className={styles.contact} onSubmit={onSubmit}>
           <label className={styles.label} htmlFor="contactform">
-            We'll contact you.
+            Contact form
           </label>
           <p className={styles.instructions}>
             To start realising your digital dreams, email us today.
