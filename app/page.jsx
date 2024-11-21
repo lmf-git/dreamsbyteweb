@@ -78,9 +78,8 @@ export default function Index() {
             </div>
         }
 
-        {/* <HeroSimple /> */}
+        <HeroSimple />
         <Testimonials />
-
         <Services />
         <Footer />
     </main>;

@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import RightLine from '../../../icons/controls/RightLine';
 import LeftLine from '../../../icons/controls/LeftLine';
 import Dot from '../../../icons/controls/Dot';
+import Spinner from '../../../icons/spinner/Spinner';
 
 import Screen from '../Screen/Screen';
 import ScreenBase from '../Screen/Base';
@@ -14,16 +15,20 @@ import styles from './herosimple.module.scss';
 const projects = [
     {
         name: 'TRK Civils LTD',
-        problem: '',
-        solution: '',
+        problem: 'TRK Civils LTD, a startup in civil engineering, needed branding, a website, and marketing setup.',
+        solution: 'Created a professional website, integrated tools for inquiries, and set up marketing essentials.',
         url: 'https://trk-amber.vercel.app',
+        image: '/projects/trk/trk-mobile.png',
+        desktopimage: '/projects/trk/trk-desktop.png',
         reporturl: ''
     },
     {
         name: 'The Right Direction',
-        problem: '',
-        solution: '',
+        problem: 'The Right Direction Communal Services needed a professional website to showcase their mentorship programs, provide booking options, and connect with families and sponsors effectively.',
+        solution: 'Developed a comprehensive website featuring program details, booking tools, testimonials, and team profiles to enhance engagement and support their mission.',
         url: 'https://trd.vercel.app',
+        image: '/projects/trd/trd-mobile.png',
+        desktopimage: '/projects/trd/trd-desktop.png',
         reporturl: ''
     },
     {
@@ -31,6 +36,7 @@ const projects = [
         problem: '...',
         solution: '...',
         url: 'https://alliedconstruction.vercel.app/',
+        image: 'https://random.imagecdn.app/500/150',
         reporturl: ''
     },
     {
@@ -38,6 +44,7 @@ const projects = [
         problem: '...',
         solution: '...',
         url: 'https://www.electricdrs.com',
+        image: 'https://random.imagecdn.app/500/150',
         reporturl: ''
     },
     {
@@ -45,6 +52,7 @@ const projects = [
         problem: 'Faced with outdated branding and a lackluster online presence, [Client Name] struggled to connect with their target audience and stand out in the competitive digital landscape',
         solution: 'Collaborating with [Client Name], we tackled a critical challenge head-on. By crafting an impactful website and cohesive digital brand identity, we not only addressed their need for a strong online presence but also ensured consistency and recognition across platforms, driving their growth',
         url: 'https://www.skylarlily.com',
+        image: 'https://random.imagecdn.app/500/150',
         reporturl: ''
     },
     {
@@ -52,6 +60,7 @@ const projects = [
         problem: 'Faced with outdated branding and a lackluster online presence, [Client Name] struggled to connect with their target audience and stand out in the competitive digital landscape',
         solution: 'Collaborating with [Client Name], we tackled a critical challenge head-on. By crafting an impactful website and cohesive digital brand identity, we not only addressed their need for a strong online presence but also ensured consistency and recognition across platforms, driving their growth',
         url: 'https://www.lvolt.net',
+        image: 'https://random.imagecdn.app/500/150',
         reporturl: ''
     },
     {
@@ -59,6 +68,7 @@ const projects = [
         problem: 'Work in progress/active outdated placeholder.',
         solution: '...',
         url: 'https://housecheckupwebsite.vercel.app/',
+        image: 'https://random.imagecdn.app/500/150',
         reporturl: ''
     },
     {
@@ -66,6 +76,7 @@ const projects = [
         problem: '...',
         solution: '...',
         url: 'https://imaa-institute.org',
+        image: 'https://random.imagecdn.app/500/150',
         reporturl: ''
     },
     {
@@ -80,6 +91,7 @@ const projects = [
         problem: '...',
         solution: '...',
         url: 'https://mrgsgyroshop.com',
+        image: 'https://random.imagecdn.app/500/150',
         reporturl: ''
     },
     {
@@ -87,51 +99,23 @@ const projects = [
         problem: '...',
         solution: '...',
         url: 'https://keziandclay.co.uk',
+        image: 'https://random.imagecdn.app/500/150',
         reporturl: ''
-    },
-    // {
-    //     name: 'The Myre',
-    //     problem: '...',
-    //     solution: '...',
-    //     url: 'https://themyre.com',
-    //     reporturl: ''
-    // },
-    // {
-    //     name: 'Luxe Blinds',
-    //     problem: '...',
-    //     solution: '...',
-    //     url: 'https://luxeblinds.vercel.app/',
-    //     reporturl: ''
-    // },
-    // {
-    //     name: 'YabberGabber',
-    //     problem: '...',
-    //     solution: '...',
-    //     url: 'https://yabbergabberclient.vercel.app/',
-    //     reporturl: ''
-    // },
-    // TODO: Leaks too much atm.
-    // {
-    //     name: 'IMAA',
-    //     problem: '...',
-    //     solution: '...',
-    //     url: 'https://imaainterface.vercel.app/',
-    //     reporturl: ''
-    // },
-    // {
-    //     name: 'The Coop',
-    //     problem: '...',
-    //     solution: '...',
-    //     url: 'https://thecoop.group',
-    //     reporturl: ''
-    // },
-
+    }
 ];
 
 export default function HeroSimple() {
     const [project, setProject] = useState(0);
+    const [desktopLoading, setDesktopLoading] = useState(true);
+    const [mobileLoading, setMobileLoading] = useState(true);
 
-    return <div className="section">
+    // Reset loading states when project changes
+    useEffect(() => {
+        setDesktopLoading(true);
+        setMobileLoading(true);
+    }, [project]);
+
+    return <div className={`section ${styles.hero}`}>
         <h1 className={styles.title}>Latest Work</h1>
 
         <div className={styles.projects}>
@@ -157,9 +141,14 @@ export default function HeroSimple() {
 
             <div className={styles.projectpreview}>
                 <div className={styles.screen}>
-                    <iframe className={styles.screeniframe} src={projects[project].url} />
+                    <img 
+                        className={styles.screeniframe} 
+                        src={projects[project].desktopimage} 
+                        alt="Project desktop image preview."
+                        onLoad={() => setDesktopLoading(false)}
+                    />
 
-                    <img className={styles.screenspinner} src="/landing/spinner.svg" />
+                    {desktopLoading && <Spinner className={styles.screenspinner} />}
 
                     <div className={styles.arrows}>
                         { project > 0 &&
@@ -181,9 +170,14 @@ export default function HeroSimple() {
                 </div>
 
                 <div className={styles.mobile}>
-                    <img src="/landing/mobile.svg" />
-                    <iframe className={styles.mobileiframe} src={projects[project].url} />
-                    <img className={styles.mobilespinner} src="/landing/spinner.svg" />
+                    <img className={styles.mobileicon} src="/landing/mobile.svg" />
+                    <img 
+                        className={styles.mobileiframe} 
+                        src={projects[project].image} 
+                        alt="Project mobile image preview."
+                        onLoad={() => setMobileLoading(false)}
+                    />
+                    {mobileLoading && <Spinner className={styles.mobilespinner} />}
                 </div>
 
                 <div className={styles.controls}>
