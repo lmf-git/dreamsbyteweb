@@ -10,7 +10,7 @@
     color: white;
     font-size: 2.65em;
     font-weight: 400;
-    margin-left: .5em;
+    margin-left: 0.5em;
     margin-top: 3.15em;
 }
 
@@ -25,28 +25,29 @@
 .projectdesc {
     color: rgb(236, 236, 236);
     box-sizing: border-box;
-    
 }
 
 .projectpreview {
+    flex: 1;
+    height: 66vh;
+    margin-right: 0;
+    position: relative;
 }
 
 .screen { 
     display: none;
-    height: 47vh;
-    
     width: 100%;
-
+    height: 100%;
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
     z-index: 2;
+}
 
-    transform: translateX(40%);
-    animation: reveal-screen .2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards 1s * 1.1;
-    opacity: 0;
+.herosimple_screen { 
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
 .screenmonitor {
@@ -69,25 +70,21 @@
 
 .mobile {
     display: none;
-
     position: absolute;
-    // top: 10vw;
-    top: 3vw;
-    right: 3em;
-    
-    transform: translateY(100%);
-    animation: reveal-mobile .2s linear forwards 1s * 1.3;
-    opacity: 0;
-
-
-    
+    bottom: 2em; /* Slightly above the bottom */
+    right: 2em;  /* Positioned towards the right */
+    width: 35vw; /* Width relative to viewport */
+    height: 40vh; /* Smaller height than desktop screen */
     z-index: 2;
+
+    @media screen and (min-width: 1200px) {
+        display: block;
+    }
 }
 
 .mobileicon {
     width: 100%;
 }
-
 
 .screenspinner {
     width: 4em;
@@ -119,13 +116,13 @@
 }
 
 .projectproblems {
-    opacity: .7;
-    margin: 0 0 .2em;
+    opacity: 0.7;
+    margin: 0 0 0.2em;
 }
 
 .projectsolutions {
-    opacity: .7;
-    margin: 1em 0 .2em;
+    opacity: 0.7;
+    margin: 1em 0 0.2em;
 }
 
 .projectparagraph {
@@ -136,39 +133,33 @@
 
 .screeniframe {
     position: absolute;
-
-    width: calc(100% - .11em);
-    padding: .13em 0.15em 0;
-    margin: 0;
-    
     top: 0;
-    bottom: 0;
-    right: 0;
     left: 0;
-    
-    border: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
     border-radius: 1.6em;
-
     box-sizing: border-box;
-    z-index: 1;
+    overflow: hidden;
+    /* Ensure iframe inside foreignObject maintains size */
+    iframe {
+        width: 100%;
+        height: 100%;
+    }
 }
 
 .mobileiframe {
+    width: 100%; /* Ensure it fills the mobile container */
+    height: 100%;
+    padding: 0.3em 0.5em 0; /* Adjusted padding for smaller size */
     display: block;
-    
-    height: calc(100%  - 2.5em);
-    width: 100%;
-    padding: 0.5em 0.85em 0;
     margin: 0;
-    
     position: absolute;
     top: 0;
     bottom: 0;
     right: 0;
     left: 0;
-    
-    border: 0;
-    
+    border: none;
     box-sizing: border-box;
     border-radius: 2.48em;
     overflow: hidden;
@@ -180,17 +171,16 @@
 
 .link {
     font-size: 1.225em;
-
     color: rgb(166, 166, 166);
     text-decoration: none;
     font-weight: 300;
-    transition: padding .25s cubic-bezier(0.075, 0.82, 0.165, 1);
-  
+    transition: padding 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
+
     &:hover {
         color: rgb(44, 44, 44);
         background: rgb(217, 217, 217);
-        padding: .135em;
-        border-radius: .135em;
+        padding: 0.135em;
+        border-radius: 0.135em;
     }
 }
 
@@ -198,7 +188,6 @@
     display: flex;
     align-items: center;
     height: 100%;
-
     position: absolute;
     top: 0;
     width: 100%;
@@ -207,12 +196,12 @@
 
 .dots {
     display: flex;
-    margin-top: .75em;
+    margin-top: 0.75em;
 }
 
 .dot {
     cursor: pointer;
-    margin-right: .35em;
+    margin-right: 0.35em;
     width: 1.3em;
 
     &.active, &:hover circle {
@@ -225,7 +214,7 @@
     background: transparent;
     border: none;
     cursor: pointer;
-    border-radius: .5em;
+    border-radius: 0.5em;
     padding: 1em 2em;
 
     &:hover {
@@ -259,7 +248,6 @@
     margin-right: -3em;
 }
 
-
 @media screen and (min-width: 1200px) {
 
     .title {
@@ -289,21 +277,14 @@
         flex: 37.5% 1;
         flex-shrink: 0;
         flex-direction: column;
-    
         color: white;
-    
         padding: 3em 9.5em 0 3.5em;
-    
-        // animation: reveal-projectdesc 1s / 4.5 linear forwards 1s * 1.45;
-        // transform: translateX(35%);
-        // opacity: 0;
     }
 
     .projectpreview {
-        flex: calc(62.5% - 5.5em) 0;
-        height: 66vh;
-        margin-top: -4.5em;
-        margin-right: 4.5em;
+        flex: 62.5% 0;
+        height: auto;
+        margin-right: 0;
         position: relative;
     }
 
@@ -316,10 +297,9 @@
     }
 
     .screeniframe {
-        height: calc(100% - .25em);
+        height: 100%;
     }
 }
-
 
 @media screen and (min-width: 1400px) {
 
@@ -328,6 +308,6 @@
     }
 
     .screeniframe {
-        // height: 89%;
+
     }
 }
