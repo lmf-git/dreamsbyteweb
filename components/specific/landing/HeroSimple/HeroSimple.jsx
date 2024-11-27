@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import RightLine from '../../../icons/controls/RightLine';
 import LeftLine from '../../../icons/controls/LeftLine';
@@ -71,6 +71,22 @@ const projects = [
 
 export default function HeroSimple() {
     const [project, setProject] = useState(0);
+    const [desktopLoading, setDesktopLoading] = useState(true);
+    const [mobileLoading, setMobileLoading] = useState(true);
+
+    // Reset loading states when project changes
+    useEffect(() => {
+        setDesktopLoading(true);
+        setMobileLoading(true);
+    }, [project]);
+
+    const nextProject = () => {
+        if (project < projects.length - 1) setProject(project + 1);
+    };
+
+    const prevProject = () => {
+        if (project > 0) setProject(project - 1);
+    };
 
     return (
         <div className={`section ${styles.hero}`}>
@@ -100,14 +116,32 @@ export default function HeroSimple() {
                 <div className={styles.projectpreview}>
                     <Screen 
                         extraClass={styles.screen}
-                        iframeClassName={styles.screeniframe}
-                        src={projects[project].url}
-                    />
-                    <Mobile 
-                        className={styles.mobile}
-                        src={projects[project].url}
+                        src={projects[project].desktopimage}
+                        onLoad={() => setDesktopLoading(false)}
                     />
                     
+                    {desktopLoading && <Spinner className={styles.screenspinner} />}
+
+                    <div className={styles.arrows}>
+                        {project > 0 ? (
+                            <button 
+                                className={`${styles.button} ${styles.buttonleft}`} 
+                                onClick={prevProject}
+                            >
+                                <LeftLine className={`${styles.arrow} ${styles.arrowleft}`} />
+                            </button>
+                        ) : <div className={styles.buttonspacer} />}
+                        
+                        {project < projects.length - 1 ? (
+                            <button 
+                                className={`${styles.button} ${styles.buttonright}`} 
+                                onClick={nextProject}
+                            >
+                                <RightLine className={`${styles.arrow} ${styles.arrowright}`} />
+                            </button>
+                        ) : <div className={styles.buttonspacer} />}
+                    </div>
+
                     <div className={styles.controls}>
                         <div className={styles.controllinks}>
                             <a href={projects[project].url} className={styles.link}>GO TO SITE</a>
@@ -130,6 +164,15 @@ export default function HeroSimple() {
                             )}
                         </div>
                     </div>
+
+                    <Mobile 
+                        extraClass={styles.mobile}
+                        src={projects[project].image}
+                        onLoad={() => setMobileLoading(false)}
+                        style={{ position: 'absolute', bottom: '-1em', right: '10%', width: '18vw' }}
+                    />
+                    {mobileLoading && <Spinner className={styles.mobilespinner} />}
+
                 </div>
             </div>
         </div>

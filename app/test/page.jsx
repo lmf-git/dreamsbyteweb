@@ -7,8 +7,7 @@ export default function Test() {
         <div className={styles.projectpreview}>
             <Screen 
                 extraClass={styles.screen}
-                iframeClassName={styles.screeniframe}
-                src="https://trd.vercel.app" 
+                src="/projects/trk/trk-desktop.png" 
             />
         </div>
     </main>;

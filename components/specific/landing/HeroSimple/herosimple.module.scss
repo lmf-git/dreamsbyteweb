@@ -2,46 +2,58 @@
 @use '../../../layout/colours';
 
 .hero {
-    height: 80vh;
+    padding: 4em 2em;
+    box-sizing: border-box;
     overflow: hidden;
+    user-select: none;
 }
 
 .title {
     color: white;
     font-size: 2.65em;
     font-weight: 400;
-    margin-left: 0.5em;
-    margin-top: 3.15em;
+    margin: 0 0 .75em 0;
+    opacity: 0;
+    animation: reveal-title 0.5s ease-out forwards;
+    animation-delay: 0.4s;
+    user-select: none;
 }
 
 .projects {
     display: flex;
     flex-direction: column;
-    user-select: none;
-    margin-bottom: 7.5em;
-    padding: 0 2em 0;
+    height: 100%;
+    box-sizing: border-box;
 }
 
 .projectdesc {
     color: rgb(236, 236, 236);
     box-sizing: border-box;
+    opacity: 0;
+    animation: reveal-desc 0.5s ease-out forwards;
+    animation-delay: 0.6s;
+    padding: 0 3.5em;
+    // min-height: 32em;
+    margin-bottom: 1em;
+    user-select: none;
 }
 
 .projectpreview {
-    flex: 1;
-    height: 66vh;
-    margin-right: 0;
-    position: relative;
+}
+
+.projectpreview {
+    margin: 2em 0;
 }
 
 .screen { 
     display: none;
     width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    animation: reveal-screen 0.5s ease-out forwards;
+    animation-delay: 0.8s;
+    user-select: none;
 }
 
 .herosimple_screen { 
@@ -71,15 +83,15 @@
 .mobile {
     display: none;
     position: absolute;
-    bottom: 2em; /* Slightly above the bottom */
-    right: 2em;  /* Positioned towards the right */
-    width: 35vw; /* Width relative to viewport */
-    height: 40vh; /* Smaller height than desktop screen */
+    bottom: -1em;
+    right: 15%;
+    width: 14vw;
+    height: auto;
     z-index: 2;
-
-    @media screen and (min-width: 1200px) {
-        display: block;
-    }
+    opacity: 0;
+    animation: reveal-mobile 0.5s ease-out forwards;
+    animation-delay: 1s;
+    user-select: none;
 }
 
 .mobileicon {
@@ -90,9 +102,9 @@
     width: 4em;
     height: 4em;
     position: absolute;
-    top: 13vw;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, 0);
+    transform: translate(-50%, -50%);
     z-index: 2;
     opacity: 1;
     transition: opacity 0.2s ease-out;
@@ -102,7 +114,7 @@
     width: 3em;
     height: 3em;
     position: absolute;
-    top: 13vw;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
@@ -113,60 +125,55 @@
 .projectname {
     font-weight: bold;
     margin-top: 0;
+    opacity: 0;
+    animation: reveal-desc 0.5s ease-out forwards;
+    animation-delay: 0.6s;
+    user-select: none;
 }
 
 .projectproblems {
     opacity: 0.7;
     margin: 0 0 0.2em;
+    opacity: 0;
+    animation: reveal-desc 0.5s ease-out forwards;
+    animation-delay: 0.7s;
+    user-select: none;
 }
 
 .projectsolutions {
     opacity: 0.7;
     margin: 1em 0 0.2em;
+    opacity: 0;
+    animation: reveal-desc 0.5s ease-out forwards;
+    animation-delay: 0.8s;
+    user-select: none;
 }
 
 .projectparagraph {
     margin: 0;
     line-height: 1.6em;
     font-size: 1.1em;
-}
-
-.screeniframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-    border-radius: 1.6em;
-    box-sizing: border-box;
-    overflow: hidden;
-    /* Ensure iframe inside foreignObject maintains size */
-    iframe {
-        width: 100%;
-        height: 100%;
-    }
+    opacity: 0;
+    animation: reveal-desc 0.5s ease-out forwards;
+    animation-delay: 0.9s;
+    user-select: none;
 }
 
 .mobileiframe {
-    width: 100%; /* Ensure it fills the mobile container */
+    width: 100%;
     height: 100%;
-    padding: 0.3em 0.5em 0; /* Adjusted padding for smaller size */
-    display: block;
-    margin: 0;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    border: none;
-    box-sizing: border-box;
-    border-radius: 2.48em;
-    overflow: hidden;
 }
 
 .controls {
-    margin-top: 2em;
+    opacity: 0;
+    animation: reveal-controls 0.5s ease-out forwards;
+    animation-delay: 1.2s;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5em;
 }
 
 .link {
@@ -175,23 +182,46 @@
     text-decoration: none;
     font-weight: 300;
     transition: padding 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
+    padding: 0.135em;
+    border-radius: 0.135em;
 
     &:hover {
         color: rgb(44, 44, 44);
         background: rgb(217, 217, 217);
-        padding: 0.135em;
-        border-radius: 0.135em;
     }
 }
 
-.arrows {
+.controllinks {
     display: flex;
-    align-items: center;
-    height: 100%;
+    gap: 1em;
+}
+
+.dots {
+    display: flex;
+    margin-top: 0.75em;
+}
+
+.arrows {
     position: absolute;
-    top: 0;
     width: 100%;
-    z-index: -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0;
+    animation: reveal-controls 0.5s ease-out forwards;
+    animation-delay: 1.2s;
+    padding: 0 1em;
+    box-sizing: border-box;
+}
+
+.buttonspacer {
+    width: 3.5em;
+    height: 3.5em;
 }
 
 .dots {
@@ -210,48 +240,100 @@
 }
 
 .button {
-    position: absolute;
-    background: transparent;
+    pointer-events: auto;
+    background: rgba(0, 0, 0, 0.5);
     border: none;
+    border-radius: 50%;
+    width: 3.5em;
+    height: 3.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    border-radius: 0.5em;
-    padding: 1em 2em;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+    position: absolute;
+    user-select: none;
 
     &:hover {
-        background: silver;
-
-        & path {
-            fill: #1E1E1F;
-        }
+        opacity: 1;
     }
+
+    &:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+    }
+}
+
+.buttonleft, .buttonright {
+    position: static;
 }
 
 .buttonleft {
     left: 0;
-    transform: translateX(calc(-100% + 1em));
 }
 
 .buttonright {
     right: 0;
-    transform: translateX(calc(100% - 1em));
 }
 
 .arrow {
-
+    width: 2.5em;
+    height: 2.5em;
+    
+    path {
+        fill: white;
+        stroke-width: 1.5;
+    }
 }
 
 .arrowleft {
-    margin-left: -3em;
+    margin-left: 0;
 }
 
 .arrowright {
-    margin-right: -3em;
+    margin-right: 0;
 }
 
 @media screen and (min-width: 1200px) {
+    .hero {
+        padding: 3em;
+        min-height: 80vh;
+    }
+
+    .projects {
+        flex-direction: row;
+        align-items: center;
+        gap: 4em;
+        padding: 0;
+    }
+
+    .projectdesc {
+        padding: 0;
+        min-height: 0;
+        margin-bottom: 0;
+        flex: 0 0 35%;
+        display: flex;
+        flex-direction: column;
+        color: white;
+        align-self: flex-start;
+        position: relative;
+    }
+
+    .projectpreview {
+        position: relative;
+        display: block;
+        flex: 1;
+        margin: 0;
+        height: 60vh;
+    }
+
+    .mobile {
+        display: block;
+    }
 
     .title {
-        margin: 1em 0 0 1.3em;
+        margin: 0 0 0.5em 0;
     }
 
     .disclaimer {
@@ -260,54 +342,71 @@
         margin-left: 4.1em;
     }
 
-    .projects {
+    .controls {
+        position: absolute;
+        bottom: -4.25em;
+        left: 0;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 2em;
+        display: flex;
         flex-direction: row;
-        padding: 0;
+        justify-content: flex-start;
+        gap: 2em;
+    }
+
+    .dots {
+        margin-top: 0;
+        align-self: center;
     }
 
     .controls {
         position: absolute;
-        bottom: -1.25em;
+        bottom: -4.25em;
+        left: 0;
+        top: auto;
+        transform: none;
+        margin-top: 2em;
+        width: 100%;
         z-index: 2;
-        margin-top: 0;
-    }
-
-    .projectdesc {
-        display: flex;
-        flex: 37.5% 1;
-        flex-shrink: 0;
-        flex-direction: column;
-        color: white;
-        padding: 3em 9.5em 0 3.5em;
-    }
-
-    .projectpreview {
-        flex: 62.5% 0;
-        height: auto;
-        margin-right: 0;
-        position: relative;
+        box-sizing: border-box;
+        text-align: left;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 2em;
     }
 
     .screen {
-        display: block;
-    }
-
-    .mobile {
         display: block;
     }
 
     .screeniframe {
         height: 100%;
     }
+
+    .arrows {
+        position: absolute;
+        top: 40%;
+        transform: translateY(-50%);
+        width: 100%;
+        padding: 0;
+    }
+
+    .button {
+        position: relative;
+    }
+
+    .buttonleft {
+        left: -1.75em;
+    }
+
+    .buttonright {
+        right: -1.75em;
+    }
 }
 
 @media screen and (min-width: 1400px) {
-
     .screen {
-        height: 60vh;
-    }
-
-    .screeniframe {
 
     }
 }

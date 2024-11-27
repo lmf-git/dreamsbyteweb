@@ -89,9 +89,14 @@ export default function Testimonials() {
                 { testimonials.map((t, i) => (
                     <div className={styles.testimonial} key={i}>
                         <div className={styles.brand}>
-                            {t?.logo}
-                            <span className={styles.company}>{t.company}</span>
-                            <span className={styles.name}>{t.name}</span>
+                            {t?.logo ? (
+                                t.logo
+                            ) : (
+                                <>
+                                    {t.company && <span className={styles.company}>{t.company}</span>}
+                                    <span className={styles.name}>{t.name}</span>
+                                </>
+                            )}
                         </div>
                         <div className={styles.text}>
                             <p className={styles.quote}>{t.testimonial}</p>

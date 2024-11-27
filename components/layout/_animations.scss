@@ -1,6 +1,5 @@
 $fabspinduration: 4.25s;
 
-
 @keyframes start-content {
     0% {
         opacity: 0;
@@ -10,48 +9,53 @@ $fabspinduration: 4.25s;
     }
 }
 
-@keyframes spin {
+@keyframes reveal-brand {
     from {
-        transform: rotate(0deg);
+        transform: translateY(-20px);
+        opacity: 0;
     }
     to {
-        transform: rotate(360deg);
-    }
-}
-  
-@keyframes bulge {
-    0% {
-        transform: translateY(.75em);
-    }
-    5% {
-        transform: translateY(.25em);
-    }
-    45% {
-        transform: translateY(-.425em);
-    }
-    100% {
-        transform: translateY(.75em);
+        transform: translateY(0);
+        opacity: 1;
     }
 }
 
-@keyframes bounce {
-    0% {
-        transform: translateY(0);
+@keyframes reveal-nav {
+    from {
+        transform: translateY(-10px);
+        opacity: 0;
     }
-    50% {
-        background: red;
-        transform: translateY(1.4em);
-    }
-    100% {
+    to {
         transform: translateY(0);
+        opacity: 1;
     }
 }
-  
 
+@keyframes reveal-title {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes reveal-desc {
+    from {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
 
 @keyframes reveal-screen {
     from {
-        transform: translateX(40%);
+        transform: translateX(40px);
         opacity: 0;
     }
     to {
@@ -62,7 +66,7 @@ $fabspinduration: 4.25s;
 
 @keyframes reveal-mobile {
     from {
-        transform: translateY(40%);
+        transform: translateY(40px);
         opacity: 0;
     }
     to {
@@ -71,13 +75,13 @@ $fabspinduration: 4.25s;
     }
 }
 
-@keyframes reveal-projectdesc {
+@keyframes reveal-controls {
     from {
-        transform: translateX(35%);
+        transform: translateY(10px);
         opacity: 0;
     }
     to {
-        transform: translateX(0);
+        transform: translateY(0);
         opacity: 1;
     }
 }

@@ -18,7 +18,7 @@
 .list {
     width: 100%;
     overflow: hidden;
-    height: 50vh;
+    height: 35vh; // Reduced from 50vh
     position: relative;
     cursor: grab;
     user-select: none;
@@ -45,8 +45,8 @@
     width: 70.5vw;
     height: 100%;
     align-items: center;
-    padding: .45em;
-    margin-right: .5em;
+    padding: 1.25em; // Increased from .45em
+    margin-right: 1em; // Increased from .5em
     background: linear-gradient(104deg, #FFF 1.24%, #DBDBDB 100%);
     border-radius: .5em 0 0 0;
     box-sizing: border-box;
@@ -60,18 +60,27 @@
     color: black;
     margin-bottom: 1.35em;
     margin-top: .85em;
+    width: 100%; // Added to ensure full width in mobile
+    min-width: 10em; // Added minimum width
+    
+    svg, img {
+        width: 45%; // Reduced from 60%
+        max-width: 150px; // Reduced from 200px
+        margin-bottom: 1em; // Increased from 0.5em
+    }
 }
 
 .company {
     font-weight: 300;
-    font-size: .925em;
+    font-size: 1.5em;  // Increased from .925em
     margin-top: .35em;
-    margin-bottom: .125em;
+    margin-bottom: .25em;  // Slightly increased for better spacing
     color: rgb(44, 44, 44);
 }
+
 .name {
     font-weight: 200;
-    font-size: .775em;
+    font-size: 1.2em;  // Increased from .775em
     color: rgb(80, 80, 80);
 }
 
@@ -139,9 +148,15 @@
     }
 
     .brand {
-        flex: 6.5em 0 0;
-        margin-right: 2.85em;
+        flex: 10em 0 0;  // Increased from 8.5em
+        margin-right: 3.5em;
         margin-bottom: 0;
+
+        svg, img {
+            width: 100%; // Back to 100% for desktop
+            max-width: none;
+            margin-bottom: 0.5em;
+        }
     }
 
 }

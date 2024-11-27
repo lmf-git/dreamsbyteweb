@@ -78,17 +78,18 @@ export default function Footer() {
             }
             <button type="submit" className={`${styles.action} ${styles.submit}`}>
               Submit
-              <EmailSend className={styles.sendicon} />
             </button>
+            <EmailSend className={styles.sendicon} />
           </div>
         </form>
         :
-        <div className={styles.contact} >
-          <label className={styles.label} htmlFor="contactform">
-            Message received!
+        <div className={`${styles.contact} ${styles.success}`}>
+          <label className={styles.label}>
+            Thank you!
           </label>
           <p className={styles.instructions}>
-            We'll be in touch with you shortly, feel free to also contact via social media/alternative methods.
+            Message received! We'll be in touch very soon.<br/>
+            Check out our social links below to connect with us directly.
           </p>
         </div>
       }

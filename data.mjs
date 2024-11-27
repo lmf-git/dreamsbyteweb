@@ -1,4 +1,7 @@
+import AlliedLogo from './components/icons/branding/clients/Allied';
+import IMAALogo from './components/icons/branding/clients/IMAA';
 import LVolt from './components/icons/branding/clients/LVolt';
+import TRDLogo from './components/icons/branding/clients/TRD';
 
 export const testimonials = [
     {
@@ -9,24 +12,24 @@ export const testimonials = [
         reporturl: null
     },
     {
-        logo: null,
+        logo: <IMAALogo />,
         name: 'Christopher K',
         company: 'IMAA',
         testimonial: 'Project turned out to be more complicated and include more features than we thought of at the start. Liam was very patient, helpful and flexible in incorporating many of these.',
         reporturl: null
     },
     {
-        logo: null,
-        name: 'Val A',
+        logo: <TRDLogo />,
+        name: 'Val Addison, Founder',
         company: 'TRD',
-        testimonial: '',
+        testimonial: "DreamsByte delivered exactly what we needed - a clean, user-friendly website that our community loves. Their attention to detail and professionalism made the whole process seamless.",
         reporturl: null
     },
     {
-        logo: null,
-        name: '',
-        company: 'Allied',
-        testimonial: '',
+        logo: <AlliedLogo />,
+        name: 'Richard',
+        company: 'Allied Construction',
+        testimonial: "The B2B portal DreamsByte built for us is exactly what we needed. It's more efficient than our old system and much better value. They really understood what our business required.",
         reporturl: null
     },
     {
@@ -67,7 +70,7 @@ export const testimonials = [
     {
         logo: null,
         name: 'Amogh G',
-        company: 'Helping Hand',
+        company: null,
         testimonial: 'Really good javascript coder, and teacher. Also charges less than most. Can finish the project quickly.',
         reporturl: null
     },

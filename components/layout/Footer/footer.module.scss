@@ -9,24 +9,28 @@
 	
 	margin: 0 1.25em 2.5em;
 
-	background: rgb(36, 36, 36);
+	background: rgb(18, 18, 18);
+
 	padding: 1.25em;
 }
 
 
 .contact {
-	// margin: 1.25em;
+    padding: 0 15vw;
+    margin-bottom: 4em;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .label {
-	font-size: 1.35em;
+	font-size: 1.5em; // increased from 1.35em
 	color: #fcfcfc;
 	font-weight: 300;
 	margin: 0 0 .35em;
 }
 
 .instructions {
-	font-size: .85em;
+	font-size: 1em; // increased from .85em
 	color: #9d9d9e;
 	margin: 0 0 .75em;
 	font-weight: 100;
@@ -43,11 +47,15 @@
 
 	font-weight: 100;
 
-	font-size: 1.025em;
+	font-size: 1.15em; // increased from 1.025em
 
 	background: transparent;
 	outline: none;
 	color: white;
+
+	&::placeholder {
+		color: #bcbcbc;
+	}
 }
 
 .textarea {
@@ -57,7 +65,7 @@
 	padding: .35em;
 	margin: 0 0 .75em;
 	
-	font-size: 1.025em;
+	font-size: 1.15em; // increased from 1.025em
 	font-weight: 100;
 	
 	background: transparent;
@@ -69,10 +77,15 @@
 	box-sizing: border-box;
 	resize: none;
 	outline: none;
+
+	&::placeholder {
+		color: #bcbcbc;
+	}
 }
 
 .actions {
 	display: flex;
+	justify-content: flex-end; // align actions to the right
 	gap: .825em;
 }
 
@@ -80,7 +93,6 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	flex: calc(50% - .5em) 1 0;
 	padding: .8em .95em;
 	border: .145em solid #5d5e5f;
 	border-bottom-color: #a9a9a9;
@@ -102,32 +114,50 @@
 }
 
 .submit {
-	background: #f3f3f3;
-	border-color: #f3f3f3;
-	color: #636363;
+	background: transparent;
+	border: .145em solid #f3f3f3;
+	color: #f3f3f3;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: auto;
+	flex: none;
+	font-size: 1.15em;
+	padding: .8em 1.2em;
+	position: relative;
 
 	&:hover {
-		background: none;
-		border-color: none;
-		color: #f3f3f3;
+		background: rgba(243, 243, 243, 0.1);
+	}
 
-		.sendicon path {
-			stroke: rgb(223, 223, 223);
+	& + .sendicon {
+		position: relative;
+		width: 1.5em;
+		margin-left: .5em;
+		left: 0;
+		transition: left 0.2s ease;
+		opacity: 0.5;
+
+		path {
+			stroke: #f3f3f3;
 		}
+	}
+
+	&:hover + .sendicon {
+		left: 0.3em;
+		opacity: 1;
 	}
 }
 
 .sendicon {
-	width: 1.125em;
-	margin-left: .2em;
+	width: 1.5em;
 	fill: none;
 
 	path {
-		stroke: rgb(50, 50, 50);
+		stroke: #f3f3f3;
 	}
 }
-
-
 
 .shill {
 	display: flex;
@@ -193,6 +223,33 @@
 	}
 }
 
+.success {
+    text-align: center;
+    animation: fadeIn 0.5s ease-out;
+    
+    .label {
+        margin-bottom: 1em;
+		color: #7c8fc9;
+    }
+    
+    .instructions {
+        font-size: 1.35em;
+        line-height: 1.5;
+        color: #bcbcbc;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 @media screen and (min-width: 600px) {
 	.footer {
 		padding: 3.5em;
@@ -201,7 +258,9 @@
 
 	.contact {
 		display: inline-block;
-		height: 16em;
+		height: auto;
+		padding: 0 15vw;
+		margin-bottom: 6em;
 		// margin: 0;
 	}
 
