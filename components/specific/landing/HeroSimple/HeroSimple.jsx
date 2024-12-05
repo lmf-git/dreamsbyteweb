@@ -36,7 +36,7 @@ const projects = [
         problem: 'Allied needed a portal for their wholesale operations. Their existing OpenCart solution was outdated and overpriced.',
         solution: 'Developed a custom-built B2B wholesale application tailored to their specific needs, providing a more cost-effective and modern solution.',
         url: 'https://alliedconstruction.vercel.app/',
-        image: 'https://random.imagecdn.app/500/150',
+        image: '/projects/allied/allied-mobile.png',
         desktopimage: '/projects/allied/allied-desktop.png',
         reporturl: ''
     },
@@ -45,7 +45,7 @@ const projects = [
         problem: 'A master electrician seeking to establish their online presence and streamline business operations. They needed help with Google Business setup, client communication, and invoice management.',
         solution: 'Built a professional website, optimized their Google Business profile, and implemented basic invoice management tools to help organize their growing business.',
         url: 'https://www.electricdrs.com',
-        image: '/projects/eds/eds-desktop.png',
+        image: '/projects/eds/eds-mobile.png',
         desktopimage: '/projects/eds/eds-desktop.png',
         reporturl: ''
     },
@@ -54,7 +54,7 @@ const projects = [
         problem: 'As a variety streamer and free-spirited content creator, Skylar Lily needed a professional platform to showcase her content and connect with her community.',
         solution: 'Created a custom website with seamless Instagram and Discord integrations, enabling direct community engagement and content showcasing in one cohesive platform.',
         url: 'https://www.skylarlily.com',
-        image: '/projects/skylar/skylar-desktop.png',
+        image: '/projects/skylar/skylar-mobile.png',
         desktopimage: '/projects/skylar/skylar-desktop.png',
         reporturl: ''
     },
@@ -63,7 +63,7 @@ const projects = [
         problem: 'Specialized electrical contractor needed to expand their CCTV and low voltage hardware services, requiring a focused lead generation strategy and professional online presence.',
         solution: 'Developed a conversion-focused website highlighting security and networking solutions, with integrated lead capture systems and service area targeting.',
         url: 'https://www.lvolt.net',
-        image: '/projects/lvolt/lvolt-desktop.png',
+        image: '/projects/lvolt/lvolt-mobile.png',
         desktopimage: '/projects/lvolt/lvolt-desktop.png',
         reporturl: ''
     }
