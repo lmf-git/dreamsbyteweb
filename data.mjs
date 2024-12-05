@@ -35,7 +35,7 @@ export const testimonials = [
     {
         logo: null,
         name: 'Frankie B',
-        company: '',
+        company: 'Pelican Apps',
         testimonial: 'Great person to work with very helpful and a great teacher',
         reporturl: null
     },
