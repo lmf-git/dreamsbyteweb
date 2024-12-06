@@ -1,9 +1,16 @@
-import { Syne } from 'next/font/google';
+import { Syne, Inter } from 'next/font/google';
 import '../components/layout/global.scss';
 
 const syne = Syne({
   weight: ['400', '500', '600', '700', '800'],
-  subsets: ['latin']
+  subsets: ['latin'],
+  variable: '--font-syne'
+});
+
+const inter = Inter({
+  weight: ['400', '500', '600'],
+  subsets: ['latin'],
+  variable: '--font-inter'
 });
 
 export const metadata = {
@@ -26,7 +33,9 @@ export const viewport = {
 };
 
 export default function RootLayout({ children }) {
-  return <html lang="en" className={syne.className}>
-    <body>{ children }</body>
-  </html>;
-};
+  return (
+    <html lang="en" className={`${syne.variable} ${inter.variable}`}>
+      <body>{children}</body>
+    </html>
+  );
+}

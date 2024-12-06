@@ -10,7 +10,7 @@ import Spinner from '../../../icons/spinner/Spinner';
 import Screen from '../Screen/Screen';
 import Mobile from '../Mobile/Mobile';
 
-import styles from './herosimple.module.scss';
+import styles from './hero.module.scss';
 
 const projects = [
     {
@@ -69,7 +69,7 @@ const projects = [
     }
 ];
 
-export default function HeroSimple() {
+export default function Hero() {
     const [project, setProject] = useState(null); // Change initial state to null
     const [desktopLoading, setDesktopLoading] = useState(true);
     const [mobileLoading, setMobileLoading] = useState(true);
@@ -83,7 +83,6 @@ export default function HeroSimple() {
     const [imagesLoaded, setImagesLoaded] = useState(false);
     const [isReturningToFirst, setIsReturningToFirst] = useState(false);
     const [showNav, setShowNav] = useState(false);
-    const [initialContentShown, setInitialContentShown] = useState(false); // Add this new state
 
     const preloadImages = (projectIndex) => {
         return new Promise((resolve) => {
@@ -231,8 +230,8 @@ export default function HeroSimple() {
 
                             {/* Move meta inside contentContainer */}
                             <div className={`${styles.meta} ${
-                                (firstRevealComplete && window.innerWidth >= 1200) || 
-                                (showNav && !isTransitioning && showContent) 
+                                // Show meta only when content is visible and not transitioning in both mobile and desktop
+                                (firstRevealComplete && !isTransitioning && showContent) 
                                     ? styles.visible 
                                     : ''
                             }`}>
@@ -251,47 +250,53 @@ export default function HeroSimple() {
                                         ? styles.visible 
                                         : ''
                                 }`}>
-                                    {projects.map((p, i) => 
-                                        Math.abs(project - i) <= 2 ? 
+                                    {projects.map((p, i) => {
+                                        // Only render dots within range of current project
+                                        const distance = Math.abs(project - i);
+                                        if (distance > 2) return null;
+                                        
+                                        // Add entering/exiting classes based on distance
+                                        const dotClass = `${styles.dot} ${
+                                            project === i ? styles.active : ''
+                                        } ${
+                                            distance === 2 ? styles.entering : ''
+                                        }`;
+                                        
+                                        return (
                                             <Dot 
                                                 key={i} 
-                                                className={`${styles.dot} ${project === i ? styles.active : ''}`} 
+                                                className={dotClass}
                                                 onClick={() => !isTransitioning && setProject(i)}
-                                            /> 
-                                            : 
-                                            null
-                                    )}
+                                            />
+                                        );
+                                    })}
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div className={`${styles.arrows} ${
-                        // Only show on desktop after first reveal, or on mobile with normal conditions
-                        (firstRevealComplete && window.innerWidth >= 1200) || 
-                        (showNav && !isTransitioning && window.innerWidth < 1200) 
+                        // Only show arrows after initial content AND preview are loaded
+                        (firstRevealComplete && showPreview && window.innerWidth >= 1200 && !isTransitioning) 
                             ? styles.visible 
                             : ''
                     }`}>
-                        {project > 0 ? (
-                            <button 
-                                className={`${styles.button} ${styles.buttonleft}`} 
-                                onClick={prevProject}
-                                disabled={isTransitioning}
-                            >
-                                <LeftLine className={`${styles.arrow} ${styles.arrowleft}`} />
-                            </button>
-                        ) : <div className={styles.buttonspacer} />}
+                        {/* Always render both buttons, but disable them based on conditions */}
+                        <button 
+                            className={`${styles.button} ${styles.buttonleft}`} 
+                            onClick={prevProject}
+                            disabled={project <= 0 || isTransitioning}
+                        >
+                            <LeftLine className={`${styles.arrow} ${styles.arrowleft}`} />
+                        </button>
                         
-                        {project < projects.length - 1 ? (
-                            <button 
-                                className={`${styles.button} ${styles.buttonright}`} 
-                                onClick={nextProject}
-                                disabled={isTransitioning}
-                            >
-                                <RightLine className={`${styles.arrow} ${styles.arrowright}`} />
-                            </button>
-                        ) : <div className={styles.buttonspacer} />}
+                        <button 
+                            className={`${styles.button} ${styles.buttonright}`} 
+                            onClick={nextProject}
+                            disabled={project >= projects.length - 1 || isTransitioning}
+                        >
+                            <RightLine className={`${styles.arrow} ${styles.arrowright}`} />
+                        </button>
                     </div>
 
                     <div className={`${styles.projectpreview} ${showPreview ? styles.showMobile : ''}`}>

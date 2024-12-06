@@ -1,5 +1,5 @@
 import Screen from '../../components/specific/landing/Screen/Screen';
-import styles from '../../components/specific/landing/HeroSimple/herosimple.module.scss';
+import styles from '../../components/specific/landing/Hero/hero.module.scss';
 
 export default function Test() {
     return <main>

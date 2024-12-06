@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import Logo from '../../icons/branding/Logo';
 
-import ContactNowFab from "../ContactNowFab/ContactNowFab";
+// import ContactNowFab from "../ContactNowFab/ContactNowFab";
 import Scroll from "../../icons/controls/Scroll";
 
 import EmailMethod from '../../icons/social/EmailMethod';
@@ -50,7 +50,7 @@ export default function Footer() {
   }, []);
 
   return <>
-    { !footerVisible && <ContactNowFab /> }
+    {/* { !footerVisible && <ContactNowFab /> } */}
 
     <div className={styles.footer} ref={footerRef} id="contact">
       { formStatus !== 'success' ?
