@@ -11,7 +11,7 @@
 
 .title {
     color: white;
-    font-size: 2.65em;
+    font-size: 2em; // Reduced from 2.65em for mobile
     font-weight: 400;
     margin: 0 0 .75em 0;
     opacity: 0;
@@ -49,6 +49,7 @@
 
 .projectname {
     font-weight: bold;
+    font-size: 1.5em; // Add smaller size for mobile
     margin-top: 0;
     margin-bottom: 1em; // Add space below project name
     opacity: 0;
@@ -638,7 +639,12 @@
     }
 
     .title {
+        font-size: 2.65em; // Restore original desktop size
         margin: 0 0 0.5em 0;
+    }
+
+    .projectname {
+        font-size: 2em; // Restore larger size for desktop
     }
 
     .disclaimer {
