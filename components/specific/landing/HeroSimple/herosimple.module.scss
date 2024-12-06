@@ -62,7 +62,7 @@
 .projectpreview {
     opacity: 0;
     position: absolute; // Change to absolute
-    top: 8em; // Adjust to be below project name
+    top: 12em; // Increase from 8em to add more space below project name
     left: 0;
     width: 100%;
     height: auto; // Let height be determined by content
@@ -83,20 +83,14 @@
         visibility: visible;
         opacity: 1;
 
-        .screen,
-        .mobile {
-            opacity: 1;
-            width: 80%; // Adjust width for mobile
-            margin: 0.5em 0; // Space between screen and mobile
-            transition: opacity 0.5s ease-out;
-        }
-
         .screen {
-            position: relative;
+            opacity: 1;
             width: 100%;
             height: auto;
             max-height: 35vh; // Slightly reduce height
             margin-bottom: 1.5em; // More space between screen and mobile
+            animation: reveal-screen 0.5s ease-out forwards;
+            animation-delay: 0.3s; // Start first
         }
 
         .mobile {
@@ -105,6 +99,9 @@
             left: 50%;
             transform: translateX(-50%);
             width: 25%; // Make mobile preview smaller
+            opacity: 0; // Start hidden
+            animation: reveal-mobile-overlay 0.5s ease-out forwards;
+            animation-delay: 0.8s; // Start after screen is visible
         }
     }
 }
@@ -415,7 +412,7 @@
 // Desktop breakpoints (at end of file)
 @media screen and (min-width: 1200px) {
     .hero {
-        padding: 3em;
+        padding: 3em 8em; // Increase horizontal padding to accommodate arrows
         min-height: 80vh;
     }
 
@@ -445,7 +442,7 @@
         visibility: visible;
         height: 60vh;
         padding: 0;
-        top: auto;
+        top: auto; // Reset top position for desktop
         width: 65%; // Ensure width is set for desktop
         margin: 0; // Reset margin
         transition: none;
@@ -523,15 +520,19 @@
     .arrows {
         position: absolute;
         top: 50%;
-        left: 0;
-        transform: translateY(-50%);
-        width: 100%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: calc(100% + 10em); // Wider to position arrows outside
+        max-width: 1600px; // Prevent arrows from going too wide
+        margin: 0 auto;
         padding: 0;
         z-index: 20;
-        
-        &.visible {
-            opacity: 1;
-            pointer-events: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        pointer-events: none;
+        opacity: 0;
+        animation: reveal-controls 0.5s ease-out forwards;
         }
     }
 
@@ -539,13 +540,15 @@
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        
+        background: rgba(0, 0, 0, 0.5);
+        pointer-events: auto;
+
         &.buttonleft {
-            left: -4em; // Position outside the preview
+            left: -5em; // Position just outside the preview area
         }
 
         &.buttonright {
-            right: -4em; // Position outside the preview
+            right: -5em; // Position just outside the preview area
         }
     }
 
@@ -809,6 +812,17 @@
     }
     to {
         transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes reveal-mobile-overlay {
+    from {
+        transform: translate(-50%, 20px);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, 0);
         opacity: 1;
     }
 }
