@@ -63,14 +63,14 @@
 .projectpreview {
     opacity: 0;
     position: absolute; // Change to absolute
-    top: 12em; // Return to original position
+    top: 10em; // Reduce from 12em to raise the preview content
     left: 0;
     width: 100%;
     height: auto; // Let height be determined by content
     max-height: none; // Remove max-height to fit naturally
     margin-top: 1em; // Return to original spacing
     visibility: hidden;
-    transition: opacity 0.5s ease-out;
+    transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
     display: flex;
     flex-direction: column;
     justify-content: center; // Center vertically
@@ -92,6 +92,7 @@
             margin-bottom: 1.5em; // More space between screen and mobile
             animation: reveal-screen 0.5s ease-out forwards;
             animation-delay: 0.3s; // Start first
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
         }
 
         .mobile {
@@ -103,6 +104,7 @@
             opacity: 0; // Start hidden
             animation: reveal-mobile-overlay 0.5s ease-out forwards;
             animation-delay: 0.8s; // Start after screen is visible
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
         }
     }
 }
@@ -111,11 +113,17 @@
     opacity: 0;
     position: relative;
     z-index: 1;
-    transition: opacity 0.3s ease-out; // Adjust transition
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    transform: translateX(0);
     animation: reveal-screen 0.5s ease-out forwards;
     animation-delay: 0.8s;
     user-select: none;
     display: block; // Always display but control with opacity
+    
+    &:not(.showMobile) {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
     
     &.showMobile {
         opacity: 1;
@@ -150,9 +158,14 @@
     opacity: 0;
     position: absolute;
     z-index: 2;
-    transition: opacity 0.3s ease-out; // Adjust transition
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
     user-select: none;
     display: block; // Always display but control with opacity
+    
+    &:not(.showMobile) {
+        opacity: 0;
+        transform: translate(-50%, 20px);
+    }
     
     &.showMobile {
         opacity: 1;
