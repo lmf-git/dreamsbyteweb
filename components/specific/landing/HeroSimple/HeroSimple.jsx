@@ -91,29 +91,31 @@ export default function HeroSimple() {
             setProject(0);
             
             if (isMobile) {
-                // Simplified mobile sequence
                 setTimeout(() => {
                     setShowPreview(true);
                     setTimeout(() => {
                         setShowPreview(false);
                         setShowContent(true);
-                        setShowNav(true);
-                        setShowControls(true);
-                        setInitialAnimationComplete(true);
+                        // Delay controls until after content animations
+                        setTimeout(() => {
+                            setShowNav(true);
+                            setShowControls(true);
+                            setInitialAnimationComplete(true);
+                        }, 1000); // Delay matches the last content transition
                     }, 1500);
                 }, 800);
             } else {
-                // Desktop sequence
                 setTimeout(() => {
-                    setShowPreview(true); // This will trigger the initial fade-in
+                    setShowPreview(true);
                     setTimeout(() => {
                         setShowContent(true);
+                        // Delay controls until after content animations
                         setTimeout(() => {
                             setShowControls(true);
                             setFirstRevealComplete(true);
                             setShowNav(true);
                             setInitialAnimationComplete(true);
-                        }, 800);
+                        }, 1200); // Increased delay to match desktop content transitions
                     }, 400);
                 }, 400);
             }
