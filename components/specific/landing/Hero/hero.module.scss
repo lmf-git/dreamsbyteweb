@@ -231,14 +231,64 @@
     display: flex;
     justify-content: center;
     opacity: 0;
-    transition: opacity 0.3s ease-out;
+    transition: opacity 0.2s ease-out;
     margin-top: 0.75em;
-    pointer-events: none; // Add default pointer-events
-    overflow: hidden; // Add this to contain transitions
+    pointer-events: none;
+    overflow: hidden;
     
+    @media screen and (max-width: 1199px) {
+        // Mobile-specific adjustments
+        position: relative;
+        bottom: 0;
+        margin-top: 2em;
+        transition: opacity 0.25s ease-out;
+        
+        &.visible {
+            transition-delay: 0.2s;
+        }
+    }
+
     &.visible {
         opacity: 1;
         pointer-events: auto;
+
+        .dot {
+            opacity: 0;
+            transform: scale(0);
+            // Speed up the appear animation
+            animation: dotAppear 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+
+            @media screen and (max-width: 1199px) {
+                // Faster animations for mobile
+                animation-duration: 0.25s;
+            }
+
+            // First dot appears after a short delay
+            &:first-child {
+                animation-delay: 0.1s;
+            }
+
+            // Other dots follow quickly
+            @for $i from 2 through 6 {
+                &:nth-child(#{$i}) {
+                    animation-delay: #{0.1 + (0.05 * ($i - 1))}s;
+                }
+            }
+        }
+    }
+
+    &:not(.visible) {
+        opacity: 0;
+        pointer-events: none;
+        visibility: hidden; // Add this to prevent flash
+        transition: opacity 0.15s ease-out,
+                    visibility 0.15s ease-out;
+
+        .dot {
+            transition: none;
+            opacity: 0;
+            transform: scale(0);
+        }
     }
 }
 
@@ -248,27 +298,38 @@
     width: 2em; // Increased from 1.3em for mobile
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); // Smoother transition
     transform-origin: center;
-    transform: scale(1);
-    opacity: 1;
+    transform: scale(0.8); // Start slightly smaller
+    opacity: 0.7;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0; // Start invisible
+    transform: scale(0); // Start scaled down
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    @media screen and (max-width: 1199px) {
+        width: 1.5em; // Slightly smaller on mobile
+    }
     
     &:not(:last-child) {
         margin-right: 0.35em;
     }
 
-    &.entering {
-        transform: scale(0);
-        opacity: 0;
-    }
-
-    &.exiting {
-        transform: scale(0);
-        opacity: 0;
-        margin: 0;
-        width: 0;
-    }
-
     &.active, &:hover circle {
         fill: rgb(217, 217, 217);
+        transform: scale(1.1); // Slightly larger when active
+        opacity: 1;
+        transition-delay: 0s; // Remove delay for active state
+    }
+
+    &:hover {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+
+    // Remove entering/exiting classes as they're no longer needed
+    &.entering,
+    &.exiting {
+        display: none;
     }
 }
 
@@ -385,6 +446,10 @@
         transition: none;
     }
 
+    @media screen and (max-width: 1199px) {
+        transition: opacity 0.25s ease-out;
+    }
+
     &.visible {
         opacity: 1;
         pointer-events: auto; // Re-enable interaction
@@ -432,6 +497,12 @@
             visibility: visible;
             pointer-events: auto;
             transition-delay: 0.7s; // Match the content animation sequence
+        }
+
+        @media screen and (max-width: 1199px) {
+            .meta {
+                transition-delay: 0.3s;
+            }
         }
     }
 }
@@ -632,21 +703,19 @@
     .arrows {
         display: flex;
         position: absolute;
-        top: 45%; // Change from 50% to 45% to move arrows up
+        top: 50%; // Center vertically
         left: 50%;
         transform: translate(-50%, -50%);
-        width: calc(100% + 12em); // Middle ground width
-        padding: 0;
+        width: calc(100% + 12em);
+        justify-content: space-between;
         z-index: 20;
         opacity: 0;
         visibility: hidden;
         pointer-events: none;
-        justify-content: space-between;
         transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
-
-        // Add this to ensure arrows maintain position
         height: 0; // Prevent height influence
-        pointer-events: none; // Prevent interaction with layout
+        margin: 0; // Remove any margin
+        padding: 0; // Remove any padding
 
         &.visible {
             opacity: 1;
@@ -656,15 +725,18 @@
     }
 
     .button {
-        position: absolute; // Change to absolute
-        pointer-events: auto;
-        
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        margin: 0;
+        z-index: 20;
+
         &.buttonleft {
-            left: 0; // Reset to 0 since container width is adjusted
+            left: 0;
         }
 
         &.buttonright {
-            right: 0; // Reset to 0 since container width is adjusted
+            right: 0;
         }
     }
 
@@ -835,5 +907,39 @@
     to {
         transform: translateX(0);
         opacity: 1;
+    }
+}
+
+// Add new keyframe animation
+@keyframes dotAppear {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    60% {
+        transform: scale(1.1);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(0.8);
+        opacity: 0.7;
+    }
+}
+
+// Generate dynamic keyframes for each dot position
+@for $i from 2 through 6 {
+    @keyframes dotAppearCurved-#{$i} {
+        0% {
+            transform: scale(0) translateX(-#{$i * 5}px);
+            opacity: 0;
+        }
+        60% {
+            transform: scale(1.1) translateX(0);
+            opacity: 0.5;
+        }
+        100% {
+            transform: scale(0.8);
+            opacity: 0.7;
+        }
     }
 }

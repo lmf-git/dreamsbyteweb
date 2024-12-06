@@ -54,12 +54,33 @@
   color: rgb(200, 200, 200);
   line-height: 1.4em;
   position: relative;
+  padding-left: 1.5em;
+  cursor: pointer;
   
   &:before {
     position: absolute;
     display: block;
-    content: '-';
-    left: -1em;
+    content: '';
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background-color: rgb(200, 200, 200);
+    border-radius: 50%;
+    transition: all 0.2s ease;
+  }
+
+  &:hover:before {
+    transform: translateY(-50%) rotate(45deg);
+    background-color: white;
+    width: 8px;
+    height: 8px;
+  }
+
+  &:active:before {
+    transform: translateY(-50%) scale(1.5);
+    opacity: 0.5;
   }
 }
 
@@ -146,5 +167,16 @@
   &:hover {
     color: rgb(230, 230, 230);
     border-color: rgba(255, 255, 255, 0.3);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: translateY(-50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50%) scale(2);
+    opacity: 0;
   }
 }

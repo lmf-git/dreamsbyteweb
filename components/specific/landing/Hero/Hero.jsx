@@ -83,6 +83,7 @@ export default function Hero() {
     const [imagesLoaded, setImagesLoaded] = useState(false);
     const [isReturningToFirst, setIsReturningToFirst] = useState(false);
     const [showNav, setShowNav] = useState(false);
+    const [dotsReady, setDotsReady] = useState(false);
 
     const preloadImages = (projectIndex) => {
         return new Promise((resolve) => {
@@ -151,6 +152,10 @@ export default function Hero() {
                                 setFirstRevealComplete(true);
                                 setShowNav(true);
                                 setInitialAnimationComplete(true);
+                                // Add delay before showing all dots
+                                setTimeout(() => {
+                                    setDotsReady(true);
+                                }, 400);
                             }, 800);
                         }, 800);
                     }, 400);
@@ -161,32 +166,37 @@ export default function Hero() {
 
     // Project change effect
     useEffect(() => {
-        // Skip if not initialized, no project selected, or still in initial animation
         if (!isInitialized || project === null || !initialAnimationComplete) return;
-        
-        // Skip if this is the initial project (project === 0 and currentProject === 0)
         if (project === 0 && currentProject === 0) return;
         
         const isMobile = window.innerWidth < 1200;
         setIsTransitioning(true);
-        setShowContent(false);
-        setShowPreview(false);
         
-        preloadImages(project).then(() => {
-            if (isMobile) {
+        // For mobile: Hide content first, then update project, then show preview
+        if (isMobile) {
+            setShowContent(false);
+            setTimeout(() => {
                 setCurrentProject(project);
-                setShowPreview(true);
+                preloadImages(project).then(() => {
+                    setShowPreview(true);
+                    setTimeout(() => {
+                        setShowPreview(false);
+                        setTimeout(() => {
+                            setShowContent(true);
+                            setIsTransitioning(false);
+                            setIsReturningToFirst(false);
+                        }, 100);
+                    }, 1500);
+                });
+            }, 300); // Allow content to fade out completely
+        } else {
+            // Desktop sequence remains the same
+            setShowContent(false);
+            setShowPreview(false);
+            
+            preloadImages(project).then(() => {
+                setCurrentProject(project);
                 setTimeout(() => {
-                    setShowPreview(false);
-                    setTimeout(() => { // Add nested timeout for content
-                        setShowContent(true);
-                        setIsTransitioning(false);
-                        setIsReturningToFirst(false);
-                    }, 100);
-                }, 1500);
-            } else {
-                setCurrentProject(project);
-                setTimeout(() => { // Add delay before showing content
                     setShowContent(true);
                     setTimeout(() => {
                         setShowPreview(true);
@@ -194,9 +204,8 @@ export default function Hero() {
                         setIsReturningToFirst(false);
                     }, 600);
                 }, 100);
-            }
-        });
-
+            });
+        }
     }, [project, isInitialized, initialAnimationComplete, currentProject]);
 
     const nextProject = () => {
@@ -245,21 +254,26 @@ export default function Hero() {
                                 </div>
 
                                 <div className={`${styles.dots} ${
-                                    (firstRevealComplete && window.innerWidth >= 1200) || 
-                                    (showNav && !isTransitioning && window.innerWidth < 1200) 
+                                    // For mobile: Show dots after preview is hidden AND content is visible
+                                    // For desktop: Use existing logic
+                                    ((window.innerWidth >= 1200 && firstRevealComplete) || 
+                                     (window.innerWidth < 1200 && showContent)) && 
+                                    !isTransitioning && !showPreview
                                         ? styles.visible 
                                         : ''
                                 }`}>
                                     {projects.map((p, i) => {
-                                        // Only render dots within range of current project
+                                        // On mobile, don't check dotsReady, just show dots when preview is hidden
+                                        const isMobile = window.innerWidth < 1200;
+                                        if (isMobile && showPreview) return null;
+                                        if (!isMobile && !dotsReady && i > 0) return null;
+                                        
+                                        // When ready, show dots with distance check
                                         const distance = Math.abs(project - i);
                                         if (distance > 2) return null;
                                         
-                                        // Add entering/exiting classes based on distance
                                         const dotClass = `${styles.dot} ${
                                             project === i ? styles.active : ''
-                                        } ${
-                                            distance === 2 ? styles.entering : ''
                                         }`;
                                         
                                         return (

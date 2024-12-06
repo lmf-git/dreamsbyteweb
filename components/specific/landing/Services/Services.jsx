@@ -1,6 +1,16 @@
 import styles from './services.module.scss';
 
 export default function Services() {
+  const handleExampleClick = (e) => {
+    const dot = e.currentTarget.querySelector('::before');
+    if (dot) {
+      dot.style.animation = 'none';
+      // Trigger reflow
+      void dot.offsetWidth;
+      dot.style.animation = `${styles.ripple} 0.6s ease-out`;
+    }
+  };
+
   return <div className={`section ${styles.services}`} id="services">
     <div className={styles.heading}>
       <span className={styles.preamble}>From Concept to Reality</span>
@@ -11,47 +21,43 @@ export default function Services() {
       <div className={styles.service}>
         <span className={styles.name}>Development</span>
         
-        <span className={styles.example}>Full Stack Development</span>
-        <span className={styles.example}>Website / App / DB Maintenance</span>
-        <span className={styles.example}>UI Development</span>
-        <span className={styles.example}>WordPress / Ghost / CMS Development</span>
-        <span className={styles.example}>API Integrations / Custom API Development</span>
+        <span className={styles.example} onClick={handleExampleClick}>Full Stack Development</span>
+        <span className={styles.example} onClick={handleExampleClick}>Website / App / DB Maintenance</span>
+        <span className={styles.example} onClick={handleExampleClick}>UI Development</span>
+        <span className={styles.example} onClick={handleExampleClick}>WordPress / Ghost / CMS Development</span>
+        <span className={styles.example} onClick={handleExampleClick}>API Integrations / Custom API Development</span>
       </div>
 
       <div className={styles.service}>
         <span className={styles.name}>E-commerce</span>
         
-        <span className={styles.example}>Shopify / Magento / Woocommerce / Custom Store Creation</span>
-        <span className={styles.example}>Multichannel / ERP and More Integrations</span>
+        <span className={styles.example} onClick={handleExampleClick}>Shopify / Magento / Woocommerce / Custom Store Creation</span>
+        <span className={styles.example} onClick={handleExampleClick}>Multichannel / ERP and More Integrations</span>
       </div>
 
       <div className={styles.service}>
         <span className={styles.name}>Design</span>
         
-        <span className={styles.example}>Captivating Logos</span>
-        <span className={styles.example}>Landing Pages</span>
-        <span className={styles.example}>Branding</span>
-        <span className={styles.example}>Distinctive Typography</span>
-        <span className={styles.example}>Compelling Colour Schemes</span>
+        <span className={styles.example} onClick={handleExampleClick}>Captivating Logos</span>
+        <span className={styles.example} onClick={handleExampleClick}>Landing Pages</span>
+        <span className={styles.example} onClick={handleExampleClick}>Branding</span>
+        <span className={styles.example} onClick={handleExampleClick}>Distinctive Typography</span>
+        <span className={styles.example} onClick={handleExampleClick}>Compelling Colour Schemes</span>
       </div>
 
       <div className={styles.service}>
         <span className={styles.name}>Miscellaneous</span>
         
-        <span className={styles.example}>Figma to Website Conversion</span>
-        <span className={styles.example}>PSD to HTML Conversion</span>
-        <span className={styles.example}>Translation Services</span>
-        <span className={styles.example}>Troubleshooting and Error Fixing</span>
-        <span className={styles.example}>Tutoring in Web Development</span>
-        <span className={styles.example}>Stripe/Paypal/Square Payments Integration</span>
+        <span className={styles.example} onClick={handleExampleClick}>Figma to Website Conversion</span>
+        <span className={styles.example} onClick={handleExampleClick}>PSD to HTML Conversion</span>
+        <span className={styles.example} onClick={handleExampleClick}>Translation Services</span>
+        <span className={styles.example} onClick={handleExampleClick}>Troubleshooting and Error Fixing</span>
+        <span className={styles.example} onClick={handleExampleClick}>Tutoring in Web Development</span>
       </div>
     </div>
 
     <div className={styles.providers}>
-      <div className={styles.providersHeading}>
-        <span className={styles.preamble}>Our Tech Stack</span>
-        <h3 className={styles.title}>Technologies We Use</h3>
-      </div>
+      <div className={styles.providersHeading}>Technologies We Use</div>
       <div className={styles.providersList}>
         <span className={styles.provider}>Node.js</span>
         <span className={styles.provider}>Heroku</span>
