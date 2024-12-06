@@ -228,34 +228,41 @@ export default function HeroSimple() {
 
                             <h2 className={styles.projectsolutions}>SOLUTIONS:</h2>
                             <p className={styles.projectparagraph}>{projects[currentProject].solution}</p>
-                        </div>
 
-                        <div className={`${styles.controls} ${showNav ? styles.visible : ''}`}>
-                            <div className={styles.controllinks}>
-                                <a href={projects[currentProject].url} className={styles.link}>GO TO SITE</a>
-                                {projects[currentProject]?.reporturl && (
-                                    <a href={projects[currentProject]?.reporturl} className={styles.link}>SEE SCORE</a>
-                                )}
+                            {/* Move meta inside contentContainer */}
+                            <div className={`${styles.meta} ${
+                                (firstRevealComplete && window.innerWidth >= 1200) || 
+                                (showNav && !isTransitioning && showContent) 
+                                    ? styles.visible 
+                                    : ''
+                            }`}>
+                                <div className={styles.controls}>
+                                    <div className={styles.controllinks}>
+                                        <a href={projects[currentProject].url} className={styles.link}>GO TO SITE</a>
+                                        {projects[currentProject]?.reporturl && (
+                                            <a href={projects[currentProject]?.reporturl} className={styles.link}>SEE SCORE</a>
+                                        )}
+                                    </div>
+                                </div>
+
+                                <div className={`${styles.dots} ${
+                                    (firstRevealComplete && window.innerWidth >= 1200) || 
+                                    (showNav && !isTransitioning && window.innerWidth < 1200) 
+                                        ? styles.visible 
+                                        : ''
+                                }`}>
+                                    {projects.map((p, i) => 
+                                        Math.abs(project - i) <= 2 ? 
+                                            <Dot 
+                                                key={i} 
+                                                className={`${styles.dot} ${project === i ? styles.active : ''}`} 
+                                                onClick={() => !isTransitioning && setProject(i)}
+                                            /> 
+                                            : 
+                                            null
+                                    )}
+                                </div>
                             </div>
-                        </div>
-
-                        <div className={`${styles.dots} ${
-                            // Match the arrows visibility pattern
-                            (firstRevealComplete && window.innerWidth >= 1200) || 
-                            (showNav && !isTransitioning && window.innerWidth < 1200) 
-                                ? styles.visible 
-                                : ''
-                        }`}>
-                            {projects.map((p, i) => 
-                                Math.abs(project - i) <= 2 ? 
-                                    <Dot 
-                                        key={i} 
-                                        className={`${styles.dot} ${project === i ? styles.active : ''}`} 
-                                        onClick={() => !isTransitioning && setProject(i)}
-                                    /> 
-                                    : 
-                                    null
-                            )}
                         </div>
                     </div>
 
