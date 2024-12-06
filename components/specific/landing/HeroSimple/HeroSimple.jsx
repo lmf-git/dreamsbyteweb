@@ -82,70 +82,57 @@ export default function HeroSimple() {
     const [isInitialized, setIsInitialized] = useState(false);
     const [isTransitioning, setIsTransitioning] = useState(false);
 
-    // Separate useEffect for initial setup
+    // Single initialization effect
     useEffect(() => {
         if (!isInitialized) {
+            const isMobile = window.innerWidth < 1200;
+            
+            // Set initial states synchronously
             setProject(0);
             setIsInitialized(true);
-
-            if (window.innerWidth < 1200) {
+            
+            if (isMobile) {
                 setTimeout(() => {
                     setShowPreview(true);
-                    
                     setTimeout(() => {
                         setShowPreview(false);
-                        
-                        setTimeout(() => {
-                            setShowContent(true);
-                            
-                            setTimeout(() => {
-                                setShowNav(true);
-                                setShowControls(true);
-                                setIsFirstLoad(false);
-                                setInitialAnimationComplete(true);
-                            }, 1500);
-                        }, 300);
-                    }, 2500);
-                }, 1000);
+                        setShowContent(true);
+                        setShowNav(true);
+                        setShowControls(true);
+                        setInitialAnimationComplete(true);
+                    }, 2000);
+                }, 1200);
             } else {
-                setShowContent(true);
-                setShowNav(true);
-                setShowControls(true);
-                setInitialAnimationComplete(true);
+                // Desktop - delay controls until after preview loads
+                setTimeout(() => {
+                    setShowPreview(true);
+                    setTimeout(() => {
+                        setShowContent(true);
+                        setShowNav(true);
+                        setShowControls(true);
+                        setInitialAnimationComplete(true);
+                    }, 800);
+                }, 1200);
             }
         }
     }, [isInitialized]);
 
-    // Separate useEffect for project changes
+    // Project change effect - only run when project actually changes
     useEffect(() => {
-        if (!isInitialized || project === 0) return; // Skip if not initialized or first project
+        if (!isInitialized || !initialAnimationComplete || project === 0) return;
 
         setIsTransitioning(true);
+        setShowContent(false);
+        setShowPreview(false);
         setDesktopLoading(true);
         setMobileLoading(true);
         
-        const handleResize = () => {
-            setShowContent(false);
-            setShowControls(false);
-            setShowPreview(false);
-            setShowNav(false);
-            setIsFirstLoad(true);
-            setInitialAnimationComplete(false);
-            setIsInitialized(false);
-        };
-
-        window.addEventListener('resize', handleResize);
-
         if (window.innerWidth < 1200) {
-            setShowContent(false);
-            setShowPreview(false);
-            
+            // Mobile sequence
             setTimeout(() => {
                 setShowPreview(true);
-                
                 setTimeout(() => {
                     setShowPreview(false);
-                    
                     setTimeout(() => {
                         setShowContent(true);
                         setIsTransitioning(false);
@@ -153,20 +140,16 @@ export default function HeroSimple() {
                 }, 2000);
             }, 300);
         } else {
-            setShowContent(false);
-            setShowPreview(false);
-            
+            // Desktop sequence
             setTimeout(() => {
                 setShowPreview(true);
-                setShowContent(true);
-                setIsTransitioning(false);
+                setTimeout(() => {
+                    setShowContent(true);
+                    setIsTransitioning(false);
+                }, 800);
             }, 300);
         }
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, [project, isInitialized]);
+    }, [project, isInitialized, initialAnimationComplete]);
 
     const nextProject = () => {
         if (project < projects.length - 1 && !isTransitioning) setProject(project + 1);
@@ -215,11 +198,12 @@ export default function HeroSimple() {
                         </div>
                     </div>
 
-                    <div className={`${styles.arrows} ${showNav ? styles.visible : ''}`}>
+                    <div className={`${styles.arrows} ${showNav && !isTransitioning && initialAnimationComplete ? styles.visible : ''}`}>
                         {project > 0 ? (
                             <button 
                                 className={`${styles.button} ${styles.buttonleft}`} 
                                 onClick={prevProject}
+                                disabled={isTransitioning}
                             >
                                 <LeftLine className={`${styles.arrow} ${styles.arrowleft}`} />
                             </button>
@@ -229,6 +213,7 @@ export default function HeroSimple() {
                             <button 
                                 className={`${styles.button} ${styles.buttonright}`} 
                                 onClick={nextProject}
+                                disabled={isTransitioning}
                             >
                                 <RightLine className={`${styles.arrow} ${styles.arrowright}`} />
                             </button>

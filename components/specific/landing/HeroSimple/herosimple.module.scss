@@ -63,7 +63,7 @@
 .projectpreview {
     opacity: 0;
     position: absolute; // Change to absolute
-    top: 10em; // Reduce from 12em to raise the preview content
+    top: 9em; // Reduce from 10em to raise the preview content slightly more
     left: 0;
     width: 100%;
     height: auto; // Let height be determined by content
@@ -90,21 +90,20 @@
             height: auto;
             max-height: 35vh; // Slightly reduce height
             margin-bottom: 1.5em; // More space between screen and mobile
-            animation: reveal-screen 0.5s ease-out forwards;
-            animation-delay: 0.3s; // Start first
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+            transform: translateX(0);
+            transition: all 0.5s ease-out;
+            transition-delay: 0.3s;
         }
 
         .mobile {
             position: absolute;
             top: 20%; // Move down a bit
             left: 50%;
-            transform: translateX(-50%);
             width: 25%; // Make mobile preview smaller
-            opacity: 0; // Start hidden
-            animation: reveal-mobile-overlay 0.5s ease-out forwards;
-            animation-delay: 0.8s; // Start after screen is visible
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+            opacity: 1;
+            transform: translate(-50%, 0);
+            transition: all 0.5s ease-out;
+            transition-delay: 0.8s;
         }
     }
 }
@@ -113,12 +112,13 @@
     opacity: 0;
     position: relative;
     z-index: 1;
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-    transform: translateX(0);
-    animation: reveal-screen 0.5s ease-out forwards;
-    animation-delay: 0.8s;
+    transition: all 0.5s ease-out;
+    transform: translateX(-20px);
     user-select: none;
     display: block; // Always display but control with opacity
+    width: 100%; // Set explicit width
+    aspect-ratio: 16 / 9; // Lock aspect ratio
+    max-height: 35vh; // Match the showMobile state
     
     &:not(.showMobile) {
         opacity: 0;
@@ -158,9 +158,14 @@
     opacity: 0;
     position: absolute;
     z-index: 2;
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    transition: all 0.5s ease-out;
     user-select: none;
     display: block; // Always display but control with opacity
+    width: 25%; // Match the showMobile state
+    aspect-ratio: 9 / 16; // Lock aspect ratio for mobile
+    top: 20%; // Match initial position
+    left: 50%;
+    transform: translate(-50%, 20px);
     
     &:not(.showMobile) {
         opacity: 0;
@@ -281,10 +286,13 @@
     box-sizing: border-box;
     pointer-events: none;
     opacity: 0;
+    transition: opacity 0.3s ease-out;
+    visibility: hidden; // Add this
     
     &.visible {
         opacity: 1;
         pointer-events: auto;
+        visibility: visible; // Add this
     }
 }
 
@@ -324,8 +332,10 @@
     }
 
     &:disabled {
-        opacity: 0.3;
+        opacity: 0;
         cursor: not-allowed;
+        pointer-events: none;
+        visibility: hidden;
     }
 }
 
@@ -477,8 +487,10 @@
             opacity: 0; // Start hidden
             margin: 0;
             max-height: none;
-            animation: reveal-screen 0.5s ease-out forwards;
-            animation-delay: 0.8s; // Match mobile timing
+            animation: none; // Remove default animation
+            transition: all 0.4s ease-out;
+            transform: translateX(20px);
+            transition-delay: 0.1s;
         }
 
         .mobile {
@@ -488,10 +500,11 @@
             top: auto;
             left: auto;
             width: 14vw;
-            transform: none;
+            transform: translateY(20px);
             opacity: 0; // Start hidden
-            animation: reveal-mobile 0.5s ease-out forwards;
-            animation-delay: 1s; // Slightly after screen
+            animation: none; // Remove default animation
+            transition: all 0.4s ease-out;
+            transition-delay: 0.3s;
         }
 
         &.showMobile {
@@ -511,7 +524,9 @@
                 max-height: none;
                 margin: 0;
                 opacity: 1;
-                animation: reveal-screen 0.5s ease-out forwards;
+                transform: translateX(0);
+                transition: all 0.4s ease-out;
+                transition-delay: 0.1s;
             }
 
             .mobile {
@@ -522,10 +537,10 @@
                 top: auto;
                 left: auto;
                 width: 14vw;
-                transform: none;
+                transform: translateY(0);
                 opacity: 1;
-                animation: reveal-mobile 0.5s ease-out forwards;
-                animation-delay: 0.2s;
+                transition: all 0.4s ease-out;
+                transition-delay: 0.3s;
             }
         }
 
@@ -748,9 +763,12 @@
         transition: opacity 0.5s ease-out;
         min-height: 0; // Reset min-height
         margin-bottom: 0; // Reset margin
+        visibility: hidden;
+        transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
 
         &.visible {
             opacity: 1;
+            visibility: visible;
 
             .projectproblems {
                 opacity: 1;
@@ -779,6 +797,7 @@
             opacity: 0;
             transition: opacity 0.3s ease-out;
             animation: none; // Remove any keyframe animations
+            will-change: opacity;
         }
     }
 
@@ -836,7 +855,7 @@
 // Ensure keyframes are correctly defined
 @keyframes reveal-screen {
     from {
-        transform: translateX(40px);
+        transform: translateX(20px);
         opacity: 0;
     }
     to {
