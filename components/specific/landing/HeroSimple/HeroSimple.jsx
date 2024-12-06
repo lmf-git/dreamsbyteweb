@@ -82,6 +82,7 @@ export default function HeroSimple() {
     const [isInitialized, setIsInitialized] = useState(false);
     const [isTransitioning, setIsTransitioning] = useState(false);
     const [firstRevealComplete, setFirstRevealComplete] = useState(false);
+    const [currentProject, setCurrentProject] = useState(null); // Add this new state
 
     // Initial setup
     useEffect(() => {
@@ -89,6 +90,7 @@ export default function HeroSimple() {
             const isMobile = window.innerWidth < 1200;
             setIsInitialized(true);
             setProject(0);
+            setCurrentProject(0);
             
             if (isMobile) {
                 setTimeout(() => {
@@ -105,18 +107,18 @@ export default function HeroSimple() {
                     }, 1500);
                 }, 800);
             } else {
+                // Desktop sequence - reduced delays
                 setTimeout(() => {
-                    setShowPreview(true);
+                    setShowContent(true);
                     setTimeout(() => {
-                        setShowContent(true);
-                        // Delay controls until after content animations
+                        setShowPreview(true);
                         setTimeout(() => {
                             setShowControls(true);
                             setFirstRevealComplete(true);
                             setShowNav(true);
                             setInitialAnimationComplete(true);
-                        }, 1200); // Increased delay to match desktop content transitions
-                    }, 400);
+                        }, 800);
+                    }, 800); // Reduced from 1200 to 800ms to show preview sooner after text
                 }, 400);
             }
         }
@@ -125,11 +127,15 @@ export default function HeroSimple() {
     // Project change effect
     useEffect(() => {
         if (!isInitialized || !initialAnimationComplete || project === null) return;
-        if (project === 0) return; // Skip first load
+        if (project === 0) {
+            setCurrentProject(0);
+            return;
+        }
 
         const isMobile = window.innerWidth < 1200;
         setIsTransitioning(true);
         setShowContent(false);
+        setShowPreview(false); // Reset preview state
         
         if (isMobile) {
             // Simplified mobile transitions
@@ -143,11 +149,16 @@ export default function HeroSimple() {
                 }, 1500);
             }, 200);
         } else {
-            // Desktop transitions
+            // Desktop transitions - reduced delays
             setTimeout(() => {
+                setCurrentProject(project); // Update content after it's hidden
                 setShowContent(true); // Content will fade in with staggered animation
-                setIsTransitioning(false);
-            }, 400);
+                // Wait for content animations before showing preview
+                setTimeout(() => {
+                    setShowPreview(true);
+                    setIsTransitioning(false);
+                }, 600); // Reduced from 800 to 600ms for project changes
+            }, 100); // Short delay to ensure content is hidden first
         }
     }, [project, isInitialized, initialAnimationComplete]);
 
@@ -161,25 +172,25 @@ export default function HeroSimple() {
 
     return (
         <div className={`section ${styles.hero}`}>
-            {project !== null && ( // Only render content when project is set
+            {currentProject !== null && ( // Only render content when project is set
                 <div className={styles.projects}>
                     <div className={styles.projectdesc}>
                         <h1 className={styles.title}>Latest Work</h1>
-                        <h1 className={styles.projectname}>{projects[project].name}</h1>
+                        <h1 className={styles.projectname}>{projects[currentProject].name}</h1>
 
                         <div className={`${styles.contentContainer} ${showContent ? styles.visible : ''}`}>
                             <h2 className={styles.projectproblems}>PROBLEMS:</h2>
-                            <p className={styles.projectparagraph}>{projects[project].problem}</p>
+                            <p className={styles.projectparagraph}>{projects[currentProject].problem}</p>
 
                             <h2 className={styles.projectsolutions}>SOLUTIONS:</h2>
-                            <p className={styles.projectparagraph}>{projects[project].solution}</p>
+                            <p className={styles.projectparagraph}>{projects[currentProject].solution}</p>
                         </div>
 
                         <div className={`${styles.controls} ${showNav ? styles.visible : ''}`}>
                             <div className={styles.controllinks}>
-                                <a href={projects[project].url} className={styles.link}>GO TO SITE</a>
-                                {projects[project]?.reporturl && (
-                                    <a href={projects[project]?.reporturl} className={styles.link}>SEE SCORE</a>
+                                <a href={projects[currentProject].url} className={styles.link}>GO TO SITE</a>
+                                {projects[currentProject]?.reporturl && (
+                                    <a href={projects[currentProject]?.reporturl} className={styles.link}>SEE SCORE</a>
                                 )}
                             </div>
                         </div>
@@ -229,7 +240,7 @@ export default function HeroSimple() {
                     <div className={`${styles.projectpreview} ${showPreview ? styles.showMobile : ''}`}>
                         <Screen 
                             extraClass={`${styles.screen} ${showPreview ? styles.showMobile : ''}`}
-                            src={projects[project].desktopimage}
+                            src={projects[currentProject].desktopimage}
                             onLoad={() => setDesktopLoading(false)}
                         />
                         
@@ -237,7 +248,7 @@ export default function HeroSimple() {
 
                         <Mobile 
                             extraClass={styles.mobile}
-                            src={projects[project].image}
+                            src={projects[currentProject].image}
                             onLoad={() => setMobileLoading(false)}
                         />
                         {mobileLoading && <Spinner className={styles.mobilespinner} />}

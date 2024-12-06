@@ -2,7 +2,7 @@
 @use '../../../layout/colours';
 
 .hero {
-    padding: 2.1em;
+    // padding: 2.1em;
     box-sizing: border-box;
     overflow: hidden;
     user-select: none;
@@ -36,7 +36,7 @@
     opacity: 0;
     animation: reveal-desc 0.5s ease-out forwards;
     animation-delay: 0.6s;
-    padding: 0 3.5em;
+    padding: 0 4.5em;
     margin-bottom: 0; // Remove bottom margin
     user-select: none;
     position: relative; // Ensure text stays above preview
@@ -105,6 +105,17 @@
             transform: translate(-50%, 0);
             transition: all 0.4s ease-in-out;
             transition-delay: 0.4s;
+        }
+    }
+
+    &:not(.showMobile) {
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+
+        * {
+            visibility: hidden;
+            opacity: 0;
         }
     }
 }
@@ -283,17 +294,15 @@
     z-index: 20;
     display: flex;
     justify-content: space-between;
-    padding: 0 1em;
+    padding: 0 0.5em; // Reduced padding for mobile
     box-sizing: border-box;
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.3s ease-out;
-    visibility: hidden; // Add this
     
     &.visible {
         opacity: 1;
         pointer-events: auto;
-        visibility: visible; // Add this
     }
 }
 
@@ -314,7 +323,8 @@
 
 .button {
     pointer-events: auto;
-    background: rgba(0, 0, 0, 0.5);
+    // background: rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.5);
     border: none;
     border-radius: 50%;
     width: 3.5em;
@@ -376,19 +386,29 @@
     opacity: 0;
     min-height: 0;
     margin-bottom: 0;
-    transition: opacity 0.3s ease-out;
+    pointer-events: none; // Prevent interaction during transitions
 
     .projectproblems,
     .projectsolutions,
     .projectparagraph {
         opacity: 0;
         transform: translateY(10px);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         will-change: opacity, transform;
+
+        // Remove transition here - we'll add it only when visible
+        transition: none;
     }
 
     &.visible {
         opacity: 1;
+        pointer-events: auto; // Re-enable interaction
+
+        .projectproblems,
+        .projectsolutions,
+        .projectparagraph {
+            // Add transitions only when visible
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
         .projectproblems {
             opacity: 1;
@@ -485,13 +505,13 @@
     .projectpreview {
         position: relative;
         opacity: 0; // Start hidden
-        visibility: visible;
+        visibility: hidden; // Start hidden
         height: 60vh;
         padding: 0;
         top: auto; // Reset top position for desktop
         width: 65%; // Ensure width is set for desktop
         margin: 0; // Reset margin
-        transition: opacity 0.4s ease-in-out;
+        transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
         overflow: visible; // Allow buttons to overflow
 
         .screen {
@@ -573,7 +593,7 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: calc(100% + 8em);
+        width: calc(100% + 4em); // Reduced from 8em
         padding: 0;
         z-index: 20;
         opacity: 0;
@@ -591,10 +611,10 @@
     .button {
         position: relative; // Change to relative
         pointer-events: auto;
-        margin: 0 -5em; // Push buttons outward
+        margin: 0 -2.5em; // Reduced from -5em
 
         &.buttonleft {
-            left: 0;
+            left: -1.75em;
         }
 
         &.buttonright {
