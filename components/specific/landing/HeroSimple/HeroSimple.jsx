@@ -141,6 +141,7 @@ export default function HeroSimple() {
             // Simplified mobile transitions
             setShowPreview(false);
             setTimeout(() => {
+                setCurrentProject(project); // Add this to update current project
                 setShowPreview(true);
                 setTimeout(() => {
                     setShowPreview(false);
