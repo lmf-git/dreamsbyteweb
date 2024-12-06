@@ -6,6 +6,7 @@
     box-sizing: border-box;
     overflow: hidden;
     user-select: none;
+    min-height: 100vh; // Add minimum height for mobile
 }
 
 .title {
@@ -22,6 +23,8 @@
 .projects {
     display: flex;
     flex-direction: column;
+    gap: 1em;
+    align-items: flex-start;
     height: 100%;
     box-sizing: border-box;
 }
@@ -33,91 +36,90 @@
     animation: reveal-desc 0.5s ease-out forwards;
     animation-delay: 0.6s;
     padding: 0 3.5em;
-    margin-bottom: 1em;
+    margin-bottom: 0; // Remove bottom margin
     user-select: none;
-    position: relative;
-    z-index: 2; // Ensure text stays above preview
-    min-height: 66vh;
+    position: relative; // Ensure text stays above preview
+    min-height: auto; // Remove fixed height
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
 }
 
+.projectname {
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 1em; // Add space below project name
+    opacity: 0;
+    animation: reveal-desc 0.5s ease-out forwards;
+    animation-delay: 0.6s;
+    user-select: none;
+    position: relative; // Add relative positioning
+    z-index: 2; // Ensure it's above preview
+}
+
+// Base mobile styles
 .projectpreview {
     opacity: 0;
-    pointer-events: none;
-    position: relative; // Change to relative
-    top: 18em; // Increased to move further down
-    left: 3.5em;
-    right: 3.5em;
-    max-height: 40vh;
-    transition: all 0.5s ease-out; // Smooth all transitions
-    visibility: hidden; // Add visibility
-    
-    &.showMobile {
-        opacity: 1;
-        pointer-events: auto;
-        padding: 0.5em;
-        z-index: 1;
-        visibility: visible; // Show when active
+    position: absolute; // Change to absolute
+    top: 8em; // Adjust to be below project name
+    left: 0;
+    width: 100%;
+    height: auto; // Let height be determined by content
+    max-height: none; // Remove max-height to fit naturally
+    margin-top: 1em; // Space below project name
+    visibility: hidden;
+    transition: opacity 0.3s ease-out; // Adjust transition
+    display: flex;
+    flex-direction: column;
+    justify-content: center; // Center vertically
+    align-items: center; // Center horizontally
+    z-index: 1;
+    padding: 0 3.5em; // Match projectdesc padding
+    box-sizing: border-box;
+    min-height: auto;
 
+    &.showMobile {
+        visibility: visible;
+        opacity: 1;
+
+        .screen,
         .mobile {
-            display: block;
-            position: absolute;
-            bottom: -0.5em;
-            right: 5%;
-            width: 15vw;
-            z-index: 3;
-            opacity: 0; // Start hidden
-            animation: reveal-mobile-preview 0.3s ease-out forwards;
-            animation-delay: 0.3s; // Delay after screen appears
-            transition: opacity 0.5s ease-out; // Add fade for mobile
+            opacity: 1;
+            width: 80%; // Adjust width for mobile
+            margin: 0.5em 0; // Space between screen and mobile
         }
 
         .screen {
-            animation: reveal-mobile-preview 0.3s ease-out forwards;
-            animation-delay: 0s; // Show immediately when preview shows
-            transition: opacity 0.5s ease-out; // Add fade for screen
+            position: relative;
+            width: 100%;
+            height: auto;
+            max-height: 35vh; // Slightly reduce height
+            margin-bottom: 1.5em; // More space between screen and mobile
         }
-    }
-}
 
-// Problems and solutions container
-.contentContainer {
-    opacity: 0;
-    transition: opacity 1s ease-out; // Slower, smoother fade
-    transform: translateY(10px); // Start slightly offset
-    transition: all 0.5s ease-out;
-    
-    &.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes reveal-mobile-preview {
-    from {
-        transform: translateY(10px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
+        .mobile {
+            position: absolute;
+            top: 20%; // Move down a bit
+            left: 50%;
+            transform: translateX(-50%);
+            width: 25%; // Make mobile preview smaller
+        }
     }
 }
 
 .screen { 
-    display: none; // Change back to none for mobile
-    width: 100%;
+    opacity: 0;
     position: relative;
     z-index: 1;
-    opacity: 0;
+    transition: opacity 0.3s ease-out; // Adjust transition
     animation: reveal-screen 0.5s ease-out forwards;
     animation-delay: 0.8s;
     user-select: none;
-    transition: opacity 0.5s ease-out; // Add fade transition
+    display: block; // Always display but control with opacity
     
     &.showMobile {
-        display: block;
         opacity: 1;
-        animation: none; // Remove conflicting animation
     }
 }
 
@@ -146,15 +148,16 @@
 }
 
 .mobile {
-    display: none;
-    position: absolute;
-    bottom: -1em;
-    right: 15%;
-    width: 14vw;
-    height: auto;
-    z-index: 2;
     opacity: 0;
+    position: absolute;
+    z-index: 2;
+    transition: opacity 0.3s ease-out; // Adjust transition
     user-select: none;
+    display: block; // Always display but control with opacity
+    
+    &.showMobile {
+        opacity: 1;
+    }
 }
 
 .mobileicon {
@@ -185,40 +188,11 @@
     transition: opacity 0.2s ease-out;
 }
 
-.projectname {
-    font-weight: bold;
-    margin-top: 0;
-    opacity: 0;
-    animation: reveal-desc 0.5s ease-out forwards;
-    animation-delay: 0.6s;
-    user-select: none;
-}
-
-.projectproblems {
-    opacity: 0.7;
-    margin: 0 0 0.2em;
-    opacity: 0;
-    animation: none;
-    transition: opacity 0.5s ease-out;
-    user-select: none;
-}
-
-.projectsolutions {
-    opacity: 0.7;
-    margin: 0.75em 0 0.2em;
-    opacity: 0;
-    animation: none;
-    transition: opacity 0.5s ease-out;
-    user-select: none;
-}
-
+.projectproblems,
+.projectsolutions,
 .projectparagraph {
-    margin: 0;
-    line-height: 1.6em;
-    font-size: 1.1em;
     opacity: 0;
-    animation: none;
-    transition: opacity 0.5s ease-out;
+    transition: opacity 0.3s ease-out; // Adjust transition
     user-select: none;
 }
 
@@ -247,7 +221,6 @@
     color: rgb(166, 166, 166);
     text-decoration: none;
     font-weight: 300;
-    transition: padding 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
     padding: 0.135em;
     border-radius: 0.135em;
     transition: all 0.25s ease-out; // Smoother transition
@@ -338,7 +311,8 @@
     }
 }
 
-.buttonleft, .buttonright {
+.buttonleft,
+.buttonright {
     position: static;
 }
 
@@ -368,7 +342,63 @@
     margin-right: 0;
 }
 
-// Move animations to desktop only
+// Mobile-specific animations
+.contentContainer {
+    opacity: 0;
+    transition: opacity 0.3s ease-out; // Adjust transition
+
+    &.visible {
+        opacity: 1;
+
+        // Mobile-only animations
+        .projectproblems,
+        .projectsolutions,
+        .projectparagraph {
+            opacity: 1;
+        }
+    }
+}
+
+.dots {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    margin-top: 2em;
+    
+    &.visible {
+        opacity: 1;
+    }
+}
+
+.controls {
+    position: absolute;
+    bottom: 1em;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    
+    &.visible {
+        opacity: 1;
+    }
+}
+
+.button {
+    // ...existing button styles...
+    position: relative; // Change from absolute
+}
+
+// Desktop breakpoints (at end of file)
 @media screen and (min-width: 1200px) {
     .hero {
         padding: 3em;
@@ -384,7 +414,7 @@
 
     .projectdesc {
         padding: 0;
-        min-height: 0; // Remove min-height on desktop
+        min-height: 66vh; // Add back min-height for desktop
         margin-bottom: 0;
         flex: 0 0 35%;
         display: flex;
@@ -394,36 +424,88 @@
         position: relative;
     }
 
+    // Desktop styles override at the end
     .projectpreview {
-        opacity: 1;
-        pointer-events: auto;
         position: relative;
-        top: auto;
-        left: auto;
-        right: auto;
-        transform: none;
-        max-height: none;
+        opacity: 1;
+        visibility: visible;
         height: 60vh;
-        flex: 1;
-        margin: 0;
-        background: none;
         padding: 0;
-        
-        &.showMobile {
-            padding: 0;
+        top: auto;
+        width: 65%; // Ensure width is set for desktop
+        margin: 0; // Reset margin
+        transition: none;
 
-            .mobile {
-                bottom: -1em;
-                right: 15%;
-                width: 14vw;
-            }
+        .screen {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 100%;
+            opacity: 0; // Start hidden
+            margin: 0;
+            max-height: none;
+            animation: reveal-screen 0.5s ease-out forwards;
+            animation-delay: 0.8s; // Match mobile timing
         }
+
+        .mobile {
+            position: absolute;
+            bottom: -1em;
+            right: 15%;
+            top: auto;
+            left: auto;
+            width: 14vw;
+            transform: none;
+            opacity: 0; // Start hidden
+            animation: reveal-mobile 0.5s ease-out forwards;
+            animation-delay: 1s; // Slightly after screen
+        }
+    }
+
+    .arrows {
+        position: absolute;
+        width: calc(100% + 8em);
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 20;
+        padding: 0;
+        pointer-events: none;
+        
+        &.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    }
+
+    .button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: auto;
+    }
+
+    .buttonleft {
+        left: -4em;
+    }
+
+    .buttonright {
+        right: -4em;
+    }
+
+    .screen,
+    .mobile {
+        transition: none; // Remove transition to avoid conflicts with animation
+        visibility: visible;
+        animation: none;
+    }
+
+    .screen {
+        display: block;
     }
 
     .mobile {
         display: block;
-        animation: reveal-mobile 0.5s ease-out forwards;
-        animation-delay: 1s;
     }
 
     .title {
@@ -475,42 +557,41 @@
     }
 
     .arrows {
-        top: 40%;
-        padding: 0;
-        opacity: 0;
-        animation: reveal-controls 0.5s ease-out forwards;
-        animation-delay: 1.2s;
-    }
-    
-    .dots {
-        bottom: -4.25em; // Original desktop position
-    }
-
-    .arrows {
         position: absolute;
-        top: 40%;
-        transform: translateY(-50%);
-        width: 100%;
+        top: 50%; // Center vertically relative to screen
+        left: 50%; // Center horizontally
+        transform: translate(-50%, -50%); // Center both axes
+        width: calc(100% + 8em); // Expand width to accommodate arrows
         padding: 0;
         opacity: 0;
         animation: reveal-controls 0.5s ease-out forwards;
         animation-delay: 1.2s;
-        transition: opacity 0.5s ease-out;
+        pointer-events: none; // Prevent interference with other elements
+        
+        &.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
     }
 
     .button {
-        position: relative;
+        position: absolute; // Position absolutely within arrows container
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: auto;
     }
 
     .buttonleft {
-        left: -1.75em;
+        left: 0;
     }
 
     .buttonright {
-        right: -1.75em;
+        right: 0;
     }
 
-    .projectproblems, .projectsolutions, .projectparagraph {
+    .projectproblems,
+    .projectsolutions,
+    .projectparagraph {
         animation-delay: 0.7s, 0.8s, 0.9s; // Original delays for desktop
     }
 
@@ -533,156 +614,96 @@
     }
 
     .contentContainer {
+        opacity: 0;
+        transform: none;
+        transition: none;
+
+        .projectproblems {
+            animation: reveal-desc 0.5s ease-out forwards;
+            animation-delay: 0.7s;
+        }
+
+        .projectsolutions {
+            animation: reveal-desc 0.5s ease-out forwards;
+            animation-delay: 0.8s;
+        }
+
+        .projectparagraph {
+            animation: reveal-desc 0.5s ease-out forwards;
+            animation-delay: 0.9s;
+        }
+
         &.visible {
-            .projectproblems, .projectsolutions, .projectparagraph {
-                // Remove mobile styles
+            .projectproblems,
+            .projectsolutions,
+            .projectparagraph {
+                opacity: 1;
                 transform: none;
             }
         }
     }
-}
 
-@media screen and (min-width: 1400px) {
-    .screen {
-
-    }
-}
-
-// Mobile-specific animations
-.projectproblems, .projectsolutions, .projectparagraph {
-    opacity: 0;
-    transform: translateY(10px);
-    transition: all 0.5s ease-out;
-}
-
-.contentContainer {
-    &.visible {
-        .projectproblems, .projectsolutions, .projectparagraph {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-}
-
-.dots {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    z-index: 20;
-    display: flex;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease-out;
-    margin-top: 2em;
-    
-    &.visible {
-        opacity: 1;
-    }
-}
-
-.controls {
-    position: absolute;
-    bottom: 1em;
-    left: 0;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1em;
-    opacity: 0;
-    transition: opacity 0.3s ease-out;
-    
-    &.visible {
-        opacity: 1;
-    }
-}
-
-.button {
-    // ...existing button styles...
-    position: relative; // Change from absolute
-}
-
-// Base styles without animations
-.projectpreview, .screen, .mobile, .projectproblems, 
-.projectsolutions, .projectparagraph, .controls, .dots {
-    opacity: 0;
-}
-
-// Mobile-specific animations and transitions
-@media screen and (max-width: 1199px) {
-    .projectpreview {
-        transition: all 0.5s ease-out;
-        visibility: hidden;
-        
-        &.showMobile {
-            opacity: 1;
-            visibility: visible;
-            
-            .screen, .mobile {
-                transition: opacity 0.5s ease-out;
-            }
-        }
-    }
-
-    .contentContainer {
-        transition: all 0.5s ease-out;
-        
-        &.visible {
-            .projectproblems, .projectsolutions, .projectparagraph {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    }
-
-    .projectproblems, .projectsolutions, .projectparagraph {
-        transform: translateY(10px);
-        transition: all 0.5s ease-out;
-    }
-
-    .controls, .dots {
-        transition: opacity 0.3s ease-out;
-        &.visible { opacity: 1; }
-    }
-}
-
-// Desktop-only animations
-@media screen and (min-width: 1200px) {
-    .projectpreview {
-        opacity: 1;
-    }
-
-    .screen {
-        opacity: 0;
-        animation: reveal-screen 0.5s ease-out forwards;
-        animation-delay: 0.8s;
-    }
-
-    .mobile {
-        opacity: 0;
-        animation: reveal-mobile 0.5s ease-out forwards;
-        animation-delay: 1s;
-    }
-
-    .projectproblems {
-        animation: reveal-desc 0.5s ease-out forwards;
-        animation-delay: 0.7s;
-    }
-
-    .projectsolutions {
-        animation: reveal-desc 0.5s ease-out forwards;
-        animation-delay: 0.8s;
-    }
-
-    .projectparagraph {
-        animation: reveal-desc 0.5s ease-out forwards;
-        animation-delay: 0.9s;
-    }
-
-    .controls, .dots, .arrows {
+    .controls,
+    .dots,
+    .arrows {
         opacity: 0;
         animation: reveal-controls 0.5s ease-out forwards;
         animation-delay: 1.2s;
+    }
+
+    .arrows {
+        height: auto;
+        top: 40%;
+        transform: translateY(-50%);
+        transition: opacity 0.5s ease-out;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    // ...larger desktop styles
+}
+
+// Ensure keyframes are correctly defined
+@keyframes reveal-screen {
+    from {
+        transform: translateX(40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes reveal-mobile {
+    from {
+        transform: translateY(40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+} // Add missing closing brace
+
+@keyframes reveal-desc {
+    from {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes reveal-controls {
+    from {
+        transform: translateY(10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
     }
 }

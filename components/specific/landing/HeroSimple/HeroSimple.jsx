@@ -77,12 +77,23 @@ export default function HeroSimple() {
     const [showContent, setShowContent] = useState(false);
     const [isFirstLoad, setIsFirstLoad] = useState(true);
     const [showControls, setShowControls] = useState(false);
-    const [showNav, setShowNav] = useState(false); // New state for navigation controls
+    const [showNav, setShowNav] = useState(false);
 
     useEffect(() => {
         setDesktopLoading(true);
         setMobileLoading(true);
         
+        const handleResize = () => {
+            // Reset states on resize
+            setShowContent(false);
+            setShowControls(false);
+            setShowPreview(false);
+            setShowNav(false);
+            setIsFirstLoad(true);
+        };
+
+        window.addEventListener('resize', handleResize);
+
         if (window.innerWidth < 1200) {
             setShowContent(false);
             setShowControls(false);
@@ -96,31 +107,31 @@ export default function HeroSimple() {
                     setTimeout(() => {
                         setShowPreview(false);
                         
-                        // Show content first
                         setTimeout(() => {
                             setShowContent(true);
                             
-                            // Show navigation controls after delay
                             setTimeout(() => {
                                 setShowNav(true);
                                 setShowControls(true);
                                 setIsFirstLoad(false);
-                            }, 1500); // Delay controls to allow reading
+                            }, 1500);
                         }, 300);
                     }, 2500);
                 }, 1000);
             } else {
-                // Show everything immediately for subsequent projects
                 setShowContent(true);
                 setShowNav(true);
                 setShowControls(true);
             }
         } else {
-            // Desktop behavior
             setShowContent(true);
             setShowNav(true);
             setShowControls(true);
         }
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
     }, [project, isFirstLoad]);
 
     const nextProject = () => {
@@ -198,20 +209,10 @@ export default function HeroSimple() {
                     
                     {desktopLoading && <Spinner className={styles.screenspinner} />}
 
-                    <div className={`${styles.controls} ${showControls ? styles.visible : ''}`}>
-                        <div className={styles.controllinks}>
-                            <a href={projects[project].url} className={styles.link}>GO TO SITE</a>
-                            {projects[project]?.reporturl && (
-                                <a href={projects[project]?.reporturl} className={styles.link}>SEE SCORE</a>
-                            )}
-                        </div>
-                    </div>
-
                     <Mobile 
                         extraClass={styles.mobile}
                         src={projects[project].image}
                         onLoad={() => setMobileLoading(false)}
-                        style={{ position: 'absolute', bottom: '-1em', right: '10%', width: '18vw' }}
                     />
                     {mobileLoading && <Spinner className={styles.mobilespinner} />}
                 </div>
