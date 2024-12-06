@@ -69,7 +69,7 @@
     max-height: none; // Remove max-height to fit naturally
     margin-top: 1em; // Space below project name
     visibility: hidden;
-    transition: opacity 0.3s ease-out; // Adjust transition
+    transition: opacity 0.5s ease-out;
     display: flex;
     flex-direction: column;
     justify-content: center; // Center vertically
@@ -88,6 +88,7 @@
             opacity: 1;
             width: 80%; // Adjust width for mobile
             margin: 0.5em 0; // Space between screen and mobile
+            transition: opacity 0.5s ease-out;
         }
 
         .screen {
@@ -345,16 +346,29 @@
 // Mobile-specific animations
 .contentContainer {
     opacity: 0;
-    transition: opacity 0.3s ease-out; // Adjust transition
+    transition: opacity 0.5s ease-out;
 
     &.visible {
         opacity: 1;
 
-        // Mobile-only animations
-        .projectproblems,
-        .projectsolutions,
-        .projectparagraph {
+        .projectproblems {
             opacity: 1;
+            transition-delay: 0.3s;
+        }
+
+        .projectparagraph:first-of-type {
+            opacity: 1;
+            transition-delay: 0.4s;
+        }
+
+        .projectsolutions {
+            opacity: 1;
+            transition-delay: 0.6s;
+        }
+
+        .projectparagraph:last-of-type {
+            opacity: 1;
+            transition-delay: 0.7s;
         }
     }
 }
@@ -435,6 +449,7 @@
         width: 65%; // Ensure width is set for desktop
         margin: 0; // Reset margin
         transition: none;
+        overflow: visible; // Allow buttons to overflow
 
         .screen {
             position: relative;
@@ -464,13 +479,12 @@
 
     .arrows {
         position: absolute;
-        width: calc(100% + 8em);
-        left: 50%;
         top: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 20;
+        left: 0;
+        transform: translateY(-50%);
+        width: 100%;
         padding: 0;
-        pointer-events: none;
+        z-index: 20;
         
         &.visible {
             opacity: 1;
@@ -482,15 +496,49 @@
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
+        
+        &.buttonleft {
+            left: -4em; // Position outside the preview
+        }
+
+        &.buttonright {
+            right: -4em; // Position outside the preview
+        }
+    }
+
+    .arrows {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: calc(100% + 8em); // Wider than the preview
+        padding: 0;
+        z-index: 20;
+        opacity: 0;
+        pointer-events: none;
+        animation: reveal-controls 0.5s ease-out forwards;
+        animation-delay: 1.2s;
+        
+        &.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    }
+
+    .button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.5);
         pointer-events: auto;
-    }
 
-    .buttonleft {
-        left: -4em;
-    }
+        &.buttonleft {
+            left: 0;
+        }
 
-    .buttonright {
-        right: -4em;
+        &.buttonright {
+            right: 0;
+        }
     }
 
     .screen,
@@ -510,15 +558,6 @@
 
     .title {
         margin: 0 0 0.5em 0;
-        opacity: 0;
-        animation: reveal-title 0.5s ease-out forwards;
-        animation-delay: 0.3s; // First to appear
-    }
-
-    .projectname {
-        opacity: 0;
-        animation: reveal-desc 0.5s ease-out forwards;
-        animation-delay: 0.5s; // After title
     }
 
     .disclaimer {
@@ -657,7 +696,7 @@
     .arrows {
         opacity: 0;
         animation: reveal-controls 0.5s ease-out forwards;
-        animation-delay: 1.7s; // Last to appear
+        animation-delay: 1.2s;
     }
 
     .arrows {
@@ -714,5 +753,16 @@
     to {
         transform: translateY(0);
         opacity: 1;
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    .controls,
+    .dots,
+    .arrows {
+        &.visible {
+            transition: none;
+            opacity: 1 !important;
+        }
     }
 }

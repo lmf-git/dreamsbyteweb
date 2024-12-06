@@ -70,7 +70,7 @@ const projects = [
 ];
 
 export default function HeroSimple() {
-    const [project, setProject] = useState(0);
+    const [project, setProject] = useState(null); // Change initial state to null
     const [desktopLoading, setDesktopLoading] = useState(true);
     const [mobileLoading, setMobileLoading] = useState(true);
     const [showPreview, setShowPreview] = useState(false);
@@ -78,29 +78,16 @@ export default function HeroSimple() {
     const [isFirstLoad, setIsFirstLoad] = useState(true);
     const [showControls, setShowControls] = useState(false);
     const [showNav, setShowNav] = useState(false);
+    const [initialAnimationComplete, setInitialAnimationComplete] = useState(false);
+    const [isInitialized, setIsInitialized] = useState(false);
 
+    // Separate useEffect for initial setup
     useEffect(() => {
-        setDesktopLoading(true);
-        setMobileLoading(true);
-        
-        const handleResize = () => {
-            // Reset states on resize
-            setShowContent(false);
-            setShowControls(false);
-            setShowPreview(false);
-            setShowNav(false);
-            setIsFirstLoad(true);
-        };
+        if (!isInitialized) {
+            setProject(0);
+            setIsInitialized(true);
 
-        window.addEventListener('resize', handleResize);
-
-        if (window.innerWidth < 1200) {
-            setShowContent(false);
-            setShowControls(false);
-            
-            if (isFirstLoad) {
-                setShowNav(false);
-                
+            if (window.innerWidth < 1200) {
                 setTimeout(() => {
                     setShowPreview(true);
                     
@@ -114,6 +101,7 @@ export default function HeroSimple() {
                                 setShowNav(true);
                                 setShowControls(true);
                                 setIsFirstLoad(false);
+                                setInitialAnimationComplete(true);
                             }, 1500);
                         }, 300);
                     }, 2500);
@@ -122,7 +110,45 @@ export default function HeroSimple() {
                 setShowContent(true);
                 setShowNav(true);
                 setShowControls(true);
+                setInitialAnimationComplete(true);
             }
+        }
+    }, [isInitialized]);
+
+    // Separate useEffect for project changes
+    useEffect(() => {
+        if (!isInitialized || project === 0) return; // Skip if not initialized or first project
+
+        setDesktopLoading(true);
+        setMobileLoading(true);
+        
+        const handleResize = () => {
+            setShowContent(false);
+            setShowControls(false);
+            setShowPreview(false);
+            setShowNav(false);
+            setIsFirstLoad(true);
+            setInitialAnimationComplete(false);
+            setIsInitialized(false);
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        if (window.innerWidth < 1200) {
+            setShowContent(false);
+            setShowPreview(false);
+            
+            setTimeout(() => {
+                setShowPreview(true);
+                
+                setTimeout(() => {
+                    setShowPreview(false);
+                    
+                    setTimeout(() => {
+                        setShowContent(true);
+                    }, 300);
+                }, 2000);
+            }, 300);
         } else {
             setShowContent(true);
             setShowNav(true);
@@ -132,7 +158,7 @@ export default function HeroSimple() {
         return () => {
             window.removeEventListener('resize', handleResize);
         };
-    }, [project, isFirstLoad]);
+    }, [project, isInitialized]);
 
     const nextProject = () => {
         if (project < projects.length - 1) setProject(project + 1);
@@ -144,79 +170,81 @@ export default function HeroSimple() {
 
     return (
         <div className={`section ${styles.hero}`}>
-            <div className={styles.projects}>
-                <div className={styles.projectdesc}>
-                    <h1 className={styles.title}>Latest Work</h1>
-                    <h1 className={styles.projectname}>{projects[project].name}</h1>
+            {project !== null && ( // Only render content when project is set
+                <div className={styles.projects}>
+                    <div className={styles.projectdesc}>
+                        <h1 className={styles.title}>Latest Work</h1>
+                        <h1 className={styles.projectname}>{projects[project].name}</h1>
 
-                    <div className={`${styles.contentContainer} ${showContent ? styles.visible : ''}`}>
-                        <h2 className={styles.projectproblems}>PROBLEMS:</h2>
-                        <p className={styles.projectparagraph}>{projects[project].problem}</p>
+                        <div className={`${styles.contentContainer} ${showContent ? styles.visible : ''}`}>
+                            <h2 className={styles.projectproblems}>PROBLEMS:</h2>
+                            <p className={styles.projectparagraph}>{projects[project].problem}</p>
 
-                        <h2 className={styles.projectsolutions}>SOLUTIONS:</h2>
-                        <p className={styles.projectparagraph}>{projects[project].solution}</p>
-                    </div>
+                            <h2 className={styles.projectsolutions}>SOLUTIONS:</h2>
+                            <p className={styles.projectparagraph}>{projects[project].solution}</p>
+                        </div>
 
-                    <div className={`${styles.controls} ${showNav ? styles.visible : ''}`}>
-                        <div className={styles.controllinks}>
-                            <a href={projects[project].url} className={styles.link}>GO TO SITE</a>
-                            {projects[project]?.reporturl && (
-                                <a href={projects[project]?.reporturl} className={styles.link}>SEE SCORE</a>
+                        <div className={`${styles.controls} ${showNav ? styles.visible : ''}`}>
+                            <div className={styles.controllinks}>
+                                <a href={projects[project].url} className={styles.link}>GO TO SITE</a>
+                                {projects[project]?.reporturl && (
+                                    <a href={projects[project]?.reporturl} className={styles.link}>SEE SCORE</a>
+                                )}
+                            </div>
+                        </div>
+
+                        <div className={`${styles.dots} ${showNav ? styles.visible : ''}`}>
+                            {projects.map((p, i) => 
+                                Math.abs(project - i) <= 2 ? 
+                                    <Dot 
+                                        key={i} 
+                                        className={`${styles.dot} ${project === i ? styles.active : ''}`} 
+                                        onClick={() => setProject(i)}
+                                    /> 
+                                    : 
+                                    null
                             )}
                         </div>
                     </div>
 
-                    <div className={`${styles.dots} ${showNav ? styles.visible : ''}`}>
-                        {projects.map((p, i) => 
-                            Math.abs(project - i) <= 2 ? 
-                                <Dot 
-                                    key={i} 
-                                    className={`${styles.dot} ${project === i ? styles.active : ''}`} 
-                                    onClick={() => setProject(i)}
-                                /> 
-                                : 
-                                null
-                        )}
+                    <div className={`${styles.arrows} ${showNav ? styles.visible : ''}`}>
+                        {project > 0 ? (
+                            <button 
+                                className={`${styles.button} ${styles.buttonleft}`} 
+                                onClick={prevProject}
+                            >
+                                <LeftLine className={`${styles.arrow} ${styles.arrowleft}`} />
+                            </button>
+                        ) : <div className={styles.buttonspacer} />}
+                        
+                        {project < projects.length - 1 ? (
+                            <button 
+                                className={`${styles.button} ${styles.buttonright}`} 
+                                onClick={nextProject}
+                            >
+                                <RightLine className={`${styles.arrow} ${styles.arrowright}`} />
+                            </button>
+                        ) : <div className={styles.buttonspacer} />}
+                    </div>
+
+                    <div className={`${styles.projectpreview} ${showPreview ? styles.showMobile : ''}`}>
+                        <Screen 
+                            extraClass={`${styles.screen} ${showPreview ? styles.showMobile : ''}`}
+                            src={projects[project].desktopimage}
+                            onLoad={() => setDesktopLoading(false)}
+                        />
+                        
+                        {desktopLoading && <Spinner className={styles.screenspinner} />}
+
+                        <Mobile 
+                            extraClass={styles.mobile}
+                            src={projects[project].image}
+                            onLoad={() => setMobileLoading(false)}
+                        />
+                        {mobileLoading && <Spinner className={styles.mobilespinner} />}
                     </div>
                 </div>
-
-                <div className={`${styles.arrows} ${showNav ? styles.visible : ''}`}>
-                    {project > 0 ? (
-                        <button 
-                            className={`${styles.button} ${styles.buttonleft}`} 
-                            onClick={prevProject}
-                        >
-                            <LeftLine className={`${styles.arrow} ${styles.arrowleft}`} />
-                        </button>
-                    ) : <div className={styles.buttonspacer} />}
-                    
-                    {project < projects.length - 1 ? (
-                        <button 
-                            className={`${styles.button} ${styles.buttonright}`} 
-                            onClick={nextProject}
-                        >
-                            <RightLine className={`${styles.arrow} ${styles.arrowright}`} />
-                        </button>
-                    ) : <div className={styles.buttonspacer} />}
-                </div>
-
-                <div className={`${styles.projectpreview} ${showPreview ? styles.showMobile : ''}`}>
-                    <Screen 
-                        extraClass={`${styles.screen} ${showPreview ? styles.showMobile : ''}`}
-                        src={projects[project].desktopimage}
-                        onLoad={() => setDesktopLoading(false)}
-                    />
-                    
-                    {desktopLoading && <Spinner className={styles.screenspinner} />}
-
-                    <Mobile 
-                        extraClass={styles.mobile}
-                        src={projects[project].image}
-                        onLoad={() => setMobileLoading(false)}
-                    />
-                    {mobileLoading && <Spinner className={styles.mobilespinner} />}
-                </div>
-            </div>
+            )}
         </div>
     );
 };
