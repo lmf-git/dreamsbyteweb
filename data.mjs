@@ -69,6 +69,13 @@ export const testimonials = [
     },
     {
         logo: null,
+        name: 'Doc',
+        company: 'Electric Doctors',
+        testimonial: 'Great communication skills. They were excellent in helping us define our goals, explore available options, designing & implementing solutions. Security conscientious & driven. Superb follow up and continued services. This company has earned a client for life with us.',
+        reporturl: null
+    },
+    {
+        logo: null,
         name: 'Amogh G',
         company: null,
         testimonial: 'Really good javascript coder, and teacher. Also charges less than most. Can finish the project quickly.',
@@ -79,13 +86,6 @@ export const testimonials = [
         name: 'Mila E',
         company: null,
         testimonial: 'Working with dreamsbyte was a real pleasure. They built a gorgeous website for my small business from scratch, listened to my comments, everything works perfectly and fast, I\'m very happy (and so are my customers :)).',
-        reporturl: null
-    },
-    {
-        logo: null,
-        name: 'Doc',
-        company: 'Electric Doctors',
-        testimonial: 'Great communication skills. They were excellent in helping us define our goals, explore available options, designing & implementing solutions. Security conscientious & driven. Superb follow up and continued services. This company has earned a client for life with us.',
         reporturl: null
     },
     {
