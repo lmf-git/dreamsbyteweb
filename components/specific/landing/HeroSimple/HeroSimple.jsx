@@ -80,6 +80,7 @@ export default function HeroSimple() {
     const [showNav, setShowNav] = useState(false);
     const [initialAnimationComplete, setInitialAnimationComplete] = useState(false);
     const [isInitialized, setIsInitialized] = useState(false);
+    const [isTransitioning, setIsTransitioning] = useState(false);
 
     // Separate useEffect for initial setup
     useEffect(() => {
@@ -119,6 +120,7 @@ export default function HeroSimple() {
     useEffect(() => {
         if (!isInitialized || project === 0) return; // Skip if not initialized or first project
 
+        setIsTransitioning(true);
         setDesktopLoading(true);
         setMobileLoading(true);
         
@@ -146,13 +148,19 @@ export default function HeroSimple() {
                     
                     setTimeout(() => {
                         setShowContent(true);
+                        setIsTransitioning(false);
                     }, 300);
                 }, 2000);
             }, 300);
         } else {
-            setShowContent(true);
-            setShowNav(true);
-            setShowControls(true);
+            setShowContent(false);
+            setShowPreview(false);
+            
+            setTimeout(() => {
+                setShowPreview(true);
+                setShowContent(true);
+                setIsTransitioning(false);
+            }, 300);
         }
 
         return () => {
@@ -161,11 +169,11 @@ export default function HeroSimple() {
     }, [project, isInitialized]);
 
     const nextProject = () => {
-        if (project < projects.length - 1) setProject(project + 1);
+        if (project < projects.length - 1 && !isTransitioning) setProject(project + 1);
     };
 
     const prevProject = () => {
-        if (project > 0) setProject(project - 1);
+        if (project > 0 && !isTransitioning) setProject(project - 1);
     };
 
     return (
@@ -199,7 +207,7 @@ export default function HeroSimple() {
                                     <Dot 
                                         key={i} 
                                         className={`${styles.dot} ${project === i ? styles.active : ''}`} 
-                                        onClick={() => setProject(i)}
+                                        onClick={() => !isTransitioning && setProject(i)}
                                     /> 
                                     : 
                                     null
