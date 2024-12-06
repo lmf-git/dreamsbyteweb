@@ -83,6 +83,33 @@ export default function HeroSimple() {
     const [isTransitioning, setIsTransitioning] = useState(false);
     const [firstRevealComplete, setFirstRevealComplete] = useState(false);
     const [currentProject, setCurrentProject] = useState(null); // Add this new state
+    const [imagesLoaded, setImagesLoaded] = useState(false);
+
+    // Add image preloading function
+    const preloadImages = (projectIndex) => {
+        setImagesLoaded(false);
+        setDesktopLoading(true);
+        setMobileLoading(true);
+
+        const desktopImage = new Image();
+        const mobileImage = new Image();
+        let loadedCount = 0;
+
+        const handleLoad = () => {
+            loadedCount++;
+            if (loadedCount === 2) {
+                setImagesLoaded(true);
+                setDesktopLoading(false);
+                setMobileLoading(false);
+            }
+        };
+
+        desktopImage.onload = handleLoad;
+        mobileImage.onload = handleLoad;
+
+        desktopImage.src = projects[projectIndex].desktopimage;
+        mobileImage.src = projects[projectIndex].image;
+    };
 
     // Initial setup
     useEffect(() => {
@@ -91,6 +118,7 @@ export default function HeroSimple() {
             setIsInitialized(true);
             setProject(0);
             setCurrentProject(0);
+            preloadImages(0);
             
             if (isMobile) {
                 setTimeout(() => {
@@ -137,31 +165,54 @@ export default function HeroSimple() {
         setShowContent(false);
         setShowPreview(false); // Reset preview state
         
+        // Preload images before starting transition
+        preloadImages(project);
+        
         if (isMobile) {
-            // Simplified mobile transitions
-            setShowPreview(false);
-            setTimeout(() => {
-                setCurrentProject(project); // Add this to update current project
+            const startTransition = () => {
+                setCurrentProject(project);
                 setShowPreview(true);
                 setTimeout(() => {
                     setShowPreview(false);
-                    setShowContent(true); // Content will fade in with staggered animation
+                    setShowContent(true);
                     setIsTransitioning(false);
                 }, 1500);
-            }, 200);
+            };
+
+            // Wait for images to load
+            if (imagesLoaded) {
+                setTimeout(startTransition, 200);
+            } else {
+                const checkImages = setInterval(() => {
+                    if (imagesLoaded) {
+                        clearInterval(checkImages);
+                        setTimeout(startTransition, 200);
+                    }
+                }, 100);
+            }
         } else {
-            // Desktop transitions - reduced delays
-            setTimeout(() => {
-                setCurrentProject(project); // Update content after it's hidden
-                setShowContent(true); // Content will fade in with staggered animation
-                // Wait for content animations before showing preview
+            const startTransition = () => {
+                setCurrentProject(project);
+                setShowContent(true);
                 setTimeout(() => {
                     setShowPreview(true);
                     setIsTransitioning(false);
-                }, 600); // Reduced from 800 to 600ms for project changes
-            }, 100); // Short delay to ensure content is hidden first
+                }, 600);
+            };
+
+            // Wait for images to load
+            if (imagesLoaded) {
+                setTimeout(startTransition, 100);
+            } else {
+                const checkImages = setInterval(() => {
+                    if (imagesLoaded) {
+                        clearInterval(checkImages);
+                        setTimeout(startTransition, 100);
+                    }
+                }, 100);
+            }
         }
-    }, [project, isInitialized, initialAnimationComplete]);
+    }, [project, isInitialized, initialAnimationComplete, imagesLoaded]);
 
     const nextProject = () => {
         if (project < projects.length - 1 && !isTransitioning) setProject(project + 1);
