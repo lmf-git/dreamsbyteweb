@@ -79,6 +79,7 @@
     padding: 0 3.5em; // Match projectdesc padding
     box-sizing: border-box;
     min-height: auto;
+    transition: all 0.4s ease-in-out;
 
     &.showMobile {
         visibility: visible;
@@ -91,8 +92,8 @@
             max-height: 35vh; // Slightly reduce height
             margin-bottom: 1.5em; // More space between screen and mobile
             transform: translateX(0);
-            transition: all 0.5s ease-out;
-            transition-delay: 0.3s;
+            transition: all 0.4s ease-in-out;
+            transition-delay: 0.2s;
         }
 
         .mobile {
@@ -102,8 +103,8 @@
             width: 25%; // Make mobile preview smaller
             opacity: 1;
             transform: translate(-50%, 0);
-            transition: all 0.5s ease-out;
-            transition-delay: 0.8s;
+            transition: all 0.4s ease-in-out;
+            transition-delay: 0.4s;
         }
     }
 }
@@ -375,28 +376,29 @@
     opacity: 0;
     transition: opacity 0.5s ease-out;
     min-height: 25em; // Set minimum height for content
+    transition: all 0.4s ease-in-out;
 
     &.visible {
         opacity: 1;
 
         .projectproblems {
             opacity: 1;
-            transition-delay: 0.3s;
+            transition-delay: 0.2s;
         }
 
         .projectparagraph:first-of-type {
             opacity: 1;
-            transition-delay: 0.4s;
+            transition-delay: 0.3s;
         }
 
         .projectsolutions {
             opacity: 1;
-            transition-delay: 0.6s;
+            transition-delay: 0.4s;
         }
 
         .projectparagraph:last-of-type {
             opacity: 1;
-            transition-delay: 0.7s;
+            transition-delay: 0.5s;
         }
     }
 }
@@ -488,7 +490,7 @@
             margin: 0;
             max-height: none;
             animation: none; // Remove default animation
-            transition: all 0.4s ease-out;
+            transition: all 0.4s ease-in-out;
             transform: translateX(20px);
             transition-delay: 0.1s;
         }
@@ -503,7 +505,7 @@
             transform: translateY(20px);
             opacity: 0; // Start hidden
             animation: none; // Remove default animation
-            transition: all 0.4s ease-out;
+            transition: all 0.4s ease-in-out;
             transition-delay: 0.3s;
         }
 
@@ -525,7 +527,7 @@
                 margin: 0;
                 opacity: 1;
                 transform: translateX(0);
-                transition: all 0.4s ease-out;
+                transition: all 0.4s ease-in-out;
                 transition-delay: 0.1s;
             }
 
@@ -539,7 +541,7 @@
                 width: 14vw;
                 transform: translateY(0);
                 opacity: 1;
-                transition: all 0.4s ease-out;
+                transition: all 0.4s ease-in-out;
                 transition-delay: 0.3s;
             }
         }
@@ -554,28 +556,28 @@
     }
 
     .arrows {
-        position: absolute; // Change back to absolute for desktop
-        top: 50%; // Relative to preview container
+        position: absolute;
+        top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: calc(100% + 10em); // Wider to position arrows outside
-        max-width: 1600px; // Prevent arrows from going too wide
-        height: 3.5em; // Maintain fixed height
-        margin: 0 auto;
+        width: calc(100% + 8em);
         padding: 0;
         z-index: 20;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        pointer-events: none;
         opacity: 0;
-        animation: reveal-controls 0.5s ease-out forwards;
-        animation-delay: 1.2s;
-        
+        pointer-events: none;
+        visibility: visible; // Make sure visibility is always visible
+        transition: opacity 0.3s ease-out; // Add transition for smoother fade
+
         &.visible {
             opacity: 1;
             pointer-events: auto;
         }
+    }
+
+    // Remove any animation that might hide the arrows
+    .arrows {
+        animation: none; // Remove the reveal-controls animation
+        animation-delay: 0s;
     }
 
     .button {
@@ -760,34 +762,20 @@
 
     .contentContainer {
         opacity: 0;
-        transition: opacity 0.5s ease-out;
-        min-height: 0; // Reset min-height
-        margin-bottom: 0; // Reset margin
-        visibility: hidden;
-        transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+        visibility: hidden; // Add visibility control
+        min-height: 0;
+        margin-bottom: 0;
+        transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
 
         &.visible {
             opacity: 1;
             visibility: visible;
 
-            .projectproblems {
+            .projectproblems,
+            .projectsolutions,
+            .projectparagraph {
                 opacity: 1;
-                transition-delay: 0.3s;
-            }
-
-            .projectparagraph:first-of-type {
-                opacity: 1;
-                transition-delay: 0.4s;
-            }
-
-            .projectsolutions {
-                opacity: 1;
-                transition-delay: 0.6s;
-            }
-
-            .projectparagraph:last-of-type {
-                opacity: 1;
-                transition-delay: 0.7s;
+                visibility: visible;
             }
         }
 
@@ -795,9 +783,24 @@
         .projectsolutions,
         .projectparagraph {
             opacity: 0;
-            transition: opacity 0.3s ease-out;
-            animation: none; // Remove any keyframe animations
-            will-change: opacity;
+            visibility: hidden; // Hide text completely when not visible
+            transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+            will-change: opacity, visibility;
+        }
+
+        &.visible {
+            .projectproblems {
+                transition-delay: 0.2s;
+            }
+            .projectparagraph:first-of-type {
+                transition-delay: 0.3s;
+            }
+            .projectsolutions {
+                transition-delay: 0.5s;
+            }
+            .projectparagraph:last-of-type {
+                transition-delay: 0.6s;
+            }
         }
     }
 
@@ -910,11 +913,11 @@
 
 @media screen and (max-width: 1199px) {
     .controls,
-    .dots,
-    .arrows {
+    .dots {
         &.visible {
             transition: none;
             opacity: 1 !important;
         }
     }
+    // Remove arrows from this media query if it exists
 }

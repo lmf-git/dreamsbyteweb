@@ -82,53 +82,54 @@ export default function HeroSimple() {
     const [isInitialized, setIsInitialized] = useState(false);
     const [isTransitioning, setIsTransitioning] = useState(false);
 
-    // Single initialization effect
+    // Initial setup
     useEffect(() => {
         if (!isInitialized) {
             const isMobile = window.innerWidth < 1200;
-            
-            // Set initial states synchronously
             setProject(0);
             setIsInitialized(true);
             
             if (isMobile) {
+                // Mobile sequence remains the same
                 setTimeout(() => {
                     setShowPreview(true);
                     setTimeout(() => {
                         setShowPreview(false);
-                        setShowContent(true);
-                        setShowNav(true);
-                        setShowControls(true);
-                        setInitialAnimationComplete(true);
-                    }, 2000);
-                }, 1200);
+                        setTimeout(() => {
+                            setShowContent(true);
+                            setShowNav(true);
+                            setShowControls(true);
+                            setInitialAnimationComplete(true);
+                        }, 200);
+                    }, 1500);
+                }, 800);
             } else {
-                // Desktop - delay controls until after preview loads
+                // Desktop sequence: show arrows with other controls
                 setTimeout(() => {
-                    setShowPreview(true);
+                    setShowContent(true);
                     setTimeout(() => {
-                        setShowContent(true);
-                        setShowNav(true);
+                        setShowPreview(true);
+                        setShowNav(true); // Show navigation including arrows
                         setShowControls(true);
                         setInitialAnimationComplete(true);
-                    }, 800);
-                }, 1200);
+                    }, 400);
+                }, 800);
             }
         }
     }, [isInitialized]);
 
-    // Project change effect - only run when project actually changes
+    // Project change effect
     useEffect(() => {
         if (!isInitialized || !initialAnimationComplete || project === 0) return;
 
         setIsTransitioning(true);
         setShowContent(false);
-        setShowPreview(false);
         setDesktopLoading(true);
         setMobileLoading(true);
         
         if (window.innerWidth < 1200) {
-            // Mobile sequence
+            // Keep mobile sequence unchanged
+            setShowPreview(false);
             setTimeout(() => {
                 setShowPreview(true);
                 setTimeout(() => {
@@ -136,18 +137,15 @@ export default function HeroSimple() {
                     setTimeout(() => {
                         setShowContent(true);
                         setIsTransitioning(false);
-                    }, 300);
-                }, 2000);
-            }, 300);
+                    }, 200);
+                }, 1500);
+            }, 200);
         } else {
-            // Desktop sequence
+            // Desktop: keep preview visible, only fade content
             setTimeout(() => {
-                setShowPreview(true);
-                setTimeout(() => {
-                    setShowContent(true);
-                    setIsTransitioning(false);
-                }, 800);
-            }, 300);
+                setShowContent(true);
+                setIsTransitioning(false);
+            }, 200);
         }
     }, [project, isInitialized, initialAnimationComplete]);
 
@@ -198,7 +196,13 @@ export default function HeroSimple() {
                         </div>
                     </div>
 
-                    <div className={`${styles.arrows} ${showNav && !isTransitioning && initialAnimationComplete ? styles.visible : ''}`}>
+                    <div className={`${styles.arrows} ${
+                        // Show arrows on desktop after initialization, regardless of transition state
+                        (showNav && window.innerWidth >= 1200) || 
+                        (showNav && !isTransitioning && window.innerWidth < 1200) 
+                            ? styles.visible 
+                            : ''
+                    }`}>
                         {project > 0 ? (
                             <button 
                                 className={`${styles.button} ${styles.buttonleft}`} 
