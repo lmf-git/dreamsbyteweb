@@ -27,6 +27,7 @@
     align-items: flex-start;
     height: 100%;
     box-sizing: border-box;
+    position: relative; // Add this to contain absolute arrows
 }
 
 .projectdesc {
@@ -39,7 +40,7 @@
     margin-bottom: 0; // Remove bottom margin
     user-select: none;
     position: relative; // Ensure text stays above preview
-    min-height: auto; // Remove fixed height
+    min-height: 72vh;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -62,12 +63,12 @@
 .projectpreview {
     opacity: 0;
     position: absolute; // Change to absolute
-    top: 12em; // Increase from 8em to add more space below project name
+    top: 12em; // Return to original position
     left: 0;
     width: 100%;
     height: auto; // Let height be determined by content
     max-height: none; // Remove max-height to fit naturally
-    margin-top: 1em; // Space below project name
+    margin-top: 1em; // Return to original spacing
     visibility: hidden;
     transition: opacity 0.5s ease-out;
     display: flex;
@@ -208,6 +209,9 @@
     opacity: 0;
     transition: opacity 0.3s ease-out;
     margin-top: 1.5em;
+    position: absolute;
+    bottom: 3em; // Fixed position from bottom
+    left: 0;
     
     &.visible {
         opacity: 1;
@@ -241,6 +245,9 @@
     opacity: 0;
     transition: opacity 0.3s ease-out;
     margin-top: 0.75em;
+    position: absolute;
+    bottom: 1em; // Fixed position from bottom
+    left: 0;
     
     &.visible {
         opacity: 1;
@@ -248,23 +255,23 @@
 }
 
 .arrows {
-    position: absolute;
-    width: 100%;
-    left: 0;
+    position: absolute; // Change back to absolute
     top: 50%;
+    left: 0;
     transform: translateY(-50%);
+    width: 100%;
+    height: 3.5em; // Add fixed height
     z-index: 20;
     display: flex;
     justify-content: space-between;
     padding: 0 1em;
     box-sizing: border-box;
+    pointer-events: none;
     opacity: 0;
-    transition: opacity 0.3s ease-out;
-    pointer-events: none; // Disable when hidden
     
     &.visible {
         opacity: 1;
-        pointer-events: auto; // Enable when visible
+        pointer-events: auto;
     }
 }
 
@@ -344,6 +351,7 @@
 .contentContainer {
     opacity: 0;
     transition: opacity 0.5s ease-out;
+    min-height: 25em; // Set minimum height for content
 
     &.visible {
         opacity: 1;
@@ -425,7 +433,7 @@
 
     .projectdesc {
         padding: 0;
-        min-height: 66vh; // Add back min-height for desktop
+        min-height: 60vh;
         margin-bottom: 0;
         flex: 0 0 35%;
         display: flex;
@@ -518,12 +526,13 @@
     }
 
     .arrows {
-        position: absolute;
-        top: 50%;
+        position: absolute; // Change back to absolute for desktop
+        top: 50%; // Relative to preview container
         left: 50%;
         transform: translate(-50%, -50%);
         width: calc(100% + 10em); // Wider to position arrows outside
         max-width: 1600px; // Prevent arrows from going too wide
+        height: 3.5em; // Maintain fixed height
         margin: 0 auto;
         padding: 0;
         z-index: 20;
@@ -533,6 +542,44 @@
         pointer-events: none;
         opacity: 0;
         animation: reveal-controls 0.5s ease-out forwards;
+        animation-delay: 1.2s;
+        
+        &.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    }
+
+    .button {
+        position: relative; // Change to relative
+        pointer-events: auto;
+        margin: 0 -5em; // Push buttons outward
+
+        &.buttonleft {
+            left: 0;
+        }
+
+        &.buttonright {
+            right: 0;
+        }
+    }
+
+    .arrows {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        width: 100%; // Change to 100% to stay within preview bounds
+        padding: 0;
+        z-index: 20;
+        opacity: 0;
+        pointer-events: none;
+        animation: reveal-controls 0.5s ease-out forwards;
+        animation-delay: 1.2s;
+        
+        &.visible {
+            opacity: 1;
+            pointer-events: auto;
         }
     }
 
@@ -686,6 +733,8 @@
     .contentContainer {
         opacity: 0;
         transition: opacity 0.5s ease-out;
+        min-height: 0; // Reset min-height
+        margin-bottom: 0; // Reset margin
 
         &.visible {
             opacity: 1;
