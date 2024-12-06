@@ -47,6 +47,25 @@ export default function Services() {
       </div>
     </div>
 
+    <div className={styles.providers}>
+      <div className={styles.providersHeading}>
+        <span className={styles.preamble}>Our Tech Stack</span>
+        <h3 className={styles.title}>Technologies We Use</h3>
+      </div>
+      <div className={styles.providersList}>
+        <span className={styles.provider}>Node.js</span>
+        <span className={styles.provider}>Heroku</span>
+        <span className={styles.provider}>AWS</span>
+        <span className={styles.provider}>Nuxt</span>
+        <span className={styles.provider}>Svelte</span>
+        <span className={styles.provider}>JavaScript</span>
+        <span className={styles.provider}>HTML</span>
+        <span className={styles.provider}>CSS</span>
+        <span className={styles.provider}>PostgreSQL</span>
+        <span className={styles.provider}>Nginx</span>
+      </div>
+    </div>
+
     <p className={styles.additional}>
       To start realising your digital dreams, email us today at&nbsp;
       <a className={styles.additionallink} href="mailto:contact@dreamsbyte.com">contact@dreamsbyte.com</a>

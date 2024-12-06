@@ -8,7 +8,8 @@
   color: white;
 }
 
-.heading {
+.heading, .providersHeading {
+  font-family: var(--font-syne);
   font-size: 1.65em;
   margin-bottom: 1.5em;
   margin-left: 2em;
@@ -16,7 +17,9 @@
 
 .preamble {
   font-size: .5em;
-  font-weight: bold;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: rgb(200, 200, 200);
 }
 
 .title {
@@ -37,16 +40,19 @@
 }
 
 .name {
+  font-family: var(--font-syne);
   font-size: 1.45em;
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: .925em;
+  color: rgb(245, 245, 245);
 }
 
 .example {
+  font-family: var(--font-inter);
   margin-bottom: .5em;
-  font-weight: 200;
-  color: rgb(226, 226, 226);
-  line-height: 1.25em;
+  font-weight: 400;
+  color: rgb(200, 200, 200);
+  line-height: 1.4em;
   position: relative;
   
   &:before {
@@ -101,5 +107,44 @@
 
   .additional {
     margin: 0;
+  }
+
+  .providers {
+    margin-top: 3em;
+  }
+}
+
+.providers {
+  margin-top: 3.5em;
+  text-align: center;
+}
+
+.providersHeading {
+  margin-bottom: 1em;
+  margin-left: 0;
+  text-align: center;
+}
+
+.providersList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5em;
+  margin: 1em 0;
+}
+
+.provider {
+  font-family: var(--font-inter);
+  font-size: 0.9em;
+  font-weight: 500;
+  color: rgb(180, 180, 180);
+  padding: 0.5em 1em;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: rgb(230, 230, 230);
+    border-color: rgba(255, 255, 255, 0.3);
   }
 }
