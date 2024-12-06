@@ -75,9 +75,6 @@ export default function HeroSimple() {
     const [mobileLoading, setMobileLoading] = useState(true);
     const [showPreview, setShowPreview] = useState(false);
     const [showContent, setShowContent] = useState(false);
-    const [isFirstLoad, setIsFirstLoad] = useState(true);
-    const [showControls, setShowControls] = useState(false);
-    const [showNav, setShowNav] = useState(false);
     const [initialAnimationComplete, setInitialAnimationComplete] = useState(false);
     const [isInitialized, setIsInitialized] = useState(false);
     const [isTransitioning, setIsTransitioning] = useState(false);
@@ -85,6 +82,7 @@ export default function HeroSimple() {
     const [currentProject, setCurrentProject] = useState(null); // Add this new state
     const [imagesLoaded, setImagesLoaded] = useState(false);
     const [isReturningToFirst, setIsReturningToFirst] = useState(false);
+    const [showNav, setShowNav] = useState(false);
 
     const preloadImages = (projectIndex) => {
         return new Promise((resolve) => {
@@ -137,7 +135,6 @@ export default function HeroSimple() {
                             // Delay controls until after content animations
                             setTimeout(() => {
                                 setShowNav(true);
-                                setShowControls(true);
                                 setInitialAnimationComplete(true);
                             }, 1000); // Delay matches the last content transition
                         }, 1500);
@@ -149,7 +146,6 @@ export default function HeroSimple() {
                         setTimeout(() => {
                             setShowPreview(true);
                             setTimeout(() => {
-                                setShowControls(true);
                                 setFirstRevealComplete(true);
                                 setShowNav(true);
                                 setInitialAnimationComplete(true);
@@ -255,7 +251,7 @@ export default function HeroSimple() {
 
                     <div className={`${styles.arrows} ${
                         // Only show on desktop after first reveal, or on mobile with normal conditions
-                        ((firstRevealComplete || !isFirstLoad) && window.innerWidth >= 1200) || 
+                        (firstRevealComplete && window.innerWidth >= 1200) || 
                         (showNav && !isTransitioning && window.innerWidth < 1200) 
                             ? styles.visible 
                             : ''

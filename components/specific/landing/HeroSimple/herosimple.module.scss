@@ -124,7 +124,7 @@
 .screen { 
     opacity: 0;
     position: relative;
-    z-index: 1;
+    z-index: 1; // Lower z-index
     transition: all 0.5s ease-out;
     transform: translateX(-20px);
     user-select: none;
@@ -143,55 +143,10 @@
     }
 }
 
-.herosimple_screen { 
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-.screenmonitor {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: 0;
-    left: 0;
-}
-
-.screenbase {
-    position: absolute;
-    top: 32.5vw;
-    width: 35vh;
-    left: 0;
-    right: 0;
-    margin: auto;
-    z-index: -1;
-}
-
 .mobile {
     opacity: 0;
     position: absolute;
-    z-index: 2;
-    transition: all 0.5s ease-out;
-    user-select: none;
-    display: block; // Always display but control with opacity
-    width: 25%; // Match the showMobile state
-    aspect-ratio: 9 / 16; // Lock aspect ratio for mobile
-    top: 20%; // Match initial position
-    left: 50%;
-    transform: translate(-50%, 20px);
-    
-    &:not(.showMobile) {
-        opacity: 0;
-        transform: translate(-50%, 20px);
-    }
-    
-    &.showMobile {
-        opacity: 1;
-    }
-}
-
-.mobileicon {
-    width: 100%;
+    z-index: 3; // Higher z-index to ensure it's above screen
 }
 
 .screenspinner {
@@ -224,11 +179,6 @@
     opacity: 0;
     transition: opacity 0.3s ease-out; // Adjust transition
     user-select: none;
-}
-
-.mobileiframe {
-    width: 100%;
-    height: 100%;
 }
 
 .controls {
@@ -310,6 +260,8 @@
 .buttonspacer {
     width: 3.5em;
     height: 3.5em;
+    opacity: 0;
+    transition: opacity 0.3s ease-out; // Add transition to spacer
 }
 
 .dot {
@@ -324,7 +276,6 @@
 
 .button {
     pointer-events: auto;
-    // background: rgba(0, 0, 0, 0.5);
     background: rgba(255, 255, 255, 0.5);
     border: none;
     border-radius: 50%;
@@ -335,9 +286,10 @@
     justify-content: center;
     cursor: pointer;
     opacity: 0.7;
-    transition: opacity 0.2s ease;
-    position: relative; // Change from absolute
+    transition: all 0.3s ease-out; // Smoother transition
+    position: relative;
     user-select: none;
+    visibility: visible; // Add this to ensure visibility transitions work
 
     &:hover {
         opacity: 1;
@@ -347,7 +299,7 @@
         opacity: 0;
         cursor: not-allowed;
         pointer-events: none;
-        visibility: hidden;
+        // Remove visibility: hidden to allow fade out
     }
 }
 
@@ -471,11 +423,6 @@
     }
 }
 
-.button {
-    // ...existing button styles...
-    position: relative; // Change from absolute
-}
-
 // Desktop breakpoints (at end of file)
 @media screen and (min-width: 1200px) {
     .hero {
@@ -527,6 +474,7 @@
             transition: all 0.4s ease-in-out;
             transform: translateX(20px);
             transition-delay: 0.1s;
+            z-index: 1; // Ensure consistent z-index in desktop view
         }
 
         .mobile {
@@ -541,6 +489,7 @@
             animation: none; // Remove default animation
             transition: all 0.4s ease-in-out;
             transition-delay: 0.3s;
+            z-index: 3; // Keep mobile above screen in desktop view
         }
 
         &.showMobile {
@@ -647,12 +596,6 @@
         font-size: 2em; // Restore larger size for desktop
     }
 
-    .disclaimer {
-        display: block;
-        width: 27.5em;
-        margin-left: 4.1em;
-    }
-
     .controls {
         position: absolute;
         bottom: -4.25em;
@@ -728,33 +671,7 @@
     }
 }
 
-@media screen and (min-width: 1400px) {
-    // ...larger desktop styles
-}
-
 // Ensure keyframes are correctly defined
-@keyframes reveal-screen {
-    from {
-        transform: translateX(20px);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes reveal-mobile {
-    from {
-        transform: translateY(40px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-} // Add missing closing brace
-
 @keyframes reveal-desc {
     from {
         transform: translateX(-20px);
@@ -762,28 +679,6 @@
     }
     to {
         transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes reveal-controls {
-    from {
-        transform: translateY(10px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes reveal-mobile-overlay {
-    from {
-        transform: translate(-50%, 20px);
-        opacity: 0;
-    }
-    to {
-        transform: translate(-50%, 0);
         opacity: 1;
     }
 }
