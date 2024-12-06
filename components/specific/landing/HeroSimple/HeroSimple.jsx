@@ -81,6 +81,7 @@ export default function HeroSimple() {
     const [initialAnimationComplete, setInitialAnimationComplete] = useState(false);
     const [isInitialized, setIsInitialized] = useState(false);
     const [isTransitioning, setIsTransitioning] = useState(false);
+    const [firstRevealComplete, setFirstRevealComplete] = useState(false);
 
     // Initial setup
     useEffect(() => {
@@ -90,7 +91,7 @@ export default function HeroSimple() {
             setIsInitialized(true);
             
             if (isMobile) {
-                // Mobile sequence remains the same
+                // Mobile sequence remains unchanged
                 setTimeout(() => {
                     setShowPreview(true);
                     setTimeout(() => {
@@ -104,14 +105,17 @@ export default function HeroSimple() {
                     }, 1500);
                 }, 800);
             } else {
-                // Desktop sequence: show arrows with other controls
+                // Desktop: delayed arrow reveal
                 setTimeout(() => {
                     setShowContent(true);
                     setTimeout(() => {
                         setShowPreview(true);
-                        setShowNav(true); // Show navigation including arrows
                         setShowControls(true);
-                        setInitialAnimationComplete(true);
+                        setTimeout(() => {
+                            setFirstRevealComplete(true);
+                            setShowNav(true);
+                            setInitialAnimationComplete(true);
+                        }, 800); // Wait for preview animations
                     }, 400);
                 }, 800);
             }
@@ -141,11 +145,12 @@ export default function HeroSimple() {
                 }, 1500);
             }, 200);
         } else {
-            // Desktop: keep preview visible, only fade content
+            // Desktop: ensure content is hidden before showing new content
+            setShowContent(false);
             setTimeout(() => {
                 setShowContent(true);
                 setIsTransitioning(false);
-            }, 200);
+            }, 400); // Increased delay to ensure complete fade out
         }
     }, [project, isInitialized, initialAnimationComplete]);
 
@@ -197,8 +202,8 @@ export default function HeroSimple() {
                     </div>
 
                     <div className={`${styles.arrows} ${
-                        // Show arrows on desktop after initialization, regardless of transition state
-                        (showNav && window.innerWidth >= 1200) || 
+                        // Only show on desktop after first reveal, or on mobile with normal conditions
+                        ((firstRevealComplete || !isFirstLoad) && window.innerWidth >= 1200) || 
                         (showNav && !isTransitioning && window.innerWidth < 1200) 
                             ? styles.visible 
                             : ''

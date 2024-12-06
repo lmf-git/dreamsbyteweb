@@ -565,48 +565,10 @@
         z-index: 20;
         opacity: 0;
         pointer-events: none;
-        visibility: visible; // Make sure visibility is always visible
-        transition: opacity 0.3s ease-out; // Add transition for smoother fade
+        // Remove animation and animation-delay
+        transition: opacity 0.3s ease-out;
+        visibility: visible;
 
-        &.visible {
-            opacity: 1;
-            pointer-events: auto;
-        }
-    }
-
-    // Remove any animation that might hide the arrows
-    .arrows {
-        animation: none; // Remove the reveal-controls animation
-        animation-delay: 0s;
-    }
-
-    .button {
-        position: relative; // Change to relative
-        pointer-events: auto;
-        margin: 0 -5em; // Push buttons outward
-
-        &.buttonleft {
-            left: 0;
-        }
-
-        &.buttonright {
-            right: 0;
-        }
-    }
-
-    .arrows {
-        position: absolute;
-        top: 50%;
-        left: 0;
-        transform: translateY(-50%);
-        width: 100%; // Change to 100% to stay within preview bounds
-        padding: 0;
-        z-index: 20;
-        opacity: 0;
-        pointer-events: none;
-        animation: reveal-controls 0.5s ease-out forwards;
-        animation-delay: 1.2s;
-        
         &.visible {
             opacity: 1;
             pointer-events: auto;
@@ -614,46 +576,9 @@
     }
 
     .button {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(0, 0, 0, 0.5);
+        position: relative; // Change to relative
         pointer-events: auto;
-
-        &.buttonleft {
-            left: -5em; // Position just outside the preview area
-        }
-
-        &.buttonright {
-            right: -5em; // Position just outside the preview area
-        }
-    }
-
-    .arrows {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: calc(100% + 8em); // Wider than the preview
-        padding: 0;
-        z-index: 20;
-        opacity: 0;
-        pointer-events: none;
-        animation: reveal-controls 0.5s ease-out forwards;
-        animation-delay: 1.2s;
-        
-        &.visible {
-            opacity: 1;
-            pointer-events: auto;
-        }
-    }
-
-    .button {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(0, 0, 0, 0.5);
-        pointer-events: auto;
+        margin: 0 -5em; // Push buttons outward
 
         &.buttonleft {
             left: 0;
@@ -725,39 +650,6 @@
 
     .screeniframe {
         height: 100%;
-    }
-
-    .arrows {
-        position: absolute;
-        top: 50%; // Center vertically relative to screen
-        left: 50%; // Center horizontally
-        transform: translate(-50%, -50%); // Center both axes
-        width: calc(100% + 8em); // Expand width to accommodate arrows
-        padding: 0;
-        opacity: 0;
-        animation: reveal-controls 0.5s ease-out forwards;
-        animation-delay: 1.2s;
-        pointer-events: none; // Prevent interference with other elements
-        
-        &.visible {
-            opacity: 1;
-            pointer-events: auto;
-        }
-    }
-
-    .button {
-        position: absolute; // Position absolutely within arrows container
-        top: 50%;
-        transform: translateY(-50%);
-        pointer-events: auto;
-    }
-
-    .buttonleft {
-        left: 0;
-    }
-
-    .buttonright {
-        right: 0;
     }
 
     .contentContainer {
