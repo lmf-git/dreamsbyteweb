@@ -374,31 +374,44 @@
 // Mobile-specific animations
 .contentContainer {
     opacity: 0;
-    transition: opacity 0.5s ease-out;
-    min-height: 25em; // Set minimum height for content
-    transition: all 0.4s ease-in-out;
+    min-height: 0;
+    margin-bottom: 0;
+    transition: opacity 0.3s ease-out;
+
+    .projectproblems,
+    .projectsolutions,
+    .projectparagraph {
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: opacity, transform;
+    }
 
     &.visible {
         opacity: 1;
 
         .projectproblems {
             opacity: 1;
-            transition-delay: 0.2s;
+            transform: translateY(0);
+            transition-delay: 0.1s;
         }
 
         .projectparagraph:first-of-type {
             opacity: 1;
-            transition-delay: 0.3s;
+            transform: translateY(0);
+            transition-delay: 0.25s;
         }
 
         .projectsolutions {
             opacity: 1;
+            transform: translateY(0);
             transition-delay: 0.4s;
         }
 
         .projectparagraph:last-of-type {
             opacity: 1;
-            transition-delay: 0.5s;
+            transform: translateY(0);
+            transition-delay: 0.55s;
         }
     }
 }
@@ -471,14 +484,14 @@
     // Desktop styles override at the end
     .projectpreview {
         position: relative;
-        opacity: 1;
+        opacity: 0; // Start hidden
         visibility: visible;
         height: 60vh;
         padding: 0;
         top: auto; // Reset top position for desktop
         width: 65%; // Ensure width is set for desktop
         margin: 0; // Reset margin
-        transition: none;
+        transition: opacity 0.4s ease-in-out;
         overflow: visible; // Allow buttons to overflow
 
         .screen {
@@ -652,47 +665,21 @@
         height: 100%;
     }
 
-    .contentContainer {
-        opacity: 0;
-        visibility: hidden; // Add visibility control
-        min-height: 0;
-        margin-bottom: 0;
-        transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
-
-        &.visible {
-            opacity: 1;
-            visibility: visible;
-
-            .projectproblems,
-            .projectsolutions,
-            .projectparagraph {
-                opacity: 1;
-                visibility: visible;
-            }
+    .contentContainer.visible {
+        .projectproblems {
+            transition-delay: 0.2s;
         }
 
-        .projectproblems,
-        .projectsolutions,
-        .projectparagraph {
-            opacity: 0;
-            visibility: hidden; // Hide text completely when not visible
-            transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
-            will-change: opacity, visibility;
+        .projectparagraph:first-of-type {
+            transition-delay: 0.35s;
         }
 
-        &.visible {
-            .projectproblems {
-                transition-delay: 0.2s;
-            }
-            .projectparagraph:first-of-type {
-                transition-delay: 0.3s;
-            }
-            .projectsolutions {
-                transition-delay: 0.5s;
-            }
-            .projectparagraph:last-of-type {
-                transition-delay: 0.6s;
-            }
+        .projectsolutions {
+            transition-delay: 0.5s;
+        }
+
+        .projectparagraph:last-of-type {
+            transition-delay: 0.65s;
         }
     }
 
@@ -701,34 +688,6 @@
     .mobile {
         transition: opacity 0.3s ease-out;
         visibility: visible;
-    }
-
-    .contentContainer {
-        // ...existing styles...
-        
-        &.visible {
-            opacity: 1;
-
-            .projectproblems {
-                opacity: 1;
-                transition-delay: 0.3s;
-            }
-
-            .projectparagraph:first-of-type {
-                opacity: 1;
-                transition-delay: 0.4s;
-            }
-
-            .projectsolutions {
-                opacity: 1;
-                transition-delay: 0.6s;
-            }
-
-            .projectparagraph:last-of-type {
-                opacity: 1;
-                transition-delay: 0.7s;
-            }
-        }
     }
 
     // Optional: Add visual feedback for disabled controls

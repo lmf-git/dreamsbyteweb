@@ -87,70 +87,65 @@ export default function HeroSimple() {
     useEffect(() => {
         if (!isInitialized) {
             const isMobile = window.innerWidth < 1200;
-            setProject(0);
             setIsInitialized(true);
+            setProject(0);
             
             if (isMobile) {
-                // Mobile sequence remains unchanged
+                // Simplified mobile sequence
                 setTimeout(() => {
                     setShowPreview(true);
                     setTimeout(() => {
                         setShowPreview(false);
-                        setTimeout(() => {
-                            setShowContent(true);
-                            setShowNav(true);
-                            setShowControls(true);
-                            setInitialAnimationComplete(true);
-                        }, 200);
+                        setShowContent(true);
+                        setShowNav(true);
+                        setShowControls(true);
+                        setInitialAnimationComplete(true);
                     }, 1500);
                 }, 800);
             } else {
-                // Desktop: delayed arrow reveal
+                // Desktop sequence
                 setTimeout(() => {
-                    setShowContent(true);
+                    setShowPreview(true); // This will trigger the initial fade-in
                     setTimeout(() => {
-                        setShowPreview(true);
-                        setShowControls(true);
+                        setShowContent(true);
                         setTimeout(() => {
+                            setShowControls(true);
                             setFirstRevealComplete(true);
                             setShowNav(true);
                             setInitialAnimationComplete(true);
-                        }, 800); // Wait for preview animations
+                        }, 800);
                     }, 400);
-                }, 800);
+                }, 400);
             }
         }
     }, [isInitialized]);
 
     // Project change effect
     useEffect(() => {
-        if (!isInitialized || !initialAnimationComplete || project === 0) return;
+        if (!isInitialized || !initialAnimationComplete || project === null) return;
+        if (project === 0) return; // Skip first load
 
+        const isMobile = window.innerWidth < 1200;
         setIsTransitioning(true);
         setShowContent(false);
-        setDesktopLoading(true);
-        setMobileLoading(true);
         
-        if (window.innerWidth < 1200) {
-            // Keep mobile sequence unchanged
+        if (isMobile) {
+            // Simplified mobile transitions
             setShowPreview(false);
             setTimeout(() => {
                 setShowPreview(true);
                 setTimeout(() => {
                     setShowPreview(false);
-                    setTimeout(() => {
-                        setShowContent(true);
-                        setIsTransitioning(false);
-                    }, 200);
+                    setShowContent(true); // Content will fade in with staggered animation
+                    setIsTransitioning(false);
                 }, 1500);
             }, 200);
         } else {
-            // Desktop: ensure content is hidden before showing new content
-            setShowContent(false);
+            // Desktop transitions
             setTimeout(() => {
-                setShowContent(true);
+                setShowContent(true); // Content will fade in with staggered animation
                 setIsTransitioning(false);
-            }, 400); // Increased delay to ensure complete fade out
+            }, 400);
         }
     }, [project, isInitialized, initialAnimationComplete]);
 
