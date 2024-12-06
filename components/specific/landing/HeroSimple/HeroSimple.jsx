@@ -83,6 +83,7 @@ export default function HeroSimple() {
     const [imagesLoaded, setImagesLoaded] = useState(false);
     const [isReturningToFirst, setIsReturningToFirst] = useState(false);
     const [showNav, setShowNav] = useState(false);
+    const [initialContentShown, setInitialContentShown] = useState(false); // Add this new state
 
     const preloadImages = (projectIndex) => {
         return new Promise((resolve) => {
@@ -127,20 +128,22 @@ export default function HeroSimple() {
             // Wait for initial images to load
             preloadImages(0).then(() => {
                 if (isMobile) {
+                    // Mobile initial sequence
                     setTimeout(() => {
                         setShowPreview(true);
                         setTimeout(() => {
                             setShowPreview(false);
-                            setShowContent(true);
-                            // Delay controls until after content animations
                             setTimeout(() => {
-                                setShowNav(true);
-                                setInitialAnimationComplete(true);
-                            }, 1000); // Delay matches the last content transition
+                                setShowContent(true);
+                                setTimeout(() => {
+                                    setShowNav(true);
+                                    setInitialAnimationComplete(true);
+                                }, 1000);
+                            }, 100);
                         }, 1500);
                     }, 800);
                 } else {
-                    // Desktop sequence - reduced delays
+                    // Desktop initial sequence
                     setTimeout(() => {
                         setShowContent(true);
                         setTimeout(() => {
@@ -150,7 +153,7 @@ export default function HeroSimple() {
                                 setShowNav(true);
                                 setInitialAnimationComplete(true);
                             }, 800);
-                        }, 800); // Reduced from 1200 to 800ms to show preview sooner after text
+                        }, 800);
                     }, 400);
                 }
             });
@@ -159,42 +162,43 @@ export default function HeroSimple() {
 
     // Project change effect
     useEffect(() => {
-        if (!isInitialized || !initialAnimationComplete || project === null) return;
+        // Skip if not initialized, no project selected, or still in initial animation
+        if (!isInitialized || project === null || !initialAnimationComplete) return;
         
-        // Skip transition for initial load of first project
-        if (project === 0 && !isReturningToFirst) {
-            setCurrentProject(0);
-            return;
-        }
+        // Skip if this is the initial project (project === 0 and currentProject === 0)
+        if (project === 0 && currentProject === 0) return;
         
         const isMobile = window.innerWidth < 1200;
         setIsTransitioning(true);
         setShowContent(false);
         setShowPreview(false);
         
-        // Wait for both images to load before starting transition
         preloadImages(project).then(() => {
             if (isMobile) {
                 setCurrentProject(project);
                 setShowPreview(true);
                 setTimeout(() => {
                     setShowPreview(false);
-                    setShowContent(true);
-                    setIsTransitioning(false);
-                    setIsReturningToFirst(false); // Reset the flag
+                    setTimeout(() => { // Add nested timeout for content
+                        setShowContent(true);
+                        setIsTransitioning(false);
+                        setIsReturningToFirst(false);
+                    }, 100);
                 }, 1500);
             } else {
                 setCurrentProject(project);
-                setShowContent(true);
-                setTimeout(() => {
-                    setShowPreview(true);
-                    setIsTransitioning(false);
-                    setIsReturningToFirst(false); // Reset the flag
-                }, 600);
+                setTimeout(() => { // Add delay before showing content
+                    setShowContent(true);
+                    setTimeout(() => {
+                        setShowPreview(true);
+                        setIsTransitioning(false);
+                        setIsReturningToFirst(false);
+                    }, 600);
+                }, 100);
             }
         });
 
-    }, [project, isInitialized, initialAnimationComplete, isReturningToFirst]);
+    }, [project, isInitialized, initialAnimationComplete, currentProject]);
 
     const nextProject = () => {
         if (project < projects.length - 1 && !isTransitioning) setProject(project + 1);
@@ -235,7 +239,13 @@ export default function HeroSimple() {
                             </div>
                         </div>
 
-                        <div className={`${styles.dots} ${showNav ? styles.visible : ''}`}>
+                        <div className={`${styles.dots} ${
+                            // Match the arrows visibility pattern
+                            (firstRevealComplete && window.innerWidth >= 1200) || 
+                            (showNav && !isTransitioning && window.innerWidth < 1200) 
+                                ? styles.visible 
+                                : ''
+                        }`}>
                             {projects.map((p, i) => 
                                 Math.abs(project - i) <= 2 ? 
                                     <Dot 
@@ -287,7 +297,7 @@ export default function HeroSimple() {
                         {desktopLoading && <Spinner className={styles.screenspinner} />}
 
                         <Mobile 
-                            extraClass={styles.mobile}
+                            extraClass={`${styles.mobile} ${showPreview ? styles.showMobile : ''}`}
                             src={projects[currentProject].image}
                             onLoad={() => setMobileLoading(false)}
                         />

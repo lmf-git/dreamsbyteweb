@@ -99,13 +99,18 @@
 
         .mobile {
             position: absolute;
-            top: 20%; // Move down a bit
+            top: 20%;
             left: 50%;
             width: 25%; // Make mobile preview smaller
             opacity: 1;
-            transform: translate(-50%, 0);
-            transition: all 0.4s ease-in-out;
+            transform: translate(-50%, 0); // Initially center
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); // Smoother easing
             transition-delay: 0.4s;
+
+            // Move to right side after initial reveal
+            &.showMobile {
+                left: 75%; // Move to right on mobile by default
+            }
         }
     }
 
@@ -181,6 +186,7 @@
     user-select: none;
 }
 
+// Base controls and dots styles (mobile first)
 .controls {
     width: 100%;
     display: flex;
@@ -190,12 +196,26 @@
     opacity: 0;
     transition: opacity 0.3s ease-out;
     margin-top: 1.5em;
-    position: absolute;
-    bottom: 3em; // Fixed position from bottom
-    left: 0;
     
     &.visible {
         opacity: 1;
+        transition: none; // Override transition for mobile
+    }
+}
+
+.dots {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    margin-top: 0.75em;
+    pointer-events: none; // Add default pointer-events
+    
+    &.visible {
+        opacity: 1;
+        transition: none; // Override transition for mobile
+        pointer-events: auto;
     }
 }
 
@@ -217,22 +237,6 @@
 .controllinks {
     display: flex;
     gap: 1em;
-}
-
-.dots {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease-out;
-    margin-top: 0.75em;
-    position: absolute;
-    bottom: 1em; // Fixed position from bottom
-    left: 0;
-    
-    &.visible {
-        opacity: 1;
-    }
 }
 
 .arrows {
@@ -267,7 +271,8 @@
 .dot {
     cursor: pointer;
     margin-right: 0.35em;
-    width: 1.3em;
+    width: 2em; // Increased from 1.3em for mobile
+    transition: opacity 0.3s ease-out;
 
     &.active, &:hover circle {
         fill: rgb(217, 217, 217);
@@ -527,6 +532,11 @@
                 transition: all 0.4s ease-in-out;
                 transition-delay: 0.3s;
             }
+
+            .mobile.showMobile {
+                left: auto; // Reset mobile position
+                right: 15%; // Use desktop position instead
+            }
         }
 
         // Remove any transition properties that might affect size/position
@@ -596,18 +606,28 @@
         font-size: 2em; // Restore larger size for desktop
     }
 
+    .controls,
+    .dots {
+        &.visible {
+            transition: opacity 0.3s ease-out; // Restore transition for desktop
+        }
+    }
+
     .controls {
         position: absolute;
-        bottom: -4.25em;
-        margin-top: 0;
-        // ...rest of desktop controls styles
+        bottom: -4.45em;
+        left: 0;
+        margin-top: 2em;
+        flex-direction: row;
+        justify-content: space-between;
+        z-index: 2;
     }
 
     .dots {
         position: absolute;
         bottom: -4.25em;
+        left: 0;
         margin-top: 0;
-        // ...rest of desktop dots styles
     }
 
     .controls {
@@ -669,6 +689,10 @@
             pointer-events: none;
         }
     }
+
+    .dot {
+        width: 1.3em; // Return to original size for desktop
+    }
 }
 
 // Ensure keyframes are correctly defined
@@ -681,15 +705,4 @@
         transform: translateX(0);
         opacity: 1;
     }
-}
-
-@media screen and (max-width: 1199px) {
-    .controls,
-    .dots {
-        &.visible {
-            transition: none;
-            opacity: 1 !important;
-        }
-    }
-    // Remove arrows from this media query if it exists
 }
