@@ -510,6 +510,15 @@
 
     .title {
         margin: 0 0 0.5em 0;
+        opacity: 0;
+        animation: reveal-title 0.5s ease-out forwards;
+        animation-delay: 0.3s; // First to appear
+    }
+
+    .projectname {
+        opacity: 0;
+        animation: reveal-desc 0.5s ease-out forwards;
+        animation-delay: 0.5s; // After title
     }
 
     .disclaimer {
@@ -648,7 +657,7 @@
     .arrows {
         opacity: 0;
         animation: reveal-controls 0.5s ease-out forwards;
-        animation-delay: 1.2s;
+        animation-delay: 1.7s; // Last to appear
     }
 
     .arrows {
