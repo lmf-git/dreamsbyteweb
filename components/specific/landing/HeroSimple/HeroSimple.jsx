@@ -84,31 +84,38 @@ export default function HeroSimple() {
     const [firstRevealComplete, setFirstRevealComplete] = useState(false);
     const [currentProject, setCurrentProject] = useState(null); // Add this new state
     const [imagesLoaded, setImagesLoaded] = useState(false);
+    const [isReturningToFirst, setIsReturningToFirst] = useState(false);
 
-    // Add image preloading function
     const preloadImages = (projectIndex) => {
-        setImagesLoaded(false);
-        setDesktopLoading(true);
-        setMobileLoading(true);
+        return new Promise((resolve) => {
+            setImagesLoaded(false);
+            setDesktopLoading(true);
+            setMobileLoading(true);
 
-        const desktopImage = new Image();
-        const mobileImage = new Image();
-        let loadedCount = 0;
+            const desktopImage = new Image();
+            const mobileImage = new Image();
+            let loadedCount = 0;
 
-        const handleLoad = () => {
-            loadedCount++;
-            if (loadedCount === 2) {
-                setImagesLoaded(true);
-                setDesktopLoading(false);
-                setMobileLoading(false);
-            }
-        };
+            const handleLoad = () => {
+                loadedCount++;
+                if (loadedCount === 2) {
+                    setImagesLoaded(true);
+                    setDesktopLoading(false);
+                    setMobileLoading(false);
+                    resolve();
+                }
+            };
 
-        desktopImage.onload = handleLoad;
-        mobileImage.onload = handleLoad;
+            desktopImage.onload = handleLoad;
+            mobileImage.onload = handleLoad;
 
-        desktopImage.src = projects[projectIndex].desktopimage;
-        mobileImage.src = projects[projectIndex].image;
+            // Handle errors as well
+            desktopImage.onerror = handleLoad;
+            mobileImage.onerror = handleLoad;
+
+            desktopImage.src = projects[projectIndex].desktopimage;
+            mobileImage.src = projects[projectIndex].image;
+        });
     };
 
     // Initial setup
@@ -118,108 +125,93 @@ export default function HeroSimple() {
             setIsInitialized(true);
             setProject(0);
             setCurrentProject(0);
-            preloadImages(0);
             
-            if (isMobile) {
-                setTimeout(() => {
-                    setShowPreview(true);
-                    setTimeout(() => {
-                        setShowPreview(false);
-                        setShowContent(true);
-                        // Delay controls until after content animations
-                        setTimeout(() => {
-                            setShowNav(true);
-                            setShowControls(true);
-                            setInitialAnimationComplete(true);
-                        }, 1000); // Delay matches the last content transition
-                    }, 1500);
-                }, 800);
-            } else {
-                // Desktop sequence - reduced delays
-                setTimeout(() => {
-                    setShowContent(true);
+            // Wait for initial images to load
+            preloadImages(0).then(() => {
+                if (isMobile) {
                     setTimeout(() => {
                         setShowPreview(true);
                         setTimeout(() => {
-                            setShowControls(true);
-                            setFirstRevealComplete(true);
-                            setShowNav(true);
-                            setInitialAnimationComplete(true);
-                        }, 800);
-                    }, 800); // Reduced from 1200 to 800ms to show preview sooner after text
-                }, 400);
-            }
+                            setShowPreview(false);
+                            setShowContent(true);
+                            // Delay controls until after content animations
+                            setTimeout(() => {
+                                setShowNav(true);
+                                setShowControls(true);
+                                setInitialAnimationComplete(true);
+                            }, 1000); // Delay matches the last content transition
+                        }, 1500);
+                    }, 800);
+                } else {
+                    // Desktop sequence - reduced delays
+                    setTimeout(() => {
+                        setShowContent(true);
+                        setTimeout(() => {
+                            setShowPreview(true);
+                            setTimeout(() => {
+                                setShowControls(true);
+                                setFirstRevealComplete(true);
+                                setShowNav(true);
+                                setInitialAnimationComplete(true);
+                            }, 800);
+                        }, 800); // Reduced from 1200 to 800ms to show preview sooner after text
+                    }, 400);
+                }
+            });
         }
     }, [isInitialized]);
 
     // Project change effect
     useEffect(() => {
         if (!isInitialized || !initialAnimationComplete || project === null) return;
-        if (project === 0) {
+        
+        // Skip transition for initial load of first project
+        if (project === 0 && !isReturningToFirst) {
             setCurrentProject(0);
             return;
         }
-
+        
         const isMobile = window.innerWidth < 1200;
         setIsTransitioning(true);
         setShowContent(false);
-        setShowPreview(false); // Reset preview state
+        setShowPreview(false);
         
-        // Preload images before starting transition
-        preloadImages(project);
-        
-        if (isMobile) {
-            const startTransition = () => {
+        // Wait for both images to load before starting transition
+        preloadImages(project).then(() => {
+            if (isMobile) {
                 setCurrentProject(project);
                 setShowPreview(true);
                 setTimeout(() => {
                     setShowPreview(false);
                     setShowContent(true);
                     setIsTransitioning(false);
+                    setIsReturningToFirst(false); // Reset the flag
                 }, 1500);
-            };
-
-            // Wait for images to load
-            if (imagesLoaded) {
-                setTimeout(startTransition, 200);
             } else {
-                const checkImages = setInterval(() => {
-                    if (imagesLoaded) {
-                        clearInterval(checkImages);
-                        setTimeout(startTransition, 200);
-                    }
-                }, 100);
-            }
-        } else {
-            const startTransition = () => {
                 setCurrentProject(project);
                 setShowContent(true);
                 setTimeout(() => {
                     setShowPreview(true);
                     setIsTransitioning(false);
+                    setIsReturningToFirst(false); // Reset the flag
                 }, 600);
-            };
-
-            // Wait for images to load
-            if (imagesLoaded) {
-                setTimeout(startTransition, 100);
-            } else {
-                const checkImages = setInterval(() => {
-                    if (imagesLoaded) {
-                        clearInterval(checkImages);
-                        setTimeout(startTransition, 100);
-                    }
-                }, 100);
             }
-        }
-    }, [project, isInitialized, initialAnimationComplete, imagesLoaded]);
+        });
+
+    }, [project, isInitialized, initialAnimationComplete, isReturningToFirst]);
 
     const nextProject = () => {
         if (project < projects.length - 1 && !isTransitioning) setProject(project + 1);
     };
 
     const prevProject = () => {
-        if (project > 0 && !isTransitioning) setProject(project - 1);
+        if (project > 0 && !isTransitioning) {
+            // Set the flag when returning to first project
+            if (project === 1) {
+                setIsReturningToFirst(true);
+            }
+            setProject(project - 1);
+        }
     };
 
     return (
