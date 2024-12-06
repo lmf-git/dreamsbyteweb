@@ -73,12 +73,55 @@ export default function HeroSimple() {
     const [project, setProject] = useState(0);
     const [desktopLoading, setDesktopLoading] = useState(true);
     const [mobileLoading, setMobileLoading] = useState(true);
+    const [showPreview, setShowPreview] = useState(false);
+    const [showContent, setShowContent] = useState(false);
+    const [isFirstLoad, setIsFirstLoad] = useState(true);
+    const [showControls, setShowControls] = useState(false);
+    const [showNav, setShowNav] = useState(false); // New state for navigation controls
 
-    // Reset loading states when project changes
     useEffect(() => {
         setDesktopLoading(true);
         setMobileLoading(true);
-    }, [project]);
+        
+        if (window.innerWidth < 1200) {
+            setShowContent(false);
+            setShowControls(false);
+            
+            if (isFirstLoad) {
+                setShowNav(false);
+                
+                setTimeout(() => {
+                    setShowPreview(true);
+                    
+                    setTimeout(() => {
+                        setShowPreview(false);
+                        
+                        // Show content first
+                        setTimeout(() => {
+                            setShowContent(true);
+                            
+                            // Show navigation controls after delay
+                            setTimeout(() => {
+                                setShowNav(true);
+                                setShowControls(true);
+                                setIsFirstLoad(false);
+                            }, 1500); // Delay controls to allow reading
+                        }, 300);
+                    }, 2500);
+                }, 1000);
+            } else {
+                // Show everything immediately for subsequent projects
+                setShowContent(true);
+                setShowNav(true);
+                setShowControls(true);
+            }
+        } else {
+            // Desktop behavior
+            setShowContent(true);
+            setShowNav(true);
+            setShowControls(true);
+        }
+    }, [project, isFirstLoad]);
 
     const nextProject = () => {
         if (project < projects.length - 1) setProject(project + 1);
@@ -93,74 +136,73 @@ export default function HeroSimple() {
             <div className={styles.projects}>
                 <div className={styles.projectdesc}>
                     <h1 className={styles.title}>Latest Work</h1>
+                    <h1 className={styles.projectname}>{projects[project].name}</h1>
 
-                    <h1 className={styles.projectname}>
-                        {projects[project].name}
-                    </h1>
+                    <div className={`${styles.contentContainer} ${showContent ? styles.visible : ''}`}>
+                        <h2 className={styles.projectproblems}>PROBLEMS:</h2>
+                        <p className={styles.projectparagraph}>{projects[project].problem}</p>
 
-                    <h2 className={styles.projectproblems}>
-                        PROBLEMS:
-                    </h2>
-                    <p className={styles.projectparagraph}>
-                        {projects[project].problem}
-                    </p>
+                        <h2 className={styles.projectsolutions}>SOLUTIONS:</h2>
+                        <p className={styles.projectparagraph}>{projects[project].solution}</p>
+                    </div>
 
-                    <h2 className={styles.projectsolutions}>
-                        SOLUTIONS:
-                    </h2>
-                    <p className={styles.projectparagraph}>
-                        {projects[project].solution}
-                    </p>
+                    <div className={`${styles.controls} ${showNav ? styles.visible : ''}`}>
+                        <div className={styles.controllinks}>
+                            <a href={projects[project].url} className={styles.link}>GO TO SITE</a>
+                            {projects[project]?.reporturl && (
+                                <a href={projects[project]?.reporturl} className={styles.link}>SEE SCORE</a>
+                            )}
+                        </div>
+                    </div>
+
+                    <div className={`${styles.dots} ${showNav ? styles.visible : ''}`}>
+                        {projects.map((p, i) => 
+                            Math.abs(project - i) <= 2 ? 
+                                <Dot 
+                                    key={i} 
+                                    className={`${styles.dot} ${project === i ? styles.active : ''}`} 
+                                    onClick={() => setProject(i)}
+                                /> 
+                                : 
+                                null
+                        )}
+                    </div>
                 </div>
 
-                <div className={styles.projectpreview}>
+                <div className={`${styles.arrows} ${showNav ? styles.visible : ''}`}>
+                    {project > 0 ? (
+                        <button 
+                            className={`${styles.button} ${styles.buttonleft}`} 
+                            onClick={prevProject}
+                        >
+                            <LeftLine className={`${styles.arrow} ${styles.arrowleft}`} />
+                        </button>
+                    ) : <div className={styles.buttonspacer} />}
+                    
+                    {project < projects.length - 1 ? (
+                        <button 
+                            className={`${styles.button} ${styles.buttonright}`} 
+                            onClick={nextProject}
+                        >
+                            <RightLine className={`${styles.arrow} ${styles.arrowright}`} />
+                        </button>
+                    ) : <div className={styles.buttonspacer} />}
+                </div>
+
+                <div className={`${styles.projectpreview} ${showPreview ? styles.showMobile : ''}`}>
                     <Screen 
-                        extraClass={styles.screen}
+                        extraClass={`${styles.screen} ${showPreview ? styles.showMobile : ''}`}
                         src={projects[project].desktopimage}
                         onLoad={() => setDesktopLoading(false)}
                     />
                     
                     {desktopLoading && <Spinner className={styles.screenspinner} />}
 
-                    <div className={styles.arrows}>
-                        {project > 0 ? (
-                            <button 
-                                className={`${styles.button} ${styles.buttonleft}`} 
-                                onClick={prevProject}
-                            >
-                                <LeftLine className={`${styles.arrow} ${styles.arrowleft}`} />
-                            </button>
-                        ) : <div className={styles.buttonspacer} />}
-                        
-                        {project < projects.length - 1 ? (
-                            <button 
-                                className={`${styles.button} ${styles.buttonright}`} 
-                                onClick={nextProject}
-                            >
-                                <RightLine className={`${styles.arrow} ${styles.arrowright}`} />
-                            </button>
-                        ) : <div className={styles.buttonspacer} />}
-                    </div>
-
-                    <div className={styles.controls}>
+                    <div className={`${styles.controls} ${showControls ? styles.visible : ''}`}>
                         <div className={styles.controllinks}>
                             <a href={projects[project].url} className={styles.link}>GO TO SITE</a>
-
-                            {projects[project]?.reporturl &&
+                            {projects[project]?.reporturl && (
                                 <a href={projects[project]?.reporturl} className={styles.link}>SEE SCORE</a>
-                            }
-                        </div>
-
-                        <div className={styles.dots}>
-                            {projects.map((p, i) => 
-                                Math.abs(project - i) <= 2 ? 
-                                    <Dot 
-                                        key={i} 
-                                        className={`${styles.dot} ${project === i ? styles.active : ''}`} 
-                                        onClick={() => setProject(i)}
-                                    /> 
-                                    : 
-                                    null
                             )}
                         </div>
                     </div>
@@ -172,7 +214,6 @@ export default function HeroSimple() {
                         style={{ position: 'absolute', bottom: '-1em', right: '10%', width: '18vw' }}
                     />
                     {mobileLoading && <Spinner className={styles.mobilespinner} />}
-
                 </div>
             </div>
         </div>

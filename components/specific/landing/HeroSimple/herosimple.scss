@@ -1,0 +1,40 @@
+// ...existing code...
+
+.arrows {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    // Remove top and transform that causes wobble
+    height: 100%; // Add height
+    display: flex;
+    justify-content: space-between;
+    align-items: center; // Center vertically
+    padding: 0 1em;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    pointer-events: none;
+    
+    &.visible {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
+// ...rest of code...
+
+@media screen and (min-width: 1200px) {
+    // ...existing code...
+
+    .arrows {
+        position: absolute;
+        height: auto; // Reset height
+        top: 40%; // Add back for desktop
+        transform: translateY(-50%); // Add back for desktop
+        width: 100%;
+        padding: 0;
+        opacity: 0;
+        animation: reveal-controls 0.5s ease-out forwards;
+        animation-delay: 1.2s;
+    }
+}

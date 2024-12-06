@@ -2,7 +2,7 @@
 @use '../../../layout/colours';
 
 .hero {
-    padding: 4em 2em;
+    padding: 2.1em;
     box-sizing: border-box;
     overflow: hidden;
     user-select: none;
@@ -33,20 +33,78 @@
     animation: reveal-desc 0.5s ease-out forwards;
     animation-delay: 0.6s;
     padding: 0 3.5em;
-    // min-height: 32em;
     margin-bottom: 1em;
     user-select: none;
+    position: relative;
+    z-index: 2; // Ensure text stays above preview
+    min-height: 66vh;
 }
 
 .projectpreview {
+    opacity: 0;
+    pointer-events: none;
+    position: relative; // Change to relative
+    top: 18em; // Increased to move further down
+    left: 3.5em;
+    right: 3.5em;
+    max-height: 40vh;
+    transition: all 0.5s ease-out; // Smooth all transitions
+    visibility: hidden; // Add visibility
+    
+    &.showMobile {
+        opacity: 1;
+        pointer-events: auto;
+        padding: 0.5em;
+        z-index: 1;
+        visibility: visible; // Show when active
+
+        .mobile {
+            display: block;
+            position: absolute;
+            bottom: -0.5em;
+            right: 5%;
+            width: 15vw;
+            z-index: 3;
+            opacity: 0; // Start hidden
+            animation: reveal-mobile-preview 0.3s ease-out forwards;
+            animation-delay: 0.3s; // Delay after screen appears
+            transition: opacity 0.5s ease-out; // Add fade for mobile
+        }
+
+        .screen {
+            animation: reveal-mobile-preview 0.3s ease-out forwards;
+            animation-delay: 0s; // Show immediately when preview shows
+            transition: opacity 0.5s ease-out; // Add fade for screen
+        }
+    }
 }
 
-.projectpreview {
-    margin: 2em 0;
+// Problems and solutions container
+.contentContainer {
+    opacity: 0;
+    transition: opacity 1s ease-out; // Slower, smoother fade
+    transform: translateY(10px); // Start slightly offset
+    transition: all 0.5s ease-out;
+    
+    &.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes reveal-mobile-preview {
+    from {
+        transform: translateY(10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .screen { 
-    display: none;
+    display: none; // Change back to none for mobile
     width: 100%;
     position: relative;
     z-index: 1;
@@ -54,6 +112,13 @@
     animation: reveal-screen 0.5s ease-out forwards;
     animation-delay: 0.8s;
     user-select: none;
+    transition: opacity 0.5s ease-out; // Add fade transition
+    
+    &.showMobile {
+        display: block;
+        opacity: 1;
+        animation: none; // Remove conflicting animation
+    }
 }
 
 .herosimple_screen { 
@@ -89,8 +154,6 @@
     height: auto;
     z-index: 2;
     opacity: 0;
-    animation: reveal-mobile 0.5s ease-out forwards;
-    animation-delay: 1s;
     user-select: none;
 }
 
@@ -135,17 +198,17 @@
     opacity: 0.7;
     margin: 0 0 0.2em;
     opacity: 0;
-    animation: reveal-desc 0.5s ease-out forwards;
-    animation-delay: 0.7s;
+    animation: none;
+    transition: opacity 0.5s ease-out;
     user-select: none;
 }
 
 .projectsolutions {
     opacity: 0.7;
-    margin: 1em 0 0.2em;
+    margin: 0.75em 0 0.2em;
     opacity: 0;
-    animation: reveal-desc 0.5s ease-out forwards;
-    animation-delay: 0.8s;
+    animation: none;
+    transition: opacity 0.5s ease-out;
     user-select: none;
 }
 
@@ -154,8 +217,8 @@
     line-height: 1.6em;
     font-size: 1.1em;
     opacity: 0;
-    animation: reveal-desc 0.5s ease-out forwards;
-    animation-delay: 0.9s;
+    animation: none;
+    transition: opacity 0.5s ease-out;
     user-select: none;
 }
 
@@ -165,15 +228,18 @@
 }
 
 .controls {
-    opacity: 0;
-    animation: reveal-controls 0.5s ease-out forwards;
-    animation-delay: 1.2s;
-    z-index: 2;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5em;
+    gap: 1em;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    margin-top: 1.5em;
+    
+    &.visible {
+        opacity: 1;
+    }
 }
 
 .link {
@@ -184,6 +250,7 @@
     transition: padding 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
     padding: 0.135em;
     border-radius: 0.135em;
+    transition: all 0.25s ease-out; // Smoother transition
 
     &:hover {
         color: rgb(44, 44, 44);
@@ -197,37 +264,42 @@
 }
 
 .dots {
+    width: 100%;
     display: flex;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
     margin-top: 0.75em;
+    
+    &.visible {
+        opacity: 1;
+    }
 }
 
 .arrows {
     position: absolute;
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 10;
-    pointer-events: none;
-    opacity: 0;
-    animation: reveal-controls 0.5s ease-out forwards;
-    animation-delay: 1.2s;
+    z-index: 20;
+    display: flex;
+    justify-content: space-between;
     padding: 0 1em;
     box-sizing: border-box;
-    height: 3.5em; // Add this line to fix the height
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    pointer-events: none; // Disable when hidden
+    
+    &.visible {
+        opacity: 1;
+        pointer-events: auto; // Enable when visible
+    }
 }
 
 .buttonspacer {
     width: 3.5em;
     height: 3.5em;
-}
-
-.dots {
-    display: flex;
-    margin-top: 0.75em;
 }
 
 .dot {
@@ -253,7 +325,7 @@
     cursor: pointer;
     opacity: 0.7;
     transition: opacity 0.2s ease;
-    position: absolute;
+    position: relative; // Change from absolute
     user-select: none;
 
     &:hover {
@@ -296,6 +368,7 @@
     margin-right: 0;
 }
 
+// Move animations to desktop only
 @media screen and (min-width: 1200px) {
     .hero {
         padding: 3em;
@@ -311,7 +384,7 @@
 
     .projectdesc {
         padding: 0;
-        min-height: 0;
+        min-height: 0; // Remove min-height on desktop
         margin-bottom: 0;
         flex: 0 0 35%;
         display: flex;
@@ -322,15 +395,35 @@
     }
 
     .projectpreview {
+        opacity: 1;
+        pointer-events: auto;
         position: relative;
-        display: block;
+        top: auto;
+        left: auto;
+        right: auto;
+        transform: none;
+        max-height: none;
+        height: 60vh;
         flex: 1;
         margin: 0;
-        height: 60vh;
+        background: none;
+        padding: 0;
+        
+        &.showMobile {
+            padding: 0;
+
+            .mobile {
+                bottom: -1em;
+                right: 15%;
+                width: 14vw;
+            }
+        }
     }
 
     .mobile {
         display: block;
+        animation: reveal-mobile 0.5s ease-out forwards;
+        animation-delay: 1s;
     }
 
     .title {
@@ -346,19 +439,15 @@
     .controls {
         position: absolute;
         bottom: -4.25em;
-        left: 0;
-        width: 100%;
-        box-sizing: border-box;
-        padding: 0 2em;
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        gap: 2em;
+        margin-top: 0;
+        // ...rest of desktop controls styles
     }
 
     .dots {
+        position: absolute;
+        bottom: -4.25em;
         margin-top: 0;
-        align-self: center;
+        // ...rest of desktop dots styles
     }
 
     .controls {
@@ -386,11 +475,27 @@
     }
 
     .arrows {
+        top: 40%;
+        padding: 0;
+        opacity: 0;
+        animation: reveal-controls 0.5s ease-out forwards;
+        animation-delay: 1.2s;
+    }
+    
+    .dots {
+        bottom: -4.25em; // Original desktop position
+    }
+
+    .arrows {
         position: absolute;
         top: 40%;
         transform: translateY(-50%);
         width: 100%;
         padding: 0;
+        opacity: 0;
+        animation: reveal-controls 0.5s ease-out forwards;
+        animation-delay: 1.2s;
+        transition: opacity 0.5s ease-out;
     }
 
     .button {
@@ -404,10 +509,180 @@
     .buttonright {
         right: -1.75em;
     }
+
+    .projectproblems, .projectsolutions, .projectparagraph {
+        animation-delay: 0.7s, 0.8s, 0.9s; // Original delays for desktop
+    }
+
+    .projectproblems {
+        opacity: 0;
+        animation: reveal-desc 0.5s ease-out forwards;
+        animation-delay: 0.7s;
+    }
+
+    .projectsolutions {
+        opacity: 0;
+        animation: reveal-desc 0.5s ease-out forwards;
+        animation-delay: 0.8s;
+    }
+
+    .projectparagraph {
+        opacity: 0;
+        animation: reveal-desc 0.5s ease-out forwards;
+        animation-delay: 0.9s;
+    }
+
+    .contentContainer {
+        &.visible {
+            .projectproblems, .projectsolutions, .projectparagraph {
+                // Remove mobile styles
+                transform: none;
+            }
+        }
+    }
 }
 
 @media screen and (min-width: 1400px) {
     .screen {
 
+    }
+}
+
+// Mobile-specific animations
+.projectproblems, .projectsolutions, .projectparagraph {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.5s ease-out;
+}
+
+.contentContainer {
+    &.visible {
+        .projectproblems, .projectsolutions, .projectparagraph {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
+
+.dots {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    margin-top: 2em;
+    
+    &.visible {
+        opacity: 1;
+    }
+}
+
+.controls {
+    position: absolute;
+    bottom: 1em;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    
+    &.visible {
+        opacity: 1;
+    }
+}
+
+.button {
+    // ...existing button styles...
+    position: relative; // Change from absolute
+}
+
+// Base styles without animations
+.projectpreview, .screen, .mobile, .projectproblems, 
+.projectsolutions, .projectparagraph, .controls, .dots {
+    opacity: 0;
+}
+
+// Mobile-specific animations and transitions
+@media screen and (max-width: 1199px) {
+    .projectpreview {
+        transition: all 0.5s ease-out;
+        visibility: hidden;
+        
+        &.showMobile {
+            opacity: 1;
+            visibility: visible;
+            
+            .screen, .mobile {
+                transition: opacity 0.5s ease-out;
+            }
+        }
+    }
+
+    .contentContainer {
+        transition: all 0.5s ease-out;
+        
+        &.visible {
+            .projectproblems, .projectsolutions, .projectparagraph {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    }
+
+    .projectproblems, .projectsolutions, .projectparagraph {
+        transform: translateY(10px);
+        transition: all 0.5s ease-out;
+    }
+
+    .controls, .dots {
+        transition: opacity 0.3s ease-out;
+        &.visible { opacity: 1; }
+    }
+}
+
+// Desktop-only animations
+@media screen and (min-width: 1200px) {
+    .projectpreview {
+        opacity: 1;
+    }
+
+    .screen {
+        opacity: 0;
+        animation: reveal-screen 0.5s ease-out forwards;
+        animation-delay: 0.8s;
+    }
+
+    .mobile {
+        opacity: 0;
+        animation: reveal-mobile 0.5s ease-out forwards;
+        animation-delay: 1s;
+    }
+
+    .projectproblems {
+        animation: reveal-desc 0.5s ease-out forwards;
+        animation-delay: 0.7s;
+    }
+
+    .projectsolutions {
+        animation: reveal-desc 0.5s ease-out forwards;
+        animation-delay: 0.8s;
+    }
+
+    .projectparagraph {
+        animation: reveal-desc 0.5s ease-out forwards;
+        animation-delay: 0.9s;
+    }
+
+    .controls, .dots, .arrows {
+        opacity: 0;
+        animation: reveal-controls 0.5s ease-out forwards;
+        animation-delay: 1.2s;
     }
 }
