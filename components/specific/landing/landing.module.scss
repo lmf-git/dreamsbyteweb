@@ -20,7 +20,7 @@
     width: 100%;
     box-sizing: border-box;
     align-items: center;
-    z-index: 1;
+    z-index: 999;  // Increase z-index
 
     opacity: 0;
     animation: start-content 0.5s linear forwards;
@@ -103,21 +103,23 @@
 
 .menu {
     width: 100vw;
-    height: 100%;
+    height: 100vh;
     padding: 2em;
-
-    position: fixed; // Change from absolute to fixed to prevent shifting
+    position: fixed;
     top: 0;
+    left: 0;
     background: white;
     box-sizing: border-box;
-    z-index: 4;
-    transition: opacity 0.3s ease-in-out; // Add transition for smooth appearance
+    z-index: 998;  // Increase z-index, slightly lower than header
     opacity: 0;
-    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
 
     &.visible {
         opacity: 1;
-        visibility: visible;
+        pointer-events: all;
     }
 }
 
@@ -157,28 +159,59 @@
 .items {
     display: flex;
     flex-direction: column;
-    margin-top: 4em;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    gap: 1.5em;
+    margin: 0;  // Remove top margin
 }
 
 .item {
     display: block;
     text-align: center;
     text-decoration: none;
-    font-size: 2.225em;
-    font-weight: 100;
+    font-size: 1.75em;
+    font-weight: 300;
     color: rgb(99, 99, 99);
+    padding: 0.5em;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 1px;
+        background: rgb(99, 99, 99);
+        transition: width 0.2s ease-in-out;
+    }
 
     &:hover {
-        color: rgb(177, 177, 177);
+        color: rgb(50, 50, 50);
+        transform: translateY(-2px);
+        
+        &:after {
+            width: 2em;
+        }
+    }
+}
+
+// For tablets and larger phones
+@media screen and (min-width: 768px) {
+    .item {
+        font-size: 2.225em;
     }
 }
 
 .socials {
     display: flex;
-    position: absolute;
-    bottom: 1.75em;
-    width: 100%;
+    position: relative;  // Change from absolute to relative
     margin-top: auto;
+    padding-bottom: 1.75em;  // Replace bottom positioning with padding
+    width: 100%;
     align-items: center;
     justify-content: center;
     left: 0;
