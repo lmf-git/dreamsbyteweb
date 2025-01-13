@@ -47,7 +47,7 @@
     opacity: 0;
     animation: reveal-desc 0.5s ease-out forwards;
     animation-delay: 0.6s;
-    padding: 0 1.5em;
+    padding: 0; // Remove padding completely
     margin-bottom: 0;
     user-select: none;
     position: relative;
@@ -56,6 +56,16 @@
     display: flex;
     flex-direction: column;
     z-index: 1;
+
+    @media screen and (min-width: 1200px) {
+        padding: 0;
+        flex: 0 0 35%;
+        display: flex;
+        flex-direction: column;
+        color: white;
+        align-self: flex-start;
+        position: relative;
+    }
 }
 
 .projectname {
@@ -73,6 +83,10 @@
     z-index: 2;
 }
 
+// Common transitions and properties
+$transition-standard: opacity 0.35s ease-out;
+$gpu-accel: translateZ(0);
+
 .projectpreview {
     opacity: 0;
     position: absolute;
@@ -83,7 +97,7 @@
     max-height: none;
     margin-top: 0; // Remove margin
     pointer-events: none;
-    transition: opacity 0.35s ease-out;
+    transition: $transition-standard;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -92,13 +106,13 @@
     padding: 0; // Remove padding
     box-sizing: border-box;
     min-height: auto;
-    transform: translateZ(0); // Add GPU acceleration
+    transform: $gpu-accel; // Add GPU acceleration
     will-change: opacity; // Optimize for opacity changes
     position: absolute; // Ensure this is always absolute
 
     @media screen and (max-width: 1199px) {
         padding: 0; // Override any padding
-        transition: opacity 0.35s ease-in-out; // Standardize transition duration
+        transition: $transition-standard; // Standardize transition duration
     }
 
     @media screen and (min-width: 1200px) {
@@ -109,24 +123,38 @@
         height: 60vh;
         width: 65%;
         // Remove any auto positioning or transforms that affect position
-        transform: translateZ(0); // Keep only GPU acceleration
+        transform: $gpu-accel; // Keep only GPU acceleration
     }
 
     &.showMobile {
         opacity: 1;
 
-        .screen, .mobile {
+        .screen {
             opacity: 1;
-            transition: opacity 0.35s ease-out;
+            transition: $transition-standard;
+            transition-delay: 0s; // Screen appears first
+        }
+
+        .mobile {
+            opacity: 1;
+            transition: $transition-standard;
+            transition-delay: 0.2s; // Mobile appears 0.2s after screen
         }
     }
 
     &:not(.showMobile) {
         opacity: 0;
 
-        .screen, .mobile {
+        .screen {
             opacity: 0;
-            transition: opacity 0.35s ease-out;
+            transition: $transition-standard;
+            transition-delay: 0.2s; // Screen fades out last
+        }
+
+        .mobile {
+            opacity: 0;
+            transition: $transition-standard;
+            transition-delay: 0s; // Mobile fades out first
         }
     }
 
@@ -136,8 +164,8 @@
         left: 0;
         width: 100%;
         max-height: 35vh;
-        transition: opacity 0.35s ease-out;
-        transform: translateZ(0); // Keep only GPU acceleration
+        transition: $transition-standard;
+        transform: $gpu-accel; // Keep only GPU acceleration
     }
 
     .mobile {
@@ -150,7 +178,7 @@
 
     &.showMobile, &:not(.showMobile) {
         .mobile {
-            transition: opacity 0.35s ease-out; // Only transition opacity
+            transition: $transition-standard; // Only transition opacity
         }
     }
 
@@ -172,22 +200,50 @@
             right: 15%;
             left: auto;
             width: 14vw;
-            transform: translateZ(0); // Reset transform for desktop
+            transform: $gpu-accel; // Reset transform for desktop
         }
     }
 }
 
+// Consolidate mobile styles
+.mobile {
+    position: absolute;
+    opacity: 0;
+    z-index: 3;
+    width: 25%;
+    transition: $transition-standard;
+    will-change: opacity;
+    backface-visibility: hidden;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%) $gpu-accel;
+
+    @media screen and (min-width: 1200px) {
+        width: 14vw;
+        top: auto;
+        bottom: -1em;
+        right: 15%;
+        left: auto;
+        transform: $gpu-accel;
+    }
+
+    &.showMobile {
+        opacity: 1;
+    }
+}
+
+// Remove duplicate screen styles
 .screen { 
     opacity: 0;
     position: absolute;
     z-index: 1;
-    transition: opacity 0.35s ease-in-out;
+    transition: $transition-standard;
     user-select: none;
     display: block;
     width: 100%;
     aspect-ratio: 16 / 9;
     max-height: 35vh;
-    transform: translateZ(0);
+    transform: $gpu-accel;
     will-change: opacity;
     backface-visibility: hidden;
     
@@ -197,41 +253,17 @@
     
     &.showMobile {
         opacity: 1;
-        transform: translateZ(0);
+        transform: $gpu-accel;
     }
 
     @media screen and (max-width: 1199px) {
         position: absolute;
-        transition: opacity 0.35s ease-in-out;
+        transition: $transition-standard;
     }
-}
-
-// First, remove duplicate .mobile class and consolidate styles
-.mobile {
-    position: absolute;
-    opacity: 0;
-    z-index: 3;
-    width: 25%;
-    transition: opacity 0.35s ease-out;
-    will-change: opacity;
-    backface-visibility: hidden;
-    // Mobile positioning - keep consistent
-    top: 20%;
-    left: 50%;
-    transform: translateX(-50%); // Keep this consistent, don't change during transitions
 
     @media screen and (min-width: 1200px) {
-        width: 14vw;
-        top: auto;
-        bottom: -1em;
-        right: 15%;
-        left: auto;
-        transform: none; // No transform needed in desktop
-    }
-
-    &.showMobile {
-        opacity: 1;
-        // Remove any transform changes here
+        height: 100%;
+        max-height: none;
     }
 }
 
@@ -286,14 +318,24 @@
 }
 
 // Base controls and dots styles (mobile first)
-.controls {
+.controls, .dots {
     width: 100%;
     display: flex;
+    opacity: 0;
+    transition: $transition-standard;
+    margin-top: 1.5em;
+    pointer-events: none;
+
+    &.visible {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
+.controls {
     flex-direction: column;
     align-items: center;
     gap: 1em;
-    opacity: 0;
-    transition: opacity 0.3s ease-out;
     margin-top: 1.5em;
     
     &.visible {
@@ -302,11 +344,7 @@
 }
 
 .dots {
-    width: 100%;
-    display: flex;
     justify-content: center;
-    opacity: 0;
-    transition: opacity 0.2s ease-out;
     margin-top: 0.75em;
     pointer-events: none;
     overflow: hidden;
@@ -315,7 +353,7 @@
         position: relative;
         bottom: 0;
         margin-top: 2em;
-        transition: opacity 0.25s ease-out;
+        transition: $transition-standard;
         
         &.visible {
             transition-delay: 0.2s;
@@ -586,7 +624,7 @@
     }
 }
 
-// Update meta positioning for mobile
+// Remove duplicate meta styles
 .meta {
     position: absolute;
     left: 0;
@@ -608,11 +646,9 @@
         pointer-events: auto;
     }
 
-    .controls,
-    .dots {
+    .controls, .dots {
         margin: 0;
         opacity: 1;
-        transition: none;
         pointer-events: inherit;
         width: auto;
     }
@@ -625,6 +661,12 @@
     .dots {
         display: flex;
         align-items: center;
+    }
+
+    @media screen and (min-width: 1200px) {
+        &:not(:first-of-type) {
+            display: none;
+        }
     }
 }
 
@@ -666,7 +708,7 @@
         margin: 0;
         transition: opacity 0.4s ease-in-out;
         overflow: visible;
-        transform: translateZ(0);
+        transform: $gpu-accel;
         will-change: opacity;
 
         .screen {
@@ -682,7 +724,7 @@
             animation: none;
             transition: none;
             z-index: 1;
-            transform: translateZ(0);
+            transform: $gpu-accel;
             backface-visibility: hidden;
             will-change: opacity;
         }
@@ -698,7 +740,7 @@
             animation: none;
             transition: none;
             z-index: 3;
-            transform: translateZ(0);
+            transform: $gpu-accel;
             backface-visibility: hidden;
             will-change: opacity;
         }
@@ -765,6 +807,7 @@
         }
     }
 
+    // Remove duplicate control positions
     .controls {
         position: absolute;
         bottom: -4.45em;
@@ -879,10 +922,11 @@
         }
     }
 
+    // Remove duplicate transitions
     .screen,
     .mobile {
-        transition: opacity 0.3s ease-out;
-        transform: translateZ(0);
+        transition: $transition-standard;
+        transform: $gpu-accel;
         backface-visibility: hidden;
         will-change: opacity;
         visibility: visible;
