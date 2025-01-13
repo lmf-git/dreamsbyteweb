@@ -162,6 +162,7 @@ export default function Hero() {
                 }
             });
         }
+        
     }, [isInitialized]);
 
     // Project change effect
