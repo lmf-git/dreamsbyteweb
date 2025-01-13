@@ -130,6 +130,7 @@ export default function Hero() {
                     // Wait for name reveal (0.6s delay + 0.5s animation)
                     setTimeout(() => {
                         setShowPreview(true);
+                        // Delay hiding showPreview to allow staggered animations
                         setTimeout(() => {
                             setShowPreview(false);
                             setTimeout(() => {
@@ -139,7 +140,7 @@ export default function Hero() {
                                     setInitialAnimationComplete(true);
                                 }, 800);
                             }, 300);
-                        }, 2000);
+                        }, 2000); // Adjusted delay
                     }, 1300); // Increased to ensure name is fully revealed
                 } else {
                     // Desktop initial sequence
@@ -172,7 +173,7 @@ export default function Hero() {
         setIsTransitioning(true);
         
         if (isMobile) {
-            // Adjust timing to fade out preview before content changes
+            // Adjusted timeout to allow screen to fade out before mobile
             setShowPreview(false);
             setTimeout(() => {
                 setShowContent(false);
@@ -185,10 +186,10 @@ export default function Hero() {
                             setTimeout(() => {
                                 setShowContent(true);
                                 setIsTransitioning(false);
-                            }, 400); // Increased from 300 to match new transition
+                            }, 200); // Increased delay to match SCSS transition delay
                         }, 1500);
                     });
-                }, 350); // Increased from 200 to match new transition
+                }, 200); // Increased delay to allow screen to start fading out
             }, 400);
         } else {
             // Simplified desktop sequence: just update content
