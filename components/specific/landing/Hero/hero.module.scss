@@ -76,12 +76,12 @@
 .projectpreview {
     opacity: 0;
     position: absolute;
-    top: 17em;
+    top: 8em; // Reduced from 17em
     left: 0;
     width: 100%;
     height: auto;
     max-height: none;
-    margin-top: 1em;
+    margin-top: 0; // Remove margin
     pointer-events: none;
     transition: opacity 0.35s ease-out;
     display: flex;
@@ -89,7 +89,7 @@
     justify-content: center;
     align-items: center;
     z-index: 10;
-    padding: 0;
+    padding: 0; // Remove padding
     box-sizing: border-box;
     min-height: auto;
     transform: translateZ(0); // Add GPU acceleration
@@ -97,7 +97,7 @@
     position: absolute; // Ensure this is always absolute
 
     @media screen and (max-width: 1199px) {
-        padding: 0 1.5em;
+        padding: 0; // Override any padding
         transition: opacity 0.35s ease-in-out; // Standardize transition duration
     }
 
