@@ -6,32 +6,48 @@ import styles from './testimonials.module.scss';
 
 export default function Testimonials() {
     const listRef = useRef(null);
+    const animationRef = useRef(null);
     const [isDragging, setIsDragging] = useState(false);
     const [startX, setStartX] = useState(0);
     const [scrollLeft, setScrollLeft] = useState(0);
-    const [scrollDirection, setScrollDirection] = useState(1);
-    const scrollSpeed = 1;
+    const [direction, setDirection] = useState(1);
+    const speed = 0.5;
 
     useEffect(() => {
-        const scroll = () => {
-            const container = listRef.current;
-            if (!container || isDragging) return;
+        let position = 0;
 
-            const maxScroll = container.scrollWidth - container.clientWidth;
-
-            // Simple direction change based on exact boundaries
-            if (container.scrollLeft >= maxScroll && scrollDirection > 0) {
-                setScrollDirection(-1);
-            } else if (container.scrollLeft <= 0 && scrollDirection < 0) {
-                setScrollDirection(1);
+        const animate = () => {
+            if (!listRef.current || isDragging) {
+                animationRef.current = requestAnimationFrame(animate);
+                return;
             }
 
-            container.scrollLeft += scrollSpeed * scrollDirection;
+            const container = listRef.current;
+            const maxScroll = container.scrollWidth - container.clientWidth;
+            
+            position += speed * direction;
+
+            // Keep position within bounds
+            if (position >= maxScroll) {
+                position = maxScroll;
+                setDirection(-1);
+            } else if (position <= 0) {
+                position = 0;
+                setDirection(1);
+            }
+
+            container.scrollLeft = position;
+            animationRef.current = requestAnimationFrame(animate);
         };
 
-        const interval = setInterval(scroll, 16);
-        return () => clearInterval(interval);
-    }, [isDragging, scrollDirection]);
+        animationRef.current = requestAnimationFrame(animate);
+
+        return () => {
+            if (animationRef.current) {
+                cancelAnimationFrame(animationRef.current);
+            }
+        };
+    }, [isDragging, direction]);
 
     const handleMouseDown = ev => {
         setIsDragging(true);
