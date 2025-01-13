@@ -2,19 +2,17 @@
 @use '../../../layout/colours';
 
 .hero {
-    // padding: 2.1em;
     box-sizing: border-box;
-    // overflow: hidden;
     user-select: none;
-    min-height: 100vh; // Add minimum height for mobile
-    padding: 2.1em; // Default padding for mobile and tablet
+    min-height: 100vh;
+    padding: 2.1em;
 }
 
 .title {
     font-family: var(--font-syne);
     color: white;
-    font-size: 2em; // Reduced from 2.65em for mobile
-    font-weight: 700; // Increased from 400 for more impact
+    font-size: 2em;
+    font-weight: 700;
     margin: 0 0 .75em 0;
     opacity: 0;
     animation: reveal-title 0.5s ease-out forwards;
@@ -24,20 +22,20 @@
 
 .projects {
     display: flex;
-    flex-direction: column; // Stack vertically on mobile/tablet
+    flex-direction: column;
     gap: 1em;
     align-items: flex-start;
     height: 100%;
     box-sizing: border-box;
-    position: relative; // Add this to contain absolute arrows
-    min-height: 65vh; // Added to maintain consistent height
+    position: relative;
+    min-height: 65vh;
 
     @media screen and (min-width: 1200px) {
         flex-direction: row;
-        align-items: stretch; // Ensure children stretch to match container height
+        align-items: stretch;
         gap: 4em;
         padding: 0;
-        min-height: 80vh; // Adjusted for desktop to accommodate larger content
+        min-height: 80vh;
     }
 }
 
@@ -49,11 +47,11 @@
     opacity: 0;
     animation: reveal-desc 0.5s ease-out forwards;
     animation-delay: 0.6s;
-    padding: 0 1.5em; // Reduce padding for mobile
-    margin-bottom: 0; // Remove bottom margin
+    padding: 0 1.5em;
+    margin-bottom: 0;
     user-select: none;
-    position: relative; // Ensure text stays above preview
-    min-height: 65vh; // Slightly reduced from 72vh to help with spacing
+    position: relative;
+    min-height: 65vh;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -63,147 +61,177 @@
 .projectname {
     font-family: var(--font-syne);
     font-weight: 600;
-    font-size: 1.5em; // Add smaller size for mobile
+    font-size: 1.5em;
     color: rgb(236, 236, 236);
     margin-top: 0;
-    margin-bottom: 1.5em; // Increase bottom margin to ensure more space
+    margin-bottom: 1.5em;
     opacity: 0;
     animation: reveal-desc 0.5s ease-out forwards;
     animation-delay: 0.6s;
     user-select: none;
-    position: relative; // Add relative positioning
-    z-index: 2; // Ensure it's above preview
+    position: relative;
+    z-index: 2;
 }
 
-// Base mobile styles
 .projectpreview {
     opacity: 0;
-    position: absolute; // Change to absolute positioning
-    top: 17em; // Moved lower to be below project name
+    position: absolute;
+    top: 17em;
     left: 0;
     width: 100%;
-    height: auto; // Let height be determined by content
-    max-height: none; // Remove max-height to fit naturally
-    margin-top: 1em; // Return to original spacing
-    pointer-events: none; // Disable interactions when hidden
-    transition: opacity 0.35s ease-in-out; // Smoother base transition
+    height: auto;
+    max-height: none;
+    margin-top: 1em;
+    pointer-events: none;
+    transition: opacity 0.35s ease-out;
     display: flex;
     flex-direction: column;
-    justify-content: center; // Center vertically
-    align-items: center; // Center horizontally
-    z-index: 10; // Ensure it stays above content during transitions
-    padding: 0; // Remove default padding
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    padding: 0;
     box-sizing: border-box;
     min-height: auto;
-    transform: none; // Reset transform
+    transform: translateZ(0); // Add GPU acceleration
+    will-change: opacity; // Optimize for opacity changes
+    position: absolute; // Ensure this is always absolute
 
     @media screen and (max-width: 1199px) {
-        padding: 0 1.5em; // Mobile-only padding
+        padding: 0 1.5em;
+        transition: opacity 0.35s ease-in-out; // Standardize transition duration
+    }
+
+    @media screen and (min-width: 1200px) {
+        position: absolute;
+        top: 0; // Reset to top 0 for desktop
+        right: 0;
+        left: auto; // Override mobile left positioning
+        height: 60vh;
+        width: 65%;
+        // Remove any auto positioning or transforms that affect position
+        transform: translateZ(0); // Keep only GPU acceleration
     }
 
     &.showMobile {
         opacity: 1;
-        pointer-events: auto;
 
-        .screen {
+        .screen, .mobile {
             opacity: 1;
-            width: 100%;
-            height: auto;
-            max-height: 35vh; // Slightly reduce height
-            margin-bottom: 1.5em; // More space between screen and mobile
-            transform: none; // Remove transform
-            transition: opacity 0.35s ease-in-out; // Match parent timing with smoother easing
-            position: absolute; // Change from relative/fixed to absolute
-        }
-
-        .mobile {
-            position: absolute; // Keep absolute positioning
-            top: 20%;
-            left: 50%;
-            width: 25%; // Make mobile preview smaller
-            opacity: 1;
-            transform: translate(-50%, 0); // Initially center
-            transition: opacity 0.35s ease-in-out; // Match parent timing
-
-            // Move to right side after initial reveal
-            &.showMobile {
-                left: 75%; // Move to right on mobile by default
-                transform: translate(0, 0);
-            }
+            transition: opacity 0.35s ease-out;
         }
     }
 
     &:not(.showMobile) {
         opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.35s ease-in-out; // Match timing
 
-        @media screen and (max-width: 1199px) {
+        .screen, .mobile {
             opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.35s ease-in-out;
-
-            .screen, .mobile {
-                opacity: 0;
-                transition: opacity 0.35s ease-in-out; // Match parent transition
-                position: absolute; // Keep position absolute
-                transform: none;
-            }
+            transition: opacity 0.35s ease-out;
         }
+    }
+
+    .screen {
+        position: absolute; // Keep this consistent
+        top: 0;
+        left: 0;
+        width: 100%;
+        max-height: 35vh;
+        transition: opacity 0.35s ease-out;
+        transform: translateZ(0); // Keep only GPU acceleration
+    }
+
+    .mobile {
+        // Remove any position/transform definitions here
+        // Only handle opacity transitions
+        &.showMobile {
+            opacity: 1;
+        }
+    }
+
+    &.showMobile, &:not(.showMobile) {
+        .mobile {
+            transition: opacity 0.35s ease-out; // Only transition opacity
+        }
+    }
+
+    @media screen and (min-width: 1200px) {
+        top: 0;
+        right: 0;
+        left: auto;
+        height: 60vh;
+        width: 65%;
 
         .screen {
-            opacity: 0;
-            transform: translateX(-20px);
-            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+            height: 100%;
+            max-height: none;
         }
 
         .mobile {
-            opacity: 0;
-            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
-            transform: translate(-50%, 0); // Keep initial position during fade out
+            top: auto;
+            bottom: -1em;
+            right: 15%;
+            left: auto;
+            width: 14vw;
+            transform: translateZ(0); // Reset transform for desktop
         }
     }
 }
 
 .screen { 
     opacity: 0;
-    position: absolute; // Change from relative/fixed to absolute
-    z-index: 1; // Lower z-index
-    transition: opacity 0.35s ease-in-out, transform 0.4s ease-in-out;
-    transform: translateX(-20px);
+    position: absolute;
+    z-index: 1;
+    transition: opacity 0.35s ease-in-out;
     user-select: none;
-    display: block; // Always display but control with opacity
-    width: 100%; // Set explicit width
-    aspect-ratio: 16 / 9; // Lock aspect ratio
-    max-height: 35vh; // Match the showMobile state
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    max-height: 35vh;
+    transform: translateZ(0);
+    will-change: opacity;
+    backface-visibility: hidden;
     
     &:not(.showMobile) {
         opacity: 0;
-        // Keep the transform but don't transition it during fade-out
     }
     
     &.showMobile {
         opacity: 1;
+        transform: translateZ(0);
     }
 
     @media screen and (max-width: 1199px) {
-        position: absolute; // Keep absolute position
-        transform: none; // Remove transform on mobile
+        position: absolute;
         transition: opacity 0.35s ease-in-out;
     }
 }
 
+// First, remove duplicate .mobile class and consolidate styles
 .mobile {
-    opacity: 0;
     position: absolute;
-    z-index: 3; // Higher z-index to ensure it's above screen
-    width: 25%; // Set consistent base width
-    transition: opacity 0.35s ease-in-out, transform 0.4s ease-in-out;
-    transform: translate(-50%, 0);
+    opacity: 0;
+    z-index: 3;
+    width: 25%;
+    transition: opacity 0.35s ease-out;
+    will-change: opacity;
+    backface-visibility: hidden;
+    // Mobile positioning - keep consistent
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%); // Keep this consistent, don't change during transitions
 
-    @media screen and (max-width: 1199px) {
-        position: absolute; // Keep absolute position
-        transition: opacity 0.35s ease-in-out;
+    @media screen and (min-width: 1200px) {
+        width: 14vw;
+        top: auto;
+        bottom: -1em;
+        right: 15%;
+        left: auto;
+        transform: none; // No transform needed in desktop
+    }
+
+    &.showMobile {
+        opacity: 1;
+        // Remove any transform changes here
     }
 }
 
@@ -239,7 +267,7 @@
     color: rgb(166, 166, 166);
     line-height: 1.6;
     opacity: 0;
-    transition: opacity 0.3s ease-out; // Adjust transition
+    transition: opacity 0.3s ease-out;
     user-select: none;
 }
 
@@ -284,7 +312,6 @@
     overflow: hidden;
     
     @media screen and (max-width: 1199px) {
-        // Mobile-specific adjustments
         position: relative;
         bottom: 0;
         margin-top: 2em;
@@ -302,20 +329,16 @@
         .dot {
             opacity: 0;
             transform: scale(0);
-            // Speed up the appear animation
             animation: dotAppear 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 
             @media screen and (max-width: 1199px) {
-                // Faster animations for mobile
                 animation-duration: 0.25s;
             }
 
-            // First dot appears after a short delay
             &:first-child {
                 animation-delay: 0.1s;
             }
 
-            // Other dots follow quickly
             @for $i from 2 through 6 {
                 &:nth-child(#{$i}) {
                     animation-delay: #{0.1 + (0.05 * ($i - 1))}s;
@@ -340,19 +363,15 @@
 .dot {
     cursor: pointer;
     margin-right: 0.35em;
-    width: 2em; // Increased from 1.3em for mobile
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); // Smoother transition
-    transform-origin: center;
-    transform: scale(0.8); // Start slightly smaller
-    opacity: 0.7;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 0; // Start invisible
-    transform: scale(0); // Start scaled down
+    width: 2em;
     transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
                 opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
+    transform-origin: center;
+    transform: scale(0);
+    opacity: 0;
+    
     @media screen and (max-width: 1199px) {
-        width: 1.5em; // Slightly smaller on mobile
+        width: 1.5em;
     }
     
     &:not(:last-child) {
@@ -361,9 +380,9 @@
 
     &.active, &:hover circle {
         fill: rgb(217, 217, 217);
-        transform: scale(1.1); // Slightly larger when active
+        transform: scale(1.1);
         opacity: 1;
-        transition-delay: 0s; // Remove delay for active state
+        transition-delay: 0s;
     }
 
     &:hover {
@@ -371,7 +390,6 @@
         opacity: 1;
     }
 
-    // Remove entering/exiting classes as they're no longer needed
     &.entering,
     &.exiting {
         display: none;
@@ -381,13 +399,13 @@
 .link {
     font-family: var(--font-inter);
     font-size: 1.225em;
-    font-weight: 500; // Increased from 300 for better readability
+    font-weight: 500;
     color: rgb(166, 166, 166);
     text-decoration: none;
     font-weight: 300;
     padding: 0.135em;
     border-radius: 0.135em;
-    transition: all 0.25s ease-out; // Smoother transition
+    transition: all 0.25s ease-out;
 
     &:hover {
         color: rgb(44, 44, 44);
@@ -409,7 +427,7 @@
     width: 3.5em;
     height: 3.5em;
     opacity: 0;
-    transition: opacity 0.3s ease-out; // Add transition to spacer
+    transition: opacity 0.3s ease-out;
 }
 
 .button {
@@ -424,10 +442,10 @@
     justify-content: center;
     cursor: pointer;
     opacity: 0.7;
-    transition: all 0.3s ease-out; // Smoother transition
+    transition: all 0.3s ease-out;
     position: relative;
     user-select: none;
-    visibility: visible; // Add this to ensure visibility transitions work
+    visibility: visible;
 
     &:hover {
         opacity: 1;
@@ -437,7 +455,6 @@
         opacity: 0;
         cursor: not-allowed;
         pointer-events: none;
-        // Remove visibility: hidden to allow fade out
     }
 }
 
@@ -477,70 +494,59 @@
     opacity: 0;
     min-height: 0;
     margin-bottom: 0;
-    pointer-events: none; // Prevent interaction during transitions
-    position: relative; // Add this to contain meta
+    pointer-events: none;
+    position: relative;
 
     .projectproblems,
     .projectsolutions,
     .projectparagraph {
         opacity: 0;
-        transform: translateY(10px);
-        will-change: opacity, transform;
-
-        // Remove transition here - we'll add it only when visible
-        transition: none;
+        transition: opacity 0.5s ease-out;
     }
 
     @media screen and (max-width: 1199px) {
-        transition: opacity 0.4s ease-out; // Slower fade in for content
+        transition: opacity 0.4s ease-out;
     }
 
     &.visible {
         opacity: 1;
-        pointer-events: auto; // Re-enable interaction
+        pointer-events: auto;
 
         .projectproblems,
         .projectsolutions,
         .projectparagraph {
-            // Add transitions only when visible
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); // Slower transitions
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .projectproblems {
             opacity: 1;
-            transform: translateY(0);
-            transition-delay: 0.3s; // Increased delay
+            transition-delay: 0.3s;
         }
 
         .projectparagraph:first-of-type {
             opacity: 1;
-            transform: translateY(0);
-            transition-delay: 0.45s; // Increased delay
+            transition-delay: 0.45s;
         }
 
         .projectsolutions {
             opacity: 1;
-            transform: translateY(0);
-            transition-delay: 0.6s; // Increased delay
+            transition-delay: 0.6s;
         }
 
         .projectparagraph:last-of-type {
             opacity: 1;
-            transform: translateY(0);
-            transition-delay: 0.75s; // Increased delay
+            transition-delay: 0.75s;
         }
 
-        // Add controls to animation sequence
         .controls {
             opacity: 1;
-            transform: translateY(0);
             transition-delay: 0.7s;
         }
 
         .meta {
             opacity: 1;
             pointer-events: auto;
-            transition-delay: 0.7s; // Match the content animation sequence
+            transition-delay: 0.7s;
         }
 
         @media screen and (max-width: 1199px) {
@@ -591,11 +597,10 @@
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease-out;
-    margin-top: 2em; // Add some space after solutions
-    pointer-events: none;
+    margin-top: 2em;
     margin: 0;
     padding: 0;
-    top: calc(100% + 2em); // Add more space after content
+    top: calc(100% + 2em);
     box-sizing: border-box;
 
     &.visible {
@@ -609,7 +614,7 @@
         opacity: 1;
         transition: none;
         pointer-events: inherit;
-        width: auto; // Allow natural width
+        width: auto;
     }
 
     .controls {
@@ -625,7 +630,7 @@
 
 @media screen and (min-width: 1200px) {
     .hero {
-        padding: 3em 8em; // Increase horizontal padding to accommodate arrows
+        padding: 3em 8em;
         min-height: 80vh;
     }
 
@@ -637,7 +642,7 @@
     }
 
     .projectdesc {
-        padding: 0; // Reset padding for desktop
+        padding: 0;
         min-height: 60vh;
         margin-bottom: 0;
         flex: 0 0 35%;
@@ -648,33 +653,38 @@
         position: relative;
     }
 
-    // Desktop styles override at the end
     .projectpreview {
-        position: relative; // Change from absolute to relative
-        top: 50%; // Center vertically
+        position: absolute; // Keep absolute in desktop
+        top: 50%;
         right: 0;
-        transform: none; // Remove translateY on desktop
-        opacity: 0; // Start hidden
-        pointer-events: none; // Disable interactions when hidden
+        opacity: 0;
+        pointer-events: none;
         height: 60vh;
-        padding: 0; // Reset padding for desktop
-        top: auto; // Reset top position for desktop
-        width: 65%; // Ensure width is set for desktop
-        margin: 0; // Reset margin
+        padding: 0;
+        top: auto;
+        width: 65%;
+        margin: 0;
         transition: opacity 0.4s ease-in-out;
-        overflow: visible; // Allow buttons to overflow
+        overflow: visible;
+        transform: translateZ(0);
+        will-change: opacity;
 
         .screen {
-            position: relative; // Remove absolute positioning
+            position: absolute;
+            top: 0;
+            left: 0;
             display: block;
-            width: 100%; // Ensure full width on desktop
+            width: 100%;
             height: 100%;
-            opacity: 0; // Start hidden
+            opacity: 0;
             margin: 0;
             max-height: none;
-            animation: none; // Remove default animation
-            transition: none; // Remove transitions for desktop
-            z-index: 1; // Ensure consistent z-index in desktop view
+            animation: none;
+            transition: none;
+            z-index: 1;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            will-change: opacity;
         }
 
         .mobile {
@@ -684,26 +694,26 @@
             top: auto;
             left: auto;
             width: 14vw;
-            transform: none;
-            opacity: 0; // Start hidden
-            animation: none; // Remove default animation
-            transition: none; // Remove transitions for desktop
-            z-index: 3; // Keep mobile above screen in desktop view
+            opacity: 0;
+            animation: none;
+            transition: none;
+            z-index: 3;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            will-change: opacity;
         }
 
         &.showMobile, &:not(.showMobile) {
             .screen, .mobile {
                 transition: none;
-                transform: none;
             }
         }
     }
 
-    // Show arrows on desktop - update these styles
     .arrows {
         display: flex;
         position: absolute;
-        top: 50%; // Center vertically
+        top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         width: calc(100% + 12em);
@@ -712,9 +722,9 @@
         opacity: 0;
         pointer-events: none;
         transition: opacity 0.3s ease-out;
-        height: 0; // Prevent height influence
-        margin: 0; // Remove any margin
-        padding: 0; // Remove any padding
+        height: 0;
+        margin: 0;
+        padding: 0;
 
         &.visible {
             opacity: 1;
@@ -740,25 +750,23 @@
 
     .title {
         font-family: var(--font-syne);
-        font-size: 2.65em; // Restore original desktop size
-        // ...existing desktop title properties...
+        font-size: 2.65em;
     }
 
     .projectname {
         font-family: var(--font-syne);
-        font-size: 2em; // Restore larger size for desktop
-        // ...existing desktop projectname properties...
+        font-size: 2em;
     }
 
     .controls,
     .dots {
         &.visible {
-            transition: opacity 0.3s ease-out; // Restore transition for desktop
+            transition: opacity 0.3s ease-out;
         }
     }
 
     .controls {
-        position: absolute; // Only absolute in desktop
+        position: absolute;
         bottom: -4.45em;
         left: 0;
         margin-top: 2em;
@@ -768,7 +776,7 @@
     }
 
     .dots {
-        position: absolute; // Only absolute in desktop
+        position: absolute;
         bottom: -4.25em;
         left: 0;
         margin-top: 0;
@@ -779,7 +787,6 @@
         bottom: -4.45em;
         left: 0;
         top: auto;
-        transform: none;
         margin-top: 2em;
         width: 100%;
         z-index: 2;
@@ -787,10 +794,8 @@
         text-align: left;
         flex-direction: row;
         justify-content: space-between;
-        // padding: 0 2em;
     }
 
-    // Reset meta positioning for desktop
     .meta {
         position: absolute;
         bottom: -4.45em;
@@ -801,18 +806,17 @@
         width: 100%;
         flex-direction: row;
         align-items: center;
-        justify-content: flex-start; // Align to left
-        gap: 2em; // Space between controls and dots
-        opacity: 0; // Start hidden
+        justify-content: flex-start;
+        gap: 2em;
+        opacity: 0;
         pointer-events: none;
-        transition: opacity 0.3s ease-out; // Add transition
+        transition: opacity 0.3s ease-out;
 
         &.visible {
             opacity: 1;
             pointer-events: auto;
         }
 
-        // Remove individual positioning
         .controls,
         .dots {
             position: static;
@@ -822,12 +826,10 @@
         }
     }
     
-    // Remove redundant desktop position styles for controls and dots
     .controls, .dots {
         position: static;
     }
 
-    // Remove duplicate meta styles
     .meta {
         &:not(:first-of-type) {
             display: none;
@@ -848,7 +850,7 @@
     }
 
     .dot {
-        width: 1.3em; // Return to original size for desktop
+        width: 1.3em;
     }
 
     .screen {
@@ -877,14 +879,15 @@
         }
     }
 
-    // Ensure transitions are smoother
     .screen,
     .mobile {
         transition: opacity 0.3s ease-out;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        will-change: opacity;
         visibility: visible;
     }
 
-    // Optional: Add visual feedback for disabled controls
     .button,
     .dot {
         &[disabled],
@@ -899,11 +902,9 @@
 // Ensure keyframes are correctly defined
 @keyframes reveal-desc {
     from {
-        transform: translateX(-20px);
         opacity: 0;
     }
     to {
-        transform: translateX(0);
         opacity: 1;
     }
 }
@@ -928,15 +929,12 @@
 @for $i from 2 through 6 {
     @keyframes dotAppearCurved-#{$i} {
         0% {
-            transform: scale(0) translateX(-#{$i * 5}px);
             opacity: 0;
         }
         60% {
-            transform: scale(1.1) translateX(0);
             opacity: 0.5;
         }
         100% {
-            transform: scale(0.8);
             opacity: 0.7;
         }
     }

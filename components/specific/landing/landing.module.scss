@@ -92,6 +92,8 @@
             fill: rgb(235, 235, 235);
         }
     }
+
+    transition: background 0.3s ease-in-out; // Add transition for smooth hover effects
 }
 
 .menutoggleicon {
@@ -104,11 +106,19 @@
     height: 100%;
     padding: 2em;
 
-    position: absolute;
+    position: fixed; // Change from absolute to fixed to prevent shifting
     top: 0;
     background: white;
     box-sizing: border-box;
     z-index: 4;
+    transition: opacity 0.3s ease-in-out; // Add transition for smooth appearance
+    opacity: 0;
+    visibility: hidden;
+
+    &.visible {
+        opacity: 1;
+        visibility: visible;
+    }
 }
 
 .menuheader {
@@ -136,6 +146,8 @@
             fill: rgb(235, 235, 235);
         }
     }
+
+    transition: background 0.3s ease-in-out; // Add transition for smooth hover effects
 }
 
 .menucloseicon {
