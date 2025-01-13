@@ -7,6 +7,7 @@ import styles from './testimonials.module.scss';
 export default function Testimonials() {
     const listRef = useRef(null);
     const animationRef = useRef(null);
+    const positionRef = useRef(0); // Track position across renders
     const [isDragging, setIsDragging] = useState(false);
     const [startX, setStartX] = useState(0);
     const [scrollLeft, setScrollLeft] = useState(0);
@@ -14,8 +15,6 @@ export default function Testimonials() {
     const speed = 0.5;
 
     useEffect(() => {
-        let position = 0;
-
         const animate = () => {
             if (!listRef.current || isDragging) {
                 animationRef.current = requestAnimationFrame(animate);
@@ -25,18 +24,18 @@ export default function Testimonials() {
             const container = listRef.current;
             const maxScroll = container.scrollWidth - container.clientWidth;
             
-            position += speed * direction;
+            positionRef.current += speed * direction;
 
             // Keep position within bounds
-            if (position >= maxScroll) {
-                position = maxScroll;
+            if (positionRef.current >= maxScroll) {
+                positionRef.current = maxScroll;
                 setDirection(-1);
-            } else if (position <= 0) {
-                position = 0;
+            } else if (positionRef.current <= 0) {
+                positionRef.current = 0;
                 setDirection(1);
             }
 
-            container.scrollLeft = position;
+            container.scrollLeft = positionRef.current;
             animationRef.current = requestAnimationFrame(animate);
         };
 
@@ -53,19 +52,23 @@ export default function Testimonials() {
         setIsDragging(true);
         setStartX(ev.pageX - listRef.current.offsetLeft);
         setScrollLeft(listRef.current.scrollLeft);
+        positionRef.current = listRef.current.scrollLeft; // Sync position
     };
 
     const handleTouchStart = ev => {
         setIsDragging(true);
         setStartX(ev.touches[0].pageX - listRef.current.offsetLeft);
         setScrollLeft(listRef.current.scrollLeft);
+        positionRef.current = listRef.current.scrollLeft; // Sync position
     };
 
     const handleMouseMove = ev => {
         if (!isDragging) return;
         const x = ev.pageX - listRef.current.offsetLeft;
         const walk = x - startX;
-        listRef.current.scrollLeft = scrollLeft - walk;
+        const newPosition = scrollLeft - walk;
+        listRef.current.scrollLeft = newPosition;
+        positionRef.current = newPosition; // Update position while dragging
     };
 
     const handleTouchMove = ev => {
@@ -73,7 +76,9 @@ export default function Testimonials() {
         
         const x = ev.touches[0].pageX - listRef.current.offsetLeft;
         const walk = x - startX;
-        listRef.current.scrollLeft = scrollLeft - walk;
+        const newPosition = scrollLeft - walk;
+        listRef.current.scrollLeft = newPosition;
+        positionRef.current = newPosition; // Update position while dragging
     };
 
     const stopDragging = () => {
