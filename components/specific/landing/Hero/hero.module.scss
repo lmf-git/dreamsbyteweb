@@ -30,6 +30,15 @@
     height: 100%;
     box-sizing: border-box;
     position: relative; // Add this to contain absolute arrows
+    min-height: 65vh; // Added to maintain consistent height
+
+    @media screen and (min-width: 1200px) {
+        flex-direction: row;
+        align-items: stretch; // Ensure children stretch to match container height
+        gap: 4em;
+        padding: 0;
+        min-height: 80vh; // Adjusted for desktop to accommodate larger content
+    }
 }
 
 .projectdesc {
@@ -44,7 +53,7 @@
     margin-bottom: 0; // Remove bottom margin
     user-select: none;
     position: relative; // Ensure text stays above preview
-    min-height: 72vh;
+    min-height: 65vh; // Slightly reduced from 72vh to help with spacing
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -57,7 +66,7 @@
     font-size: 1.5em; // Add smaller size for mobile
     color: rgb(236, 236, 236);
     margin-top: 0;
-    margin-bottom: 1em; // Add space below project name
+    margin-bottom: 1.5em; // Increase bottom margin to ensure more space
     opacity: 0;
     animation: reveal-desc 0.5s ease-out forwards;
     animation-delay: 0.6s;
@@ -69,28 +78,32 @@
 // Base mobile styles
 .projectpreview {
     opacity: 0;
-    position: absolute; // Change to absolute
-    top: 9em; // Reduce from 10em to raise the preview content slightly more
+    position: absolute; // Change to absolute positioning
+    top: 17em; // Moved lower to be below project name
     left: 0;
     width: 100%;
     height: auto; // Let height be determined by content
     max-height: none; // Remove max-height to fit naturally
     margin-top: 1em; // Return to original spacing
-    visibility: hidden;
-    transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+    pointer-events: none; // Disable interactions when hidden
+    transition: opacity 0.35s ease-in-out; // Smoother base transition
     display: flex;
     flex-direction: column;
     justify-content: center; // Center vertically
     align-items: center; // Center horizontally
-    z-index: 1;
-    padding: 0 1.5em; // Match projectdesc padding for mobile
+    z-index: 10; // Ensure it stays above content during transitions
+    padding: 0; // Remove default padding
     box-sizing: border-box;
     min-height: auto;
-    transition: all 0.4s ease-in-out;
+    transform: none; // Reset transform
+
+    @media screen and (max-width: 1199px) {
+        padding: 0 1.5em; // Mobile-only padding
+    }
 
     &.showMobile {
-        visibility: visible;
         opacity: 1;
+        pointer-events: auto;
 
         .screen {
             opacity: 1;
@@ -98,45 +111,65 @@
             height: auto;
             max-height: 35vh; // Slightly reduce height
             margin-bottom: 1.5em; // More space between screen and mobile
-            transform: translateX(0);
-            transition: all 0.4s ease-in-out;
-            transition-delay: 0.2s;
+            transform: none; // Remove transform
+            transition: opacity 0.35s ease-in-out; // Match parent timing with smoother easing
+            position: absolute; // Change from relative/fixed to absolute
         }
 
         .mobile {
-            position: absolute;
+            position: absolute; // Keep absolute positioning
             top: 20%;
             left: 50%;
             width: 25%; // Make mobile preview smaller
             opacity: 1;
             transform: translate(-50%, 0); // Initially center
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); // Smoother easing
-            transition-delay: 0.4s;
+            transition: opacity 0.35s ease-in-out; // Match parent timing
 
             // Move to right side after initial reveal
             &.showMobile {
                 left: 75%; // Move to right on mobile by default
+                transform: translate(0, 0);
             }
         }
     }
 
     &:not(.showMobile) {
-        visibility: hidden;
         opacity: 0;
         pointer-events: none;
+        transition: opacity 0.35s ease-in-out; // Match timing
 
-        * {
-            visibility: hidden;
+        @media screen and (max-width: 1199px) {
             opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease-in-out;
+
+            .screen, .mobile {
+                opacity: 0;
+                transition: opacity 0.35s ease-in-out; // Match parent transition
+                position: absolute; // Keep position absolute
+                transform: none;
+            }
+        }
+
+        .screen {
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+        }
+
+        .mobile {
+            opacity: 0;
+            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+            transform: translate(-50%, 0); // Keep initial position during fade out
         }
     }
 }
 
 .screen { 
     opacity: 0;
-    position: relative;
+    position: absolute; // Change from relative/fixed to absolute
     z-index: 1; // Lower z-index
-    transition: all 0.5s ease-out;
+    transition: opacity 0.35s ease-in-out, transform 0.4s ease-in-out;
     transform: translateX(-20px);
     user-select: none;
     display: block; // Always display but control with opacity
@@ -146,11 +179,17 @@
     
     &:not(.showMobile) {
         opacity: 0;
-        transform: translateX(-20px);
+        // Keep the transform but don't transition it during fade-out
     }
     
     &.showMobile {
         opacity: 1;
+    }
+
+    @media screen and (max-width: 1199px) {
+        position: absolute; // Keep absolute position
+        transform: none; // Remove transform on mobile
+        transition: opacity 0.35s ease-in-out;
     }
 }
 
@@ -158,6 +197,14 @@
     opacity: 0;
     position: absolute;
     z-index: 3; // Higher z-index to ensure it's above screen
+    width: 25%; // Set consistent base width
+    transition: opacity 0.35s ease-in-out, transform 0.4s ease-in-out;
+    transform: translate(-50%, 0);
+
+    @media screen and (max-width: 1199px) {
+        position: absolute; // Keep absolute position
+        transition: opacity 0.35s ease-in-out;
+    }
 }
 
 .screenspinner {
@@ -280,9 +327,7 @@
     &:not(.visible) {
         opacity: 0;
         pointer-events: none;
-        visibility: hidden; // Add this to prevent flash
-        transition: opacity 0.15s ease-out,
-                    visibility 0.15s ease-out;
+        transition: opacity 0.15s ease-out;
 
         .dot {
             transition: none;
@@ -447,7 +492,7 @@
     }
 
     @media screen and (max-width: 1199px) {
-        transition: opacity 0.25s ease-out;
+        transition: opacity 0.4s ease-out; // Slower fade in for content
     }
 
     &.visible {
@@ -458,31 +503,31 @@
         .projectsolutions,
         .projectparagraph {
             // Add transitions only when visible
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); // Slower transitions
         }
 
         .projectproblems {
             opacity: 1;
             transform: translateY(0);
-            transition-delay: 0.1s;
+            transition-delay: 0.3s; // Increased delay
         }
 
         .projectparagraph:first-of-type {
             opacity: 1;
             transform: translateY(0);
-            transition-delay: 0.25s;
+            transition-delay: 0.45s; // Increased delay
         }
 
         .projectsolutions {
             opacity: 1;
             transform: translateY(0);
-            transition-delay: 0.4s;
+            transition-delay: 0.6s; // Increased delay
         }
 
         .projectparagraph:last-of-type {
             opacity: 1;
             transform: translateY(0);
-            transition-delay: 0.55s;
+            transition-delay: 0.75s; // Increased delay
         }
 
         // Add controls to animation sequence
@@ -494,7 +539,6 @@
 
         .meta {
             opacity: 1;
-            visibility: visible;
             pointer-events: auto;
             transition-delay: 0.7s; // Match the content animation sequence
         }
@@ -545,8 +589,8 @@
     align-items: center;
     justify-content: space-between;
     opacity: 0;
-    visibility: hidden; // Add this to prevent interaction during animation
-    transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
+    pointer-events: none;
+    transition: opacity 0.3s ease-out;
     margin-top: 2em; // Add some space after solutions
     pointer-events: none;
     margin: 0;
@@ -556,7 +600,6 @@
 
     &.visible {
         opacity: 1;
-        visibility: visible;
         pointer-events: auto;
     }
 
@@ -607,29 +650,30 @@
 
     // Desktop styles override at the end
     .projectpreview {
-        position: relative;
+        position: relative; // Change from absolute to relative
+        top: 50%; // Center vertically
+        right: 0;
+        transform: none; // Remove translateY on desktop
         opacity: 0; // Start hidden
-        visibility: hidden; // Start hidden
+        pointer-events: none; // Disable interactions when hidden
         height: 60vh;
         padding: 0; // Reset padding for desktop
         top: auto; // Reset top position for desktop
         width: 65%; // Ensure width is set for desktop
         margin: 0; // Reset margin
-        transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+        transition: opacity 0.4s ease-in-out;
         overflow: visible; // Allow buttons to overflow
 
         .screen {
-            position: relative;
+            position: relative; // Remove absolute positioning
             display: block;
-            width: 100%;
+            width: 100%; // Ensure full width on desktop
             height: 100%;
             opacity: 0; // Start hidden
             margin: 0;
             max-height: none;
             animation: none; // Remove default animation
-            transition: all 0.4s ease-in-out;
-            transform: translateX(20px);
-            transition-delay: 0.1s;
+            transition: none; // Remove transitions for desktop
             z-index: 1; // Ensure consistent z-index in desktop view
         }
 
@@ -640,62 +684,18 @@
             top: auto;
             left: auto;
             width: 14vw;
-            transform: translateY(20px);
+            transform: none;
             opacity: 0; // Start hidden
             animation: none; // Remove default animation
-            transition: all 0.4s ease-in-out;
-            transition-delay: 0.3s;
+            transition: none; // Remove transitions for desktop
             z-index: 3; // Keep mobile above screen in desktop view
         }
 
-        &.showMobile {
-            visibility: visible;
-            opacity: 1;
-
-            .screen,
-            .mobile {
-                // Remove any mobile-specific size/position adjustments
-                width: auto;
-                margin: 0;
+        &.showMobile, &:not(.showMobile) {
+            .screen, .mobile {
+                transition: none;
+                transform: none;
             }
-
-            .screen {
-                width: 100%;
-                height: 100%;
-                max-height: none;
-                margin: 0;
-                opacity: 1;
-                transform: translateX(0);
-                transition: all 0.4s ease-in-out;
-                transition-delay: 0.1s;
-            }
-
-            .mobile {
-                // Keep original desktop position and size
-                position: absolute;
-                bottom: -1em;
-                right: 15%;
-                top: auto;
-                left: auto;
-                width: 14vw;
-                transform: translateY(0);
-                opacity: 1;
-                transition: all 0.4s ease-in-out;
-                transition-delay: 0.3s;
-            }
-
-            .mobile.showMobile {
-                left: auto; // Reset mobile position
-                right: 15%; // Use desktop position instead
-            }
-        }
-
-        // Remove any transition properties that might affect size/position
-        .screen,
-        .mobile {
-            transition: opacity 0.3s ease-out;
-            visibility: visible;
-            transform: none;
         }
     }
 
@@ -710,16 +710,14 @@
         justify-content: space-between;
         z-index: 20;
         opacity: 0;
-        visibility: hidden;
         pointer-events: none;
-        transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
+        transition: opacity 0.3s ease-out;
         height: 0; // Prevent height influence
         margin: 0; // Remove any margin
         padding: 0; // Remove any padding
 
         &.visible {
             opacity: 1;
-            visibility: visible;
             pointer-events: auto;
         }
     }
@@ -806,12 +804,12 @@
         justify-content: flex-start; // Align to left
         gap: 2em; // Space between controls and dots
         opacity: 0; // Start hidden
-        visibility: hidden; // Start hidden
-        transition: opacity 0.3s ease-out, visibility 0.3s ease-out; // Add transition
+        pointer-events: none;
+        transition: opacity 0.3s ease-out; // Add transition
 
         &.visible {
             opacity: 1;
-            visibility: visible;
+            pointer-events: auto;
         }
 
         // Remove individual positioning

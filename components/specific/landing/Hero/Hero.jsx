@@ -125,10 +125,9 @@ export default function Hero() {
             setProject(0);
             setCurrentProject(0);
             
-            // Wait for initial images to load
             preloadImages(0).then(() => {
                 if (isMobile) {
-                    // Mobile initial sequence
+                    // Wait for name reveal (0.6s delay + 0.5s animation)
                     setTimeout(() => {
                         setShowPreview(true);
                         setTimeout(() => {
@@ -138,10 +137,10 @@ export default function Hero() {
                                 setTimeout(() => {
                                     setShowNav(true);
                                     setInitialAnimationComplete(true);
-                                }, 1000);
-                            }, 100);
-                        }, 1500);
-                    }, 800);
+                                }, 800);
+                            }, 300);
+                        }, 2000);
+                    }, 1300); // Increased to ensure name is fully revealed
                 } else {
                     // Desktop initial sequence
                     setTimeout(() => {
@@ -172,41 +171,33 @@ export default function Hero() {
         const isMobile = window.innerWidth < 1200;
         setIsTransitioning(true);
         
-        // For mobile: Hide content first, then update project, then show preview
         if (isMobile) {
-            setShowContent(false);
-            setTimeout(() => {
-                setCurrentProject(project);
-                preloadImages(project).then(() => {
-                    setShowPreview(true);
-                    setTimeout(() => {
-                        setShowPreview(false);
-                        setTimeout(() => {
-                            setShowContent(true);
-                            setIsTransitioning(false);
-                            setIsReturningToFirst(false);
-                        }, 100);
-                    }, 1500);
-                });
-            }, 300); // Allow content to fade out completely
-        } else {
-            // Desktop sequence remains the same
-            setShowContent(false);
+            // Adjust timing to fade out preview before content changes
             setShowPreview(false);
-            
-            preloadImages(project).then(() => {
-                setCurrentProject(project);
+            setTimeout(() => {
+                setShowContent(false);
                 setTimeout(() => {
-                    setShowContent(true);
-                    setTimeout(() => {
+                    setCurrentProject(project);
+                    preloadImages(project).then(() => {
                         setShowPreview(true);
-                        setIsTransitioning(false);
-                        setIsReturningToFirst(false);
-                    }, 600);
-                }, 100);
+                        setTimeout(() => {
+                            setShowPreview(false);
+                            setTimeout(() => {
+                                setShowContent(true);
+                                setIsTransitioning(false);
+                            }, 400); // Increased from 300 to match new transition
+                        }, 1500);
+                    });
+                }, 350); // Increased from 200 to match new transition
+            }, 400);
+        } else {
+            // Simplified desktop sequence: just update content
+            setCurrentProject(project);
+            preloadImages(project).then(() => {
+                setIsTransitioning(false);
             });
         }
-    }, [project, isInitialized, initialAnimationComplete, currentProject]);
+    }, [project, isInitialized, initialAnimationComplete]);
 
     const nextProject = () => {
         if (project < projects.length - 1 && !isTransitioning) setProject(project + 1);
