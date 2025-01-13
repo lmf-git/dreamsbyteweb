@@ -78,8 +78,9 @@ export default function Footer() {
             }
             <button type="submit" className={`${styles.action} ${styles.submit}`}>
               Submit
+              <EmailSend className={styles['submit-icon']} />
             </button>
-            <EmailSend className={styles.sendicon} />
+            {/* Remove the standalone EmailSend component */}
           </div>
         </form>
         :

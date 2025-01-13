@@ -112,9 +112,10 @@ $gpu-accel: translateZ(0);
         top: 8em; // Increased from 6em to prevent clipping project name
         right: 0;
         width: 100%; // Full width
-        padding: 0 1em; // Match container padding
+        padding: 0; // Removed padding here
         height: 100%;
         align-items: center; // Center align contents
+        transition: opacity 1.2s ease-in-out; // Increased duration
         
         .screen {
             width: 100%;
@@ -125,10 +126,55 @@ $gpu-accel: translateZ(0);
         }
 
         .mobile {
-            width: 25%; // Reduced from 35%
+            width: 25%; // Back to original size
             position: absolute;
-            right: 20%; // Adjust position
-            top: 22vh; // Adjusted to match new preview position
+            right: 20%;
+            top: 14vh; // Higher position (was 18vh)
+        }
+
+        &.showMobile {
+            opacity: 1;
+            transition: opacity 1.2s ease-in-out;
+
+            .screen {
+                opacity: 1;
+                transition: opacity 1.2s ease-in-out;
+                transition-delay: 0.4s; // Matches intro timing
+            }
+
+            .mobile {
+                opacity: 1;
+                transition: opacity 1.2s ease-in-out;
+                transition-delay: 1s; // Matches intro timing
+            }
+        }
+
+        &:not(.showMobile) {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+
+            .screen, .mobile {
+                transition: opacity 1s ease-in-out;
+            }
+
+            .screen {
+                opacity: 0;
+                transition-delay: 0.2s; // Add delay to fade out
+            }
+
+            .mobile {
+                opacity: 0;
+                transition-delay: 0s; // Mobile fades first
+            }
+        }
+    }
+
+    // Even smaller screens
+    @media screen and (max-width: 768px) {
+        .mobile {
+            width: 22%; // Slightly smaller but not too small
+            right: 25%;
+            top: 12vh; // Higher position (was 16vh)
         }
     }
 
@@ -264,16 +310,23 @@ $gpu-accel: translateZ(0);
     opacity: 0;
     z-index: 3;
     width: 25%;
-    transition: $transition-standard;
+    transition: opacity 0.8s ease-in-out; // Match new timing
     will-change: opacity;
     backface-visibility: hidden;
     transform: $gpu-accel;
 
     @media screen and (max-width: 1199px) {
-        top: 20vh;
+        width: 25%; // Match the projectpreview mobile width
+        top: 14vh; // Match new position
         right: 1em; // Position from right edge
         left: auto; // Override any left positioning
         transform: none; // Remove center transform
+        transition: opacity 1.2s ease-in-out;
+    }
+
+    @media screen and (max-width: 768px) {
+        width: 22%; // Match updated smallest screen size
+        top: 12vh; // Match new position
     }
 
     @media screen and (min-width: 1200px) {
@@ -316,7 +369,7 @@ $gpu-accel: translateZ(0);
 
     @media screen and (max-width: 1199px) {
         position: absolute;
-        transition: $transition-standard;
+        transition: opacity 1.2s ease-in-out; // Match new timing
     }
 
     @media screen and (min-width: 1200px) {
