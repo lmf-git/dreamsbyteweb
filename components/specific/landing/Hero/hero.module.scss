@@ -24,7 +24,8 @@
     user-select: none;
 
     @media screen and (max-width: 1199px) {
-        font-size: 1.75em;
+        font-size: 1.5em;  // Reduced from 1.75em
+        margin-bottom: 0.5em;  // Reduced from .75em
     }
 }
 
@@ -89,7 +90,8 @@
     z-index: 2;
 
     @media screen and (max-width: 1199px) {
-        font-size: 1.35em;
+        font-size: 1.2em;  // Reduced from 1.35em
+        margin-bottom: 1em;  // Reduced from 1.5em
     }
 }
 
@@ -117,7 +119,7 @@ $gpu-accel: translateZ(0);
     // Mobile/tablet specific (under 1200px)
     @media screen and (max-width: 1199px) {
         position: absolute; // Position absolute only on mobile
-        top: 11em; // Adjusted from 12em to move slightly higher
+        top: 9em; // Reduced from 11em to move higher
         right: 0;
         width: 100%; // Full width
         padding: 0; // Removed padding here
@@ -182,7 +184,7 @@ $gpu-accel: translateZ(0);
         .mobile {
             width: 22%; // Slightly smaller but not too small
             right: 25%;
-            top: 15vh; // Adjusted from 16vh to match new preview position
+            top: 13vh; // Reduced from 15vh to match new preview position
         }
     }
 

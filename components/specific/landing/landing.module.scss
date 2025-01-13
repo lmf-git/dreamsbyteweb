@@ -12,16 +12,12 @@
 
 .header {
     display: flex;
-    
     justify-content: space-between;
-
-    padding: 2em;
-    
+    padding: 2em 2em 0; // Remove bottom padding, keep sides and top
     width: 100%;
     box-sizing: border-box;
     align-items: center;
     z-index: 999;  // Increase z-index
-
     opacity: 0;
     animation: start-content 0.5s linear forwards;
     animation-delay: 0.2s;
@@ -228,7 +224,7 @@
 @media screen and (min-width: 1000px) {
 
     .header {
-        padding: 1.85em 4.25em 0;
+        padding: 1.85em 4.25em 0; // Keep existing desktop padding but remove bottom
     }
 
     .headercta {
