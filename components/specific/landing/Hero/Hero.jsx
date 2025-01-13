@@ -165,6 +165,17 @@ export default function Hero() {
         
     }, [isInitialized]);
 
+    // Add resize handler to reset preview state
+    useEffect(() => {
+        const handleResize = () => {
+            setShowPreview(false);
+            setShowContent(true);
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     // Project change effect
     useEffect(() => {
         if (!isInitialized || project === null || !initialAnimationComplete) return;
