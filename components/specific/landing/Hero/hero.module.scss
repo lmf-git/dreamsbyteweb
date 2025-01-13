@@ -109,7 +109,7 @@ $gpu-accel: translateZ(0);
     // Mobile/tablet specific (under 1200px)
     @media screen and (max-width: 1199px) {
         position: absolute; // Position absolute only on mobile
-        top: 6em;
+        top: 8em; // Increased from 6em to prevent clipping project name
         right: 0;
         width: 100%; // Full width
         padding: 0 1em; // Match container padding
@@ -125,10 +125,10 @@ $gpu-accel: translateZ(0);
         }
 
         .mobile {
-            width: 35%;
+            width: 25%; // Reduced from 35%
             position: absolute;
             right: 20%; // Adjust position
-            top: 20vh;
+            top: 22vh; // Adjusted to match new preview position
         }
     }
 
@@ -267,9 +267,14 @@ $gpu-accel: translateZ(0);
     transition: $transition-standard;
     will-change: opacity;
     backface-visibility: hidden;
-    top: 20%;
-    left: 50%;
-    transform: translateX(-50%) $gpu-accel;
+    transform: $gpu-accel;
+
+    @media screen and (max-width: 1199px) {
+        top: 20vh;
+        right: 1em; // Position from right edge
+        left: auto; // Override any left positioning
+        transform: none; // Remove center transform
+    }
 
     @media screen and (min-width: 1200px) {
         width: 14vw;
