@@ -103,6 +103,26 @@ $gpu-accel: translateZ(0);
     @media screen and (max-width: 1199px) {
         padding: 0; // Override any padding
         transition: $transition-standard; // Standardize transition duration
+
+        &.showMobile {
+            .screen {
+                transition-delay: 0s; // Screen appears immediately
+            }
+
+            .mobile {
+                transition-delay: 0.7s; // Increased delay to appear after screen
+            }
+        }
+
+        &:not(.showMobile) {
+            .screen {
+                transition-delay: 0s; // Screen fades out immediately
+            }
+
+            .mobile {
+                transition-delay: 0.4s; // Increased delay to fade out after screen
+            }
+        }
     }
 
     @media screen and (min-width: 1200px) {
@@ -192,6 +212,42 @@ $gpu-accel: translateZ(0);
             left: auto;
             width: 14vw;
             transform: $gpu-accel; // Reset transform for desktop
+        }
+
+        &.showMobile {
+            opacity: 1;
+            transition: opacity 0.4s ease-in-out;
+            transition-delay: 0.2s; // Delay the entire preview appearance
+
+            .screen {
+                opacity: 1;
+                transition: opacity 0.4s ease-in-out;
+                transition-delay: 0s; // Screen appears immediately after projectpreview
+            }
+
+            .mobile {
+                opacity: 1;
+                transition: opacity 0.4s ease-in-out;
+                transition-delay: 0.5s; // Mobile appears after screen
+            }
+        }
+
+        &:not(.showMobile) {
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+            transition-delay: 0s; // Reset immediately
+
+            .screen {
+                opacity: 0;
+                transition: opacity 0.4s ease-in-out;
+                transition-delay: 0s; // Screen fades out first
+            }
+
+            .mobile {
+                opacity: 0;
+                transition: opacity 0.4s ease-in-out;
+                transition-delay: 0.3s; // Mobile fades out after screen
+            }
         }
     }
 }
@@ -736,9 +792,39 @@ $gpu-accel: translateZ(0);
             will-change: opacity;
         }
 
-        &.showMobile, &:not(.showMobile) {
-            .screen, .mobile {
-                transition: none;
+        &.showMobile {
+            opacity: 1;
+            transition: opacity 0.4s ease-in-out;
+            transition-delay: 0.2s; // Delay the entire preview appearance
+
+            .screen {
+                opacity: 1;
+                transition: opacity 0.4s ease-in-out;
+                transition-delay: 0s; // Screen appears immediately after projectpreview
+            }
+
+            .mobile {
+                opacity: 1;
+                transition: opacity 0.4s ease-in-out;
+                transition-delay: 0.5s; // Mobile appears after screen
+            }
+        }
+
+        &:not(.showMobile) {
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+            transition-delay: 0s; // Reset immediately
+
+            .screen {
+                opacity: 0;
+                transition: opacity 0.4s ease-in-out;
+                transition-delay: 0s; // Screen fades out first
+            }
+
+            .mobile {
+                opacity: 0;
+                transition: opacity 0.4s ease-in-out;
+                transition-delay: 0.3s; // Mobile fades out after screen
             }
         }
     }
