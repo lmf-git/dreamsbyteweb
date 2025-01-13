@@ -10,37 +10,36 @@ export default function Testimonials() {
     const [startX, setStartX] = useState(0);
     const [scrollLeft, setScrollLeft] = useState(0);
     const [scrollDirection, setScrollDirection] = useState(1);
-    const scrollSpeed = 1;
+    const scrollSpeed = 0.5; // Reduced speed
 
     useEffect(() => {
-        let animationFrameId;
-        let autoScrollTimeout;
+        const startDelay = 2000; // 2 second initial delay
+        let scrollInterval;
+        let mounted = true;
 
-        const autoScroll = () => {
-            if (!isDragging && listRef.current) {
-                const container = listRef.current;
-                const maxScroll = container.scrollWidth - container.clientWidth;
+        const startScrolling = () => {
+            scrollInterval = setInterval(() => {
+                if (!isDragging && listRef.current && mounted) {
+                    const container = listRef.current;
+                    const maxScroll = container.scrollWidth - container.clientWidth;
 
-                // Check if we've hit the edges
-                if (container.scrollLeft >= maxScroll && scrollDirection > 0) {
-                    setScrollDirection(-1);
-                } else if (container.scrollLeft <= 0 && scrollDirection < 0) {
-                    setScrollDirection(1);
+                    if (container.scrollLeft >= maxScroll - 1 && scrollDirection > 0) {
+                        setScrollDirection(-1);
+                    } else if (container.scrollLeft <= 1 && scrollDirection < 0) {
+                        setScrollDirection(1);
+                    }
+
+                    container.scrollLeft += scrollSpeed * scrollDirection;
                 }
-
-                container.scrollLeft += scrollSpeed * scrollDirection;
-            }
-            animationFrameId = requestAnimationFrame(autoScroll);
+            }, 16); // ~60fps
         };
 
-        // Start auto-scroll after a short delay
-        autoScrollTimeout = setTimeout(() => {
-            animationFrameId = requestAnimationFrame(autoScroll);
-        }, 1000);
+        const timeoutId = setTimeout(startScrolling, startDelay);
 
         return () => {
-            cancelAnimationFrame(animationFrameId);
-            clearTimeout(autoScrollTimeout);
+            mounted = false;
+            clearTimeout(timeoutId);
+            clearInterval(scrollInterval);
         };
     }, [isDragging, scrollDirection, scrollSpeed]);
 
