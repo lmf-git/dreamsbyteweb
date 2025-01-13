@@ -6,7 +6,6 @@ import styles from './testimonials.module.scss';
 
 export default function Testimonials() {
     const listRef = useRef(null);
-    const planeRef = useRef(null);
     const [isDragging, setIsDragging] = useState(false);
     const [startX, setStartX] = useState(0);
     const [scrollLeft, setScrollLeft] = useState(0);
@@ -15,7 +14,7 @@ export default function Testimonials() {
 
     useEffect(() => {
         let animationFrameId;
-        let isAtEdge = false;
+        let autoScrollTimeout;
 
         const autoScroll = () => {
             if (!isDragging && listRef.current) {
@@ -34,12 +33,16 @@ export default function Testimonials() {
             animationFrameId = requestAnimationFrame(autoScroll);
         };
 
-        animationFrameId = requestAnimationFrame(autoScroll);
+        // Start auto-scroll after a short delay
+        autoScrollTimeout = setTimeout(() => {
+            animationFrameId = requestAnimationFrame(autoScroll);
+        }, 1000);
 
         return () => {
             cancelAnimationFrame(animationFrameId);
+            clearTimeout(autoScrollTimeout);
         };
-    }, [isDragging, scrollDirection]);
+    }, [isDragging, scrollDirection, scrollSpeed]);
 
     const handleMouseDown = ev => {
         setIsDragging(true);
@@ -85,7 +88,7 @@ export default function Testimonials() {
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={stopDragging}>
-            <div className={styles.plane} ref={planeRef}>
+            <div className={styles.plane}>
                 { testimonials.map((t, i) => (
                     <div className={styles.testimonial} key={i}>
                         <div className={styles.brand}>
