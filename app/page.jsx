@@ -22,6 +22,7 @@ import styles from "../components/specific/landing/landing.module.scss";
 
 export default function Index() {
     const [menuOpen, setMenuOpen] = useState(false);
+    // Remove showTestimonials state
 
     // Clip the page when menu is open.
     useEffect(() => {

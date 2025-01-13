@@ -15,8 +15,8 @@ import styles from './hero.module.scss';
 const projects = [
     {
         name: 'TRK Civils LTD',
-        problem: 'A new civil engineering startup needed comprehensive digital presence establishment, including brand identity development, professional website creation, and implementation of marketing infrastructure.',
-        solution: 'Developed a complete digital package featuring a modern website with inquiry management tools, cohesive branding elements, and foundational marketing system integration.',
+        problem: 'New civil engineering company needed a website and complete digital presence.',
+        solution: 'Built a modern website with inquiry tools and marketing setup.',
         url: 'https://trk-amber.vercel.app',
         image: '/projects/trk/trk-mobile.png',
         desktopimage: '/projects/trk/trk-desktop.png',
@@ -24,8 +24,8 @@ const projects = [
     },
     {
         name: 'The Right Direction',
-        problem: 'A community services organization required a professional platform to showcase their mentorship programs, integrate booking capabilities, and facilitate connections between families and program sponsors.',
-        solution: 'Created a comprehensive web platform featuring detailed program information, automated booking systems, community testimonials, and team profiles to enhance engagement and visibility.',
+        problem: 'Community service needed a way to showcase programs and handle bookings.',
+        solution: 'Created a website with booking system and program information.',
         url: 'https://trd.vercel.app',
         image: '/projects/trd/trd-mobile.png',
         desktopimage: '/projects/trd/trd-desktop.png',
@@ -33,8 +33,8 @@ const projects = [
     },
     {
         name: 'Allied Construction',
-        problem: 'Construction supplier needed to replace their outdated and expensive OpenCart wholesale portal with a modern, cost-effective solution tailored to their specific business requirements.',
-        solution: 'Engineered a custom B2B wholesale platform with streamlined ordering processes, inventory management, and client-specific pricing, resulting in significant operational cost savings.',
+        problem: 'Construction supplier needed to replace expensive outdated wholesale system.',
+        solution: 'Built custom wholesale platform with business-specific pricing.',
         url: 'https://alliedconstruction.vercel.app/',
         image: '/projects/allied/allied-mobile.png',
         desktopimage: '/projects/allied/allied-desktop.png',
@@ -42,8 +42,8 @@ const projects = [
     },
     {
         name: 'Electric Doctors',
-        problem: 'An established electrical contractor sought to enhance their digital presence, modernize client communications, and implement efficient systems for business operations and invoice management.',
-        solution: 'Built a professional website with integrated customer management tools, optimized Google Business presence, and streamlined digital workflows for improved business efficiency.',
+        problem: 'Electrical contractor needed better customer communication and invoicing.',
+        solution: 'Created website with customer management and business tools.',
         url: 'https://www.electricdrs.com',
         image: '/projects/eds/eds-mobile.png',
         desktopimage: '/projects/eds/eds-desktop.png',
@@ -51,8 +51,8 @@ const projects = [
     },
     {
         name: 'Skylar Lily',
-        problem: 'Content creator and variety streamer needed a professional platform to showcase their work, engage with their community, and integrate multiple social media channels into one cohesive hub.',
-        solution: 'Designed a custom website featuring seamless social media integration, community engagement tools, and content showcasing capabilities, creating an immersive brand experience.',
+        problem: 'Content creator needed a hub to showcase work and engage with fans.',
+        solution: 'Made a website connecting social media and community features.',
         url: 'https://www.skylarlily.com',
         image: '/projects/skylar/skylar-mobile.png',
         desktopimage: '/projects/skylar/skylar-desktop.png',
@@ -60,8 +60,8 @@ const projects = [
     },
     {
         name: 'Lvolt (Networking)',
-        problem: 'Security and networking contractor required a focused digital strategy to expand their CCTV and low voltage services, along with improved lead generation and market positioning.',
-        solution: 'Implemented a conversion-optimized website with targeted service area marketing, integrated lead capture systems, and comprehensive security solution showcasing.',
+        problem: 'Security contractor needed to expand CCTV and low voltage services.',
+        solution: 'Built website with service area targeting and lead generation.',
         url: 'https://www.lvolt.net',
         image: '/projects/lvolt/lvolt-mobile.png',
         desktopimage: '/projects/lvolt/lvolt-desktop.png',
@@ -69,7 +69,7 @@ const projects = [
     }
 ];
 
-export default function Hero() {
+export default function Hero() {  // Remove onComplete prop
     const [project, setProject] = useState(null); // Change initial state to null
     const [desktopLoading, setDesktopLoading] = useState(true);
     const [mobileLoading, setMobileLoading] = useState(true);
@@ -261,7 +261,7 @@ export default function Hero() {
                                     // For mobile: Show dots after preview is hidden AND content is visible
                                     // For desktop: Use existing logic
                                     ((window.innerWidth >= 1200 && firstRevealComplete) || 
-                                     (window.innerWidth < 1200 && showContent)) && 
+                                    (window.innerWidth < 1200 && showContent)) && 
                                     !isTransitioning && !showPreview
                                         ? styles.visible 
                                         : ''

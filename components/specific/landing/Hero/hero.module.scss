@@ -4,11 +4,11 @@
 .hero {
     box-sizing: border-box;
     user-select: none;
-    min-height: 100vh;
     padding: 0; // Remove default padding
 
     @media screen and (min-width: 1200px) {
         padding: 3em 8em;
+        min-height: 100vh; // Only apply min-height on desktop
     }
 }
 
@@ -22,6 +22,10 @@
     animation: reveal-title 0.5s ease-out forwards;
     animation-delay: 0.4s;
     user-select: none;
+
+    @media screen and (max-width: 1199px) {
+        font-size: 1.75em;
+    }
 }
 
 .projects {
@@ -83,6 +87,10 @@
     user-select: none;
     position: relative;
     z-index: 2;
+
+    @media screen and (max-width: 1199px) {
+        font-size: 1.35em;
+    }
 }
 
 // Common transitions and properties
@@ -109,7 +117,7 @@ $gpu-accel: translateZ(0);
     // Mobile/tablet specific (under 1200px)
     @media screen and (max-width: 1199px) {
         position: absolute; // Position absolute only on mobile
-        top: 8em; // Increased from 6em to prevent clipping project name
+        top: 11em; // Adjusted from 12em to move slightly higher
         right: 0;
         width: 100%; // Full width
         padding: 0; // Removed padding here
@@ -129,7 +137,7 @@ $gpu-accel: translateZ(0);
             width: 25%; // Back to original size
             position: absolute;
             right: 20%;
-            top: 14vh; // Higher position (was 18vh)
+            top: 17vh; // Adjusted from 18vh to match new preview position
         }
 
         &.showMobile {
@@ -174,7 +182,7 @@ $gpu-accel: translateZ(0);
         .mobile {
             width: 22%; // Slightly smaller but not too small
             right: 25%;
-            top: 12vh; // Higher position (was 16vh)
+            top: 15vh; // Adjusted from 16vh to match new preview position
         }
     }
 
@@ -317,7 +325,7 @@ $gpu-accel: translateZ(0);
 
     @media screen and (max-width: 1199px) {
         width: 25%; // Match the projectpreview mobile width
-        top: 14vh; // Match new position
+        top: 17vh; // Match new preview position
         right: 1em; // Position from right edge
         left: auto; // Override any left positioning
         transform: none; // Remove center transform
@@ -326,7 +334,7 @@ $gpu-accel: translateZ(0);
 
     @media screen and (max-width: 768px) {
         width: 22%; // Match updated smallest screen size
-        top: 12vh; // Match new position
+        top: 15vh; // Match new preview position
     }
 
     @media screen and (min-width: 1200px) {
@@ -419,6 +427,10 @@ $gpu-accel: translateZ(0);
     font-family: var(--font-syne);
     font-weight: 500;
     color: rgb(217, 217, 217);
+
+    @media screen and (max-width: 1199px) {
+        font-size: 0.9em;
+    }
 }
 
 .projectparagraph {

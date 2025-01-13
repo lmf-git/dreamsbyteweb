@@ -4,7 +4,7 @@ import { useRef, useState, useEffect } from 'react';
 import { testimonials } from '../../../../data.mjs';
 import styles from './testimonials.module.scss';
 
-export default function Testimonials() {
+export default function Testimonials({ visible }) {
     const listRef = useRef(null);
     const animationRef = useRef(null);
     const positionRef = useRef(0); // Track position across renders
@@ -86,7 +86,7 @@ export default function Testimonials() {
         // Auto-scrolling will resume automatically
     };
 
-    return <div className={`section ${styles.testimonials}`} id="testimonials">
+    return <div className={`section ${styles.testimonials} ${visible ? styles.visible : ''}`} id="testimonials">
         <h2 className={styles.title}>Our client testimonials:</h2>
         <div
             className={styles.list}
