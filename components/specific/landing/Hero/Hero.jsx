@@ -15,8 +15,8 @@ import styles from './hero.module.scss';
 const projects = [
     {
         name: 'TRK Civils LTD',
-        problem: 'TRK Civils LTD, a startup in civil engineering, needed branding, a website, and marketing setup.',
-        solution: 'Created a professional website, integrated tools for inquiries, and set up marketing essentials.',
+        problem: 'A new civil engineering startup needed comprehensive digital presence establishment, including brand identity development, professional website creation, and implementation of marketing infrastructure.',
+        solution: 'Developed a complete digital package featuring a modern website with inquiry management tools, cohesive branding elements, and foundational marketing system integration.',
         url: 'https://trk-amber.vercel.app',
         image: '/projects/trk/trk-mobile.png',
         desktopimage: '/projects/trk/trk-desktop.png',
@@ -24,8 +24,8 @@ const projects = [
     },
     {
         name: 'The Right Direction',
-        problem: 'The Right Direction Communal Services needed a professional website to showcase their mentorship programs, provide booking options, and connect with families and sponsors effectively.',
-        solution: 'Developed a comprehensive website featuring program details, booking tools, testimonials, and team profiles to enhance engagement and support their mission.',
+        problem: 'A community services organization required a professional platform to showcase their mentorship programs, integrate booking capabilities, and facilitate connections between families and program sponsors.',
+        solution: 'Created a comprehensive web platform featuring detailed program information, automated booking systems, community testimonials, and team profiles to enhance engagement and visibility.',
         url: 'https://trd.vercel.app',
         image: '/projects/trd/trd-mobile.png',
         desktopimage: '/projects/trd/trd-desktop.png',
@@ -33,8 +33,8 @@ const projects = [
     },
     {
         name: 'Allied Construction',
-        problem: 'Allied needed a portal for their wholesale operations. Their existing OpenCart solution was outdated and overpriced.',
-        solution: 'Developed a custom-built B2B wholesale application tailored to their specific needs, providing a more cost-effective and modern solution.',
+        problem: 'Construction supplier needed to replace their outdated and expensive OpenCart wholesale portal with a modern, cost-effective solution tailored to their specific business requirements.',
+        solution: 'Engineered a custom B2B wholesale platform with streamlined ordering processes, inventory management, and client-specific pricing, resulting in significant operational cost savings.',
         url: 'https://alliedconstruction.vercel.app/',
         image: '/projects/allied/allied-mobile.png',
         desktopimage: '/projects/allied/allied-desktop.png',
@@ -42,8 +42,8 @@ const projects = [
     },
     {
         name: 'Electric Doctors',
-        problem: 'A master electrician seeking to establish their online presence and streamline business operations. They needed help with Google Business setup, client communication, and invoice management.',
-        solution: 'Built a professional website, optimized their Google Business profile, and implemented basic invoice management tools to help organize their growing business.',
+        problem: 'An established electrical contractor sought to enhance their digital presence, modernize client communications, and implement efficient systems for business operations and invoice management.',
+        solution: 'Built a professional website with integrated customer management tools, optimized Google Business presence, and streamlined digital workflows for improved business efficiency.',
         url: 'https://www.electricdrs.com',
         image: '/projects/eds/eds-mobile.png',
         desktopimage: '/projects/eds/eds-desktop.png',
@@ -51,8 +51,8 @@ const projects = [
     },
     {
         name: 'Skylar Lily',
-        problem: 'As a variety streamer and free-spirited content creator, Skylar Lily needed a professional platform to showcase her content and connect with her community.',
-        solution: 'Created a custom website with seamless Instagram and Discord integrations, enabling direct community engagement and content showcasing in one cohesive platform.',
+        problem: 'Content creator and variety streamer needed a professional platform to showcase their work, engage with their community, and integrate multiple social media channels into one cohesive hub.',
+        solution: 'Designed a custom website featuring seamless social media integration, community engagement tools, and content showcasing capabilities, creating an immersive brand experience.',
         url: 'https://www.skylarlily.com',
         image: '/projects/skylar/skylar-mobile.png',
         desktopimage: '/projects/skylar/skylar-desktop.png',
@@ -60,8 +60,8 @@ const projects = [
     },
     {
         name: 'Lvolt (Networking)',
-        problem: 'Specialized electrical contractor needed to expand their CCTV and low voltage hardware services, requiring a focused lead generation strategy and professional online presence.',
-        solution: 'Developed a conversion-focused website highlighting security and networking solutions, with integrated lead capture systems and service area targeting.',
+        problem: 'Security and networking contractor required a focused digital strategy to expand their CCTV and low voltage services, along with improved lead generation and market positioning.',
+        solution: 'Implemented a conversion-optimized website with targeted service area marketing, integrated lead capture systems, and comprehensive security solution showcasing.',
         url: 'https://www.lvolt.net',
         image: '/projects/lvolt/lvolt-mobile.png',
         desktopimage: '/projects/lvolt/lvolt-desktop.png',

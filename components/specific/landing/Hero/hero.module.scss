@@ -5,7 +5,11 @@
     box-sizing: border-box;
     user-select: none;
     min-height: 100vh;
-    padding: 2.1em;
+    padding: 0; // Remove default padding
+
+    @media screen and (min-width: 1200px) {
+        padding: 3em 8em;
+    }
 }
 
 .title {
@@ -29,6 +33,7 @@
     box-sizing: border-box;
     position: relative;
     min-height: 65vh;
+    padding: 1em; // Add minimal padding for mobile
 
     @media screen and (min-width: 1200px) {
         flex-direction: row;
@@ -56,6 +61,13 @@
     display: flex;
     flex-direction: column;
     z-index: 1;
+
+    @media screen and (max-width: 1199px) {
+        width: 100%;
+        padding: 0 1em;
+        padding-right: 1em; // Remove the extra padding for preview
+        min-height: auto;
+    }
 }
 
 .projectname {
@@ -78,62 +90,56 @@ $transition-standard: opacity 0.35s ease-out;
 $gpu-accel: translateZ(0);
 
 .projectpreview {
+    // Base styles for all breakpoints
     opacity: 0;
-    position: absolute;
-    top: 8em; // Reduced from 17em
-    left: 0;
     width: 100%;
     height: auto;
     max-height: none;
-    margin-top: 0; // Remove margin
+    margin-top: 0;
     pointer-events: none;
     transition: $transition-standard;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     z-index: 10;
-    padding: 0; // Remove padding
+    padding: 0;
     box-sizing: border-box;
     min-height: auto;
-    transform: $gpu-accel; // Add GPU acceleration
-    will-change: opacity; // Optimize for opacity changes
-    position: absolute; // Ensure this is always absolute
+    will-change: opacity;
 
+    // Mobile/tablet specific (under 1200px)
     @media screen and (max-width: 1199px) {
-        padding: 0; // Override any padding
-        transition: $transition-standard; // Standardize transition duration
-
-        &.showMobile {
-            .screen {
-                transition-delay: 0s; // Screen appears immediately
-            }
-
-            .mobile {
-                transition-delay: 0.7s; // Increased delay to appear after screen
-            }
+        position: absolute; // Position absolute only on mobile
+        top: 6em;
+        right: 0;
+        width: 100%; // Full width
+        padding: 0 1em; // Match container padding
+        height: 100%;
+        align-items: center; // Center align contents
+        
+        .screen {
+            width: 100%;
+            max-height: 30vh;
+            position: relative;
+            top: 0;
+            margin: 0 auto; // Center the screen
         }
 
-        &:not(.showMobile) {
-            .screen {
-                transition-delay: 0s; // Screen fades out immediately
-            }
-
-            .mobile {
-                transition-delay: 0.4s; // Increased delay to fade out after screen
-            }
+        .mobile {
+            width: 35%;
+            position: absolute;
+            right: 20%; // Adjust position
+            top: 20vh;
         }
     }
 
+    // Desktop specific (1200px and above)
     @media screen and (min-width: 1200px) {
-        position: absolute;
-        top: 0; // Reset to top 0 for desktop
-        right: 0;
-        left: auto; // Override mobile left positioning
+        position: relative; // Change to relative for desktop
         height: 60vh;
         width: 65%;
-        // Remove any auto positioning or transforms that affect position
-        transform: $gpu-accel; // Keep only GPU acceleration
+        transform: $gpu-accel;
+
+        // ...rest of existing desktop styles...
     }
 
     &.showMobile {
