@@ -10,16 +10,15 @@ export default function Testimonials() {
     const [startX, setStartX] = useState(0);
     const [scrollLeft, setScrollLeft] = useState(0);
     const [scrollDirection, setScrollDirection] = useState(1);
-    const scrollSpeed = 0.5; // Reduced speed
+    const scrollSpeed = 1;
 
     useEffect(() => {
-        const startDelay = 2000; // 2 second initial delay
-        let scrollInterval;
-        let mounted = true;
+        if (isDragging) return;
 
-        const startScrolling = () => {
-            scrollInterval = setInterval(() => {
-                if (!isDragging && listRef.current && mounted) {
+        // Short initial delay
+        const timeoutId = setTimeout(() => {
+            const interval = setInterval(() => {
+                if (listRef.current) {
                     const container = listRef.current;
                     const maxScroll = container.scrollWidth - container.clientWidth;
 
@@ -31,17 +30,13 @@ export default function Testimonials() {
 
                     container.scrollLeft += scrollSpeed * scrollDirection;
                 }
-            }, 16); // ~60fps
-        };
+            }, 16);
 
-        const timeoutId = setTimeout(startScrolling, startDelay);
+            return () => clearInterval(interval);
+        }, 500);
 
-        return () => {
-            mounted = false;
-            clearTimeout(timeoutId);
-            clearInterval(scrollInterval);
-        };
-    }, [isDragging, scrollDirection, scrollSpeed]);
+        return () => clearTimeout(timeoutId);
+    }, [isDragging, scrollDirection]);
 
     const handleMouseDown = ev => {
         setIsDragging(true);
