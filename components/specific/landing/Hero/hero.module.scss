@@ -520,15 +520,8 @@ $gpu-accel: translateZ(0);
     @media screen and (min-width: 768px) {
         justify-content: flex-start;
         margin: 0;
-        flex: 0 0 auto;
-        order: 1; // Add order 1 to keep it at the start
-    }
-
-    @media screen and (min-width: 1200px) {
-        &:not(.visible) {
-            opacity: 0.3;
-            pointer-events: none;
-        }
+        width: auto; // Change from flex: 0 0 auto
+        order: 1;
     }
 }
 
@@ -1353,9 +1346,9 @@ $gpu-accel: translateZ(0);
     }
 
     @media screen and (min-width: 768px) {
-        order: 2; // Change from -1 to 2 to push it to the end
+        order: 2;
         margin: 0;
-        flex: 0 0 auto;
+        width: auto; // Change from flex: 0 0 auto
     }
 }
 
@@ -1431,12 +1424,16 @@ $gpu-accel: translateZ(0);
                 opacity: 1;
                 transition: opacity 0.3s ease-out;
                 transition-delay: 0.8s; // Match parent delay
+                flex: 1; // Allow dots to take remaining space
+                min-width: 0; // Prevent overflow
             }
 
             .floatingLink {
                 opacity: 1;
                 pointer-events: auto;
                 transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+                white-space: nowrap; // Keep text on one line
+                margin-left: auto; // Push to the right
             }
         }
 
