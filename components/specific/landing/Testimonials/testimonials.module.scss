@@ -11,7 +11,7 @@
     transform: translateY(20px);
     transition: all 1s ease-out;
     animation: reveal-section 1s ease-out 1.5s forwards;
-    pointer-events: none; // Prevent interaction while invisible
+    pointer-events: auto; // Change this to always allow interactions
 
     &.visible {
         opacity: 1;
@@ -42,7 +42,12 @@
     position: relative;
     cursor: grab;
     user-select: none;
-    touch-action: pan-y pinch-zoom; // Allow vertical scroll but enable horizontal drag
+    touch-action: pan-x; // Only allow horizontal pan
+    pointer-events: auto; // Ensure interactions are enabled
+
+    &:active {
+        cursor: grabbing;
+    }
 }
 
 .plane {
@@ -54,6 +59,8 @@
     top: 0;
     height: calc(100% - .1em);
     touch-action: none; // Disable all touch actions on the draggable element
+    will-change: transform; // Optimize for animations
+    pointer-events: auto; // Ensure interactions are enabled
 }
 
 .testimonial {
@@ -67,6 +74,7 @@
     background: linear-gradient(104deg, #FFF 1.24%, #DBDBDB 100%);
     border-radius: .5em 0 0 0;
     box-sizing: border-box;
+    pointer-events: auto; // Ensure interactions are enabled
 }
 
 .brand {

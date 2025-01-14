@@ -15,6 +15,8 @@ export default function Testimonials({ visible }) {
     const [touchMoved, setTouchMoved] = useState(false);
     const speed = 0.5;
     const dragThreshold = 5; // pixels to consider as drag vs tap
+    const lastX = useRef(null);
+    const dragStartTime = useRef(null);
 
     useEffect(() => {
         const animate = () => {
@@ -26,6 +28,12 @@ export default function Testimonials({ visible }) {
             const container = listRef.current;
             const maxScroll = container.scrollWidth - container.clientWidth;
             
+            // Smooth transition back to auto-scroll
+            if (Date.now() - dragStartTime.current < 100) {
+                animationRef.current = requestAnimationFrame(animate);
+                return;
+            }
+
             positionRef.current += speed * direction;
 
             // Keep position within bounds
@@ -50,49 +58,46 @@ export default function Testimonials({ visible }) {
         };
     }, [isDragging, direction]);
 
-    const handleMouseDown = ev => {
+    const handleDragStart = (clientX) => {
+        if (!listRef.current) return;
         setIsDragging(true);
-        setStartX(ev.pageX - listRef.current.offsetLeft);
+        dragStartTime.current = Date.now();
+        lastX.current = clientX;
         setScrollLeft(listRef.current.scrollLeft);
-        positionRef.current = listRef.current.scrollLeft; // Sync position
+        positionRef.current = listRef.current.scrollLeft;
     };
 
-    const handleTouchStart = ev => {
-        // Don't prevent default here to allow normal touch behavior
-        setTouchMoved(false);
-        setIsDragging(true);
-        setStartX(ev.touches[0].pageX - listRef.current.offsetLeft);
-        setScrollLeft(listRef.current.scrollLeft);
-        positionRef.current = listRef.current.scrollLeft; // Sync position
-    };
-
-    const handleMouseMove = ev => {
-        if (!isDragging) return;
-        const x = ev.pageX - listRef.current.offsetLeft;
-        const walk = x - startX;
-        const newPosition = scrollLeft - walk;
-        listRef.current.scrollLeft = newPosition;
-        positionRef.current = newPosition; // Update position while dragging
-    };
-
-    const handleTouchMove = ev => {
-        if (!isDragging) return;
+    const handleDragMove = (clientX) => {
+        if (!isDragging || !listRef.current) return;
+        const delta = clientX - lastX.current;
+        lastX.current = clientX;
+        const newPosition = positionRef.current - delta;
         
-        // Only prevent default if we've determined it's a drag
-        if (touchMoved) {
-            ev.preventDefault();
+        // Bound the scroll position
+        const maxScroll = listRef.current.scrollWidth - listRef.current.clientWidth;
+        positionRef.current = Math.max(0, Math.min(newPosition, maxScroll));
+        listRef.current.scrollLeft = positionRef.current;
+    };
+
+    const handleMouseDown = (ev) => {
+        ev.preventDefault();
+        handleDragStart(ev.clientX);
+    };
+
+    const handleMouseMove = (ev) => {
+        handleDragMove(ev.clientX);
+    };
+
+    const handleTouchStart = (ev) => {
+        // Don't prevent default here to allow scrolling if needed
+        handleDragStart(ev.touches[0].clientX);
+    };
+
+    const handleTouchMove = (ev) => {
+        if (isDragging) {
+            ev.preventDefault(); // Only prevent default if we're actually dragging
+            handleDragMove(ev.touches[0].clientX);
         }
-        
-        const x = ev.touches[0].pageX - listRef.current.offsetLeft;
-        const walk = x - startX;
-        
-        if (Math.abs(walk) > dragThreshold) {
-            setTouchMoved(true);
-        }
-        
-        const newPosition = scrollLeft - walk;
-        listRef.current.scrollLeft = newPosition;
-        positionRef.current = newPosition; // Update position while dragging
     };
 
     const stopDragging = () => {
