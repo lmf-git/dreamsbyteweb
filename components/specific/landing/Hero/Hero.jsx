@@ -202,29 +202,22 @@ export default function Hero() {  // Remove onComplete prop
         if (isMobile) {
             setShowContent(false);
             setCurrentProject(project);
-            setShowPreview(false); // Hide preview on mobile
             
             preloadImages(project).then(() => {
                 setShowProjectName(true);
+                setShowPreview(true);
                 
                 setTimeout(() => {
-                    setShowPreview(true);
+                    setShowPreview(false);
+                    setShowContent(true);
+                    setIsTransitioning(false);
+                    setContentFading(false);
                     
                     setTimeout(() => {
-                        setShowPreview(false);
-                        setTimeout(() => {
-                            setShowContent(true);
-                            setTimeout(() => {
-                                setIsTransitioning(false);
-                                setContentFading(false);
-                                setTimeout(() => {
-                                    setShowNav(true);
-                                    setDotsReady(true);
-                                }, 1000);
-                            }, 600);
-                        }, 600);
-                    }, 5000);
-                }, 800);
+                        setShowNav(true);
+                        setDotsReady(true);
+                    }, 600);
+                }, 2500); // Reduced from 5000ms to 2500ms
             });
         } else {
             setCurrentProject(project);
