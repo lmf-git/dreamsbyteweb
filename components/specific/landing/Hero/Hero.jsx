@@ -128,22 +128,20 @@ export default function Hero() {  // Remove onComplete prop
             
             preloadImages(0).then(() => {
                 if (isMobile) {
-                    // Keep existing mobile sequence
+                    // Adjusted mobile sequence
                     setTimeout(() => {
                         setShowPreview(true);
                         setTimeout(() => {
                             setShowPreview(false);
                             setTimeout(() => {
                                 setShowContent(true);
-                                setTimeout(() => {
-                                    setShowNav(true);
-                                    setInitialAnimationComplete(true);
-                                }, 800);
-                            }, 300);
-                        }, 2000);
-                    }, 1300);
+                                setShowNav(true);
+                                setInitialAnimationComplete(true);
+                            }, 400); // Increased from 200
+                        }, 1800); // Increased from 1200
+                    }, 600); // Reduced from 800 for faster initial appearance
                 } else {
-                    // Desktop sequence - load content first, then preview
+                    // Desktop sequence - faster transitions
                     setTimeout(() => {
                         setShowContent(true);
                         setTimeout(() => {
@@ -151,11 +149,9 @@ export default function Hero() {  // Remove onComplete prop
                             setShowNav(true);
                             setInitialAnimationComplete(true);
                             setDotsReady(true);
-                            // Delay preview appearance until after content
-                            setTimeout(() => {
-                                setShowPreview(true);
-                            }, 800); // Add delay after content is visible
-                        }, 600);
+                            // Show preview sooner
+                            setShowPreview(true);
+                        }, 400); // Reduced from 600
                     }, 200);
                 }
             });
@@ -229,22 +225,18 @@ export default function Hero() {  // Remove onComplete prop
                 setShowPreview(true);
                 setTimeout(() => {
                     setShowPreview(false);
-                    // Release transition lock sooner on mobile
                     setIsTransitioning(false);
                     setContentFading(false);
-                }, 1500);
+                }, 2000); // Increased from 1500
             });
         } else {
-            // Desktop sequence - delay preview changes
+            // Desktop sequence - keep preview visible
             setCurrentProject(project);
-            setShowPreview(false);
-            
             preloadImages(project).then(() => {
-                setContentFading(false);
                 setTimeout(() => {
-                    setShowPreview(true);
+                    setContentFading(false);
                     setIsTransitioning(false);
-                }, 800); // Delay preview appearance
+                }, 200);
             });
         }
     }, [project, isInitialized, initialAnimationComplete]);
