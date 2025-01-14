@@ -521,6 +521,7 @@ $gpu-accel: translateZ(0);
         justify-content: flex-start;
         margin: 0;
         flex: 0 0 auto;
+        order: 1; // Add order 1 to keep it at the start
     }
 
     @media screen and (min-width: 1200px) {
@@ -727,6 +728,11 @@ $gpu-accel: translateZ(0);
                 transition: opacity 0.2s ease-out;
                 transition-delay: 0s !important;
             }
+            .navigation {
+                opacity: 0;
+                transition: opacity 0.2s ease-out;
+                transition-delay: 0s;
+            }
         }
 
         &.visible:not(.fading) {
@@ -758,6 +764,11 @@ $gpu-accel: translateZ(0);
                 opacity: 1;
                 transition: opacity 0.3s ease-out;
                 transition-delay: 1s;
+            }
+            .navigation {
+                opacity: 1;
+                transition: opacity 0.3s ease-out;
+                transition-delay: 0.8s;
             }
         }
     }
@@ -1331,15 +1342,18 @@ $gpu-accel: translateZ(0);
     }
     
     @media screen and (min-width: 1200px) {
+        opacity: 0;
+        pointer-events: none;
         transition: all 0.4s ease-out;
         
-        &.visible {
-            transition-delay: 1.2s;
+        .visible & {
+            opacity: 1;
+            pointer-events: auto;
         }
     }
 
     @media screen and (min-width: 768px) {
-        order: -1;
+        order: 2; // Change from -1 to 2 to push it to the end
         margin: 0;
         flex: 0 0 auto;
     }
@@ -1353,6 +1367,7 @@ $gpu-accel: translateZ(0);
     transition: opacity 0.3s ease-out;
     margin-top: 3em;
     gap: 2em;
+    justify-content: space-between; // Add this
 
     &.visible {
         opacity: 1;
@@ -1402,23 +1417,43 @@ $gpu-accel: translateZ(0);
 
     @media screen and (min-width: 1200px) {
         transition: opacity 0.4s ease-out;
+        opacity: 0;
+        pointer-events: none;
+        justify-content: space-between;
+        align-items: center;
         
         &.visible {
             opacity: 1;
             pointer-events: auto;
-            transition-delay: 1s;
+            transition-delay: 0.8s; // Delay until after content reveal
 
             .dots {
                 opacity: 1;
                 transition: opacity 0.3s ease-out;
-                transition-delay: 1s;
+                transition-delay: 0.8s; // Match parent delay
             }
 
             .floatingLink {
                 opacity: 1;
-                transition: opacity 0.3s ease-out;
-                transition-delay: 0.8s;
+                pointer-events: auto;
+                transition: opacity 0.3s ease-out, transform 0.3s ease-out;
             }
+        }
+
+        &:not(.visible) {
+            opacity: 0;
+            pointer-events: none;
+            
+            .dots, .floatingLink {
+                opacity: 0;
+                transition: opacity 0.3s ease-out;
+            }
+        }
+    }
+
+    @media screen and (min-width: 1200px) {
+        &:not(.visible), &.visible {
+            // Remove duplicated rules
         }
     }
 
