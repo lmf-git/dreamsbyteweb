@@ -84,6 +84,7 @@ export default function Hero() {  // Remove onComplete prop
     const [isReturningToFirst, setIsReturningToFirst] = useState(false);
     const [showNav, setShowNav] = useState(false);
     const [dotsReady, setDotsReady] = useState(false);
+    const [contentFading, setContentFading] = useState(false);
 
     const preloadImages = (projectIndex) => {
         return new Promise((resolve) => {
@@ -127,10 +128,9 @@ export default function Hero() {  // Remove onComplete prop
             
             preloadImages(0).then(() => {
                 if (isMobile) {
-                    // Wait for name reveal (0.6s delay + 0.5s animation)
+                    // Keep existing mobile sequence
                     setTimeout(() => {
                         setShowPreview(true);
-                        // Delay hiding showPreview to allow staggered animations
                         setTimeout(() => {
                             setShowPreview(false);
                             setTimeout(() => {
@@ -140,29 +140,26 @@ export default function Hero() {  // Remove onComplete prop
                                     setInitialAnimationComplete(true);
                                 }, 800);
                             }, 300);
-                        }, 2000); // Adjusted delay
-                    }, 1300); // Increased to ensure name is fully revealed
+                        }, 2000);
+                    }, 1300);
                 } else {
-                    // Desktop initial sequence
+                    // Desktop sequence - load content first, then preview
                     setTimeout(() => {
                         setShowContent(true);
                         setTimeout(() => {
-                            setShowPreview(true);
+                            setFirstRevealComplete(true);
+                            setShowNav(true);
+                            setInitialAnimationComplete(true);
+                            setDotsReady(true);
+                            // Delay preview appearance until after content
                             setTimeout(() => {
-                                setFirstRevealComplete(true);
-                                setShowNav(true);
-                                setInitialAnimationComplete(true);
-                                // Add delay before showing all dots
-                                setTimeout(() => {
-                                    setDotsReady(true);
-                                }, 400);
-                            }, 800);
-                        }, 800);
-                    }, 400);
+                                setShowPreview(true);
+                            }, 800); // Add delay after content is visible
+                        }, 600);
+                    }, 200);
                 }
             });
         }
-        
     }, [isInitialized]);
 
     // Add resize handler to reset preview state
@@ -222,31 +219,32 @@ export default function Hero() {  // Remove onComplete prop
         
         const isMobile = window.innerWidth < 1200;
         setIsTransitioning(true);
+        setContentFading(true);
         
         if (isMobile) {
-            // Adjusted timeout to allow screen to fade out before mobile
             setShowPreview(false);
-            setTimeout(() => {
-                setShowContent(false);
-                setTimeout(() => {
-                    setCurrentProject(project);
-                    preloadImages(project).then(() => {
-                        setShowPreview(true);
-                        setTimeout(() => {
-                            setShowPreview(false);
-                            setTimeout(() => {
-                                setShowContent(true);
-                                setIsTransitioning(false);
-                            }, 200); // Increased delay to match SCSS transition delay
-                        }, 1500);
-                    });
-                }, 200); // Increased delay to allow screen to start fading out
-            }, 400);
-        } else {
-            // Simplified desktop sequence: just update content
             setCurrentProject(project);
+            
             preloadImages(project).then(() => {
-                setIsTransitioning(false);
+                setShowPreview(true);
+                setTimeout(() => {
+                    setShowPreview(false);
+                    // Release transition lock sooner on mobile
+                    setIsTransitioning(false);
+                    setContentFading(false);
+                }, 1500);
+            });
+        } else {
+            // Desktop sequence - delay preview changes
+            setCurrentProject(project);
+            setShowPreview(false);
+            
+            preloadImages(project).then(() => {
+                setContentFading(false);
+                setTimeout(() => {
+                    setShowPreview(true);
+                    setIsTransitioning(false);
+                }, 800); // Delay preview appearance
             });
         }
     }, [project, isInitialized, initialAnimationComplete]);
@@ -273,7 +271,9 @@ export default function Hero() {  // Remove onComplete prop
                         <h1 className={styles.title}>Latest Work</h1>
                         <h1 className={styles.projectname}>{projects[currentProject].name}</h1>
 
-                        <div className={`${styles.contentContainer} ${showContent ? styles.visible : ''}`}>
+                        <div className={`${styles.contentContainer} ${showContent ? styles.visible : ''} ${
+                            contentFading ? styles.fading : ''
+                        }`}>
                             <h2 className={styles.projectproblems}>PROBLEMS:</h2>
                             <p className={styles.projectparagraph}>{projects[currentProject].problem}</p>
 
@@ -282,10 +282,8 @@ export default function Hero() {  // Remove onComplete prop
 
                             {/* Move meta inside contentContainer */}
                             <div className={`${styles.meta} ${
-                                // Show meta only when content is visible and not transitioning in both mobile and desktop
-                                (firstRevealComplete && !isTransitioning && showContent) 
-                                    ? styles.visible 
-                                    : ''
+                                // Simplified visibility condition
+                                (showContent && !isTransitioning) ? styles.visible : ''
                             }`}>
                                 <div className={styles.controls}>
                                     <div className={styles.controllinks}>
@@ -297,13 +295,8 @@ export default function Hero() {  // Remove onComplete prop
                                 </div>
 
                                 <div className={`${styles.dots} ${
-                                    // For mobile: Show dots after preview is hidden AND content is visible
-                                    // For desktop: Use existing logic
-                                    ((window.innerWidth >= 1200 && firstRevealComplete) || 
-                                    (window.innerWidth < 1200 && showContent)) && 
-                                    !isTransitioning && !showPreview
-                                        ? styles.visible 
-                                        : ''
+                                    // Simplified dots visibility condition
+                                    (showContent && !isTransitioning) ? styles.visible : ''
                                 }`}>
                                     {projects.map((p, i) => {
                                         // On mobile, don't check dotsReady, just show dots when preview is hidden
