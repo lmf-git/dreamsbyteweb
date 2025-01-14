@@ -206,13 +206,17 @@
     display: flex;
     position: relative;  // Change from absolute to relative
     margin-top: auto;
-    padding-bottom: 1.75em;  // Replace bottom positioning with padding
+    padding-bottom: 3em;  // Increased from 1.75em to accommodate mobile browser UI
     width: 100%;
     align-items: center;
     justify-content: center;
     left: 0;
     right: 0;
     gap: 1em;
+    
+    @media screen and (min-width: 1000px) {
+        padding-bottom: 1.75em; // Return to original padding on desktop
+    }
 }
 
 .socialicon {

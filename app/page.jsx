@@ -23,12 +23,22 @@ import styles from "../components/specific/landing/landing.module.scss";
 
 export default function Index() {
     const [menuOpen, setMenuOpen] = useState(false);
-    // Remove showTestimonials state
 
-    // Clip the page when menu is open.
+    // Modified menu handling with transition end
+    const handleMenuClose = () => {
+        setMenuOpen(false);
+    };
+
+    const handleTransitionEnd = (e) => {
+        // Only handle menu transition end
+        if (e.target.classList.contains(styles.menu) && !menuOpen) {
+            document.body.classList.remove(styles.clipped);
+        }
+    };
+
+    // Only add clipped class when opening
     useEffect(() => {
         if (menuOpen) document.body.classList.add(styles.clipped);
-        else document.body.classList.remove(styles.clipped);
     }, [menuOpen]);
 
     return <main className={styles.index}>
@@ -45,18 +55,21 @@ export default function Index() {
             </div>
         </header>
 
-        <div className={`${styles.menu} ${menuOpen ? styles.visible : ''}`}>
+        <div 
+            className={`${styles.menu} ${menuOpen ? styles.visible : ''}`}
+            onTransitionEnd={handleTransitionEnd}
+        >
             <div className={styles.menuheader}>
                 <Logo extraClass={styles.menulogo} />
-                <button className={styles.menuclose} onClick={() => setMenuOpen(false)}>
+                <button className={styles.menuclose} onClick={handleMenuClose}>
                     <CloseIcon extraClass={styles.menucloseicon} />
                 </button>
             </div>
 
             <div className={styles.items}>
-                <a className={styles.item} onClick={() => setMenuOpen(false)} href="#services">Services</a>
-                <a className={styles.item} onClick={() => setMenuOpen(false)} href="#testimonials">Reviews</a>
-                <a className={styles.item} onClick={() => setMenuOpen(false)} href="#contact">Contact</a>
+                <a className={styles.item} onClick={handleMenuClose} href="#services">Services</a>
+                <a className={styles.item} onClick={handleMenuClose} href="#testimonials">Reviews</a>
+                <a className={styles.item} onClick={handleMenuClose} href="#contact">Contact</a>
             </div>
 
             <div className={styles.socials}>
