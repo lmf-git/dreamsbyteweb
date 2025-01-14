@@ -119,7 +119,7 @@ $gpu-accel: translateZ(0);
 
     @media screen and (max-width: 1199px) {
         position: absolute;
-        top: 9em;
+        top: 7em; // Changed from 9em to move it higher on mobile
         right: 0;
         width: 100%;
         padding: 0;
@@ -139,7 +139,7 @@ $gpu-accel: translateZ(0);
             width: 25%;
             position: absolute;
             right: 20%;
-            top: 17vh;
+            top: 15vh; // Adjust mobile preview position accordingly
         }
 
         &.showMobile {
@@ -174,14 +174,15 @@ $gpu-accel: translateZ(0);
         .mobile {
             width: 22%;
             right: 25%;
-            top: 13vh;
+            top: 11vh; // Adjust mobile preview position for smallest screens
         }
     }
 
     @media screen and (min-width: 1200px) {
         position: relative;
         height: 60vh;
-        width: 65%;
+        width: 70%; // Increased from 65% to move it slightly right
+        right: -2em; // Add negative margin to push further right
         transform: $gpu-accel;
 
         &.showMobile {
