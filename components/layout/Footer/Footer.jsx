@@ -17,7 +17,7 @@ import Github from '../../icons/social/Github';
 import styles from './footer.module.scss';
 
 
-export default function Footer() {
+export default function Footer({ message, setMessage }) {
   const footerRef = useRef();
   const [footerVisible, setFooterVisible] = useState(false);
   const [messageVisible, setMessageVisible] = useState(true);
@@ -49,6 +49,12 @@ export default function Footer() {
     };
   }, []);
 
+  useEffect(() => {
+    if (message) {
+      setMessageVisible(true);
+    }
+  }, [message]);
+
   return <>
     {/* { !footerVisible && <ContactNowFab /> } */}
 
@@ -65,7 +71,13 @@ export default function Footer() {
           <input type="email" name="email" className={styles.input} placeholder="name@domain.tld" required />
 
           { messageVisible && 
-            <textarea name="message" className={styles.textarea} placeholder="Your message here" />
+            <textarea 
+              name="message" 
+              className={styles.textarea} 
+              placeholder="Your message here"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+            />
           }
 
           <div className={styles.actions}>

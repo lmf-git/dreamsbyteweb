@@ -20,9 +20,19 @@ import CloseIcon from "../components/icons/social/Close";
 
 import styles from "../components/specific/landing/landing.module.scss";
 
-
 export default function Index() {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [message, setMessage] = useState('');
+
+    // Add this new useEffect to clear URL fragments
+    useEffect(() => {
+        // Check if there's a hash in the URL
+        if (window.location.hash) {
+            // Remove the hash without triggering a page reload
+            const cleanUrl = window.location.href.split('#')[0];
+            window.history.replaceState({}, document.title, cleanUrl);
+        }
+    }, []);
 
     // Modified menu handling with transition end
     const handleMenuClose = () => {
@@ -41,59 +51,61 @@ export default function Index() {
         if (menuOpen) document.body.classList.add(styles.clipped);
     }, [menuOpen]);
 
-    return <main className={styles.index}>
-        <header className={styles.header}>
-            <Logo extraClass={styles.logo} />
+    return (
+        <main className={styles.index}>
+            <header className={styles.header}>
+                <Logo extraClass={styles.logo} />
 
-            <div className={styles.headerctas}>
-                <a className={styles.headercta} href="#services">Services</a>
-                <a className={styles.headercta} href="#testimonials">Reviews</a>
-                <a className={`${styles.headercta} ${styles.headerctaprimary}`} href="#contact">CONTACT</a>
-                <button className={styles.menutoggle} onClick={() => setMenuOpen(true)}>
-                    <MenuIcon extraClass={styles.menutoggleicon} />
-                </button>
+                <div className={styles.headerctas}>
+                    <a className={styles.headercta} href="#services">Services</a>
+                    <a className={styles.headercta} href="#testimonials">Reviews</a>
+                    <a className={`${styles.headercta} ${styles.headerctaprimary}`} href="#contact">CONTACT</a>
+                    <button className={styles.menutoggle} onClick={() => setMenuOpen(true)}>
+                        <MenuIcon extraClass={styles.menutoggleicon} />
+                    </button>
+                </div>
+            </header>
+
+            <div 
+                className={`${styles.menu} ${menuOpen ? styles.visible : ''}`}
+                onTransitionEnd={handleTransitionEnd}
+            >
+                <div className={styles.menuheader}>
+                    <Logo extraClass={styles.menulogo} />
+                    <button className={styles.menuclose} onClick={handleMenuClose}>
+                        <CloseIcon extraClass={styles.menucloseicon} />
+                    </button>
+                </div>
+
+                <div className={styles.items}>
+                    <a className={styles.item} onClick={handleMenuClose} href="#services">Services</a>
+                    <a className={styles.item} onClick={handleMenuClose} href="#testimonials">Reviews</a>
+                    <a className={styles.item} onClick={handleMenuClose} href="#contact">Contact</a>
+                </div>
+
+                <div className={styles.socials}>
+                    <a href="mailto:contact@dreamsbyte.com" className={styles.social} rel="noopener noreferrer" target="_blank">
+                        <EmailMethod className={styles.socialicon} />
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=447389805421" className={styles.social} rel="noopener noreferrer" target="_blank">
+                        <Whatsapp className={styles.socialicon} />
+                    </a>
+                    <a href="https://x.com/dreamsbytex" className={styles.social} rel="noopener noreferrer" target="_blank">
+                        <X className={styles.socialicon} />
+                    </a>
+                    <a href="https://github.com/lmf-git" className={styles.social} rel="noopener noreferrer" target="_blank">
+                        <Github className={styles.socialicon} />
+                    </a>
+                    <a href="https://www.youtube.com/@dreamsbyte" className={styles.social} rel="noopener noreferrer" target="_blank">
+                        <Youtube className={styles.socialicon} />
+                    </a>
+                </div>
             </div>
-        </header>
 
-        <div 
-            className={`${styles.menu} ${menuOpen ? styles.visible : ''}`}
-            onTransitionEnd={handleTransitionEnd}
-        >
-            <div className={styles.menuheader}>
-                <Logo extraClass={styles.menulogo} />
-                <button className={styles.menuclose} onClick={handleMenuClose}>
-                    <CloseIcon extraClass={styles.menucloseicon} />
-                </button>
-            </div>
-
-            <div className={styles.items}>
-                <a className={styles.item} onClick={handleMenuClose} href="#services">Services</a>
-                <a className={styles.item} onClick={handleMenuClose} href="#testimonials">Reviews</a>
-                <a className={styles.item} onClick={handleMenuClose} href="#contact">Contact</a>
-            </div>
-
-            <div className={styles.socials}>
-                <a href="mailto:contact@dreamsbyte.com" className={styles.social} rel="noopener noreferrer" target="_blank">
-                    <EmailMethod className={styles.socialicon} />
-                </a>
-                <a href="https://api.whatsapp.com/send?phone=447389805421" className={styles.social} rel="noopener noreferrer" target="_blank">
-                    <Whatsapp className={styles.socialicon} />
-                </a>
-                <a href="https://x.com/dreamsbytex" className={styles.social} rel="noopener noreferrer" target="_blank">
-                    <X className={styles.socialicon} />
-                </a>
-                <a href="https://github.com/lmf-git" className={styles.social} rel="noopener noreferrer" target="_blank">
-                    <Github className={styles.socialicon} />
-                </a>
-                <a href="https://www.youtube.com/@dreamsbyte" className={styles.social} rel="noopener noreferrer" target="_blank">
-                    <Youtube className={styles.socialicon} />
-                </a>
-            </div>
-        </div>
-
-        <Hero />
-        <Testimonials />
-        <Services />
-        <Footer />    
-    </main>;
+            <Hero />
+            <Testimonials />
+            <Services setMessage={setMessage} />
+            <Footer message={message} setMessage={setMessage} />    
+        </main>
+    );
 };
