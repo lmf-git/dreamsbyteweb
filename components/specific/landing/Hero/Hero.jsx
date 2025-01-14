@@ -128,66 +128,38 @@ export default function Hero() {  // Remove onComplete prop
             
             preloadImages(0).then(() => {
                 if (isMobile) {
-                    // Adjusted mobile sequence
+                    // Show preview first
+                    setShowPreview(true);
+                    // Wait for preview to finish showing (1.5s)
                     setTimeout(() => {
-                        setShowPreview(true);
+                        // Hide preview
+                        setShowPreview(false);
+                        // Wait for preview to hide (0.6s) then show content
                         setTimeout(() => {
-                            setShowPreview(false);
-                            setTimeout(() => {
-                                setShowContent(true);
-                                setShowNav(true);
-                                setInitialAnimationComplete(true);
-                            }, 400); // Increased from 200
-                        }, 1800); // Increased from 1200
-                    }, 600); // Reduced from 800 for faster initial appearance
+                            setShowContent(true);
+                            setShowNav(true);
+                            setInitialAnimationComplete(true);
+                        }, 800);
+                    }, 1500);
                 } else {
-                    // Desktop sequence - faster transitions
+                    // Desktop sequence
                     setTimeout(() => {
                         setShowContent(true);
                         setTimeout(() => {
-                            setFirstRevealComplete(true);
                             setShowNav(true);
-                            setInitialAnimationComplete(true);
                             setDotsReady(true);
-                            // Show preview sooner
-                            setShowPreview(true);
-                        }, 400); // Reduced from 600
+                            setInitialAnimationComplete(true);
+                            setTimeout(() => {
+                                setShowPreview(true);
+                            }, 400); // Reduced from 600ms
+                        }, 300); // Reduced from 400ms
                     }, 200);
                 }
             });
         }
     }, [isInitialized]);
 
-    // Add resize handler to reset preview state
-    useEffect(() => {
-        const handleResize = () => {
-            setShowPreview(false);
-            setShowContent(true);
-        };
-
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-
-    // Update resize handler to also reset dots
-    useEffect(() => {
-        const handleResize = () => {
-            setShowPreview(false);
-            setShowContent(true);
-            setDotsReady(false); // Reset dots state
-            // Wait a bit then show dots again if on desktop
-            setTimeout(() => {
-                if (window.innerWidth >= 1200) {
-                    setDotsReady(true);
-                }
-            }, 100);
-        };
-
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-
-    // Update resize handler to handle both dots and preview states
+    // Remove redundant useEffect hooks related to resize
     useEffect(() => {
         const handleResize = () => {
             const isDesktop = window.innerWidth >= 1200;
@@ -195,12 +167,11 @@ export default function Hero() {  // Remove onComplete prop
             setShowContent(true);
             setDotsReady(false);
             
-            // Reset states for desktop
             if (isDesktop) {
-                setTimeout(() => {
-                    setDotsReady(true);
-                    setShowPreview(true); // Show preview on desktop
-                }, 100);
+                setDotsReady(true);
+                setShowPreview(true);
+            } else {
+                setDotsReady(true);
             }
         };
 
@@ -218,25 +189,37 @@ export default function Hero() {  // Remove onComplete prop
         setContentFading(true);
         
         if (isMobile) {
-            setShowPreview(false);
+            setShowContent(false);
             setCurrentProject(project);
             
             preloadImages(project).then(() => {
+                // Show preview first
                 setShowPreview(true);
+                // Wait for preview to finish (1.5s total for preview animation)
                 setTimeout(() => {
+                    // Hide preview
                     setShowPreview(false);
-                    setIsTransitioning(false);
-                    setContentFading(false);
-                }, 2000); // Increased from 1500
+                    // Wait for preview to hide (0.6s) then show content
+                    setTimeout(() => {
+                        setShowContent(true);
+                        setIsTransitioning(false);
+                        setContentFading(false);
+                        setShowNav(true);
+                    }, 800);
+                }, 1500);
             });
         } else {
-            // Desktop sequence - keep preview visible
+            // Desktop sequence
             setCurrentProject(project);
             preloadImages(project).then(() => {
+                setShowContent(true);
                 setTimeout(() => {
                     setContentFading(false);
                     setIsTransitioning(false);
-                }, 200);
+                    setShowNav(true);
+                    setDotsReady(true);
+                    setShowPreview(true);
+                }, 300); // Reduced from 400ms
             });
         }
     }, [project, isInitialized, initialAnimationComplete]);
@@ -272,9 +255,7 @@ export default function Hero() {  // Remove onComplete prop
                             <h2 className={styles.projectsolutions}>SOLUTIONS:</h2>
                             <p className={styles.projectparagraph}>{projects[currentProject].solution}</p>
 
-                            <div className={`${styles.navigation} ${
-                                (showContent && !isTransitioning) ? styles.visible : ''
-                            }`}>
+                            <div className={`${styles.navigation} ${showNav ? styles.visible : ''}`}>
                                 <a 
                                     href={projects[currentProject].url}
                                     className={styles.floatingLink}
@@ -284,7 +265,7 @@ export default function Hero() {  // Remove onComplete prop
                                     GO TO SITE
                                 </a>
 
-                                <div className={styles.dots}>
+                                <div className={`${styles.dots} ${dotsReady ? styles.visible : ''}`}>
                                     {projects.map((p, i) => {
                                         // Only hide dots when preview is showing on mobile
                                         if (window.innerWidth < 1200 && showPreview) return null;
