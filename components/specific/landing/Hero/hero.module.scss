@@ -411,7 +411,7 @@ $gpu-accel: translateZ(0);
 .dots {
     justify-content: center;
     margin-top: 0.75em;
-    pointer-events: none;
+    pointer-events: auto; // Changed from none
     overflow: hidden;
     
     @media screen and (max-width: 1199px) {
@@ -459,8 +459,9 @@ $gpu-accel: translateZ(0);
         pointer-events: auto;
 
         .dot {
-            opacity: 0;
-            transform: scale(0);
+            opacity: 0.7; // Changed from 0
+            transform: scale(0.8); // Changed from scale(0)
+            pointer-events: auto; // Added this
             animation: dotAppear 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 
             @media screen and (max-width: 1199px) {
@@ -516,6 +517,7 @@ $gpu-accel: translateZ(0);
     transform-origin: center;
     transform: scale(0.8); // Changed from scale(0)
     opacity: 0.7; // Changed from 0
+    pointer-events: auto; // Added this
     
     @media screen and (max-width: 1199px) {
         width: 1.5em;
@@ -681,6 +683,12 @@ $gpu-accel: translateZ(0);
                 opacity: 1;
                 transition-delay: 1.4s; // Increased from 0.9s
             }
+
+            .navigation {
+                opacity: 0;
+                transition: opacity 0.3s ease-out;
+                transition-delay: 1.6s; // Show navigation after last paragraph
+            }
         }
     }
 
@@ -726,7 +734,7 @@ $gpu-accel: translateZ(0);
             .meta {
                 opacity: 1;
                 transition: opacity 0.3s ease-out;
-                transition-delay: 0.6s;
+                transition-delay: 1s; // Increased from 0.6s to match other navigation elements
             }
         }
     }
@@ -1229,7 +1237,7 @@ $gpu-accel: translateZ(0);
         transition: all 0.4s ease-out;
         
         &.visible {
-            transition-delay: 0.8s; // Match navigation delay
+            transition-delay: 1.2s; // Increased from 0.8s to match navigation delay
         }
     }
 
@@ -1259,6 +1267,16 @@ $gpu-accel: translateZ(0);
         }
     }
 
+    @media screen and (max-width: 1199px) {
+        opacity: 0;
+        transition: opacity 0.3s ease-out;
+        
+        &.visible {
+            opacity: 1;
+            transition-delay: 1.6s; // Match the delay from contentContainer
+        }
+    }
+
     @media screen and (min-width: 768px) {
         flex-direction: row;
         justify-content: flex-start;
@@ -1269,7 +1287,7 @@ $gpu-accel: translateZ(0);
         transition: opacity 0.4s ease-out;
         
         &.visible {
-            transition-delay: 0.8s;
+            transition-delay: 1.2s; // Increased from 1s for desktop
         }
     }
 }
