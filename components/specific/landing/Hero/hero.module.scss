@@ -22,7 +22,7 @@
     margin: 0 0 .75em 0;
     opacity: 0;
     animation: reveal-title 0.5s ease-out forwards;
-    animation-delay: 0.4s;
+    animation-delay: 0.4s; // Ensure title reveals first
     user-select: none;
 
     @media screen and (max-width: 1199px) {
@@ -85,8 +85,8 @@
     margin-top: 0;
     margin-bottom: 1.5em;
     opacity: 0;
-    animation: reveal-desc 0.5s ease-out forwards;
-    animation-delay: 0.6s;
+    animation: reveal-projectname 0.5s ease-out forwards;
+    animation-delay: 0.9s; // Delay to reveal after title
     user-select: none;
     position: relative;
     z-index: 2;
@@ -115,6 +115,7 @@ $gpu-accel: translateZ(0);
     box-sizing: border-box;
     min-height: auto;
     will-change: opacity;
+    animation-delay: 1.4s; // Delay to reveal after project name
 
     @media screen and (max-width: 1199px) {
         position: absolute;
@@ -124,7 +125,7 @@ $gpu-accel: translateZ(0);
         padding: 0;
         height: 100%;
         align-items: center;
-        transition: opacity 0.8s ease-in-out; // Reduced from 1.2s
+        transition: opacity 0.6s ease-in-out; // Reduced from 1.2s
         
         .screen {
             width: 100%;
@@ -143,18 +144,18 @@ $gpu-accel: translateZ(0);
 
         &.showMobile {
             opacity: 1;
-            transition: opacity 0.8s ease-in-out; // Reduced from 1.2s
+            transition: opacity 0.6s ease-in-out; // Reduced from 1.2s
 
             .screen {
                 opacity: 1;
-                transition: opacity 0.8s ease-in-out; // Reduced from 1.2s
+                transition: opacity 0.6s ease-in-out; // Reduced from 1.2s
                 transition-delay: 0.2s; // Reduced from 0.4s
             }
 
             .mobile {
                 opacity: 1;
-                transition: opacity 0.8s ease-in-out; // Reduced from 1.2s
-                transition-delay: 0.6s; // Reduced from 1s
+                transition: opacity 0.6s ease-in-out; // Reduced from 1.2s
+                transition-delay: 0.4s; // Reduced from 1s
             }
         }
 
@@ -440,6 +441,10 @@ $gpu-accel: translateZ(0);
     }
 
     @media screen and (min-width: 1200px) {
+        opacity: 1;
+        pointer-events: auto;
+        transition: none;
+
         &.visible {
             .dot {
                 &:first-child {
@@ -1101,6 +1106,15 @@ $gpu-accel: translateZ(0);
 }
 
 @keyframes reveal-desc {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes reveal-projectname {
     from {
         opacity: 0;
     }

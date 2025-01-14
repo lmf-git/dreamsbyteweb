@@ -85,6 +85,8 @@ export default function Hero() {  // Remove onComplete prop
     const [showNav, setShowNav] = useState(false);
     const [dotsReady, setDotsReady] = useState(false);
     const [contentFading, setContentFading] = useState(false);
+    const [showTitle, setShowTitle] = useState(false); // Add this new state
+    const [showProjectName, setShowProjectName] = useState(false); // Add this new state
 
     const preloadImages = (projectIndex) => {
         return new Promise((resolve) => {
@@ -128,19 +130,28 @@ export default function Hero() {  // Remove onComplete prop
             
             preloadImages(0).then(() => {
                 if (isMobile) {
-                    // Show preview first
-                    setShowPreview(true);
-                    // Wait for preview to finish showing (1.5s)
+                    // Step 1: Show title
+                    setShowTitle(true);
+                    
+                    // Step 2: Show project name after 500ms
                     setTimeout(() => {
-                        // Hide preview
-                        setShowPreview(false);
-                        // Wait for preview to hide (0.6s) then show content
+                        setShowProjectName(true);
+                        
+                        // Step 3: Show preview after project name (800ms)
                         setTimeout(() => {
-                            setShowContent(true);
-                            setShowNav(true);
-                            setInitialAnimationComplete(true);
+                            setShowPreview(true);
+                            
+                            // Step 4: Hide preview and show content after 5 seconds
+                            setTimeout(() => {
+                                setShowPreview(false);
+                                setTimeout(() => {
+                                    setShowContent(true);
+                                    setShowNav(true);
+                                    setInitialAnimationComplete(true);
+                                }, 600); // Wait for preview to fade out
+                            }, 5000); // Hide preview after 5 seconds
                         }, 800);
-                    }, 1500);
+                    }, 500);
                 } else {
                     // Desktop sequence
                     setTimeout(() => {
@@ -193,20 +204,25 @@ export default function Hero() {  // Remove onComplete prop
             setCurrentProject(project);
             
             preloadImages(project).then(() => {
-                // Show preview first
-                setShowPreview(true);
-                // Wait for preview to finish (1.5s total for preview animation)
+                // First show project name
+                setShowProjectName(true);
+                
+                // Then show preview
                 setTimeout(() => {
-                    // Hide preview
-                    setShowPreview(false);
-                    // Wait for preview to hide (0.6s) then show content
+                    setShowPreview(true);
+                    
+                    // Hide preview after 5 seconds
                     setTimeout(() => {
-                        setShowContent(true);
-                        setIsTransitioning(false);
-                        setContentFading(false);
-                        setShowNav(true);
-                    }, 800);
-                }, 1500);
+                        setShowPreview(false);
+                        // Show content after preview fades
+                        setTimeout(() => {
+                            setShowContent(true);
+                            setIsTransitioning(false);
+                            setContentFading(false);
+                            setShowNav(true);
+                        }, 600);
+                    }, 5000);
+                }, 800);
             });
         } else {
             // Desktop sequence
@@ -331,4 +347,4 @@ export default function Hero() {  // Remove onComplete prop
             )}
         </div>
     );
-};
+}
