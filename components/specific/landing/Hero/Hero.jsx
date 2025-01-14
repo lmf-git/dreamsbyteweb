@@ -176,6 +176,45 @@ export default function Hero() {  // Remove onComplete prop
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
+    // Update resize handler to also reset dots
+    useEffect(() => {
+        const handleResize = () => {
+            setShowPreview(false);
+            setShowContent(true);
+            setDotsReady(false); // Reset dots state
+            // Wait a bit then show dots again if on desktop
+            setTimeout(() => {
+                if (window.innerWidth >= 1200) {
+                    setDotsReady(true);
+                }
+            }, 100);
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    // Update resize handler to handle both dots and preview states
+    useEffect(() => {
+        const handleResize = () => {
+            const isDesktop = window.innerWidth >= 1200;
+            setShowPreview(false);
+            setShowContent(true);
+            setDotsReady(false);
+            
+            // Reset states for desktop
+            if (isDesktop) {
+                setTimeout(() => {
+                    setDotsReady(true);
+                    setShowPreview(true); // Show preview on desktop
+                }, 100);
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     // Project change effect
     useEffect(() => {
         if (!isInitialized || project === null || !initialAnimationComplete) return;
