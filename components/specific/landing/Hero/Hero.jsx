@@ -283,9 +283,6 @@ export default function Hero() {  // Remove onComplete prop
 
                                 <div className={`${styles.dots} ${dotsReady ? styles.visible : ''}`}>
                                     {projects.map((p, i) => {
-                                        // Only hide dots when preview is showing on mobile
-                                        if (window.innerWidth < 1200 && showPreview) return null;
-                                        
                                         const dotClass = `${styles.dot} ${
                                             project === i ? styles.active : ''
                                         }`;

@@ -414,7 +414,7 @@ $gpu-accel: translateZ(0);
     justify-content: center;
     margin-top: 0.75em;
     pointer-events: auto; // Changed from none
-    overflow: hidden;
+    // Removed overflow: hidden
     
     @media screen and (max-width: 1199px) {
         position: relative;
@@ -437,6 +437,21 @@ $gpu-accel: translateZ(0);
                     }
                 }
             }
+        }
+    }
+
+    @media screen and (min-width: 1200px) {
+        opacity: 1;
+        pointer-events: auto;
+        transition: opacity 0.3s ease-out;
+
+        &.visible {
+            opacity: 1;
+        }
+
+        &:not(.visible) {
+            opacity: 1; // Changed from 0.3
+            pointer-events: auto; // Changed from none
         }
     }
 
@@ -1302,9 +1317,21 @@ $gpu-accel: translateZ(0);
         transform: translateY(-2px);
     }
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1199px) { // Changed from 768px to 1199px to match other mobile breakpoints
         font-size: 0.85em;
-        padding: 0.6em 1.2em;
+        padding: 0;  // Remove padding on mobile
+        white-space: nowrap;
+        width: auto;
+        min-width: max-content;
+        background: transparent; // Remove background on mobile
+        border: none; // Remove border on mobile
+        backdrop-filter: none; // Remove blur effect on mobile
+        color: white; // Keep text white on mobile
+        
+        &:hover {
+            background: transparent; // Keep transparent on hover
+            transform: none; // Remove hover animation
+        }
     }
     
     @media screen and (min-width: 1200px) {
@@ -1377,26 +1404,27 @@ $gpu-accel: translateZ(0);
         transition: opacity 0.4s ease-out;
         
         &.visible {
-            opacity: 0; // Start hidden
-            pointer-events: none;
+            opacity: 1; // Changed from 0
+            pointer-events: auto; // Changed from none
             transition: opacity 0.4s ease-out;
 
-            // Only show navigation after content is revealed
-            .contentContainer.visible:not(.fading) & {
-                opacity: 1;
-                pointer-events: auto;
-                transition-delay: 0.8s; // Delay after content reveals
-            }
-
             .dots {
-                opacity: 0;
+                opacity: 1; // Changed from 0
                 transition: opacity 0.3s ease-out;
-                transition-delay: 0.6s; // Reduced from 0.9s to appear sooner on desktop
+                transition-delay: 0.6s;
             }
 
             .floatingLink {
-                transition-delay: 0.4s; // Adjusted to show link before dots
+                transition-delay: 0.4s;
             }
+        }
+    }
+
+    // Remove or modify this block that was hiding dots
+    @media screen and (min-width: 1200px) {
+        &:not(.visible) {
+            opacity: 1; // Changed from 0.3
+            pointer-events: auto; // Changed from none
         }
     }
 
