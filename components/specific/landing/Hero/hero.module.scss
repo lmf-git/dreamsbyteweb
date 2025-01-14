@@ -5,10 +5,12 @@
     box-sizing: border-box;
     user-select: none;
     padding: 0; // Remove default padding
+    padding-bottom: 4em; // Add bottom padding for mobile
 
     @media screen and (min-width: 1200px) {
         padding: 3em 8em;
         min-height: 100vh; // Only apply min-height on desktop
+        padding-bottom: 3em; // Reset to match other padding on desktop
     }
 }
 
