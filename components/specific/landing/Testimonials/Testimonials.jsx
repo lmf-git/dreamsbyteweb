@@ -58,7 +58,7 @@ export default function Testimonials({ visible }) {
     };
 
     const handleTouchStart = ev => {
-        ev.preventDefault();
+        // Don't prevent default here to allow normal touch behavior
         setTouchMoved(false);
         setIsDragging(true);
         setStartX(ev.touches[0].pageX - listRef.current.offsetLeft);
@@ -77,7 +77,11 @@ export default function Testimonials({ visible }) {
 
     const handleTouchMove = ev => {
         if (!isDragging) return;
-        ev.preventDefault();
+        
+        // Only prevent default if we've determined it's a drag
+        if (touchMoved) {
+            ev.preventDefault();
+        }
         
         const x = ev.touches[0].pageX - listRef.current.offsetLeft;
         const walk = x - startX;
@@ -96,13 +100,11 @@ export default function Testimonials({ visible }) {
         // Auto-scrolling will resume automatically
     };
 
-    const handleTouchEnd = ev => {
-        if (!touchMoved) {
-            // Was a tap, not a drag - don't interfere with normal touch behavior
-            setIsDragging(false);
-            return;
+    const handleTouchEnd = () => {
+        if (touchMoved) {
+            stopDragging();
         }
-        stopDragging();
+        setIsDragging(false);
         setTouchMoved(false);
     };
 

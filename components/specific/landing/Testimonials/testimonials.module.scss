@@ -42,7 +42,7 @@
     position: relative;
     cursor: grab;
     user-select: none;
-    touch-action: none;
+    touch-action: pan-y pinch-zoom; // Allow vertical scroll but enable horizontal drag
 }
 
 .plane {
@@ -53,7 +53,7 @@
     left: 0;
     top: 0;
     height: calc(100% - .1em);
-    touch-action: none;
+    touch-action: none; // Disable all touch actions on the draggable element
 }
 
 .testimonial {
