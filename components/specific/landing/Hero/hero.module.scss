@@ -1284,7 +1284,23 @@ $gpu-accel: translateZ(0);
         
         &.visible {
             opacity: 1;
-            transition-delay: 1.6s; // Match the delay from contentContainer
+            transition-delay: 2.2s; // Increased from 1.7s
+
+            .dots {
+                .dot {
+                    animation-delay: 2.2s; // Adjusted accordingly
+                }
+
+                @for $i from 2 through 6 {
+                    &:nth-child(#{$i}) {
+                        animation-delay: #{2.2 + (0.05 * ($i - 1))}s; // Adjusted accordingly
+                    }
+                }
+            }
+
+            .floatingLink {
+                transition-delay: 1.6s; // Increased from 1.3s
+            }
         }
     }
 
@@ -1298,7 +1314,44 @@ $gpu-accel: translateZ(0);
         transition: opacity 0.4s ease-out;
         
         &.visible {
-            transition-delay: 1.2s; // Increased from 1s for desktop
+            opacity: 0; // Start hidden
+            pointer-events: none;
+            transition: opacity 0.4s ease-out;
+
+            // Only show navigation after content is revealed
+            .contentContainer.visible:not(.fading) & {
+                opacity: 1;
+                pointer-events: auto;
+                transition-delay: 0.8s; // Delay after content reveals
+            }
+
+            .dots {
+                opacity: 0;
+                transition: opacity 0.3s ease-out;
+                transition-delay: 0.9s; // Slightly after navigation appears
+            }
+
+            .floatingLink {
+                transition-delay: 0.7s; // Show link slightly before dots
+            }
+        }
+    }
+
+    @media screen and (max-width: 1199px) {
+        &.visible {
+            opacity: 0;
+            transition: opacity 0.3s ease-out;
+            transition-delay: 2.2s; // After all content has revealed
+
+            .dots {
+                opacity: 0;
+                transition: opacity 0.3s ease-out;
+                transition-delay: 2.4s; // After navigation appears
+            }
+
+            .floatingLink {
+                transition-delay: 2.0s; // Show link slightly before dots
+            }
         }
     }
 
