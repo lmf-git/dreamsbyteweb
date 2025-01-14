@@ -272,33 +272,22 @@ export default function Hero() {  // Remove onComplete prop
                             <h2 className={styles.projectsolutions}>SOLUTIONS:</h2>
                             <p className={styles.projectparagraph}>{projects[currentProject].solution}</p>
 
-                            {/* Move meta inside contentContainer */}
-                            <div className={`${styles.meta} ${
-                                // Simplified visibility condition
+                            <div className={`${styles.navigation} ${
                                 (showContent && !isTransitioning) ? styles.visible : ''
                             }`}>
-                                <div className={styles.controls}>
-                                    <div className={styles.controllinks}>
-                                        <a href={projects[currentProject].url} className={styles.link}>GO TO SITE</a>
-                                        {projects[currentProject]?.reporturl && (
-                                            <a href={projects[currentProject]?.reporturl} className={styles.link}>SEE SCORE</a>
-                                        )}
-                                    </div>
-                                </div>
+                                <a 
+                                    href={projects[currentProject].url}
+                                    className={styles.floatingLink}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    GO TO SITE
+                                </a>
 
-                                <div className={`${styles.dots} ${
-                                    // Simplified dots visibility condition
-                                    (showContent && !isTransitioning) ? styles.visible : ''
-                                }`}>
+                                <div className={styles.dots}>
                                     {projects.map((p, i) => {
-                                        // On mobile, don't check dotsReady, just show dots when preview is hidden
-                                        const isMobile = window.innerWidth < 1200;
-                                        if (isMobile && showPreview) return null;
-                                        if (!isMobile && !dotsReady && i > 0) return null;
-                                        
-                                        // When ready, show dots with distance check
-                                        const distance = Math.abs(project - i);
-                                        if (distance > 2) return null;
+                                        // Only hide dots when preview is showing on mobile
+                                        if (window.innerWidth < 1200 && showPreview) return null;
                                         
                                         const dotClass = `${styles.dot} ${
                                             project === i ? styles.active : ''

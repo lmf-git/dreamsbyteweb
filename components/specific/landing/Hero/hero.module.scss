@@ -422,7 +422,35 @@ $gpu-accel: translateZ(0);
         justify-content: flex-end;
         
         &.visible {
-            transition-delay: 1s;
+            transition-delay: 1.6s; // Reduced from 1.8s to show dots sooner on mobile
+            
+            .dot {
+                &:first-child {
+                    animation-delay: 1.7s; // Reduced from 1.9s
+                }
+
+                @for $i from 2 through 6 {
+                    &:nth-child(#{$i}) {
+                        animation-delay: #{1.7 + (0.05 * ($i - 1))}; // Reduced base delay
+                    }
+                }
+            }
+        }
+    }
+
+    @media screen and (min-width: 1200px) {
+        &.visible {
+            .dot {
+                &:first-child {
+                    animation-delay: 0.9s; // Increased from 0.6s
+                }
+
+                @for $i from 2 through 6 {
+                    &:nth-child(#{$i}) {
+                        animation-delay: #{0.9 + (0.05 * ($i - 1))}s; // Increased base delay
+                    }
+                }
+            }
         }
     }
 
@@ -465,6 +493,12 @@ $gpu-accel: translateZ(0);
         }
     }
 
+    @media screen and (min-width: 768px) {
+        justify-content: flex-start;
+        margin: 0;
+        flex: 0 0 auto;
+    }
+
     @media screen and (min-width: 1200px) {
         &:not(.visible) {
             opacity: 0.3;
@@ -480,8 +514,8 @@ $gpu-accel: translateZ(0);
     transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
                 opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     transform-origin: center;
-    transform: scale(0);
-    opacity: 0;
+    transform: scale(0.8); // Changed from scale(0)
+    opacity: 0.7; // Changed from 0
     
     @media screen and (max-width: 1199px) {
         width: 1.5em;
@@ -491,18 +525,16 @@ $gpu-accel: translateZ(0);
         margin-right: 0.35em;
     }
 
-    &.active, &:hover circle {
-        fill: rgb(217, 217, 217);
+    &.active, &:hover {
         transform: scale(1.1);
         opacity: 1;
-        transition-delay: 0s;
+        
+        circle {
+            fill: rgb(217, 217, 217);
+        }
     }
 
-    &:hover {
-        transform: scale(1.1);
-        opacity: 1;
-    }
-
+    // Remove the entering/exiting states since we don't need them
     &.entering,
     &.exiting {
         display: none;
@@ -1075,13 +1107,13 @@ $gpu-accel: translateZ(0);
         &.visible {
             opacity: 1;
             pointer-events: auto;
-            transition-delay: 1.2s;
+            transition-delay: 1.8s; // Increased from 1.2s to allow content to finish
 
             .link {
                 opacity: 1;
                 pointer-events: auto;
                 transition: all 0.5s ease-out;
-                transition-delay: 1.4s;
+                transition-delay: 2s; // Increased from 1.4s
             }
         }
     }
@@ -1157,6 +1189,87 @@ $gpu-accel: translateZ(0);
         }
         .projectparagraph:last-of-type {
             transition-delay: 0.75s;
+        }
+    }
+}
+
+.floatingLink {
+
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.75em 1.5em;
+    color: rgb(236, 236, 236);
+    text-decoration: none;
+    border-radius: 2em;
+    font-family: var(--font-syne);
+    font-weight: 500;
+    font-size: 0.9em;
+    transition: all 0.3s ease-out;
+    opacity: 0;
+    transform: translateY(20px);
+
+    &.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+    }
+
+    @media screen and (max-width: 768px) {
+        font-size: 0.85em;
+        padding: 0.6em 1.2em;
+    }
+    
+    @media screen and (min-width: 1200px) {
+        transition: all 0.4s ease-out;
+        
+        &.visible {
+            transition-delay: 0.8s; // Match navigation delay
+        }
+    }
+
+    @media screen and (min-width: 768px) {
+        order: -1; // Move to start of flex container
+        margin: 0;
+        flex: 0 0 auto;
+    }
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    margin-top: 3em; // Increased from 2em to 3em
+    gap: 2em;
+
+    &.visible {
+        opacity: 1;
+
+        .floatingLink,
+        .dots {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media screen and (min-width: 768px) {
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 3em;
+    }
+
+    @media screen and (min-width: 1200px) {
+        transition: opacity 0.4s ease-out;
+        
+        &.visible {
+            transition-delay: 0.8s;
         }
     }
 }
