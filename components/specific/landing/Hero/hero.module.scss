@@ -22,7 +22,7 @@
     margin: 0 0 .75em 0;
     opacity: 0;
     animation: reveal-title 0.5s ease-out forwards;
-    animation-delay: 0.4s; // Ensure title reveals first
+    animation-delay: 0.4s;
     user-select: none;
 
     @media screen and (max-width: 1199px) {
@@ -86,7 +86,7 @@
     margin-bottom: 1.5em;
     opacity: 0;
     animation: reveal-projectname 0.5s ease-out forwards;
-    animation-delay: 0.9s; // Delay to reveal after title
+    animation-delay: 0.9s;
     user-select: none;
     position: relative;
     z-index: 2;
@@ -115,7 +115,7 @@ $gpu-accel: translateZ(0);
     box-sizing: border-box;
     min-height: auto;
     will-change: opacity;
-    animation-delay: 1.4s; // Delay to reveal after project name
+    animation-delay: 1.4s;
 
     @media screen and (max-width: 1199px) {
         position: absolute;
@@ -125,7 +125,7 @@ $gpu-accel: translateZ(0);
         padding: 0;
         height: 100%;
         align-items: center;
-        transition: opacity 0.6s ease-in-out; // Reduced from 1.2s
+        transition: opacity 0.6s ease-in-out;
         
         .screen {
             width: 100%;
@@ -144,28 +144,28 @@ $gpu-accel: translateZ(0);
 
         &.showMobile {
             opacity: 1;
-            transition: opacity 0.6s ease-in-out; // Reduced from 1.2s
+            transition: opacity 0.6s ease-in-out;
 
             .screen {
                 opacity: 1;
-                transition: opacity 0.6s ease-in-out; // Reduced from 1.2s
-                transition-delay: 0.2s; // Reduced from 0.4s
+                transition: opacity 0.6s ease-in-out;
+                transition-delay: 0.2s;
             }
 
             .mobile {
                 opacity: 1;
-                transition: opacity 0.6s ease-in-out; // Reduced from 1.2s
-                transition-delay: 0.4s; // Reduced from 1s
+                transition: opacity 0.6s ease-in-out;
+                transition-delay: 0.4s;
             }
         }
 
         &:not(.showMobile) {
             opacity: 0;
-            transition: opacity 0.6s ease-in-out; // Reduced from 1s
+            transition: opacity 0.6s ease-in-out;
 
             .screen, .mobile {
                 opacity: 0;
-                transition: opacity 0.6s ease-in-out; // Reduced from 1s
+                transition: opacity 0.6s ease-in-out;
             }
         }
     }
@@ -186,36 +186,29 @@ $gpu-accel: translateZ(0);
 
         &.showMobile {
             opacity: 1;
-            transition: opacity 0.3s ease-in-out;
-            transition-delay: 0s;
+            transition: opacity 0.4s ease-in-out;
+            transition-delay: 0.3s;
 
             .screen {
                 opacity: 1;
-                transition: opacity 0.3s ease-in-out;
-                transition-delay: 0s;
+                transition: opacity 0.4s ease-in-out;
+                transition-delay: 0.3s;
             }
 
             .mobile {
                 opacity: 1;
-                transition: opacity 0.3s ease-in-out;
-                transition-delay: 0.2s;
+                transition: opacity 0.4s ease-in-out;
+                transition-delay: 0.6s;
             }
         }
 
         &:not(.showMobile) {
             opacity: 0;
-            transition: opacity 0.3s ease-in-out;
+            transition: opacity 0.3s ease-out;
 
-            .screen {
+            .screen, .mobile {
                 opacity: 0;
-                transition: opacity 0.3s ease-in-out;
-                transition-delay: 0s;
-            }
-
-            .mobile {
-                opacity: 0;
-                transition: opacity 0.3s ease-in-out;
-                transition-delay: 0s;
+                transition: opacity 0.3s ease-out;
             }
         }
 
@@ -413,8 +406,7 @@ $gpu-accel: translateZ(0);
 .dots {
     justify-content: center;
     margin-top: 0.75em;
-    pointer-events: auto; // Changed from none
-    // Removed overflow: hidden
+    pointer-events: auto;
     
     @media screen and (max-width: 1199px) {
         position: relative;
@@ -424,16 +416,16 @@ $gpu-accel: translateZ(0);
         justify-content: flex-end;
         
         &.visible {
-            transition-delay: 1.6s; // Reduced from 1.8s to show dots sooner on mobile
+            transition-delay: 1.6s;
             
             .dot {
                 &:first-child {
-                    animation-delay: 1.7s; // Reduced from 1.9s
+                    animation-delay: 1.7s;
                 }
 
                 @for $i from 2 through 6 {
                     &:nth-child(#{$i}) {
-                        animation-delay: #{1.7 + (0.05 * ($i - 1))}; // Reduced base delay
+                        animation-delay: #{1.7 + (0.05 * ($i - 1))};
                     }
                 }
             }
@@ -450,8 +442,8 @@ $gpu-accel: translateZ(0);
         }
 
         &:not(.visible) {
-            opacity: 1; // Changed from 0.3
-            pointer-events: auto; // Changed from none
+            opacity: 1;
+            pointer-events: auto;
         }
     }
 
@@ -463,21 +455,18 @@ $gpu-accel: translateZ(0);
         &.visible {
             .dot {
                 &:first-child {
-                    animation-delay: 0.9s; // Increased from 0.6s
+                    animation-delay: 0.9s;
                 }
 
                 @for $i from 2 through 6 {
                     &:nth-child(#{$i}) {
-                        animation-delay: #{0.9 + (0.05 * ($i - 1))}s; // Increased base delay
+                        animation-delay: #{0.9 + (0.05 * ($i - 1))}s;
                     }
                 }
             }
         }
 
         &:not(.visible) {
-            // Remove or comment out opacity adjustments to keep dots visible
-            // opacity: 0.3; 
-            // pointer-events: none;
         }
     }
 
@@ -486,9 +475,9 @@ $gpu-accel: translateZ(0);
         pointer-events: auto;
 
         .dot {
-            opacity: 0.7; // Changed from 0
-            transform: scale(0.8); // Changed from scale(0)
-            pointer-events: auto; // Added this
+            opacity: 0.7;
+            transform: scale(0.8);
+            pointer-events: auto;
             animation: dotAppear 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 
             @media screen and (max-width: 1199px) {
@@ -542,9 +531,9 @@ $gpu-accel: translateZ(0);
     transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
                 opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     transform-origin: center;
-    transform: scale(0.8); // Changed from scale(0)
-    opacity: 0.7; // Changed from 0
-    pointer-events: auto; // Added this
+    transform: scale(0.8);
+    opacity: 0.7;
+    pointer-events: auto;
     
     @media screen and (max-width: 1199px) {
         width: 1.5em;
@@ -563,7 +552,6 @@ $gpu-accel: translateZ(0);
         }
     }
 
-    // Remove the entering/exiting states since we don't need them
     &.entering,
     &.exiting {
         display: none;
@@ -696,25 +684,25 @@ $gpu-accel: translateZ(0);
 
             .projectproblems {
                 opacity: 1;
-                transition-delay: 0.3s; // Increased from 0.3s
+                transition-delay: 0.3s;
             }
             .projectparagraph:first-of-type {
                 opacity: 1;
-                transition-delay: 0.5s; // Increased from 0.5s
+                transition-delay: 0.5s;
             }
             .projectsolutions {
                 opacity: 1;
-                transition-delay: 0.7s; // Increased from 0.7s
+                transition-delay: 0.7s;
             }
             .projectparagraph:last-of-type {
                 opacity: 1;
-                transition-delay: 0.9s; // Increased from 0.9s
+                transition-delay: 0.9s;
             }
 
             .navigation {
                 opacity: 0;
                 transition: opacity 0.3s ease-out;
-                transition-delay: 1.6s; // Show navigation after last paragraph
+                transition-delay: 1.6s;
             }
         }
     }
@@ -737,6 +725,7 @@ $gpu-accel: translateZ(0);
         &.visible:not(.fading) {
             opacity: 1;
             pointer-events: auto;
+            transition: opacity 0.3s ease-out;
 
             .projectproblems,
             .projectsolutions,
@@ -761,7 +750,7 @@ $gpu-accel: translateZ(0);
             .meta {
                 opacity: 1;
                 transition: opacity 0.3s ease-out;
-                transition-delay: 1s; // Increased from 0.6s to match other navigation elements
+                transition-delay: 1s;
             }
         }
     }
@@ -780,14 +769,14 @@ $gpu-accel: translateZ(0);
     @media screen and (max-width: 1199px) {
         .navigation {
             opacity: 1;
-            transition-delay: 2.5s; // Increased from 2.2s to ensure preview completes before descriptions
+            transition-delay: 2.5s;
         }
     }
 
     @media screen and (min-width: 1200px) {
         .navigation {
             opacity: 1;
-            transition-delay: 0.6s; // Adjust delay for desktop
+            transition-delay: 0.6s;
         }
     }
 }
@@ -795,13 +784,13 @@ $gpu-accel: translateZ(0);
 @media screen and (max-width: 1199px) {
     .contentContainer.visible:not(.fading) {
         .navigation {
-            transition-delay: 1.6s; // Decreased from 2.5s to reduce preview wait time
+            transition-delay: 1.6s;
         }
     }
 
     .navigation {
         &.visible {
-            transition-delay: 1.4s; // Adjusted delay to ensure it appears after descriptions
+            transition-delay: 1.4s;
         }
     }
 }
@@ -809,13 +798,13 @@ $gpu-accel: translateZ(0);
 @media screen and (min-width: 1200px) {
     .contentContainer.visible:not(.fading) {
         .navigation {
-            transition-delay: 0.6s; // Ensure navigation appears after descriptions
+            transition-delay: 0.6s;
         }
     }
 
     .navigation {
         &.visible {
-            transition-delay: 0.6s; // Confirm delay aligns with content
+            transition-delay: 0.6s;
         }
     }
 }
@@ -1204,13 +1193,13 @@ $gpu-accel: translateZ(0);
         &.visible {
             opacity: 1;
             pointer-events: auto;
-            transition-delay: 1.8s; // Increased from 1.2s to allow content to finish
+            transition-delay: 1.8s;
 
             .link {
                 opacity: 1;
                 pointer-events: auto;
                 transition: all 0.5s ease-out;
-                transition-delay: 2s; // Increased from 1.4s
+                transition-delay: 2s;
             }
         }
     }
@@ -1317,20 +1306,20 @@ $gpu-accel: translateZ(0);
         transform: translateY(-2px);
     }
 
-    @media screen and (max-width: 1199px) { // Changed from 768px to 1199px to match other mobile breakpoints
+    @media screen and (max-width: 1199px) {
         font-size: 0.85em;
-        padding: 0;  // Remove padding on mobile
+        padding: 0;
         white-space: nowrap;
         width: auto;
         min-width: max-content;
-        background: transparent; // Remove background on mobile
-        border: none; // Remove border on mobile
-        backdrop-filter: none; // Remove blur effect on mobile
-        color: white; // Keep text white on mobile
+        background: transparent;
+        border: none;
+        backdrop-filter: none;
+        color: white;
         
         &:hover {
-            background: transparent; // Keep transparent on hover
-            transform: none; // Remove hover animation
+            background: transparent;
+            transform: none;
         }
     }
     
@@ -1338,12 +1327,12 @@ $gpu-accel: translateZ(0);
         transition: all 0.4s ease-out;
         
         &.visible {
-            transition-delay: 1.2s; // Increased from 0.8s to match navigation delay
+            transition-delay: 1.2s;
         }
     }
 
     @media screen and (min-width: 768px) {
-        order: -1; // Move to start of flex container
+        order: -1;
         margin: 0;
         flex: 0 0 auto;
     }
@@ -1355,7 +1344,7 @@ $gpu-accel: translateZ(0);
     width: 100%;
     opacity: 0;
     transition: opacity 0.3s ease-out;
-    margin-top: 3em; // Increased from 2em to 3em
+    margin-top: 3em;
     gap: 2em;
 
     &.visible {
@@ -1370,61 +1359,66 @@ $gpu-accel: translateZ(0);
 
     @media screen and (max-width: 1199px) {
         opacity: 0;
-        transition: opacity 0.3s ease-out;
+        transition: opacity 0.6s ease-out;
         
         &.visible {
             opacity: 1;
-            transition-delay: 2.2s; // Increased from 1.7s
+            pointer-events: auto;
+            transition-delay: 7s;
+
+            .floatingLink {
+                opacity: 1;
+                transition: opacity 0.6s ease-out;
+                transition-delay: 7s;
+            }
 
             .dots {
-                .dot {
-                    animation-delay: 2.2s; // Adjusted accordingly
-                }
+                opacity: 1;
+                transition: opacity 0.6s ease-out;
+                transition-delay: 7.2s;
 
-                @for $i from 2 through 6 {
-                    &:nth-child(#{$i}) {
-                        animation-delay: #{2.2 + (0.05 * ($i - 1))}s; // Adjusted accordingly
+                .dot {
+                    animation: none; // Remove dot animation on mobile
+                    opacity: 0.7;
+                    transform: scale(0.8);
+                    
+                    &.active {
+                        opacity: 1;
+                        transform: scale(1.1);
                     }
                 }
             }
-
-            .floatingLink {
-                transition-delay: 1.6s; // Increased from 1.3s
-            }
         }
-    }
 
-    @media screen and (min-width: 768px) {
-        flex-direction: row;
-        justify-content: flex-start;
-        gap: 3em;
+        // Remove all duplicate mobile media queries
     }
 
     @media screen and (min-width: 1200px) {
         transition: opacity 0.4s ease-out;
         
         &.visible {
-            opacity: 1; // Changed from 0
-            pointer-events: auto; // Changed from none
-            transition: opacity 0.4s ease-out;
+            opacity: 1;
+            pointer-events: auto;
+            transition-delay: 1s;
 
             .dots {
-                opacity: 1; // Changed from 0
+                opacity: 1;
                 transition: opacity 0.3s ease-out;
-                transition-delay: 0.6s;
+                transition-delay: 1s;
             }
 
             .floatingLink {
-                transition-delay: 0.4s;
+                opacity: 1;
+                transition: opacity 0.3s ease-out;
+                transition-delay: 0.8s;
             }
         }
     }
 
-    // Remove or modify this block that was hiding dots
     @media screen and (min-width: 1200px) {
         &:not(.visible) {
-            opacity: 1; // Changed from 0.3
-            pointer-events: auto; // Changed from none
+            opacity: 1;
+            pointer-events: auto;
         }
     }
 
@@ -1432,16 +1426,16 @@ $gpu-accel: translateZ(0);
         &.visible {
             opacity: 0;
             transition: opacity 0.3s ease-out;
-            transition-delay: 2.2s; // After all content has revealed
+            transition-delay: 2.2s;
 
             .dots {
                 opacity: 0;
                 transition: opacity 0.3s ease-out;
-                transition-delay: 1.4s; // Reduced from 2.4s to appear sooner on mobile
+                transition-delay: 1.4s;
             }
 
             .floatingLink {
-                transition-delay: 1.2s; // Adjusted to show link before dots
+                transition-delay: 1.2s;
             }
         }
     }
@@ -1450,23 +1444,16 @@ $gpu-accel: translateZ(0);
         &.visible {
             opacity: 1;
             pointer-events: auto;
-            transition-delay: 1.4s; // Reduced delay to show after solutions
-            
+            transition-delay: 6s;
+
             .floatingLink {
                 opacity: 1;
-                color: white; // Make text white on mobile
-                background: transparent; // Remove background on mobile
-                padding: 0; // Remove padding on mobile
-                transform: none; // Remove transform on mobile
+                transition-delay: 6s;
             }
             
             .dots {
                 opacity: 1;
-                gap: 0.25em; // Reduced gap between dots
-                
-                .dot {
-                    width: 1.25em; // Slightly smaller dots
-                }
+                transition-delay: 6.2s;
             }
         }
     }
@@ -1475,24 +1462,41 @@ $gpu-accel: translateZ(0);
         &.visible {
             opacity: 1;
             pointer-events: auto;
-            transition-delay: 0.6s; // Show sooner on desktop
+            transition-delay: 1s;
 
             .dots {
-                transition-delay: 0.6s; // Ensure dots appear after the link
+                opacity: 1;
+                transition-delay: 1s;
             }
 
             .floatingLink {
-                transition-delay: 0.3s; // Earlier delay to appear before dots
+                transition-delay: 0.8s;
             }
         }
     }
 
-    // Ensure dots remain visible without disappearing on larger breakpoints
     @media screen and (min-width: 1200px) {
         &:not(.visible) {
-            // Remove or adjust opacity settings to prevent dots from hiding
-            // opacity: 0.3; // Commented out to keep dots visible
-            // pointer-events: none;
+        }
+    }
+
+    @media screen and (max-width: 1199px) {
+        &.visible {
+            opacity: 1;
+            pointer-events: auto;
+            transition-delay: 1s;
+
+            .floatingLink {
+                opacity: 1;
+                transition-delay: 1s;
+                transition: opacity 0.5s ease-out;
+            }
+
+            .dots {
+                opacity: 1;
+                transition-delay: 1.2s;
+                transition: opacity 0.5s ease-out;
+            }
         }
     }
 }

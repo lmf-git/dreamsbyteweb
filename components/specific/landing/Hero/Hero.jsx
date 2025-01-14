@@ -130,40 +130,38 @@ export default function Hero() {  // Remove onComplete prop
             
             preloadImages(0).then(() => {
                 if (isMobile) {
-                    // Step 1: Show title
                     setShowTitle(true);
                     
-                    // Step 2: Show project name after 500ms
                     setTimeout(() => {
                         setShowProjectName(true);
                         
-                        // Step 3: Show preview after project name (800ms)
                         setTimeout(() => {
                             setShowPreview(true);
                             
-                            // Step 4: Hide preview and show content after 5 seconds
                             setTimeout(() => {
                                 setShowPreview(false);
                                 setTimeout(() => {
                                     setShowContent(true);
-                                    setShowNav(true);
-                                    setInitialAnimationComplete(true);
-                                }, 600); // Wait for preview to fade out
-                            }, 5000); // Hide preview after 5 seconds
+                                    setFirstRevealComplete(true);
+                                    setTimeout(() => {
+                                        setShowNav(true);
+                                        setDotsReady(true);
+                                        setInitialAnimationComplete(true);
+                                    }, 1000); // Increased delay for navigation
+                                }, 600);
+                            }, 5000);
                         }, 800);
                     }, 500);
                 } else {
-                    // Desktop sequence
                     setTimeout(() => {
                         setShowContent(true);
+                        setShowNav(true);
+                        setDotsReady(true);
                         setTimeout(() => {
-                            setShowNav(true);
-                            setDotsReady(true);
+                            setShowPreview(true);
+                            setFirstRevealComplete(true);
                             setInitialAnimationComplete(true);
-                            setTimeout(() => {
-                                setShowPreview(true);
-                            }, 400); // Reduced from 600ms
-                        }, 300); // Reduced from 400ms
+                        }, 600);
                     }, 200);
                 }
             });
@@ -198,44 +196,47 @@ export default function Hero() {  // Remove onComplete prop
         const isMobile = window.innerWidth < 1200;
         setIsTransitioning(true);
         setContentFading(true);
+        setShowNav(false);
+        setDotsReady(false);
         
         if (isMobile) {
             setShowContent(false);
             setCurrentProject(project);
+            setShowPreview(false); // Hide preview on mobile
             
             preloadImages(project).then(() => {
-                // First show project name
                 setShowProjectName(true);
                 
-                // Then show preview
                 setTimeout(() => {
                     setShowPreview(true);
                     
-                    // Hide preview after 5 seconds
                     setTimeout(() => {
                         setShowPreview(false);
-                        // Show content after preview fades
                         setTimeout(() => {
                             setShowContent(true);
-                            setIsTransitioning(false);
-                            setContentFading(false);
-                            setShowNav(true);
+                            setTimeout(() => {
+                                setIsTransitioning(false);
+                                setContentFading(false);
+                                setTimeout(() => {
+                                    setShowNav(true);
+                                    setDotsReady(true);
+                                }, 1000);
+                            }, 600);
                         }, 600);
                     }, 5000);
                 }, 800);
             });
         } else {
-            // Desktop sequence
             setCurrentProject(project);
             preloadImages(project).then(() => {
-                setShowContent(true);
+                setShowPreview(true); // Always show preview on desktop
                 setTimeout(() => {
-                    setContentFading(false);
+                    setShowContent(true);
                     setIsTransitioning(false);
+                    setContentFading(false);
                     setShowNav(true);
                     setDotsReady(true);
-                    setShowPreview(true);
-                }, 300); // Reduced from 400ms
+                }, 300);
             });
         }
     }, [project, isInitialized, initialAnimationComplete]);
