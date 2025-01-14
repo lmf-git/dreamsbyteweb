@@ -12,7 +12,9 @@ export default function Testimonials({ visible }) {
     const [startX, setStartX] = useState(0);
     const [scrollLeft, setScrollLeft] = useState(0);
     const [direction, setDirection] = useState(1);
+    const [touchMoved, setTouchMoved] = useState(false);
     const speed = 0.5;
+    const dragThreshold = 5; // pixels to consider as drag vs tap
 
     useEffect(() => {
         const animate = () => {
@@ -56,6 +58,8 @@ export default function Testimonials({ visible }) {
     };
 
     const handleTouchStart = ev => {
+        ev.preventDefault();
+        setTouchMoved(false);
         setIsDragging(true);
         setStartX(ev.touches[0].pageX - listRef.current.offsetLeft);
         setScrollLeft(listRef.current.scrollLeft);
@@ -73,9 +77,15 @@ export default function Testimonials({ visible }) {
 
     const handleTouchMove = ev => {
         if (!isDragging) return;
+        ev.preventDefault();
         
         const x = ev.touches[0].pageX - listRef.current.offsetLeft;
         const walk = x - startX;
+        
+        if (Math.abs(walk) > dragThreshold) {
+            setTouchMoved(true);
+        }
+        
         const newPosition = scrollLeft - walk;
         listRef.current.scrollLeft = newPosition;
         positionRef.current = newPosition; // Update position while dragging
@@ -84,6 +94,16 @@ export default function Testimonials({ visible }) {
     const stopDragging = () => {
         setIsDragging(false);
         // Auto-scrolling will resume automatically
+    };
+
+    const handleTouchEnd = ev => {
+        if (!touchMoved) {
+            // Was a tap, not a drag - don't interfere with normal touch behavior
+            setIsDragging(false);
+            return;
+        }
+        stopDragging();
+        setTouchMoved(false);
     };
 
     return <div className={`section ${styles.testimonials} ${visible ? styles.visible : ''}`} id="testimonials">
@@ -97,7 +117,8 @@ export default function Testimonials({ visible }) {
             onMouseLeave={stopDragging}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
-            onTouchEnd={stopDragging}>
+            onTouchEnd={handleTouchEnd}
+            onTouchCancel={handleTouchEnd}>
             <div className={styles.plane}>
                 { testimonials.map((t, i) => (
                     <div className={styles.testimonial} key={i}>
