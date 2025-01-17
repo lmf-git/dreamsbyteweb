@@ -1,6 +1,10 @@
 @use '../../layout/animations';
 @use '../../layout/colours';
 
+.test {
+    width: 10em;
+}
+
 .clipped {
     height: 100vw;
     overflow: hidden;

@@ -133,6 +133,8 @@ $gpu-accel: translateZ(0);
             position: relative;
             top: 0;
             margin: 0 auto;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
         }
 
         .mobile {
@@ -140,6 +142,8 @@ $gpu-accel: translateZ(0);
             position: absolute;
             right: 20%;
             top: 15vh; // Adjust mobile preview position accordingly
+            transform: translateX(20px);
+            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
         }
 
         &.showMobile {
@@ -148,13 +152,15 @@ $gpu-accel: translateZ(0);
 
             .screen {
                 opacity: 1;
-                transition: opacity 0.4s ease-in-out;
+                transform: translateY(0);
+                transition: opacity 0.4s ease-out, transform 0.4s ease-out;
                 transition-delay: 0.1s;
             }
 
             .mobile {
                 opacity: 1;
-                transition: opacity 0.4s ease-in-out;
+                transform: translateX(0);
+                transition: opacity 0.4s ease-out, transform 0.4s ease-out;
                 transition-delay: 0.2s;
             }
         }
@@ -166,6 +172,18 @@ $gpu-accel: translateZ(0);
             .screen, .mobile {
                 opacity: 0;
                 transition: opacity 0.3s ease-in-out;
+            }
+
+            .screen {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+            }
+
+            .mobile {
+                opacity: 0;
+                transform: translateX(20px);
+                transition: opacity 0.3s ease-out, transform 0.3s ease-out;
             }
         }
     }
@@ -194,12 +212,16 @@ $gpu-accel: translateZ(0);
                 opacity: 1;
                 transition: opacity 0.4s ease-in-out;
                 transition-delay: 0.3s;
+                transform: translateY(0);
+                transition: opacity 0.5s ease-out, transform 0.5s ease-out;
             }
 
             .mobile {
                 opacity: 1;
                 transition: opacity 0.4s ease-in-out;
                 transition-delay: 0.6s;
+                transform: translateX(0);
+                transition: opacity 0.5s ease-out, transform 0.5s ease-out;
             }
         }
 
@@ -210,6 +232,18 @@ $gpu-accel: translateZ(0);
             .screen, .mobile {
                 opacity: 0;
                 transition: opacity 0.3s ease-out;
+            }
+
+            .screen {
+                opacity: 0;
+                transform: translateY(30px);
+                transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+            }
+
+            .mobile {
+                opacity: 0;
+                transform: translateX(30px);
+                transition: opacity 0.4s ease-out, transform 0.4s ease-out;
             }
         }
 
@@ -223,6 +257,8 @@ $gpu-accel: translateZ(0);
             margin: 0;
             max-height: none;
             transition: opacity 0.3s ease-out;
+            transform: translateY(30px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
         }
 
         .mobile {
@@ -234,6 +270,8 @@ $gpu-accel: translateZ(0);
             width: 14vw;
             opacity: 1;
             transition: opacity 0.3s ease-out;
+            transform: translateX(30px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
         }
 
         .screen, .mobile {
