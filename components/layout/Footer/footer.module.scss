@@ -14,7 +14,7 @@
 	padding: 1.25em;
 
 	opacity: 0;
-	transition: opacity 1s ease-out;
+	transition: opacity 1s ease-out 0.2s; // Add delay to footer itself
 	
 	&.visible {
 		opacity: 1;
@@ -29,7 +29,7 @@
 
 	opacity: 0;
 	transform: translateY(20px);
-	transition: opacity 1s ease-out, transform 1s ease-out;
+	transition: opacity 1s ease-out 0.4s, transform 1s ease-out 0.4s; // Contact appears second
 	
 	&.visible {
 		opacity: 1;
@@ -174,7 +174,7 @@
 
 	opacity: 0;
 	transform: translateY(20px);
-	transition: opacity 1s ease-out, transform 1s ease-out;
+	transition: opacity 1s ease-out 0.6s, transform 1s ease-out 0.6s; // Shill section appears third
 	
 	&.visible {
 		opacity: 1;
@@ -208,10 +208,11 @@
 .logo {
 	width: 10em;
 	opacity: 0;
-	position: relative; // Add this
-	left: 50%; // Add this
+	position: absolute;
+	left: 50%;
+	bottom: 2em;
 	transform: translateX(-50%) translateY(10px);
-	transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+	transition: opacity 0.8s ease-out 0.8s, transform 0.8s ease-out 0.8s; // Logo appears last
 	
 	&.visible {
 		opacity: 1;
@@ -305,13 +306,11 @@
 	
 	.logo {
 		padding: 1.5em 0 0.5em 0;
-		position: absolute; // Change from relative to absolute
-		left: 50%;
 		bottom: 2em;
-		transform: translateX(-50%) translateY(10px);
+		// No need to redefine position and left as they inherit from base styles
 		
 		&.visible {
-			transform: translateX(-50%) translateY(0); // Add this
+			transform: translateX(-50%) translateY(0);
 		}
 	}
 
