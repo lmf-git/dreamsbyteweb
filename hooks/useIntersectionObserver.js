@@ -6,7 +6,11 @@ export default function useIntersectionObserver(ref, threshold = 0.5) {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting);
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          // Unobserve after becoming visible
+          observer.unobserve(entry.target);
+        }
       },
       { threshold }
     );
