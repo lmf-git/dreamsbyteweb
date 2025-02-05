@@ -1,5 +1,10 @@
 import styles from './services.module.scss';
 
+const technologies = [
+  'Node.js', 'Heroku', 'AWS', 'Nuxt', 'Svelte',
+  'JavaScript', 'HTML', 'CSS', 'PostgreSQL', 'Nginx'
+];
+
 export default function Services({ setMessage }) {
   const handleExampleClick = (service) => (e) => {
     const dot = e.currentTarget.querySelector('::before');
@@ -20,78 +25,68 @@ export default function Services({ setMessage }) {
     </div>
 
     <div className={styles.list}>
-      <div className={styles.service}>
-        <span className={styles.name}>Development</span>
-        
-        <span className={styles.example} onClick={handleExampleClick('Full Stack Development')}>
-          Full Stack Development
-          <span className={styles.price}>Starting at $2,500</span>
-        </span>
-        <span className={styles.example} onClick={handleExampleClick('Website / App / DB Maintenance')}>
-          Website / App / DB Maintenance
-          <span className={styles.price}>Starting at $300/month</span>
-        </span>
-        <span className={styles.example} onClick={handleExampleClick('UI Development')}>
-          UI Development
-          <span className={styles.price}>Starting at $1,200</span>
-        </span>
-        <span className={styles.example} onClick={handleExampleClick('WordPress / Ghost / CMS Development')}>WordPress / Ghost / CMS Development</span>
-        <span className={styles.example} onClick={handleExampleClick('API Integrations / Custom API Development')}>API Integrations / Custom API Development</span>
-      </div>
-
-      <div className={styles.service}>
-        <span className={styles.name}>E-commerce</span>
-        
-        <span className={styles.example} onClick={handleExampleClick('Shopify / Magento / Woocommerce / Custom Store Creation')}>
-          Shopify / Magento / Woocommerce / Custom Store Creation
-          <span className={styles.price}>Starting at $1,500</span>
-        </span>
-        <span className={styles.example} onClick={handleExampleClick('Multichannel / ERP and More Integrations')}>Multichannel / ERP and More Integrations</span>
-      </div>
-
-      <div className={styles.service}>
-        <span className={styles.name}>Design</span>
-        
-        <span className={styles.example} onClick={handleExampleClick('Captivating Logos')}>
-          Captivating Logos
-          <span className={styles.price}>Starting at $300</span>
-        </span>
-        <span className={styles.example} onClick={handleExampleClick('Landing Pages')}>
-          Landing Pages
-          <span className={styles.price}>Starting at $800</span>
-        </span>
-        <span className={styles.example} onClick={handleExampleClick('Branding')}>
-          Branding
-          <span className={styles.price}>Starting at $1,000</span>
-        </span>
-        <span className={styles.example} onClick={handleExampleClick('Distinctive Typography')}>Distinctive Typography</span>
-        <span className={styles.example} onClick={handleExampleClick('Compelling Colour Schemes')}>Compelling Colour Schemes</span>
-      </div>
-
-      <div className={styles.service}>
-        <span className={styles.name}>Miscellaneous</span>
-        
-        <span className={styles.example} onClick={handleExampleClick('Figma to Website Conversion')}>Figma to Website Conversion</span>
-        <span className={styles.example} onClick={handleExampleClick('PSD to HTML Conversion')}>PSD to HTML Conversion</span>
-        <span className={styles.example} onClick={handleExampleClick('Translation Services')}>Translation Services</span>
-        <span className={styles.example} onClick={handleExampleClick('Troubleshooting and Error Fixing')}>Troubleshooting and Error Fixing</span>
-        <span className={styles.example} onClick={handleExampleClick('Tutoring in Web Development')}>Tutoring in Web Development</span>
-      </div>
+      {[
+        { name: 'Development', items: [
+          { name: 'Full Stack Development', price: 'Starting at $2,500' },
+          { name: 'Website / App / DB Maintenance', price: 'Starting at $300/month' },
+          { name: 'UI Development', price: 'Starting at $1,200' },
+          { name: 'WordPress / Ghost / CMS Development' },
+          { name: 'API Integrations / Custom API Development' }
+        ]},
+        { name: 'E-commerce', items: [
+          { name: 'Shopify / Magento / Woocommerce / Custom Store Creation', price: 'Starting at $1,500' },
+          { name: 'Multichannel / ERP and More Integrations' }
+        ]},
+        { name: 'Design', items: [
+          { name: 'Captivating Logos', price: 'Starting at $300' },
+          { name: 'Landing Pages', price: 'Starting at $800' },
+          { name: 'Branding', price: 'Starting at $1,000' },
+          { name: 'Distinctive Typography' },
+          { name: 'Compelling Colour Schemes' }
+        ]},
+        { name: 'Miscellaneous', items: [
+          { name: 'Figma to Website Conversion' },
+          { name: 'PSD to HTML Conversion' },
+          { name: 'Translation Services' },
+          { name: 'Troubleshooting and Error Fixing' },
+          { name: 'Tutoring in Web Development' }
+        ]}
+      ].map((serviceGroup, index) => (
+        <div 
+          key={serviceGroup.name} 
+          className={styles.service}
+          style={{ animationDelay: `${0.8 + index * 0.2}s` }}
+        >
+          <span className={styles.name}>{serviceGroup.name}</span>
+          {serviceGroup.items.map((item, itemIndex) => (
+            <span 
+              key={item.name} 
+              className={styles.example} 
+              onClick={handleExampleClick(item.name)}
+            >
+              {item.name}
+              {item.price && <span className={styles.price}>{item.price}</span>}
+            </span>
+          ))}
+        </div>
+      ))}
     </div>
 
-    <div className={styles.providers}>
+    <div 
+      className={styles.providers}
+      style={{ animationDelay: '1.6s' }}
+    >
       <div className={styles.providersHeading}>Technologies We Use</div>
       <div className={styles.providersList}>
-        <span className={styles.provider}>Node.js</span>
-        <span className={styles.provider}>Heroku</span>
-        <span className={styles.provider}>AWS</span>
-        <span className={styles.provider}>Nuxt</span>
-        <span className={styles.provider}>Svelte</span>
-        <span className={styles.provider}>JavaScript</span>
-        <span className={styles.provider}>HTML</span>
-        <span className={styles.provider}>CSS</span>
-        <span className={styles.provider}>PostgreSQL</span>
-        <span className={styles.provider}>Nginx</span>
+        {technologies.map((tech, index) => (
+          <span 
+            key={tech}
+            className={styles.provider}
+            style={{ animationDelay: `${1.8 + index * 0.1}s` }}
+          >
+            {tech}
+          </span>
+        ))}
       </div>
     </div>
 

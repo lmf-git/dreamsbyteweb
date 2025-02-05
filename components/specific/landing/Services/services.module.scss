@@ -9,7 +9,7 @@
   opacity: 0;
   transform: translateY(20px);
   transition: all 1s ease-out;
-  animation: reveal-section 1s ease-out 2s forwards;
+  animation: reveal-section 1s ease-out 0.5s forwards;
 }
 
 .heading, .providersHeading {
@@ -41,6 +41,9 @@
   padding: 0 1em;
   box-sizing: border-box;
   margin-bottom: 1.5em;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: reveal-item 0.8s ease-out forwards;
 }
 
 .name {
@@ -149,6 +152,9 @@
 .providers {
   margin-top: 3.5em;
   text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: reveal-item 0.8s ease-out forwards;
 }
 
 .providersHeading {
@@ -174,6 +180,9 @@
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 4px;
   transition: all 0.2s ease;
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: reveal-tech 0.5s ease-out forwards;
 
   &:hover {
     color: rgb(230, 230, 230);
@@ -200,5 +209,27 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes reveal-item {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes reveal-tech {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }

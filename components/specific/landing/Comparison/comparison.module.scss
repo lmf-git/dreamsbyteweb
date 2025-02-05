@@ -3,6 +3,9 @@
   flex-direction: column;
   justify-content: center;
   color: white;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: reveal-comparison 1s ease-out 3s forwards;
 }
 
 .heading {
@@ -63,5 +66,16 @@
   .advantages {
     margin: 0;
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@keyframes reveal-comparison {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

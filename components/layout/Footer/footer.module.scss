@@ -12,6 +12,9 @@
 	background: rgb(18, 18, 18);
 
 	padding: 1.25em;
+
+	opacity: 0;
+	animation: reveal-footer 1s ease-out 5s forwards;
 }
 
 
@@ -20,6 +23,10 @@
     margin-bottom: 4em;
     width: 100%;
     box-sizing: border-box;
+
+	opacity: 0;
+	transform: translateY(20px);
+	animation: reveal-footer-section 1s ease-out 5.2s forwards;
 }
 
 .label {
@@ -156,6 +163,10 @@
 	justify-content: space-between;
 	padding: 3.25em 0 0;
 	gap: 1em;
+
+	opacity: 0;
+	transform: translateY(20px);
+	animation: reveal-footer-section 1s ease-out 5.4s forwards;
 }
 
 .socials {
@@ -184,6 +195,9 @@
 .logo {
 	width: 10em;
 
+	opacity: 0;
+	transform: translateY(10px);
+	animation: reveal-footer-section 0.8s ease-out 5.6s forwards;
 }
 .logo path {
 	fill: #b3b3b3;
@@ -235,6 +249,26 @@
     from {
         opacity: 0;
         transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes reveal-footer {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes reveal-footer-section {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
     }
     to {
         opacity: 1;

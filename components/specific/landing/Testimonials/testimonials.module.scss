@@ -10,7 +10,7 @@
     opacity: 0;
     transform: translateY(20px);
     transition: all 1s ease-out;
-    animation: reveal-section 1s ease-out 4s forwards; // Changed from 8.5s to 4s to appear sooner
+    animation: reveal-section 1s ease-out 4.5s forwards; // Changed from 4s to 4.5s to appear after comparison
     pointer-events: auto; // Change this to always allow interactions
 
     &.visible {
