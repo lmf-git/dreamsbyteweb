@@ -208,6 +208,8 @@
 .logo {
 	width: 10em;
 	opacity: 0;
+	position: relative; // Add this
+	left: 50%; // Add this
 	transform: translateX(-50%) translateY(10px);
 	transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 	
@@ -303,11 +305,14 @@
 	
 	.logo {
 		padding: 1.5em 0 0.5em 0;
+		position: absolute; // Change from relative to absolute
 		left: 50%;
-		position: absolute;
 		bottom: 2em;
 		transform: translateX(-50%) translateY(10px);
-		// Remove animation property
+		
+		&.visible {
+			transform: translateX(-50%) translateY(0); // Add this
+		}
 	}
 
 	.meta {
