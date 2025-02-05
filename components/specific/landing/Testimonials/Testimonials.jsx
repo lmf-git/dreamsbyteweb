@@ -3,24 +3,39 @@
 import { useRef, useState, useEffect } from 'react';
 import { testimonials } from '../../../../data.mjs';
 import styles from './testimonials.module.scss';
+import useIntersectionObserver from '../../../../hooks/useIntersectionObserver';
 
-export default function Testimonials({ visible }) {
+export default function Testimonials() {
+    const sectionRef = useRef(null);
+    const isVisible = useIntersectionObserver(sectionRef, 0.3);
     const listRef = useRef(null);
+    const planeRef = useRef(null);
     const animationRef = useRef(null);
     const positionRef = useRef(0); // Track position across renders
+    const lastTimeRef = useRef(null);
     const [isDragging, setIsDragging] = useState(false);
     const [startX, setStartX] = useState(0);
     const [scrollLeft, setScrollLeft] = useState(0);
     const [direction, setDirection] = useState(1);
     const [touchMoved, setTouchMoved] = useState(false);
-    const speed = 0.5;
+    const speed = 40; // pixels per second
     const dragThreshold = 5; // pixels to consider as drag vs tap
     const lastX = useRef(null);
     const dragStartTime = useRef(null);
 
     useEffect(() => {
-        const animate = () => {
-            if (!listRef.current || isDragging) {
+        const animate = (timestamp) => {
+            if (!planeRef.current || isDragging) {
+                animationRef.current = requestAnimationFrame(animate);
+                return;
+            }
+
+            if (!lastTimeRef.current) lastTimeRef.current = timestamp;
+            const deltaTime = timestamp - lastTimeRef.current;
+            lastTimeRef.current = timestamp;
+
+            // Smooth transition back to auto-scroll
+            if (Date.now() - dragStartTime.current < 100) {
                 animationRef.current = requestAnimationFrame(animate);
                 return;
             }
@@ -28,13 +43,7 @@ export default function Testimonials({ visible }) {
             const container = listRef.current;
             const maxScroll = container.scrollWidth - container.clientWidth;
             
-            // Smooth transition back to auto-scroll
-            if (Date.now() - dragStartTime.current < 100) {
-                animationRef.current = requestAnimationFrame(animate);
-                return;
-            }
-
-            positionRef.current += speed * direction;
+            positionRef.current += (speed * direction * deltaTime) / 1000;
 
             // Keep position within bounds
             if (positionRef.current >= maxScroll) {
@@ -45,7 +54,7 @@ export default function Testimonials({ visible }) {
                 setDirection(1);
             }
 
-            container.scrollLeft = positionRef.current;
+            planeRef.current.style.transform = `translateX(${-positionRef.current}px)`;
             animationRef.current = requestAnimationFrame(animate);
         };
 
@@ -68,7 +77,7 @@ export default function Testimonials({ visible }) {
     };
 
     const handleDragMove = (clientX) => {
-        if (!isDragging || !listRef.current) return;
+        if (!isDragging || !planeRef.current) return;
         const delta = clientX - lastX.current;
         lastX.current = clientX;
         const newPosition = positionRef.current - delta;
@@ -76,7 +85,7 @@ export default function Testimonials({ visible }) {
         // Bound the scroll position
         const maxScroll = listRef.current.scrollWidth - listRef.current.clientWidth;
         positionRef.current = Math.max(0, Math.min(newPosition, maxScroll));
-        listRef.current.scrollLeft = positionRef.current;
+        planeRef.current.style.transform = `translateX(${-positionRef.current}px)`;
     };
 
     const handleMouseDown = (ev) => {
@@ -113,7 +122,11 @@ export default function Testimonials({ visible }) {
         setTouchMoved(false);
     };
 
-    return <div className={`section ${styles.testimonials} ${visible ? styles.visible : ''}`} id="testimonials">
+    return <div 
+        ref={sectionRef}
+        className={`section ${styles.testimonials} ${isVisible ? styles.visible : ''}`} 
+        id="testimonials"
+    >
         <h2 className={styles.title}>Our client testimonials:</h2>
         <div
             className={styles.list}
@@ -126,7 +139,7 @@ export default function Testimonials({ visible }) {
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
             onTouchCancel={handleTouchEnd}>
-            <div className={styles.plane}>
+            <div className={styles.plane} ref={planeRef}>
                 { testimonials.map((t, i) => (
                     <div className={styles.testimonial} key={i}>
                         <div className={styles.brand}>

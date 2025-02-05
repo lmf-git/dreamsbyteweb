@@ -194,15 +194,24 @@
 
 .logo {
 	width: 10em;
-
 	opacity: 0;
 	transform: translateY(10px);
-	animation: reveal-footer-section 0.8s ease-out 5.6s forwards;
+	animation: reveal-footer-logo 0.8s ease-out 5.6s forwards;
 }
 .logo path {
 	fill: #b3b3b3;
 }
 
+@keyframes reveal-footer-logo {
+	from {
+		opacity: 0;
+		transform: translate(-50%, 10px);
+	}
+	to {
+		opacity: 1;
+		transform: translate(-50%, 0);
+	}
+}
 
 .meta {
 	font-size: .825em;
@@ -308,12 +317,11 @@
 		left: 50%;
 		position: absolute;
 		bottom: 2em;
-		transform: translateX(-50%);
+		transform: translateX(-50%) translateY(10px); // Combined transform
+		animation: reveal-footer-logo 0.8s ease-out 5.6s forwards;
 	}
 
 	.meta {
 		width: 25em;
 	}
-
-
 }

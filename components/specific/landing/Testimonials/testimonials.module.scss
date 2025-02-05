@@ -61,6 +61,11 @@
     touch-action: none; // Disable all touch actions on the draggable element
     will-change: transform; // Optimize for animations
     pointer-events: auto; // Ensure interactions are enabled
+    transform: translateX(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
 }
 
 .testimonial {

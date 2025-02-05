@@ -1,3 +1,5 @@
+import { useRef } from 'react';
+import useIntersectionObserver from '../../../../hooks/useIntersectionObserver';
 import styles from './services.module.scss';
 
 const technologies = [
@@ -6,6 +8,9 @@ const technologies = [
 ];
 
 export default function Services({ setMessage }) {
+  const sectionRef = useRef(null);
+  const isVisible = useIntersectionObserver(sectionRef, 0.3);
+
   const handleExampleClick = (service) => (e) => {
     const dot = e.currentTarget.querySelector('::before');
     if (dot) {
@@ -18,7 +23,11 @@ export default function Services({ setMessage }) {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  return <div className={`section ${styles.services}`} id="services">
+  return <div 
+    ref={sectionRef}
+    className={`section ${styles.services} ${isVisible ? styles.visible : ''}`} 
+    id="services"
+  >
     <div className={styles.heading}>
       <span className={styles.preamble}>From Concept to Reality</span>
       <h2 className={styles.title}>Our Services</h2>

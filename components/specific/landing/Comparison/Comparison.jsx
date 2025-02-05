@@ -1,3 +1,5 @@
+import { useRef } from 'react';
+import useIntersectionObserver from '../../../../hooks/useIntersectionObserver';
 import styles from './comparison.module.scss';
 
 const advantages = [
@@ -28,8 +30,15 @@ const advantages = [
 ];
 
 export default function Comparison() {
+  const sectionRef = useRef(null);
+  const isVisible = useIntersectionObserver(sectionRef, 0.3);
+
   return (
-    <div className={`section ${styles.comparison}`} id="comparison">
+    <div 
+      ref={sectionRef}
+      className={`section ${styles.comparison} ${isVisible ? styles.visible : ''}`} 
+      id="comparison"
+    >
       <div className={styles.heading}>
         <span className={styles.preamble}>Why Choose Us</span>
         <h2 className={styles.title}>Our Advantages</h2>
