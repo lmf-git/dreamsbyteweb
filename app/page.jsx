@@ -107,7 +107,7 @@ export default function Index() {
 
         <Hero />
 
-        <Comparison />
+        <Comparison setMessage={setMessage} />
 
         <Testimonials />
 

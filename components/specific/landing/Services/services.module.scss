@@ -186,10 +186,13 @@
   transition: all 0.2s ease, opacity 0.5s ease-out, transform 0.5s ease-out;
   opacity: 0;
   transform: translateX(-20px);
+  text-decoration: none;
+  display: inline-block;
 
   &:hover {
     color: rgb(230, 230, 230);
     border-color: rgba(255, 255, 255, 0.3);
+    text-decoration: none;
   }
 }
 

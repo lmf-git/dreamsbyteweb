@@ -3,8 +3,16 @@ import useIntersectionObserver from '../../../../hooks/useIntersectionObserver';
 import styles from './services.module.scss';
 
 const technologies = [
-  'Node.js', 'Heroku', 'AWS', 'Nuxt', 'Svelte',
-  'JavaScript', 'HTML', 'CSS', 'PostgreSQL', 'Nginx'
+  { name: 'Node.js', url: 'https://nodejs.org/' },
+  { name: 'Heroku', url: 'https://www.heroku.com/' },
+  { name: 'AWS', url: 'https://aws.amazon.com/' },
+  { name: 'Nuxt', url: 'https://nuxt.com/' },
+  { name: 'Svelte', url: 'https://svelte.dev/' },
+  { name: 'JavaScript', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
+  { name: 'HTML', url: 'https://developer.mozilla.org/en-US/docs/Web/HTML' },
+  { name: 'CSS', url: 'https://developer.mozilla.org/en-US/docs/Web/CSS' },
+  { name: 'PostgreSQL', url: 'https://www.postgresql.org/' },
+  { name: 'Nginx', url: 'https://nginx.org/' }
 ];
 
 export default function Services({ setMessage }) {
@@ -88,13 +96,16 @@ export default function Services({ setMessage }) {
       <div className={styles.providersHeading}>Technologies We Use</div>
       <div className={styles.providersList}>
         {technologies.map((tech, index) => (
-          <span 
-            key={tech}
+          <a
+            key={tech.name}
+            href={tech.url}
+            target="_blank"
+            rel="noopener noreferrer"
             className={`${styles.provider} ${isVisible ? styles.visible : ''}`}
             style={{ transitionDelay: `${1.0 + index * 0.1}s` }}
           >
-            {tech}
-          </span>
+            {tech.name}
+          </a>
         ))}
       </div>
     </div>

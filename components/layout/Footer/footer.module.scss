@@ -306,8 +306,8 @@
 		left: 50%;
 		position: absolute;
 		bottom: 2em;
-		transform: translateX(-50%) translateY(10px); // Combined transform
-		animation: reveal-footer-logo 0.8s ease-out 5.6s forwards;
+		transform: translateX(-50%) translateY(10px);
+		// Remove animation property
 	}
 
 	.meta {

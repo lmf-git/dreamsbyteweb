@@ -131,7 +131,7 @@ export default function Footer({ message, setMessage }) {
           </a>
         </div>
 
-        <Logo className={`${styles.logo} ${isVisible ? styles.visible : ''}`} style={{ transitionDelay: '0.6s' }} />
+        <Logo className={`${styles.logo} ${isVisible ? styles.visible : ''}`} />
         
         <div className={styles.meta}>
           <p className={styles.metatext}>

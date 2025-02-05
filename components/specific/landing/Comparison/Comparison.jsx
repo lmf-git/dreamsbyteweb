@@ -29,9 +29,14 @@ const advantages = [
   }
 ];
 
-export default function Comparison() {
+export default function Comparison({ setMessage }) {
   const sectionRef = useRef(null);
   const isVisible = useIntersectionObserver(sectionRef, 0.3);
+
+  const handleAdvantageClick = (title) => () => {
+    setMessage(`Hi, I'm interested in learning more about "${title}"`);
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <div 
@@ -50,6 +55,7 @@ export default function Comparison() {
             key={index} 
             className={`${styles.advantage} ${isVisible ? styles.visible : ''}`}
             style={{ transitionDelay: `${index * 0.1}s` }}
+            onClick={handleAdvantageClick(advantage.title)}
           >
             <h3 className={styles.advantageTitle}>{advantage.title}</h3>
             <p className={styles.advantageDesc}>{advantage.description}</p>
