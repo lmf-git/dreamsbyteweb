@@ -23,9 +23,18 @@ export default function Services({ setMessage }) {
       <div className={styles.service}>
         <span className={styles.name}>Development</span>
         
-        <span className={styles.example} onClick={handleExampleClick('Full Stack Development')}>Full Stack Development</span>
-        <span className={styles.example} onClick={handleExampleClick('Website / App / DB Maintenance')}>Website / App / DB Maintenance</span>
-        <span className={styles.example} onClick={handleExampleClick('UI Development')}>UI Development</span>
+        <span className={styles.example} onClick={handleExampleClick('Full Stack Development')}>
+          Full Stack Development
+          <span className={styles.price}>Starting at $2,500</span>
+        </span>
+        <span className={styles.example} onClick={handleExampleClick('Website / App / DB Maintenance')}>
+          Website / App / DB Maintenance
+          <span className={styles.price}>Starting at $300/month</span>
+        </span>
+        <span className={styles.example} onClick={handleExampleClick('UI Development')}>
+          UI Development
+          <span className={styles.price}>Starting at $1,200</span>
+        </span>
         <span className={styles.example} onClick={handleExampleClick('WordPress / Ghost / CMS Development')}>WordPress / Ghost / CMS Development</span>
         <span className={styles.example} onClick={handleExampleClick('API Integrations / Custom API Development')}>API Integrations / Custom API Development</span>
       </div>
@@ -33,16 +42,28 @@ export default function Services({ setMessage }) {
       <div className={styles.service}>
         <span className={styles.name}>E-commerce</span>
         
-        <span className={styles.example} onClick={handleExampleClick('Shopify / Magento / Woocommerce / Custom Store Creation')}>Shopify / Magento / Woocommerce / Custom Store Creation</span>
+        <span className={styles.example} onClick={handleExampleClick('Shopify / Magento / Woocommerce / Custom Store Creation')}>
+          Shopify / Magento / Woocommerce / Custom Store Creation
+          <span className={styles.price}>Starting at $1,500</span>
+        </span>
         <span className={styles.example} onClick={handleExampleClick('Multichannel / ERP and More Integrations')}>Multichannel / ERP and More Integrations</span>
       </div>
 
       <div className={styles.service}>
         <span className={styles.name}>Design</span>
         
-        <span className={styles.example} onClick={handleExampleClick('Captivating Logos')}>Captivating Logos</span>
-        <span className={styles.example} onClick={handleExampleClick('Landing Pages')}>Landing Pages</span>
-        <span className={styles.example} onClick={handleExampleClick('Branding')}>Branding</span>
+        <span className={styles.example} onClick={handleExampleClick('Captivating Logos')}>
+          Captivating Logos
+          <span className={styles.price}>Starting at $300</span>
+        </span>
+        <span className={styles.example} onClick={handleExampleClick('Landing Pages')}>
+          Landing Pages
+          <span className={styles.price}>Starting at $800</span>
+        </span>
+        <span className={styles.example} onClick={handleExampleClick('Branding')}>
+          Branding
+          <span className={styles.price}>Starting at $1,000</span>
+        </span>
         <span className={styles.example} onClick={handleExampleClick('Distinctive Typography')}>Distinctive Typography</span>
         <span className={styles.example} onClick={handleExampleClick('Compelling Colour Schemes')}>Compelling Colour Schemes</span>
       </div>

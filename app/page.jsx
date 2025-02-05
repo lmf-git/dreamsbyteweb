@@ -20,6 +20,7 @@ import CloseIcon from "../components/icons/social/Close";
 
 import styles from "../components/specific/landing/landing.module.scss";
 import AnimatedLogo from "../components/icons/branding/AnimatedLogo";
+import Comparison from "../components/specific/landing/Comparison/Comparison";
 
 export default function Index() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -105,6 +106,8 @@ export default function Index() {
         </div>
 
         <Hero />
+
+        <Comparison />
 
         <Testimonials />
 

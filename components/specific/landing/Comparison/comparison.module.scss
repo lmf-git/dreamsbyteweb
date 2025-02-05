@@ -1,0 +1,67 @@
+.comparison {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+}
+
+.heading {
+  font-family: var(--font-syne);
+  font-size: 1.65em;
+  margin-bottom: 1.5em;
+  margin-left: 2em;
+}
+
+.preamble {
+  font-size: .5em;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: rgb(200, 200, 200);
+}
+
+.title {
+  margin: 0;
+}
+
+.advantages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5em;
+  margin: 0 2em;
+}
+
+.advantage {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5em;
+}
+
+.advantageTitle {
+  font-family: var(--font-syne);
+  font-size: 1.2em;
+  margin-bottom: 0.5em;
+  color: rgb(230, 230, 230);
+}
+
+.advantageDesc {
+  color: rgb(180, 180, 180);
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+@media screen and (min-width: 800px) {
+  .comparison {
+    padding: 3.5em;
+  }
+
+  .heading {
+    font-size: 2em;
+    margin-left: 0;
+  }
+
+  .advantages {
+    margin: 0;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
