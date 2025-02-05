@@ -46,7 +46,11 @@ export default function Comparison() {
 
       <div className={styles.advantages}>
         {advantages.map((advantage, index) => (
-          <div key={index} className={styles.advantage}>
+          <div 
+            key={index} 
+            className={`${styles.advantage} ${isVisible ? styles.visible : ''}`}
+            style={{ transitionDelay: `${index * 0.1}s` }}
+          >
             <h3 className={styles.advantageTitle}>{advantage.title}</h3>
             <p className={styles.advantageDesc}>{advantage.description}</p>
           </div>

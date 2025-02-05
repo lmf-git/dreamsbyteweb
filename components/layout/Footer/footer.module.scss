@@ -14,9 +14,12 @@
 	padding: 1.25em;
 
 	opacity: 0;
-	animation: reveal-footer 1s ease-out 5s forwards;
+	transition: opacity 1s ease-out;
+	
+	&.visible {
+		opacity: 1;
+	}
 }
-
 
 .contact {
     // padding: 0 15vw;
@@ -26,7 +29,12 @@
 
 	opacity: 0;
 	transform: translateY(20px);
-	animation: reveal-footer-section 1s ease-out 5.2s forwards;
+	transition: opacity 1s ease-out, transform 1s ease-out;
+	
+	&.visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 .label {
@@ -166,7 +174,12 @@
 
 	opacity: 0;
 	transform: translateY(20px);
-	animation: reveal-footer-section 1s ease-out 5.4s forwards;
+	transition: opacity 1s ease-out, transform 1s ease-out;
+	
+	&.visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 .socials {
@@ -195,22 +208,16 @@
 .logo {
 	width: 10em;
 	opacity: 0;
-	transform: translateY(10px);
-	animation: reveal-footer-logo 0.8s ease-out 5.6s forwards;
+	transform: translateX(-50%) translateY(10px);
+	transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+	
+	&.visible {
+		opacity: 1;
+		transform: translateX(-50%) translateY(0);
+	}
 }
 .logo path {
 	fill: #b3b3b3;
-}
-
-@keyframes reveal-footer-logo {
-	from {
-		opacity: 0;
-		transform: translate(-50%, 10px);
-	}
-	to {
-		opacity: 1;
-		transform: translate(-50%, 0);
-	}
 }
 
 .meta {
@@ -265,25 +272,7 @@
     }
 }
 
-@keyframes reveal-footer {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes reveal-footer-section {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+// Remove the reveal-footer, reveal-footer-section, and reveal-footer-logo animations
 
 @media screen and (min-width: 900px) {
 	.footer {

@@ -141,7 +141,11 @@ export default function Testimonials() {
             onTouchCancel={handleTouchEnd}>
             <div className={styles.plane} ref={planeRef}>
                 { testimonials.map((t, i) => (
-                    <div className={styles.testimonial} key={i}>
+                    <div 
+                        className={`${styles.testimonial} ${isVisible ? styles.visible : ''}`} 
+                        key={i}
+                        style={{ transitionDelay: `${0.2 + i * 0.1}s` }}
+                    >
                         <div className={styles.brand}>
                             {t?.logo ? (
                                 t.logo

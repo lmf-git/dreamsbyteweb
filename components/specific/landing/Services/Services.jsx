@@ -63,8 +63,8 @@ export default function Services({ setMessage }) {
       ].map((serviceGroup, index) => (
         <div 
           key={serviceGroup.name} 
-          className={styles.service}
-          style={{ animationDelay: `${0.8 + index * 0.2}s` }}
+          className={`${styles.service} ${isVisible ? styles.visible : ''}`}
+          style={{ transitionDelay: `${index * 0.2}s` }}
         >
           <span className={styles.name}>{serviceGroup.name}</span>
           {serviceGroup.items.map((item, itemIndex) => (
@@ -82,16 +82,16 @@ export default function Services({ setMessage }) {
     </div>
 
     <div 
-      className={styles.providers}
-      style={{ animationDelay: '1.6s' }}
+      className={`${styles.providers} ${isVisible ? styles.visible : ''}`}
+      style={{ transitionDelay: '0.8s' }}
     >
       <div className={styles.providersHeading}>Technologies We Use</div>
       <div className={styles.providersList}>
         {technologies.map((tech, index) => (
           <span 
             key={tech}
-            className={styles.provider}
-            style={{ animationDelay: `${1.8 + index * 0.1}s` }}
+            className={`${styles.provider} ${isVisible ? styles.visible : ''}`}
+            style={{ transitionDelay: `${1.0 + index * 0.1}s` }}
           >
             {tech}
           </span>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import useIntersectionObserver from '../../../hooks/useIntersectionObserver';
 
 import Logo from '../../icons/branding/Logo';
 
@@ -19,9 +20,8 @@ import styles from './footer.module.scss';
 
 export default function Footer({ message, setMessage }) {
   const footerRef = useRef();
-  const [footerVisible, setFooterVisible] = useState(false);
+  const isVisible = useIntersectionObserver(footerRef, 0.25);
   const [messageVisible, setMessageVisible] = useState(true);
-
   const [formStatus, setFormStatus] = useState(null);
 
   const onSubmit = async ev => {
@@ -39,17 +39,6 @@ export default function Footer({ message, setMessage }) {
   };
 
   useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => setFooterVisible(entry.intersectionRatio > 0.25), { threshold: 0.25 });
-    if (footerRef.current)
-      observer.observe(footerRef.current);
-
-    return () => {
-      if (footerRef.current)
-        observer.unobserve(footerRef.current);
-    };
-  }, []);
-
-  useEffect(() => {
     if (message) {
       setMessageVisible(true);
     }
@@ -58,9 +47,17 @@ export default function Footer({ message, setMessage }) {
   return <>
     {/* { !footerVisible && <ContactNowFab /> } */}
 
-    <div className={styles.footer} ref={footerRef} id="contact">
+    <div 
+      className={`${styles.footer} ${isVisible ? styles.visible : ''}`} 
+      ref={footerRef} 
+      id="contact"
+    >
       { formStatus !== 'success' ?
-        <form className={styles.contact} onSubmit={onSubmit}>
+        <form 
+          className={`${styles.contact} ${isVisible ? styles.visible : ''}`} 
+          onSubmit={onSubmit}
+          style={{ transitionDelay: '0.2s' }}
+        >
           <label className={styles.label} htmlFor="contactform">
             Contact form
           </label>
@@ -96,7 +93,10 @@ export default function Footer({ message, setMessage }) {
           </div>
         </form>
         :
-        <div className={`${styles.contact} ${styles.success}`}>
+        <div 
+          className={`${styles.contact} ${styles.success} ${isVisible ? styles.visible : ''}`}
+          style={{ transitionDelay: '0.2s' }}
+        >
           <label className={styles.label}>
             Thank you!
           </label>
@@ -107,7 +107,10 @@ export default function Footer({ message, setMessage }) {
         </div>
       }
       
-      <div className={styles.shill}>
+      <div 
+        className={`${styles.shill} ${isVisible ? styles.visible : ''}`}
+        style={{ transitionDelay: '0.4s' }}
+      >
         <div className={styles.socials}>
           <a href="mailto:contact@dreamsbyte.com" className={styles.social} rel="noopener noreferrer" target="_blank">
             <EmailMethod className={styles.socialicon} />
@@ -128,7 +131,7 @@ export default function Footer({ message, setMessage }) {
           </a>
         </div>
 
-        <Logo extraClass={styles.logo} />
+        <Logo className={`${styles.logo} ${isVisible ? styles.visible : ''}`} style={{ transitionDelay: '0.6s' }} />
         
         <div className={styles.meta}>
           <p className={styles.metatext}>
