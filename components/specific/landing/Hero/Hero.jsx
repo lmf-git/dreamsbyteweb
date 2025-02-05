@@ -305,6 +305,7 @@ export default function Hero() {  // Remove onComplete prop
                             className={`${styles.button} ${styles.buttonleft}`} 
                             onClick={prevProject}
                             disabled={project <= 0 || isTransitioning}
+                            aria-label="Previous project"
                         >
                             <LeftLine className={`${styles.arrow} ${styles.arrowleft}`} />
                         </button>
@@ -313,6 +314,7 @@ export default function Hero() {  // Remove onComplete prop
                             className={`${styles.button} ${styles.buttonright}`} 
                             onClick={nextProject}
                             disabled={project >= projects.length - 1 || isTransitioning}
+                            aria-label="Next project"
                         >
                             <RightLine className={`${styles.arrow} ${styles.arrowright}`} />
                         </button>

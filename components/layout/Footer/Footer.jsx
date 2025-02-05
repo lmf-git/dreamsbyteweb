@@ -112,10 +112,10 @@ export default function Footer({ message, setMessage }) {
         style={{ transitionDelay: '0.4s' }}
       >
         <div className={styles.socials}>
-          <a href="mailto:contact@dreamsbyte.com" className={styles.social} rel="noopener noreferrer" target="_blank">
+          <a href="mailto:contact@dreamsbyte.com" className={styles.social} rel="noopener noreferrer" target="_blank" aria-label="Send us an email">
             <EmailMethod className={styles.socialicon} />
           </a>
-          <a href="https://api.whatsapp.com/send?phone=447389805421" className={styles.social} rel="noopener noreferrer" target="_blank">
+          <a href="https://api.whatsapp.com/send?phone=447389805421" className={styles.social} rel="noopener noreferrer" target="_blank" aria-label="Contact us on WhatsApp">
             <Whatsapp className={styles.socialicon} />
           </a>
           {/* <a href="https://x.com/dreamsbytex" className={styles.social} rel="noopener noreferrer" target="_blank">
@@ -123,10 +123,10 @@ export default function Footer({ message, setMessage }) {
           </a> */}
           {/* <Instagram className={styles.socialicon} /> */}
           {/* <Upwork className={styles.socialicon} /> */}
-          <a href="https://github.com/lmf-git" className={styles.social} rel="noopener noreferrer" target="_blank">
+          <a href="https://github.com/lmf-git" className={styles.social} rel="noopener noreferrer" target="_blank" aria-label="Visit our GitHub profile">
             <Github className={styles.socialicon} />
           </a>
-          <a href="https://www.youtube.com/@dreamsbyte" className={styles.social} rel="noopener noreferrer" target="_blank">
+          <a href="https://www.youtube.com/@dreamsbyte" className={styles.social} rel="noopener noreferrer" target="_blank" aria-label="Subscribe to our YouTube channel">
             <Youtube className={styles.socialicon} />
           </a>
         </div>
