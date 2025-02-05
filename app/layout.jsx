@@ -33,9 +33,7 @@ export const viewport = {
 };
 
 export default function RootLayout({ children }) {
-  return (
-    <html lang="en" className={`${syne.variable} ${inter.variable}`}>
-      <body>{children}</body>
-    </html>
-  );
-}
+  return <html lang="en" className={`${syne.variable} ${inter.variable}`}>
+    <body>{ children }</body>
+  </html>;
+};

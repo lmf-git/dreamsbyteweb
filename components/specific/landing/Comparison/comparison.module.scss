@@ -46,12 +46,22 @@
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out, 
-              background-color 0.3s ease, border-color 0.3s ease;
+              background-color 0.3s ease, border-color 0.3s ease,
+              scale 0.3s ease;
   cursor: pointer;
   
   &:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    scale: 1.02;
+    
+    .advantageTitle {
+      color: rgb(255, 255, 255);
+    }
+    
+    .advantageDesc {
+      color: rgb(200, 200, 200);
+    }
   }
   
   &.visible {

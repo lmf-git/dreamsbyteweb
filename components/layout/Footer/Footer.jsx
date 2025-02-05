@@ -11,7 +11,7 @@ import Scroll from "../../icons/controls/Scroll";
 import EmailMethod from '../../icons/social/EmailMethod';
 import Whatsapp from '../../icons/social/Whatsapp';
 import EmailSend from '../../icons/EmailSend';
-// import X from '../../icons/social/X';
+import X from '../../icons/social/X';
 import Youtube from '../../icons/social/Youtube';
 import Github from '../../icons/social/Github';
 
