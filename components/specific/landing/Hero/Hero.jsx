@@ -129,29 +129,33 @@ export default function Hero() {  // Remove onComplete prop
             setCurrentProject(0);
             
             preloadImages(0).then(() => {
+                const logoAnimationTime = 2000; // 1.2s animation + 0.2s delay + 0.6s buffer
+                
                 if (isMobile) {
-                    setShowTitle(true);
-                    
                     setTimeout(() => {
-                        setShowProjectName(true);
+                        setShowTitle(true);
                         
                         setTimeout(() => {
-                            setShowPreview(true);
+                            setShowProjectName(true);
                             
                             setTimeout(() => {
-                                setShowPreview(false);
+                                setShowPreview(true);
+                                
                                 setTimeout(() => {
-                                    setShowContent(true);
-                                    setFirstRevealComplete(true);
+                                    setShowPreview(false);
                                     setTimeout(() => {
-                                        setShowNav(true);
-                                        setDotsReady(true);
-                                        setInitialAnimationComplete(true);
-                                    }, 1000); // Increased delay for navigation
-                                }, 600);
-                            }, 5000);
-                        }, 800);
-                    }, 500);
+                                        setShowContent(true);
+                                        setFirstRevealComplete(true);
+                                        setTimeout(() => {
+                                            setShowNav(true);
+                                            setDotsReady(true);
+                                            setInitialAnimationComplete(true);
+                                        }, 1000);
+                                    }, 600);
+                                }, 5000);
+                            }, 800);
+                        }, 500);
+                    }, logoAnimationTime);
                 } else {
                     setTimeout(() => {
                         setShowContent(true);
@@ -162,7 +166,7 @@ export default function Hero() {  // Remove onComplete prop
                             setFirstRevealComplete(true);
                             setInitialAnimationComplete(true);
                         }, 600);
-                    }, 200);
+                    }, logoAnimationTime);
                 }
             });
         }

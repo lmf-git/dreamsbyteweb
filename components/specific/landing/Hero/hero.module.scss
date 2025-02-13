@@ -22,7 +22,7 @@
     margin: 0 0 .75em 0;
     opacity: 0;
     animation: reveal-title 0.5s ease-out forwards;
-    animation-delay: 0.4s;
+    animation-delay: 2s; // Wait for logo (0.2s + 1.2s) and nav (0.5s) to complete
     user-select: none;
 
     @media screen and (max-width: 1199px) {
@@ -44,7 +44,7 @@
 
     @media screen and (min-width: 1200px) {
         flex-direction: row;
-        align-items: stretch;
+        align-items: flex-start; // Changed from stretch to allow natural height
         gap: 4em;
         padding: 0;
         min-height: 80vh;
@@ -86,7 +86,7 @@
     margin-bottom: 1.5em;
     opacity: 0;
     animation: reveal-projectname 0.5s ease-out forwards;
-    animation-delay: 0.9s;
+    animation-delay: 2.2s; // Follow title
     user-select: none;
     position: relative;
     z-index: 2;
@@ -197,10 +197,11 @@ $gpu-accel: translateZ(0);
     }
 
     @media screen and (min-width: 1200px) {
-        position: relative;
+        position: relative; // Changed from absolute
         height: 60vh;
-        width: 70%; // Increased from 65% to move it slightly right
-        right: -2em; // Add negative margin to push further right
+        width: 100%; // Changed from 70%
+        margin-top: 2em; // Added to create spacing from title
+        right: 0; // Removed negative margin
         transform: $gpu-accel;
 
         &.showMobile {
@@ -876,7 +877,7 @@ $gpu-accel: translateZ(0);
         padding: 0;
         min-height: 60vh;
         margin-bottom: 0;
-        flex: 0 0 35%;
+        flex: 0 0 40%; // Adjusted from 35% to match new layout
         display: flex;
         flex-direction: column;
         color: white;
@@ -885,7 +886,7 @@ $gpu-accel: translateZ(0);
     }
 
     .projectpreview {
-        position: absolute;
+        position: relative; // Changed from absolute
         top: 50%;
         right: 0;
         opacity: 0;
@@ -893,8 +894,8 @@ $gpu-accel: translateZ(0);
         height: 60vh;
         padding: 0;
         top: auto;
-        width: 65%;
-        margin: 0;
+        width: 100%; // Changed from 65%
+        margin-top: 2em; // Added to create spacing from title
         transition: opacity 0.4s ease-in-out;
         overflow: visible;
         transform: $gpu-accel;
