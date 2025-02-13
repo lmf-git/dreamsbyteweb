@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import useIntersectionObserver from '../../../../hooks/useIntersectionObserver';
 import styles from './services.module.scss';
 
@@ -17,7 +17,16 @@ const technologies = [
 
 export default function Services({ setMessage }) {
   const sectionRef = useRef(null);
-  const isVisible = useIntersectionObserver(sectionRef, 0.3);
+  const [canReveal, setCanReveal] = useState(false);
+  
+  // Wait for hero section to complete before allowing reveal
+  useEffect(() => {
+    const delay = window.innerWidth < 1200 ? 10000 : 4000;
+    const timer = setTimeout(() => setCanReveal(true), delay);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const isVisible = useIntersectionObserver(sectionRef, 0.3) && canReveal;
 
   const handleExampleClick = (service) => (e) => {
     const dot = e.currentTarget.querySelector('::before');

@@ -31,14 +31,15 @@ const advantages = [
 
 export default function Comparison({ setMessage }) {
   const sectionRef = useRef(null);
-  const [threshold, setThreshold] = useState(0.3); // Default to desktop threshold
-
-  // Set threshold once mounted
+  const [canReveal, setCanReveal] = useState(false);
+  
   useEffect(() => {
-    setThreshold(window.innerWidth < 1200 ? 0.75 : 0.3);
+    const delay = window.innerWidth < 1200 ? 10000 : 4000;
+    const timer = setTimeout(() => setCanReveal(true), delay);
+    return () => clearTimeout(timer);
   }, []);
 
-  const isVisible = useIntersectionObserver(sectionRef, threshold);
+  const isVisible = useIntersectionObserver(sectionRef, 0.3) && canReveal;
 
   const handleAdvantageClick = (title) => () => {
     setMessage(`Hi, I'm interested in learning more about "${title}"`);

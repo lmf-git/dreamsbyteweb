@@ -102,8 +102,8 @@
 }
 
 .menu {
-    width: 100em;
-    height: 100em;
+    width: 100vw; // Changed back from 100em to 100vw
+    height: 100vh; // Changed back from 100em to 100vh
     padding: 2em;
     position: fixed;
     top: 0;
@@ -170,7 +170,7 @@
     display: block;
     text-align: center;
     text-decoration: none;
-    font-size: 1.5em;  // Reduced from 1.75em
+    font-size: 2em;  // Increased from 1.5em for better mobile visibility
     font-weight: 300;
     color: rgb(99, 99, 99);
     padding: 0.5em;
@@ -196,13 +196,6 @@
         &:after {
             width: 2em;
         }
-    }
-}
-
-// For tablets and larger phones
-@media screen and (min-width: 768px) {
-    .item {
-        font-size: 2em;  // Reduced from 2.225em
     }
 }
 

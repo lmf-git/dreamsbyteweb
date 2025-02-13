@@ -109,12 +109,12 @@ export default function Index() {
         </div>
 
         <Hero />
-
-        <Comparison setMessage={setMessage} />
-
+        
+        <Services setMessage={setMessage} /> {/* Moved above Comparison */}
+        
         <Testimonials />
 
-        <Services setMessage={setMessage} />
+        <Comparison setMessage={setMessage} />
 
         <Footer message={message} setMessage={setMessage} />    
     </main>;
