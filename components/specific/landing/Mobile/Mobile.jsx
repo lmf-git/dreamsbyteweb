@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import Spinner from '../../../icons/spinner/Spinner';
 import styles from '../Hero/hero.module.scss';
 
-export default function Mobile({ extraClass, src, spinnerClass }) {
+export default function Mobile({ extraClass, src }) {
     const [isLoading, setIsLoading] = useState(true);
 
     return <svg className={`${extraClass} ${styles.herosimple_mobile}`} viewBox="0 0 258 520" preserveAspectRatio="xMidYMid meet">
@@ -13,15 +12,15 @@ export default function Mobile({ extraClass, src, spinnerClass }) {
         </defs>
 
         <foreignObject x="13" y="7" width="232" height="506" clipPath="url(#mobileClipPath)">
-            {isLoading && <Spinner extraClass={spinnerClass} />}
             <img
                 src={src}
+                alt="Mobile Preview"
                 onLoad={() => setIsLoading(false)}
                 style={{
                     width: '100%',
                     height: '100%',
                     objectFit: 'cover',
-                    opacity: isLoading ? 0.3 : 1,
+                    opacity: isLoading ? 0 : 1,
                     transition: 'opacity 0.3s ease-out'
                 }}
             />

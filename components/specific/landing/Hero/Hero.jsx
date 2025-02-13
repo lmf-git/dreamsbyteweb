@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react';
 import RightLine from '../../../icons/controls/RightLine';
 import LeftLine from '../../../icons/controls/LeftLine';
 import Dot from '../../../icons/controls/Dot';
-import Spinner from '../../../icons/spinner/Spinner';
 
 import Screen from '../Screen/Screen';
 import Mobile from '../Mobile/Mobile';
@@ -322,13 +321,11 @@ export default function Hero() {  // Remove onComplete prop
                         <Screen 
                             extraClass={`${styles.screen} ${showPreview ? styles.showMobile : ''}`}
                             src={projects[currentProject].desktopimage}
-                            spinnerClass={styles.screenspinner}
                         />
                         
                         <Mobile 
                             extraClass={`${styles.mobile} ${showPreview ? styles.showMobile : ''}`}
                             src={projects[currentProject].image}
-                            spinnerClass={styles.mobilespinner}
                         />
                     </div>
                 </div>

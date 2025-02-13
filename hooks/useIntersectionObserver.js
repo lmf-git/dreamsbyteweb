@@ -8,11 +8,13 @@ export default function useIntersectionObserver(ref, threshold = 0.5) {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          // Unobserve after becoming visible
           observer.unobserve(entry.target);
         }
       },
-      { threshold }
+      { 
+        threshold,
+        rootMargin: window.innerWidth < 1200 ? '-45% 0px 0px 0px' : '0px'
+      }
     );
 
     const currentRef = ref.current;

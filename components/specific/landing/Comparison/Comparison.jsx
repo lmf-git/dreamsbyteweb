@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import useIntersectionObserver from '../../../../hooks/useIntersectionObserver';
 import styles from './comparison.module.scss';
 
@@ -31,7 +31,14 @@ const advantages = [
 
 export default function Comparison({ setMessage }) {
   const sectionRef = useRef(null);
-  const isVisible = useIntersectionObserver(sectionRef, 0.3);
+  const [threshold, setThreshold] = useState(0.3); // Default to desktop threshold
+
+  // Set threshold once mounted
+  useEffect(() => {
+    setThreshold(window.innerWidth < 1200 ? 0.75 : 0.3);
+  }, []);
+
+  const isVisible = useIntersectionObserver(sectionRef, threshold);
 
   const handleAdvantageClick = (title) => () => {
     setMessage(`Hi, I'm interested in learning more about "${title}"`);

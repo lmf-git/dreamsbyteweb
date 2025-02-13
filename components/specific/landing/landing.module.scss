@@ -6,7 +6,7 @@
 }
 
 .clipped {
-    height: 100vw;
+    height: 100em;
     overflow: hidden;
 }
 
@@ -47,7 +47,7 @@
     display: none;
     color: rgb(201, 201, 201);
     text-decoration: none;
-    font-size: 1.1235em;
+    font-size: 1.125em;  // Adjusted from 1.1235em for cleaner number
     font-weight: 100;
     font-style: italic;
     
@@ -102,8 +102,8 @@
 }
 
 .menu {
-    width: 100vw;
-    height: 100vh;
+    width: 100em;
+    height: 100em;
     padding: 2em;
     position: fixed;
     top: 0;
