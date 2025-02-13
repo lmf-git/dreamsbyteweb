@@ -917,6 +917,8 @@ $gpu-accel: translateZ(0);
             transform: $gpu-accel;
             backface-visibility: hidden;
             will-change: opacity;
+            transform: translateY(30px);
+            transition: opacity 0.4s ease-out, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .mobile {
@@ -933,6 +935,8 @@ $gpu-accel: translateZ(0);
             transform: $gpu-accel;
             backface-visibility: hidden;
             will-change: opacity;
+            transform: translateX(30px);
+            transition: opacity 0.4s ease-out, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         &.showMobile {
@@ -942,14 +946,16 @@ $gpu-accel: translateZ(0);
 
             .screen {
                 opacity: 1;
-                transition: opacity 0.4s ease-in-out;
+                transform: translateY(0);
+                transition: opacity 0.4s ease-out, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
                 transition-delay: 0s;
             }
 
             .mobile {
                 opacity: 1;
-                transition: opacity 0.4s ease-in-out;
-                transition-delay: 0.5s;
+                transform: translateX(0);
+                transition: opacity 0.4s ease-out, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                transition-delay: 0.3s;
             }
         }
 
@@ -959,14 +965,14 @@ $gpu-accel: translateZ(0);
 
             .screen {
                 opacity: 0;
-                transition: opacity 0.4s ease-in-out;
-                transition-delay: 0.2s;
+                transform: translateY(30px);
+                transition: opacity 0.4s ease-out, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             }
 
             .mobile {
                 opacity: 0;
-                transition: opacity 0.4s ease-in-out;
-                transition-delay: 0s;
+                transform: translateX(30px);
+                transition: opacity 0.4s ease-out, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             }
         }
     }
