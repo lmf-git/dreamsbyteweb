@@ -317,15 +317,17 @@ export default function Hero() {  // Remove onComplete prop
                         </button>
                     </div>
 
-                    <div className={`${styles.projectpreview} ${showPreview ? styles.showMobile : ''}`}>
+                    <div className={`${styles.projectpreview} ${showPreview ? styles.showMobile : ''} ${!imagesLoaded ? styles.loading : ''}`}>
                         <Screen 
                             extraClass={`${styles.screen} ${showPreview ? styles.showMobile : ''}`}
                             src={projects[currentProject].desktopimage}
+                            onLoad={() => setImagesLoaded(true)}
                         />
                         
                         <Mobile 
                             extraClass={`${styles.mobile} ${showPreview ? styles.showMobile : ''}`}
                             src={projects[currentProject].image}
+                            onLoad={() => setImagesLoaded(true)}
                         />
                     </div>
                 </div>

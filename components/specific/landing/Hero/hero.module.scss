@@ -142,7 +142,7 @@ $gpu-accel: translateZ(0);
             position: relative;
             top: 0;
             margin: 0 auto;
-            transform: translateY(20px);
+            transform: translateY(1.25em); // Changed from 20px
             transition: opacity 0.4s ease-out, transform 0.4s ease-out;
         }
 
@@ -151,7 +151,7 @@ $gpu-accel: translateZ(0);
             position: absolute;
             right: 20%;
             top: 15vh; // Adjust mobile preview position accordingly
-            transform: translateX(20px);
+            transform: translateX(1.25em); // Changed from 20px
             transition: opacity 0.4s ease-out, transform 0.4s ease-out;
         }
 
@@ -185,13 +185,13 @@ $gpu-accel: translateZ(0);
 
             .screen {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(1.25em); // Changed from 20px
                 transition: opacity 0.3s ease-out, transform 0.3s ease-out;
             }
 
             .mobile {
                 opacity: 0;
-                transform: translateX(20px);
+                transform: translateX(1.25em); // Changed from 20px
                 transition: opacity 0.3s ease-out, transform 0.3s ease-out;
             }
         }
@@ -217,6 +217,14 @@ $gpu-accel: translateZ(0);
             opacity: 1;
             transition: opacity 0.4s ease-in-out;
             transition-delay: 0.3s;
+
+            &.loading {
+                .screen, .mobile {
+                    opacity: 0;
+                    transform: translateY(1.875em); // Changed from 30px
+                    transition: opacity 0.4s ease-out, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                }
+            }
 
             .screen {
                 opacity: 1;
@@ -246,13 +254,13 @@ $gpu-accel: translateZ(0);
 
             .screen {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(1.875em); // Changed from 30px
                 transition: opacity 0.4s ease-out, transform 0.4s ease-out;
             }
 
             .mobile {
                 opacity: 0;
-                transform: translateX(30px);
+                transform: translateX(1.875em); // Changed from 30px
                 transition: opacity 0.4s ease-out, transform 0.4s ease-out;
             }
         }
@@ -267,7 +275,7 @@ $gpu-accel: translateZ(0);
             margin: 0;
             max-height: none;
             transition: opacity 0.3s ease-out;
-            transform: translateY(30px);
+            transform: translateY(1.875em); // Changed from 30px
             transition: opacity 0.5s ease-out, transform 0.5s ease-out;
         }
 
@@ -280,7 +288,7 @@ $gpu-accel: translateZ(0);
             width: 14vw;
             opacity: 1;
             transition: opacity 0.3s ease-out;
-            transform: translateX(30px);
+            transform: translateX(1.875em); // Changed from 30px
             transition: opacity 0.5s ease-out, transform 0.5s ease-out;
         }
 
@@ -895,7 +903,7 @@ $gpu-accel: translateZ(0);
             transform: $gpu-accel;
             backface-visibility: hidden;
             will-change: opacity;
-            transform: translateY(30px);
+            transform: translateY(1.875em); // Changed from 30px
             transition: opacity 0.4s ease-out, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -913,7 +921,7 @@ $gpu-accel: translateZ(0);
             transform: $gpu-accel;
             backface-visibility: hidden;
             will-change: opacity;
-            transform: translateX(30px);
+            transform: translateX(1.875em); // Changed from 30px
             transition: opacity 0.4s ease-out, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -921,6 +929,14 @@ $gpu-accel: translateZ(0);
             opacity: 1;
             transition: opacity 0.4s ease-in-out;
             transition-delay: 0.2s;
+
+            &.loading {
+                .screen, .mobile {
+                    opacity: 0;
+                    transform: translateY(1.875em); // Changed from 30px
+                    transition: opacity 0.4s ease-out, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                }
+            }
 
             .screen {
                 opacity: 1;
@@ -943,13 +959,13 @@ $gpu-accel: translateZ(0);
 
             .screen {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(1.875em); // Changed from 30px
                 transition: opacity 0.4s ease-out, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             }
 
             .mobile {
                 opacity: 0;
-                transform: translateX(30px);
+                transform: translateX(1.875em); // Changed from 30px
                 transition: opacity 0.4s ease-out, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             }
         }

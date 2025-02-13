@@ -1,8 +1,13 @@
 import { useState } from 'react';
 import styles from '../Hero/hero.module.scss';
 
-export default function Mobile({ extraClass, src }) {
+export default function Mobile({ extraClass, src, onLoad }) {
     const [isLoading, setIsLoading] = useState(true);
+
+    const handleLoad = () => {
+        setIsLoading(false);
+        onLoad?.();
+    };
 
     return <svg className={`${extraClass} ${styles.herosimple_mobile}`} viewBox="0 0 258 520" preserveAspectRatio="xMidYMid meet">
         <defs>
@@ -15,7 +20,7 @@ export default function Mobile({ extraClass, src }) {
             <img
                 src={src}
                 alt="Mobile Preview"
-                onLoad={() => setIsLoading(false)}
+                onLoad={handleLoad}
                 style={{
                     width: '100%',
                     height: '100%',

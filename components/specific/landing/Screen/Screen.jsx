@@ -2,8 +2,13 @@
 
 import { useState } from 'react';
 
-export default function Screen({ extraClass, src }) {
+export default function Screen({ extraClass, src, onLoad }) {
     const [isLoading, setIsLoading] = useState(true);
+
+    const handleLoad = () => {
+        setIsLoading(false);
+        onLoad?.();
+    };
 
     return <svg className={`${extraClass}`} viewBox="0 0 1150 813" >
       <path fill="#C4C4C4" d="M401.358 778.461L398 795.972H698.714L693.056 777.362L401.358 778.461Z" />
@@ -19,7 +24,7 @@ export default function Screen({ extraClass, src }) {
         <img 
           src={src}
           alt="Desktop Preview"
-          onLoad={() => setIsLoading(false)}
+          onLoad={handleLoad}
           style={{ 
             display: 'block', 
             width: '100%', 
