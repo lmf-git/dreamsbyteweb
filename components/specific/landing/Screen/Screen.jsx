@@ -1,6 +1,11 @@
 'use client';
 
-export default function Screen({ extraClass, src }) {
+import { useState } from 'react';
+import Spinner from '../../../icons/spinner/Spinner';
+
+export default function Screen({ extraClass, src, spinnerClass }) {
+    const [isLoading, setIsLoading] = useState(true);
+
     return <svg className={`${extraClass}`} viewBox="0 0 1150 813" >
       <path fill="#C4C4C4" d="M401.358 778.461L398 795.972H698.714L693.056 777.362L401.358 778.461Z" />
       <path fill="#BDBCBC" d="M725.036 800.822L697.882 795.972H397.168L370 800.822H725.036Z" />
@@ -12,15 +17,19 @@ export default function Screen({ extraClass, src }) {
       <path fill="#FF0000" d="M1104.89 16H43.1042C27.5892 16 15 29.3864 15 45.8756V629.125C15 645.626 27.5766 659 43.1042 659H1104.89C1120.42 659 1133 645.626 1133 629.125V45.8756C1133 29.374 1120.42 16 1104.89 16Z" />
 
       <foreignObject x="13" y="15" width="1122" height="645">
+        {isLoading && <Spinner extraClass={spinnerClass} />}
         <img 
           src={src}
           alt="Desktop Preview"
+          onLoad={() => setIsLoading(false)}
           style={{ 
             display: 'block', 
             width: '100%', 
             height: '100%', 
-            objectFit: 'cover', /* Ensure the image covers the area */
-            borderRadius: '30px' /* Maintain border-radius */
+            objectFit: 'cover',
+            borderRadius: '30px',
+            opacity: isLoading ? 0.3 : 1,
+            transition: 'opacity 0.3s ease-out'
           }}
         />
       </foreignObject>

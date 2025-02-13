@@ -71,8 +71,6 @@ const projects = [
 
 export default function Hero() {  // Remove onComplete prop
     const [project, setProject] = useState(null); // Change initial state to null
-    const [desktopLoading, setDesktopLoading] = useState(true);
-    const [mobileLoading, setMobileLoading] = useState(true);
     const [showPreview, setShowPreview] = useState(false);
     const [showContent, setShowContent] = useState(false);
     const [initialAnimationComplete, setInitialAnimationComplete] = useState(false);
@@ -91,9 +89,7 @@ export default function Hero() {  // Remove onComplete prop
     const preloadImages = (projectIndex) => {
         return new Promise((resolve) => {
             setImagesLoaded(false);
-            setDesktopLoading(true);
-            setMobileLoading(true);
-
+            
             const desktopImage = new Image();
             const mobileImage = new Image();
             let loadedCount = 0;
@@ -102,8 +98,6 @@ export default function Hero() {  // Remove onComplete prop
                 loadedCount++;
                 if (loadedCount === 2) {
                     setImagesLoaded(true);
-                    setDesktopLoading(false);
-                    setMobileLoading(false);
                     resolve();
                 }
             };
@@ -328,17 +322,14 @@ export default function Hero() {  // Remove onComplete prop
                         <Screen 
                             extraClass={`${styles.screen} ${showPreview ? styles.showMobile : ''}`}
                             src={projects[currentProject].desktopimage}
-                            onLoad={() => setDesktopLoading(false)}
+                            spinnerClass={styles.screenspinner}
                         />
                         
-                        {desktopLoading && <Spinner className={styles.screenspinner} />}
-
                         <Mobile 
                             extraClass={`${styles.mobile} ${showPreview ? styles.showMobile : ''}`}
                             src={projects[currentProject].image}
-                            onLoad={() => setMobileLoading(false)}
+                            spinnerClass={styles.mobilespinner}
                         />
-                        {mobileLoading && <Spinner className={styles.mobilespinner} />}
                     </div>
                 </div>
             )}

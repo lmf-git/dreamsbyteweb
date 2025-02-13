@@ -279,6 +279,13 @@ $gpu-accel: translateZ(0);
             transition: opacity 0.3s ease-out;
         }
     }
+
+    &.loading {
+        .screen, .mobile {
+            opacity: 0.3;
+            transition: opacity 0.3s ease-out;
+        }
+    }
 }
 
 .mobile {
@@ -363,6 +370,13 @@ $gpu-accel: translateZ(0);
     z-index: 2;
     opacity: 1;
     transition: opacity 0.2s ease-out;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease-out;
+
+    &.visible {
+        opacity: 1;
+    }
 }
 
 .mobilespinner {
@@ -375,6 +389,13 @@ $gpu-accel: translateZ(0);
     z-index: 2;
     opacity: 1;
     transition: opacity 0.2s ease-out;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease-out;
+
+    &.visible {
+        opacity: 1;
+    }
 }
 
 .projectproblems,
