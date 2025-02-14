@@ -188,6 +188,14 @@
   transform: translateX(-20px);
   text-decoration: none;
   display: inline-block;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+
+  .providericon {
+    height: 1em;
+    width: auto;
+  }
 
   &:hover {
     color: rgb(230, 230, 230);

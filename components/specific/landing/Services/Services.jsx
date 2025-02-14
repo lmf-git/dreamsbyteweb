@@ -1,18 +1,31 @@
 import { useRef, useState, useEffect } from 'react';
 import useIntersectionObserver from '../../../../hooks/useIntersectionObserver';
+
+import HTML from '../../../icons/brands/HTML';
+import CSS from '../../../icons/brands/CSS';
+import Linux from '../../../icons/brands/Linux';
+import AWS from '../../../icons/brands/AWS';
+import Heroku from '../../../icons/brands/Heroku';
+import NodeJS from '../../../icons/brands/NodeJS';
+import Nginx from '../../../icons/brands/Nginx';
+import Nextjs from '../../../icons/brands/Nextjs';
+import Svelte from '../../../icons/brands/Svelte';
+import Postgres from '../../../icons/brands/Postgres';
+
 import styles from './services.module.scss';
 
 const technologies = [
-  { name: 'Node.js', url: 'https://nodejs.org/' },
-  { name: 'Heroku', url: 'https://www.heroku.com/' },
-  { name: 'AWS', url: 'https://aws.amazon.com/' },
-  { name: 'Nuxt', url: 'https://nuxt.com/' },
-  { name: 'Svelte', url: 'https://svelte.dev/' },
+  { name: 'Node.js', url: 'https://nodejs.org/', Icon: NodeJS },
+  { name: 'Heroku', url: 'https://www.heroku.com/', Icon: Heroku },
+  { name: 'AWS', url: 'https://aws.amazon.com/', Icon: AWS },
+  { name: 'Nuxt', url: 'https://nuxt.com/', Icon: Nextjs },
+  { name: 'Svelte', url: 'https://svelte.dev/', Icon: Svelte },
   { name: 'JavaScript', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
-  { name: 'HTML', url: 'https://developer.mozilla.org/en-US/docs/Web/HTML' },
-  { name: 'CSS', url: 'https://developer.mozilla.org/en-US/docs/Web/CSS' },
-  { name: 'PostgreSQL', url: 'https://www.postgresql.org/' },
-  { name: 'Nginx', url: 'https://nginx.org/' }
+  { name: 'HTML', url: 'https://developer.mozilla.org/en-US/docs/Web/HTML', Icon: HTML },
+  { name: 'CSS', url: 'https://developer.mozilla.org/en-US/docs/Web/CSS', Icon: CSS },
+  { name: 'PostgreSQL', url: 'https://www.postgresql.org/', Icon: Postgres },
+  { name: 'Linux', url: 'https://www.linux.org/', Icon: Linux },
+  { name: 'Nginx', url: 'https://nginx.org/', Icon: Nginx }
 ];
 
 export default function Services({ setMessage }) {
@@ -113,6 +126,7 @@ export default function Services({ setMessage }) {
             className={`${styles.provider} ${isVisible ? styles.visible : ''}`}
             style={{ transitionDelay: `${1.0 + index * 0.1}s` }}
           >
+            {tech.Icon && <tech.Icon extraClass={styles.providericon} />}
             {tech.name}
           </a>
         ))}
