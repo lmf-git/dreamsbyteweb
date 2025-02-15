@@ -22,6 +22,7 @@ export default function Testimonials() {
     const dragThreshold = 5; // pixels to consider as drag vs tap
     const lastX = useRef(null);
     const dragStartTime = useRef(null);
+    const lastScrollPosition = useRef(0); // Add this ref
 
     useEffect(() => {
         const animate = (timestamp) => {
@@ -34,8 +35,8 @@ export default function Testimonials() {
             const deltaTime = timestamp - lastTimeRef.current;
             lastTimeRef.current = timestamp;
 
-            // Smooth transition back to auto-scroll
-            if (Date.now() - dragStartTime.current < 100) {
+            // Wait longer after drag ends before resuming auto-scroll
+            if (Date.now() - (dragStartTime.current || 0) < 500) {
                 animationRef.current = requestAnimationFrame(animate);
                 return;
             }
@@ -43,6 +44,11 @@ export default function Testimonials() {
             const container = listRef.current;
             const maxScroll = container.scrollWidth - container.clientWidth;
             
+            // Use the last manual position as the starting point
+            if (lastScrollPosition.current !== positionRef.current) {
+                positionRef.current = lastScrollPosition.current;
+            }
+
             positionRef.current += (speed * direction * deltaTime) / 1000;
 
             // Keep position within bounds
@@ -54,6 +60,7 @@ export default function Testimonials() {
                 setDirection(1);
             }
 
+            lastScrollPosition.current = positionRef.current;
             planeRef.current.style.transform = `translateX(${-positionRef.current}px)`;
             animationRef.current = requestAnimationFrame(animate);
         };
@@ -72,8 +79,10 @@ export default function Testimonials() {
         setIsDragging(true);
         dragStartTime.current = Date.now();
         lastX.current = clientX;
-        setScrollLeft(listRef.current.scrollLeft);
-        positionRef.current = listRef.current.scrollLeft;
+        // Use the current transform position instead of scrollLeft
+        const currentTransform = positionRef.current;
+        setScrollLeft(currentTransform);
+        lastScrollPosition.current = currentTransform;
     };
 
     const handleDragMove = (clientX) => {
@@ -85,6 +94,7 @@ export default function Testimonials() {
         // Bound the scroll position
         const maxScroll = listRef.current.scrollWidth - listRef.current.clientWidth;
         positionRef.current = Math.max(0, Math.min(newPosition, maxScroll));
+        lastScrollPosition.current = positionRef.current;
         planeRef.current.style.transform = `translateX(${-positionRef.current}px)`;
     };
 
