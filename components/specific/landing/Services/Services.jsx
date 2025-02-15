@@ -148,11 +148,16 @@ export default function Services({ setMessage }) {
       </div>
     </div>
 
-    <p className={styles.additional}>
-      To start realising your digital dreams, email us today at&nbsp;
-      <a className={styles.additionallink} href="mailto:contact@dreamsbyte.com">contact@dreamsbyte.com</a>
-      &nbsp;
-      or use <a className={styles.additionallink} href="#contact">the form below</a>.
-    </p>
+    <div 
+      className={`${styles.additionalSection} ${isVisible ? styles.visible : ''}`}
+      style={{ transitionDelay: '2.8s' }}
+    >
+      <p className={styles.additional}>
+        To start realising your digital dreams, email us today at&nbsp;
+        <a className={styles.additionallink} href="mailto:contact@dreamsbyte.com">contact@dreamsbyte.com</a>
+        &nbsp;
+        or use <a className={styles.additionallink} href="#contact">the form below</a>.
+      </p>
+    </div>
   </div>;
 };
