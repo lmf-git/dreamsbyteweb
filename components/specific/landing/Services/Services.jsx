@@ -8,24 +8,39 @@ import AWS from '../../../icons/brands/AWS';
 import Heroku from '../../../icons/brands/Heroku';
 import NodeJS from '../../../icons/brands/NodeJS';
 import Nginx from '../../../icons/brands/Nginx';
-import Nextjs from '../../../icons/brands/Nextjs';
+import Next from '../../../icons/brands/Next';
+import Nuxt from '../../../icons/brands/Nuxt';
 import Svelte from '../../../icons/brands/Svelte';
 import Postgres from '../../../icons/brands/Postgres';
+import VSCode from '../../../icons/brands/VSCode';
+import Vite from '../../../icons/brands/Vite';
+import React from '../../../icons/brands/React';
+import JavaScript from '../../../icons/brands/JavaScript';
+import GitHub from '../../../icons/brands/GitHub';
+import Figma from '../../../icons/brands/Figma';
+import Docker from '../../../icons/brands/Docker';
 
 import styles from './services.module.scss';
 
 const technologies = [
-  { name: 'Node.js', url: 'https://nodejs.org/', Icon: NodeJS },
-  { name: 'Heroku', url: 'https://www.heroku.com/', Icon: Heroku },
-  { name: 'AWS', url: 'https://aws.amazon.com/', Icon: AWS },
-  { name: 'Nuxt', url: 'https://nuxt.com/', Icon: Nextjs },
-  { name: 'Svelte', url: 'https://svelte.dev/', Icon: Svelte },
-  { name: 'JavaScript', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
-  { name: 'HTML', url: 'https://developer.mozilla.org/en-US/docs/Web/HTML', Icon: HTML },
+  { name: 'AWS', url: 'https://aws.amazon.com/', Icon: AWS, hideLabel: true },
   { name: 'CSS', url: 'https://developer.mozilla.org/en-US/docs/Web/CSS', Icon: CSS },
-  { name: 'PostgreSQL', url: 'https://www.postgresql.org/', Icon: Postgres },
+  { name: 'Docker', url: 'https://www.docker.com/', Icon: Docker },
+  { name: 'Figma', url: 'https://www.figma.com/', Icon: Figma },
+  { name: 'GitHub', url: 'https://github.com/', Icon: GitHub },
+  { name: 'Heroku', url: 'https://www.heroku.com/', Icon: Heroku },
+  { name: 'HTML', url: 'https://developer.mozilla.org/en-US/docs/Web/HTML', Icon: HTML },
+  { name: 'JavaScript', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript', Icon: JavaScript },
   { name: 'Linux', url: 'https://www.linux.org/', Icon: Linux },
-  { name: 'Nginx', url: 'https://nginx.org/', Icon: Nginx }
+  { name: 'Next.js', url: 'https://nextjs.org/', Icon: Next },
+  { name: 'Nginx', url: 'https://nginx.org/', Icon: Nginx, hideLabel: true },
+  { name: 'Node.js', url: 'https://nodejs.org/', Icon: NodeJS },
+  { name: 'Nuxt', url: 'https://nuxt.com/', Icon: Nuxt },
+  { name: 'PostgreSQL', url: 'https://www.postgresql.org/', Icon: Postgres },
+  { name: 'React', url: 'https://reactjs.org/', Icon: React },
+  { name: 'Svelte', url: 'https://svelte.dev/', Icon: Svelte },
+  { name: 'Vite', url: 'https://vitejs.dev/', Icon: Vite },
+  { name: 'VS Code', url: 'https://code.visualstudio.com/', Icon: VSCode }
 ];
 
 export default function Services({ setMessage }) {
@@ -127,7 +142,7 @@ export default function Services({ setMessage }) {
             style={{ transitionDelay: `${1.0 + index * 0.1}s` }}
           >
             {tech.Icon && <tech.Icon extraClass={styles.providericon} />}
-            {tech.name}
+            {!tech.hideLabel && tech.name}
           </a>
         ))}
       </div>

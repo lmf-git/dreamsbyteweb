@@ -1,4 +1,4 @@
-export default function Nuxt({ extraClass = '' }) {
+export default function Next({ extraClass = '' }) {
     return (
         <svg className={extraClass} viewBox="0 0 122.88 92.73">
             <path fill="#00c58e" d="M70.15,25.38,65.94,32.8,51.53,7.42,7.29,85.31h30a7.36,7.36,0,0,0,7.3,7.42H7.29A7.26,7.26,0,0,1,1,89,7.5,7.5,0,0,1,1,81.6L45.21,3.71a7.24,7.24,0,0,1,12.64,0l12.3,21.67Z" />

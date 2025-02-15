@@ -256,10 +256,10 @@ export default function Hero() {  // Remove onComplete prop
                         <div className={`${styles.contentContainer} ${showContent ? styles.visible : ''} ${
                             contentFading ? styles.fading : ''
                         }`}>
-                            <h2 className={styles.projectproblems}>PROBLEMS:</h2>
+                            <h2 className={styles.projectproblems}>PROBLEM:</h2>
                             <p className={styles.projectparagraph}>{projects[currentProject].problem}</p>
 
-                            <h2 className={styles.projectsolutions}>SOLUTIONS:</h2>
+                            <h2 className={styles.projectsolutions}>SOLUTION:</h2>
                             <p className={styles.projectparagraph}>{projects[currentProject].solution}</p>
 
                             <div className={`${styles.navigation} ${showNav ? styles.visible : ''}`}>

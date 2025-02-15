@@ -7,7 +7,7 @@
   justify-content: center;
   color: white;
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(1.25em);
   transition: opacity 1s ease-out, transform 1s ease-out;
   
   &.visible {
@@ -75,8 +75,8 @@
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-    width: 6px;
-    height: 6px;
+    width: 0.375em;
+    height: 0.375em;
     background-color: rgb(200, 200, 200);
     border-radius: 50%;
     transition: all 0.2s ease;
@@ -85,8 +85,8 @@
   &:hover:before {
     transform: translateY(-50%) rotate(45deg);
     background-color: white;
-    width: 8px;
-    height: 8px;
+    width: 0.5em;
+    height: 0.5em;
   }
 
   &:active:before {
@@ -151,6 +151,20 @@
   .providers {
     margin-top: 3em;
   }
+
+  .providersList {
+    gap: 2em;
+  }
+
+  .provider {
+    flex: 0 1 calc(25% - 2em);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .provider {
+    flex: 0 1 calc(20% - 2em);
+  }
 }
 
 .providers {
@@ -171,36 +185,81 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1.5em;
-  margin: 1em 0;
+  gap: 1em;
+  margin: 1em auto;
+  max-width: 75em;  // 1200px / 16
+  padding: 0 0.0625em;
+  box-sizing: border-box;
 }
 
 .provider {
   font-family: var(--font-inter);
-  font-size: 0.9em;
+  font-size: 1em;
   font-weight: 500;
   color: rgb(180, 180, 180);
-  padding: 0.5em 1em;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 4px;
-  transition: all 0.2s ease, opacity 0.5s ease-out, transform 0.5s ease-out;
+  padding: 0.7em 1em;
+  border: 0.0625em solid rgba(255, 255, 255, 0.15);
+  border-radius: 0.25em;
+  transition: 
+    color 0.2s ease,
+    border-color 0.2s ease,
+    opacity 0.5s ease-out,
+    transform 0.5s ease-out;
   opacity: 0;
   transform: translateX(-20px);
   text-decoration: none;
-  display: inline-block;
   display: flex;
   align-items: center;
-  gap: 0.5em;
+  gap: 0.7em;
+  flex: 0 1 calc(50% - 1em);
+  min-width: 8.75em;  // 140px / 16
+  max-width: 12.5em;  // 200px / 16
+  justify-content: center;
+  box-sizing: border-box;
+  height: 3.5em; // Add fixed height
+  min-height: 3.5em; // Ensure minimum height
 
   .providericon {
-    height: 1em;
-    width: auto;
+    height: 100%;
+    // height: 1.75em;
+    // width: 1.75em;
+    min-width: 1.75em; // Prevent shrinking
+    object-fit: contain;
+    transition: transform 0.2s ease;
   }
 
-  &:hover {
+  &.visible {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+  }
+
+  &:hover, &:focus {
+    opacity: 1;
     color: rgb(230, 230, 230);
-    border-color: rgba(255, 255, 255, 0.3);
-    text-decoration: none;
+    border-color: rgba(255, 255, 255, 0.6); // Increased from 0.3 for better contrast
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  &:hover .providericon {
+    transform: scale(1.1);
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .provider {
+    flex: 0 1 calc(33.333% - 1em);
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .provider {
+    flex: 0 1 calc(25% - 1em);
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .provider {
+    flex: 0 1 calc(20% - 1em);
   }
 }
 
