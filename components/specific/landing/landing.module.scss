@@ -201,9 +201,10 @@
 
 .socials {
     display: flex;
-    position: relative;  // Change from absolute to relative
+    position: relative; 
     margin-top: auto;
-    padding-bottom: 3em;  // Increased from 1.75em to accommodate mobile browser UI
+    padding-bottom: 4em; 
+    box-sizing: border-box;
     width: 100%;
     align-items: center;
     justify-content: center;
