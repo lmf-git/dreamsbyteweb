@@ -8,9 +8,10 @@
     padding: 0 0 4em;
     margin-left: 2.25em;
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(1.25em);
     transition: all 1s ease-out;
     pointer-events: auto; // Change this to always allow interactions
+    will-change: opacity, transform;
 
     &.visible {
         opacity: 1;
@@ -33,6 +34,9 @@
     user-select: none;
     touch-action: pan-x; // Only allow horizontal pan
     pointer-events: auto; // Ensure interactions are enabled
+    will-change: transform;
+    overscroll-behavior-x: contain; // Prevent page bounce
+    -webkit-overflow-scrolling: touch; // Smooth momentum scrolling on iOS
 
     &:active {
         cursor: grabbing;
@@ -46,15 +50,17 @@
     user-select: none;
     left: 0;
     top: 0;
-    height: calc(100% - .1em);
+    height: calc(100% - 0.1em);
     touch-action: none; // Disable all touch actions on the draggable element
     will-change: transform; // Optimize for animations
     pointer-events: auto; // Ensure interactions are enabled
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0); // Force GPU acceleration
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
+    transform-style: flat; // Simpler than preserve-3d
+    contain: paint layout; // Optimize paint performance
+    transition: none; // Remove any transition
 }
 
 .testimonial {
@@ -66,16 +72,17 @@
     padding: 1.5em;
     margin-right: 1em;
     background: linear-gradient(104deg, #FFF 1.24%, #DBDBDB 100%);
-    border-radius: .5em 0 0 0;
+    border-radius: 0.5em 0 0 0;
     box-sizing: border-box;
     pointer-events: auto; // Ensure interactions are enabled
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transform: none; // No transform needed
+    transition: none; // Remove animation transitions
+    will-change: opacity; // Only animate opacity
+    contain: content; // Optimize paint/layout performance
 
     &.visible {
         opacity: 1;
-        transform: translateY(0);
     }
 }
 
@@ -86,13 +93,13 @@
     flex-shrink: 0;
     color: black;
     margin-bottom: 1.35em;
-    margin-top: .85em;
+    margin-top: 0.85em;
     width: 100%;
     min-width: 10em;
     
     svg, img {
         width: 45%;
-        max-width: 150px;
+        max-width: 9.375em; // 150px
         margin-bottom: 1em;
     }
 }
@@ -100,8 +107,8 @@
 .company {
     font-weight: 300;
     font-size: 1.2em;
-    margin-top: .35em;
-    margin-bottom: .25em;
+    margin-top: 0.35em;
+    margin-bottom: 0.25em;
     color: rgb(44, 44, 44);
 }
 
@@ -125,15 +132,15 @@
         content: '"';
         font-size: 2em;
         line-height: 0;
-        transform: translateY(.25em);
+        transform: translateY(0.25em);
     }
 
     &:before {
-        padding-right: .15em;
+        padding-right: 0.15em;
     }
 
     &:after {
-        padding-left: .15em;
+        padding-left: 0.15em;
     }
 }
 
@@ -141,13 +148,13 @@
     color: rgb(44, 44, 44);
     text-decoration: none;
     font-weight: 300;
-    transition: padding .25s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: padding 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
   
     &:hover {
         color: white;
         text-decoration: underline;
         background: rgb(44, 44, 44);
-        padding: .35em;
+        padding: 0.35em;
     }
 }
 
@@ -188,8 +195,8 @@
     .company {
         font-weight: 300;
         font-size: 1.5em;
-        margin-top: .35em;
-        margin-bottom: .25em;
+        margin-top: 0.35em;
+        margin-bottom: 0.25em;
         color: rgb(44, 44, 44);
     }
 
@@ -210,15 +217,15 @@
             content: '"';
             font-size: 2em;
             line-height: 0;
-            transform: translateY(.25em);
+            transform: translateY(0.25em);
         }
 
         &:before {
-            padding-right: .15em;
+            padding-right: 0.15em;
         }
 
         &:after {
-            padding-left: .15em;
+            padding-left: 0.15em;
         }
     }
 
