@@ -208,17 +208,15 @@
 .logo {
 	width: 10em;
 	opacity: 0;
-	position: absolute;
-	left: 50%;
-	bottom: 2em;
-	transform: translateX(-50%) translateY(10px);
+	transform: translateY(10px);
 	transition: opacity 0.8s ease-out 0.8s, transform 0.8s ease-out 0.8s; // Logo appears last
 	
 	&.visible {
 		opacity: 1;
-		transform: translateX(-50%) translateY(0);
+		transform: translateY(0);
 	}
 }
+
 .logo path {
 	fill: #b3b3b3;
 }
@@ -305,9 +303,11 @@
 	}
 	
 	.logo {
-		padding: 1.5em 0 0.5em 0;
+		position: absolute;
+		left: 50%;
 		bottom: 2em;
-		// No need to redefine position and left as they inherit from base styles
+		padding: 1.5em 0 0.5em 0;
+		transform: translateX(-50%) translateY(10px);
 		
 		&.visible {
 			transform: translateX(-50%) translateY(0);
