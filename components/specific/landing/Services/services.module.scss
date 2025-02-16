@@ -8,7 +8,8 @@
   color: white;
   opacity: 0;
   transform: translateY(1.25em);
-  transition: opacity 1s ease-out, transform 1s ease-out;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  padding: 1em;  // Add base padding for mobile
   
   &.visible {
     opacity: 1;
@@ -278,6 +279,33 @@
 .provider.visible {
   opacity: 1;
   transform: translateY(0) translateX(0);
+}
+
+// Modify mobile styles
+@media screen and (max-width: 799px) {
+  .heading {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .list {
+    margin-left: 0;
+  }
+
+  .service {
+    margin-bottom: 2em;
+    padding: 0;
+  }
+
+  .providers {
+    margin-top: 2em;
+  }
+
+  .provider {
+    min-width: 7.5em;
+    height: 3em;
+    min-height: 3em;
+  }
 }
 
 // Remove or comment out the reveal-item and reveal-tech keyframes as they're no longer needed

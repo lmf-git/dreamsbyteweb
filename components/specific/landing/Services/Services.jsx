@@ -47,14 +47,15 @@ export default function Services({ setMessage }) {
   const sectionRef = useRef(null);
   const [canReveal, setCanReveal] = useState(false);
   
-  // Wait for hero section to complete before allowing reveal
+  // Reduce the delay for mobile and desktop
   useEffect(() => {
-    const delay = window.innerWidth < 1200 ? 10000 : 4000;
+    const delay = window.innerWidth < 1200 ? 2000 : 1000;
     const timer = setTimeout(() => setCanReveal(true), delay);
     return () => clearTimeout(timer);
   }, []);
 
-  const isVisible = useIntersectionObserver(sectionRef, 0.3) && canReveal;
+  // Decrease threshold to make it appear sooner
+  const isVisible = useIntersectionObserver(sectionRef, 0.1) && canReveal;
 
   const handleExampleClick = (service) => (e) => {
     const dot = e.currentTarget.querySelector('::before');

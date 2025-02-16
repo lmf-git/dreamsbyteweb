@@ -33,13 +33,15 @@ export default function Comparison({ setMessage }) {
   const sectionRef = useRef(null);
   const [canReveal, setCanReveal] = useState(false);
   
+  // Reduce delay significantly for both mobile and desktop
   useEffect(() => {
-    const delay = window.innerWidth < 1200 ? 10000 : 4000;
+    const delay = window.innerWidth < 1200 ? 1000 : 500;
     const timer = setTimeout(() => setCanReveal(true), delay);
     return () => clearTimeout(timer);
   }, []);
 
-  const isVisible = useIntersectionObserver(sectionRef, 0.3) && canReveal;
+  // Lower threshold to trigger earlier
+  const isVisible = useIntersectionObserver(sectionRef, 0.1) && canReveal;
 
   const handleAdvantageClick = (title) => () => {
     setMessage(`Hi, I'm interested in learning more about "${title}"`);
