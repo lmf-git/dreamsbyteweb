@@ -597,6 +597,12 @@ $gpu-accel: translateZ(0);
     &.exiting {
         display: none;
     }
+
+    &.disabled {
+        pointer-events: none;
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
 }
 
 .link {

@@ -276,13 +276,14 @@ export default function Hero() {  // Remove onComplete prop
                                     {projects.map((p, i) => {
                                         const dotClass = `${styles.dot} ${
                                             project === i ? styles.active : ''
-                                        }`;
+                                        } ${isTransitioning ? styles.disabled : ''}`;
                                         
                                         return (
                                             <Dot 
                                                 key={i} 
                                                 className={dotClass}
                                                 onClick={() => !isTransitioning && setProject(i)}
+                                                disabled={isTransitioning}
                                             />
                                         );
                                     })}
