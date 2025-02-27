@@ -72,7 +72,7 @@
     padding: 1.5em;
     margin-right: 2.5em; // Increased from 1.5em for more separation between all cards
     background: linear-gradient(104deg, #FFF 1.24%, #DBDBDB 100%);
-    border-radius: 0.5em 0 0 0;
+    border-radius: 0.25em; // Changed from 0.5em 0 0 0 to round all corners
     box-sizing: border-box;
     pointer-events: auto; // Ensure interactions are enabled
     opacity: 0;
