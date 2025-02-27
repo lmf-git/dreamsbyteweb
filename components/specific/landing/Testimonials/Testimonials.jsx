@@ -31,8 +31,11 @@ export default function Testimonials() {
             const deltaTime = currentTime - lastTime;
             lastTime = currentTime;
             
-            // Add buffer to ensure we can see the last item completely
-            const maxScroll = listRef.current.scrollWidth - listRef.current.clientWidth + 20;
+            // Better calculation of maximum scroll
+            const containerWidth = listRef.current.clientWidth;
+            const totalWidth = planeRef.current.scrollWidth;
+            const maxScroll = Math.max(0, totalWidth - containerWidth);
+            
             positionRef.current += speed * deltaTime * direction;
 
             if (positionRef.current >= maxScroll) {
@@ -61,8 +64,11 @@ export default function Testimonials() {
         const delta = clientX - lastX.current;
         lastX.current = clientX;
         
-        // Add buffer to ensure we can see the last item completely
-        const maxScroll = listRef.current.scrollWidth - listRef.current.clientWidth + 20;
+        // Same improved calculation for drag movement
+        const containerWidth = listRef.current.clientWidth;
+        const totalWidth = planeRef.current.scrollWidth;
+        const maxScroll = Math.max(0, totalWidth - containerWidth);
+        
         positionRef.current = Math.max(0, Math.min(positionRef.current - delta, maxScroll));
         planeRef.current.style.transform = `translate3d(${-positionRef.current}px, 0, 0)`;
     };
