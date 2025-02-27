@@ -2,8 +2,9 @@
 
 import { useRef, useState, useEffect } from 'react';
 import { testimonials } from '../../../../data.mjs';
-import styles from './testimonials.module.scss';
 import useIntersectionObserver from '../../../../hooks/useIntersectionObserver';
+import DragRight from '../../../icons/controls/DragRight';
+import styles from './testimonials.module.scss';
 
 export default function Testimonials() {
     const sectionRef = useRef(null);
@@ -127,6 +128,10 @@ export default function Testimonials() {
                         </div>
                     ))}
                 </div>
+            </div>
+            <div className={styles.instruction}>
+                <DragRight extraClass={styles.dragIcon} /> 
+                <span>Drag to pause scrolling</span>
             </div>
         </div>
     );
