@@ -82,24 +82,20 @@ export default function Services({ setMessage }) {
 
     <div className={styles.list}>
       {[
-        { name: 'Development', items: [
-          { name: 'Web Applications', price: 'Starting at $2,000' },
-          { name: 'Legacy System Modernization', price: 'Starting at $2,500' },
-          { name: 'Desktop & Mobile Applications', price: 'Starting at $4,000' },
-          { name: 'Custom Backend Solutions', price: 'Starting at $1,600' },
-          { name: 'E-commerce Development', price: 'Starting at $2,800' }
-        ]},
-        { name: 'Website Solutions', items: [
+        { name: 'Web', items: [
           { name: 'Business Website', price: 'Starting at $900' },
           { name: 'Landing Page / Conversion Funnel', price: 'Starting at $225' },
           { name: 'CMS Implementation', price: 'Starting at $2,400' },
-          { name: 'Website Maintenance', price: 'Starting at $200/month' }
+          { name: 'Website Maintenance', price: 'Starting at $200/month' },
+          { name: 'Web Applications', price: 'Starting at $2,000' }
         ]},
-        { name: 'Design & UX', items: [
-          { name: 'UI/UX Design', price: 'Starting at $1,400' },
-          { name: 'Design to Code Implementation', price: 'Starting at $800' }
+        { name: 'Software', items: [
+          { name: 'Legacy System Modernization', price: 'Starting at $2,500' },
+          { name: 'Desktop & Mobile Applications', price: 'Starting at $4,000' },
+          { name: 'Custom API Creation', price: 'Starting at $1,600' },
+          { name: 'E-commerce Application', price: 'Starting at $2,800' }
         ]},
-        { name: 'Technical Services', items: [
+        { name: 'Technical', items: [
           { name: 'Performance Optimization', price: 'Starting at $600' },
           { name: 'DevOps & Security', price: 'Starting at $1,200' },
           { name: 'System Integration', price: 'Starting at $1,400' },
