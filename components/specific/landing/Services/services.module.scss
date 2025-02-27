@@ -48,6 +48,9 @@
 
 .list {
   margin-left: 1.5em;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1em;
 }
 
 .service {
@@ -160,8 +163,8 @@
   }
 
   .list {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.3em;
     margin-left: 0;
   }
@@ -186,6 +189,10 @@
 @media screen and (min-width: 1200px) {
   .provider {
     flex: 0 1 calc(20% - 2em);
+  }
+
+  .list {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -305,11 +312,20 @@
 
   .list {
     margin-left: 0;
+    padding: 0 0.8em;
   }
 
   .service {
     margin-bottom: 2em;
-    padding: 0;
+    padding: 0 0.5em 0 1em;
+  }
+
+  .example {
+    padding-left: 1.8em;
+    
+    &:before {
+      left: 0.3em;
+    }
   }
 
   .providers {

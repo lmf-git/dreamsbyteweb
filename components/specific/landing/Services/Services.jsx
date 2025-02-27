@@ -82,30 +82,47 @@ export default function Services({ setMessage }) {
 
     <div className={styles.list}>
       {[
-        { name: 'Development', items: [
+        { name: 'Custom Development', items: [
+          { name: 'Bespoke Web Applications (Framework-free)', price: 'Starting at $2,000' },
+          { name: 'Pure Vanilla JavaScript Solutions', price: 'Starting at $1,500' },
+          { name: 'Custom Backend Systems', price: 'Starting at $1,800' },
+          { name: 'Performance-optimized Applications', price: 'Starting at $2,200' },
+          { name: 'Progressive Web Apps (PWAs)', price: 'Starting at $1,600' }
+        ]},
+        { name: 'Full Stack Services', items: [
           { name: 'Full Stack Development', price: 'Starting at $1,800' },
-          { name: 'Website / App / DB Maintenance', price: 'Starting at $200/month' },
-          { name: 'UI Development', price: 'Starting at $800' },
+          { name: 'Microservices Architecture', price: 'Starting at $2,500' },
+          { name: 'Custom Database Design', price: 'Starting at $800' },
+          { name: 'System Integration Solutions', price: 'Starting at $1,200' },
+          { name: 'API Development & Optimization', price: 'Starting at $600' },
+          { name: 'Troubleshooting and Error Fixing', price: 'Starting at $150' }
+        ]},
+        { name: 'Website & CMS', items: [
           { name: 'WordPress / Ghost / CMS Development', price: 'Starting at $750' },
-          { name: 'API Integrations / Custom API Development', price: 'Starting at $600' }
+          { name: 'UI Development', price: 'Starting at $800' },
+          { name: 'Website / App / DB Maintenance', price: 'Starting at $200/month' },
+          { name: 'Legacy System Modernization', price: 'Starting at $1,200' },
+          { name: 'Technical Architecture Consulting', price: 'Starting at $500' }
         ]},
         { name: 'E-commerce', items: [
           { name: 'Shopify / Magento / Woocommerce / Custom Store Creation', price: 'Starting at $1,200' },
-          { name: 'Multichannel / ERP and More Integrations', price: 'Starting at $500' }
+          { name: 'Multichannel / ERP and More Integrations', price: 'Starting at $500' },
+          { name: 'Custom E-commerce Solutions (No Framework)', price: 'Starting at $2,800' }
         ]},
         { name: 'Design', items: [
           { name: 'Captivating Logos', price: 'Starting at $250' },
           { name: 'Landing Pages', price: 'Starting at $600' },
           { name: 'Branding', price: 'Starting at $800' },
+          { name: 'Design to Code Conversion (Figma/PSD)', price: 'Starting at $600' },
           { name: 'Distinctive Typography', price: 'Starting at $350' },
           { name: 'Compelling Colour Schemes', price: 'Starting at $300' }
         ]},
-        { name: 'Miscellaneous', items: [
-          { name: 'Figma to Website Conversion', price: 'Starting at $700' },
-          { name: 'PSD to HTML Conversion', price: 'Starting at $400' },
-          { name: 'Translation Services', price: 'Starting at $0.05/word' },
-          { name: 'Troubleshooting and Error Fixing', price: 'Starting at $150' },
-          { name: 'Tutoring in Web Development', price: 'Starting at $30/hr' }
+        { name: 'Technical Services', items: [
+          { name: 'Code Audits & Optimization', price: 'Starting at $400' },
+          { name: 'Performance Tuning', price: 'Starting at $500' },
+          { name: 'DevOps & Deployment Setup', price: 'Starting at $800' },
+          { name: 'Technical Documentation', price: 'Starting at $300' },
+          { name: 'Security Audits & Hardening', price: 'Starting at $700' }
         ]}
       ].map((serviceGroup, index) => (
         <div 

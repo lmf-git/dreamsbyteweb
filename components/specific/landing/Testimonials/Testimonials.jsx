@@ -130,8 +130,8 @@ export default function Testimonials() {
                 </div>
             </div>
             <div className={styles.instruction}>
-                <DragRight extraClass={styles.dragIcon} /> 
                 <span>Drag to pause scrolling</span>
+                <DragRight extraClass={styles.dragIcon} />
             </div>
         </div>
     );
