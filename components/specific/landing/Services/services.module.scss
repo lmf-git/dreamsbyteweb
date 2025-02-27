@@ -75,20 +75,22 @@
 
 .example {
   font-family: var(--font-inter);
-  margin-bottom: .5em;
+  margin-bottom: 1em;  // Increased from 0.5em to accommodate stacked layout
   font-weight: 400;
   color: rgb(200, 200, 200);
   line-height: 1.4em;
   position: relative;
   padding-left: 1.5em;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
   
   &:before {
     position: absolute;
     display: block;
     content: '';
     left: 0;
-    top: 50%;
+    top: 0.7em;  // Adjusted to align with first line
     transform: translateY(-50%);
     width: 0.375em;
     height: 0.375em;
@@ -110,11 +112,15 @@
   }
 }
 
+.serviceName {
+  margin-bottom: 0.1em;  // Add small gap between name and price
+}
+
 .price {
   font-size: 0.85em;
   color: rgb(140, 140, 140);
-  margin-left: 1.5em;
   font-style: italic;
+  margin-left: 0;  // Remove left margin that was used for inline positioning
 }
 
 .additional {
