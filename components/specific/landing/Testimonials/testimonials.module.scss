@@ -66,11 +66,11 @@
 .testimonial {
     display: flex;
     flex-direction: column;
-    width: 85vw;
+    width: 80vw; // Reduced from 85vw to fit better
     height: 100%;
     align-items: center;
     padding: 1.5em;
-    margin-right: 1em;
+    margin-right: 1.5em; // Increased from 1em for more separation
     background: linear-gradient(104deg, #FFF 1.24%, #DBDBDB 100%);
     border-radius: 0.5em 0 0 0;
     box-sizing: border-box;
@@ -80,6 +80,11 @@
     transition: none; // Remove animation transitions
     will-change: opacity; // Only animate opacity
     contain: content; // Optimize paint/layout performance
+
+    // Ensure the last testimonial has proper right margin
+    &:last-child {
+        margin-right: 5em; // Add extra space after the last testimonial
+    }
 
     &.visible {
         opacity: 1;
@@ -178,6 +183,11 @@
         flex-direction: row;
         margin-right: 2.5vw;
         padding: 3em;
+        
+        // Ensure the last testimonial has proper right margin
+        &:last-child {
+            margin-right: 5em; // Add extra space after the last testimonial
+        }
     }
 
     .brand {

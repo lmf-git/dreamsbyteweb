@@ -14,14 +14,15 @@ export default function Testimonials() {
     const positionRef = useRef(0);
     const lastX = useRef(null);
     const [isDragging, setIsDragging] = useState(false);
+    const [isHovered, setIsHovered] = useState(false);
     const [direction, setDirection] = useState(1);
-    const speed = 0.055; // Reduced from 0.105 for slower scrolling
+    const speed = 0.025; // Reduced for slower scrolling
     
     useEffect(() => {
         let lastTime = performance.now();
 
         const animate = (currentTime) => {
-            if (!planeRef.current || isDragging) {
+            if (!planeRef.current || isDragging || isHovered) {
                 animationRef.current = requestAnimationFrame(animate);
                 return;
             }
@@ -29,7 +30,8 @@ export default function Testimonials() {
             const deltaTime = currentTime - lastTime;
             lastTime = currentTime;
             
-            const maxScroll = listRef.current.scrollWidth - listRef.current.clientWidth;
+            // Add buffer to ensure we can see the last item completely
+            const maxScroll = listRef.current.scrollWidth - listRef.current.clientWidth + 20;
             positionRef.current += speed * deltaTime * direction;
 
             if (positionRef.current >= maxScroll) {
@@ -46,7 +48,7 @@ export default function Testimonials() {
 
         animationRef.current = requestAnimationFrame(animate);
         return () => cancelAnimationFrame(animationRef.current);
-    }, [isDragging, direction]);
+    }, [isDragging, direction, isHovered]);
 
     const handleDragStart = (clientX) => {
         setIsDragging(true);
@@ -58,7 +60,8 @@ export default function Testimonials() {
         const delta = clientX - lastX.current;
         lastX.current = clientX;
         
-        const maxScroll = listRef.current.scrollWidth - listRef.current.clientWidth;
+        // Add buffer to ensure we can see the last item completely
+        const maxScroll = listRef.current.scrollWidth - listRef.current.clientWidth + 20;
         positionRef.current = Math.max(0, Math.min(positionRef.current - delta, maxScroll));
         planeRef.current.style.transform = `translate3d(${-positionRef.current}px, 0, 0)`;
     };
@@ -85,10 +88,14 @@ export default function Testimonials() {
             <div
                 className={styles.list}
                 ref={listRef}
+                onMouseEnter={() => setIsHovered(true)}
                 onMouseDown={handleMouseDown}
                 onMouseMove={(ev) => handleDragMove(ev.clientX)}
                 onMouseUp={stopDragging}
-                onMouseLeave={stopDragging}
+                onMouseLeave={() => {
+                    stopDragging();
+                    setIsHovered(false);
+                }}
                 onTouchStart={handleTouchStart}
                 onTouchMove={handleTouchMove}
                 onTouchEnd={stopDragging}
