@@ -98,14 +98,14 @@ export default function Services({ setMessage }) {
           { name: 'Troubleshooting and Error Fixing', price: 'Starting at $150' }
         ]},
         { name: 'Website & CMS', items: [
-          { name: 'WordPress / Ghost / CMS Development', price: 'Starting at $750' },
+          { name: 'WordPress / Ghost / CMS Development', price: 'Starting at $4,000' },
           { name: 'UI Development', price: 'Starting at $800' },
           { name: 'Website / App / DB Maintenance', price: 'Starting at $200/month' },
           { name: 'Legacy System Modernization', price: 'Starting at $1,200' },
           { name: 'Technical Architecture Consulting', price: 'Starting at $500' }
         ]},
         { name: 'E-commerce', items: [
-          { name: 'Shopify / Magento / Woocommerce / Custom Store Creation', price: 'Starting at $1,200' },
+          { name: 'Shopify / Magento / Woocommerce / Custom Store Creation', price: 'Starting at $5,600' },
           { name: 'Multichannel / ERP and More Integrations', price: 'Starting at $500' },
           { name: 'Custom E-commerce Solutions (No Framework)', price: 'Starting at $2,800' }
         ]},
