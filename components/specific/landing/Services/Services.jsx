@@ -77,34 +77,35 @@ export default function Services({ setMessage }) {
     <div className={styles.heading}>
       <span className={styles.preamble}>From Concept to Reality</span>
       <h2 className={styles.title}>Our Services</h2>
+      <span className={styles.baseRate}>Base Rate: $25/hr</span>
     </div>
 
     <div className={styles.list}>
       {[
         { name: 'Development', items: [
-          { name: 'Full Stack Development', price: 'Starting at $2,500' },
-          { name: 'Website / App / DB Maintenance', price: 'Starting at $300/month' },
-          { name: 'UI Development', price: 'Starting at $1,200' },
-          { name: 'WordPress / Ghost / CMS Development' },
-          { name: 'API Integrations / Custom API Development' }
+          { name: 'Full Stack Development', price: 'Starting at $1,800' },
+          { name: 'Website / App / DB Maintenance', price: 'Starting at $200/month' },
+          { name: 'UI Development', price: 'Starting at $800' },
+          { name: 'WordPress / Ghost / CMS Development', price: 'Starting at $750' },
+          { name: 'API Integrations / Custom API Development', price: 'Starting at $600' }
         ]},
         { name: 'E-commerce', items: [
-          { name: 'Shopify / Magento / Woocommerce / Custom Store Creation', price: 'Starting at $1,500' },
-          { name: 'Multichannel / ERP and More Integrations' }
+          { name: 'Shopify / Magento / Woocommerce / Custom Store Creation', price: 'Starting at $1,200' },
+          { name: 'Multichannel / ERP and More Integrations', price: 'Starting at $500' }
         ]},
         { name: 'Design', items: [
-          { name: 'Captivating Logos', price: 'Starting at $300' },
-          { name: 'Landing Pages', price: 'Starting at $800' },
-          { name: 'Branding', price: 'Starting at $1,000' },
-          { name: 'Distinctive Typography' },
-          { name: 'Compelling Colour Schemes' }
+          { name: 'Captivating Logos', price: 'Starting at $250' },
+          { name: 'Landing Pages', price: 'Starting at $600' },
+          { name: 'Branding', price: 'Starting at $800' },
+          { name: 'Distinctive Typography', price: 'Starting at $350' },
+          { name: 'Compelling Colour Schemes', price: 'Starting at $300' }
         ]},
         { name: 'Miscellaneous', items: [
-          { name: 'Figma to Website Conversion' },
-          { name: 'PSD to HTML Conversion' },
-          { name: 'Translation Services' },
-          { name: 'Troubleshooting and Error Fixing' },
-          { name: 'Tutoring in Web Development' }
+          { name: 'Figma to Website Conversion', price: 'Starting at $700' },
+          { name: 'PSD to HTML Conversion', price: 'Starting at $400' },
+          { name: 'Translation Services', price: 'Starting at $0.05/word' },
+          { name: 'Troubleshooting and Error Fixing', price: 'Starting at $150' },
+          { name: 'Tutoring in Web Development', price: 'Starting at $30/hr' }
         ]}
       ].map((serviceGroup, index) => (
         <div 
@@ -154,6 +155,7 @@ export default function Services({ setMessage }) {
       style={{ transitionDelay: '2.8s' }}
     >
       <p className={styles.additional}>
+        All services are tailored to your specific needs. Our base rate is $25/hr, with project-based pricing available.
         To start realising your digital dreams, email us today at&nbsp;
         <a className={styles.additionallink} href="mailto:contact@dreamsbyte.com">contact@dreamsbyte.com</a>
         &nbsp;

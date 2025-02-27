@@ -35,6 +35,17 @@
   margin: 0;
 }
 
+.baseRate {
+  font-size: 0.5em;
+  font-weight: 600;
+  color: rgb(230, 230, 230);
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.3em 0.6em;
+  border-radius: 2em;
+  margin-top: 0.8em;
+  display: inline-block;
+}
+
 .list {
   margin-left: 1.5em;
 }
@@ -286,6 +297,10 @@
   .heading {
     margin-left: 0;
     text-align: center;
+  }
+
+  .baseRate {
+    margin-top: 0.5em;
   }
 
   .list {
