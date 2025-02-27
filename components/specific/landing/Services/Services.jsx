@@ -146,14 +146,10 @@ export default function Services({ setMessage }) {
 
     <div 
       className={`${styles.additionalSection} ${isVisible ? styles.visible : ''}`}
-      style={{ transitionDelay: '2.8s' }}
-    >
+      style={{ transitionDelay: '2.8s' }}>
       <p className={styles.additional}>
         All services are tailored to your specific needs. Our base rate is $25/hr, with project-based pricing available.
-        To start realising your digital dreams, email us today at&nbsp;
-        <a className={styles.additionallink} href="mailto:contact@dreamsbyte.com">contact@dreamsbyte.com</a>
-        &nbsp;
-        or use <a className={styles.additionallink} href="#contact">the form below</a>.
+        To start realising your digital dreams use <a className={styles.additionallink} href="#contact">the form below</a>.
       </p>
     </div>
   </div>;
