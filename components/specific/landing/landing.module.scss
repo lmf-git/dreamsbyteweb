@@ -225,6 +225,11 @@
 
 @media screen and (min-width: 1000px) {
 
+
+    .menu {
+        display: none;
+    }
+    
     .header {
         padding: 1.85em 4.25em 0; // Keep existing desktop padding but remove bottom
     }
