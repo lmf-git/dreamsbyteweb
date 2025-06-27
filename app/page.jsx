@@ -13,7 +13,6 @@ import Logo from "../components/icons/branding/Logo";
 
 import EmailMethod from '../components/icons/social/EmailMethod';
 import Whatsapp from '../components/icons/social/Whatsapp';
-import X from '../components/icons/social/X';
 import Youtube from '../components/icons/social/Youtube';
 import Github from '../components/icons/social/Github';
 import CloseIcon from "../components/icons/social/Close";
@@ -95,9 +94,6 @@ export default function Index() {
                 </a>
                 <a href="https://api.whatsapp.com/send?phone=447389805421" className={styles.social} rel="noopener noreferrer" target="_blank" aria-label="Contact us on WhatsApp">
                     <Whatsapp className={styles.socialicon} />
-                </a>
-                <a href="https://x.com/dreamsbytex" className={styles.social} rel="noopener noreferrer" target="_blank" aria-label="Follow us on X (formerly Twitter)">
-                    <X className={styles.socialicon} />
                 </a>
                 <a href="https://github.com/lmf-git" className={styles.social} rel="noopener noreferrer" target="_blank" aria-label="Visit our GitHub profile">
                     <Github className={styles.socialicon} />

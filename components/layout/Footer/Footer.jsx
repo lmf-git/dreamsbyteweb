@@ -5,13 +5,9 @@ import useIntersectionObserver from '../../../hooks/useIntersectionObserver';
 
 import Logo from '../../icons/branding/Logo';
 
-// import ContactNowFab from "../ContactNowFab/ContactNowFab";
-import Scroll from "../../icons/controls/Scroll";
-
 import EmailMethod from '../../icons/social/EmailMethod';
 import Whatsapp from '../../icons/social/Whatsapp';
 import EmailSend from '../../icons/EmailSend';
-import X from '../../icons/social/X';
 import Youtube from '../../icons/social/Youtube';
 import Github from '../../icons/social/Github';
 
@@ -118,9 +114,7 @@ export default function Footer({ message, setMessage }) {
           <a href="https://api.whatsapp.com/send?phone=447389805421" className={styles.social} rel="noopener noreferrer" target="_blank" aria-label="Contact us on WhatsApp">
             <Whatsapp className={styles.socialicon} />
           </a>
-          <a href="https://x.com/dreamsbytex" className={styles.social} rel="noopener noreferrer" target="_blank">
-            <X className={styles.socialicon} />
-          </a>
+
           {/* <Instagram className={styles.socialicon} /> */}
           {/* <Upwork className={styles.socialicon} /> */}
           <a href="https://github.com/lmf-git" className={styles.social} rel="noopener noreferrer" target="_blank" aria-label="Visit our GitHub profile">
