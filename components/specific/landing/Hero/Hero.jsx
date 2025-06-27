@@ -13,21 +13,12 @@ import styles from './hero.module.scss';
 
 const projects = [
     {
-        name: 'TRK Civils LTD',
-        problem: 'New civil engineering company needed a website and complete digital presence.',
-        solution: 'Built a modern website with inquiry tools and marketing setup.',
-        url: 'https://trk-amber.vercel.app',
-        image: '/projects/trk/trk-mobile.png',
-        desktopimage: '/projects/trk/trk-desktop.png',
-        reporturl: ''
-    },
-    {
-        name: 'The Right Direction',
-        problem: 'Community service needed a way to showcase programs and handle bookings.',
-        solution: 'Created a website with booking system and program information.',
-        url: 'https://trd.vercel.app',
-        image: '/projects/trd/trd-mobile.png',
-        desktopimage: '/projects/trd/trd-desktop.png',
+        name: 'Lvolt (Networking)',
+        problem: 'Security contractor needed to expand CCTV and low voltage services.',
+        solution: 'Built website with service area targeting and lead generation.',
+        url: 'https://www.lvolt.net',
+        image: '/projects/lvolt/lvolt-mobile.png',
+        desktopimage: '/projects/lvolt/lvolt-desktop.png',
         reporturl: ''
     },
     {
@@ -40,15 +31,6 @@ const projects = [
         reporturl: ''
     },
     {
-        name: 'Electric Doctors',
-        problem: 'Electrical contractor needed better customer communication and invoicing.',
-        solution: 'Created website with customer management and business tools.',
-        url: 'https://www.electricdrs.com',
-        image: '/projects/eds/eds-mobile.png',
-        desktopimage: '/projects/eds/eds-desktop.png',
-        reporturl: ''
-    },
-    {
         name: 'Skylar Lily',
         problem: 'Content creator needed a hub to showcase work and engage with fans.',
         solution: 'Made a website connecting social media and community features.',
@@ -58,12 +40,30 @@ const projects = [
         reporturl: ''
     },
     {
-        name: 'Lvolt (Networking)',
-        problem: 'Security contractor needed to expand CCTV and low voltage services.',
-        solution: 'Built website with service area targeting and lead generation.',
-        url: 'https://www.lvolt.net',
-        image: '/projects/lvolt/lvolt-mobile.png',
-        desktopimage: '/projects/lvolt/lvolt-desktop.png',
+        name: 'The Right Direction',
+        problem: 'Community service needed a way to showcase programs and handle bookings.',
+        solution: 'Created a website with booking system and program information.',
+        url: 'https://trd.vercel.app',
+        image: '/projects/trd/trd-mobile.png',
+        desktopimage: '/projects/trd/trd-desktop.png',
+        reporturl: ''
+    },
+    {
+        name: 'Electric Doctors',
+        problem: 'Electrical contractor needed better customer communication and invoicing.',
+        solution: 'Created website with customer management and business tools.',
+        url: 'https://www.electricdrs.com',
+        image: '/projects/eds/eds-mobile.png',
+        desktopimage: '/projects/eds/eds-desktop.png',
+        reporturl: ''
+    },
+    {
+        name: 'TRK Civils LTD',
+        problem: 'New civil engineering company needed a website and complete digital presence.',
+        solution: 'Built a modern website with inquiry tools and marketing setup.',
+        url: 'https://trk-amber.vercel.app',
+        image: '/projects/trk/trk-mobile.png',
+        desktopimage: '/projects/trk/trk-desktop.png',
         reporturl: ''
     }
 ];
