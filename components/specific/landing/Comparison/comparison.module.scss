@@ -2,10 +2,10 @@
   display: none;
   flex-direction: column;
   justify-content: center;
-  color: white;
+  color: var(--text-primary);
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out; // Faster transition
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out, color 0.3s ease; // Faster transition
   padding-bottom: 4em; // Add padding bottom for mobile
   
   &.heroComplete {
@@ -58,11 +58,11 @@
     border-color: rgba(255, 255, 255, 0.3);
     
     .advantageTitle {
-      color: rgb(255, 255, 255);
+      color: var(--advantage-title-hover);
     }
     
     .advantageDesc {
-      color: rgb(200, 200, 200);
+      color: var(--advantage-desc-hover);
     }
   }
   
@@ -76,13 +76,15 @@
   font-family: var(--font-syne);
   font-size: 1.2em;
   margin-bottom: 0.5em;
-  color: rgb(230, 230, 230);
+  color: var(--advantage-title);
+  transition: color 0.3s ease;
 }
 
 .advantageDesc {
-  color: rgb(180, 180, 180);
+  color: var(--advantage-desc);
   font-size: 0.9em;
   line-height: 1.5;
+  transition: color 0.3s ease;
 }
 
 @media screen and (min-width: 800px) {

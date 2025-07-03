@@ -3,15 +3,19 @@
 import { useEffect, useState } from "react";
 
 import { HeroProvider, useHero } from '../contexts/HeroContext';
+import { ThemeProvider, useTheme } from '../contexts/ThemeContext';
 import Hero from '../components/specific/landing/Hero/Hero';
 import Testimonials from "../components/specific/landing/Testimonials/Testimonials";
 import Services from "../components/specific/landing/Services/Services";
 
 import Footer from "../components/layout/Footer/Footer";
 import Contact from "../components/layout/Contact/Contact";
+import Stars from "../components/layout/Stars/Stars";
 
 import MenuIcon from "../components/icons/social/Menu";
 import Logo from "../components/icons/branding/Logo";
+import Sun from "../components/icons/controls/Sun";
+import Moon from "../components/icons/controls/Moon";
 
 import EmailMethod from '../components/icons/social/EmailMethod';
 import Whatsapp from '../components/icons/social/Whatsapp';
@@ -25,22 +29,29 @@ import Comparison from "../components/specific/landing/Comparison/Comparison";
 
 function PageContent() {
     const { heroComplete } = useHero();
+    const { theme, toggleTheme } = useTheme();
     const [menuOpen, setMenuOpen] = useState(false);
     const [message, setMessage] = useState('');
     const [contactOpen, setContactOpen] = useState(false);
 
-    // Control body overflow based on Hero completion
+    const getThemeIcon = () => {
+        return theme === 'light' 
+            ? <Sun className={styles.themeIcon} />
+            : <Moon className={styles.themeIcon} />;
+    };
+
+    // Control body overflow based on Hero completion and mobile menu
     useEffect(() => {
-        if (heroComplete) {
-            document.body.style.overflow = 'auto';
-        } else {
+        if (!heroComplete || menuOpen) {
             document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
         }
         
         return () => {
             document.body.style.overflow = 'auto';
         };
-    }, [heroComplete]);
+    }, [heroComplete, menuOpen]);
 
 
     // Add this new useEffect to clear URL fragments
@@ -71,11 +82,16 @@ function PageContent() {
     }, [menuOpen]);
 
     return (
+        <>
+        <Stars />
         <main className={styles.index}>
             <header className={styles.header}>
                 <AnimatedLogo extraClass={styles.logo} />
 
                 <div className={styles.headerctas}>
+                    <button className={styles.themeToggle} onClick={toggleTheme} aria-label="Toggle theme">
+                        {getThemeIcon()}
+                    </button>
                     <a className={styles.headercta} href="#services">Services</a>
                     <a className={styles.headercta} href="#testimonials">Reviews</a>
                     <button className={`${styles.headercta} ${styles.headerctaprimary}`} onClick={() => setContactOpen(true)}>CONTACT</button>
@@ -94,12 +110,17 @@ function PageContent() {
             onTransitionEnd={handleTransitionEnd}>
             <div className={styles.menuheader}>
                 <Logo extraClass={styles.menulogo} />
-                <button 
-                    className={styles.menuclose} 
-                    onClick={handleMenuClose}
-                    aria-label="Close menu">
-                    <CloseIcon extraClass={styles.menucloseicon} />
-                </button>
+                <div className={styles.menucontrols}>
+                    <button className={styles.menuThemeToggle} onClick={toggleTheme} aria-label="Toggle theme">
+                        {getThemeIcon()}
+                    </button>
+                    <button 
+                        className={styles.menuclose} 
+                        onClick={handleMenuClose}
+                        aria-label="Close menu">
+                        <CloseIcon extraClass={styles.menucloseicon} />
+                    </button>
+                </div>
             </div>
 
             <div className={styles.items}>
@@ -141,13 +162,16 @@ function PageContent() {
             initialMessage={message}
         />    
         </main>
+        </>
     );
 }
 
 export default function Index() {
     return (
-        <HeroProvider>
-            <PageContent />
-        </HeroProvider>
+        <ThemeProvider>
+            <HeroProvider>
+                <PageContent />
+            </HeroProvider>
+        </ThemeProvider>
     );
 };

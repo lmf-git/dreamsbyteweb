@@ -57,10 +57,11 @@
 
 .socialicon {
 	width: 100%;
-	fill: #fff;
+	fill: var(--social-icon);
+	transition: fill 0.3s ease;
 
 	&:hover, &:hover > path:first-child {
-		fill: #acacac;
+		fill: var(--social-icon-hover);
 	}
 }
 

@@ -20,12 +20,13 @@
 
 .title {
     font-family: var(--font-syne);
-    color: white;
+    color: var(--text-primary);
     font-size: 2em;
     font-weight: 700;
     margin: 0 0 .75em 0;
     opacity: 0;
     animation: reveal-title 0.5s ease-out forwards;
+    transition: color 0.3s ease;
     animation-delay: 2s; // Wait for logo (0.2s + 1.2s) and nav (0.5s) to complete
     user-select: none;
 
@@ -90,7 +91,7 @@
     font-family: var(--font-syne);
     font-weight: 600;
     font-size: 1.5em;
-    color: rgb(236, 236, 236);
+    color: var(--hero-project-name);
     margin-top: 0;
     margin-bottom: 1.5em;
     opacity: 0;
@@ -99,6 +100,7 @@
     user-select: none;
     position: relative;
     z-index: 2;
+    transition: color 0.3s ease;
 
     @media screen and (max-width: 74.9375em) {
         font-size: 1.2em;
@@ -382,10 +384,10 @@ $gpu-accel: translateZ(0);
 .projectparagraph {
     font-family: var(--font-inter);
     font-weight: 400;
-    color: rgb(166, 166, 166);
+    color: var(--hero-project-desc);
     line-height: 1.6;
     opacity: 0;
-    transition: opacity 0.3s ease-out;
+    transition: opacity 0.3s ease-out, color 0.3s ease;
     user-select: none;
     will-change: opacity;
 }
@@ -394,7 +396,8 @@ $gpu-accel: translateZ(0);
 .projectsolutions {
     font-family: var(--font-syne);
     font-weight: 500;
-    color: rgb(217, 217, 217);
+    color: var(--hero-project-title);
+    transition: color 0.3s ease;
 
     @media screen and (max-width: 74.9375em) {
         font-size: 0.9em;
@@ -404,10 +407,10 @@ $gpu-accel: translateZ(0);
 .projectparagraph {
     font-family: var(--font-inter);
     font-weight: 400;
-    color: rgb(166, 166, 166);
+    color: var(--hero-project-desc);
     line-height: 1.6;
     opacity: 0;
-    transition: opacity 0.3s ease-out;
+    transition: opacity 0.3s ease-out, color 0.3s ease;
 }
 
 .controls, .dots {
@@ -589,7 +592,7 @@ $gpu-accel: translateZ(0);
         opacity: 1;
         
         circle {
-            fill: rgb(217, 217, 217);
+            fill: var(--hero-dot-fill);
         }
     }
 
@@ -608,10 +611,10 @@ $gpu-accel: translateZ(0);
 .link {
     display: inline-block;
     padding: 0.5em 0.75em;
-    color: rgb(166, 166, 166);
+    color: var(--hero-project-desc);
     text-decoration: none;
     font-weight: 300;
-    transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out, color 0.3s ease;
     cursor: pointer;
     pointer-events: auto;
     opacity: 0;
@@ -694,8 +697,9 @@ $gpu-accel: translateZ(0);
     height: 2.5em;
     
     path {
-        fill: white;
+        fill: var(--hero-nav-arrow);
         stroke-width: 1.5;
+        transition: fill 0.3s ease;
     }
 }
 
@@ -872,7 +876,8 @@ $gpu-accel: translateZ(0);
         flex: 0 0 40%; // Adjusted from 35% to match new layout
         display: flex;
         flex-direction: column;
-        color: white;
+        color: var(--text-primary);
+        transition: color 0.3s ease;
         align-self: flex-start;
         position: relative;
     }
@@ -1272,9 +1277,9 @@ $gpu-accel: translateZ(0);
 .link {
     display: inline-block;
     padding: 0.5em 0.75em;
-    color: rgb(166, 166, 166);
+    color: var(--hero-project-desc);
     text-decoration: none;
-    transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out, color 0.3s ease;
     cursor: pointer;
     pointer-events: auto;
     z-index: 10;
@@ -1343,13 +1348,13 @@ $gpu-accel: translateZ(0);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     padding: 0.75em 1.5em;
-    color: rgb(236, 236, 236);
+    color: var(--hero-project-name);
     text-decoration: none;
     border-radius: 2em;
     font-family: var(--font-syne);
     font-weight: 500;
     font-size: 0.9em;
-    transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out, color 0.3s ease;
     opacity: 0;
     transform: translateY(20px);
 
@@ -1372,7 +1377,8 @@ $gpu-accel: translateZ(0);
         background: transparent;
         border: none;
         backdrop-filter: none;
-        color: white;
+        color: var(--text-primary);
+        transition: color 0.3s ease;
         
         &:hover {
             background: transparent;

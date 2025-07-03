@@ -1,18 +1,81 @@
 @use './animations';
 @use './colours';
 
+// Theme CSS Variables
+:root {
+    // Dark theme (default)
+    --bg-primary: #000000;
+    --bg-secondary: #141B35;
+    --text-primary: #ffffff;
+    --text-secondary: #aaaaaa;
+    --text-muted: #777777;
+    --social-icon: #aaaaaa;
+    --social-icon-hover: #ffffff;
+    --nav-link: #888888;
+    --nav-link-hover: #cccccc;
+    --nav-primary: #ffffff;
+    --nav-primary-hover: #ffffff;
+    --menu-bg: #0b0b0b;
+    --service-category: #dddddd;
+    --service-detail: #aaaaaa;
+    --drag-instruction: #999999;
+    --testimonial-text: #dddddd;
+    --advantage-title: #e6e6e6;
+    --advantage-desc: #b4b4b4;
+    --advantage-title-hover: #ffffff;
+    --advantage-desc-hover: #c8c8c8;
+    --hero-project-name: #ffffff;
+    --hero-project-title: #dddddd;
+    --hero-project-desc: #cccccc;
+    --hero-nav-arrow: #aaaaaa;
+    --hero-dot-fill: #d9d9d9;
+    --hero-dot-border: rgba(255, 255, 255, 0.3);
+}
+
+.light-theme {
+    --bg-primary: #ffffff;
+    --bg-secondary: #141B35;
+    --text-primary: #111111;
+    --text-secondary: #222222;
+    --text-muted: #666666;
+    --social-icon: #1a1a1a;
+    --social-icon-hover: #333333;
+    --nav-link: #000000;
+    --nav-link-hover: #666666;
+    --nav-primary: #1a1a1a;
+    --nav-primary-hover: #000000;
+    --menu-bg: #f5f5f5;
+    --service-category: #1a1a1a;
+    --service-detail: #111111;
+    --drag-instruction: #555555;
+    --testimonial-text: #222222;
+    --advantage-title: #333333;
+    --advantage-desc: #555555;
+    --advantage-title-hover: #000000;
+    --advantage-desc-hover: #333333;
+    --hero-project-name: #1a1a1a;
+    --hero-project-title: #333333;
+    --hero-project-desc: #555555;
+    --hero-nav-arrow: #333333;
+    --hero-dot-fill: #000000;
+    --hero-dot-border: rgba(0, 0, 0, 0.3);
+}
+
 html, body, #__next, #__next > div {
     height: 100%;
 }
 
 html {
-    background: #000000;
+    background: var(--bg-primary);
     font-family: var(--font-syne), var(--font-inter), system-ui, sans-serif;
+    color: var(--text-primary);
 }
 
 body {
     margin: 0;
-    background: linear-gradient(to bottom, #141B35, #000000);
+    background: linear-gradient(to bottom, var(--bg-secondary), var(--bg-primary));
+    color: var(--text-primary);
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 

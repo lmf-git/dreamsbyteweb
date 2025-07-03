@@ -45,14 +45,15 @@
 
 .headercta {
     display: none;
-    color: rgb(201, 201, 201);
+    color: var(--nav-link);
     text-decoration: none;
-    font-size: 1.125em;  // Adjusted from 1.1235em for cleaner number
+    font-size: 1.35em;  // Increased from 1.125em
+    transition: color 0.3s ease;
     font-weight: 100;
     font-style: italic;
     
     &:hover {
-        color: colours.$hoverwhite;
+        color: var(--nav-link-hover);
     }
 
     opacity: 0;
@@ -75,12 +76,47 @@
 }
 
 .headerctaprimary {
-    color: white;
-    font-size: 1.35em;
+    color: var(--nav-primary);
+    font-size: 1.5em;  // Increased from 1.35em
     font-weight: 900;
     background: transparent;
     border: none;
     cursor: pointer;
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: var(--nav-primary-hover);
+    }
+}
+
+.themeToggle {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+
+    @media screen and (max-width: 1199px) {
+        display: none;
+    }
+}
+
+.themeIcon {
+    width: 2em;  // Increased from 1.5em
+    height: 2em;  // Increased from 1.5em
+    color: var(--nav-link);
+    transition: color 0.3s ease;
+
+    .themeToggle:hover & {
+        color: var(--nav-link-hover);
+    }
 }
 
 .menutoggle {
@@ -92,7 +128,7 @@
 
     &:hover {
         .menutoggleicon {
-            fill: rgb(235, 235, 235);
+            fill: var(--nav-link-hover);
         }
     }
 
@@ -101,7 +137,8 @@
 
 .menutoggleicon {
     width: 100%;
-    fill: rgb(176, 176, 176);
+    fill: var(--nav-link);
+    transition: fill 0.3s ease;
 }
 
 .menu {
@@ -111,12 +148,12 @@
     position: fixed;
     top: 0;
     left: 0;
-    background: #0b0b0b;
+    background: var(--menu-bg);
     box-sizing: border-box;
     z-index: 998;  // Increase z-index, slightly lower than header
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out, background 0.3s ease;
     display: flex;
     flex-direction: column;
 
@@ -129,10 +166,46 @@
 .menuheader {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: 0.5em;
 }
 
 .menulogo {
     width: 12.5em;
+}
+
+.menucontrols {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.menuThemeToggle {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+    width: 3.5em;
+    height: 3.5em;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+
+    .themeIcon {
+        height: 3.5em;
+        width: 3.5em;
+        color: var(--text-muted);
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: var(--text-secondary);
+        }
+    }
 }
 
 .menulogo path {
@@ -140,15 +213,19 @@
 }
 
 .menuclose {
-    width: 3.5em;
     padding: 0;
     border: 0;
     background: none;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5em;
+    height: 3.5em;
 
     &:hover {
         .menucloseicon {
-            fill: rgb(235, 235, 235);
+            fill: var(--text-secondary);
         }
     }
 
@@ -156,7 +233,10 @@
 }
 
 .menucloseicon {
-    fill: rgb(99, 99, 99);
+    height: 3.5em;
+    width: 3.5em;
+    fill: var(--text-muted);
+    transition: fill 0.3s ease;
 }
 
 .items {
@@ -175,9 +255,9 @@
     text-decoration: none;
     font-size: 2em;  // Increased from 1.5em for better mobile visibility
     font-weight: 300;
-    color: rgb(99, 99, 99);
+    color: var(--text-muted);
     padding: 0.5em;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.3s ease-in-out;
     position: relative;
     background: none;
     border: none;
@@ -195,7 +275,7 @@
     }
 
     &:hover {
-        color: rgb(50, 50, 50);
+        color: var(--text-primary);
         transform: translateY(-2px);
         
         &:after {
@@ -224,7 +304,12 @@
 
 .socialicon {
     width: 2.25em;
-    fill: rgb(92, 92, 92);
+    fill: var(--social-icon);
+    transition: fill 0.3s ease;
+}
+
+.social:hover .socialicon {
+    fill: var(--social-icon-hover);
 }
 
 

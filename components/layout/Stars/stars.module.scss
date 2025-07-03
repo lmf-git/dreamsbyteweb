@@ -1,0 +1,100 @@
+.starsContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0; // Visible but behind content
+  overflow: hidden;
+  transition: opacity 0.3s ease;
+  
+  // Hide stars in light mode for better visibility
+  :global(.light-theme) & {
+    opacity: 0.3;
+  }
+}
+
+.star {
+  position: absolute;
+  left: var(--start-x);
+  top: var(--start-y);
+  transform: scale(var(--size));
+  opacity: 0;
+  animation: shootingStar var(--duration) linear infinite;
+  animation-delay: var(--delay);
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 24px rgba(255, 255, 255, 0.3));
+}
+
+@keyframes shootingStar {
+  0% {
+    opacity: 0;
+    left: var(--start-x);
+    top: var(--start-y);
+    transform: scale(var(--size)) rotate(0deg);
+  }
+  
+  10% {
+    opacity: 1;
+  }
+  
+  90% {
+    opacity: 1;
+  }
+  
+  100% {
+    opacity: 0;
+    left: var(--end-x);
+    top: var(--end-y);
+    transform: scale(calc(var(--size) * 0.5)) rotate(45deg);
+  }
+}
+
+// Add enhanced glowing shooting star tail
+.star::before {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.7) 30%, rgba(255,255,255,0.3) 60%, transparent 100%);
+  left: -75px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 1.5px;
+  box-shadow: 
+    0 0 6px rgba(255,255,255,0.8),
+    0 0 12px rgba(255,255,255,0.5),
+    0 0 18px rgba(255,255,255,0.3);
+}
+
+.star::after {
+  content: '';
+  position: absolute;
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 20%, rgba(255,255,255,0.1) 50%, transparent 100%);
+  left: -115px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.9;
+  box-shadow: 0 0 8px rgba(255,255,255,0.4);
+}
+
+// Responsive adjustments
+@media screen and (max-width: 768px) {
+  .star {
+    transform: scale(calc(var(--size) * 0.7));
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 12px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 18px rgba(255, 255, 255, 0.2));
+  }
+  
+  .star::before {
+    width: 60px;
+    left: -55px;
+    height: 2px;
+  }
+  
+  .star::after {
+    width: 90px;
+    left: -85px;
+  }
+}
