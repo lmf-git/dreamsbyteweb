@@ -93,7 +93,7 @@ export default function Services({ setMessage }) {
           { name: 'Desktop & Mobile Applications', price: 'Starting at $4,000' },
           { name: 'Custom API Creation', price: 'Starting at $1,600' },
           { name: 'E-commerce Application', price: 'Starting at $2,800' },
-          { name: 'Legacy System Modernization', price: 'Starting at $6,500' }
+          { name: 'Legacy System Modernisation', price: 'Starting at $6,500' }
         ]},
         { name: 'Technical', items: [
           { name: 'Performance Optimization', price: 'Starting at $600' },

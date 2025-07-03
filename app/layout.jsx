@@ -18,7 +18,7 @@ export const metadata = {
     template: '%s | Dreamsbyte',
     default: 'Dreamsbyte | Welcome Forward',
   },
-  description: 'From concept to reality, we offer full stack development, e-commerce solutions, captivating design, and more. Email contact@dreamsbyte.com to start realizing your digital dreams.',
+  description: 'From concept to reality, we offer full stack development, e-commerce solutions, captivating design, and more. Email contact@dreamsbyte.com to start realising your digital dreams.',
   keywords: 'development, design, database, figma, javascript, html, css',
   "msapplication-TileColor": "#ffc40d",
   "apple-touch-icon": "/icon.svg",
