@@ -141,6 +141,8 @@
   color: rgb(221, 221, 221);
   text-decoration: none;
   font-weight: 300;
+  font-size: .95em;
+  font-family: var(--font-syne);
   padding: .2em;
   transition: margin .25s cubic-bezier(0.075, 0.82, 0.165, 1);
   background: transparent;
@@ -148,10 +150,8 @@
   cursor: pointer;
 
   &:hover {
-    color: color(srgb 0.0723 0.1028 0.2031);
+    color: white;
     text-decoration: underline;
-    background: white;
-    margin: 0 .35em;
   }
 }
 

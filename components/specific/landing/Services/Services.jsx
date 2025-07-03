@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 import useIntersectionObserver from '../../../../hooks/useIntersectionObserver';
+import { useHero } from '../../../../contexts/HeroContext';
 
 import HTML from '../../../icons/brands/HTML';
 import CSS from '../../../icons/brands/CSS';
@@ -45,17 +46,10 @@ const technologies = [
 
 export default function Services({ setMessage, setContactOpen }) {
   const sectionRef = useRef(null);
-  const [canReveal, setCanReveal] = useState(false);
+  const { heroComplete } = useHero();
   
-  // Reduce the delay for mobile and desktop
-  useEffect(() => {
-    const delay = window.innerWidth < 1200 ? 2000 : 1000;
-    const timer = setTimeout(() => setCanReveal(true), delay);
-    return () => clearTimeout(timer);
-  }, []);
-
   // Decrease threshold to make it appear sooner
-  const isVisible = useIntersectionObserver(sectionRef, 0.1) && canReveal;
+  const isVisible = useIntersectionObserver(sectionRef, 0.1) && heroComplete;
 
   const handleExampleClick = (service) => (e) => {
     const dot = e.currentTarget.querySelector('::before');

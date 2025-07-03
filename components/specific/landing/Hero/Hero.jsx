@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useHero } from '../../../../contexts/HeroContext';
 
 import RightLine from '../../../icons/controls/RightLine';
 import LeftLine from '../../../icons/controls/LeftLine';
@@ -87,6 +88,7 @@ const projects = [
 ];
 
 export default function Hero() {  // Remove onComplete prop
+    const { setHeroComplete } = useHero();
     const [project, setProject] = useState(null); // Change initial state to null
     const [showPreview, setShowPreview] = useState(false);
     const [showContent, setShowContent] = useState(false);
@@ -182,6 +184,13 @@ export default function Hero() {  // Remove onComplete prop
             });
         }
     }, [isInitialized]);
+
+    // Signal Hero completion to other sections
+    useEffect(() => {
+        if (initialAnimationComplete) {
+            setHeroComplete(true);
+        }
+    }, [initialAnimationComplete, setHeroComplete]);
 
     // Remove redundant useEffect hooks related to resize
     useEffect(() => {

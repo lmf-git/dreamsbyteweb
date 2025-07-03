@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 
+import { HeroProvider } from '../contexts/HeroContext';
 import Hero from '../components/specific/landing/Hero/Hero';
 import Testimonials from "../components/specific/landing/Testimonials/Testimonials";
 import Services from "../components/specific/landing/Services/Services";
@@ -55,6 +56,7 @@ export default function Index() {
     }, [menuOpen]);
 
     return (
+        <HeroProvider>
         <main className={styles.index}>
             <header className={styles.header}>
                 <AnimatedLogo extraClass={styles.logo} />
@@ -123,5 +125,6 @@ export default function Index() {
             initialMessage={message}
         />    
         </main>
+        </HeroProvider>
     );
 };

@@ -3,12 +3,15 @@
 import { useRef, useState, useEffect } from 'react';
 import { testimonials } from '../../../../data.mjs';
 import useIntersectionObserver from '../../../../hooks/useIntersectionObserver';
+import { useHero } from '../../../../contexts/HeroContext';
 import DragRight from '../../../icons/controls/DragRight';
 import styles from './testimonials.module.scss';
 
 export default function Testimonials() {
     const sectionRef = useRef(null);
-    const isVisible = useIntersectionObserver(sectionRef, 0.3);
+    const { heroComplete } = useHero();
+    
+    const isVisible = useIntersectionObserver(sectionRef, 0.1) && heroComplete;
     const listRef = useRef(null);
     const planeRef = useRef(null);
     const animationRef = useRef(null);

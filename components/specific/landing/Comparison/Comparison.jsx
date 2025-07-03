@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 import useIntersectionObserver from '../../../../hooks/useIntersectionObserver';
+import { useHero } from '../../../../contexts/HeroContext';
 import styles from './comparison.module.scss';
 
 const advantages = [
@@ -31,17 +32,10 @@ const advantages = [
 
 export default function Comparison({ setMessage, setContactOpen }) {
   const sectionRef = useRef(null);
-  const [canReveal, setCanReveal] = useState(false);
-  
-  // Reduce delay significantly for both mobile and desktop
-  useEffect(() => {
-    const delay = window.innerWidth < 1200 ? 1000 : 500;
-    const timer = setTimeout(() => setCanReveal(true), delay);
-    return () => clearTimeout(timer);
-  }, []);
+  const { heroComplete } = useHero();
 
   // Lower threshold to trigger earlier
-  const isVisible = useIntersectionObserver(sectionRef, 0.1) && canReveal;
+  const isVisible = useIntersectionObserver(sectionRef, 0.1) && heroComplete;
 
   const handleAdvantageClick = (title) => () => {
     setMessage(`Hi, I'm interested in learning more about "${title}"`);
