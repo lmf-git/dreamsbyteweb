@@ -13,6 +13,15 @@ import styles from './hero.module.scss';
 
 const projects = [
     {
+        name: 'MetaTicket',
+        problem: 'Event discovery needed to be more accessible and supportive of local talent.',
+        solution: 'Created a platform making live events affordable and connecting users with local venues.',
+        url: 'https://metaticket.org',
+        image: '/projects/metaticket/metaticket-mobile.png',
+        desktopimage: '/projects/metaticket/metaticket-desktop.png',
+        reporturl: ''
+    },
+    {
         name: 'ICTALLY',
         problem: 'IT professionals needed a trusted marketplace to showcase skills and connect with businesses.',
         solution: 'Built a platform connecting IT integrators, businesses, and vendors with reviews and portfolios.',
@@ -22,16 +31,7 @@ const projects = [
         reporturl: ''
     },
     {
-        name: 'Metaticket',
-        problem: 'Event discovery needed to be more accessible and supportive of local talent.',
-        solution: 'Created a platform making live events affordable and connecting users with local venues.',
-        url: 'https://metaticket.org',
-        image: '/projects/metaticket/metaticket-mobile.png',
-        desktopimage: '/projects/metaticket/metaticket-desktop.png',
-        reporturl: ''
-    },
-    {
-        name: 'Lvolt (Networking)',
+        name: 'Lvolt Networking',
         problem: 'Security contractor needed to expand CCTV and low voltage services.',
         solution: 'Built website with service area targeting and lead generation.',
         url: 'https://www.lvolt.net',
