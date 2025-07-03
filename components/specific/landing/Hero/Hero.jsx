@@ -13,7 +13,7 @@ import styles from './hero.module.scss';
 
 const projects = [
     {
-        name: 'Ictally',
+        name: 'ICTALLY',
         problem: 'IT professionals needed a trusted marketplace to showcase skills and connect with businesses.',
         solution: 'Built a platform connecting IT integrators, businesses, and vendors with reviews and portfolios.',
         url: 'https://ictally.com',

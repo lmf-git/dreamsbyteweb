@@ -123,6 +123,12 @@
   margin-left: 0;  // Remove left margin that was used for inline positioning
 }
 
+.estimatedHours {
+  font-size: 0.9em;
+  color: rgb(180, 180, 180);
+  font-weight: 300;
+}
+
 .additional {
   padding: 1.2em;
   font-weight: 100;
@@ -137,6 +143,9 @@
   font-weight: 300;
   padding: .2em;
   transition: margin .25s cubic-bezier(0.075, 0.82, 0.165, 1);
+  background: transparent;
+  border: none;
+  cursor: pointer;
 
   &:hover {
     color: color(srgb 0.0723 0.1028 0.2031);

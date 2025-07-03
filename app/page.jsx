@@ -7,6 +7,7 @@ import Testimonials from "../components/specific/landing/Testimonials/Testimonia
 import Services from "../components/specific/landing/Services/Services";
 
 import Footer from "../components/layout/Footer/Footer";
+import Contact from "../components/layout/Contact/Contact";
 
 import MenuIcon from "../components/icons/social/Menu";
 import Logo from "../components/icons/branding/Logo";
@@ -24,6 +25,7 @@ import Comparison from "../components/specific/landing/Comparison/Comparison";
 export default function Index() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [message, setMessage] = useState('');
+    const [contactOpen, setContactOpen] = useState(false);
 
     // Add this new useEffect to clear URL fragments
     useEffect(() => {
@@ -52,19 +54,20 @@ export default function Index() {
         if (menuOpen) document.body.classList.add(styles.clipped);
     }, [menuOpen]);
 
-    return <main className={styles.index}>
-        <header className={styles.header}>
-            <AnimatedLogo extraClass={styles.logo} />
+    return (
+        <main className={styles.index}>
+            <header className={styles.header}>
+                <AnimatedLogo extraClass={styles.logo} />
 
-            <div className={styles.headerctas}>
-                <a className={styles.headercta} href="#services">Services</a>
-                <a className={styles.headercta} href="#testimonials">Reviews</a>
-                <a className={`${styles.headercta} ${styles.headerctaprimary}`} href="#contact">CONTACT</a>
-                <button className={styles.menutoggle} onClick={() => setMenuOpen(true)}>
-                    <MenuIcon extraClass={styles.menutoggleicon} />
-                </button>
-            </div>
-        </header>
+                <div className={styles.headerctas}>
+                    <a className={styles.headercta} href="#services">Services</a>
+                    <a className={styles.headercta} href="#testimonials">Reviews</a>
+                    <button className={`${styles.headercta} ${styles.headerctaprimary}`} onClick={() => setContactOpen(true)}>CONTACT</button>
+                    <button className={styles.menutoggle} onClick={() => setMenuOpen(true)}>
+                        <MenuIcon extraClass={styles.menutoggleicon} />
+                    </button>
+                </div>
+            </header>
 
         {/* <AnimatedLogo extraClass={styles.test} /> */}
 
@@ -85,7 +88,7 @@ export default function Index() {
             <div className={styles.items}>
                 <a className={styles.item} onClick={handleMenuClose} href="#services">Services</a>
                 <a className={styles.item} onClick={handleMenuClose} href="#testimonials">Reviews</a>
-                <a className={styles.item} onClick={handleMenuClose} href="#contact">Contact</a>
+                <button className={styles.item} onClick={() => { handleMenuClose(); setContactOpen(true); }}>Contact</button>
             </div>
 
             <div className={styles.socials}>
@@ -106,12 +109,19 @@ export default function Index() {
 
         <Hero />
         
-        <Services setMessage={setMessage} /> {/* Moved above Comparison */}
+        <Services setMessage={setMessage} setContactOpen={setContactOpen} />
         
         <Testimonials />
 
-        <Comparison setMessage={setMessage} />
+        <Comparison setMessage={setMessage} setContactOpen={setContactOpen} />
 
-        <Footer message={message} setMessage={setMessage} />    
-    </main>;
+        <Footer />
+        
+        <Contact 
+            isOpen={contactOpen} 
+            onClose={() => setContactOpen(false)} 
+            initialMessage={message}
+        />    
+        </main>
+    );
 };

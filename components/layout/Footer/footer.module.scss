@@ -9,161 +9,16 @@
 	
 	margin: 0 1.25em 2.5em;
 
-	background: rgb(18, 18, 18);
-
 	padding: 1.25em;
 
 	opacity: 0;
-	transition: opacity 1s ease-out 0.2s; // Add delay to footer itself
+	transition: opacity 1s ease-out 0.2s;
 	
 	&.visible {
 		opacity: 1;
 	}
 }
 
-.contact {
-    // padding: 0 15vw;
-    margin-bottom: 4em;
-    width: 100%;
-    box-sizing: border-box;
-
-	opacity: 0;
-	transform: translateY(20px);
-	transition: opacity 1s ease-out 0.4s, transform 1s ease-out 0.4s; // Contact appears second
-	
-	&.visible {
-		opacity: 1;
-		transform: translateY(0);
-	}
-}
-
-.label {
-	font-size: 1.5em; // increased from 1.35em
-	color: #fcfcfc;
-	font-weight: 300;
-	margin: 0 0 .35em;
-}
-
-.instructions {
-	font-size: 1em; // increased from .85em
-	color: #9d9d9e;
-	margin: 0 0 .75em;
-	font-weight: 100;
-}
-
-.input {
-	display: block;
-	width: 100%;
-	padding: .35em;
-	margin: 0 0 .75em;
-	box-sizing: border-box;
-	border: .125em solid #5d5e5f;
-	border-top-color: #848586;
-
-	font-weight: 100;
-
-	font-size: 1.15em; // increased from 1.025em
-
-	background: transparent;
-	outline: none;
-	color: white;
-
-	&::placeholder {
-		color: #bcbcbc;
-	}
-}
-
-.textarea {
-	display: block;
-	height: 5.25em;
-	width: 100%;
-	padding: .35em;
-	margin: 0 0 .75em;
-	
-	font-size: 1.15em; // increased from 1.025em
-	font-weight: 100;
-	
-	background: transparent;
-	color: white;
-	
-	border: .125em solid #5d5e5f;
-	border-top-color: #848586;
-
-	box-sizing: border-box;
-	resize: none;
-	outline: none;
-
-	&::placeholder {
-		color: #bcbcbc;
-	}
-}
-
-.actions {
-	display: flex;
-	justify-content: flex-end; // align actions to the right
-	gap: .825em;
-}
-
-.action {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding: .8em .95em;
-	border: .145em solid #5d5e5f;
-	border-bottom-color: #a9a9a9;
-	font-weight: bold;
-
-	background: none;
-	box-sizing: border-box;
-	cursor: pointer;
-}
-
-.add {
-	color: #bababb;
-
-	&:hover {
-		background: none;
-		border-color: #f3f3f3;
-		color: #f3f3f3;
-	}
-}
-
-.submit {
-	background: transparent;
-	border: .145em solid #f3f3f3;
-	color: #f3f3f3;
-
-	display: flex;
-	align-items: center;
-	gap: 0.5em;
-	justify-content: center;
-	width: auto;
-	flex: none;
-	font-size: 1.15em;
-	padding: .8em 1.2em;
-	position: relative;
-	transition: background-color 0.2s ease;
-
-	&:hover {
-		background: rgba(243, 243, 243, 0.1);
-
-		.submit-icon {
-			transform: translateX(0.3em);
-			opacity: 1;
-		}
-	}
-
-	.submit-icon {
-		width: 1.25em;
-		opacity: 0.7;
-		transition: all 0.2s ease;
-		fill: none;
-		
-		path {
-			stroke: #f3f3f3;
-		}
-	}
-}
 
 .shill {
 	display: flex;

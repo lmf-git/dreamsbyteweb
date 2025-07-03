@@ -43,7 +43,7 @@ const technologies = [
   { name: 'VS Code', url: 'https://code.visualstudio.com/', Icon: VSCode }
 ];
 
-export default function Services({ setMessage }) {
+export default function Services({ setMessage, setContactOpen }) {
   const sectionRef = useRef(null);
   const [canReveal, setCanReveal] = useState(false);
   
@@ -66,15 +66,27 @@ export default function Services({ setMessage }) {
     }
 
     setMessage(`Hi, I'm interested in ${service}`);
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    setContactOpen(true);
   };
 
-  return <div 
-    ref={sectionRef}
-    className={`section ${styles.services} ${isVisible ? styles.visible : ''}`} 
-    id="services"
-  >
-    <div className={styles.heading}>
+  const calculateEstimatedHours = (priceString) => {
+    // Extract the numeric value from the price string
+    const match = priceString.match(/\$(\d+(?:,\d+)*)/);
+    if (match) {
+      const price = parseInt(match[1].replace(',', ''));
+      const hours = Math.round(price / 25);
+      return `est ${hours}hrs`;
+    }
+    return '';
+  };
+
+  return (
+    <div 
+      ref={sectionRef}
+      className={`section ${styles.services} ${isVisible ? styles.visible : ''}`} 
+      id="services"
+    >
+      <div className={styles.heading}>
       <span className={styles.preamble}>From Concept to Reality</span>
       <h2 className={styles.title}>Our Services</h2>
       <span className={styles.baseRate}>Base Rate: $25/hr</span>
@@ -115,7 +127,14 @@ export default function Services({ setMessage }) {
               onClick={handleExampleClick(item.name)}
             >
               <div className={styles.serviceName}>{item.name}</div>
-              {item.price && <div className={styles.price}>{item.price}</div>}
+              {item.price && (
+                <div className={styles.price}>
+                  {item.price}
+                  {!item.price.includes('/month') && (
+                    <span className={styles.estimatedHours}> ({calculateEstimatedHours(item.price)})</span>
+                  )}
+                </div>
+              )}
             </span>
           ))}
         </div>
@@ -149,8 +168,10 @@ export default function Services({ setMessage }) {
       style={{ transitionDelay: '2.8s' }}>
       <p className={styles.additional}>
         All services are tailored to your specific needs. Our base rate is $25/hr, with project-based pricing available.
-        To start realising your digital dreams use <a className={styles.additionallink} href="#contact">the form below</a>.
+        <br />
+        <button className={styles.additionallink} onClick={() => setContactOpen(true)}>Contact us</button> to start realising your dreams.
       </p>
     </div>
-  </div>;
-};
+  </div>
+  );
+}

@@ -29,7 +29,7 @@ const advantages = [
   }
 ];
 
-export default function Comparison({ setMessage }) {
+export default function Comparison({ setMessage, setContactOpen }) {
   const sectionRef = useRef(null);
   const [canReveal, setCanReveal] = useState(false);
   
@@ -45,7 +45,7 @@ export default function Comparison({ setMessage }) {
 
   const handleAdvantageClick = (title) => () => {
     setMessage(`Hi, I'm interested in learning more about "${title}"`);
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    setContactOpen(true);
   };
 
   return (
