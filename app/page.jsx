@@ -109,11 +109,11 @@ export default function Index() {
 
         <Hero />
         
-        <Services setMessage={setMessage} setContactOpen={setContactOpen} />
-        
         <Testimonials />
 
         <Comparison setMessage={setMessage} setContactOpen={setContactOpen} />
+        
+        <Services setMessage={setMessage} setContactOpen={setContactOpen} />
 
         <Footer />
         

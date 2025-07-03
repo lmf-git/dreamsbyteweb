@@ -21,11 +21,11 @@ const advantages = [
   },
   {
     title: 'High Performance',
-    description: 'Optimized for speed and efficiency with industry-leading performance scores and best practices.'
+    description: 'Optimised for speed and efficiency with industry-leading performance scores and best practices.'
   },
   {
-    title: 'Clear Communication',
-    description: 'Direct access to developers and regular check-ins to ensure your vision is perfectly executed.'
+    title: 'Fluent Communication',
+    description: 'Ability to translate across business, technical and marketing languages.'
   }
 ];
 

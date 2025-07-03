@@ -75,7 +75,7 @@ export default function Services({ setMessage, setContactOpen }) {
     if (match) {
       const price = parseInt(match[1].replace(',', ''));
       const hours = Math.round(price / 25);
-      return `est ${hours}hrs`;
+      return `est > ${hours}hrs`;
     }
     return '';
   };
@@ -108,7 +108,7 @@ export default function Services({ setMessage, setContactOpen }) {
           { name: 'Legacy System Modernisation', price: 'Starting at $6,500' }
         ]},
         { name: 'Technical', items: [
-          { name: 'Performance Optimization', price: 'Starting at $600' },
+          { name: 'Performance Optimisation', price: 'Starting at $600' },
           { name: 'DevOps & Security', price: 'Starting at $1,200' },
           { name: 'System Integration', price: 'Starting at $1,400' },
           { name: 'Technical Consultation', price: 'Starting at $500' }
