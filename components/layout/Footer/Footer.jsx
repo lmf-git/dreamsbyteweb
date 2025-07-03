@@ -2,6 +2,7 @@
 
 import { useRef } from 'react';
 import useIntersectionObserver from '../../../hooks/useIntersectionObserver';
+import { useHero } from '../../../contexts/HeroContext';
 
 import Logo from '../../icons/branding/Logo';
 
@@ -15,11 +16,12 @@ import styles from './footer.module.scss';
 
 export default function Footer() {
   const footerRef = useRef();
-  const isVisible = useIntersectionObserver(footerRef, 0.25);
+  const { heroComplete } = useHero();
+  const isVisible = useIntersectionObserver(footerRef, 0.25) && heroComplete;
 
   return (
     <div 
-      className={`${styles.footer} ${isVisible ? styles.visible : ''}`} 
+      className={`${styles.footer} ${heroComplete ? styles.heroComplete : ''} ${isVisible ? styles.visible : ''}`} 
       ref={footerRef} 
       id="contact"
     >

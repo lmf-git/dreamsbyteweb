@@ -2,19 +2,23 @@
 @use '../../../layout/colours';
 
 .testimonials {
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     padding: 0 0 4em;
     margin-left: 2.25em;
-    opacity: 0 !important;
+    opacity: 0;
     transform: translateY(1.25em);
     transition: opacity 1s ease-out, transform 1s ease-out;
     pointer-events: none;
     will-change: opacity, transform;
 
+    &.heroComplete {
+        display: flex;
+    }
+
     &.visible {
-        opacity: 1 !important;
+        opacity: 1;
         transform: translateY(0);
         pointer-events: auto;
     }

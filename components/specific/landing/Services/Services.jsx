@@ -77,7 +77,7 @@ export default function Services({ setMessage, setContactOpen }) {
   return (
     <div 
       ref={sectionRef}
-      className={`section ${styles.services} ${isVisible ? styles.visible : ''}`} 
+      className={`section ${styles.services} ${heroComplete ? styles.heroComplete : ''} ${isVisible ? styles.visible : ''}`} 
       id="services"
     >
       <div className={styles.heading}>

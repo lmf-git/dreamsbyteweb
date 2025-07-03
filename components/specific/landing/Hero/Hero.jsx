@@ -162,7 +162,10 @@ export default function Hero() {  // Remove onComplete prop
                                         setTimeout(() => {
                                             setShowNav(true);
                                             setDotsReady(true);
-                                            setInitialAnimationComplete(true);
+                                            // Add extra delay for mobile to ensure all animations complete
+                                            setTimeout(() => {
+                                                setInitialAnimationComplete(true);
+                                            }, 2000);
                                         }, 1000);
                                     }, 600);
                                 }, 5000);
@@ -177,7 +180,10 @@ export default function Hero() {  // Remove onComplete prop
                         setTimeout(() => {
                             setShowPreview(true);
                             setFirstRevealComplete(true);
-                            setInitialAnimationComplete(true);
+                            // Add extra delay to ensure all animations complete
+                            setTimeout(() => {
+                                setInitialAnimationComplete(true);
+                            }, 1500);
                         }, 600);
                     }, logoAnimationTime);
                 }

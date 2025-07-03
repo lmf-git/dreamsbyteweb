@@ -45,7 +45,7 @@ export default function Comparison({ setMessage, setContactOpen }) {
   return (
     <div 
       ref={sectionRef}
-      className={`section ${styles.comparison} ${isVisible ? styles.visible : ''}`} 
+      className={`section ${styles.comparison} ${heroComplete ? styles.heroComplete : ''} ${isVisible ? styles.visible : ''}`} 
       id="comparison"
     >
       <div className={styles.heading}>

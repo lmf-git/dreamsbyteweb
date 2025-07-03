@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import { HeroProvider } from '../contexts/HeroContext';
+import { HeroProvider, useHero } from '../contexts/HeroContext';
 import Hero from '../components/specific/landing/Hero/Hero';
 import Testimonials from "../components/specific/landing/Testimonials/Testimonials";
 import Services from "../components/specific/landing/Services/Services";
@@ -23,10 +23,25 @@ import styles from "../components/specific/landing/landing.module.scss";
 import AnimatedLogo from "../components/icons/branding/AnimatedLogo";
 import Comparison from "../components/specific/landing/Comparison/Comparison";
 
-export default function Index() {
+function PageContent() {
+    const { heroComplete } = useHero();
     const [menuOpen, setMenuOpen] = useState(false);
     const [message, setMessage] = useState('');
     const [contactOpen, setContactOpen] = useState(false);
+
+    // Control body overflow based on Hero completion
+    useEffect(() => {
+        if (heroComplete) {
+            document.body.style.overflow = 'auto';
+        } else {
+            document.body.style.overflow = 'hidden';
+        }
+        
+        return () => {
+            document.body.style.overflow = 'auto';
+        };
+    }, [heroComplete]);
+
 
     // Add this new useEffect to clear URL fragments
     useEffect(() => {
@@ -56,7 +71,6 @@ export default function Index() {
     }, [menuOpen]);
 
     return (
-        <HeroProvider>
         <main className={styles.index}>
             <header className={styles.header}>
                 <AnimatedLogo extraClass={styles.logo} />
@@ -74,6 +88,7 @@ export default function Index() {
         {/* <AnimatedLogo extraClass={styles.test} /> */}
 
         {/* TODO: Refactor into MobileMenu. */}
+        {menuOpen && (
         <div 
             className={`${styles.menu} ${menuOpen ? styles.visible : ''}`}
             onTransitionEnd={handleTransitionEnd}>
@@ -108,6 +123,7 @@ export default function Index() {
                 </a>
             </div>
         </div>
+        )}
 
         <Hero />
         
@@ -125,6 +141,13 @@ export default function Index() {
             initialMessage={message}
         />    
         </main>
+    );
+}
+
+export default function Index() {
+    return (
+        <HeroProvider>
+            <PageContent />
         </HeroProvider>
     );
 };

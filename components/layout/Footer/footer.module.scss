@@ -2,7 +2,7 @@
 @use '../colours';
 
 .footer {
-	display: flex;
+	display: none;
 	flex-direction: column;
 	
 	position: relative;
@@ -13,6 +13,10 @@
 
 	opacity: 0;
 	transition: opacity 1s ease-out 0.2s;
+	
+	&.heroComplete {
+		display: flex;
+	}
 	
 	&.visible {
 		opacity: 1;

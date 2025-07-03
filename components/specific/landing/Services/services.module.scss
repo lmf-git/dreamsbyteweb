@@ -2,7 +2,7 @@
 @use '../../../layout/colours';
 
 .services {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   color: white;
@@ -10,6 +10,10 @@
   transform: translateY(1.25em);
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
   padding: 1em;  // Add base padding for mobile
+  
+  &.heroComplete {
+    display: flex;
+  }
   
   &.visible {
     opacity: 1;

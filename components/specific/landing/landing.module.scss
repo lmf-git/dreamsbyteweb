@@ -179,6 +179,8 @@
     padding: 0.5em;
     transition: all 0.2s ease-in-out;
     position: relative;
+    background: none;
+    border: none;
     
     &:after {
         content: '';
