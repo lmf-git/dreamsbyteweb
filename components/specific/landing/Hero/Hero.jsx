@@ -306,20 +306,46 @@ export default function Hero() {  // Remove onComplete prop
                                 </a>
 
                                 <div className={`${styles.dots} ${dotsReady ? styles.visible : ''}`}>
-                                    {projects.map((p, i) => {
-                                        const dotClass = `${styles.dot} ${
-                                            project === i ? styles.active : ''
-                                        } ${isTransitioning ? styles.disabled : ''}`;
+                                    {(() => {
+                                        const maxDots = 5;
+                                        const totalProjects = projects.length;
+                                        const currentIndex = project;
                                         
-                                        return (
-                                            <Dot 
-                                                key={i} 
-                                                className={dotClass}
-                                                onClick={() => !isTransitioning && setProject(i)}
-                                                disabled={isTransitioning}
-                                            />
-                                        );
-                                    })}
+                                        // Calculate the range of dots to show
+                                        let startIndex, endIndex;
+                                        
+                                        if (totalProjects <= maxDots) {
+                                            // Show all dots if we have 5 or fewer projects
+                                            startIndex = 0;
+                                            endIndex = totalProjects - 1;
+                                        } else {
+                                            // Calculate offset to center current project
+                                            const halfDots = Math.floor(maxDots / 2);
+                                            startIndex = Math.max(0, currentIndex - halfDots);
+                                            endIndex = Math.min(totalProjects - 1, startIndex + maxDots - 1);
+                                            
+                                            // Adjust if we're at the end
+                                            if (endIndex === totalProjects - 1) {
+                                                startIndex = Math.max(0, endIndex - maxDots + 1);
+                                            }
+                                        }
+                                        
+                                        return projects.slice(startIndex, endIndex + 1).map((p, i) => {
+                                            const actualIndex = startIndex + i;
+                                            const dotClass = `${styles.dot} ${
+                                                project === actualIndex ? styles.active : ''
+                                            } ${isTransitioning ? styles.disabled : ''}`;
+                                            
+                                            return (
+                                                <Dot 
+                                                    key={actualIndex} 
+                                                    className={dotClass}
+                                                    onClick={() => !isTransitioning && setProject(actualIndex)}
+                                                    disabled={isTransitioning}
+                                                />
+                                            );
+                                        });
+                                    })()}
                                 </div>
                             </div>
                         </div>
