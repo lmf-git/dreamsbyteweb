@@ -30,6 +30,11 @@
     --hero-nav-arrow: #aaaaaa;
     --hero-dot-fill: #d9d9d9;
     --hero-dot-border: rgba(255, 255, 255, 0.3);
+    --base-rate-text: #e6e6e6;
+    --star-color: #ffffff;
+    --star-glow: rgba(255, 255, 255, 0.6);
+    --star-tail: rgba(255, 255, 255, 0.8);
+    --logo-fill: #ffffff;
 }
 
 .light-theme {
@@ -59,6 +64,11 @@
     --hero-nav-arrow: #333333;
     --hero-dot-fill: #000000;
     --hero-dot-border: rgba(0, 0, 0, 0.3);
+    --base-rate-text: #333333;
+    --star-color: #333333;
+    --star-glow: rgba(0, 0, 0, 0.4);
+    --star-tail: rgba(0, 0, 0, 0.6);
+    --logo-fill: #1a1a1a;
 }
 
 html, body, #__next, #__next > div {

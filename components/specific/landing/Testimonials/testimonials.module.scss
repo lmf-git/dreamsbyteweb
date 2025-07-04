@@ -131,7 +131,7 @@
     font-weight: 100;
     margin: 0 0 1.5em;
     font-size: 1em;
-    color: var(--testimonial-text);
+    color: #333333; // Always dark text on light testimonial cards
     transition: color 0.3s ease;
 
     &:before, &:after {
@@ -183,8 +183,8 @@
     width: 1.8em; // Increased from 1.5em
     height: 1.8em; // Increased from 1.5em
     opacity: 0.8;
-    color: var(--drag-instruction);
-    transition: color 0.3s ease;
+    stroke: var(--drag-instruction);
+    transition: stroke 0.3s ease;
 }
 
 @media screen and (min-width: 1200px) {
