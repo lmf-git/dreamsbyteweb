@@ -22,7 +22,10 @@ export const metadata = {
   keywords: 'development, design, database, figma, javascript, html, css',
   "msapplication-TileColor": "#ffc40d",
   "apple-touch-icon": "/icon.svg",
-  "manifest": "/manifest.json"
+  "manifest": "/manifest.json",
+  other: {
+    "fediverse:creator": "@dreamsbyte@mastodon.social"
+  }
 };
 
 export const viewport = {

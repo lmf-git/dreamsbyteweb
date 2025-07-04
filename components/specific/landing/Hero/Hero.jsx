@@ -142,7 +142,7 @@ export default function Hero() {  // Remove onComplete prop
             setCurrentProject(0);
             
             preloadImages(0).then(() => {
-                const logoAnimationTime = 2000; // 1.2s animation + 0.2s delay + 0.6s buffer
+                const logoAnimationTime = 1200; // Reduced from 2000ms
                 
                 if (isMobile) {
                     setTimeout(() => {
@@ -162,15 +162,14 @@ export default function Hero() {  // Remove onComplete prop
                                         setTimeout(() => {
                                             setShowNav(true);
                                             setDotsReady(true);
-                                            // Add extra delay for mobile to ensure all animations complete
                                             setTimeout(() => {
                                                 setInitialAnimationComplete(true);
-                                            }, 2000);
-                                        }, 1000);
-                                    }, 600);
-                                }, 5000);
-                            }, 800);
-                        }, 500);
+                                            }, 500); // Reduced from 2000ms
+                                        }, 300); // Reduced from 1000ms
+                                    }, 300); // Reduced from 600ms
+                                }, 2000); // Reduced from 5000ms
+                            }, 300); // Reduced from 800ms
+                        }, 200); // Reduced from 500ms
                     }, logoAnimationTime);
                 } else {
                     setTimeout(() => {
@@ -382,12 +381,14 @@ export default function Hero() {  // Remove onComplete prop
                             extraClass={`${styles.screen} ${showPreview ? styles.showMobile : ''}`}
                             src={projects[currentProject].desktopimage}
                             onLoad={() => setImagesLoaded(true)}
+                            isTransitioning={isTransitioning}
                         />
                         
                         <Mobile 
                             extraClass={`${styles.mobile} ${showPreview ? styles.showMobile : ''}`}
                             src={projects[currentProject].image}
                             onLoad={() => setImagesLoaded(true)}
+                            isTransitioning={isTransitioning}
                         />
                     </div>
                 </div>
