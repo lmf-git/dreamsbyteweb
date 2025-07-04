@@ -21,8 +21,16 @@ export const metadata = {
   description: 'From concept to reality, we offer full stack development, e-commerce solutions, captivating design, and more. Email contact@dreamsbyte.com to start realising your digital dreams.',
   keywords: 'development, design, database, figma, javascript, html, css',
   "msapplication-TileColor": "#ffc40d",
-  "apple-touch-icon": "/icon.svg",
-  "manifest": "/manifest.json",
+  icons: {
+    icon: [
+      { url: '/favicons/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+      { url: '/favicons/favicon.svg', type: 'image/svg+xml' }
+    ],
+    shortcut: '/favicons/favicon.ico',
+    apple: { url: '/favicons/apple-touch-icon.png', sizes: '180x180' }
+  },
+  "apple-mobile-web-app-title": "DreamsByte",
+  manifest: '/favicons/site.webmanifest',
   other: {
     "fediverse:creator": "@dreamsbyte@mastodon.social"
   }
