@@ -254,7 +254,8 @@
     color 0.2s ease,
     border-color 0.2s ease,
     opacity 0.5s ease-out,
-    transform 0.5s ease-out;
+    transform 0.5s ease-out,
+    background 0.2s ease;
   opacity: 0;
   transform: translateX(-20px);
   text-decoration: none;
@@ -268,6 +269,12 @@
   box-sizing: border-box;
   height: 3.5em; // Add fixed height
   min-height: 3.5em; // Ensure minimum height
+  
+  // Light mode specific styling
+  :global(.light-theme) & {
+    color: rgb(80, 80, 80);
+    border: 0.0625em solid rgba(0, 0, 0, 0.15);
+  }
 
   .providericon {
     height: 100%;
@@ -286,8 +293,15 @@
   &:hover, &:focus {
     opacity: 1;
     color: rgb(230, 230, 230);
-    border-color: rgba(255, 255, 255, 0.6); // Increased from 0.3 for better contrast
+    border-color: rgba(255, 255, 255, 0.6);
     background: rgba(255, 255, 255, 0.05);
+    
+    // Light mode specific hover effects
+    :global(.light-theme) & {
+      color: rgb(20, 20, 20);
+      border-color: rgba(0, 0, 0, 0.4);
+      background: rgba(0, 0, 0, 0.05);
+    }
   }
 
   &:hover .providericon {

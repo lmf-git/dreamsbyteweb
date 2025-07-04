@@ -36,8 +36,8 @@ function PageContent() {
 
     const getThemeIcon = () => {
         return theme === 'light' 
-            ? <Sun className={styles.themeIcon} />
-            : <Moon className={styles.themeIcon} />;
+            ? <Moon className={styles.themeIcon} />
+            : <Sun className={styles.themeIcon} />;
     };
 
     // Control body overflow based on Hero completion and mobile menu

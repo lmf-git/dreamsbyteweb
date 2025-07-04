@@ -1367,6 +1367,16 @@ $gpu-accel: translateZ(0);
         background: rgba(255, 255, 255, 0.2);
         transform: translateY(-2px);
     }
+    
+    // Light mode specific styling
+    :global(.light-theme) & {
+        background: rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        
+        &:hover {
+            background: rgba(0, 0, 0, 0.2);
+        }
+    }
 
     @media screen and (max-width: 74.9375em) {
         font-size: 0.85em;
