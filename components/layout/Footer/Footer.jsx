@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
+import { usePathname } from 'next/navigation';
 import useIntersectionObserver from '../../../hooks/useIntersectionObserver';
 import { useHero } from '../../../contexts/HeroContext';
 
@@ -16,12 +17,19 @@ import styles from './footer.module.scss';
 
 export default function Footer() {
   const footerRef = useRef();
+  const pathname = usePathname();
   const { heroComplete } = useHero();
-  const isVisible = useIntersectionObserver(footerRef, 0.25) && heroComplete;
+  const isLandingPage = pathname === '/';
+  
+  // On landing page: wait for hero completion + intersection
+  // On other pages: just use intersection observer
+  const isVisible = isLandingPage 
+    ? (useIntersectionObserver(footerRef, 0.25) && heroComplete)
+    : useIntersectionObserver(footerRef, 0.25);
 
   return (
     <div 
-      className={`${styles.footer} ${heroComplete ? styles.heroComplete : ''} ${isVisible ? styles.visible : ''}`} 
+      className={`${styles.footer} ${(isLandingPage && heroComplete) || !isLandingPage ? styles.heroComplete : ''} ${isVisible ? styles.visible : ''}`} 
       ref={footerRef} 
       id="contact"
     >

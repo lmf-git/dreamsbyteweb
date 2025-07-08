@@ -47,8 +47,14 @@ export const viewport = {
   themeColor: 'white'
 };
 
+import Layout from '../components/layout/Layout/Layout';
+
 export default function RootLayout({ children }) {
   return <html lang="en" className={`${syne.variable} ${inter.variable}`}>
-    <body>{ children }</body>
+    <body>
+      <Layout>
+        {children}
+      </Layout>
+    </body>
   </html>;
 };
