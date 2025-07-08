@@ -1377,20 +1377,31 @@ $gpu-accel: translateZ(0);
     }
 
     @media screen and (max-width: 74.9375em) {
-        font-size: 0.85em;
-        padding: 0;
+        font-size: 0.9em;
+        padding: 0.75em 1.25em;
         white-space: nowrap;
         width: auto;
         min-width: max-content;
-        background: transparent;
-        border: none;
-        backdrop-filter: none;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        border-radius: 2em;
         color: var(--text-primary);
-        transition: color 0.3s ease;
+        transition: all 0.3s ease;
         
         &:hover {
-            background: transparent;
-            transform: none;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        // Light mode specific styling
+        :global(.light-theme) & {
+            background: rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            
+            &:hover {
+                background: rgba(0, 0, 0, 0.2);
+            }
         }
     }
     
