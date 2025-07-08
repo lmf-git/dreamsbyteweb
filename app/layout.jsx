@@ -27,7 +27,12 @@ export const metadata = {
       { url: '/favicons/favicon.svg', type: 'image/svg+xml' }
     ],
     shortcut: '/favicons/favicon.ico',
-    apple: { url: '/favicons/apple-touch-icon.png', sizes: '180x180' }
+    apple: { url: '/favicons/apple-touch-icon.png', sizes: '180x180' },
+    other: {
+      rel: 'mask-icon',
+      url: '/favicons/favicon.svg',
+      color: '#000000'
+    }
   },
   "apple-mobile-web-app-title": "DreamsByte",
   manifest: '/favicons/site.webmanifest',
@@ -39,8 +44,7 @@ export const metadata = {
 export const viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: 'white',
-  maskIcon: "/icon.svg"
+  themeColor: 'white'
 };
 
 export default function RootLayout({ children }) {
