@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 import useIntersectionObserver from '../../../../hooks/useIntersectionObserver';
 import { useHero } from '../../../../contexts/HeroContext';
+import { useContact } from '../../../../contexts/ContactContext';
 import styles from './comparison.module.scss';
 
 const advantages = [
@@ -30,16 +31,16 @@ const advantages = [
   }
 ];
 
-export default function Comparison({ setMessage, setContactOpen }) {
+export default function Comparison() {
   const sectionRef = useRef(null);
   const { heroComplete } = useHero();
+  const { openContact } = useContact();
 
   // Lower threshold to trigger earlier
   const isVisible = useIntersectionObserver(sectionRef, 0.1) && heroComplete;
 
   const handleAdvantageClick = (title) => () => {
-    setMessage(`Hi, I'm interested in learning more about "${title}"`);
-    setContactOpen(true);
+    openContact(`Hi, I'm interested in learning more about "${title}"`);
   };
 
   return (

@@ -1,10 +1,11 @@
 'use client';
 
-import { useEffect, useState, cloneElement, isValidElement } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { HeroProvider, useHero } from '../../../contexts/HeroContext';
 import { ThemeProvider, useTheme } from '../../../contexts/ThemeContext';
+import { ContactProvider, useContact } from '../../../contexts/ContactContext';
 import Contact from "../Contact/Contact";
 import Footer from "../Footer/Footer";
 import Stars from "../Stars/Stars";
@@ -25,10 +26,9 @@ import styles from "./layout.module.scss";
 function LayoutContent({ children }) {
     const { heroComplete } = useHero();
     const { theme, toggleTheme } = useTheme();
+    const { contactOpen, message, openContact, closeContact } = useContact();
     const pathname = usePathname();
     const [menuOpen, setMenuOpen] = useState(false);
-    const [message, setMessage] = useState('');
-    const [contactOpen, setContactOpen] = useState(false);
     
     // Check if we're on the landing page (home page)
     const isLandingPage = pathname === '/';
@@ -97,7 +97,7 @@ function LayoutContent({ children }) {
                         <a className={styles.headercta} href="/#services">Services</a>
                         <a className={styles.headercta} href="/#testimonials">Reviews</a>
                         <Link href="/education" className={styles.headercta}>Education</Link>
-                        <button className={`${styles.headercta} ${styles.headerctaprimary}`} onClick={() => setContactOpen(true)}>CONTACT</button>
+                        <button className={`${styles.headercta} ${styles.headerctaprimary}`} onClick={() => openContact()}>CONTACT</button>
                         <button className={styles.menutoggle} onClick={() => setMenuOpen(true)}>
                             <MenuIcon extraClass={styles.menutoggleicon} />
                         </button>
@@ -130,7 +130,7 @@ function LayoutContent({ children }) {
                             <a className={styles.item} onClick={handleMenuClose} href="/#services">Services</a>
                             <a className={styles.item} onClick={handleMenuClose} href="/#testimonials">Reviews</a>
                             <Link href="/education" className={styles.item} onClick={handleMenuClose}>Education</Link>
-                            <button className={styles.item} onClick={() => { handleMenuClose(); setContactOpen(true); }}>Contact</button>
+                            <button className={styles.item} onClick={() => { handleMenuClose(); openContact(); }}>Contact</button>
                         </div>
 
                         <div className={styles.socials}>
@@ -150,16 +150,13 @@ function LayoutContent({ children }) {
                     </div>
                 )}
 
-                {isValidElement(children) ? 
-                    cloneElement(children, { setMessage, setContactOpen }) : 
-                    children
-                }
+                {children}
                 
                 <Footer />
                 
                 <Contact 
                     isOpen={contactOpen} 
-                    onClose={() => setContactOpen(false)} 
+                    onClose={closeContact} 
                     initialMessage={message}
                 />    
             </main>
@@ -171,9 +168,11 @@ export default function Layout({ children }) {
     return (
         <ThemeProvider>
             <HeroProvider>
-                <LayoutContent>
-                    {children}
-                </LayoutContent>
+                <ContactProvider>
+                    <LayoutContent>
+                        {children}
+                    </LayoutContent>
+                </ContactProvider>
             </HeroProvider>
         </ThemeProvider>
     );

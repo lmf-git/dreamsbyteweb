@@ -145,6 +145,30 @@
     }
 }
 
+.contactButton {
+    background: none;
+    border: none;
+    color: var(--brand-primary);
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+    font: inherit;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline;
+    
+    &:hover {
+        color: var(--brand-secondary);
+        text-decoration-thickness: 2px;
+    }
+    
+    &:focus {
+        outline: 2px solid var(--brand-primary);
+        outline-offset: 2px;
+        border-radius: 2px;
+    }
+}
+
 .footer {
     border-top: 1px solid var(--border-color);
     padding: 2em 0;

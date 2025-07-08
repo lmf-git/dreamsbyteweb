@@ -16,34 +16,6 @@ export default function Education() {
             excerpt: "Learn how a well-designed website can transform your business and drive growth in today's digital landscape.",
             date: "2024-01-20",
             slug: "why-your-business-needs-professional-website"
-        },
-        {
-            id: 3,
-            title: "E-commerce vs Traditional Retail: Making the Digital Transition",
-            excerpt: "Understand the benefits of e-commerce and how DreamsByte can help you transition your business online.",
-            date: "2024-01-25",
-            slug: "ecommerce-vs-traditional-retail"
-        },
-        {
-            id: 4,
-            title: "Web Security Basics: Protecting Your Business and Customers Online",
-            excerpt: "Essential security practices every business owner should know to keep their website and customer data safe.",
-            date: "2024-02-01",
-            slug: "web-security-basics"
-        },
-        {
-            id: 5,
-            title: "The Complete Guide to Website Maintenance",
-            excerpt: "Learn what goes into maintaining a website and why regular updates are crucial for your business.",
-            date: "2024-02-10",
-            slug: "complete-guide-website-maintenance"
-        },
-        {
-            id: 6,
-            title: "Understanding Web Performance: Why Speed Matters for Your Business",
-            excerpt: "Discover how website speed affects your customers and business success, and what we do to optimize it.",
-            date: "2024-02-15",
-            slug: "understanding-web-performance"
         }
     ];
 

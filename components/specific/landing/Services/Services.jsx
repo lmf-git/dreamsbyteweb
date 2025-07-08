@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 import useIntersectionObserver from '../../../../hooks/useIntersectionObserver';
 import { useHero } from '../../../../contexts/HeroContext';
+import { useContact } from '../../../../contexts/ContactContext';
 
 import HTML from '../../../icons/brands/HTML';
 import CSS from '../../../icons/brands/CSS';
@@ -44,9 +45,10 @@ const technologies = [
   { name: 'VS Code', url: 'https://code.visualstudio.com/', Icon: VSCode }
 ];
 
-export default function Services({ setMessage, setContactOpen }) {
+export default function Services() {
   const sectionRef = useRef(null);
   const { heroComplete } = useHero();
+  const { openContact } = useContact();
   
   // Decrease threshold to make it appear sooner
   const isVisible = useIntersectionObserver(sectionRef, 0.1) && heroComplete;
@@ -59,8 +61,7 @@ export default function Services({ setMessage, setContactOpen }) {
       dot.style.animation = `${styles.ripple} 0.6s ease-out`;
     }
 
-    setMessage(`Hi, I'm interested in ${service}`);
-    setContactOpen(true);
+    openContact(`Hi, I'm interested in ${service}`);
   };
 
   const calculateEstimatedHours = (priceString) => {
@@ -163,7 +164,7 @@ export default function Services({ setMessage, setContactOpen }) {
       <p className={styles.additional}>
         All services are tailored to your specific needs. Our base rate is $25/hr, with project-based pricing available.
         <br />
-        <button className={styles.additionallink} onClick={() => setContactOpen(true)}>Contact us</button> to start realising your dreams.
+        <button className={styles.additionallink} onClick={() => openContact()}>Contact us</button> to start realising your dreams.
       </p>
     </div>
   </div>
