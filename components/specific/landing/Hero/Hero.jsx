@@ -14,15 +14,6 @@ import styles from './hero.module.scss';
 
 const projects = [
     {
-        name: 'MetaTicket',
-        problem: 'Event discovery needed to be more accessible and supportive of local talent.',
-        solution: 'Created a platform making live events affordable and connecting users with local venues.',
-        url: 'https://metaticket.org',
-        image: '/projects/metaticket/metaticket-mobile.png',
-        desktopimage: '/projects/metaticket/metaticket-desktop.png',
-        reporturl: ''
-    },
-    {
         name: 'ICTALLY',
         problem: 'IT professionals needed a trusted marketplace to showcase skills and connect with businesses.',
         solution: 'Built a platform connecting IT integrators, businesses, and vendors with reviews and portfolios.',
@@ -49,13 +40,22 @@ const projects = [
         desktopimage: '/projects/allied/allied-desktop.png',
         reporturl: ''
     },
+    // {
+    //     name: 'Skylar Lily',
+    //     problem: 'Content creator needed a hub to showcase work and engage with fans.',
+    //     solution: 'Made a website connecting social media and community features.',
+    //     url: 'https://www.skylarlily.com',
+    //     image: '/projects/skylar/skylar-mobile.png',
+    //     desktopimage: '/projects/skylar/skylar-desktop.png',
+    //     reporturl: ''
+    // },
     {
-        name: 'Skylar Lily',
-        problem: 'Content creator needed a hub to showcase work and engage with fans.',
-        solution: 'Made a website connecting social media and community features.',
-        url: 'https://www.skylarlily.com',
-        image: '/projects/skylar/skylar-mobile.png',
-        desktopimage: '/projects/skylar/skylar-desktop.png',
+        name: 'MetaTicket',
+        problem: 'Event discovery needed to be more accessible and supportive of local talent.',
+        solution: 'Created a platform making live events affordable and connecting users with local venues.',
+        url: 'https://metaticket.org',
+        image: '/projects/metaticket/metaticket-mobile.png',
+        desktopimage: '/projects/metaticket/metaticket-desktop.png',
         reporturl: ''
     },
     {
