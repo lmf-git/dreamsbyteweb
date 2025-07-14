@@ -230,9 +230,9 @@ export default function Hero() {  // Remove onComplete prop
         
         if (isMobile) {
             setShowContent(false);
-            setCurrentProject(project);
             
             preloadImages(project).then(() => {
+                setCurrentProject(project);
                 setShowProjectName(true);
                 setShowPreview(true);
                 
@@ -249,8 +249,8 @@ export default function Hero() {  // Remove onComplete prop
                 }, 2500); // Reduced from 5000ms to 2500ms
             });
         } else {
-            setCurrentProject(project);
             preloadImages(project).then(() => {
+                setCurrentProject(project);
                 setShowPreview(true); // Always show preview on desktop
                 setTimeout(() => {
                     setShowContent(true);
@@ -264,11 +264,11 @@ export default function Hero() {  // Remove onComplete prop
     }, [project, isInitialized, initialAnimationComplete]);
 
     const nextProject = () => {
-        if (project < projects.length - 1 && !isTransitioning) setProject(project + 1);
+        if (project < projects.length - 1 && !isTransitioning && imagesLoaded) setProject(project + 1);
     };
 
     const prevProject = () => {
-        if (project > 0 && !isTransitioning) {
+        if (project > 0 && !isTransitioning && imagesLoaded) {
             // Set the flag when returning to first project
             if (project === 1) {
                 setIsReturningToFirst(true);
@@ -333,14 +333,14 @@ export default function Hero() {  // Remove onComplete prop
                                             const actualIndex = startIndex + i;
                                             const dotClass = `${styles.dot} ${
                                                 project === actualIndex ? styles.active : ''
-                                            } ${isTransitioning ? styles.disabled : ''}`;
+                                            } ${isTransitioning || !imagesLoaded ? styles.disabled : ''}`;
                                             
                                             return (
                                                 <Dot 
                                                     key={actualIndex} 
                                                     className={dotClass}
-                                                    onClick={() => !isTransitioning && setProject(actualIndex)}
-                                                    disabled={isTransitioning}
+                                                    onClick={() => !isTransitioning && imagesLoaded && setProject(actualIndex)}
+                                                    disabled={isTransitioning || !imagesLoaded}
                                                 />
                                             );
                                         });
@@ -360,7 +360,7 @@ export default function Hero() {  // Remove onComplete prop
                         <button 
                             className={`${styles.button} ${styles.buttonleft}`} 
                             onClick={prevProject}
-                            disabled={project <= 0 || isTransitioning}
+                            disabled={project <= 0 || isTransitioning || !imagesLoaded}
                             aria-label="Previous project"
                         >
                             <LeftLine className={`${styles.arrow} ${styles.arrowleft}`} />
@@ -369,7 +369,7 @@ export default function Hero() {  // Remove onComplete prop
                         <button 
                             className={`${styles.button} ${styles.buttonright}`} 
                             onClick={nextProject}
-                            disabled={project >= projects.length - 1 || isTransitioning}
+                            disabled={project >= projects.length - 1 || isTransitioning || !imagesLoaded}
                             aria-label="Next project"
                         >
                             <RightLine className={`${styles.arrow} ${styles.arrowright}`} />
@@ -380,14 +380,12 @@ export default function Hero() {  // Remove onComplete prop
                         <Screen 
                             extraClass={`${styles.screen} ${showPreview ? styles.showMobile : ''}`}
                             src={projects[currentProject].desktopimage}
-                            onLoad={() => setImagesLoaded(true)}
                             isTransitioning={isTransitioning}
                         />
                         
                         <Mobile 
                             extraClass={`${styles.mobile} ${showPreview ? styles.showMobile : ''}`}
                             src={projects[currentProject].image}
-                            onLoad={() => setImagesLoaded(true)}
                             isTransitioning={isTransitioning}
                         />
                     </div>
