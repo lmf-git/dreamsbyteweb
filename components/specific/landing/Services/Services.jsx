@@ -69,7 +69,7 @@ export default function Services() {
     const match = priceString.match(/\$(\d+(?:,\d+)*)/);
     if (match) {
       const price = parseInt(match[1].replace(',', ''));
-      const hours = Math.round(price / 25);
+      const hours = Math.round(price / 75);
       return `est > ${hours}hrs`;
     }
     return '';
@@ -84,7 +84,7 @@ export default function Services() {
       <div className={styles.heading}>
       <span className={styles.preamble}>From Concept to Reality</span>
       <h2 className={styles.title}>Our Services</h2>
-      <span className={styles.baseRate}>Base Rate: $25/hr</span>
+      <span className={styles.baseRate}>Base Rate: $75/hr</span>
     </div>
 
     <div className={styles.list}>
@@ -137,6 +137,23 @@ export default function Services() {
     </div>
 
     <div 
+      className={`${styles.revisionsPolicy} ${isVisible ? styles.visible : ''}`}
+    >
+      <div className={styles.policyHeading}>Revisions Policy</div>
+      <div className={styles.policyContent}>
+        <div className={styles.policyItem}>
+          Up to 2 revision rounds per milestone included. Additional revisions billed hourly.
+        </div>
+        <div className={styles.policyItem}>
+          Revisions must be submitted as a single, consolidated list per round.
+        </div>
+        <div className={styles.policyItem}>
+          Additional revisions may delay milestones. Monthly maintenance includes few hours of minor changes.
+        </div>
+      </div>
+    </div>
+
+    <div 
       className={`${styles.providers} ${isVisible ? styles.visible : ''}`}
       style={{ transitionDelay: '0.8s' }}
     >
@@ -162,7 +179,7 @@ export default function Services() {
       className={`${styles.additionalSection} ${isVisible ? styles.visible : ''}`}
       style={{ transitionDelay: '2.8s' }}>
       <p className={styles.additional}>
-        All services are tailored to your specific needs. Our base rate is $25/hr, with project-based pricing available.
+        All services are tailored to your specific needs. Our base rate is $75/hr, with project-based pricing available.
         <br />
         <button className={styles.additionallink} onClick={() => openContact()}>Contact us</button> to start realising your dreams.
       </p>
