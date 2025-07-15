@@ -91,6 +91,11 @@
   display: flex;
   flex-direction: column;
   
+  // Light mode specific styling
+  :global(.light-theme) & {
+    color: rgb(55, 55, 55);
+  }
+  
   &:before {
     position: absolute;
     display: block;
