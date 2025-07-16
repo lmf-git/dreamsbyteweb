@@ -8,6 +8,7 @@ import { ThemeProvider, useTheme } from '../../../contexts/ThemeContext';
 import { ContactProvider, useContact } from '../../../contexts/ContactContext';
 import Contact from "../Contact/Contact";
 import Footer from "../Footer/Footer";
+import Stars from "../Stars/Stars";
 
 import MenuIcon from "../../icons/social/Menu";
 import Logo from "../../icons/branding/Logo";
@@ -82,6 +83,7 @@ function LayoutContent({ children }) {
 
     return (
         <>
+            <Stars />
             <main className={styles.index}>
                 <header className={styles.header}>
                     <Link href="/">

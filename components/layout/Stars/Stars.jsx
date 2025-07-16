@@ -1,120 +1,226 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import styles from './stars.module.scss';
-
-const Star = ({ id, delay, duration, startX, startY, endX, endY, size, angle, startScale, endScale }) => (
-  <svg
-    className={styles.star}
-    style={{
-      '--delay': `${delay}s`,
-      '--duration': `${duration}s`,
-      '--start-x': `${startX}vw`,
-      '--start-y': `${startY}vh`,
-      '--end-x': `${endX}vw`,
-      '--end-y': `${endY}vh`,
-      '--size': size,
-      '--angle': `${angle}deg`,
-      '--start-scale': startScale,
-      '--end-scale': endScale,
-    }}
-    width="8"
-    height="8"
-    viewBox="0 0 8 8"
-    fill="none"
-  >
-    {/* Outer glow layer */}
-    <circle cx="4" cy="4" r="3" fill="var(--star-glow)" opacity="0.3" />
-    <circle cx="4" cy="4" r="2" fill="var(--star-glow)" opacity="0.5" />
-    
-    {/* Main star core */}
-    <circle cx="4" cy="4" r="1.2" fill="var(--star-color)" opacity="0.9" />
-    
-    {/* Star shape overlay */}
-    <path
-      d="M4 0.5L4.8 2.8L7.5 4L4.8 5.2L4 7.5L3.2 5.2L0.5 4L3.2 2.8Z"
-      fill="var(--star-color)"
-      opacity="0.8"
-    />
-    
-    {/* Bright center */}
-    <circle cx="4" cy="4" r="0.6" fill="var(--star-color)" opacity="1" />
-  </svg>
-);
+import { useState, useEffect, useRef } from 'react';
+import { useHero } from '../../../contexts/HeroContext';
 
 export default function Stars() {
-  const [stars, setStars] = useState([]);
+    const [stars, setStars] = useState([]);
+    const containerRef = useRef(null);
+    const [isDarkMode, setIsDarkMode] = useState(true);
+    const { heroComplete } = useHero();
 
-  useEffect(() => {
-    const generateStars = () => {
-      const newStars = [];
-      const numStars = Math.random() < 0.1 ? 1 : 0; // Only 10% chance of even generating a star
-
-      for (let i = 0; i < numStars; i++) {
-        // Generate completely new random values for each star
-        const now = Date.now();
-        const randomSeed = now + i * 1000 + Math.random() * 10000;
+    // Check theme on mount and listen for changes
+    useEffect(() => {
+        const checkTheme = () => {
+            setIsDarkMode(!document.documentElement.classList.contains('light-theme'));
+        };
         
-        const delay = Math.random() * 200 + 60; // Much longer delay 60-260s
-        const duration = 1.5 + Math.random() * 3.0; // 1.5-4.5s
-        const size = 0.3 + Math.random() * 0.7; // 0.3-1.0
+        checkTheme();
         
-        // Generate truly random positions using current timestamp as seed
-        const rand1 = (Math.sin(randomSeed * 0.001) + 1) / 2;
-        const rand2 = (Math.sin(randomSeed * 0.002) + 1) / 2;
-        const rand3 = (Math.sin(randomSeed * 0.003) + 1) / 2;
-        const rand4 = (Math.sin(randomSeed * 0.004) + 1) / 2;
-        const rand5 = (Math.sin(randomSeed * 0.005) + 1) / 2;
-        const rand6 = (Math.sin(randomSeed * 0.006) + 1) / 2;
-        
-        // Start position - completely random anywhere on screen edge
-        const startX = rand1 * 120 - 10; // -10 to 110
-        const startY = rand2 * 120 - 10; // -10 to 110
-        
-        // End position - completely random anywhere on screen
-        const endX = rand3 * 120 - 10; // -10 to 110
-        const endY = rand4 * 120 - 10; // -10 to 110
-
-        // Calculate angle for tail direction
-        const deltaX = endX - startX;
-        const deltaY = endY - startY;
-        const angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
-        
-        // Add scale animation values
-        const startScale = 0.1 + rand5 * 0.3; // 0.1-0.4
-        const endScale = 2.0 + rand6 * 3.0; // 2.0-5.0
-
-        newStars.push({
-          id: `star-${randomSeed}-${i}`, // Unique ID based on timestamp
-          delay,
-          duration,
-          startX,
-          startY,
-          endX,
-          endY,
-          size,
-          angle,
-          startScale,
-          endScale,
+        // Listen for theme changes
+        const observer = new MutationObserver(checkTheme);
+        observer.observe(document.documentElement, { 
+            attributes: true, 
+            attributeFilter: ['class'] 
         });
-      }
-      
-      setStars(newStars);
+        
+        return () => observer.disconnect();
+    }, []);
+
+    useEffect(() => {
+        // Don't start creating stars until hero intro is complete
+        if (!heroComplete) return;
+
+        const createStarGroup = () => {
+            const groupSize = Math.floor(Math.random() * 3) + 1; // 1-3 stars
+            const fromLeft = Math.random() > 0.5;
+            const baseY = Math.random() * 50 + 15; // 15%-65% of screen height
+            const baseDuration = Math.random() * 0.5 + 0.4; // 0.4-0.9 seconds
+            const baseSize = Math.random() * 8 + 8; // 8-16px
+            
+            for (let i = 0; i < groupSize; i++) {
+                const id = Date.now() + Math.random() + i;
+                const yOffset = (Math.random() - 0.5) * 15; // ±7.5% vertical offset
+                const delayOffset = i * (Math.random() * 200 + 100); // 100-300ms stagger
+                const durationVariation = (Math.random() - 0.5) * 0.2; // ±0.1s variation
+                const sizeVariation = (Math.random() - 0.5) * 4; // ±2px variation
+                
+                const star = {
+                    id,
+                    fromLeft,
+                    startY: Math.max(5, Math.min(75, baseY + yOffset)), // Keep within bounds
+                    duration: Math.max(0.3, baseDuration + durationVariation),
+                    size: Math.max(6, Math.min(20, baseSize + sizeVariation)),
+                    delay: delayOffset
+                };
+
+                // Add star with delay
+                setTimeout(() => {
+                    setStars(prev => [...prev, star]);
+
+                    // Remove star after animation completes
+                    setTimeout(() => {
+                        setStars(prev => prev.filter(s => s.id !== id));
+                    }, star.duration * 1000 + 100);
+                }, delayOffset);
+            }
+        };
+
+        // Wait 10 seconds after hero completion before starting star creation
+        const initialDelay = setTimeout(() => {
+            // Create star groups every 5-10 minutes
+            const interval = setInterval(() => {
+                createStarGroup();
+            }, Math.random() * 300000 + 300000); // 5-10 minutes (300000ms = 5 minutes)
+
+            return () => clearInterval(interval);
+        }, 10000);
+
+        return () => clearTimeout(initialDelay);
+    }, [heroComplete]);
+
+    const animateStar = (containerElement, star) => {
+        if (!containerElement) return;
+
+        const screenWidth = window.innerWidth;
+        const screenHeight = window.innerHeight;
+        const startX = star.fromLeft ? -50 : screenWidth + 50;
+        const endX = star.fromLeft ? screenWidth + 50 : -50;
+        const startYPos = (star.startY / 100) * screenHeight;
+        const arcHeight = screenHeight * 0.1; // 10% of screen height for arc
+        
+        // Create arc path - quadratic curve
+        const midX = screenWidth / 2;
+        const midY = startYPos - arcHeight;
+        
+        // Trail tracking
+        const tailHistory = [];
+        const maxTailLength = 8; // Number of trail points
+        
+        // Find the star and tail elements
+        const starElement = containerElement.querySelector('.star-shape');
+        const tailElement = containerElement.querySelector('.star-tail');
+        
+        // Set initial position
+        containerElement.style.left = startX + 'px';
+        containerElement.style.top = startYPos + 'px';
+        
+        const startTime = Date.now();
+        
+        const animate = () => {
+            const elapsed = Date.now() - startTime;
+            const progress = Math.min(elapsed / (star.duration * 1000), 1);
+            
+            if (progress >= 1) return;
+            
+            // Smooth easing function
+            const easeProgress = 1 - Math.pow(1 - progress, 3);
+            
+            // Calculate position along quadratic curve
+            const t = easeProgress;
+            const x = (1 - t) * (1 - t) * startX + 2 * (1 - t) * t * midX + t * t * endX;
+            const y = (1 - t) * (1 - t) * startYPos + 2 * (1 - t) * t * midY + t * t * startYPos;
+            
+            // Apply position
+            containerElement.style.left = x + 'px';
+            containerElement.style.top = y + 'px';
+            
+            // Update tail history
+            tailHistory.push({ x: x, y: y });
+            if (tailHistory.length > maxTailLength) {
+                tailHistory.shift();
+            }
+            
+            // Update tail path
+            if (tailHistory.length > 1 && tailElement) {
+                let pathData = `M ${tailHistory[0].x - x} ${tailHistory[0].y - y}`;
+                for (let i = 1; i < tailHistory.length; i++) {
+                    pathData += ` L ${tailHistory[i].x - x} ${tailHistory[i].y - y}`;
+                }
+                tailElement.setAttribute('d', pathData);
+            }
+            
+            // Fade in/out
+            let opacity;
+            if (progress < 0.1) {
+                opacity = progress * 10;
+            } else if (progress > 0.9) {
+                opacity = (1 - progress) * 10;
+            } else {
+                opacity = 1;
+            }
+            
+            containerElement.style.opacity = opacity;
+            
+            requestAnimationFrame(animate);
+        };
+        
+        requestAnimationFrame(animate);
     };
 
-    generateStars();
-    
-    // Regenerate stars very rarely - 8-15 minutes
-    const interval = setInterval(generateStars, 480000 + Math.random() * 420000);
-    
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <div className={styles.starsContainer}>
-      {stars.map((star) => (
-        <Star key={star.id} {...star} />
-      ))}
-    </div>
-  );
+    return (
+        <div 
+            ref={containerRef}
+            style={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                width: '100vw',
+                height: '100vh',
+                pointerEvents: 'none',
+                zIndex: 0,
+                overflow: 'hidden'
+            }}
+        >
+            {stars.map(star => (
+                <div
+                    key={star.id}
+                    ref={el => el && animateStar(el, star)}
+                    style={{
+                        position: 'absolute',
+                        opacity: 0
+                    }}
+                >
+                    <svg
+                        width={star.size * 4}
+                        height={star.size * 4}
+                        viewBox={`-${star.size * 2} -${star.size * 2} ${star.size * 4} ${star.size * 4}`}
+                        fill="none"
+                        style={{
+                            position: 'absolute',
+                            left: -star.size * 2,
+                            top: -star.size * 2,
+                            pointerEvents: 'none'
+                        }}
+                    >
+                        {/* Tail */}
+                        <path
+                            className="star-tail"
+                            d=""
+                            stroke={isDarkMode ? 'white' : 'black'}
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            fill="none"
+                            opacity="0.7"
+                        />
+                        
+                        {/* Star */}
+                        <g transform={`translate(0, 0)`}>
+                            <path
+                                className="star-shape"
+                                d="M0 -8L2.4 -2.4L8 -2.4L3.2 1.2L4.8 7.2L0 4L-4.8 7.2L-3.2 1.2L-8 -2.4L-2.4 -2.4L0 -8Z"
+                                fill={isDarkMode ? 'white' : 'black'}
+                                style={{
+                                    filter: isDarkMode 
+                                        ? 'drop-shadow(0 0 3px rgba(255, 255, 255, 0.5))'
+                                        : 'drop-shadow(0 0 3px rgba(0, 0, 0, 0.3))'
+                                }}
+                            />
+                        </g>
+                    </svg>
+                </div>
+            ))}
+        </div>
+    );
 }
