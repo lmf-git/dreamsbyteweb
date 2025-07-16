@@ -167,56 +167,6 @@
   }
 }
 
-.revisionsPolicy {
-  margin-top: 2em;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-
-  &.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.policyHeading {
-  font-family: var(--font-syne);
-  font-size: 1.65em;
-  margin-bottom: 1em;
-  color: var(--service-category);
-  transition: color 0.3s ease;
-}
-
-.policyContent {
-  max-width: 60em;
-  margin: 0 auto;
-  padding: 0 1em;
-}
-
-.policyItem {
-  font-family: var(--font-inter);
-  font-size: 0.95em;
-  color: rgb(200, 200, 200);
-  margin-bottom: 1em;
-  line-height: 1.5;
-  text-align: left;
-  padding: 0.8em 1.2em;
-  border-left: 0.25em solid rgba(255, 255, 255, 0.15);
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 0.25em;
-  transition: background 0.2s ease, border-color 0.2s ease;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.25);
-  }
-
-  strong {
-    color: var(--text-primary);
-    font-weight: 600;
-  }
-}
 
 .additionalSection {
   opacity: 0;
@@ -263,24 +213,6 @@
     flex: 0 1 calc(25% - 2em);
   }
 
-  .revisionsPolicy {
-    margin-top: 2.5em;
-  }
-
-  .policyHeading {
-    font-size: 2em;
-    margin-bottom: 1.2em;
-  }
-
-  .policyContent {
-    padding: 0 2em;
-  }
-
-  .policyItem {
-    font-size: 1.05em;
-    padding: 1em 1.5em;
-    margin-bottom: 1.2em;
-  }
 }
 
 @media screen and (min-width: 1200px) {
@@ -449,25 +381,6 @@
     min-height: 3em;
   }
 
-  .revisionsPolicy {
-    margin-top: 1.5em;
-    padding: 0 0.5em;
-  }
-
-  .policyHeading {
-    font-size: 1.4em;
-    margin-bottom: 0.8em;
-  }
-
-  .policyContent {
-    padding: 0 0.5em;
-  }
-
-  .policyItem {
-    font-size: 0.9em;
-    padding: 0.7em 1em;
-    margin-bottom: 0.8em;
-  }
 }
 
 // Remove or comment out the reveal-item and reveal-tech keyframes as they're no longer needed

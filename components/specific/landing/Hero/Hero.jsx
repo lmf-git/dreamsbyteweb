@@ -167,7 +167,7 @@ export default function Hero() {  // Remove onComplete prop
                                             }, 500); // Reduced from 2000ms
                                         }, 300); // Reduced from 1000ms
                                     }, 300); // Reduced from 600ms
-                                }, 2000); // Reduced from 5000ms
+                                }, 6000); // Increased from 2000ms for longer mobile preview
                             }, 300); // Reduced from 800ms
                         }, 200); // Reduced from 500ms
                     }, logoAnimationTime);
@@ -246,7 +246,7 @@ export default function Hero() {  // Remove onComplete prop
                         setShowNav(true);
                         setDotsReady(true);
                     }, 600);
-                }, 2500); // Reduced from 5000ms to 2500ms
+                }, 6000); // Increased from 2500ms for longer mobile preview
             });
         } else {
             preloadImages(project).then(() => {

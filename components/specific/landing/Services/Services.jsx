@@ -136,22 +136,6 @@ export default function Services() {
       ))}
     </div>
 
-    <div 
-      className={`${styles.revisionsPolicy} ${isVisible ? styles.visible : ''}`}
-    >
-      <div className={styles.policyHeading}>Revisions Policy</div>
-      <div className={styles.policyContent}>
-        <div className={styles.policyItem}>
-          Up to 2 revision rounds per milestone included. Additional revisions billed hourly.
-        </div>
-        <div className={styles.policyItem}>
-          Revisions must be submitted as a single, consolidated list per round.
-        </div>
-        <div className={styles.policyItem}>
-          Additional revisions may delay milestones. Monthly maintenance includes few hours of minor changes.
-        </div>
-      </div>
-    </div>
 
     <div 
       className={`${styles.providers} ${isVisible ? styles.visible : ''}`}
