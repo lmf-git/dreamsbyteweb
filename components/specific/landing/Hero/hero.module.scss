@@ -93,7 +93,7 @@
     font-size: 1.5em;
     color: var(--hero-project-name);
     margin-top: 0;
-    margin-bottom: 1.5em;
+    margin-bottom: .25em;
     opacity: 0;
     animation: reveal-projectname 0.5s ease-out forwards;
     animation-delay: 1.7s; // Show project name after title
@@ -386,6 +386,7 @@ $gpu-accel: translateZ(0);
     font-weight: 400;
     color: var(--hero-project-desc);
     line-height: 1.6;
+    margin-bottom: 0;
     opacity: 0;
     transition: opacity 0.3s ease-out, color 0.3s ease;
     user-select: none;
@@ -1429,9 +1430,13 @@ $gpu-accel: translateZ(0);
     width: 100%;
     opacity: 0;
     transition: opacity 0.3s ease-out;
-    margin-top: 3em;
+    margin-top: 2em;
     gap: 2em;
     justify-content: space-between; // Add this
+    
+    @media screen and (min-width: 75em) {
+        margin-top: 3em;
+    }
 
     &.visible {
         opacity: 1;
