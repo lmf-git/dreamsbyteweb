@@ -163,9 +163,7 @@ export default function Services() {
       className={`${styles.additionalSection} ${isVisible ? styles.visible : ''}`}
       style={{ transitionDelay: '2.8s' }}>
       <p className={styles.additional}>
-        All services are tailored to your specific needs. Our base rate is $75/hr, with project-based pricing available.
-        <br />
-        <button className={styles.additionallink} onClick={() => openContact()}>Contact us</button> to start realising your dreams.
+        All services are tailored to your specific needs with our base rate of $75/hr and project-based pricing available. <button className={styles.additionallink} onClick={() => openContact()}>Contact us</button> to start realising your dreams.
       </p>
     </div>
   </div>

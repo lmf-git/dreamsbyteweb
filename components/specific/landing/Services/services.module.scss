@@ -150,19 +150,19 @@
 }
 
 .additionallink {
-  color: rgb(221, 221, 221);
+  color: var(--text-primary);
   text-decoration: none;
-  font-weight: 300;
-  font-size: .95em;
-  font-family: var(--font-syne);
+  font-weight: 100;
+  font-size: 1em;
+  font-family: var(--font-inter);
   padding: .2em;
-  transition: margin .25s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: color .25s cubic-bezier(0.075, 0.82, 0.165, 1);
   background: transparent;
   border: none;
   cursor: pointer;
 
   &:hover {
-    color: var(--text-primary);
+    color: var(--text-secondary);
     text-decoration: underline;
   }
 }
