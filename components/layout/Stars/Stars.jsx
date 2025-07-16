@@ -35,7 +35,7 @@ export default function Stars() {
             const groupSize = Math.floor(Math.random() * 3) + 1; // 1-3 stars
             const fromLeft = Math.random() > 0.5;
             const baseY = Math.random() * 50 + 15; // 15%-65% of screen height
-            const baseDuration = Math.random() * 0.5 + 0.4; // 0.4-0.9 seconds
+            const baseDuration = Math.random() * 0.8 + 0.8; // 0.8-1.6 seconds
             const baseSize = Math.random() * 8 + 8; // 8-16px
             
             for (let i = 0; i < groupSize; i++) {
@@ -113,8 +113,8 @@ export default function Stars() {
             
             if (progress >= 1) return;
             
-            // Smooth easing function
-            const easeProgress = 1 - Math.pow(1 - progress, 3);
+            // Acceleration easing function - starts slow, speeds up
+            const easeProgress = progress * progress;
             
             // Calculate position along quadratic curve
             const t = easeProgress;
