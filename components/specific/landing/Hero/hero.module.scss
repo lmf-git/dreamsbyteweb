@@ -7,7 +7,7 @@
     padding: 0;
     padding-bottom: 4em;
 
-    @media screen and (min-width: 75em) {
+    @media screen and (min-width: 1200px) {
         padding: 3em 8em;
         min-height: 100vh;
         padding-bottom: 3em;
@@ -30,7 +30,7 @@
     animation-delay: 1.5s; // Wait for header/brand first
     user-select: none;
 
-    @media screen and (max-width: 74.9375em) {
+    @media screen and (max-width: 1199px) {
         font-size: 1.5em;
         margin-bottom: 0.5em;
     }
@@ -52,7 +52,7 @@
     min-height: 65vh;
     padding: 1em;
 
-    @media screen and (min-width: 75em) {
+    @media screen and (min-width: 1200px) {
         flex-direction: row;
         align-items: flex-start; // Changed from stretch to allow natural height
         gap: 4em;
@@ -79,7 +79,7 @@
     flex-direction: column;
     z-index: 1;
 
-    @media screen and (max-width: 74.9375em) {
+    @media screen and (max-width: 1199px) {
         width: 100%;
         padding: 0 1em;
         padding-right: 1em;
@@ -102,7 +102,7 @@
     z-index: 2;
     transition: color 0.3s ease;
 
-    @media screen and (max-width: 74.9375em) {
+    @media screen and (max-width: 1199px) {
         font-size: 1.2em;
         margin-bottom: 1em;
     }
@@ -128,7 +128,7 @@ $gpu-accel: translateZ(0);
     will-change: opacity;
     animation-delay: 1.4s;
 
-    @media screen and (max-width: 74.9375em) {
+    @media screen and (max-width: 1199px) {
         position: absolute;
         top: 7em; // Changed from 9em to move it higher on mobile
         right: 0;
@@ -199,7 +199,7 @@ $gpu-accel: translateZ(0);
         }
     }
 
-    @media screen and (max-width: 48em) {
+    @media screen and (max-width: 768px) {
         .mobile {
             width: 22%;
             right: 25%;
@@ -207,7 +207,7 @@ $gpu-accel: translateZ(0);
         }
     }
 
-    @media screen and (min-width: 75em) {
+    @media screen and (min-width: 1200px) {
         position: relative; // Changed from absolute
         height: 60vh;
         width: 100%; // Changed from 70%
@@ -317,7 +317,7 @@ $gpu-accel: translateZ(0);
     backface-visibility: hidden;
     transform: $gpu-accel;
 
-    @media screen and (max-width: 74.9375em) {
+    @media screen and (max-width: 1199px) {
         width: 25%;
         top: 17vh;
         right: 1em;
@@ -326,12 +326,12 @@ $gpu-accel: translateZ(0);
         transition: opacity 1.2s ease-in-out;
     }
 
-    @media screen and (max-width: 48em) {
+    @media screen and (max-width: 768px) {
         width: 22%;
         top: 15vh;
     }
 
-    @media screen and (min-width: 75em) {
+    @media screen and (min-width: 1200px) {
         width: 14vw;
         top: auto;
         bottom: -1em;
@@ -368,12 +368,12 @@ $gpu-accel: translateZ(0);
         transform: $gpu-accel;
     }
 
-    @media screen and (max-width: 74.9375em) {
+    @media screen and (max-width: 1199px) {
         position: absolute;
         transition: opacity 1.2s ease-in-out;
     }
 
-    @media screen and (min-width: 75em) {
+    @media screen and (min-width: 1200px) {
         height: 100%;
         max-height: none;
     }
@@ -400,7 +400,7 @@ $gpu-accel: translateZ(0);
     color: var(--hero-project-title);
     transition: color 0.3s ease;
 
-    @media screen and (max-width: 74.9375em) {
+    @media screen and (max-width: 1199px) {
         font-size: 0.9em;
     }
 }
@@ -438,7 +438,7 @@ $gpu-accel: translateZ(0);
         opacity: 1;
     }
 
-    @media screen and (max-width: 74.9375em) {
+    @media screen and (max-width: 1199px) {
         flex-direction: column;
         align-items: center;
         margin-bottom: 1em;
@@ -452,7 +452,7 @@ $gpu-accel: translateZ(0);
     margin-top: 0.75em;
     pointer-events: auto;
     
-    @media screen and (max-width: 74.9375em) {
+    @media screen and (max-width: 1199px) {
         position: relative;
         bottom: 0;
         margin-top: 0;
@@ -476,7 +476,7 @@ $gpu-accel: translateZ(0);
         }
     }
 
-    @media screen and (min-width: 75em) {
+    @media screen and (min-width: 1200px) {
         opacity: 1;
         pointer-events: auto;
         transition: opacity 0.3s ease-out;
@@ -491,7 +491,7 @@ $gpu-accel: translateZ(0);
         }
     }
 
-    @media screen and (min-width: 75em) {
+    @media screen and (min-width: 1200px) {
         opacity: 1;
         pointer-events: auto;
         transition: none;
@@ -528,11 +528,11 @@ $gpu-accel: translateZ(0);
                 transform: scale(0);
                 animation: dotAppear 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 
-                @media screen and (max-width: 74.9375em) {
+                @media screen and (max-width: 1199px) {
                     animation-duration: 0.25s;
                 }
 
-                @media screen and (min-width: 75em) {
+                @media screen and (min-width: 1200px) {
                     &:first-child {
                         animation-delay: 0.2s;
                     }
@@ -544,7 +544,7 @@ $gpu-accel: translateZ(0);
                     }
                 }
 
-                @media screen and (max-width: 74.9375em) {
+                @media screen and (max-width: 1199px) {
                     &:first-child {
                         animation-delay: 1.1s;
                     }
@@ -559,7 +559,7 @@ $gpu-accel: translateZ(0);
         }
     }
 
-    @media screen and (min-width: 48em) {
+    @media screen and (min-width: 768px) {
         justify-content: flex-start;
         margin: 0;
         width: auto; // Change from flex: 0 0 auto
@@ -578,7 +578,7 @@ $gpu-accel: translateZ(0);
     opacity: 0.7;
     pointer-events: auto;
     
-    @media screen and (max-width: 74.9375em) {
+    @media screen and (max-width: 1199px) {
         width: 1.5em;
     }
     
@@ -624,7 +624,7 @@ $gpu-accel: translateZ(0);
         background: rgb(217, 217, 217);
     }
 
-    @media screen and (max-width: 74.9375em) {
+    @media screen and (max-width: 1199px) {
         font-size: 0.9em;
         transition: all 0.5s ease-out;
         opacity: 0;
@@ -725,7 +725,7 @@ $gpu-accel: translateZ(0);
         will-change: opacity;
     }
 
-    @media screen and (max-width: 74.9375em) {
+    @media screen and (max-width: 1199px) {
         transition: opacity 0.3s ease-out;
 
         &.visible:not(.fading) {
@@ -757,7 +757,7 @@ $gpu-accel: translateZ(0);
         }
     }
 
-    @media screen and (min-width: 75em) {
+    @media screen and (min-width: 1200px) {
         transition: opacity 0.2s ease-out;
 
         &.fading {
@@ -826,7 +826,7 @@ $gpu-accel: translateZ(0);
         }
     }
 
-    @media screen and (max-width: 74.9375em) {
+    @media screen and (max-width: 1199px) {
         .contentContainer.visible:not(.fading) {
             .navigation {
                 transition-delay: 0.8s;
@@ -840,7 +840,7 @@ $gpu-accel: translateZ(0);
         }
     }
 
-    @media screen and (min-width: 75em) {
+    @media screen and (min-width: 1200px) {
         .contentContainer.visible:not(.fading) {
             .navigation {
                 transition-delay: 0.6s;
@@ -855,7 +855,7 @@ $gpu-accel: translateZ(0);
     }
 }
 
-@media screen and (min-width: 75em) {
+@media screen and (min-width: 1200px) {
     .hero {
         padding: 3em 8em;
         min-height: 80vh;
@@ -1247,7 +1247,7 @@ $gpu-accel: translateZ(0);
         margin: 0;
     }
 
-    @media screen and (max-width: 74.9375em) {
+    @media screen and (max-width: 1199px) {
         transition: opacity 0.5s ease-out;
         opacity: 0;
         
@@ -1288,7 +1288,7 @@ $gpu-accel: translateZ(0);
         background: rgb(217, 217, 217);
     }
 
-    @media screen and (max-width: 74.9375em) {
+    @media screen and (max-width: 1199px) {
         opacity: 0;
         transition: all 0.5s ease-out, opacity 0.5s ease-out;
         font-size: 0.9em;
@@ -1377,7 +1377,7 @@ $gpu-accel: translateZ(0);
         }
     }
 
-    @media screen and (max-width: 74.9375em) {
+    @media screen and (max-width: 1199px) {
         font-size: 0.9em;
         padding: 0.75em 1.25em;
         white-space: nowrap;
@@ -1406,7 +1406,7 @@ $gpu-accel: translateZ(0);
         }
     }
     
-    @media screen and (min-width: 75em) {
+    @media screen and (min-width: 1200px) {
         opacity: 0;
         pointer-events: none;
         transition: all 0.4s ease-out;
@@ -1417,7 +1417,7 @@ $gpu-accel: translateZ(0);
         }
     }
 
-    @media screen and (min-width: 48em) {
+    @media screen and (min-width: 768px) {
         order: 2;
         margin: 0;
         width: auto; // Change from flex: 0 0 auto
@@ -1434,7 +1434,7 @@ $gpu-accel: translateZ(0);
     gap: 2em;
     justify-content: space-between; // Add this
     
-    @media screen and (min-width: 75em) {
+    @media screen and (min-width: 1200px) {
         margin-top: 3em;
     }
 
@@ -1448,7 +1448,7 @@ $gpu-accel: translateZ(0);
         }
     }
 
-    @media screen and (max-width: 74.9375em) {
+    @media screen and (max-width: 1199px) {
         opacity: 0;
         transition: opacity 0.6s ease-out;
         
@@ -1484,7 +1484,7 @@ $gpu-accel: translateZ(0);
         // Remove all duplicate mobile media queries
     }
 
-    @media screen and (min-width: 75em) {
+    @media screen and (min-width: 1200px) {
         transition: opacity 0.4s ease-out;
         opacity: 0;
         pointer-events: none;
@@ -1525,14 +1525,14 @@ $gpu-accel: translateZ(0);
     }
 
 
-    @media screen and (min-width: 75em) {
+    @media screen and (min-width: 1200px) {
         &:not(.visible) {
             opacity: 1;
             pointer-events: auto;
         }
     }
 
-    @media screen and (max-width: 74.9375em) {
+    @media screen and (max-width: 1199px) {
         &.visible {
             opacity: 0;
             transition: opacity 0.3s ease-out;
@@ -1550,7 +1550,7 @@ $gpu-accel: translateZ(0);
         }
     }
 
-    @media screen and (max-width: 74.9375em) {
+    @media screen and (max-width: 1199px) {
         &.visible {
             opacity: 1;
             pointer-events: auto;
@@ -1568,7 +1568,7 @@ $gpu-accel: translateZ(0);
         }
     }
 
-    @media screen and (min-width: 75em) {
+    @media screen and (min-width: 1200px) {
         &.visible {
             opacity: 1;
             pointer-events: auto;
@@ -1585,10 +1585,10 @@ $gpu-accel: translateZ(0);
         }
     }
 
-    @media screen and (min-width: 75em) {
+    @media screen and (min-width: 1200px) {
     }
 
-    @media screen and (max-width: 74.9375em) {
+    @media screen and (max-width: 1199px) {
         &.visible {
             opacity: 1;
             pointer-events: auto;
