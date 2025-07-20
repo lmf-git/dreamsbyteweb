@@ -48,9 +48,23 @@ export default function Services() {
   const sectionRef = useRef(null);
   const { headerAnimationComplete } = useHeaderAnimation();
   const { openContact } = useContact();
+  const [servicesVisible, setServicesVisible] = useState(false);
   
-  // Debug logging
-  console.log('Services component - headerAnimationComplete:', headerAnimationComplete);
+  // Handle services visibility timing like intro page
+  useEffect(() => {
+    // Reset visibility when headerAnimationComplete changes
+    setServicesVisible(false);
+    
+    // If header animation is already complete (navigation), show quickly
+    // Otherwise wait for header animation plus a short delay
+    const delay = headerAnimationComplete ? 200 : 300;
+    
+    const timer = setTimeout(() => {
+      setServicesVisible(true);
+    }, delay);
+
+    return () => clearTimeout(timer);
+  }, [headerAnimationComplete]);
   
 
   const handleExampleClick = (service) => (e) => {
@@ -78,16 +92,23 @@ export default function Services() {
   return (
     <div 
       ref={sectionRef}
-      className={`section ${styles.services} ${headerAnimationComplete ? styles.visible : ''}`} 
+      className={`section ${styles.services} ${servicesVisible ? styles.visible : ''}`} 
       id="services"
+      style={{ opacity: servicesVisible ? 1 : 0 }}
     >
-      <div className={styles.heading}>
+      <div 
+        className={`${styles.heading} ${servicesVisible ? styles.visible : ''}`}
+        style={{ opacity: servicesVisible ? 1 : 0 }}
+      >
       <span className={styles.preamble}>From Concept to Reality</span>
       <h2 className={styles.title}>Our Services</h2>
       <span className={styles.baseRate}>Base Rate: $75/hr</span>
     </div>
 
-    <div className={styles.list}>
+    <div 
+      className={`${styles.list} ${servicesVisible ? styles.visible : ''}`}
+      style={{ opacity: servicesVisible ? 1 : 0 }}
+    >
       {[
         { name: 'Web', items: [
           { name: 'Business Website', price: 'Starting at $900' },
@@ -111,8 +132,11 @@ export default function Services() {
       ].map((serviceGroup, index) => (
         <div 
           key={serviceGroup.name} 
-          className={`${styles.service} ${headerAnimationComplete ? styles.visible : ''}`}
-          style={{ transitionDelay: `${index * 0.2}s` }}
+          className={`${styles.service} ${servicesVisible ? styles.visible : ''}`}
+          style={{ 
+            transitionDelay: `${index * 0.2}s`,
+            opacity: servicesVisible ? 1 : 0 
+          }}
         >
           <span className={styles.name}>{serviceGroup.name}</span>
           {serviceGroup.items.map((item, itemIndex) => (
@@ -138,8 +162,11 @@ export default function Services() {
 
 
     <div 
-      className={`${styles.providers} ${headerAnimationComplete ? styles.visible : ''}`}
-      style={{ transitionDelay: '0.8s' }}
+      className={`${styles.providers} ${servicesVisible ? styles.visible : ''}`}
+      style={{ 
+        transitionDelay: '0.8s',
+        opacity: servicesVisible ? 1 : 0 
+      }}
     >
       <div className={styles.providersHeading}>Technologies We Use</div>
       <div className={styles.providersList}>
@@ -149,8 +176,11 @@ export default function Services() {
             href={tech.url}
             target="_blank"
             rel="noopener noreferrer"
-            className={`${styles.provider} ${headerAnimationComplete ? styles.visible : ''}`}
-            style={{ transitionDelay: `${1.0 + index * 0.1}s` }}
+            className={`${styles.provider} ${servicesVisible ? styles.visible : ''}`}
+            style={{ 
+              transitionDelay: `${1.0 + index * 0.1}s`,
+              opacity: servicesVisible ? 1 : 0 
+            }}
           >
             {tech.Icon && <tech.Icon extraClass={styles.providericon} />}
             {!tech.hideLabel && tech.name}
@@ -160,8 +190,11 @@ export default function Services() {
     </div>
 
     <div 
-      className={`${styles.additionalSection} ${headerAnimationComplete ? styles.visible : ''}`}
-      style={{ transitionDelay: '2.8s' }}>
+      className={`${styles.additionalSection} ${servicesVisible ? styles.visible : ''}`}
+      style={{ 
+        transitionDelay: '2.8s',
+        opacity: servicesVisible ? 1 : 0 
+      }}>
       <p className={styles.additional}>
         All services are tailored to your specific needs with our base rate of $75/hr and project-based pricing available. <button className={styles.additionallink} onClick={() => openContact()}>Contact us</button> to start realising your dreams.
       </p>

@@ -9,7 +9,7 @@ import { ContactProvider, useContact } from '../../../contexts/ContactContext';
 import { HeaderAnimationProvider, useHeaderAnimation } from '../../../contexts/HeaderAnimationContext';
 import Contact from "../Contact/Contact";
 import Footer from "../Footer/Footer";
-// import Stars from "../Stars/Stars";
+import Stars from "../Stars/Stars";
 
 import MenuIcon from "../../icons/social/Menu";
 import Logo from "../../icons/branding/Logo";
@@ -37,32 +37,45 @@ function LayoutContent({ children }) {
 
     // Track if this is the initial page load
     const [isInitialLoad, setIsInitialLoad] = useState(true);
+    const [hasNavigated, setHasNavigated] = useState(false);
     
     // Set header animation complete after header navigation reveals (at 2s)
     useEffect(() => {
         console.log('Header animation effect:', { pathname, isInitialLoad });
         
-        // Reset animation state on route change
-        setHeaderAnimationComplete(false);
-        
         if (isInitialLoad) {
-            // First page load - wait for header animation
+            // First page load - wait for header animation on all pages
             console.log('Initial load - waiting 2s for header animation');
+            setHeaderAnimationComplete(false);
             const timer = setTimeout(() => {
                 console.log('Header animation completing after 2s');
                 setHeaderAnimationComplete(true);
                 setIsInitialLoad(false);
+                setHasNavigated(true);
             }, 2000);
             return () => clearTimeout(timer);
         } else {
-            // Navigation - header already exists, shorter delay
-            console.log('Navigation - setting header complete after short delay');
-            const timer = setTimeout(() => {
+            // Navigation - handle animated pages specially (including landing page)
+            const animatedPages = ['/', '/services', '/testimonials'];
+            const isAnimatedPage = animatedPages.includes(pathname);
+            
+            if (isAnimatedPage) {
+                console.log('Navigation to animated page - triggering re-animation');
+                setHeaderAnimationComplete(false);
+                const timer = setTimeout(() => {
+                    setHeaderAnimationComplete(true);
+                }, 100); // Brief delay to trigger animation
+                return () => clearTimeout(timer);
+            } else {
+                console.log('Navigation - ensuring header stays complete');
                 setHeaderAnimationComplete(true);
-            }, 100); // Very short delay for navigation
-            return () => clearTimeout(timer);
+            }
+            
+            if (!hasNavigated) {
+                setHasNavigated(true);
+            }
         }
-    }, [pathname, setHeaderAnimationComplete]);
+    }, [pathname, setHeaderAnimationComplete, isLandingPage, isInitialLoad]);
 
     const getThemeIcon = () => {
         return theme === 'light' 
@@ -114,7 +127,7 @@ function LayoutContent({ children }) {
 
     return (
         <>
-            {/* <Stars frequency={pathname === '/' ? 'high' : 'normal'} /> */}
+            <Stars frequency={pathname === '/' ? 'high' : 'normal'} />
             <main className={styles.index}>
                 <header className={styles.header}>
                     <Link href="/">

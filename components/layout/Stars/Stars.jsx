@@ -34,8 +34,8 @@ export default function Stars({ frequency = 'normal' }) {
                         startY: baseStartY + (Math.random() - 0.5) * 15, // Slight variation within group
                         endY: baseEndY + (Math.random() - 0.5) * 20,
                         duration: Math.random() * 2 + 3,
-                        size: Math.random() * 2 + 1,
-                        opacity: Math.random() * 0.4 + 0.6
+                        size: Math.random() * 3 + 2,
+                        opacity: Math.random() * 0.3 + 0.8
                     };
 
                     setStars(prev => [...prev, star]);
@@ -83,111 +83,82 @@ export default function Stars({ frequency = 'normal' }) {
     return (
         <div 
             ref={containerRef}
-            className="fixed inset-0 w-full h-full pointer-events-none z-0 overflow-hidden"
+            style={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                width: '100vw',
+                height: '100vh',
+                pointerEvents: 'none',
+                zIndex: 1,
+                overflow: 'hidden'
+            }}
         >
             {stars.map(star => (
                 <div
                     key={star.id}
-                    className="absolute"
                     style={{
-                        left: star.fromLeft ? '-100px' : 'calc(100% + 100px)',
+                        position: 'absolute',
+                        left: 0,
                         top: `${star.startY}%`,
-                        opacity: 0
+                        width: '100%',
+                        height: '2px',
+                        pointerEvents: 'none'
                     }}
                 >
-                    <svg
-                        width="200"
-                        height="100"
-                        viewBox="0 0 200 100"
-                        className="absolute"
+                    <div
                         style={{
-                            left: star.fromLeft ? '0' : '-200px',
-                            top: '-50px'
+                            position: 'absolute',
+                            left: star.fromLeft ? '-100px' : 'calc(100% + 50px)',
+                            top: 0,
+                            width: '80px',
+                            height: '2px',
+                            background: `linear-gradient(${star.fromLeft ? '90deg' : '270deg'}, transparent 0%, ${isDarkMode ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.4)'} 70%, ${isDarkMode ? 'rgba(255,255,255,0.9)' : 'rgba(0,0,0,0.9)'} 100%)`,
+                            borderRadius: '1px',
+                            transformOrigin: star.fromLeft ? 'left center' : 'right center',
+                            animation: `trail-${star.id} ${star.duration}s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards`
                         }}
-                    >
-                        <defs>
-                            <linearGradient 
-                                id={`trail-${star.id}`} 
-                                x1="0%" 
-                                y1="0%" 
-                                x2="100%" 
-                                y2="0%"
-                            >
-                                <stop 
-                                    offset="0%" 
-                                    stopColor={isDarkMode ? 'white' : 'black'} 
-                                    stopOpacity="0"
-                                />
-                                <stop 
-                                    offset="70%" 
-                                    stopColor={isDarkMode ? 'white' : 'black'} 
-                                    stopOpacity={star.opacity * 0.3}
-                                />
-                                <stop 
-                                    offset="100%" 
-                                    stopColor={isDarkMode ? 'white' : 'black'} 
-                                    stopOpacity={star.opacity}
-                                />
-                            </linearGradient>
-                        </defs>
-                        
-                        <path
-                            d={`M 0 50 Q 100 ${50 + (star.endY - star.startY)} 200 50`}
-                            stroke={`url(#trail-${star.id})`}
-                            strokeWidth={star.size}
-                            strokeLinecap="round"
-                            fill="none"
-                            className="animate-[shootingStar_var(--duration)_ease-out_forwards]"
-                            style={{
-                                '--duration': `${star.duration}s`,
-                                transform: star.fromLeft ? 'none' : 'scaleX(-1)',
-                                transformOrigin: 'center',
-                                strokeDasharray: '0 200',
-                                animation: `shootingStar ${star.duration}s ease-out forwards`
-                            }}
-                        />
-                        
-                        <circle
-                            cx={star.fromLeft ? "190" : "10"}
-                            cy="50"
-                            r={star.size * 1.5}
-                            fill={isDarkMode ? 'white' : 'black'}
-                            opacity={star.opacity}
-                            className="animate-[starMove_var(--duration)_ease-out_forwards]"
-                            style={{
-                                '--duration': `${star.duration}s`,
-                                filter: `blur(${star.size * 0.5}px)`,
-                                animation: `starMove ${star.duration}s ease-out forwards`
-                            }}
-                        />
-                    </svg>
+                    />
+                    
+                    <div
+                        style={{
+                            position: 'absolute',
+                            left: star.fromLeft ? '-6px' : 'calc(100% + 6px)',
+                            top: '-1px',
+                            width: '4px',
+                            height: '4px',
+                            background: isDarkMode ? '#ffffff' : '#000000',
+                            borderRadius: '50%',
+                            boxShadow: isDarkMode 
+                                ? `0 0 8px rgba(255,255,255,0.8), 0 0 16px rgba(255,255,255,0.4)` 
+                                : `0 0 8px rgba(0,0,0,0.6), 0 0 16px rgba(0,0,0,0.3)`,
+                            animation: `star-${star.id} ${star.duration}s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards`
+                        }}
+                    />
                     
                     <style jsx>{`
-                        @keyframes shootingStar {
+                        @keyframes trail-${star.id} {
                             0% {
-                                stroke-dasharray: 0 200;
                                 opacity: 0;
+                                transform: translateX(0) translateY(0) scaleX(0);
                             }
-                            10% {
+                            15% {
                                 opacity: 1;
+                                transform: translateX(0) translateY(0) scaleX(1);
                             }
-                            50% {
-                                stroke-dasharray: 100 200;
-                            }
-                            90% {
-                                stroke-dasharray: 200 200;
+                            85% {
                                 opacity: 1;
                             }
                             100% {
-                                stroke-dasharray: 200 200;
                                 opacity: 0;
+                                transform: translateX(${star.fromLeft ? 'calc(100vw + 100px)' : 'calc(-100vw - 100px)'}) translateY(${(star.endY - star.startY) * 3}px) scaleX(1);
                             }
                         }
                         
-                        @keyframes starMove {
+                        @keyframes star-${star.id} {
                             0% {
-                                transform: translateX(${star.fromLeft ? '-200px' : '200px'}) translateY(0);
                                 opacity: 0;
+                                transform: translateX(0) translateY(0);
                             }
                             10% {
                                 opacity: 1;
@@ -196,8 +167,8 @@ export default function Stars({ frequency = 'normal' }) {
                                 opacity: 1;
                             }
                             100% {
-                                transform: translateX(${star.fromLeft ? 'calc(100vw + 200px)' : 'calc(-100vw - 200px)'}) translateY(${(star.endY - star.startY) * 2}px);
                                 opacity: 0;
+                                transform: translateX(${star.fromLeft ? 'calc(100vw + 12px)' : 'calc(-100vw - 12px)'}) translateY(${(star.endY - star.startY) * 3}px);
                             }
                         }
                     `}</style>

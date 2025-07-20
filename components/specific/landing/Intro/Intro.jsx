@@ -35,7 +35,7 @@ export default function Intro() {
 
                 <div className={styles.description}>
                     <p className={styles.text}>
-                        We specialize in full-stack development, e-commerce solutions, captivating design, 
+                        We specialise in full-stack development, e-commerce solutions, captivating design, 
                         and cutting-edge technology implementations. Whether you're a startup with a vision 
                         or an established business looking to innovate, we're here to bring your ideas to life.
                     </p>

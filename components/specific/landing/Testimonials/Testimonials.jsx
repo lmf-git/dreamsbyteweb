@@ -9,9 +9,20 @@ import styles from './testimonials.module.scss';
 export default function Testimonials() {
     const sectionRef = useRef(null);
     const { headerAnimationComplete } = useHeaderAnimation();
+    const [testimonialsVisible, setTestimonialsVisible] = useState(false);
     
-    // Debug logging
-    console.log('Testimonials component - headerAnimationComplete:', headerAnimationComplete);
+    // Handle testimonials visibility timing like intro page
+    useEffect(() => {
+        // Only show testimonials after header animation completes
+        if (headerAnimationComplete) {
+            const timer = setTimeout(() => {
+                setTestimonialsVisible(true);
+            }, 200); // Brief delay after header completes
+            return () => clearTimeout(timer);
+        } else {
+            setTestimonialsVisible(false);
+        }
+    }, [headerAnimationComplete]);
     
     const listRef = useRef(null);
     const planeRef = useRef(null);
@@ -94,7 +105,12 @@ export default function Testimonials() {
     const stopDragging = () => setIsDragging(false);
 
     return (
-        <div ref={sectionRef} className={`section ${styles.testimonials} ${headerAnimationComplete ? styles.visible : ''}`} id="testimonials">
+        <div 
+            ref={sectionRef} 
+            className={`section ${styles.testimonials} ${testimonialsVisible ? styles.visible : ''}`} 
+            id="testimonials"
+            style={{ opacity: testimonialsVisible ? 1 : 0 }}
+        >
             <h2 className={styles.title}>Our client testimonials:</h2>
             <div
                 className={styles.list}
@@ -115,9 +131,12 @@ export default function Testimonials() {
                 <div className={styles.plane} ref={planeRef}>
                     {testimonials.map((t, i) => (
                         <div 
-                            className={`${styles.testimonial} ${headerAnimationComplete ? styles.visible : ''}`} 
+                            className={`${styles.testimonial} ${testimonialsVisible ? styles.visible : ''}`} 
                             key={i}
-                            style={{ transitionDelay: `${0.2 + i * 0.1}s` }}
+                            style={{ 
+                                transitionDelay: `${0.2 + i * 0.1}s`,
+                                opacity: testimonialsVisible ? 1 : 0 
+                            }}
                         >
                             <div className={styles.brand}>
                                 {t?.logo ? t.logo : (

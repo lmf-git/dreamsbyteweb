@@ -133,7 +133,7 @@ body {
     margin: 0;
     background: linear-gradient(to bottom, var(--bg-secondary), var(--bg-primary));
     color: var(--text-primary);
-    transition: background 0.3s ease, color 0.3s ease;
+    transition: background 0.6s ease-in-out, color 0.6s ease-in-out;
 }
 
 

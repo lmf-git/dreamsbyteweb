@@ -8,7 +8,7 @@
   color: var(--text-primary);
   opacity: 0;
   transform: translateY(1.25em);
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out, color 0.3s ease;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out, color 0.3s ease;
   padding: 1em;  // Add base padding for mobile
   
   &.visible {
@@ -22,6 +22,14 @@
   font-size: 1.65em;
   margin-bottom: 1.5em;
   margin-left: 2em;
+  opacity: 0;
+  transform: translateY(1.25em);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .preamble {
@@ -52,6 +60,14 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 1em;
+  opacity: 0;
+  transform: translateY(1.25em);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .service {
@@ -64,6 +80,11 @@
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .name {

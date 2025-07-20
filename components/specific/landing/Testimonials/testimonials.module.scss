@@ -78,7 +78,7 @@
     pointer-events: auto; // Ensure interactions are enabled
     opacity: 0;
     transform: none; // No transform needed
-    transition: none; // Remove animation transitions
+    transition: opacity 0.6s ease-out; // Add smooth opacity transition
     will-change: opacity; // Only animate opacity
     contain: content; // Optimize paint/layout performance
 
