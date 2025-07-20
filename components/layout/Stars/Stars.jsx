@@ -4,64 +4,134 @@ import { useState, useEffect, useRef } from 'react';
 import { useHero } from '../../../contexts/HeroContext';
 import { useTheme } from '../../../contexts/ThemeContext';
 
-export default function Stars({ frequency = 'normal' }) {
-    const [starGroups, setStarGroups] = useState([]);
-    const containerRef = useRef(null);
+export default function Stars() {
+    const [stars, setStars] = useState([]);
+    const svgRef = useRef(null);
+    const animationRef = useRef(null);
     const { heroComplete } = useHero();
     const { theme } = useTheme();
     
     const isDarkMode = theme === 'dark';
 
+    // Animation loop using requestAnimationFrame
+    const animate = useRef((timestamp) => {
+        setStars(currentStars => {
+            return currentStars.map(star => {
+                if (!star.startTime) {
+                    star.startTime = timestamp;
+                }
+                
+                const elapsed = timestamp - star.startTime;
+                const progress = Math.min(elapsed / star.duration, 1);
+                
+                if (progress >= 1) {
+                    return { ...star, completed: true };
+                }
+                
+                // Calculate position along arc
+                const startX = star.fromLeft ? -50 : window.innerWidth + 50;
+                const endX = star.fromLeft ? window.innerWidth + 50 : -50;
+                const startY = star.y;
+                const endY = star.y + star.arc;
+                
+                // Acceleration curve - slow start, accelerate in middle, zip at end
+                const accelProgress = progress < 0.5 
+                    ? 2 * progress * progress  // accelerate in first half
+                    : 1 - 2 * (1 - progress) * (1 - progress); // continue accelerating to end
+                
+                const currentX = startX + (endX - startX) * accelProgress;
+                
+                // Create arc using quadratic curve formula with acceleration
+                const midX = (startX + endX) / 2;
+                const arcHeight = star.arc;
+                const currentY = startY + (endY - startY) * accelProgress + 
+                                arcHeight * Math.sin(Math.PI * accelProgress);
+                
+                // Calculate trail path dynamically with arc
+                const trailProgress = Math.max(0, progress - 0.15);
+                const trailStartX = startX + (endX - startX) * trailProgress;
+                const trailStartY = startY + (endY - startY) * trailProgress + 
+                                   arcHeight * Math.sin(Math.PI * trailProgress);
+                
+                // Create curved trail following the same arc
+                const trailMidX = (trailStartX + currentX) / 2;
+                const trailMidY = (trailStartY + currentY) / 2 + arcHeight * 0.2;
+                
+                const trailPath = `M ${trailStartX},${trailStartY} Q ${trailMidX},${trailMidY} ${currentX},${currentY}`;
+                
+                // Opacity calculations
+                let opacity = 0;
+                let trailOpacity = 0;
+                
+                if (progress < 0.2) {
+                    opacity = (progress / 0.2) * star.maxOpacity;
+                    trailOpacity = (progress / 0.2) * 0.6;
+                } else if (progress < 0.8) {
+                    opacity = star.maxOpacity;
+                    trailOpacity = 0.6;
+                } else {
+                    opacity = star.maxOpacity * (1 - (progress - 0.8) / 0.2);
+                    trailOpacity = 0.6 * (1 - (progress - 0.8) / 0.2);
+                }
+                
+                return {
+                    ...star,
+                    currentX,
+                    currentY,
+                    trailPath,
+                    opacity,
+                    trailOpacity,
+                    progress
+                };
+            }).filter(star => !star.completed);
+        });
+        
+        animationRef.current = requestAnimationFrame(animate.current);
+    });
+
     useEffect(() => {
         if (!heroComplete) return;
 
-        setStarGroups([]);
-
         const createStarGroup = () => {
-            const groupId = Date.now() + Math.random();
             const groupSize = Math.floor(Math.random() * 3) + 1; // 1-3 stars
             const fromLeft = Math.random() > 0.5;
             const baseY = Math.random() * 70 + 15; // 15-85% vertical position
-            const arcDirection = (Math.random() - 0.5) * 60; // Arc curve variation
+            const arcDirection = (Math.random() - 0.5) * 80; // Arc curve variation
             
-            const stars = [];
+            const newStars = [];
             for (let i = 0; i < groupSize; i++) {
                 const staggerDelay = i * (Math.random() * 400 + 300); // 300-700ms stagger
-                stars.push({
-                    id: groupId + i,
-                    delay: staggerDelay,
-                    fromLeft,
-                    y: baseY + (Math.random() - 0.5) * 20, // Slight variation within group
-                    arc: arcDirection + (Math.random() - 0.5) * 30,
-                    duration: Math.random() * 2 + 4, // 4-6 seconds
-                    size: Math.random() * 0.8 + 0.8, // 0.8-1.6 scale
-                    opacity: Math.random() * 0.3 + 0.7 // 0.7-1.0 opacity
-                });
-            }
+                
+                setTimeout(() => {
+                    const star = {
+                        id: Date.now() + Math.random() + i,
+                        fromLeft,
+                        y: (baseY + (Math.random() - 0.5) * 20) / 100 * window.innerHeight,
+                        arc: arcDirection + (Math.random() - 0.5) * 40,
+                        duration: (Math.random() * 2 + 4) * 1000, // 4-6 seconds in ms
+                        size: Math.random() * 1.5 + 0.8, // 0.8-2.3 scale for more variety
+                        maxOpacity: Math.random() * 0.5 + 0.4, // 0.4-0.9 opacity for more variety
+                        startTime: null,
+                        currentX: 0,
+                        currentY: 0,
+                        trailPath: '',
+                        opacity: 0,
+                        trailOpacity: 0,
+                        progress: 0
+                    };
 
-            const newGroup = { id: groupId, stars };
-            setStarGroups(prev => [...prev, newGroup]);
-            
-            // Remove group after all animations complete
-            setTimeout(() => {
-                setStarGroups(prev => prev.filter(g => g.id !== groupId));
-            }, Math.max(...stars.map(s => s.duration * 1000 + s.delay)) + 1000);
-        };
-
-        const getFrequencySettings = () => {
-            switch (frequency) {
-                case 'high':
-                    return { initialDelay: 3000, minInterval: 4000, maxInterval: 8000 };
-                case 'medium':
-                    return { initialDelay: 6000, minInterval: 12000, maxInterval: 20000 };
-                default:
-                    return { initialDelay: 10000, minInterval: 25000, maxInterval: 45000 };
+                    setStars(prev => [...prev, star]);
+                }, staggerDelay);
             }
         };
 
-        const settings = getFrequencySettings();
+        // Start animation loop
+        animationRef.current = requestAnimationFrame(animate.current);
 
-        const initialDelay = setTimeout(() => {
+        // Create star groups
+        const settings = { initialDelay: 2000, minInterval: 3000, maxInterval: 8000 };
+
+        const initialTimer = setTimeout(() => {
             createStarGroup();
             
             const createNextStarGroup = () => {
@@ -76,44 +146,16 @@ export default function Stars({ frequency = 'normal' }) {
         }, settings.initialDelay);
 
         return () => {
-            clearTimeout(initialDelay);
-            setStarGroups([]);
+            clearTimeout(initialTimer);
+            if (animationRef.current) {
+                cancelAnimationFrame(animationRef.current);
+            }
+            setStars([]);
         };
-    }, [heroComplete, frequency]);
-
-    // Generate SVG path for shooting star with arc
-    const generateStarPath = (star) => {
-        const startX = star.fromLeft ? -50 : window.innerWidth + 50;
-        const endX = star.fromLeft ? window.innerWidth + 50 : -50;
-        const startY = (star.y / 100) * window.innerHeight;
-        const endY = startY + star.arc;
-        
-        // Control points for smooth arc
-        const midX = (startX + endX) / 2;
-        const midY = (startY + endY) / 2 + star.arc * 0.3;
-        
-        return `M ${startX},${startY} Q ${midX},${midY} ${endX},${endY}`;
-    };
-
-    // Generate trail path (slightly behind the star)
-    const generateTrailPath = (star, progress = 0.3) => {
-        const startX = star.fromLeft ? -50 : window.innerWidth + 50;
-        const endX = star.fromLeft ? window.innerWidth + 50 : -50;
-        const startY = (star.y / 100) * window.innerHeight;
-        const endY = startY + star.arc;
-        
-        const trailStartX = startX + (endX - startX) * progress;
-        const trailStartY = startY + (endY - startY) * progress;
-        
-        const midX = (trailStartX + endX) / 2;
-        const midY = (trailStartY + endY) / 2 + star.arc * 0.2;
-        
-        return `M ${trailStartX},${trailStartY} Q ${midX},${midY} ${endX},${endY}`;
-    };
+    }, [heroComplete]);
 
     return (
         <div 
-            ref={containerRef}
             style={{
                 position: 'fixed',
                 top: 0,
@@ -126,130 +168,71 @@ export default function Stars({ frequency = 'normal' }) {
             }}
         >
             <svg
+                ref={svgRef}
                 width="100%"
                 height="100%"
                 style={{ position: 'absolute', top: 0, left: 0 }}
             >
                 <defs>
                     {/* Glow filter for stars */}
-                    <filter id="starGlow" x="-50%" y="-50%" width="200%" height="200%">
-                        <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                    <filter id="starGlow" x="-100%" y="-100%" width="300%" height="300%">
+                        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
                         <feMerge>
                             <feMergeNode in="coloredBlur"/>
                             <feMergeNode in="SourceGraphic"/>
                         </feMerge>
                     </filter>
                     
-                    {/* Gradient for trail */}
-                    <linearGradient id="trailGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" style={{
-                            stopColor: isDarkMode ? '#ffffff' : '#000000',
-                            stopOpacity: 0
-                        }} />
-                        <stop offset="70%" style={{
-                            stopColor: isDarkMode ? '#ffffff' : '#000000',
-                            stopOpacity: 0.3
-                        }} />
-                        <stop offset="100%" style={{
-                            stopColor: isDarkMode ? '#ffffff' : '#000000',
-                            stopOpacity: 0.8
-                        }} />
+                    {/* Linear gradient for trail - left to right */}
+                    <linearGradient id="trailGradientLTR" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor={isDarkMode ? '#ffffff' : '#000000'} stopOpacity="0" />
+                        <stop offset="50%" stopColor={isDarkMode ? '#ffffff' : '#000000'} stopOpacity="0.3" />
+                        <stop offset="100%" stopColor={isDarkMode ? '#ffffff' : '#000000'} stopOpacity="0.8" />
+                    </linearGradient>
+                    
+                    {/* Linear gradient for trail - right to left */}
+                    <linearGradient id="trailGradientRTL" x1="100%" y1="0%" x2="0%" y2="0%">
+                        <stop offset="0%" stopColor={isDarkMode ? '#ffffff' : '#000000'} stopOpacity="0" />
+                        <stop offset="50%" stopColor={isDarkMode ? '#ffffff' : '#000000'} stopOpacity="0.3" />
+                        <stop offset="100%" stopColor={isDarkMode ? '#ffffff' : '#000000'} stopOpacity="0.8" />
                     </linearGradient>
                 </defs>
 
-                {starGroups.map(group => 
-                    group.stars.map(star => (
-                        <g key={star.id}>
-                            {/* Trail path */}
+                {stars.map(star => (
+                    <g key={star.id}>
+                        {/* Trail path */}
+                        {star.trailPath && (
                             <path
-                                d={generateTrailPath(star)}
-                                stroke="url(#trailGradient)"
+                                d={star.trailPath}
+                                stroke={`url(#trailGradient${star.fromLeft ? 'LTR' : 'RTL'})`}
                                 strokeWidth={star.size * 1.5}
                                 fill="none"
                                 strokeLinecap="round"
-                                style={{
-                                    opacity: 0,
-                                    animation: `trail-${star.id} ${star.duration}s ease-out ${star.delay}ms forwards`
-                                }}
+                                opacity={star.trailOpacity}
                             />
-                            
-                            {/* Main star */}
-                            <circle
-                                r={star.size * 2}
-                                fill={isDarkMode ? '#ffffff' : '#000000'}
-                                filter="url(#starGlow)"
-                                style={{
-                                    opacity: 0,
-                                    animation: `star-${star.id} ${star.duration}s ease-out ${star.delay}ms forwards`
-                                }}
-                            >
-                                <animateMotion
-                                    dur={`${star.duration}s`}
-                                    begin={`${star.delay}ms`}
-                                    repeatCount="1"
-                                    path={generateStarPath(star)}
-                                />
-                            </circle>
-                            
-                            {/* Subtle glow behind star */}
-                            <circle
-                                r={star.size * 4}
-                                fill={isDarkMode ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.1)'}
-                                style={{
-                                    opacity: 0,
-                                    animation: `glow-${star.id} ${star.duration}s ease-out ${star.delay}ms forwards`
-                                }}
-                            >
-                                <animateMotion
-                                    dur={`${star.duration}s`}
-                                    begin={`${star.delay}ms`}
-                                    repeatCount="1"
-                                    path={generateStarPath(star)}
-                                />
-                            </circle>
-                        </g>
-                    ))
-                )}
+                        )}
+                        
+                        {/* Main star with variable size */}
+                        <circle
+                            cx={star.currentX}
+                            cy={star.currentY}
+                            r={star.size * 1.5}
+                            fill={isDarkMode ? '#ffffff' : '#000000'}
+                            filter="url(#starGlow)"
+                            opacity={star.opacity}
+                        />
+                        
+                        {/* Subtle glow behind star - scales with star size */}
+                        <circle
+                            cx={star.currentX}
+                            cy={star.currentY}
+                            r={star.size * 3.5}
+                            fill={isDarkMode ? 'rgba(255,255,255,0.15)' : 'rgba(0,0,0,0.08)'}
+                            opacity={star.opacity * 0.4}
+                        />
+                    </g>
+                ))}
             </svg>
-            
-            <style jsx>{`
-                ${starGroups.map(group => 
-                    group.stars.map(star => `
-                        @keyframes star-${star.id} {
-                            0% { opacity: 0; }
-                            20% { opacity: ${star.opacity}; }
-                            80% { opacity: ${star.opacity}; }
-                            100% { opacity: 0; }
-                        }
-                        
-                        @keyframes trail-${star.id} {
-                            0% { 
-                                opacity: 0;
-                                stroke-dasharray: 0 200;
-                            }
-                            30% { 
-                                opacity: 0.6;
-                                stroke-dasharray: 50 200;
-                            }
-                            70% { 
-                                opacity: 0.6;
-                                stroke-dasharray: 50 200;
-                            }
-                            100% { 
-                                opacity: 0;
-                                stroke-dasharray: 0 200;
-                            }
-                        }
-                        
-                        @keyframes glow-${star.id} {
-                            0% { opacity: 0; }
-                            30% { opacity: 0.4; }
-                            70% { opacity: 0.4; }
-                            100% { opacity: 0; }
-                        }
-                    `).join('')
-                ).join('')}
-            `}</style>
         </div>
     );
 }

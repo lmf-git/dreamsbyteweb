@@ -143,7 +143,7 @@ function LayoutContent({ children }) {
                 }}
             />
             
-            <Stars frequency={pathname === '/' ? 'high' : 'normal'} />
+            <Stars />
             
             <main className={styles.index}>
                 <header className={styles.header}>
