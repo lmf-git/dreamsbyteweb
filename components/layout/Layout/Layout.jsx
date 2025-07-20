@@ -7,6 +7,7 @@ import { HeroProvider, useHero } from '../../../contexts/HeroContext';
 import { ThemeProvider, useTheme } from '../../../contexts/ThemeContext';
 import { ContactProvider, useContact } from '../../../contexts/ContactContext';
 import { HeaderAnimationProvider, useHeaderAnimation } from '../../../contexts/HeaderAnimationContext';
+import { StarsProvider } from '../../../contexts/StarsContext';
 import Contact from "../Contact/Contact";
 import Footer from "../Footer/Footer";
 import Stars from "../Stars/Stars";
@@ -285,9 +286,11 @@ export default function Layout({ children }) {
             <HeroProvider>
                 <ContactProvider>
                     <HeaderAnimationProvider>
-                        <LayoutContent>
-                            {children}
-                        </LayoutContent>
+                        <StarsProvider>
+                            <LayoutContent>
+                                {children}
+                            </LayoutContent>
+                        </StarsProvider>
                     </HeaderAnimationProvider>
                 </ContactProvider>
             </HeroProvider>

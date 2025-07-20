@@ -3,16 +3,19 @@
 import { useState, useEffect, useRef } from 'react';
 import { useHero } from '../../../contexts/HeroContext';
 import { useTheme } from '../../../contexts/ThemeContext';
+import { useStars } from '../../../contexts/StarsContext';
 import styles from './Stars.module.scss';
 
 export default function Stars() {
     const [stars, setStars] = useState([]);
     const [explosions, setExplosions] = useState([]);
     const [fragments, setFragments] = useState([]);
+    const [fadingTrails, setFadingTrails] = useState([]);
     const svgRef = useRef(null);
     const animationRef = useRef(null);
     const { heroComplete } = useHero();
     const { theme } = useTheme();
+    const { dangerMode } = useStars();
     
     const isDarkMode = theme === 'dark';
 
@@ -53,19 +56,57 @@ export default function Stars() {
                         scale: 0
                     });
 
-                    // Create fragments from collision
-                    const numFragments = Math.floor(Math.random() * 4) + 2; // 2-5 fragments
-                    const fragmentsToCreate = [];
+                    // Create fragments from collision AND new stars
+                    const collisionFragments = [];
+                    const newStars = [];
+                    
+                    // 30% chance to produce 2 new stars with trails instead of just debris
+                    if (Math.random() < 0.3) {
+                        // Create 2 new stars from collision
+                        for (let k = 0; k < 2; k++) {
+                            const deflectionAngle = k === 0 ? 
+                                Math.random() * 60 + 30 : // First star: 30-90 degrees
+                                Math.random() * 60 - 90;  // Second star: -30 to -90 degrees
+                            
+                            const angle = deflectionAngle * (Math.PI / 180);
+                            const newSize = Math.min(star1.size, star2.size) * (Math.random() * 0.4 + 0.6); // 60-100% of smaller star
+                            const speed = Math.random() * 1.5 + 0.8; // Reduced speed from collision
+                            
+                            newStars.push({
+                                id: Date.now() + Math.random() + k + 100,
+                                fromLeft: Math.cos(angle) > 0 ? false : true, // Direction based on deflection
+                                y: explosionY,
+                                arc: Math.random() * -40 - 10, // Upward arc but less dramatic
+                                duration: (Math.random() * 2 + 3) * 1000, // 3-5 seconds
+                                size: newSize,
+                                maxOpacity: Math.random() * 0.3 + 0.5, // 0.5-0.8 opacity (dimmer)
+                                startTime: null,
+                                currentX: explosionX,
+                                currentY: explosionY,
+                                // Override normal motion with collision deflection
+                                isDeflected: true,
+                                deflectionVX: Math.cos(angle) * speed * 2, // Horizontal velocity
+                                deflectionVY: Math.sin(angle) * speed, // Vertical velocity
+                                trailPath: '',
+                                opacity: 0,
+                                trailOpacity: 0,
+                                progress: 0
+                            });
+                        }
+                    }
+                    
+                    // Always create some debris fragments too
+                    const numFragments = Math.floor(Math.random() * 3) + 1; // 1-3 fragments
                     
                     for (let k = 0; k < numFragments; k++) {
-                        // Only 60% of fragments survive the collision
-                        if (Math.random() > 0.6) continue;
+                        // Only 50% of fragments survive the collision
+                        if (Math.random() > 0.5) continue;
                         
                         const angle = (Math.random() * 360) * (Math.PI / 180);
                         const speed = Math.random() * 2 + 1; // Random speed multiplier
                         const fragmentSize = (star1.size + star2.size) / 4 * (Math.random() * 0.8 + 0.4); // Smaller than original stars
                         
-                        fragmentsToCreate.push({
+                        collisionFragments.push({
                             id: Date.now() + Math.random() + k,
                             x: explosionX,
                             y: explosionY,
@@ -82,8 +123,33 @@ export default function Stars() {
                         });
                     }
                     
-                    // Add fragments to the collision return
-                    explosions.fragments = fragmentsToCreate;
+                    // Add fragments and new stars to the collision return
+                    explosions.fragments = collisionFragments;
+                    explosions.newStars = newStars;
+                    
+                    // Create fading trails for collided stars
+                    const createFadingTrail = (star) => {
+                        if (star.trailPath) {
+                            return {
+                                id: Date.now() + Math.random() + star.id,
+                                path: star.trailPath,
+                                fromLeft: star.fromLeft,
+                                size: star.size,
+                                startTime: null,
+                                duration: 1500, // 1.5 second fade
+                                initialOpacity: star.trailOpacity,
+                                opacity: star.trailOpacity
+                            };
+                        }
+                        return null;
+                    };
+
+                    const trail1 = createFadingTrail(star1);
+                    const trail2 = createFadingTrail(star2);
+                    
+                    if (trail1) explosions.fadingTrails = explosions.fadingTrails || [];
+                    if (trail1) explosions.fadingTrails.push(trail1);
+                    if (trail2) explosions.fadingTrails.push(trail2);
                     
                     collided = true;
                     stars[j].collided = true; // Mark second star as collided
@@ -114,42 +180,75 @@ export default function Stars() {
                     return { ...star, completed: true };
                 }
                 
-                // Calculate position along arc
-                const startX = star.fromLeft ? -50 : window.innerWidth + 50;
-                const endX = star.fromLeft ? window.innerWidth + 50 : -50;
-                const startY = star.y;
-                const endY = star.y + star.arc;
+                let currentX, currentY;
                 
-                // Acceleration curve - slow start, accelerate in middle, zip at end
-                const accelProgress = progress < 0.5 
-                    ? 2 * progress * progress  // accelerate in first half
-                    : 1 - 2 * (1 - progress) * (1 - progress); // continue accelerating to end
+                // Handle deflected stars from collisions differently
+                if (star.isDeflected) {
+                    // Apply simple physics for deflected stars
+                    const timeStep = elapsed / 1000; // Convert to seconds
+                    currentX = star.currentX + star.deflectionVX * timeStep * 60; // Scale for screen coordinates
+                    currentY = star.currentY + star.deflectionVY * timeStep * 60 + 
+                              0.5 * 0.1 * timeStep * timeStep * 60; // Add slight gravity
+                } else {
+                    // Normal star motion
+                    // Calculate position along arc
+                    const startX = star.fromLeft ? -50 : window.innerWidth + 50;
+                    const endX = star.fromLeft ? window.innerWidth + 50 : -50;
+                    const startY = star.y;
+                    const endY = star.y + star.arc;
+                    
+                    // Acceleration curve - slow start, accelerate in middle, zip at end
+                    const accelProgress = progress < 0.5 
+                        ? 2 * progress * progress  // accelerate in first half
+                        : 1 - 2 * (1 - progress) * (1 - progress); // continue accelerating to end
+                    
+                    currentX = startX + (endX - startX) * accelProgress;
+                    
+                    // Create arc using quadratic curve formula with acceleration
+                    const midX = (startX + endX) / 2;
+                    const arcHeight = star.arc;
+                    currentY = startY + (endY - startY) * accelProgress + 
+                                      arcHeight * Math.sin(Math.PI * accelProgress);
+                }
                 
-                const currentX = startX + (endX - startX) * accelProgress;
+                // Calculate trail path based on star type
+                let trailPath = '';
                 
-                // Create arc using quadratic curve formula with acceleration
-                const midX = (startX + endX) / 2;
-                const arcHeight = star.arc;
-                const currentY = startY + (endY - startY) * accelProgress + 
-                                arcHeight * Math.sin(Math.PI * accelProgress);
-                
-                // Calculate trail path with proper arc using acceleration
-                const trailProgress = Math.max(0, progress - 0.15);
-                const trailAccelProgress = trailProgress < 0.5 
-                    ? 2 * trailProgress * trailProgress
-                    : 1 - 2 * (1 - trailProgress) * (1 - trailProgress);
-                
-                const trailStartX = startX + (endX - startX) * trailAccelProgress;
-                const trailStartY = startY + (endY - startY) * trailAccelProgress + 
-                                   arcHeight * Math.sin(Math.PI * trailAccelProgress);
-                
-                // Create curved trail using quadratic Bézier curve that follows the arc
-                const trailMidProgress = (trailAccelProgress + accelProgress) / 2;
-                const trailMidX = startX + (endX - startX) * trailMidProgress;
-                const trailMidY = startY + (endY - startY) * trailMidProgress + 
-                                 arcHeight * Math.sin(Math.PI * trailMidProgress);
-                
-                const trailPath = `M ${trailStartX},${trailStartY} Q ${trailMidX},${trailMidY} ${currentX},${currentY}`;
+                if (star.isDeflected) {
+                    // Simple straight trail for deflected stars
+                    const trailLength = 30; // Shorter trail for deflected stars
+                    const trailStartX = currentX - star.deflectionVX * 0.5;
+                    const trailStartY = currentY - star.deflectionVY * 0.5;
+                    trailPath = `M ${trailStartX},${trailStartY} L ${currentX},${currentY}`;
+                } else {
+                    // Normal curved trail for regular stars
+                    const startX = star.fromLeft ? -50 : window.innerWidth + 50;
+                    const endX = star.fromLeft ? window.innerWidth + 50 : -50;
+                    const startY = star.y;
+                    const endY = star.y + star.arc;
+                    const arcHeight = star.arc;
+                    
+                    const trailProgress = Math.max(0, progress - 0.15);
+                    const trailAccelProgress = trailProgress < 0.5 
+                        ? 2 * trailProgress * trailProgress
+                        : 1 - 2 * (1 - trailProgress) * (1 - trailProgress);
+                    
+                    const accelProgress = progress < 0.5 
+                        ? 2 * progress * progress
+                        : 1 - 2 * (1 - progress) * (1 - progress);
+                    
+                    const trailStartX = startX + (endX - startX) * trailAccelProgress;
+                    const trailStartY = startY + (endY - startY) * trailAccelProgress + 
+                                       arcHeight * Math.sin(Math.PI * trailAccelProgress);
+                    
+                    // Create curved trail using quadratic Bézier curve that follows the arc
+                    const trailMidProgress = (trailAccelProgress + accelProgress) / 2;
+                    const trailMidX = startX + (endX - startX) * trailMidProgress;
+                    const trailMidY = startY + (endY - startY) * trailMidProgress + 
+                                     arcHeight * Math.sin(Math.PI * trailMidProgress);
+                    
+                    trailPath = `M ${trailStartX},${trailStartY} Q ${trailMidX},${trailMidY} ${currentX},${currentY}`;
+                }
                 
                 // Opacity calculations
                 let opacity = 0;
@@ -187,6 +286,18 @@ export default function Stars() {
                 const allFragments = newExplosions.flatMap(explosion => explosion.fragments || []);
                 if (allFragments.length > 0) {
                     setFragments(prev => [...prev, ...allFragments]);
+                }
+                
+                // Add new deflected stars from collisions
+                const allNewStars = newExplosions.flatMap(explosion => explosion.newStars || []);
+                if (allNewStars.length > 0) {
+                    return [...survivingStars, ...allNewStars];
+                }
+
+                // Add fading trails from collisions
+                const allFadingTrails = newExplosions.flatMap(explosion => explosion.fadingTrails || []);
+                if (allFadingTrails.length > 0) {
+                    setFadingTrails(prev => [...prev, ...allFadingTrails]);
                 }
             }
 
@@ -268,15 +379,43 @@ export default function Stars() {
                 };
             }).filter(fragment => !fragment.completed);
         });
+
+        // Update fading trails
+        setFadingTrails(currentTrails => {
+            return currentTrails.map(trail => {
+                if (!trail.startTime) {
+                    trail.startTime = timestamp;
+                }
+                
+                const elapsed = timestamp - trail.startTime;
+                const progress = Math.min(elapsed / trail.duration, 1);
+                
+                if (progress >= 1) {
+                    return { ...trail, completed: true };
+                }
+                
+                // Fade out from initial opacity to 0
+                const opacity = trail.initialOpacity * (1 - progress);
+                
+                return {
+                    ...trail,
+                    opacity,
+                    progress
+                };
+            }).filter(trail => !trail.completed);
+        });
         
         animationRef.current = requestAnimationFrame(animate.current);
     });
 
-    useEffect(() => {
-        if (!heroComplete) return;
+    // Track the star creation intervals separately
+    const intervalRef = useRef(null);
 
-        const createStarGroup = () => {
-            const groupSize = Math.floor(Math.random() * 3) + 1; // 1-3 stars
+    // Define createStarGroup function outside useEffects so it can be shared
+    const createStarGroup = () => {
+            const groupSize = dangerMode 
+                ? Math.floor(Math.random() * 4) + 2  // 2-5 stars per group (danger mode)
+                : Math.floor(Math.random() * 3) + 1; // 1-3 stars per group (normal)
             const fromLeft = Math.random() > 0.5;
             const baseY = Math.random() * 70 + 15; // 15-85% vertical position
             const arcDirection = Math.random() * -60 - 20; // Always upward arc (-20 to -80)
@@ -306,38 +445,58 @@ export default function Stars() {
                     setStars(prev => [...prev, star]);
                 }, staggerDelay);
             }
-        };
+    };
+
+    useEffect(() => {
+        if (!heroComplete) return;
 
         // Start animation loop
         animationRef.current = requestAnimationFrame(animate.current);
 
-        // Create star groups
-        const settings = { initialDelay: 2000, minInterval: 3000, maxInterval: 8000 };
-
-        const initialTimer = setTimeout(() => {
-            createStarGroup();
-            
-            const createNextStarGroup = () => {
-                const nextDelay = Math.random() * (settings.maxInterval - settings.minInterval) + settings.minInterval;
-                setTimeout(() => {
-                    createStarGroup();
-                    createNextStarGroup();
-                }, nextDelay);
-            };
-            
-            createNextStarGroup();
-        }, settings.initialDelay);
-
         return () => {
-            clearTimeout(initialTimer);
             if (animationRef.current) {
                 cancelAnimationFrame(animationRef.current);
             }
             setStars([]);
             setExplosions([]);
             setFragments([]);
+            setFadingTrails([]);
         };
     }, [heroComplete]);
+
+    // Separate effect for star creation timing that responds to dangerMode changes
+    useEffect(() => {
+        if (!heroComplete) return;
+
+        // Clear any existing interval
+        if (intervalRef.current) {
+            clearTimeout(intervalRef.current);
+        }
+
+        const settings = dangerMode 
+            ? { initialDelay: 500, minInterval: 800, maxInterval: 2000 }     // High frequency (danger mode)
+            : { initialDelay: 5000, minInterval: 12000, maxInterval: 25000 }; // Calm frequency
+
+        const scheduleNextGroup = () => {
+            const delay = Math.random() * (settings.maxInterval - settings.minInterval) + settings.minInterval;
+            intervalRef.current = setTimeout(() => {
+                createStarGroup();
+                scheduleNextGroup();
+            }, delay);
+        };
+
+        // Start the initial group
+        intervalRef.current = setTimeout(() => {
+            createStarGroup();
+            scheduleNextGroup();
+        }, settings.initialDelay);
+
+        return () => {
+            if (intervalRef.current) {
+                clearTimeout(intervalRef.current);
+            }
+        };
+    }, [dangerMode, heroComplete]);
 
     return (
         <div className={`${styles.starsContainer} ${isDarkMode ? styles.darkTheme : styles.lightTheme}`}>
@@ -372,6 +531,7 @@ export default function Stars() {
                     </linearGradient>
                 </defs>
 
+{/* Active star trails */}
                 {stars.map(star => (
                     <g key={star.id}>
                         {/* Trail path */}
@@ -405,6 +565,18 @@ export default function Stars() {
                             opacity={star.opacity * 0.4}
                         />
                     </g>
+                ))}
+
+                {/* Fading trails from collisions */}
+                {fadingTrails.map(trail => (
+                    <path
+                        key={trail.id}
+                        className={styles.starTrail}
+                        d={trail.path}
+                        stroke={`url(#trailGradient${trail.fromLeft ? 'LTR' : 'RTL'})`}
+                        strokeWidth={trail.size * 1.5}
+                        opacity={trail.opacity}
+                    />
                 ))}
 
                 {/* Explosion effects */}

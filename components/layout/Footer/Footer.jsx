@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import { useHero } from '../../../contexts/HeroContext';
+import { useStars } from '../../../contexts/StarsContext';
 
 import Logo from '../../icons/branding/Logo';
 
@@ -18,6 +19,7 @@ export default function Footer() {
   const footerRef = useRef();
   const pathname = usePathname();
   const { heroComplete } = useHero();
+  const { dangerMode, setDangerMode } = useStars();
   const isLandingPage = pathname === '/';
   
   // Footer shows immediately - no intersection observer needed
@@ -60,6 +62,14 @@ export default function Footer() {
           <a className={styles.metalink} target="_blank" href="https://github.com/lmf-git/dreamsbyteweb" rel="noopener noreferrer" >
             Source code for this website
           </a>
+          
+          <button 
+            className={styles.starsToggle}
+            onClick={() => setDangerMode(!dangerMode)}
+            aria-label="Toggle stars danger mode"
+          >
+            {dangerMode ? 'Danger' : 'Calm'}
+          </button>
         </div>
       </div>
     </div>
