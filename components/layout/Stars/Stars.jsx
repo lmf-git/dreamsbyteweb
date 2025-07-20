@@ -47,15 +47,21 @@ export default function Stars() {
                 const currentY = startY + (endY - startY) * accelProgress + 
                                 arcHeight * Math.sin(Math.PI * accelProgress);
                 
-                // Calculate trail path dynamically with arc
+                // Calculate trail path with proper arc using acceleration
                 const trailProgress = Math.max(0, progress - 0.15);
-                const trailStartX = startX + (endX - startX) * trailProgress;
-                const trailStartY = startY + (endY - startY) * trailProgress + 
-                                   arcHeight * Math.sin(Math.PI * trailProgress);
+                const trailAccelProgress = trailProgress < 0.5 
+                    ? 2 * trailProgress * trailProgress
+                    : 1 - 2 * (1 - trailProgress) * (1 - trailProgress);
                 
-                // Create curved trail following the same arc
-                const trailMidX = (trailStartX + currentX) / 2;
-                const trailMidY = (trailStartY + currentY) / 2 + arcHeight * 0.2;
+                const trailStartX = startX + (endX - startX) * trailAccelProgress;
+                const trailStartY = startY + (endY - startY) * trailAccelProgress + 
+                                   arcHeight * Math.sin(Math.PI * trailAccelProgress);
+                
+                // Create curved trail using quadratic Bézier curve that follows the arc
+                const trailMidProgress = (trailAccelProgress + accelProgress) / 2;
+                const trailMidX = startX + (endX - startX) * trailMidProgress;
+                const trailMidY = startY + (endY - startY) * trailMidProgress + 
+                                 arcHeight * Math.sin(Math.PI * trailMidProgress);
                 
                 const trailPath = `M ${trailStartX},${trailStartY} Q ${trailMidX},${trailMidY} ${currentX},${currentY}`;
                 
@@ -96,7 +102,7 @@ export default function Stars() {
             const groupSize = Math.floor(Math.random() * 3) + 1; // 1-3 stars
             const fromLeft = Math.random() > 0.5;
             const baseY = Math.random() * 70 + 15; // 15-85% vertical position
-            const arcDirection = (Math.random() - 0.5) * 80; // Arc curve variation
+            const arcDirection = Math.random() * -60 - 20; // Always upward arc (-20 to -80)
             
             const newStars = [];
             for (let i = 0; i < groupSize; i++) {
@@ -107,7 +113,7 @@ export default function Stars() {
                         id: Date.now() + Math.random() + i,
                         fromLeft,
                         y: (baseY + (Math.random() - 0.5) * 20) / 100 * window.innerHeight,
-                        arc: arcDirection + (Math.random() - 0.5) * 40,
+                        arc: arcDirection + (Math.random() - 0.5) * 20, // Smaller variation to keep upward
                         duration: (Math.random() * 2 + 4) * 1000, // 4-6 seconds in ms
                         size: Math.random() * 1.5 + 0.8, // 0.8-2.3 scale for more variety
                         maxOpacity: Math.random() * 0.5 + 0.4, // 0.4-0.9 opacity for more variety
