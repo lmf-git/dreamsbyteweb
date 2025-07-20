@@ -14,9 +14,17 @@ export default function Intro() {
     const { headerAnimationComplete } = useHeaderAnimation();
 
     useEffect(() => {
+        if (introComplete && headerAnimationComplete) {
+            // Don't reset if already complete and header is done
+            return;
+        }
+        
+        // Reset intro state only when headerAnimationComplete changes
+        setIntroComplete(false);
+        
         // If header animation is already complete (navigation), show immediately
-        // Otherwise wait for header animation plus a short delay
-        const delay = headerAnimationComplete ? 300 : 2500;
+        // Otherwise wait for header animation to complete
+        const delay = headerAnimationComplete ? 100 : 2500; // Wait longer for header to finish
         
         const timer = setTimeout(() => {
             setIntroComplete(true);
@@ -24,7 +32,7 @@ export default function Intro() {
         }, delay);
 
         return () => clearTimeout(timer);
-    }, [setHeroComplete, headerAnimationComplete]);
+    }, [headerAnimationComplete, setHeroComplete]);
 
     return (
         <div className={`section ${styles.intro} ${introComplete ? styles.introComplete : ''} ${headerAnimationComplete ? styles.navigated : ''}`}>
