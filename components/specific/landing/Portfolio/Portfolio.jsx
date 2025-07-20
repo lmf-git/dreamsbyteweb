@@ -135,17 +135,17 @@ export default function Portfolio() {
         });
     };
 
-    // Initial setup - wait for headerAnimationComplete to be determined
+    // Initial setup - start immediately and use headerAnimationComplete for timing
     useEffect(() => {
-        if (!isInitialized && headerAnimationComplete !== undefined) {
+        if (!isInitialized) {
             const isMobile = window.innerWidth < 1200;
             setIsInitialized(true);
             setProject(0);
             setCurrentProject(0);
             
             preloadImages(0).then(() => {
-                // Use much shorter timing when header animation is already complete (navigation)
-                const logoAnimationTime = headerAnimationComplete ? 100 : 1200;
+                // Always start quickly, timing control happens later via headerAnimationComplete
+                const logoAnimationTime = 100;
                 
                 if (isMobile) {
                     setTimeout(() => {
@@ -175,26 +175,31 @@ export default function Portfolio() {
                         }, 200); // Reduced from 500ms
                     }, logoAnimationTime);
                 } else {
-                    // Desktop: much faster timing when navigating
-                    const contentDelay = headerAnimationComplete ? 50 : 600;
-                    const previewDelay = headerAnimationComplete ? 50 : 1500;
-                    
+                    // Desktop: show content/nav immediately, but wait for headerAnimationComplete for final reveal
                     setTimeout(() => {
                         setShowContent(true);
                         setShowNav(true);
                         setDotsReady(true);
-                        setTimeout(() => {
-                            setShowPreview(true);
-                            setFirstRevealComplete(true);
-                            setTimeout(() => {
-                                setInitialAnimationComplete(true);
-                            }, previewDelay);
-                        }, contentDelay);
+                        // Don't show preview yet - wait for headerAnimationComplete
+                        setFirstRevealComplete(true);
+                        setInitialAnimationComplete(true);
                     }, logoAnimationTime);
                 }
             });
         }
-    }, [isInitialized, headerAnimationComplete]);
+    }, [isInitialized]);
+
+    // Show preview when header animation completes
+    useEffect(() => {
+        if (headerAnimationComplete && initialAnimationComplete && !showPreview) {
+            const isMobile = window.innerWidth < 1200;
+            if (!isMobile) {
+                setTimeout(() => {
+                    setShowPreview(true);
+                }, 100);
+            }
+        }
+    }, [headerAnimationComplete, initialAnimationComplete, showPreview]);
 
     // Signal Hero completion to other sections
     useEffect(() => {
