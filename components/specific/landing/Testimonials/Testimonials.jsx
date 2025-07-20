@@ -94,7 +94,7 @@ export default function Testimonials() {
     const stopDragging = () => setIsDragging(false);
 
     return (
-        <div ref={sectionRef} className={`section ${styles.testimonials} ${headerAnimationComplete ? styles.headerComplete : ''} ${isVisible ? styles.visible : ''}`} id="testimonials">
+        <div ref={sectionRef} className={`section ${styles.testimonials} ${isVisible ? styles.visible : ''}`} id="testimonials">
             <h2 className={styles.title}>Our client testimonials:</h2>
             <div
                 className={styles.list}

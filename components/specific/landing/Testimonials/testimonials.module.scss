@@ -2,7 +2,7 @@
 @use '../../../layout/colours';
 
 .testimonials {
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 0 0 4em;
@@ -12,11 +12,6 @@
     transition: opacity 1s ease-out, transform 1s ease-out;
     pointer-events: none;
     will-change: opacity, transform;
-
-    &.heroComplete,
-    &.headerComplete {
-        display: flex;
-    }
 
     &.visible {
         opacity: 1;
