@@ -1,6 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
 import useIntersectionObserver from '../../../../hooks/useIntersectionObserver';
-import { useHero } from '../../../../contexts/HeroContext';
 import { useHeaderAnimation } from '../../../../contexts/HeaderAnimationContext';
 import { useContact } from '../../../../contexts/ContactContext';
 
@@ -48,13 +47,11 @@ const technologies = [
 
 export default function Services() {
   const sectionRef = useRef(null);
-  const { heroComplete } = useHero();
   const { headerAnimationComplete } = useHeaderAnimation();
   const { openContact } = useContact();
   
-  // Component should be visible when header animation is complete OR when heroComplete is true (for navigation)
-  const animationReady = headerAnimationComplete || heroComplete;
-  const isVisible = useIntersectionObserver(sectionRef, 0.1) && animationReady;
+  // Services page only needs to wait for header animation to complete
+  const isVisible = useIntersectionObserver(sectionRef, 0.1) && headerAnimationComplete;
 
   const handleExampleClick = (service) => (e) => {
     const dot = e.currentTarget.querySelector('::before');
@@ -81,7 +78,7 @@ export default function Services() {
   return (
     <div 
       ref={sectionRef}
-      className={`section ${styles.services} ${animationReady ? styles.heroComplete : ''} ${isVisible ? styles.visible : ''}`} 
+      className={`section ${styles.services} ${headerAnimationComplete ? styles.heroComplete : ''} ${isVisible ? styles.visible : ''}`} 
       id="services"
     >
       <div className={styles.heading}>

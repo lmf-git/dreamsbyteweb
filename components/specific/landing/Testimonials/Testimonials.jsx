@@ -10,12 +10,19 @@ import styles from './testimonials.module.scss';
 
 export default function Testimonials() {
     const sectionRef = useRef(null);
-    const { heroComplete } = useHero();
+    const { heroComplete, setHeroComplete } = useHero();
     const { headerAnimationComplete } = useHeaderAnimation();
     
     // Component should be visible when header animation is complete OR when heroComplete is true (for navigation)
     const animationReady = headerAnimationComplete || heroComplete;
     const isVisible = useIntersectionObserver(sectionRef, 0.1) && animationReady;
+    
+    // Set heroComplete when header animation is done to ensure display: flex
+    useEffect(() => {
+        if (headerAnimationComplete && !heroComplete) {
+            setHeroComplete(true);
+        }
+    }, [headerAnimationComplete, heroComplete, setHeroComplete]);
     const listRef = useRef(null);
     const planeRef = useRef(null);
     const animationRef = useRef(null);
