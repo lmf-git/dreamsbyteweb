@@ -175,12 +175,9 @@ export default function Portfolio() {
                         }, 200); // Reduced from 500ms
                     }, logoAnimationTime);
                 } else {
-                    // Desktop: show content/nav immediately, but wait for headerAnimationComplete for final reveal
+                    // Desktop: Initialize quickly but don't show content yet
                     setTimeout(() => {
-                        setShowContent(true);
-                        setShowNav(true);
-                        setDotsReady(true);
-                        // Don't show preview yet - wait for headerAnimationComplete
+                        // Mark as ready but don't show content - wait for headerAnimationComplete
                         setFirstRevealComplete(true);
                         setInitialAnimationComplete(true);
                     }, logoAnimationTime);
@@ -189,17 +186,26 @@ export default function Portfolio() {
         }
     }, [isInitialized]);
 
-    // Show preview when header animation completes
+    // Show content and preview when header animation completes
     useEffect(() => {
-        if (headerAnimationComplete && initialAnimationComplete && !showPreview) {
+        if (headerAnimationComplete && initialAnimationComplete && !showContent) {
             const isMobile = window.innerWidth < 1200;
-            if (!isMobile) {
-                setTimeout(() => {
-                    setShowPreview(true);
-                }, 100);
-            }
+            
+            // Show content first (problems, solutions)
+            setTimeout(() => {
+                setShowContent(true);
+                setShowNav(true);
+                setDotsReady(true);
+                
+                // Then show preview for desktop
+                if (!isMobile) {
+                    setTimeout(() => {
+                        setShowPreview(true);
+                    }, 400); // Small delay for content to appear first
+                }
+            }, 200); // Brief delay after header completes
         }
-    }, [headerAnimationComplete, initialAnimationComplete, showPreview]);
+    }, [headerAnimationComplete, initialAnimationComplete, showContent]);
 
     // Signal Hero completion to other sections
     useEffect(() => {
