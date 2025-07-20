@@ -78,9 +78,61 @@ function LayoutContent({ children }) {
     }, [pathname, setHeaderAnimationComplete, isLandingPage, isInitialLoad]);
 
     const getThemeIcon = () => {
-        return theme === 'light' 
-            ? <Moon className={styles.themeIcon} />
-            : <Sun className={styles.themeIcon} />;
+        return (
+            <div style={{ position: 'relative', width: '2em', height: '2em' }}>
+                <div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    opacity: theme === 'dark' ? 1 : 0,
+                    transform: theme === 'dark' ? 'translateY(0) rotate(0deg)' : 'translateY(-10px) rotate(180deg)',
+                    transition: 'opacity 0.3s ease, transform 0.3s ease'
+                }}>
+                    <Sun className={styles.themeIcon} />
+                </div>
+                <div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    opacity: theme === 'light' ? 1 : 0,
+                    transform: theme === 'light' ? 'translateY(0) rotate(0deg)' : 'translateY(10px) rotate(-180deg)',
+                    transition: 'opacity 0.3s ease, transform 0.3s ease'
+                }}>
+                    <Moon className={styles.themeIcon} />
+                </div>
+            </div>
+        );
+    };
+
+    const getMobileThemeIcon = () => {
+        return (
+            <div style={{ position: 'relative', width: '3.5em', height: '3.5em' }}>
+                <div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '3.5em',
+                    height: '3.5em',
+                    opacity: theme === 'dark' ? 1 : 0,
+                    transform: theme === 'dark' ? 'translateY(0) rotate(0deg) scale(1)' : 'translateY(-15px) rotate(180deg) scale(0.8)',
+                    transition: 'opacity 0.4s ease, transform 0.4s ease'
+                }}>
+                    <Sun className={styles.themeIcon} />
+                </div>
+                <div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '3.5em',
+                    height: '3.5em',
+                    opacity: theme === 'light' ? 1 : 0,
+                    transform: theme === 'light' ? 'translateY(0) rotate(0deg) scale(1)' : 'translateY(15px) rotate(-180deg) scale(0.8)',
+                    transition: 'opacity 0.4s ease, transform 0.4s ease'
+                }}>
+                    <Moon className={styles.themeIcon} />
+                </div>
+            </div>
+        );
     };
 
     // Control body overflow based on Hero completion and mobile menu
@@ -177,7 +229,7 @@ function LayoutContent({ children }) {
                             </Link>
                             <div className={styles.menucontrols}>
                                 <button className={styles.menuThemeToggle} onClick={toggleTheme} aria-label="Toggle theme">
-                                    {getThemeIcon()}
+                                    {getMobileThemeIcon()}
                                 </button>
                                 <button 
                                     className={styles.menuclose} 
