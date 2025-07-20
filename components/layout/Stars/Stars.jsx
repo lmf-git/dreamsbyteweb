@@ -34,44 +34,53 @@ export default function Stars({ frequency = 'normal' }) {
         // Clear any existing stars when effect runs
         setStars([]);
 
-        const createStar = () => {
-            const id = Date.now() + Math.random();
-            const star = {
-                id,
-                fromLeft: Math.random() > 0.5,
-                startY: Math.random() * 60 + 20, // 20%-80% of screen height
-                duration: Math.random() * 2 + 4, // 4-6 seconds
-                size: Math.random() * 6 + 6 // 6-12px
-            };
+        const createStarGroup = () => {
+            const groupSize = Math.floor(Math.random() * 3) + 1; // 1-3 stars
+            const baseStartY = Math.random() * 60 + 20; // 20%-80% of screen height
+            const groupFromLeft = Math.random() > 0.5;
+            
+            for (let i = 0; i < groupSize; i++) {
+                const id = Date.now() + Math.random() + i;
+                const star = {
+                    id,
+                    fromLeft: groupFromLeft,
+                    startY: baseStartY + (Math.random() - 0.5) * 15, // Slight variation within group
+                    duration: Math.random() * 2 + 4, // 4-6 seconds
+                    size: Math.random() * 6 + 6, // 6-12px
+                    delay: i * (Math.random() * 300 + 200) // Stagger stars in group by 200-500ms
+                };
 
-            setStars(prev => [...prev, star]);
-
-            // Remove star after animation completes
-            setTimeout(() => {
-                setStars(prev => prev.filter(s => s.id !== id));
-            }, star.duration * 1000 + 500);
+                setTimeout(() => {
+                    setStars(prev => [...prev, star]);
+                    
+                    // Remove star after animation completes
+                    setTimeout(() => {
+                        setStars(prev => prev.filter(s => s.id !== id));
+                    }, star.duration * 1000 + 500);
+                }, star.delay);
+            }
         };
 
         // Determine frequency settings based on prop
         const getFrequencySettings = () => {
             switch (frequency) {
-                case 'high':
+                case 'high': // Home page - frequent shooting stars
                     return {
-                        initialDelay: 2000, // 2 seconds
-                        minInterval: 8000, // 8 seconds
-                        maxInterval: 15000 // 15 seconds
+                        initialDelay: 3000, // 3 seconds
+                        minInterval: 4000, // 4 seconds
+                        maxInterval: 8000 // 8 seconds
                     };
                 case 'medium':
                     return {
-                        initialDelay: 5000, // 5 seconds
-                        minInterval: 30000, // 30 seconds
-                        maxInterval: 60000 // 1 minute
+                        initialDelay: 8000, // 8 seconds
+                        minInterval: 15000, // 15 seconds
+                        maxInterval: 30000 // 30 seconds
                     };
-                default: // normal
+                default: // normal - other pages, slower and fewer
                     return {
                         initialDelay: 10000, // 10 seconds
-                        minInterval: 300000, // 5 minutes
-                        maxInterval: 600000 // 10 minutes
+                        minInterval: 45000, // 45 seconds
+                        maxInterval: 90000 // 1.5 minutes
                     };
             }
         };
@@ -80,16 +89,19 @@ export default function Stars({ frequency = 'normal' }) {
 
         // Wait before starting star creation
         const initialDelay = setTimeout(() => {
-            // Create initial star immediately
-            createStar();
+            // Create initial star group immediately
+            createStarGroup();
             
-            // Then create stars at intervals
-            const interval = setInterval(() => {
-                createStar();
-            }, Math.random() * (settings.maxInterval - settings.minInterval) + settings.minInterval);
-
-            // Store interval reference for cleanup
-            return () => clearInterval(interval);
+            // Then create star groups at intervals
+            const createNextGroup = () => {
+                const nextDelay = Math.random() * (settings.maxInterval - settings.minInterval) + settings.minInterval;
+                setTimeout(() => {
+                    createStarGroup();
+                    createNextGroup(); // Schedule next group
+                }, nextDelay);
+            };
+            
+            createNextGroup();
         }, settings.initialDelay);
 
         // Cleanup function
@@ -124,12 +136,15 @@ export default function Stars({ frequency = 'normal' }) {
             if (isComplete || !containerElement?.parentNode) return;
             
             const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / (star.duration * 1000), 1);
+            const baseProgress = Math.min(elapsed / (star.duration * 1000), 1);
             
-            if (progress >= 1) {
+            if (baseProgress >= 1) {
                 isComplete = true;
                 return;
             }
+            
+            // Add acceleration curve - starts slow, gets faster
+            const progress = baseProgress * baseProgress * (3 - 2 * baseProgress); // Smoothstep for acceleration
             
             // Quadratic bezier curve for arc motion
             const t = progress;
@@ -139,24 +154,27 @@ export default function Stars({ frequency = 'normal' }) {
             // Update position
             containerElement.style.left = x + 'px';
             containerElement.style.top = y + 'px';
-            containerElement.style.opacity = progress < 0.1 ? progress * 10 : progress > 0.9 ? (1 - progress) * 10 : 1;
+            containerElement.style.opacity = baseProgress < 0.1 ? baseProgress * 10 : baseProgress > 0.9 ? (1 - baseProgress) * 10 : 1;
             
-            // Update trail
+            // Update trail with arc trajectory
             trail.push({ x, y });
             if (trail.length > maxTrailLength) {
                 trail.shift();
             }
             
-            // Draw trail
+            // Draw trail following the arc
             const trailElement = containerElement.querySelector('.star-trail');
             if (trailElement && trail.length > 1) {
-                let pathData = `M 0 0`; // Start at star center
-                for (let i = trail.length - 2; i >= 0; i--) {
-                    const point = trail[i];
+                let pathData = '';
+                trail.forEach((point, i) => {
                     const relativeX = point.x - x;
                     const relativeY = point.y - y;
-                    pathData += ` L ${relativeX} ${relativeY}`;
-                }
+                    if (i === 0) {
+                        pathData = `M ${relativeX} ${relativeY}`;
+                    } else {
+                        pathData += ` L ${relativeX} ${relativeY}`;
+                    }
+                });
                 trailElement.setAttribute('d', pathData);
             }
             
@@ -215,7 +233,7 @@ export default function Stars({ frequency = 'normal' }) {
                         
                         {/* Star */}
                         <path
-                            d={`M 0 -${star.size} L ${star.size * 0.3} -${star.size * 0.3} L ${star.size} 0 L ${star.size * 0.3} ${star.size * 0.3} L 0 ${star.size} L -${star.size * 0.3} ${star.size * 0.3} L -${star.size} 0 L -${star.size * 0.3} -${star.size * 0.3} Z`}
+                            d={`M 0 -${star.size} L ${star.size * 0.25} -${star.size * 0.25} L ${star.size * 0.95} -${star.size * 0.31} L ${star.size * 0.39} ${star.size * 0.18} L ${star.size * 0.59} ${star.size * 0.81} L 0 ${star.size * 0.5} L -${star.size * 0.59} ${star.size * 0.81} L -${star.size * 0.39} ${star.size * 0.18} L -${star.size * 0.95} -${star.size * 0.31} L -${star.size * 0.25} -${star.size * 0.25} Z`}
                             fill={isDarkMode ? 'white' : 'black'}
                             style={{
                                 filter: isDarkMode 
