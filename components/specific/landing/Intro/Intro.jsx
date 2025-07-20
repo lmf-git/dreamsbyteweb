@@ -16,7 +16,7 @@ export default function Intro() {
         const timer = setTimeout(() => {
             setIntroComplete(true);
             setHeroComplete(true); // This controls the scroll lock in Layout
-        }, 2000);
+        }, 2500); // Extended from 2000ms to 2500ms (500ms longer)
 
         return () => clearTimeout(timer);
     }, [setHeroComplete]);
