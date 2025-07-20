@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 import useIntersectionObserver from '../../../../hooks/useIntersectionObserver';
 import { useHero } from '../../../../contexts/HeroContext';
+import { useHeaderAnimation } from '../../../../contexts/HeaderAnimationContext';
 import { useContact } from '../../../../contexts/ContactContext';
 import styles from './comparison.module.scss';
 
@@ -34,10 +35,12 @@ const advantages = [
 export default function Comparison() {
   const sectionRef = useRef(null);
   const { heroComplete } = useHero();
+  const { headerAnimationComplete } = useHeaderAnimation();
   const { openContact } = useContact();
 
-  // Lower threshold to trigger earlier
-  const isVisible = useIntersectionObserver(sectionRef, 0.1) && heroComplete;
+  // Component should be visible when header animation is complete OR when heroComplete is true (for navigation)
+  const animationReady = headerAnimationComplete || heroComplete;
+  const isVisible = useIntersectionObserver(sectionRef, 0.1) && animationReady;
 
   const handleAdvantageClick = (title) => () => {
     openContact(`Hi, I'm interested in learning more about "${title}"`);
@@ -46,7 +49,7 @@ export default function Comparison() {
   return (
     <div 
       ref={sectionRef}
-      className={`section ${styles.comparison} ${heroComplete ? styles.heroComplete : ''} ${isVisible ? styles.visible : ''}`} 
+      className={`section ${styles.comparison} ${animationReady ? styles.heroComplete : ''} ${isVisible ? styles.visible : ''}`} 
       id="comparison"
     >
       <div className={styles.heading}>

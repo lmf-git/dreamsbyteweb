@@ -4,14 +4,18 @@ import { useRef, useState, useEffect } from 'react';
 import { testimonials } from '../../../../data.mjs';
 import useIntersectionObserver from '../../../../hooks/useIntersectionObserver';
 import { useHero } from '../../../../contexts/HeroContext';
+import { useHeaderAnimation } from '../../../../contexts/HeaderAnimationContext';
 import DragRight from '../../../icons/controls/DragRight';
 import styles from './testimonials.module.scss';
 
 export default function Testimonials() {
     const sectionRef = useRef(null);
     const { heroComplete } = useHero();
+    const { headerAnimationComplete } = useHeaderAnimation();
     
-    const isVisible = useIntersectionObserver(sectionRef, 0.1) && heroComplete;
+    // Component should be visible when header animation is complete OR when heroComplete is true (for navigation)
+    const animationReady = headerAnimationComplete || heroComplete;
+    const isVisible = useIntersectionObserver(sectionRef, 0.1) && animationReady;
     const listRef = useRef(null);
     const planeRef = useRef(null);
     const animationRef = useRef(null);
@@ -93,7 +97,7 @@ export default function Testimonials() {
     const stopDragging = () => setIsDragging(false);
 
     return (
-        <div ref={sectionRef} className={`section ${styles.testimonials} ${heroComplete ? styles.heroComplete : ''} ${isVisible ? styles.visible : ''}`} id="testimonials">
+        <div ref={sectionRef} className={`section ${styles.testimonials} ${animationReady ? styles.heroComplete : ''} ${isVisible ? styles.visible : ''}`} id="testimonials">
             <h2 className={styles.title}>Our client testimonials:</h2>
             <div
                 className={styles.list}
