@@ -105,6 +105,11 @@
     border-radius: 50%;
     transition: all 0.2s ease;
   }
+  
+  // Light mode specific bullet styling
+  :global(.light-theme) &:before {
+    background-color: #262626;
+  }
 
   &:hover:before {
     transform: translateY(-50%) rotate(45deg);
@@ -129,6 +134,11 @@
   color: rgb(140, 140, 140);
   font-style: italic;
   margin-left: 0;  // Remove left margin that was used for inline positioning
+  
+  // Light mode specific pricing
+  :global(.light-theme) & {
+    color: #505050;
+  }
 }
 
 .estimatedHours {
