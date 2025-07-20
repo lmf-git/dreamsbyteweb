@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useHero } from '../../../contexts/HeroContext';
 import { useTheme } from '../../../contexts/ThemeContext';
+import styles from './Stars.module.scss';
 
 export default function Stars() {
     const [stars, setStars] = useState([]);
@@ -339,23 +340,12 @@ export default function Stars() {
     }, [heroComplete]);
 
     return (
-        <div 
-            style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100vh',
-                pointerEvents: 'none',
-                zIndex: 1,
-                overflow: 'hidden'
-            }}
-        >
+        <div className={`${styles.starsContainer} ${isDarkMode ? styles.darkTheme : styles.lightTheme}`}>
             <svg
                 ref={svgRef}
+                className={styles.starsSvg}
                 width="100%"
                 height="100%"
-                style={{ position: 'absolute', top: 0, left: 0 }}
             >
                 <defs>
                     {/* Glow filter for stars */}
@@ -387,11 +377,10 @@ export default function Stars() {
                         {/* Trail path */}
                         {star.trailPath && (
                             <path
+                                className={styles.starTrail}
                                 d={star.trailPath}
                                 stroke={`url(#trailGradient${star.fromLeft ? 'LTR' : 'RTL'})`}
                                 strokeWidth={star.size * 1.5}
-                                fill="none"
-                                strokeLinecap="round"
                                 opacity={star.trailOpacity}
                             />
                         )}
@@ -408,6 +397,7 @@ export default function Stars() {
                         
                         {/* Subtle glow behind star - scales with star size */}
                         <circle
+                            className={styles.starHalo}
                             cx={star.currentX}
                             cy={star.currentY}
                             r={star.size * 3.5}
@@ -422,6 +412,7 @@ export default function Stars() {
                     <g key={explosion.id}>
                         {/* Main explosion burst */}
                         <circle
+                            className={styles.explosionBurst}
                             cx={explosion.x}
                             cy={explosion.y}
                             r={explosion.size * explosion.scale * 2}
@@ -431,10 +422,10 @@ export default function Stars() {
                         
                         {/* Outer explosion ring */}
                         <circle
+                            className={styles.explosionRing}
                             cx={explosion.x}
                             cy={explosion.y}
                             r={explosion.size * explosion.scale * 4}
-                            fill="none"
                             stroke={isDarkMode ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.3)'}
                             strokeWidth={explosion.size * 0.5}
                             opacity={explosion.opacity * 0.3}
@@ -450,6 +441,7 @@ export default function Stars() {
                             return (
                                 <circle
                                     key={i}
+                                    className={styles.explosionSparkle}
                                     cx={sparkleX}
                                     cy={sparkleY}
                                     r={explosion.size * 0.5}
@@ -466,6 +458,7 @@ export default function Stars() {
                     <g key={fragment.id}>
                         {/* Fragment piece - irregular shape */}
                         <polygon
+                            className={styles.fragmentPiece}
                             points={`${fragment.x - fragment.size},${fragment.y} ${fragment.x + fragment.size * 0.7},${fragment.y - fragment.size * 0.5} ${fragment.x + fragment.size * 0.3},${fragment.y + fragment.size * 0.8} ${fragment.x - fragment.size * 0.6},${fragment.y + fragment.size * 0.4}`}
                             fill={isDarkMode ? '#ffffff' : '#000000'}
                             opacity={fragment.opacity}
@@ -474,6 +467,7 @@ export default function Stars() {
                         
                         {/* Small glow around fragment */}
                         <circle
+                            className={styles.fragmentGlow}
                             cx={fragment.x}
                             cy={fragment.y}
                             r={fragment.size * 1.5}
