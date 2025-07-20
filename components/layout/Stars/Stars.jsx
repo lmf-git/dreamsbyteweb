@@ -168,12 +168,11 @@ export default function Stars({ frequency = 'normal' }) {
             if (trailElement && trail.length > 1) {
                 let pathData = '';
                 trail.forEach((point, i) => {
-                    const relativeX = point.x - x;
-                    const relativeY = point.y - y;
+                    // Use absolute positions for trail to show true arc path
                     if (i === 0) {
-                        pathData = `M ${relativeX} ${relativeY}`;
+                        pathData = `M ${point.x} ${point.y}`;
                     } else {
-                        pathData += ` L ${relativeX} ${relativeY}`;
+                        pathData += ` L ${point.x} ${point.y}`;
                     }
                 });
                 trailElement.setAttribute('d', pathData);
@@ -215,15 +214,18 @@ export default function Stars({ frequency = 'normal' }) {
                     }}
                 >
                     <svg
-                        width={star.size * 6}
-                        height={star.size * 6}
-                        viewBox={`-${star.size * 3} -${star.size * 3} ${star.size * 6} ${star.size * 6}`}
+                        width="100vw"
+                        height="100vh"
+                        viewBox="0 0 100 100"
+                        preserveAspectRatio="none"
                         style={{
-                            position: 'absolute',
-                            left: -star.size * 3,
-                            top: -star.size * 3,
+                            position: 'fixed',
+                            left: 0,
+                            top: 0,
                             pointerEvents: 'none',
-                            overflow: 'visible'
+                            overflow: 'visible',
+                            width: '100vw',
+                            height: '100vh'
                         }}
                     >
                         {/* Trail */}
