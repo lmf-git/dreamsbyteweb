@@ -31,6 +31,9 @@ export default function Stars({ frequency = 'normal' }) {
         // Don't start creating stars until hero intro is complete
         if (!heroComplete) return;
 
+        // Clear any existing stars when effect runs
+        setStars([]);
+
         const createStarGroup = () => {
             const groupSize = Math.floor(Math.random() * 3) + 1; // 1-3 stars
             const fromLeft = Math.random() > 0.5;
@@ -102,10 +105,15 @@ export default function Stars({ frequency = 'normal' }) {
                 createStarGroup();
             }, Math.random() * (settings.maxInterval - settings.minInterval) + settings.minInterval);
 
+            // Store interval reference for cleanup
             return () => clearInterval(interval);
         }, settings.initialDelay);
 
-        return () => clearTimeout(initialDelay);
+        // Cleanup function
+        return () => {
+            clearTimeout(initialDelay);
+            setStars([]); // Clear all stars on cleanup
+        };
     }, [heroComplete, frequency]);
 
     const animateStar = (containerElement, star) => {
@@ -116,7 +124,7 @@ export default function Stars({ frequency = 'normal' }) {
         const startX = star.fromLeft ? -50 : screenWidth + 50;
         const endX = star.fromLeft ? screenWidth + 50 : -50;
         const startYPos = (star.startY / 100) * screenHeight;
-        const arcHeight = screenHeight * 0.1; // 10% of screen height for arc
+        const arcHeight = screenHeight * 0.08; // Reduced arc for smoother motion
         
         // Create arc path - quadratic curve
         const midX = screenWidth / 2;
@@ -124,7 +132,7 @@ export default function Stars({ frequency = 'normal' }) {
         
         // Trail tracking
         const tailHistory = [];
-        const maxTailLength = 15; // Longer trail for better visual effect
+        const maxTailLength = 12; // Balanced trail length
         
         // Find the star and tail elements
         const starElement = containerElement.querySelector('.star-shape');
@@ -134,16 +142,23 @@ export default function Stars({ frequency = 'normal' }) {
         containerElement.style.left = startX + 'px';
         containerElement.style.top = startYPos + 'px';
         
-        const startTime = Date.now();
+        const startTime = performance.now();
+        let animationId = null;
+        let isComplete = false;
         
-        const animate = () => {
-            const elapsed = Date.now() - startTime;
+        const animate = (currentTime) => {
+            if (isComplete) return;
+            
+            const elapsed = currentTime - startTime;
             const progress = Math.min(elapsed / (star.duration * 1000), 1);
             
-            if (progress >= 1) return;
+            if (progress >= 1) {
+                isComplete = true;
+                return;
+            }
             
-            // Gentle acceleration that doesn't slow down at the end
-            const easeProgress = progress * progress;
+            // Smoother easing - less aggressive acceleration
+            const easeProgress = 1 - Math.pow(1 - progress, 1.5);
             
             // Calculate position along quadratic curve
             const t = easeProgress;
@@ -154,43 +169,64 @@ export default function Stars({ frequency = 'normal' }) {
             containerElement.style.left = x + 'px';
             containerElement.style.top = y + 'px';
             
-            // Add current position to tail history
-            tailHistory.push({ x, y });
-            if (tailHistory.length > maxTailLength) {
-                tailHistory.shift();
+            // Add current position to tail history every few frames for smoother trail
+            if (tailHistory.length === 0 || tailHistory.length % 2 === 0) {
+                tailHistory.push({ x, y });
+                if (tailHistory.length > maxTailLength) {
+                    tailHistory.shift();
+                }
             }
             
-            // Update tail path - use absolute coordinates but draw relative to star center
-            if (tailHistory.length > 1 && tailElement) {
-                // Start path from the oldest position in history
+            // Update tail path with smoother curves
+            if (tailHistory.length > 2 && tailElement) {
                 let pathData = `M 0 0`; // Start at star center
                 
-                // Draw path through previous positions relative to current position
+                // Create smoother curves using quadratic bezier
                 for (let i = tailHistory.length - 2; i >= 0; i--) {
-                    const relativeX = tailHistory[i].x - x;
-                    const relativeY = tailHistory[i].y - y;
-                    pathData += ` L ${relativeX} ${relativeY}`;
+                    const point = tailHistory[i];
+                    const relativeX = point.x - x;
+                    const relativeY = point.y - y;
+                    
+                    if (i === tailHistory.length - 2) {
+                        pathData += ` L ${relativeX} ${relativeY}`;
+                    } else {
+                        // Use previous point as control point for smoother curves
+                        const prevPoint = tailHistory[i + 1];
+                        const controlX = (prevPoint.x - x + relativeX) / 2;
+                        const controlY = (prevPoint.y - y + relativeY) / 2;
+                        pathData += ` Q ${controlX} ${controlY} ${relativeX} ${relativeY}`;
+                    }
                 }
                 
                 tailElement.setAttribute('d', pathData);
             }
             
-            // Fade in/out
+            // Smoother fade in/out
             let opacity;
-            if (progress < 0.1) {
-                opacity = progress * 10;
-            } else if (progress > 0.9) {
-                opacity = (1 - progress) * 10;
+            if (progress < 0.15) {
+                opacity = progress / 0.15;
+            } else if (progress > 0.85) {
+                opacity = (1 - progress) / 0.15;
             } else {
                 opacity = 1;
             }
             
-            containerElement.style.opacity = opacity;
+            containerElement.style.opacity = Math.max(0, Math.min(1, opacity));
             
-            requestAnimationFrame(animate);
+            if (!isComplete) {
+                animationId = requestAnimationFrame(animate);
+            }
         };
         
-        requestAnimationFrame(animate);
+        animationId = requestAnimationFrame(animate);
+        
+        // Return cleanup function
+        return () => {
+            isComplete = true;
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+            }
+        };
     };
 
     return (

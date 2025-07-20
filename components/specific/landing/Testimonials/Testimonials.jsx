@@ -2,7 +2,6 @@
 
 import { useRef, useState, useEffect } from 'react';
 import { testimonials } from '../../../../data.mjs';
-import useIntersectionObserver from '../../../../hooks/useIntersectionObserver';
 import { useHeaderAnimation } from '../../../../contexts/HeaderAnimationContext';
 import DragRight from '../../../icons/controls/DragRight';
 import styles from './testimonials.module.scss';
@@ -11,8 +10,8 @@ export default function Testimonials() {
     const sectionRef = useRef(null);
     const { headerAnimationComplete } = useHeaderAnimation();
     
-    // Testimonials should start revealing immediately after header animation completes
-    const isVisible = useIntersectionObserver(sectionRef, 0.1) && headerAnimationComplete;
+    // Testimonials show immediately - no intersection observer needed
+    const isVisible = true;
     const listRef = useRef(null);
     const planeRef = useRef(null);
     const animationRef = useRef(null);

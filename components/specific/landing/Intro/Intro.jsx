@@ -14,13 +14,17 @@ export default function Intro() {
     const { headerAnimationComplete } = useHeaderAnimation();
 
     useEffect(() => {
+        // If header animation is already complete (navigation), show immediately
+        // Otherwise wait for header animation plus a short delay
+        const delay = headerAnimationComplete ? 300 : 2500;
+        
         const timer = setTimeout(() => {
             setIntroComplete(true);
             setHeroComplete(true); // This controls the scroll lock in Layout
-        }, 2500); // Extended from 2000ms to 2500ms (500ms longer)
+        }, delay);
 
         return () => clearTimeout(timer);
-    }, [setHeroComplete]);
+    }, [setHeroComplete, headerAnimationComplete]);
 
     return (
         <div className={`section ${styles.intro} ${introComplete ? styles.introComplete : ''} ${headerAnimationComplete ? styles.navigated : ''}`}>

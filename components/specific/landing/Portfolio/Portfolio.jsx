@@ -144,8 +144,8 @@ export default function Portfolio() {
             setCurrentProject(0);
             
             preloadImages(0).then(() => {
-                // Use shorter timing when navigating (header already complete)
-                const logoAnimationTime = headerAnimationComplete ? 200 : 1200;
+                // Use much shorter timing when navigating (header already rendered)
+                const logoAnimationTime = headerAnimationComplete ? 100 : 1200;
                 
                 if (isMobile) {
                     setTimeout(() => {

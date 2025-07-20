@@ -37,14 +37,18 @@ function LayoutContent({ children }) {
 
     // Set header animation complete after header navigation reveals (at 2s)
     useEffect(() => {
-        // Reset on route change, then set timer
-        setHeaderAnimationComplete(false);
-        const timer = setTimeout(() => {
+        // Only reset to false on initial load (first route), not on navigation
+        if (pathname === '/' || !document.querySelector('header')) {
+            setHeaderAnimationComplete(false);
+            const timer = setTimeout(() => {
+                setHeaderAnimationComplete(true);
+            }, 2000); // After nav links finish revealing
+            return () => clearTimeout(timer);
+        } else {
+            // For navigation, header is already visible, set immediately
             setHeaderAnimationComplete(true);
-        }, 2000); // After nav links finish revealing
-
-        return () => clearTimeout(timer);
-    }, [pathname, setHeaderAnimationComplete]); // Add pathname dependency
+        }
+    }, [pathname, setHeaderAnimationComplete]);
 
     const getThemeIcon = () => {
         return theme === 'light' 

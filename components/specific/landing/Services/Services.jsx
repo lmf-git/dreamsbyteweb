@@ -1,5 +1,4 @@
 import { useRef, useState, useEffect } from 'react';
-import useIntersectionObserver from '../../../../hooks/useIntersectionObserver';
 import { useHeaderAnimation } from '../../../../contexts/HeaderAnimationContext';
 import { useContact } from '../../../../contexts/ContactContext';
 
@@ -50,20 +49,8 @@ export default function Services() {
   const { headerAnimationComplete } = useHeaderAnimation();
   const { openContact } = useContact();
   
-  // Services page shows immediately when header animation completes (these are standalone pages)
-  const [forceVisible, setForceVisible] = useState(false);
-  const isVisible = headerAnimationComplete || forceVisible;
-  
-  // Fallback: force visible after 3 seconds if header animation hasn't completed
-  useEffect(() => {
-    const fallbackTimer = setTimeout(() => {
-      if (!headerAnimationComplete) {
-        setForceVisible(true);
-      }
-    }, 3000);
-    
-    return () => clearTimeout(fallbackTimer);
-  }, [headerAnimationComplete]);
+  // Services page shows immediately - no intersection observer needed
+  const isVisible = true;
 
   const handleExampleClick = (service) => (e) => {
     const dot = e.currentTarget.querySelector('::before');
