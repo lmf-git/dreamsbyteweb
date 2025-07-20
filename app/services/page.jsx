@@ -171,7 +171,12 @@ export default function ServicesPage() {
                 opacity: servicesVisible ? 1 : 0 
               }}
             >
-              <div className={styles.providersHeading}>Technologies We Use</div>
+              <div 
+                className={`${styles.providersHeading} ${servicesVisible ? styles.visible : ''}`}
+                style={{ opacity: servicesVisible ? 1 : 0 }}
+              >
+                Technologies We Use
+              </div>
               <div className={styles.providersList}>
                 {technologies.map((tech, index) => (
                   <a

@@ -56,7 +56,7 @@ function LayoutContent({ children }) {
             return () => clearTimeout(timer);
         } else {
             // Navigation - handle animated pages specially (including landing page)
-            const animatedPages = ['/', '/services', '/testimonials'];
+            const animatedPages = ['/', '/services', '/testimonials', '/education'];
             const isAnimatedPage = animatedPages.includes(pathname);
             
             if (isAnimatedPage) {

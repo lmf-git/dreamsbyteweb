@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useHeaderAnimation } from '../../contexts/HeaderAnimationContext';
 import styles from './education.module.scss';
@@ -8,6 +8,20 @@ import styles from './education.module.scss';
 export default function Education() {
     const sectionRef = useRef(null);
     const { headerAnimationComplete } = useHeaderAnimation();
+    const [educationVisible, setEducationVisible] = useState(false);
+
+    // Handle education visibility timing like other animated pages
+    useEffect(() => {
+        // Only show education content after header animation completes
+        if (headerAnimationComplete) {
+            const timer = setTimeout(() => {
+                setEducationVisible(true);
+            }, 200); // Brief delay after header completes
+            return () => clearTimeout(timer);
+        } else {
+            setEducationVisible(false);
+        }
+    }, [headerAnimationComplete]);
     
     const posts = [
         {
@@ -27,20 +41,33 @@ export default function Education() {
     ];
 
     return (
-        <div ref={sectionRef} className={`${styles.education} ${headerAnimationComplete ? styles.visible : ''}`}>
-            <div className={styles.hero}>
+        <div 
+            ref={sectionRef} 
+            className={`${styles.education} ${educationVisible ? styles.visible : ''}`}
+            style={{ opacity: educationVisible ? 1 : 0 }}
+        >
+            <div 
+                className={`${styles.hero} ${educationVisible ? styles.visible : ''}`}
+                style={{ opacity: educationVisible ? 1 : 0 }}
+            >
                 <h1 className={styles.title}>Client Education</h1>
                 <p className={styles.subtitle}>
                     Understanding web development, digital solutions, and how DreamsByte can help grow your business online.
                 </p>
             </div>
 
-            <div className={styles.posts}>
+            <div 
+                className={`${styles.posts} ${educationVisible ? styles.visible : ''}`}
+                style={{ opacity: educationVisible ? 1 : 0 }}
+            >
                 {posts.map((post, index) => (
                     <article 
                         key={post.id} 
-                        className={`${styles.post} ${headerAnimationComplete ? styles.visible : ''}`}
-                        style={{ transitionDelay: `${index * 0.1}s` }}
+                        className={`${styles.post} ${educationVisible ? styles.visible : ''}`}
+                        style={{ 
+                            transitionDelay: `${index * 0.1}s`,
+                            opacity: educationVisible ? 1 : 0 
+                        }}
                     >
                         <div className={styles.postContent}>
                             <h2 className={styles.postTitle}>
