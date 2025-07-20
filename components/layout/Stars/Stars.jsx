@@ -53,10 +53,10 @@ export default function Stars({ frequency = 'normal' }) {
                 setTimeout(() => {
                     setStars(prev => [...prev, star]);
                     
-                    // Remove star after animation completes
+                    // Remove star after animation completes with buffer time
                     setTimeout(() => {
                         setStars(prev => prev.filter(s => s.id !== id));
-                    }, star.duration * 1000 + 500);
+                    }, star.duration * 1000 + 2000); // Increased buffer from 500ms to 2000ms
                 }, star.delay);
             }
         };
@@ -127,7 +127,7 @@ export default function Stars({ frequency = 'normal' }) {
         
         // Trail tracking
         const trail = [];
-        const maxTrailLength = 8;
+        const maxTrailLength = 15; // Increased from 8 to 15 for longer trail
         
         const startTime = performance.now();
         let isComplete = false;
@@ -138,16 +138,17 @@ export default function Stars({ frequency = 'normal' }) {
             const elapsed = currentTime - startTime;
             const baseProgress = Math.min(elapsed / (star.duration * 1000), 1);
             
-            if (baseProgress >= 1) {
+            // Continue animation slightly beyond screen to ensure complete trajectory
+            if (baseProgress >= 1.2) { // Allow 20% overshoot
                 isComplete = true;
                 return;
             }
             
             // Add acceleration curve - starts slow, gets faster
-            const progress = baseProgress * baseProgress * (3 - 2 * baseProgress); // Smoothstep for acceleration
+            const progress = Math.min(baseProgress * baseProgress * (3 - 2 * baseProgress), 1); // Smoothstep for acceleration
             
             // Quadratic bezier curve for arc motion
-            const t = progress;
+            const t = Math.min(baseProgress, 1); // Clamp t to 1 for trajectory calculation
             const x = (1 - t) * (1 - t) * startX + 2 * (1 - t) * t * midX + t * t * endX;
             const y = (1 - t) * (1 - t) * startYPos + 2 * (1 - t) * t * controlY + t * t * startYPos;
             
@@ -156,13 +157,13 @@ export default function Stars({ frequency = 'normal' }) {
             containerElement.style.top = y + 'px';
             containerElement.style.opacity = baseProgress < 0.1 ? baseProgress * 10 : baseProgress > 0.9 ? (1 - baseProgress) * 10 : 1;
             
-            // Update trail with arc trajectory
+            // Update trail with arc trajectory - always add points even during overshoot
             trail.push({ x, y });
             if (trail.length > maxTrailLength) {
                 trail.shift();
             }
             
-            // Draw trail following the arc
+            // Draw trail following the arc with fade effect
             const trailElement = containerElement.querySelector('.star-trail');
             if (trailElement && trail.length > 1) {
                 let pathData = '';
@@ -176,6 +177,10 @@ export default function Stars({ frequency = 'normal' }) {
                     }
                 });
                 trailElement.setAttribute('d', pathData);
+                
+                // Fade trail opacity based on star position
+                const trailOpacity = Math.max(0.3, 1 - (baseProgress * 0.7));
+                trailElement.style.opacity = trailOpacity;
             }
             
             if (!isComplete) {
