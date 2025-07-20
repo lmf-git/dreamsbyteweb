@@ -37,12 +37,14 @@ function LayoutContent({ children }) {
 
     // Set header animation complete after header navigation reveals (at 2s)
     useEffect(() => {
+        // Reset on route change, then set timer
+        setHeaderAnimationComplete(false);
         const timer = setTimeout(() => {
             setHeaderAnimationComplete(true);
         }, 2000); // After nav links finish revealing
 
         return () => clearTimeout(timer);
-    }, [setHeaderAnimationComplete]);
+    }, [pathname, setHeaderAnimationComplete]); // Add pathname dependency
 
     const getThemeIcon = () => {
         return theme === 'light' 

@@ -37,7 +37,19 @@ export default function Comparison() {
   const { openContact } = useContact();
 
   // Comparison page shows immediately when header animation completes (these are standalone pages)
-  const isVisible = headerAnimationComplete;
+  const [forceVisible, setForceVisible] = useState(false);
+  const isVisible = headerAnimationComplete || forceVisible;
+  
+  // Fallback: force visible after 3 seconds if header animation hasn't completed
+  useEffect(() => {
+    const fallbackTimer = setTimeout(() => {
+      if (!headerAnimationComplete) {
+        setForceVisible(true);
+      }
+    }, 3000);
+    
+    return () => clearTimeout(fallbackTimer);
+  }, [headerAnimationComplete]);
 
   const handleAdvantageClick = (title) => () => {
     openContact(`Hi, I'm interested in learning more about "${title}"`);

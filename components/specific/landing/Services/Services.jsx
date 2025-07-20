@@ -51,7 +51,19 @@ export default function Services() {
   const { openContact } = useContact();
   
   // Services page shows immediately when header animation completes (these are standalone pages)
-  const isVisible = headerAnimationComplete;
+  const [forceVisible, setForceVisible] = useState(false);
+  const isVisible = headerAnimationComplete || forceVisible;
+  
+  // Fallback: force visible after 3 seconds if header animation hasn't completed
+  useEffect(() => {
+    const fallbackTimer = setTimeout(() => {
+      if (!headerAnimationComplete) {
+        setForceVisible(true);
+      }
+    }, 3000);
+    
+    return () => clearTimeout(fallbackTimer);
+  }, [headerAnimationComplete]);
 
   const handleExampleClick = (service) => (e) => {
     const dot = e.currentTarget.querySelector('::before');

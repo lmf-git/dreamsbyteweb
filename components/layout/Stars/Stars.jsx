@@ -35,7 +35,7 @@ export default function Stars({ frequency = 'normal' }) {
             const groupSize = Math.floor(Math.random() * 3) + 1; // 1-3 stars
             const fromLeft = Math.random() > 0.5;
             const baseY = Math.random() * 50 + 15; // 15%-65% of screen height
-            const baseDuration = Math.random() * 1.2 + 1.5; // 1.5-2.7 seconds
+            const baseDuration = Math.random() * 1.5 + 2.0; // 2.0-3.5 seconds (slower)
             const baseSize = Math.random() * 8 + 8; // 8-16px
             
             for (let i = 0; i < groupSize; i++) {

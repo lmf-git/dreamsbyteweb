@@ -144,7 +144,8 @@ export default function Portfolio() {
             setCurrentProject(0);
             
             preloadImages(0).then(() => {
-                const logoAnimationTime = 1200; // Reduced from 2000ms
+                // Use shorter timing when navigating (header already complete)
+                const logoAnimationTime = headerAnimationComplete ? 200 : 1200;
                 
                 if (isMobile) {
                     setTimeout(() => {
@@ -174,6 +175,10 @@ export default function Portfolio() {
                         }, 200); // Reduced from 500ms
                     }, logoAnimationTime);
                 } else {
+                    // Desktop: much faster timing when navigating
+                    const contentDelay = headerAnimationComplete ? 300 : 600;
+                    const previewDelay = headerAnimationComplete ? 200 : 1500;
+                    
                     setTimeout(() => {
                         setShowContent(true);
                         setShowNav(true);
@@ -181,11 +186,10 @@ export default function Portfolio() {
                         setTimeout(() => {
                             setShowPreview(true);
                             setFirstRevealComplete(true);
-                            // Add extra delay to ensure all animations complete
                             setTimeout(() => {
                                 setInitialAnimationComplete(true);
-                            }, 1500);
-                        }, 600);
+                            }, previewDelay);
+                        }, contentDelay);
                     }, logoAnimationTime);
                 }
             });
