@@ -50,8 +50,8 @@ export default function Services() {
   const { headerAnimationComplete } = useHeaderAnimation();
   const { openContact } = useContact();
   
-  // Services page only needs to wait for header animation to complete
-  const isVisible = useIntersectionObserver(sectionRef, 0.1) && headerAnimationComplete;
+  // Services page shows immediately when header animation completes (these are standalone pages)
+  const isVisible = headerAnimationComplete;
 
   const handleExampleClick = (service) => (e) => {
     const dot = e.currentTarget.querySelector('::before');

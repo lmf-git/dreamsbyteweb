@@ -36,8 +36,8 @@ export default function Comparison() {
   const { headerAnimationComplete } = useHeaderAnimation();
   const { openContact } = useContact();
 
-  // Comparison page only needs to wait for header animation to complete
-  const isVisible = useIntersectionObserver(sectionRef, 0.1) && headerAnimationComplete;
+  // Comparison page shows immediately when header animation completes (these are standalone pages)
+  const isVisible = headerAnimationComplete;
 
   const handleAdvantageClick = (title) => () => {
     openContact(`Hi, I'm interested in learning more about "${title}"`);
@@ -46,7 +46,7 @@ export default function Comparison() {
   return (
     <div 
       ref={sectionRef}
-      className={`section ${styles.comparison} ${headerAnimationComplete ? styles.headerComplete : ''} ${isVisible ? styles.visible : ''}`} 
+      className={`section ${styles.comparison} ${isVisible ? styles.visible : ''}`} 
       id="comparison"
     >
       <div className={styles.heading}>

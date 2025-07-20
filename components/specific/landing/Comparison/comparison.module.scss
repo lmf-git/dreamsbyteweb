@@ -1,5 +1,5 @@
 .comparison {
-  display: none;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   color: var(--text-primary);
@@ -8,11 +8,6 @@
   transition: opacity 0.5s ease-out, transform 0.5s ease-out, color 0.3s ease; // Faster transition
   padding-bottom: 4em; // Add padding bottom for mobile
   margin-bottom: 3.5em;
-  
-  &.heroComplete,
-  &.headerComplete {
-    display: flex;
-  }
   
   &.visible {
     opacity: 1;
