@@ -80,12 +80,12 @@ export default function Stars({ frequency = 'normal' }) {
 
         // Wait before starting star creation
         const initialDelay = setTimeout(() => {
-            // Create initial star group immediately
-            createStarGroup();
+            // Create initial star immediately
+            createStar();
             
-            // Then create star groups at intervals
+            // Then create stars at intervals
             const interval = setInterval(() => {
-                createStarGroup();
+                createStar();
             }, Math.random() * (settings.maxInterval - settings.minInterval) + settings.minInterval);
 
             // Store interval reference for cleanup
@@ -108,6 +108,11 @@ export default function Stars({ frequency = 'normal' }) {
         const endX = star.fromLeft ? screenWidth + 50 : -50;
         const startYPos = (star.startY / 100) * screenHeight;
         
+        // Arc calculation for curved motion
+        const midX = (startX + endX) / 2;
+        const arcHeight = screenHeight * 0.15; // 15% of screen height for arc
+        const controlY = startYPos - arcHeight;
+        
         // Trail tracking
         const trail = [];
         const maxTrailLength = 8;
@@ -126,10 +131,10 @@ export default function Stars({ frequency = 'normal' }) {
                 return;
             }
             
-            // Simple linear motion with gentle easing
-            const easeProgress = progress * progress;
-            const x = startX + (endX - startX) * easeProgress;
-            const y = startYPos;
+            // Quadratic bezier curve for arc motion
+            const t = progress;
+            const x = (1 - t) * (1 - t) * startX + 2 * (1 - t) * t * midX + t * t * endX;
+            const y = (1 - t) * (1 - t) * startYPos + 2 * (1 - t) * t * controlY + t * t * startYPos;
             
             // Update position
             containerElement.style.left = x + 'px';
@@ -209,10 +214,8 @@ export default function Stars({ frequency = 'normal' }) {
                         />
                         
                         {/* Star */}
-                        <circle
-                            cx="0"
-                            cy="0"
-                            r={star.size / 2}
+                        <path
+                            d={`M 0 -${star.size} L ${star.size * 0.3} -${star.size * 0.3} L ${star.size} 0 L ${star.size * 0.3} ${star.size * 0.3} L 0 ${star.size} L -${star.size * 0.3} ${star.size * 0.3} L -${star.size} 0 L -${star.size * 0.3} -${star.size * 0.3} Z`}
                             fill={isDarkMode ? 'white' : 'black'}
                             style={{
                                 filter: isDarkMode 
