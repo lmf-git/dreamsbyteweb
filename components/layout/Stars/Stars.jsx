@@ -142,10 +142,8 @@ export default function Stars({ frequency = 'normal' }) {
             
             if (progress >= 1) return;
             
-            // More natural easing function - slow start, gentle acceleration, moderate end
-            const easeProgress = progress < 0.5 
-                ? 2 * progress * progress 
-                : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+            // Gentle acceleration that doesn't slow down at the end
+            const easeProgress = progress * progress;
             
             // Calculate position along quadratic curve
             const t = easeProgress;

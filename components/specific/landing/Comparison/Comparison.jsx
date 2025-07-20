@@ -46,7 +46,7 @@ export default function Comparison() {
   return (
     <div 
       ref={sectionRef}
-      className={`section ${styles.comparison} ${headerAnimationComplete ? styles.heroComplete : ''} ${isVisible ? styles.visible : ''}`} 
+      className={`section ${styles.comparison} ${headerAnimationComplete ? styles.headerComplete : ''} ${isVisible ? styles.visible : ''}`} 
       id="comparison"
     >
       <div className={styles.heading}>

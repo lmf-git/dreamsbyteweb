@@ -13,7 +13,8 @@
     pointer-events: none;
     will-change: opacity, transform;
 
-    &.heroComplete {
+    &.heroComplete,
+    &.headerComplete {
         display: flex;
     }
 

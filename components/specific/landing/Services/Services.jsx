@@ -78,7 +78,7 @@ export default function Services() {
   return (
     <div 
       ref={sectionRef}
-      className={`section ${styles.services} ${headerAnimationComplete ? styles.heroComplete : ''} ${isVisible ? styles.visible : ''}`} 
+      className={`section ${styles.services} ${headerAnimationComplete ? styles.headerComplete : ''} ${isVisible ? styles.visible : ''}`} 
       id="services"
     >
       <div className={styles.heading}>

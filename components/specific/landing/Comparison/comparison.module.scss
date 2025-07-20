@@ -9,7 +9,8 @@
   padding-bottom: 4em; // Add padding bottom for mobile
   margin-bottom: 3.5em;
   
-  &.heroComplete {
+  &.heroComplete,
+  &.headerComplete {
     display: flex;
   }
   
