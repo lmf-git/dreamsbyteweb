@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useHero } from '../../../contexts/HeroContext';
 
-export default function Stars() {
+export default function Stars({ frequency = 'normal' }) {
     const [stars, setStars] = useState([]);
     const containerRef = useRef(null);
     const [isDarkMode, setIsDarkMode] = useState(true);
@@ -66,15 +66,44 @@ export default function Stars() {
             }
         };
 
-        // Wait 10 seconds after hero completion before starting star creation
+        // Determine frequency settings based on prop
+        const getFrequencySettings = () => {
+            switch (frequency) {
+                case 'high':
+                    return {
+                        initialDelay: 2000, // 2 seconds
+                        minInterval: 8000, // 8 seconds
+                        maxInterval: 15000 // 15 seconds
+                    };
+                case 'medium':
+                    return {
+                        initialDelay: 5000, // 5 seconds
+                        minInterval: 30000, // 30 seconds
+                        maxInterval: 60000 // 1 minute
+                    };
+                default: // normal
+                    return {
+                        initialDelay: 10000, // 10 seconds
+                        minInterval: 300000, // 5 minutes
+                        maxInterval: 600000 // 10 minutes
+                    };
+            }
+        };
+
+        const settings = getFrequencySettings();
+
+        // Wait before starting star creation
         const initialDelay = setTimeout(() => {
-            // Create star groups every 5-10 minutes
+            // Create initial star group immediately
+            createStarGroup();
+            
+            // Then create star groups at intervals
             const interval = setInterval(() => {
                 createStarGroup();
-            }, Math.random() * 300000 + 300000); // 5-10 minutes (300000ms = 5 minutes)
+            }, Math.random() * (settings.maxInterval - settings.minInterval) + settings.minInterval);
 
             return () => clearInterval(interval);
-        }, 10000);
+        }, settings.initialDelay);
 
         return () => clearTimeout(initialDelay);
     }, [heroComplete]);

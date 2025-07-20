@@ -6,6 +6,7 @@ import Link from "next/link";
 import { HeroProvider, useHero } from '../../../contexts/HeroContext';
 import { ThemeProvider, useTheme } from '../../../contexts/ThemeContext';
 import { ContactProvider, useContact } from '../../../contexts/ContactContext';
+import { HeaderAnimationProvider, useHeaderAnimation } from '../../../contexts/HeaderAnimationContext';
 import Contact from "../Contact/Contact";
 import Footer from "../Footer/Footer";
 import Stars from "../Stars/Stars";
@@ -27,11 +28,21 @@ function LayoutContent({ children }) {
     const { heroComplete } = useHero();
     const { theme, toggleTheme } = useTheme();
     const { contactOpen, message, openContact, closeContact } = useContact();
+    const { setHeaderAnimationComplete } = useHeaderAnimation();
     const pathname = usePathname();
     const [menuOpen, setMenuOpen] = useState(false);
     
     // Check if we're on the landing page (home page)
     const isLandingPage = pathname === '/';
+
+    // Set header animation complete after header navigation reveals (at 2s)
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setHeaderAnimationComplete(true);
+        }, 2000); // After nav links finish revealing
+
+        return () => clearTimeout(timer);
+    }, [setHeaderAnimationComplete]);
 
     const getThemeIcon = () => {
         return theme === 'light' 
@@ -83,7 +94,7 @@ function LayoutContent({ children }) {
 
     return (
         <>
-            <Stars />
+            <Stars frequency={pathname === '/' ? 'high' : 'normal'} />
             <main className={styles.index}>
                 <header className={styles.header}>
                     <Link href="/">
@@ -94,9 +105,10 @@ function LayoutContent({ children }) {
                         <button className={styles.themeToggle} onClick={toggleTheme} aria-label="Toggle theme">
                             {getThemeIcon()}
                         </button>
-                        <a className={styles.headercta} href="/#services">Services</a>
-                        <a className={styles.headercta} href="/#testimonials">Reviews</a>
-                        <Link href="/education" className={styles.headercta}>Education</Link>
+                        <Link href="/portfolio" className={`${styles.headercta} ${pathname === '/portfolio' ? styles.active : ''}`}>Portfolio</Link>
+                        <Link href="/services" className={`${styles.headercta} ${pathname === '/services' ? styles.active : ''}`}>Services</Link>
+                        <Link href="/testimonials" className={`${styles.headercta} ${pathname === '/testimonials' ? styles.active : ''}`}>Reviews</Link>
+                        <Link href="/education" className={`${styles.headercta} ${pathname.startsWith('/education') ? styles.active : ''}`}>Education</Link>
                         <button className={`${styles.headercta} ${styles.headerctaprimary}`} onClick={() => openContact()}>CONTACT</button>
                         <button className={styles.menutoggle} onClick={() => setMenuOpen(true)}>
                             <MenuIcon extraClass={styles.menutoggleicon} />
@@ -127,9 +139,10 @@ function LayoutContent({ children }) {
                         </div>
 
                         <div className={styles.items}>
-                            <a className={styles.item} onClick={handleMenuClose} href="/#services">Services</a>
-                            <a className={styles.item} onClick={handleMenuClose} href="/#testimonials">Reviews</a>
-                            <Link href="/education" className={styles.item} onClick={handleMenuClose}>Education</Link>
+                            <Link href="/portfolio" className={`${styles.item} ${pathname === '/portfolio' ? styles.activeItem : ''}`} onClick={handleMenuClose}>Portfolio</Link>
+                            <Link href="/services" className={`${styles.item} ${pathname === '/services' ? styles.activeItem : ''}`} onClick={handleMenuClose}>Services</Link>
+                            <Link href="/testimonials" className={`${styles.item} ${pathname === '/testimonials' ? styles.activeItem : ''}`} onClick={handleMenuClose}>Reviews</Link>
+                            <Link href="/education" className={`${styles.item} ${pathname.startsWith('/education') ? styles.activeItem : ''}`} onClick={handleMenuClose}>Education</Link>
                             <button className={styles.item} onClick={() => { handleMenuClose(); openContact(); }}>Contact</button>
                         </div>
 
@@ -169,9 +182,11 @@ export default function Layout({ children }) {
         <ThemeProvider>
             <HeroProvider>
                 <ContactProvider>
-                    <LayoutContent>
-                        {children}
-                    </LayoutContent>
+                    <HeaderAnimationProvider>
+                        <LayoutContent>
+                            {children}
+                        </LayoutContent>
+                    </HeaderAnimationProvider>
                 </ContactProvider>
             </HeroProvider>
         </ThemeProvider>

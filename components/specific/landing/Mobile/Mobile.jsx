@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from '../Hero/hero.module.scss';
+import styles from '../Portfolio/portfolio.module.scss';
 
 export default function Mobile({ extraClass, src, onLoad }) {
     const [isLoading, setIsLoading] = useState(true);

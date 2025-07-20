@@ -56,10 +56,10 @@ export default function Contact({ isOpen, onClose, initialMessage = '' }) {
         {formStatus !== 'success' ? (
           <form className={styles.contact} onSubmit={onSubmit}>
             <label className={styles.label} htmlFor="contactform">
-              Contact form
+              {messageVisible ? 'Contact us' : 'We will contact you'}
             </label>
             <p className={styles.instructions}>
-              To start realising your digital dreams, email us today.
+              {messageVisible ? 'To start realising your digital dreams, email us today.' : 'Leave your email and we\'ll contact you.'}
             </p>
 
             <input 

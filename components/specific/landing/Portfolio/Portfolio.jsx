@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useHero } from '../../../../contexts/HeroContext';
+import { useHeaderAnimation } from '../../../../contexts/HeaderAnimationContext';
 
 import RightLine from '../../../icons/controls/RightLine';
 import LeftLine from '../../../icons/controls/LeftLine';
@@ -10,7 +11,7 @@ import Dot from '../../../icons/controls/Dot';
 import Screen from '../Screen/Screen';
 import Mobile from '../Mobile/Mobile';
 
-import styles from './hero.module.scss';
+import styles from './portfolio.module.scss';
 
 const projects = [
     {
@@ -87,8 +88,9 @@ const projects = [
     }
 ];
 
-export default function Hero() {  // Remove onComplete prop
+export default function Portfolio() {
     const { setHeroComplete } = useHero();
+    const { headerAnimationComplete } = useHeaderAnimation();
     const [project, setProject] = useState(null); // Change initial state to null
     const [showPreview, setShowPreview] = useState(false);
     const [showContent, setShowContent] = useState(false);
@@ -278,7 +280,7 @@ export default function Hero() {  // Remove onComplete prop
     };
 
     return (
-        <div className={`section ${styles.hero}`}>
+        <div className={`section ${styles.hero} ${headerAnimationComplete ? styles.navigated : ''}`}>
             {currentProject !== null && ( // Only render content when project is set
                 <div className={styles.projects}>
                     <div className={styles.projectdesc}>
