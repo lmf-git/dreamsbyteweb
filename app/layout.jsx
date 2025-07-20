@@ -15,12 +15,31 @@ const inter = Inter({
 
 export const metadata = {
   title: {
-    template: '%s | Dreamsbyte',
-    default: 'Dreamsbyte | Welcome Forward',
+    template: '%s | DreamsByte',
+    default: 'DreamsByte | Welcome Forward',
   },
   description: 'From concept to reality, we offer full stack development, e-commerce solutions, captivating design, and more. Email contact@dreamsbyte.com to start realising your digital dreams.',
   keywords: 'development, design, database, figma, javascript, html, css',
   "msapplication-TileColor": "#ffc40d",
+  openGraph: {
+    title: 'DreamsByte | Welcome Forward',
+    description: 'From concept to reality, we offer full stack development, e-commerce solutions, captivating design, and more. Email contact@dreamsbyte.com to start realising your digital dreams.',
+    images: [
+      {
+        url: '/card.png',
+        width: 1200,
+        height: 630,
+        alt: 'DreamsByte - Full Stack Development & Design'
+      }
+    ],
+    type: 'website'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'DreamsByte | Welcome Forward',
+    description: 'From concept to reality, we offer full stack development, e-commerce solutions, captivating design, and more. Email contact@dreamsbyte.com to start realising your digital dreams.',
+    images: ['/card.png']
+  },
   icons: {
     icon: [
       { url: '/favicons/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
