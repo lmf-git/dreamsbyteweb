@@ -35,7 +35,7 @@ export default function Stars({ frequency = 'normal' }) {
             const groupSize = Math.floor(Math.random() * 3) + 1; // 1-3 stars
             const fromLeft = Math.random() > 0.5;
             const baseY = Math.random() * 50 + 15; // 15%-65% of screen height
-            const baseDuration = Math.random() * 0.8 + 0.8; // 0.8-1.6 seconds
+            const baseDuration = Math.random() * 1.2 + 1.5; // 1.5-2.7 seconds
             const baseSize = Math.random() * 8 + 8; // 8-16px
             
             for (let i = 0; i < groupSize; i++) {
@@ -58,10 +58,10 @@ export default function Stars({ frequency = 'normal' }) {
                 setTimeout(() => {
                     setStars(prev => [...prev, star]);
 
-                    // Remove star after animation completes
+                    // Remove star after animation completes (duration + buffer time)
                     setTimeout(() => {
                         setStars(prev => prev.filter(s => s.id !== id));
-                    }, star.duration * 1000 + 100);
+                    }, star.duration * 1000 + 500); // Increased buffer from 100ms to 500ms
                 }, delayOffset);
             }
         };
@@ -106,7 +106,7 @@ export default function Stars({ frequency = 'normal' }) {
         }, settings.initialDelay);
 
         return () => clearTimeout(initialDelay);
-    }, [heroComplete]);
+    }, [heroComplete, frequency]);
 
     const animateStar = (containerElement, star) => {
         if (!containerElement) return;
@@ -124,7 +124,7 @@ export default function Stars({ frequency = 'normal' }) {
         
         // Trail tracking
         const tailHistory = [];
-        const maxTailLength = 8; // Number of trail points
+        const maxTailLength = 15; // Longer trail for better visual effect
         
         // Find the star and tail elements
         const starElement = containerElement.querySelector('.star-shape');
@@ -142,30 +142,36 @@ export default function Stars({ frequency = 'normal' }) {
             
             if (progress >= 1) return;
             
-            // Acceleration easing function - starts slow, speeds up
-            const easeProgress = progress * progress;
+            // Gentler acceleration easing function - smoother acceleration curve
+            const easeProgress = progress * progress * progress;
             
             // Calculate position along quadratic curve
             const t = easeProgress;
             const x = (1 - t) * (1 - t) * startX + 2 * (1 - t) * t * midX + t * t * endX;
             const y = (1 - t) * (1 - t) * startYPos + 2 * (1 - t) * t * midY + t * t * startYPos;
             
-            // Apply position
+            // Apply position to container
             containerElement.style.left = x + 'px';
             containerElement.style.top = y + 'px';
             
-            // Update tail history
-            tailHistory.push({ x: x, y: y });
+            // Add current position to tail history
+            tailHistory.push({ x, y });
             if (tailHistory.length > maxTailLength) {
                 tailHistory.shift();
             }
             
-            // Update tail path
+            // Update tail path - use absolute coordinates but draw relative to star center
             if (tailHistory.length > 1 && tailElement) {
-                let pathData = `M ${tailHistory[0].x - x} ${tailHistory[0].y - y}`;
-                for (let i = 1; i < tailHistory.length; i++) {
-                    pathData += ` L ${tailHistory[i].x - x} ${tailHistory[i].y - y}`;
+                // Start path from the oldest position in history
+                let pathData = `M 0 0`; // Start at star center
+                
+                // Draw path through previous positions relative to current position
+                for (let i = tailHistory.length - 2; i >= 0; i--) {
+                    const relativeX = tailHistory[i].x - x;
+                    const relativeY = tailHistory[i].y - y;
+                    pathData += ` L ${relativeX} ${relativeY}`;
                 }
+                
                 tailElement.setAttribute('d', pathData);
             }
             

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from "react";
+import Link from 'next/link';
 import { useContact } from '../../../../contexts/ContactContext';
 import { useHero } from '../../../../contexts/HeroContext';
 import { useHeaderAnimation } from '../../../../contexts/HeaderAnimationContext';
@@ -42,11 +43,11 @@ export default function Intro() {
                         onClick={() => openContact()}>
                         Start Your Project
                     </button>
-                    <a 
+                    <Link 
                         href="/portfolio" 
                         className={styles.secondaryAction}>
                         View Our Work
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>

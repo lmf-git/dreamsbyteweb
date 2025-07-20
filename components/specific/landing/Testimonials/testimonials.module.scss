@@ -76,7 +76,7 @@
     align-items: center;
     padding: 1.5em;
     margin-right: 2.5em; // Increased from 1.5em for more separation between all cards
-    background: linear-gradient(104deg, #FFF 1.24%, #DBDBDB 100%);
+    background: var(--testimonial-bg-gradient);
     border-radius: 0.25em; // Changed from 0.5em 0 0 0 to round all corners
     box-sizing: border-box;
     pointer-events: auto; // Ensure interactions are enabled
@@ -96,7 +96,7 @@
     flex-direction: column;
     align-items: center;
     flex-shrink: 0;
-    color: black;
+    color: var(--testimonial-text);
     margin-bottom: 1.35em;
     margin-top: 0.85em;
     width: 100%;
@@ -114,13 +114,13 @@
     font-size: 1.4em;
     margin-top: 0.35em;
     margin-bottom: 0.25em;
-    color: rgb(44, 44, 44);
+    color: var(--testimonial-company);
 }
 
 .name {
     font-weight: 200;
     font-size: 1.15em;
-    color: rgb(80, 80, 80);
+    color: var(--testimonial-name);
 }
 
 .text {
@@ -131,7 +131,7 @@
     font-weight: 100;
     margin: 0 0 1.5em;
     font-size: 1.1em;
-    color: #333333; // Always dark text on light testimonial cards
+    color: var(--testimonial-quote);
     transition: color 0.3s ease;
 
     &:before, &:after {
@@ -152,16 +152,18 @@
 }
 
 .report {
-    color: rgb(44, 44, 44);
+    color: var(--testimonial-report);
     text-decoration: none;
     font-weight: 300;
-    transition: padding 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: all 0.3s ease;
+    padding: 0.25em 0.5em;
+    border-radius: 0.25em;
   
     &:hover {
-        color: white;
+        color: var(--testimonial-report-hover);
         text-decoration: underline;
-        background: rgb(44, 44, 44);
-        padding: 0.35em;
+        background: var(--testimonial-report);
+        padding: 0.5em 0.75em;
     }
 }
 
@@ -226,13 +228,13 @@
         font-size: 1.5em;
         margin-top: 0.35em;
         margin-bottom: 0.25em;
-        color: rgb(44, 44, 44);
+        color: var(--testimonial-company);
     }
 
     .name {
         font-weight: 200;
         font-size: 1.25em;
-        color: rgb(80, 80, 80);
+        color: var(--testimonial-name);
     }
 
     .quote {

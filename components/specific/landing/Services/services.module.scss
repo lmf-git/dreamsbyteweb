@@ -32,7 +32,7 @@
   font-size: .5em;
   font-weight: 500;
   letter-spacing: 0.02em;
-  color: rgb(200, 200, 200);
+  color: var(--preamble-text);
 }
 
 .title {
@@ -43,7 +43,7 @@
   font-size: 0.5em;
   font-weight: 600;
   color: var(--base-rate-text);
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--base-rate-bg);
   padding: 0.3em 0.6em;
   border-radius: 2em;
   margin-top: 0.8em;
@@ -83,7 +83,7 @@
   font-family: var(--font-inter);
   margin-bottom: 1em;  // Increased from 0.5em to accommodate stacked layout
   font-weight: 400;
-  color: rgb(200, 200, 200);
+  color: var(--preamble-text);
   line-height: 1.4em;
   position: relative;
   padding-left: 1.5em;
@@ -137,7 +137,7 @@
 
 .estimatedHours {
   font-size: 0.9em;
-  color: rgb(180, 180, 180);
+  color: var(--estimated-hours);
   font-weight: 300;
 }
 
@@ -254,7 +254,7 @@
   font-family: var(--font-inter);
   font-size: 1em;
   font-weight: 500;
-  color: rgb(180, 180, 180);
+  color: var(--estimated-hours);
   padding: 0.7em 1em;
   border: 0.0625em solid rgba(255, 255, 255, 0.15);
   border-radius: 0.25em;
