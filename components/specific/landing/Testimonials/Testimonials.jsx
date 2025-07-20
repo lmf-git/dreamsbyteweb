@@ -10,8 +10,6 @@ export default function Testimonials() {
     const sectionRef = useRef(null);
     const { headerAnimationComplete } = useHeaderAnimation();
     
-    // Testimonials show immediately - no intersection observer needed
-    const isVisible = true;
     const listRef = useRef(null);
     const planeRef = useRef(null);
     const animationRef = useRef(null);
@@ -93,7 +91,7 @@ export default function Testimonials() {
     const stopDragging = () => setIsDragging(false);
 
     return (
-        <div ref={sectionRef} className={`section ${styles.testimonials} ${isVisible ? styles.visible : ''}`} id="testimonials">
+        <div ref={sectionRef} className={`section ${styles.testimonials} ${headerAnimationComplete ? styles.visible : ''}`} id="testimonials">
             <h2 className={styles.title}>Our client testimonials:</h2>
             <div
                 className={styles.list}
@@ -114,7 +112,7 @@ export default function Testimonials() {
                 <div className={styles.plane} ref={planeRef}>
                     {testimonials.map((t, i) => (
                         <div 
-                            className={`${styles.testimonial} ${isVisible ? styles.visible : ''}`} 
+                            className={`${styles.testimonial} ${headerAnimationComplete ? styles.visible : ''}`} 
                             key={i}
                             style={{ transitionDelay: `${0.2 + i * 0.1}s` }}
                         >

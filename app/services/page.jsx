@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect } from 'react';
 import { useHero } from '../../contexts/HeroContext';
+import { useHeaderAnimation } from '../../contexts/HeaderAnimationContext';
 import { useContact } from '../../contexts/ContactContext';
 import Comparison from '../../components/specific/landing/Comparison/Comparison';
 
@@ -50,9 +51,9 @@ const technologies = [
 export default function ServicesPage() {
   const sectionRef = useRef(null);
   const { heroComplete } = useHero();
+  const { headerAnimationComplete } = useHeaderAnimation();
   const { openContact } = useContact();
   
-  const isVisible = true;
 
   const handleExampleClick = (service) => (e) => {
     const dot = e.currentTarget.querySelector('::before');
@@ -79,7 +80,7 @@ export default function ServicesPage() {
         <>
             <div 
               ref={sectionRef}
-              className={`section ${styles.services} ${heroComplete ? styles.heroComplete : ''} ${isVisible ? styles.visible : ''}`} 
+              className={`section ${styles.services} ${headerAnimationComplete ? styles.visible : ''}`} 
               id="services"
             >
               <div className={styles.heading}>
@@ -112,7 +113,7 @@ export default function ServicesPage() {
               ].map((serviceGroup, index) => (
                 <div 
                   key={serviceGroup.name} 
-                  className={`${styles.service} ${isVisible ? styles.visible : ''}`}
+                  className={`${styles.service} ${headerAnimationComplete ? styles.visible : ''}`}
                   style={{ transitionDelay: `${index * 0.2}s` }}
                 >
                   <span className={styles.name}>{serviceGroup.name}</span>
@@ -140,7 +141,7 @@ export default function ServicesPage() {
             <Comparison />
 
             <div 
-              className={`${styles.providers} ${isVisible ? styles.visible : ''}`}
+              className={`${styles.providers} ${headerAnimationComplete ? styles.visible : ''}`}
               style={{ transitionDelay: '0.8s' }}
             >
               <div className={styles.providersHeading}>Technologies We Use</div>
@@ -151,7 +152,7 @@ export default function ServicesPage() {
                     href={tech.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`${styles.provider} ${isVisible ? styles.visible : ''}`}
+                    className={`${styles.provider} ${headerAnimationComplete ? styles.visible : ''}`}
                     style={{ transitionDelay: `${1.0 + index * 0.1}s` }}
                   >
                     {tech.Icon && <tech.Icon extraClass={styles.providericon} />}
@@ -162,7 +163,7 @@ export default function ServicesPage() {
             </div>
 
             <div 
-              className={`${styles.additionalSection} ${isVisible ? styles.visible : ''}`}
+              className={`${styles.additionalSection} ${headerAnimationComplete ? styles.visible : ''}`}
               style={{ transitionDelay: '2.8s' }}>
               <p className={styles.additional}>
                 All services are tailored to your specific needs with our base rate of $75/hr and project-based pricing available. <button className={styles.additionallink} onClick={() => openContact()}>Contact us</button> to start realising your dreams.

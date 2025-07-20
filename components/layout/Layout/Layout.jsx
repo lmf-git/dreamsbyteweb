@@ -35,20 +35,24 @@ function LayoutContent({ children }) {
     // Check if we're on the landing page (home page)
     const isLandingPage = pathname === '/';
 
+    // Track if this is the first mount (page load) vs navigation
+    const [isFirstMount, setIsFirstMount] = useState(true);
+    
     // Set header animation complete after header navigation reveals (at 2s)
     useEffect(() => {
-        // Only reset to false on initial load (first route), not on navigation
-        if (pathname === '/' || !document.querySelector('header')) {
+        if (isFirstMount) {
+            // First page load - wait for header animation
             setHeaderAnimationComplete(false);
             const timer = setTimeout(() => {
                 setHeaderAnimationComplete(true);
             }, 2000); // After nav links finish revealing
+            setIsFirstMount(false);
             return () => clearTimeout(timer);
         } else {
-            // For navigation, header is already visible, set immediately
+            // Navigation - header already exists, set immediately
             setHeaderAnimationComplete(true);
         }
-    }, [pathname, setHeaderAnimationComplete]);
+    }, [pathname, setHeaderAnimationComplete, isFirstMount]);
 
     const getThemeIcon = () => {
         return theme === 'light' 

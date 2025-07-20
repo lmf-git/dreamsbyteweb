@@ -49,8 +49,6 @@ export default function Services() {
   const { headerAnimationComplete } = useHeaderAnimation();
   const { openContact } = useContact();
   
-  // Services page shows immediately - no intersection observer needed
-  const isVisible = true;
 
   const handleExampleClick = (service) => (e) => {
     const dot = e.currentTarget.querySelector('::before');
@@ -77,7 +75,7 @@ export default function Services() {
   return (
     <div 
       ref={sectionRef}
-      className={`section ${styles.services} ${isVisible ? styles.visible : ''}`} 
+      className={`section ${styles.services} ${headerAnimationComplete ? styles.visible : ''}`} 
       id="services"
     >
       <div className={styles.heading}>
@@ -110,7 +108,7 @@ export default function Services() {
       ].map((serviceGroup, index) => (
         <div 
           key={serviceGroup.name} 
-          className={`${styles.service} ${isVisible ? styles.visible : ''}`}
+          className={`${styles.service} ${headerAnimationComplete ? styles.visible : ''}`}
           style={{ transitionDelay: `${index * 0.2}s` }}
         >
           <span className={styles.name}>{serviceGroup.name}</span>
@@ -137,7 +135,7 @@ export default function Services() {
 
 
     <div 
-      className={`${styles.providers} ${isVisible ? styles.visible : ''}`}
+      className={`${styles.providers} ${headerAnimationComplete ? styles.visible : ''}`}
       style={{ transitionDelay: '0.8s' }}
     >
       <div className={styles.providersHeading}>Technologies We Use</div>
@@ -148,7 +146,7 @@ export default function Services() {
             href={tech.url}
             target="_blank"
             rel="noopener noreferrer"
-            className={`${styles.provider} ${isVisible ? styles.visible : ''}`}
+            className={`${styles.provider} ${headerAnimationComplete ? styles.visible : ''}`}
             style={{ transitionDelay: `${1.0 + index * 0.1}s` }}
           >
             {tech.Icon && <tech.Icon extraClass={styles.providericon} />}
@@ -159,7 +157,7 @@ export default function Services() {
     </div>
 
     <div 
-      className={`${styles.additionalSection} ${isVisible ? styles.visible : ''}`}
+      className={`${styles.additionalSection} ${headerAnimationComplete ? styles.visible : ''}`}
       style={{ transitionDelay: '2.8s' }}>
       <p className={styles.additional}>
         All services are tailored to your specific needs with our base rate of $75/hr and project-based pricing available. <button className={styles.additionallink} onClick={() => openContact()}>Contact us</button> to start realising your dreams.

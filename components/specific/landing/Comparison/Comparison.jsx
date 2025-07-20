@@ -35,8 +35,6 @@ export default function Comparison() {
   const { headerAnimationComplete } = useHeaderAnimation();
   const { openContact } = useContact();
 
-  // Comparison page shows immediately - no intersection observer needed
-  const isVisible = true;
 
   const handleAdvantageClick = (title) => () => {
     openContact(`Hi, I'm interested in learning more about "${title}"`);
@@ -45,7 +43,7 @@ export default function Comparison() {
   return (
     <div 
       ref={sectionRef}
-      className={`section ${styles.comparison} ${isVisible ? styles.visible : ''}`} 
+      className={`section ${styles.comparison} ${headerAnimationComplete ? styles.visible : ''}`} 
       id="comparison"
     >
       <div className={styles.heading}>
@@ -57,7 +55,7 @@ export default function Comparison() {
         {advantages.map((advantage, index) => (
           <div 
             key={index} 
-            className={`${styles.advantage} ${isVisible ? styles.visible : ''}`}
+            className={`${styles.advantage} ${headerAnimationComplete ? styles.visible : ''}`}
             style={{ transitionDelay: `${index * 0.1}s` }}
             onClick={handleAdvantageClick(advantage.title)}
           >
