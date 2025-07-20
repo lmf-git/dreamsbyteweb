@@ -131,9 +131,9 @@ html {
 
 body {
     margin: 0;
-    background: linear-gradient(to bottom, var(--bg-secondary), var(--bg-primary));
+    background: transparent; // Let our overlay handle the gradient
     color: var(--text-primary);
-    transition: background 0.6s ease-in-out, color 0.6s ease-in-out;
+    transition: color 0.6s ease-in-out;
 }
 
 

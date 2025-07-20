@@ -127,6 +127,22 @@ function LayoutContent({ children }) {
 
     return (
         <>
+            {/* Theme transition overlays */}
+            <div 
+                className={styles.darkGradient}
+                style={{ 
+                    opacity: theme === 'dark' ? 1 : 0,
+                    transition: 'opacity 0.8s ease-in-out'
+                }}
+            />
+            <div 
+                className={styles.lightGradient}
+                style={{ 
+                    opacity: theme === 'light' ? 1 : 0,
+                    transition: 'opacity 0.8s ease-in-out'
+                }}
+            />
+            
             <Stars frequency={pathname === '/' ? 'high' : 'normal'} />
             <main className={styles.index}>
                 <header className={styles.header}>

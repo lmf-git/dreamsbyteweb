@@ -1,6 +1,29 @@
 @use '../animations';
 @use '../colours';
 
+// Theme transition gradient overlays
+.darkGradient {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to bottom, #141B35, #000000);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.lightGradient {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to bottom, #6686ff, #ffffff);
+    pointer-events: none;
+    z-index: -2;
+}
+
 .clipped {
     height: 100em;
     overflow: hidden;

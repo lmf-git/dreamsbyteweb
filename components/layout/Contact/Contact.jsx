@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import EmailSend from '../../icons/EmailSend';
+import EmailMethod from '../../icons/social/EmailMethod';
+import Whatsapp from '../../icons/social/Whatsapp';
 import styles from './contact.module.scss';
 
 export default function Contact({ isOpen, onClose, initialMessage = '' }) {
@@ -94,6 +96,32 @@ export default function Contact({ isOpen, onClose, initialMessage = '' }) {
                 Submit
                 <EmailSend className={styles['submit-icon']} />
               </button>
+            </div>
+            
+            <div className={styles.alternatives}>
+              <p className={styles.alternativeText}>Or contact us directly:</p>
+              <div className={styles.alternativeLinks}>
+                <a 
+                  href="mailto:contact@dreamsbyte.com" 
+                  className={styles.alternativeLink} 
+                  rel="noopener noreferrer" 
+                  target="_blank" 
+                  aria-label="Send us an email"
+                >
+                  <EmailMethod className={styles.alternativeIcon} />
+                  <span>Email</span>
+                </a>
+                <a 
+                  href="https://api.whatsapp.com/send?phone=447389805421" 
+                  className={styles.alternativeLink} 
+                  rel="noopener noreferrer" 
+                  target="_blank" 
+                  aria-label="Contact us on WhatsApp"
+                >
+                  <Whatsapp className={styles.alternativeIcon} />
+                  <span>WhatsApp</span>
+                </a>
+              </div>
             </div>
           </form>
         ) : (
