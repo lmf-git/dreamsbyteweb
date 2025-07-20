@@ -2,7 +2,6 @@
 
 import { useRef } from 'react';
 import { usePathname } from 'next/navigation';
-import useIntersectionObserver from '../../../hooks/useIntersectionObserver';
 import { useHero } from '../../../contexts/HeroContext';
 
 import Logo from '../../icons/branding/Logo';
@@ -21,11 +20,8 @@ export default function Footer() {
   const { heroComplete } = useHero();
   const isLandingPage = pathname === '/';
   
-  // On landing page: wait for hero completion + intersection
-  // On other pages: just use intersection observer
-  const isVisible = isLandingPage 
-    ? (useIntersectionObserver(footerRef, 0.25) && heroComplete)
-    : useIntersectionObserver(footerRef, 0.25);
+  // Footer shows immediately - no intersection observer needed
+  const isVisible = true;
 
   return (
     <div 

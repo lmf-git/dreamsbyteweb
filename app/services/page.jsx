@@ -1,7 +1,6 @@
 'use client';
 
 import { useRef, useState, useEffect } from 'react';
-import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 import { useHero } from '../../contexts/HeroContext';
 import { useContact } from '../../contexts/ContactContext';
 import Comparison from '../../components/specific/landing/Comparison/Comparison';
@@ -53,7 +52,7 @@ export default function ServicesPage() {
   const { heroComplete } = useHero();
   const { openContact } = useContact();
   
-  const isVisible = useIntersectionObserver(sectionRef, 0.1) && heroComplete;
+  const isVisible = true;
 
   const handleExampleClick = (service) => (e) => {
     const dot = e.currentTarget.querySelector('::before');
