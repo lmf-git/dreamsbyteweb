@@ -35,24 +35,34 @@ function LayoutContent({ children }) {
     // Check if we're on the landing page (home page)
     const isLandingPage = pathname === '/';
 
-    // Track if this is the first mount (page load) vs navigation
-    const [isFirstMount, setIsFirstMount] = useState(true);
+    // Track if this is the initial page load
+    const [isInitialLoad, setIsInitialLoad] = useState(true);
     
     // Set header animation complete after header navigation reveals (at 2s)
     useEffect(() => {
-        if (isFirstMount) {
+        console.log('Header animation effect:', { pathname, isInitialLoad });
+        
+        // Reset animation state on route change
+        setHeaderAnimationComplete(false);
+        
+        if (isInitialLoad) {
             // First page load - wait for header animation
-            setHeaderAnimationComplete(false);
+            console.log('Initial load - waiting 2s for header animation');
             const timer = setTimeout(() => {
+                console.log('Header animation completing after 2s');
                 setHeaderAnimationComplete(true);
-            }, 2000); // After nav links finish revealing
-            setIsFirstMount(false);
+                setIsInitialLoad(false);
+            }, 2000);
             return () => clearTimeout(timer);
         } else {
-            // Navigation - header already exists, set immediately
-            setHeaderAnimationComplete(true);
+            // Navigation - header already exists, shorter delay
+            console.log('Navigation - setting header complete after short delay');
+            const timer = setTimeout(() => {
+                setHeaderAnimationComplete(true);
+            }, 100); // Very short delay for navigation
+            return () => clearTimeout(timer);
         }
-    }, [pathname, setHeaderAnimationComplete, isFirstMount]);
+    }, [pathname, setHeaderAnimationComplete]);
 
     const getThemeIcon = () => {
         return theme === 'light' 

@@ -10,6 +10,9 @@ export default function Testimonials() {
     const sectionRef = useRef(null);
     const { headerAnimationComplete } = useHeaderAnimation();
     
+    // Debug logging
+    console.log('Testimonials component - headerAnimationComplete:', headerAnimationComplete);
+    
     const listRef = useRef(null);
     const planeRef = useRef(null);
     const animationRef = useRef(null);

@@ -135,16 +135,16 @@ export default function Portfolio() {
         });
     };
 
-    // Initial setup
+    // Initial setup - wait for headerAnimationComplete to be determined
     useEffect(() => {
-        if (!isInitialized) {
+        if (!isInitialized && headerAnimationComplete !== undefined) {
             const isMobile = window.innerWidth < 1200;
             setIsInitialized(true);
             setProject(0);
             setCurrentProject(0);
             
             preloadImages(0).then(() => {
-                // Use much shorter timing when navigating (header already rendered)
+                // Use much shorter timing when header animation is already complete (navigation)
                 const logoAnimationTime = headerAnimationComplete ? 100 : 1200;
                 
                 if (isMobile) {
@@ -176,8 +176,8 @@ export default function Portfolio() {
                     }, logoAnimationTime);
                 } else {
                     // Desktop: much faster timing when navigating
-                    const contentDelay = headerAnimationComplete ? 300 : 600;
-                    const previewDelay = headerAnimationComplete ? 200 : 1500;
+                    const contentDelay = headerAnimationComplete ? 50 : 600;
+                    const previewDelay = headerAnimationComplete ? 50 : 1500;
                     
                     setTimeout(() => {
                         setShowContent(true);
@@ -194,7 +194,7 @@ export default function Portfolio() {
                 }
             });
         }
-    }, [isInitialized]);
+    }, [isInitialized, headerAnimationComplete]);
 
     // Signal Hero completion to other sections
     useEffect(() => {

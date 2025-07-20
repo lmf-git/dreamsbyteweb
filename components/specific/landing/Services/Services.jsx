@@ -49,6 +49,9 @@ export default function Services() {
   const { headerAnimationComplete } = useHeaderAnimation();
   const { openContact } = useContact();
   
+  // Debug logging
+  console.log('Services component - headerAnimationComplete:', headerAnimationComplete);
+  
 
   const handleExampleClick = (service) => (e) => {
     const dot = e.currentTarget.querySelector('::before');
