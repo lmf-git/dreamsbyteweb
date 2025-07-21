@@ -127,19 +127,26 @@ export default function Stars() {
                     explosions.fragments = collisionFragments;
                     explosions.newStars = newStars;
                     
-                    // Create fading trails for collided stars
+                    // Create fading trails for collided stars with better data capture
                     const createFadingTrail = (star) => {
-                        if (star.trailPath) {
-                            return {
-                                id: Date.now() + Math.random() + star.id,
-                                path: star.trailPath,
+                        if (star.trailPath && star.trailOpacity > 0.1) {
+                            // Capture the full trail state at collision
+                            const trail = {
+                                id: `fading_${Date.now()}_${Math.random()}_${star.id}`,
+                                originalPath: star.trailPath, // Store original full path
+                                currentPath: star.trailPath,  // Working path for retraction
                                 fromLeft: star.fromLeft,
                                 size: star.size,
                                 startTime: null,
-                                duration: 1500, // 1.5 second fade
-                                initialOpacity: star.trailOpacity,
-                                opacity: star.trailOpacity
+                                duration: 4000, // 4 second retraction
+                                maxOpacity: Math.max(star.trailOpacity, 0.7),
+                                opacity: Math.max(star.trailOpacity, 0.7),
+                                collisionX: explosionX,
+                                collisionY: explosionY,
+                                isRetracting: true
                             };
+                            console.log('Created fading trail:', trail.id, 'opacity:', trail.opacity, 'path:', trail.originalPath.substring(0, 50));
+                            return trail;
                         }
                         return null;
                     };
@@ -147,9 +154,13 @@ export default function Stars() {
                     const trail1 = createFadingTrail(star1);
                     const trail2 = createFadingTrail(star2);
                     
-                    if (trail1) explosions.fadingTrails = explosions.fadingTrails || [];
-                    if (trail1) explosions.fadingTrails.push(trail1);
-                    if (trail2) explosions.fadingTrails.push(trail2);
+                    // Store trails separately to add to state later
+                    const collisionTrails = [];
+                    if (trail1) collisionTrails.push(trail1);
+                    if (trail2) collisionTrails.push(trail2);
+                    
+                    // Attach trails to explosion for processing, but manage them independently
+                    explosions.collisionTrails = collisionTrails;
                     
                     collided = true;
                     stars[j].collided = true; // Mark second star as collided
@@ -294,10 +305,10 @@ export default function Stars() {
                     return [...survivingStars, ...allNewStars];
                 }
 
-                // Add fading trails from collisions
-                const allFadingTrails = newExplosions.flatMap(explosion => explosion.fadingTrails || []);
-                if (allFadingTrails.length > 0) {
-                    setFadingTrails(prev => [...prev, ...allFadingTrails]);
+                // Add fading trails from collisions - completely independent of explosions
+                const allCollisionTrails = newExplosions.flatMap(explosion => explosion.collisionTrails || []);
+                if (allCollisionTrails.length > 0) {
+                    setFadingTrails(prev => [...prev, ...allCollisionTrails]);
                 }
             }
 
@@ -380,8 +391,11 @@ export default function Stars() {
             }).filter(fragment => !fragment.completed);
         });
 
-        // Update fading trails
+        // Update fading trails with improved retraction logic
         setFadingTrails(currentTrails => {
+            if (currentTrails.length > 0) {
+                console.log('Updating', currentTrails.length, 'fading trails');
+            }
             return currentTrails.map(trail => {
                 if (!trail.startTime) {
                     trail.startTime = timestamp;
@@ -394,12 +408,74 @@ export default function Stars() {
                     return { ...trail, completed: true };
                 }
                 
-                // Fade out from initial opacity to 0
-                const opacity = trail.initialOpacity * (1 - progress);
+                // Improved retraction effect
+                let newPath = trail.originalPath;
+                let opacity = trail.maxOpacity;
+                
+                // Create a retraction that moves from collision point backward along the trail
+                if (progress > 0) {
+                    try {
+                        // Parse the original path more robustly
+                        let pathData = trail.originalPath;
+                        
+                        // Extract coordinates from the path
+                        if (pathData.includes('Q')) {
+                            // Curved path: M startX,startY Q controlX,controlY endX,endY
+                            const match = pathData.match(/M\s*([\d.-]+),([\d.-]+)\s*Q\s*([\d.-]+),([\d.-]+)\s*([\d.-]+),([\d.-]+)/);
+                            if (match) {
+                                const [, startX, startY, controlX, controlY, endX, endY] = match.map(Number);
+                                
+                                // CORRECT: Retract from the far end (endX, endY) back toward collision point (startX, startY)
+                                // The trail should shrink from the far end back toward where the collision happened
+                                const retractAmount = progress; // 0 = full trail, 1 = trail fully retracted to collision point
+                                const remainingProgress = 1 - retractAmount; // How much of the trail from collision point is still visible
+                                
+                                // Calculate new start point - trail retracts from the far end
+                                const t = remainingProgress; // Parameter for how much trail remains
+                                const newStartX = (1-t)*(1-t)*startX + 2*(1-t)*t*controlX + t*t*endX;
+                                const newStartY = (1-t)*(1-t)*startY + 2*(1-t)*t*controlY + t*t*endY;
+                                
+                                // Adjust control point to maintain curve shape as trail shortens
+                                const newControlX = newStartX + (controlX - startX) * remainingProgress;
+                                const newControlY = newStartY + (controlY - startY) * remainingProgress;
+                                
+                                // Trail now goes from the new retracted start point to the original end
+                                newPath = `M ${newStartX},${newStartY} Q ${newControlX},${newControlY} ${endX},${endY}`;
+                                
+                                // Keep strong opacity during retraction
+                                opacity = trail.maxOpacity * Math.max(0.6, remainingProgress);
+                            }
+                        } else if (pathData.includes('L')) {
+                            // Straight path: M startX,startY L endX,endY
+                            const match = pathData.match(/M\s*([\d.-]+),([\d.-]+)\s*L\s*([\d.-]+),([\d.-]+)/);
+                            if (match) {
+                                const [, startX, startY, endX, endY] = match.map(Number);
+                                
+                                // CORRECT: Retract from the far end back toward collision point
+                                const retractAmount = progress;
+                                const remainingProgress = 1 - retractAmount;
+                                
+                                // Calculate new start point as trail retracts from far end
+                                const newStartX = startX + (endX - startX) * retractAmount;
+                                const newStartY = startY + (endY - startY) * retractAmount;
+                                
+                                // Trail now goes from the new retracted start to the original end
+                                newPath = `M ${newStartX},${newStartY} L ${endX},${endY}`;
+                                
+                                // Keep strong opacity during retraction
+                                opacity = trail.maxOpacity * Math.max(0.6, remainingProgress);
+                            }
+                        }
+                    } catch (error) {
+                        // Fallback to simple opacity fade if path parsing fails
+                        opacity = trail.maxOpacity * (1 - progress);
+                    }
+                }
                 
                 return {
                     ...trail,
-                    opacity,
+                    currentPath: newPath,
+                    opacity: Math.max(0, opacity),
                     progress
                 };
             }).filter(trail => !trail.completed);
@@ -572,7 +648,7 @@ export default function Stars() {
                     <path
                         key={trail.id}
                         className={styles.starTrail}
-                        d={trail.path}
+                        d={trail.currentPath}
                         stroke={`url(#trailGradient${trail.fromLeft ? 'LTR' : 'RTL'})`}
                         strokeWidth={trail.size * 1.5}
                         opacity={trail.opacity}

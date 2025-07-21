@@ -9,6 +9,14 @@
     opacity: 0;
     animation: start-content 0.8s ease-out forwards;
     animation-delay: 0.2s;
+    
+    @media screen and (max-width: 768px) {
+        padding: 12vh 2rem; // Reduce from 20vh to 12vh on mobile
+    }
+    
+    @media screen and (max-width: 768px) and (max-height: 700px) {
+        padding: 8vh 2rem; // Even less for shorter mobile screens
+    }
 }
 
 .content {
