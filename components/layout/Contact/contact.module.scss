@@ -68,11 +68,13 @@
 .input {
   display: block;
   width: 100%;
-  padding: .35em;
+  padding: .35em .5em;
   margin: 0 0 .75em;
   box-sizing: border-box;
   border: .135em solid var(--modal-input-border);
   border-top-color: var(--modal-input-border-top);
+  border-radius: 0.375em;
+  text-align: left;
 
   font-weight: 100;
   font-size: 1.15em;
@@ -90,8 +92,9 @@
   display: block;
   height: 5.25em;
   width: 100%;
-  padding: .35em;
+  padding: .35em .5em;
   margin: 0 0 .75em;
+  text-align: left;
   
   font-size: 1.15em;
   font-weight: 100;
@@ -101,6 +104,7 @@
   
   border: .155em solid var(--modal-input-border);
   border-top-color: var(--modal-input-border-top);
+  border-radius: 0.375em;
 
   box-sizing: border-box;
   resize: none;
@@ -206,7 +210,7 @@
 }
 
 .success {
-  text-align: center;
+  text-align: left;
   
   .action {
     margin: 1em auto 0;
@@ -224,7 +228,7 @@
   color: var(--modal-text-muted);
   font-size: 0.9em;
   margin-bottom: 1em;
-  text-align: center;
+  text-align: left;
 }
 
 .alternativeLinks {
