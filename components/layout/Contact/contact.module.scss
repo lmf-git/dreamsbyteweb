@@ -71,7 +71,7 @@
   padding: .35em .5em;
   margin: 0 0 .75em;
   box-sizing: border-box;
-  border: .135em solid var(--modal-input-border);
+  border: 0.055em solid var(--modal-input-border);
   border-top-color: var(--modal-input-border-top);
   border-radius: 0.375em;
   text-align: left;
@@ -102,7 +102,7 @@
   background: transparent;
   color: var(--modal-input-text);
   
-  border: .155em solid var(--modal-input-border);
+  border: 0.055em solid var(--modal-input-border);
   border-top-color: var(--modal-input-border-top);
   border-radius: 0.375em;
 
