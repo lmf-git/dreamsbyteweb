@@ -103,6 +103,12 @@
         max-width: 9.375em; // 150px
         margin-bottom: 1em;
     }
+    
+    // MetaTicket logo theme-aware styling
+    :global(.metaticket-secondary) {
+        fill: var(--text-primary);
+        transition: fill 0.3s ease;
+    }
 }
 
 .company {
@@ -216,6 +222,12 @@
             width: 100%;
             max-width: none;
             margin-bottom: 0.5em;
+        }
+        
+        // MetaTicket logo theme-aware styling for desktop
+        :global(.metaticket-secondary) {
+            fill: var(--text-primary);
+            transition: fill 0.3s ease;
         }
     }
 

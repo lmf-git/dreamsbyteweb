@@ -2,6 +2,7 @@ import AlliedLogo from './components/icons/branding/clients/Allied';
 import IMAALogo from './components/icons/branding/clients/IMAA';
 import LVolt from './components/icons/branding/clients/LVolt';
 import TRDLogo from './components/icons/branding/clients/TRD';
+import MetaTicket from './components/icons/branding/clients/MetaTicket';
 
 export const testimonials = [
     {
@@ -30,6 +31,13 @@ export const testimonials = [
         name: 'Richard',
         company: 'Allied Construction',
         testimonial: "The B2B portal DreamsByte built is exactly what we needed. It's more efficient than our old system and delivers great value.",
+        reporturl: null
+    },
+    {
+        logo: <MetaTicket secondaryClass="metaticket-secondary" />,
+        name: 'MetaTicket Team',
+        company: 'MetaTicket',
+        testimonial: 'DreamsByte created a platform that perfectly captures our vision for accessible event discovery. Their technical expertise and understanding of our needs made the project a success.',
         reporturl: null
     },
     {
