@@ -42,13 +42,6 @@ export const testimonials = [
     },
     {
         logo: null,
-        name: 'Frankie B',
-        company: 'Pelican Apps',
-        testimonial: 'Great team to work with, very helpful and excellent at knowledge sharing throughout the project.',
-        reporturl: null
-    },
-    {
-        logo: null,
         name: 'Elliott C',
         company: 'Relativity Labs',
         testimonial: 'Delivered the site quickly meeting all requirements. Responsive to revision requests and helped keep the project on schedule.',
