@@ -268,7 +268,7 @@ export default function Portfolio() {
         } else {
             preloadImages(project).then(() => {
                 setCurrentProject(project);
-                setShowPreview(true); // Always show preview on desktop
+                // Don't toggle showPreview on desktop - it should stay visible
                 setTimeout(() => {
                     setShowContent(true);
                     setIsTransitioning(false);
@@ -393,17 +393,15 @@ export default function Portfolio() {
                         </button>
                     </div>
 
-                    <div className={`${styles.projectpreview} ${showPreview ? styles.showMobile : ''} ${!imagesLoaded ? styles.loading : ''}`}>
+                    <div className={`${styles.projectpreview} ${showPreview ? styles.showMobile : ''}`}>
                         <Screen 
                             extraClass={`${styles.screen} ${showPreview ? styles.showMobile : ''}`}
                             src={projects[currentProject].desktopimage}
-                            isTransitioning={isTransitioning}
                         />
                         
                         <Mobile 
                             extraClass={`${styles.mobile} ${showPreview ? styles.showMobile : ''}`}
                             src={projects[currentProject].image}
-                            isTransitioning={isTransitioning}
                         />
                     </div>
                 </div>

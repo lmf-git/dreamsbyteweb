@@ -233,86 +233,45 @@ $gpu-accel: translateZ(0);
 
         &.showMobile {
             opacity: 1;
-            transition: opacity 0.4s ease-in-out;
-            transition-delay: 0.3s;
+            transition: none;
 
             &.loading {
-                .screen, .mobile {
+                .screen {
                     opacity: 0;
-                    transform: translateY(1.875em); // Changed from 30px
-                    transition: opacity 0.4s ease-out, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                    transition: none;
+                }
+                .mobile {
+                    opacity: 0;
+                    transition: none;
                 }
             }
 
             .screen {
                 opacity: 1;
-                transition: opacity 0.4s ease-in-out;
-                transition-delay: 0.3s;
-                transform: translateY(0);
-                transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+                transition: none;
             }
 
             .mobile {
                 opacity: 1;
-                transition: opacity 0.4s ease-in-out;
-                transition-delay: 0.6s;
-                transform: translateX(0);
-                transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+                transition: none;
             }
         }
 
         &:not(.showMobile) {
             opacity: 0;
-            transition: opacity 0.3s ease-out;
-
-            .screen, .mobile {
-                opacity: 0;
-                transition: opacity 0.3s ease-out;
-            }
+            transition: none;
 
             .screen {
                 opacity: 0;
-                transform: translateY(1.875em); // Changed from 30px
-                transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+                transition: none;
             }
 
             .mobile {
                 opacity: 0;
-                transform: translateX(1.875em); // Changed from 30px
-                transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+                transition: none;
             }
         }
 
-        .screen {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 1;
-            margin: 0;
-            max-height: none;
-            transition: opacity 0.3s ease-out;
-            transform: translateY(1.875em); // Changed from 30px
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-        }
-
-        .mobile {
-            position: absolute;
-            bottom: -1em;
-            right: 15%;
-            top: auto;
-            left: auto;
-            width: 14vw;
-            opacity: 1;
-            transition: opacity 0.3s ease-out;
-            transform: translateX(1.875em); // Changed from 30px
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-        }
-
-        .screen, .mobile {
-            transition: opacity 0.3s ease-out;
-        }
     }
 
     &.loading {
@@ -908,7 +867,7 @@ $gpu-accel: translateZ(0);
         top: auto;
         width: 100%; // Changed from 65%
         margin-top: 2em; // Added to create spacing from title
-        transition: opacity 0.4s ease-in-out;
+        transition: none;
         overflow: visible;
         transform: $gpu-accel;
         will-change: opacity;
@@ -929,8 +888,7 @@ $gpu-accel: translateZ(0);
             transform: $gpu-accel;
             backface-visibility: hidden;
             will-change: opacity;
-            transform: translateY(1.875em); // Changed from 30px
-            transition: opacity 0.4s ease-out, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: opacity 0.4s ease-out;
         }
 
         .mobile {
@@ -947,52 +905,43 @@ $gpu-accel: translateZ(0);
             transform: $gpu-accel;
             backface-visibility: hidden;
             will-change: opacity;
-            transform: translateX(1.875em); // Changed from 30px
-            transition: opacity 0.4s ease-out, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         &.showMobile {
             opacity: 1;
-            transition: opacity 0.4s ease-in-out;
-            transition-delay: 0.2s;
+            transition: none;
 
             &.loading {
-                .screen, .mobile {
+                .screen {
                     opacity: 0;
-                    transform: translateY(1.875em); // Changed from 30px
-                    transition: opacity 0.4s ease-out, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                    transition: none;
+                }
+                .mobile {
+                    opacity: 0;
                 }
             }
 
             .screen {
                 opacity: 1;
-                transform: translateY(0);
-                transition: opacity 0.4s ease-out, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-                transition-delay: 0s;
+                transition: none;
             }
 
             .mobile {
                 opacity: 1;
-                transform: translateX(0);
-                transition: opacity 0.4s ease-out, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-                transition-delay: 0.3s;
             }
         }
 
         &:not(.showMobile) {
             opacity: 0;
-            transition: opacity 0.4s ease-in-out;
+            transition: none;
 
             .screen {
                 opacity: 0;
-                transform: translateY(1.875em); // Changed from 30px
-                transition: opacity 0.4s ease-out, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                transition: none;
             }
 
             .mobile {
                 opacity: 0;
-                transform: translateX(1.875em); // Changed from 30px
-                transition: opacity 0.4s ease-out, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             }
         }
     }

@@ -1,15 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { memo } from 'react';
 
-export default function Screen({ extraClass, src, onLoad }) {
-    const [isLoading, setIsLoading] = useState(true);
-
-    const handleLoad = () => {
-        setIsLoading(false);
-        onLoad?.();
-    };
-
+function Screen({ extraClass, src }) {
     return <svg className={`${extraClass}`} viewBox="0 0 1150 813" >
       <path fill="#C4C4C4" d="M401.358 778.461L398 795.972H698.714L693.056 777.362L401.358 778.461Z" />
       <path fill="#BDBCBC" d="M725.036 800.822L697.882 795.972H397.168L370 800.822H725.036Z" />
@@ -24,15 +17,12 @@ export default function Screen({ extraClass, src, onLoad }) {
         <img 
           src={src}
           alt="Desktop Preview"
-          onLoad={handleLoad}
           style={{ 
             display: 'block', 
             width: '100%', 
             height: '100%', 
             objectFit: 'cover',
-            borderRadius: '30px',
-            opacity: isLoading ? 0 : 1,
-            transition: 'opacity 0.3s ease-out'
+            borderRadius: '30px'
           }}
         />
       </foreignObject>
@@ -48,4 +38,4 @@ export default function Screen({ extraClass, src, onLoad }) {
     </svg>;
 };
 
-
+export default memo(Screen);
