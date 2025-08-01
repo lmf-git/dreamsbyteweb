@@ -6,7 +6,7 @@ import MetaTicket from './components/icons/branding/clients/MetaTicket';
 
 export const testimonials = [
     {
-        logo: <LVolt />,
+        logo: <LVolt secondaryClass="lvolt-secondary" />,
         name: 'Theodore M',
         company: 'LVolt',
         testimonial: 'Working with DreamsByte has been an absolute game-changer for our business. They helped us improve our online presence and boost our brand recognition.',
