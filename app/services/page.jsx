@@ -47,10 +47,6 @@ const advantages = [
   {
     title: 'High Performance',
     description: 'Optimised for speed and efficiency with industry-leading performance scores and best practices.'
-  },
-  {
-    title: 'Fluent Communication',
-    description: 'Ability to translate across business, technical and marketing languages.'
   }
 ];
 
@@ -69,7 +65,7 @@ const technologies = [
   { name: 'Node.js', url: 'https://nodejs.org/', Icon: NodeJS },
   { name: 'Nuxt', url: 'https://nuxt.com/', Icon: Nuxt },
   { name: 'PostgreSQL', url: 'https://www.postgresql.org/', Icon: Postgres },
-  { name: 'Proton', url: 'https://proton.me/', Icon: Proton },
+  { name: 'Proton', url: 'https://proton.me/', Icon: Proton, hideLabel: true },
   { name: 'React', url: 'https://reactjs.org/', Icon: React },
   { name: 'Svelte', url: 'https://svelte.dev/', Icon: Svelte },
   { name: 'Vite', url: 'https://vitejs.dev/', Icon: Vite },
@@ -198,17 +194,26 @@ export default function ServicesPage() {
               className={`section ${styles.comparison} ${servicesVisible ? styles.visible : ''}`} 
               id="comparison"
             >
-              <div className={styles.heading}>
+              <div 
+                className={`${styles.heading} ${servicesVisible ? styles.visible : ''}`}
+                style={{ opacity: servicesVisible ? 1 : 0 }}
+              >
                 <span className={styles.preamble}>Why Choose Us</span>
                 <h2 className={styles.title}>Our Advantages</h2>
               </div>
 
-              <div className={styles.advantages}>
+              <div 
+                className={`${styles.advantages} ${servicesVisible ? styles.visible : ''}`}
+                style={{ opacity: servicesVisible ? 1 : 0 }}
+              >
                 {advantages.map((advantage, index) => (
                   <div 
                     key={index} 
                     className={`${styles.advantage} ${servicesVisible ? styles.visible : ''}`}
-                    style={{ transitionDelay: `${index * 0.1}s` }}
+                    style={{ 
+                      transitionDelay: `${0.4 + index * 0.1}s`,
+                      opacity: servicesVisible ? 1 : 0 
+                    }}
                     onClick={handleAdvantageClick(advantage.title)}
                   >
                     <h3 className={styles.advantageTitle}>{advantage.title}</h3>

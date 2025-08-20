@@ -227,11 +227,14 @@ export default function PortfolioPage() {
         
         if (isMobile) {
             setShowContent(false);
+            setShowProjectName(false);
             
             preloadImages(project).then(() => {
                 setCurrentProject(project);
-                setShowProjectName(true);
-                setShowPreview(true);
+                setTimeout(() => {
+                    setShowProjectName(true);
+                    setShowPreview(true);
+                }, 100);
                 
                 setTimeout(() => {
                     setShowPreview(false);
