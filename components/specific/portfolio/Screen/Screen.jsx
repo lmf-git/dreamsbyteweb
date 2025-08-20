@@ -1,8 +1,9 @@
 'use client';
 
 import { memo } from 'react';
+import Spinner from '../../../icons/spinner/Spinner';
 
-function Screen({ extraClass, src }) {
+function Screen({ extraClass, src, loading = false }) {
     return <svg className={`${extraClass}`} viewBox="0 0 1150 813" >
       <path fill="#C4C4C4" d="M401.358 778.461L398 795.972H698.714L693.056 777.362L401.358 778.461Z" />
       <path fill="#BDBCBC" d="M725.036 800.822L697.882 795.972H397.168L370 800.822H725.036Z" />
@@ -26,6 +27,44 @@ function Screen({ extraClass, src }) {
           }}
         />
       </foreignObject>
+
+      {loading && (
+        <g>
+          <defs>
+            <clipPath id="screenLoadingClip">
+              <rect x="15" y="16" width="1118" height="641" rx="30" ry="30" />
+            </clipPath>
+          </defs>
+          <rect 
+            x="15" 
+            y="16" 
+            width="1118" 
+            height="641" 
+            rx="30" 
+            ry="30"
+            fill="rgba(255, 255, 255, 0.9)"
+            style={{ backdropFilter: 'blur(4px)' }}
+            clipPath="url(#screenLoadingClip)"
+          />
+          <foreignObject x="15" y="16" width="1118" height="641" clipPath="url(#screenLoadingClip)">
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '100%',
+              height: '100%'
+            }}>
+              <Spinner 
+                stroke="#333333"
+                style={{ 
+                  width: '48px', 
+                  height: '48px'
+                }} 
+              />
+            </div>
+          </foreignObject>
+        </g>
+      )}
 
       <defs>
         <linearGradient id="paint0_linear_290_577" x1="574.506" y1="675.512" x2="574.506" y2="0" gradientUnits="userSpaceOnUse">

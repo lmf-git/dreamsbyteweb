@@ -97,6 +97,7 @@ export default function PortfolioPage() {
     const [contentFading, setContentFading] = useState(false);
     const [showTitle, setShowTitle] = useState(false);
     const [showProjectName, setShowProjectName] = useState(false);
+    const [isDesktop, setIsDesktop] = useState(false);
 
     const preloadImages = (projectIndex) => {
         return new Promise((resolve) => {
@@ -131,6 +132,7 @@ export default function PortfolioPage() {
             setIsInitialized(true);
             setProject(0);
             setCurrentProject(0);
+            setIsDesktop(!isMobile);
             
             preloadImages(0).then(() => {
                 const logoAnimationTime = 100;
@@ -198,12 +200,13 @@ export default function PortfolioPage() {
 
     useEffect(() => {
         const handleResize = () => {
-            const isDesktop = window.innerWidth >= 1200;
+            const desktopMode = window.innerWidth >= 1200;
+            setIsDesktop(desktopMode);
             setShowPreview(false);
             setShowContent(true);
             setDotsReady(false);
             
-            if (isDesktop) {
+            if (desktopMode) {
                 setDotsReady(true);
                 setShowPreview(true);
             } else {
@@ -250,14 +253,16 @@ export default function PortfolioPage() {
             });
         } else {
             preloadImages(project).then(() => {
-                setCurrentProject(project);
                 setTimeout(() => {
-                    setShowContent(true);
-                    setIsTransitioning(false);
-                    setContentFading(false);
-                    setShowNav(true);
-                    setDotsReady(true);
-                }, 300);
+                    setCurrentProject(project);
+                    setTimeout(() => {
+                        setShowContent(true);
+                        setIsTransitioning(false);
+                        setContentFading(false);
+                        setShowNav(true);
+                        setDotsReady(true);
+                    }, 100);
+                }, 250);
             });
         }
     }, [project, isInitialized, initialAnimationComplete]);
@@ -373,11 +378,13 @@ export default function PortfolioPage() {
                         <Screen 
                             extraClass={`${styles.screen} ${showPreview ? styles.showMobile : ''}`}
                             src={projects[currentProject].desktopimage}
+                            loading={isTransitioning && isDesktop}
                         />
                         
                         <Mobile 
                             extraClass={`${styles.mobile} ${showPreview ? styles.showMobile : ''}`}
                             src={projects[currentProject].image}
+                            loading={isTransitioning && isDesktop}
                         />
                     </div>
                 </div>

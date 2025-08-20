@@ -1,6 +1,6 @@
-export default function Spinner({ extraClass = '' }) {
-    return <svg className={extraClass} version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 2400 2400" width="24" height="24">
-        <g strokeWidth="200" strokeLinecap="round" stroke="#000000" fill="none" id="spinner">
+export default function Spinner({ extraClass = '', stroke = '#000000', ...props }) {
+    return <svg className={extraClass} version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 2400 2400" width="24" height="24" {...props}>
+        <g strokeWidth="200" strokeLinecap="round" stroke={stroke} fill="none" id="spinner">
             <line x1="1200" y1="600" x2="1200" y2="100" />
             <line opacity="0.5" x1="1200" y1="2300" x2="1200" y2="1800" />
             <line opacity="0.917" x1="900" y1="680.4" x2="650" y2="247.4" />

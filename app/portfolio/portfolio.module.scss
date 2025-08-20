@@ -1274,6 +1274,7 @@ $gpu-accel: translateZ(0);
 
 .contentContainer {
     &.fading {
+        .projectname,
         .projectproblems,
         .projectsolutions,
         .projectparagraph {
@@ -1283,6 +1284,7 @@ $gpu-accel: translateZ(0);
     }
 
     &.visible:not(.fading) {
+        .projectname,
         .projectproblems,
         .projectsolutions,
         .projectparagraph {
@@ -1290,6 +1292,9 @@ $gpu-accel: translateZ(0);
             transition: opacity 0.4s ease-out;
         }
 
+        .projectname {
+            transition-delay: 0.1s;
+        }
         .projectproblems {
             transition-delay: 0.2s;
         }
