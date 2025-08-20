@@ -281,11 +281,12 @@ export default function PortfolioPage() {
                 <div className={styles.projects}>
                     <div className={styles.projectdesc}>
                         <h1 className={styles.title}>Latest Work</h1>
-                        <h1 className={styles.projectname}>{projects[currentProject].name}</h1>
 
                         <div className={`${styles.contentContainer} ${showContent ? styles.visible : ''} ${
                             contentFading ? styles.fading : ''
                         }`}>
+                            <h1 className={styles.projectname}>{projects[currentProject].name}</h1>
+                            
                             <h2 className={styles.projectproblems}>PROBLEM:</h2>
                             <p className={styles.projectparagraph}>{projects[currentProject].problem}</p>
 
