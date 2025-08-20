@@ -14,6 +14,7 @@ const inter = Inter({
 });
 
 export const metadata = {
+  metadataBase: new URL('https://dreamsbyte.com'),
   title: {
     template: '%s | DreamsByte',
     default: 'DreamsByte | Welcome Forward',

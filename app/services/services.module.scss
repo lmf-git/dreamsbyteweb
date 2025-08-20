@@ -1,5 +1,5 @@
-@use '../../../layout/animations';
-@use '../../../layout/colours';
+@use '../../components/layout/animations';
+@use '../../components/layout/colours';
 
 .services {
   display: flex;
@@ -431,4 +431,84 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+// Comparison styles
+.comparison {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--text-primary);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out, color 0.3s ease;
+  padding-bottom: 4em;
+  margin-bottom: 3.5em;
+  
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.advantages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5em;
+  margin: 0 2em;
+}
+
+.advantage {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5em;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out, background 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    
+    .advantageTitle {
+      color: var(--advantage-title-hover);
+    }
+    
+    .advantageDesc {
+      color: var(--advantage-desc-hover);
+    }
+  }
+  
+  // Light mode specific hover effects
+  :global(.light-theme) & {
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    
+    &:hover {
+      background: rgba(0, 0, 0, 0.08);
+      border-color: rgba(0, 0, 0, 0.25);
+    }
+  }
+  
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.advantageTitle {
+  font-family: var(--font-syne);
+  font-size: 1.25em;
+  margin-bottom: 0.5em;
+  color: var(--advantage-title);
+  transition: color 0.3s ease;
+}
+
+.advantageDesc {
+  color: var(--advantage-desc);
+  font-size: 1.2em;
+  line-height: 1.5;
+  transition: color 0.3s ease;
 }

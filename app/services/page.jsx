@@ -4,7 +4,6 @@ import { useRef, useState, useEffect } from 'react';
 import { useHero } from '../../contexts/HeroContext';
 import { useHeaderAnimation } from '../../contexts/HeaderAnimationContext';
 import { useContact } from '../../contexts/ContactContext';
-import Comparison from '../../components/specific/landing/Comparison/Comparison';
 
 import HTML from '../../components/icons/brands/HTML';
 import CSS from '../../components/icons/brands/CSS';
@@ -24,8 +23,36 @@ import JavaScript from '../../components/icons/brands/JavaScript';
 import GitHub from '../../components/icons/brands/GitHub';
 import Figma from '../../components/icons/brands/Figma';
 import Docker from '../../components/icons/brands/Docker';
+import Proton from '../../components/icons/brands/Proton';
 
-import styles from '../../components/specific/landing/Services/services.module.scss';
+import styles from './services.module.scss';
+
+const advantages = [
+  {
+    title: 'Free Hosting Included',
+    description: 'We include premium hosting at no additional cost, ensuring your project stays online and performs optimally.'
+  },
+  {
+    title: 'No Hidden Fees',
+    description: 'Transparent pricing with no surprise costs. What we quote is what you pay.'
+  },
+  {
+    title: 'Complete Code Control',
+    description: 'Full access to your project\'s source code and infrastructure with clean, documented implementations.'
+  },
+  {
+    title: 'Transparent Process',
+    description: 'Regular updates and clear communication throughout development with access to our project management tools.'
+  },
+  {
+    title: 'High Performance',
+    description: 'Optimised for speed and efficiency with industry-leading performance scores and best practices.'
+  },
+  {
+    title: 'Fluent Communication',
+    description: 'Ability to translate across business, technical and marketing languages.'
+  }
+];
 
 const technologies = [
   { name: 'AWS', url: 'https://aws.amazon.com/', Icon: AWS, hideLabel: true },
@@ -42,6 +69,7 @@ const technologies = [
   { name: 'Node.js', url: 'https://nodejs.org/', Icon: NodeJS },
   { name: 'Nuxt', url: 'https://nuxt.com/', Icon: Nuxt },
   { name: 'PostgreSQL', url: 'https://www.postgresql.org/', Icon: Postgres },
+  { name: 'Proton', url: 'https://proton.me/', Icon: Proton },
   { name: 'React', url: 'https://reactjs.org/', Icon: React },
   { name: 'Svelte', url: 'https://svelte.dev/', Icon: Svelte },
   { name: 'Vite', url: 'https://vitejs.dev/', Icon: Vite },
@@ -68,6 +96,10 @@ export default function ServicesPage() {
     }
   }, [headerAnimationComplete]);
   
+
+  const handleAdvantageClick = (title) => () => {
+    openContact(`Hi, I'm interested in learning more about "${title}"`);
+  };
 
   const handleExampleClick = (service) => (e) => {
     const dot = e.currentTarget.querySelector('::before');
@@ -162,7 +194,29 @@ export default function ServicesPage() {
               ))}
             </div>
 
-            <Comparison headerAnimationComplete={servicesVisible} />
+            <div 
+              className={`section ${styles.comparison} ${servicesVisible ? styles.visible : ''}`} 
+              id="comparison"
+            >
+              <div className={styles.heading}>
+                <span className={styles.preamble}>Why Choose Us</span>
+                <h2 className={styles.title}>Our Advantages</h2>
+              </div>
+
+              <div className={styles.advantages}>
+                {advantages.map((advantage, index) => (
+                  <div 
+                    key={index} 
+                    className={`${styles.advantage} ${servicesVisible ? styles.visible : ''}`}
+                    style={{ transitionDelay: `${index * 0.1}s` }}
+                    onClick={handleAdvantageClick(advantage.title)}
+                  >
+                    <h3 className={styles.advantageTitle}>{advantage.title}</h3>
+                    <p className={styles.advantageDesc}>{advantage.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
 
             <div 
               className={`${styles.providers} ${servicesVisible ? styles.visible : ''}`}

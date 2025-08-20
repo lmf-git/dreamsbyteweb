@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import styles from '../Portfolio/portfolio.module.scss';
+import styles from '../../../../app/portfolio/portfolio.module.scss';
 
 function Mobile({ extraClass, src }) {
     return <svg className={`${extraClass} ${styles.herosimple_mobile}`} viewBox="0 0 258 520" preserveAspectRatio="xMidYMid meet">
