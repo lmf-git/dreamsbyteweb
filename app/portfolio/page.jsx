@@ -101,28 +101,50 @@ export default function PortfolioPage() {
 
     const preloadImages = (projectIndex) => {
         return new Promise((resolve) => {
-            setImagesLoaded(false);
-            
             const desktopImage = new Image();
             const mobileImage = new Image();
             let loadedCount = 0;
+            let hasSetLoadingFalse = false;
+            let startTime = Date.now();
+
+            // Only show loading state if images take more than 200ms to load
+            const loadingTimer = setTimeout(() => {
+                if (loadedCount < 2) {
+                    setImagesLoaded(false);
+                    hasSetLoadingFalse = true;
+                }
+            }, 200);
 
             const handleLoad = () => {
                 loadedCount++;
                 if (loadedCount === 2) {
-                    setImagesLoaded(true);
+                    clearTimeout(loadingTimer);
+                    const loadTime = Date.now() - startTime;
+                    
+                    // Only update imagesLoaded if we actually showed loading state
+                    // or if images took a reasonable amount of time
+                    if (hasSetLoadingFalse || loadTime > 50) {
+                        setImagesLoaded(true);
+                    }
                     resolve();
                 }
             };
 
+            // Check if images are already cached by setting src first
             desktopImage.onload = handleLoad;
             mobileImage.onload = handleLoad;
-
             desktopImage.onerror = handleLoad;
             mobileImage.onerror = handleLoad;
 
             desktopImage.src = projects[projectIndex].desktopimage;
             mobileImage.src = projects[projectIndex].image;
+
+            // If both images are already complete (cached), handle immediately
+            if (desktopImage.complete && mobileImage.complete) {
+                clearTimeout(loadingTimer);
+                resolve();
+                return;
+            }
         });
     };
 
@@ -134,43 +156,29 @@ export default function PortfolioPage() {
             setCurrentProject(0);
             setIsDesktop(!isMobile);
             
-            preloadImages(0).then(() => {
-                const logoAnimationTime = 100;
-                
-                if (isMobile) {
+            // Start image preloading in background (don't wait for it)
+            preloadImages(0);
+            
+            const logoAnimationTime = 100;
+            
+            if (isMobile) {
+                setTimeout(() => {
+                    setShowTitle(true);
+                    
                     setTimeout(() => {
-                        setShowTitle(true);
+                        setShowProjectName(true);
                         
                         setTimeout(() => {
-                            setShowProjectName(true);
-                            
-                            setTimeout(() => {
-                                setShowPreview(true);
-                                
-                                setTimeout(() => {
-                                    setShowPreview(false);
-                                    setTimeout(() => {
-                                        setShowContent(true);
-                                        setFirstRevealComplete(true);
-                                        setTimeout(() => {
-                                            setShowNav(true);
-                                            setDotsReady(true);
-                                            setTimeout(() => {
-                                                setInitialAnimationComplete(true);
-                                            }, 500);
-                                        }, 300);
-                                    }, 300);
-                                }, 6000);
-                            }, 300);
-                        }, 200);
-                    }, logoAnimationTime);
-                } else {
-                    setTimeout(() => {
-                        setFirstRevealComplete(true);
-                        setInitialAnimationComplete(true);
-                    }, logoAnimationTime);
-                }
-            });
+                            setShowPreview(true);
+                        }, 300);
+                    }, 200);
+                }, logoAnimationTime);
+            } else {
+                setTimeout(() => {
+                    setFirstRevealComplete(true);
+                    setInitialAnimationComplete(true);
+                }, logoAnimationTime);
+            }
         }
     }, [isInitialized]);
 
@@ -228,19 +236,53 @@ export default function PortfolioPage() {
         setShowNav(false);
         setDotsReady(false);
         
+        // Start preloading images in background
+        preloadImages(project);
+        
         if (isMobile) {
             setShowContent(false);
             setShowProjectName(false);
             
-            preloadImages(project).then(() => {
+            setTimeout(() => {
                 setCurrentProject(project);
                 setTimeout(() => {
                     setShowProjectName(true);
                     setShowPreview(true);
                 }, 100);
-                
+            }, 250);
+        } else {
+            setTimeout(() => {
+                setCurrentProject(project);
                 setTimeout(() => {
-                    setShowPreview(false);
+                    setShowContent(true);
+                    setIsTransitioning(false);
+                    setContentFading(false);
+                    setShowNav(true);
+                    setDotsReady(true);
+                }, 100);
+            }, 250);
+        }
+    }, [project, isInitialized, initialAnimationComplete]);
+
+    // Handle mobile preview countdown after images load and spinners finish
+    useEffect(() => {
+        if (!imagesLoaded) return;
+        
+        const isMobile = window.innerWidth < 1200;
+        if (!isMobile) return;
+        
+        // Only start countdown if preview is showing
+        if (!showPreview) return;
+        
+        // Wait for spinners to finish and give users time to see the loaded preview
+        // Start with a delay to ensure spinners have disappeared
+        const initialDelay = setTimeout(() => {
+            // Then start the actual 6-second preview countdown
+            const countdownTimer = setTimeout(() => {
+                setShowPreview(false);
+                
+                if (isTransitioning) {
+                    // Handle transitions
                     setShowContent(true);
                     setIsTransitioning(false);
                     setContentFading(false);
@@ -249,23 +291,27 @@ export default function PortfolioPage() {
                         setShowNav(true);
                         setDotsReady(true);
                     }, 600);
-                }, 6000);
-            });
-        } else {
-            preloadImages(project).then(() => {
-                setTimeout(() => {
-                    setCurrentProject(project);
+                } else {
+                    // Handle initial load
                     setTimeout(() => {
                         setShowContent(true);
-                        setIsTransitioning(false);
-                        setContentFading(false);
-                        setShowNav(true);
-                        setDotsReady(true);
-                    }, 100);
-                }, 250);
-            });
-        }
-    }, [project, isInitialized, initialAnimationComplete]);
+                        setFirstRevealComplete(true);
+                        setTimeout(() => {
+                            setShowNav(true);
+                            setDotsReady(true);
+                            setTimeout(() => {
+                                setInitialAnimationComplete(true);
+                            }, 500);
+                        }, 300);
+                    }, 300);
+                }
+            }, 6000); // 6 seconds of clean preview
+            
+            return () => clearTimeout(countdownTimer);
+        }, 500); // 500ms delay to ensure spinners have finished
+
+        return () => clearTimeout(initialDelay);
+    }, [imagesLoaded, showPreview, isTransitioning]);
 
     const nextProject = () => {
         if (project < projects.length - 1 && !isTransitioning && imagesLoaded) setProject(project + 1);
@@ -378,13 +424,13 @@ export default function PortfolioPage() {
                         <Screen 
                             extraClass={`${styles.screen} ${showPreview ? styles.showMobile : ''}`}
                             src={projects[currentProject].desktopimage}
-                            loading={isTransitioning || !imagesLoaded}
+                            loading={isDesktop ? (isTransitioning || !imagesLoaded) : !imagesLoaded}
                         />
                         
                         <Mobile 
                             extraClass={`${styles.mobile} ${showPreview ? styles.showMobile : ''}`}
                             src={projects[currentProject].image}
-                            loading={isTransitioning || !imagesLoaded}
+                            loading={isDesktop ? (isTransitioning || !imagesLoaded) : !imagesLoaded}
                         />
                     </div>
                 </div>
