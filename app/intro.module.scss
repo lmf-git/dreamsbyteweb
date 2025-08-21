@@ -1,41 +1,29 @@
 @use '../components/layout/animations';
 
 .intro {
-    padding: 2rem;
+    padding: 6em 2em 2em 2em;
     text-align: center;
-    opacity: 0;
-    animation: start-content 0.8s ease-out forwards;
-    animation-delay: 0.2s;
-    min-height: 100vh;
-    
-    @media screen and (max-width: 768px) {
-        padding: 1rem;
-    }
+    min-height: calc(100vh - 10em);
 }
 
-
 .title {
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-size: clamp(2.8em, 6vw, 5.2em);
     font-weight: 800;
     color: var(--text-primary);
-    margin-bottom: 1.5rem;
-    opacity: 0;
-    animation: reveal-title 0.8s ease-out forwards;
-    animation-delay: 0.5s;
+    margin: 0;
     line-height: 1.1;
     white-space: nowrap;
     text-align: center;
     position: relative;
     perspective: 1000px;
-    height: clamp(3rem, 6vw, 5.5rem);
+    height: 1.4em;
+    opacity: 0;
+    transform: translateY(1.25em);
+    transition: opacity 1s ease-out, transform 1s ease-out;
     
-    .navigated & {
-        animation-delay: 0.2s;
-    }
-    
-    @media screen and (max-width: 768px) {
-        white-space: normal;
-        height: clamp(2.5rem, 8vw, 4rem);
+    .visible & {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
@@ -80,18 +68,12 @@
 .letter {
     display: inline-block;
     opacity: 0;
-    transform: translateY(40px) rotateX(-60deg) translateX(20px) scale(0.8);
+    transform: translateY(2.5em) rotateX(-60deg) translateX(1.25em) scale(0.8);
     transform-origin: center top;
     will-change: transform, opacity;
     font-size: inherit;
     font-weight: inherit;
     line-height: inherit;
-    
-    &:hover {
-        animation: letterBounce 0.6s ease-out;
-        color: var(--nav-primary);
-        text-shadow: 0 0 0.5em var(--nav-primary);
-    }
 }
 
 @keyframes wordEnter {
@@ -159,6 +141,96 @@
     }
 }
 
+.subtitle {
+    font-size: 1.5em;
+    font-weight: 300;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    opacity: 0;
+}
+
+.description {
+    margin-bottom: 3em;
+}
+
+.text {
+    font-size: clamp(1.3em, 3vw, 1.7em);
+    color: var(--text-secondary);
+    line-height: 1.8;
+    opacity: 0;
+    width: clamp(18.75em, 85vw, 35em);
+    margin: 0 auto;
+    transform: translateY(1.25em);
+    transition: opacity 1s ease-out 0.3s, transform 1s ease-out 0.3s;
+    
+    .visible & {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.actions {
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(1.25em);
+    transition: opacity 1s ease-out 0.6s, transform 1s ease-out 0.6s;
+    
+    .visible & {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.primaryAction {
+    background: var(--nav-primary);
+    color: var(--nav-primary-text);
+    border: none;
+    padding: 1em 2.5em;
+    font-size: 1.2em;
+    font-weight: 600;
+    border-radius: 0.5em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover {
+        background: var(--nav-primary-hover);
+        transform: translateY(-0.125em);
+    }
+}
+
+.secondaryAction {
+    color: var(--text-primary);
+    text-decoration: none;
+    padding: 1em 2em;
+    font-size: 1.2em;
+    font-weight: 500;
+    border: 0.125em solid var(--text-primary);
+    border-radius: 0.5em;
+    transition: all 0.3s ease;
+    display: inline-block;
+    
+    &:hover {
+        background: var(--text-primary);
+        color: var(--bg-primary);
+        transform: translateY(-0.125em);
+    }
+}
+
+.desktopText {
+    display: inline;
+}
+
+.mobileText {
+    display: none;
+}
+
+.introComplete {
+    // Add any styles for when intro animation is complete
+}
+
 // Accessibility
 @media (prefers-reduced-motion: reduce) {
     .letter {
@@ -181,107 +253,41 @@
     }
 }
 
-.subtitle {
-    font-size: 1.5rem;
-    font-weight: 300;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    opacity: 0;
-    animation: reveal-desc 0.8s ease-out forwards;
-    animation-delay: 1.3s;
-    
-    @media screen and (max-width: 768px) {
-        font-size: 1.25rem;
-    }
-}
-
-.description {
-    margin-bottom: 3rem;
-}
-
-.text {
-    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-    color: var(--text-muted);
-    line-height: 1.8;
-    opacity: 0;
-    animation: reveal-desc 0.8s ease-out forwards;
-    animation-delay: 0.8s;
-    width: clamp(300px, 85vw, 900px);
-    margin: 0 auto;
-    
-    .navigated & {
-        animation-delay: 0.4s;
-    }
-}
-
-.actions {
-    display: flex;
-    gap: 2rem;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    animation: reveal-controls 0.8s ease-out forwards;
-    animation-delay: 1.1s;
-    
-    .navigated & {
-        animation-delay: 0.6s;
+// Mobile first, then desktop breakpoints
+@media screen and (max-width: 768px) {
+    .intro {
+        padding: 5em 1em 1em 1em;
     }
     
-    @media screen and (max-width: 768px) {
+    .title {
+        white-space: normal;
+        height: 1.2em;
+    }
+    
+    .subtitle {
+        font-size: 1.25em;
+    }
+    
+    .actions {
         flex-direction: row;
-        gap: 1rem;
+        gap: 1em;
     }
-}
-
-.primaryAction {
-    background: var(--nav-primary);
-    color: var(--nav-primary-text);
-    border: none;
-    padding: 1rem 2.5rem;
-    font-size: 1.2rem;
-    font-weight: 600;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
     
-    &:hover {
-        background: var(--nav-primary-hover);
-        transform: translateY(-2px);
-    }
-}
-
-.secondaryAction {
-    color: var(--text-primary);
-    text-decoration: none;
-    padding: 1rem 2rem;
-    font-size: 1.2rem;
-    font-weight: 500;
-    border: 2px solid var(--text-primary);
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    display: inline-block;
-    
-    &:hover {
-        background: var(--text-primary);
-        color: var(--bg-primary);
-        transform: translateY(-2px);
-    }
-}
-
-.desktopText {
-    @media screen and (max-width: 768px) {
+    .desktopText {
         display: none;
     }
-}
-
-.mobileText {
-    display: none;
     
-    @media screen and (max-width: 768px) {
+    .mobileText {
         display: inline;
     }
 }
 
-.introComplete {
-    // Add any styles for when intro animation is complete
+@media screen and (min-width: 769px) {
+    .intro {
+        padding: 7em 2em 2em 2em;
+    }
+    
+    .title {
+        height: 1.4em;
+    }
 }

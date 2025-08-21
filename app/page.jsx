@@ -10,6 +10,7 @@ import styles from './intro.module.scss';
 export default function Index() {
     const [introComplete, setIntroComplete] = useState(false);
     const [currentWordIndex, setCurrentWordIndex] = useState(0);
+    const [introVisible, setIntroVisible] = useState(false);
     const { openContact } = useContact();
     const { setHeroComplete } = useHero();
     const { headerAnimationComplete } = useHeaderAnimation();
@@ -37,6 +38,18 @@ export default function Index() {
         return () => clearTimeout(timer);
     }, [headerAnimationComplete, setHeroComplete]);
 
+    // Handle intro visibility timing like testimonials page
+    useEffect(() => {
+        if (headerAnimationComplete) {
+            const timer = setTimeout(() => {
+                setIntroVisible(true);
+            }, 200);
+            return () => clearTimeout(timer);
+        } else {
+            setIntroVisible(false);
+        }
+    }, [headerAnimationComplete]);
+
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentWordIndex((prev) => (prev + 1) % changingWords.length);
@@ -46,8 +59,8 @@ export default function Index() {
     }, [changingWords.length]);
 
     return (
-        <div className={`section ${styles.intro} ${introComplete ? styles.introComplete : ''} ${headerAnimationComplete ? styles.navigated : ''}`}>
-            <h1 className={styles.title}>
+        <div className={`section ${styles.intro} ${introVisible ? styles.visible : ''} ${introComplete ? styles.introComplete : ''} ${headerAnimationComplete ? styles.navigated : ''}`}>
+            <h1 className={styles.title} style={{ opacity: introVisible ? 1 : 0 }}>
                 {changingWords.map((word, index) => (
                     <span
                         key={word}
@@ -67,14 +80,14 @@ export default function Index() {
             </h1>
 
             <div className={styles.description}>
-                <p className={styles.text}>
+                <p className={styles.text} style={{ opacity: introVisible ? 1 : 0 }}>
                     We specialise in full-stack development, e-commerce solutions, captivating design, 
                     and cutting-edge technology implementations. Whether you're a startup with a vision 
                     or an established business looking to innovate, we're here to bring your ideas to life.
                 </p>
             </div>
 
-            <div className={styles.actions}>
+            <div className={styles.actions} style={{ opacity: introVisible ? 1 : 0 }}>
                 <button 
                     className={styles.primaryAction} 
                     onClick={() => openContact('I would like to start a new project')}>
