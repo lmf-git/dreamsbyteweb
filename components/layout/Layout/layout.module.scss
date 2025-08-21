@@ -198,7 +198,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5em;
+    padding: 0 1.5em 0 1em;
 }
 
 .menulogo {
@@ -322,6 +322,37 @@
             width: 2em;
             background: var(--text-primary);
         }
+    }
+}
+
+.mobileCtas {
+    display: flex;
+    gap: 1em;
+    width: 100%;
+    margin-top: 2em;
+    padding: 0 2em;
+    box-sizing: border-box;
+}
+
+.mobileCta {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1em 1.5em;
+    background: var(--text-primary);
+    color: var(--menu-bg);
+    text-decoration: none;
+    border: none;
+    border-radius: 0.5em;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover {
+        background: var(--text-secondary);
+        transform: translateY(-2px);
     }
 }
 

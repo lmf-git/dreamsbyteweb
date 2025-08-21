@@ -95,8 +95,8 @@
     }
     
     @media screen and (max-width: 768px) {
-        flex-direction: column;
-        gap: 1.5rem;
+        flex-direction: row;
+        gap: 1rem;
     }
 }
 
@@ -132,6 +132,20 @@
         background: var(--text-primary);
         color: var(--bg-primary);
         transform: translateY(-2px);
+    }
+}
+
+.desktopText {
+    @media screen and (max-width: 768px) {
+        display: none;
+    }
+}
+
+.mobileText {
+    display: none;
+    
+    @media screen and (max-width: 768px) {
+        display: inline;
     }
 }
 

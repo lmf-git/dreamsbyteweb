@@ -247,6 +247,11 @@ function LayoutContent({ children }) {
                             <Link href="/testimonials" className={`${styles.item} ${pathname === '/testimonials' ? styles.activeItem : ''}`} onClick={handleMenuClose}>Reviews</Link>
                             <Link href="/education" className={`${styles.item} ${pathname.startsWith('/education') ? styles.activeItem : ''}`} onClick={handleMenuClose}>Education</Link>
                             <button className={styles.item} onClick={() => { handleMenuClose(); openContact(); }}>Contact</button>
+                            
+                            <div className={styles.mobileCtas}>
+                                <button className={styles.mobileCta} onClick={() => { handleMenuClose(); openContact('I would like to start a new project'); }}>Start Project</button>
+                                <Link href="/portfolio" className={styles.mobileCta} onClick={handleMenuClose}>Our Work</Link>
+                            </div>
                         </div>
 
                         <div className={styles.socials}>

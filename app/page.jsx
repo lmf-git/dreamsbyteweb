@@ -53,12 +53,14 @@ export default function Index() {
                     <button 
                         className={styles.primaryAction} 
                         onClick={() => openContact()}>
-                        Start Your Project
+                        <span className={styles.desktopText}>Start Your Project</span>
+                        <span className={styles.mobileText}>Start Project</span>
                     </button>
                     <Link 
                         href="/portfolio" 
                         className={styles.secondaryAction}>
-                        View Our Work
+                        <span className={styles.desktopText}>View Our Work</span>
+                        <span className={styles.mobileText}>Our Work</span>
                     </Link>
                 </div>
             </div>
