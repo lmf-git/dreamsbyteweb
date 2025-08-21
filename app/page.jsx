@@ -40,7 +40,7 @@ export default function Index() {
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentWordIndex((prev) => (prev + 1) % changingWords.length);
-        }, 3500);
+        }, 3000);
         
         return () => clearInterval(interval);
     }, [changingWords.length]);
@@ -57,7 +57,7 @@ export default function Index() {
                             <span
                                 key={letterIndex}
                                 className={styles.letter}
-                                style={{ '--delay': `${letterIndex * 0.06}s` }}
+                                style={{ '--delay': `${letterIndex * 0.04}s` }}
                             >
                                 {letter}
                             </span>
