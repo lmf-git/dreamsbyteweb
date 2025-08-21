@@ -52,7 +52,7 @@ export default function Index() {
                 <div className={styles.actions}>
                     <button 
                         className={styles.primaryAction} 
-                        onClick={() => openContact()}>
+                        onClick={() => openContact('I would like to start a new project')}>
                         <span className={styles.desktopText}>Start Your Project</span>
                         <span className={styles.mobileText}>Start Project</span>
                     </button>
