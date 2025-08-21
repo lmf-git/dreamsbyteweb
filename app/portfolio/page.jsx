@@ -186,7 +186,7 @@ export default function PortfolioPage() {
                 if (!isMobile) {
                     setTimeout(() => {
                         setShowPreview(true);
-                    }, 400);
+                    }, 100); // Reduced delay since we have loading spinners
                 }
             }, 200);
         }
@@ -378,13 +378,13 @@ export default function PortfolioPage() {
                         <Screen 
                             extraClass={`${styles.screen} ${showPreview ? styles.showMobile : ''}`}
                             src={projects[currentProject].desktopimage}
-                            loading={isTransitioning && isDesktop}
+                            loading={isTransitioning || !imagesLoaded}
                         />
                         
                         <Mobile 
                             extraClass={`${styles.mobile} ${showPreview ? styles.showMobile : ''}`}
                             src={projects[currentProject].image}
-                            loading={isTransitioning && isDesktop}
+                            loading={isTransitioning || !imagesLoaded}
                         />
                     </div>
                 </div>
