@@ -26,7 +26,7 @@
 
 .shill {
 	display: flex;
-	flex-direction: column-reverse;
+	flex-direction: column;
 	justify-content: space-between;
 	padding: 3.25em 0 0;
 	gap: 1em;
@@ -69,7 +69,9 @@
 	width: 10em;
 	opacity: 0;
 	transform: translateY(10px);
-	transition: opacity 0.8s ease-out 0.8s, transform 0.8s ease-out 0.8s; // Logo appears last
+	transition: opacity 0.8s ease-out 0.4s, transform 0.8s ease-out 0.4s; // Logo appears first on mobile
+	order: -1; // Put logo first on mobile
+	margin-bottom: 1em; // Add space below logo on mobile
 	
 	&.visible {
 		opacity: 1;
@@ -78,12 +80,12 @@
 }
 
 .logo path {
-	fill: #b3b3b3;
+	fill: var(--footer-logo);
 }
 
 .meta {
 	font-size: .825em;
-	color: rgb(197, 197, 197);
+	color: var(--footer-text);
 	font-weight: 100;
 }
 
@@ -154,7 +156,7 @@
 
 // Remove the reveal-footer, reveal-footer-section, and reveal-footer-logo animations
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 1200px) {
 	.footer {
 		padding: 3.5em;
 		// background: rgb(36, 36, 36);
@@ -186,7 +188,10 @@
 		left: 50%;
 		bottom: 2em;
 		padding: 1.5em 0 0.5em 0;
-		transform: translateX(-50%) translateY(10px);
+		transform: translateX(-50%) translateY(20px);
+		order: initial; // Reset mobile order
+		margin-bottom: 0; // Reset mobile margin
+		transition: opacity 0.8s ease-out 0.8s, transform 0.8s ease-out 0.8s; // Logo appears last on desktop
 		
 		&.visible {
 			transform: translateX(-50%) translateY(0);

@@ -59,6 +59,8 @@
     --star-glow: rgba(255, 255, 255, 0.6);
     --star-tail: rgba(255, 255, 255, 0.8);
     --logo-fill: #ffffff;
+    --footer-logo: #b3b3b3;
+    --footer-text: #c5c5c5;
 }
 
 .light-theme {
@@ -117,6 +119,8 @@
     --star-glow: rgba(0, 0, 0, 0.8);
     --star-tail: rgba(0, 0, 0, 0.9);
     --logo-fill: #1a1a1a;
+    --footer-logo: #333333;
+    --footer-text: #444444;
 }
 
 html, body, #__next, #__next > div {

@@ -64,6 +64,11 @@
     opacity: 0;
     animation: reveal-nav 0.5s ease-out forwards;
     animation-delay: 1.5s;
+    
+    .themeToggle {
+        order: 999; // Put theme toggle at the end
+        margin-left: 2em; // Add some space from nav items
+    }
 }
 
 .headercta {
@@ -104,6 +109,7 @@
     }
 }
 
+
 .headerctaprimary {
     color: var(--nav-primary);
     font-size: 1.5em;
@@ -129,12 +135,16 @@
     align-items: center;
     justify-content: center;
     transition: transform 0.2s ease;
+    opacity: 0;
+    animation: start-content 1s linear forwards;
+    animation-delay: 2.1s; // Appear after all nav items
+    position: relative;
 
     &:hover {
         transform: scale(1.1);
     }
 
-    @media screen and (max-width: 1199px) {
+    @media screen and (max-width: 999px) {
         display: none;
     }
 }
@@ -143,10 +153,36 @@
     width: 2em;
     height: 2em;
     color: var(--nav-link);
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
     .themeToggle:hover & {
         color: var(--nav-link-hover);
+    }
+    
+    &.sunIcon {
+        &.dark {
+            opacity: 1;
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+        &.light {
+            opacity: 0;
+            transform: translate(-50%, -60%) rotate(180deg);
+        }
+    }
+    
+    &.moonIcon {
+        &.light {
+            opacity: 1;
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+        &.dark {
+            opacity: 0;
+            transform: translate(-50%, -40%) rotate(-180deg);
+        }
     }
 }
 
@@ -401,6 +437,7 @@
     .headerctaprimary {
         font-size: 1.65em;
     }
+    
     
     .themeIcon {
         width: 2.25em;

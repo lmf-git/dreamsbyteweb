@@ -80,28 +80,10 @@ function LayoutContent({ children }) {
 
     const getThemeIcon = () => {
         return (
-            <div style={{ position: 'relative', width: '2em', height: '2em' }}>
-                <div style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    opacity: theme === 'dark' ? 1 : 0,
-                    transform: theme === 'dark' ? 'translateY(0) rotate(0deg)' : 'translateY(-10px) rotate(180deg)',
-                    transition: 'opacity 0.3s ease, transform 0.3s ease'
-                }}>
-                    <Sun className={styles.themeIcon} />
-                </div>
-                <div style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    opacity: theme === 'light' ? 1 : 0,
-                    transform: theme === 'light' ? 'translateY(0) rotate(0deg)' : 'translateY(10px) rotate(-180deg)',
-                    transition: 'opacity 0.3s ease, transform 0.3s ease'
-                }}>
-                    <Moon className={styles.themeIcon} />
-                </div>
-            </div>
+            <>
+                <Sun className={`${styles.themeIcon} ${styles.sunIcon} ${styles[theme]}`} />
+                <Moon className={`${styles.themeIcon} ${styles.moonIcon} ${styles[theme]}`} />
+            </>
         );
     };
 
