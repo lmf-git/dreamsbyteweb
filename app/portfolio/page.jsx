@@ -119,13 +119,8 @@ export default function PortfolioPage() {
                 loadedCount++;
                 if (loadedCount === 2) {
                     clearTimeout(loadingTimer);
-                    const loadTime = Date.now() - startTime;
-                    
-                    // Only update imagesLoaded if we actually showed loading state
-                    // or if images took a reasonable amount of time
-                    if (hasSetLoadingFalse || loadTime > 50) {
-                        setImagesLoaded(true);
-                    }
+                    // Always set images as loaded when both are complete
+                    setImagesLoaded(true);
                     resolve();
                 }
             };
@@ -142,6 +137,7 @@ export default function PortfolioPage() {
             // If both images are already complete (cached), handle immediately
             if (desktopImage.complete && mobileImage.complete) {
                 clearTimeout(loadingTimer);
+                setImagesLoaded(true);
                 resolve();
                 return;
             }
@@ -156,8 +152,10 @@ export default function PortfolioPage() {
             setCurrentProject(0);
             setIsDesktop(!isMobile);
             
-            // Start image preloading in background (don't wait for it)
-            preloadImages(0);
+            // Start image preloading and ensure imagesLoaded state is set
+            preloadImages(0).then(() => {
+                // Images are now loaded, state already set in preloadImages
+            });
             
             const logoAnimationTime = 100;
             
