@@ -11,6 +11,7 @@ import EmailMethod from '../../icons/social/EmailMethod';
 import Whatsapp from '../../icons/social/Whatsapp';
 import Youtube from '../../icons/social/Youtube';
 import Github from '../../icons/social/Github';
+import Instagram from '../../icons/social/Instagram';
 
 import styles from './footer.module.scss';
 
@@ -41,9 +42,9 @@ export default function Footer() {
           <a href="https://api.whatsapp.com/send?phone=447389805421" className={styles.social} rel="noopener noreferrer" target="_blank" aria-label="Contact us on WhatsApp">
             <Whatsapp className={styles.socialicon} />
           </a>
-
-          {/* <Instagram className={styles.socialicon} /> */}
-          {/* <Upwork className={styles.socialicon} /> */}
+          <a href="https://www.instagram.com/dreamsbyte_ig/" className={styles.social} rel="noopener noreferrer" target="_blank" aria-label="Follow us on Instagram">
+            <Instagram className={styles.socialicon} />
+          </a>
           <a href="https://github.com/lmf-git" className={styles.social} rel="noopener noreferrer" target="_blank" aria-label="Visit our GitHub profile">
             <Github className={styles.socialicon} />
           </a>

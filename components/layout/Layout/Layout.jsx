@@ -22,6 +22,7 @@ import Youtube from '../../icons/social/Youtube';
 import Github from '../../icons/social/Github';
 import CloseIcon from "../../icons/social/Close";
 import AnimatedLogo from "../../icons/branding/AnimatedLogo";
+import Instagram from "../../icons/social/Instagram";
 
 import styles from "./layout.module.scss";
 
@@ -248,6 +249,9 @@ function LayoutContent({ children }) {
                             </a>
                             <a href="https://www.youtube.com/@dreamsbyte" className={styles.social} rel="noopener noreferrer" target="_blank" aria-label="Subscribe to our YouTube channel">
                                 <Youtube className={styles.socialicon} />
+                            </a>
+                            <a href="https://www.instagram.com/dreamsbyte_ig/" className={styles.social} rel="noopener noreferrer" target="_blank" aria-label="Follow us on Instagram">
+                                <Instagram className={styles.socialicon} />
                             </a>
                         </div>
                     </div>
