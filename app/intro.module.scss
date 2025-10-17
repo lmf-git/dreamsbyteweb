@@ -7,7 +7,7 @@
 }
 
 .title {
-    font-size: clamp(2.4em, 6vw, 5.2em);
+    font-size: clamp(2em, 6vw, 5.2em);
     font-weight: 800;
     color: var(--text-primary);
     margin: 0;
@@ -263,25 +263,35 @@
     .intro {
         padding: 5em 1em 1em 1em;
     }
-    
+
     .title {
         white-space: normal;
         height: 1.2em;
     }
-    
+
     .subtitle {
         font-size: 1.25em;
     }
-    
+
     .actions {
         flex-direction: row;
-        gap: 1em;
+        gap: 0.75em;
     }
-    
+
+    .primaryAction {
+        padding: 0.9em 1.5em;
+        font-size: 1em;
+    }
+
+    .secondaryAction {
+        padding: 0.9em 1.25em;
+        font-size: 1em;
+    }
+
     .desktopText {
         display: none;
     }
-    
+
     .mobileText {
         display: inline;
     }
