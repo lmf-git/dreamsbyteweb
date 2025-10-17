@@ -59,7 +59,7 @@ export default function Index() {
     }, [changingWords.length]);
 
     return (
-        <div className={`section ${styles.intro} ${introVisible ? styles.visible : ''} ${introComplete ? styles.introComplete : ''} ${headerAnimationComplete ? styles.navigated : ''}`}>
+        <div className={`section ${styles.intro} ${introVisible ? styles.visible : ''}`}>
             <h1 className={styles.title} style={{ opacity: introVisible ? 1 : 0 }}>
                 {changingWords.map((word, index) => (
                     <span
