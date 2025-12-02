@@ -13,6 +13,7 @@ import Footer from "../Footer/Footer";
 import Stars from "../Stars/Stars";
 
 import MenuIcon from "../../icons/social/Menu";
+import Logo from "../../icons/branding/Logo";
 import Sun from "../../icons/controls/Sun";
 import Moon from "../../icons/controls/Moon";
 import EmailMethod from '../../icons/social/EmailMethod';
