@@ -189,6 +189,9 @@ function LayoutContent({ children }) {
                         className={`${styles.menu} ${menuOpen ? styles.visible : ''}`}
                         onTransitionEnd={handleTransitionEnd}>
                         <div className={styles.menuheader}>
+                            <Link href="/" onClick={handleMenuClose}>
+                                <Logo extraClass={styles.menulogo} />
+                            </Link>
                             <div className={styles.menucontrols}>
                                 <button className={styles.menuThemeToggle} onClick={toggleTheme} aria-label="Toggle theme">
                                     {getMobileThemeIcon()}

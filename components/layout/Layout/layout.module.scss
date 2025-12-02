@@ -228,9 +228,9 @@
 
 .menuheader {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
-    padding: 0 2em 0 2em;
+    padding: 2em;
 }
 
 .menulogo {
@@ -353,10 +353,10 @@
     display: block;
     text-align: center;
     text-decoration: none;
-    font-size: 2em;
+    font-size: 1.8em;
     font-weight: 300;
     color: var(--text-muted);
-    padding: 0.5em;
+    padding: 0.25em;
     transition: all 0.3s ease-in-out;
     position: relative;
     background: none;
@@ -408,7 +408,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1em 1.5em;
+    padding: 0.75em 1em;
     background: var(--text-primary);
     color: var(--menu-bg);
     text-decoration: none;
@@ -427,9 +427,9 @@
 
 .socials {
     display: flex;
-    position: relative; 
-    margin-top: auto;
-    padding-bottom: 4em; 
+    position: relative;
+    margin-top: 2em;
+    padding-bottom: 4em;
     box-sizing: border-box;
     width: 100%;
     align-items: center;
