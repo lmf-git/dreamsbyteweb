@@ -228,9 +228,9 @@
 
 .menuheader {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
-    padding: 2em 2.5em 0 2em;
+    padding: 0 2em 0 2em;
 }
 
 .menulogo {
@@ -240,7 +240,7 @@
 .menucontrols {
     display: flex;
     align-items: center;
-    gap: 1em;
+    gap: 0.5em;
 }
 
 .menuThemeToggle {
@@ -252,22 +252,59 @@
     align-items: center;
     justify-content: center;
     transition: transform 0.2s ease;
-    width: 3.5em;
-    height: 3.5em;
+    width: 3em;
+    height: 3em;
 
     &:hover {
         transform: scale(1.1);
     }
 
     .themeIcon {
-        height: 3.5em;
-        width: 3.5em;
+        height: 3em;
+        width: 3em;
         color: var(--text-muted);
         transition: color 0.3s ease;
 
         &:hover {
             color: var(--text-secondary);
         }
+    }
+}
+
+.mobileThemeIconContainer {
+    position: relative;
+    width: 3em;
+    height: 3em;
+}
+
+.mobileThemeIconWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3em;
+    height: 3em;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.mobileSunIcon {
+    &.dark {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg) scale(1);
+    }
+    &.light {
+        opacity: 0;
+        transform: translateY(-15px) rotate(180deg) scale(0.8);
+    }
+}
+
+.mobileMoonIcon {
+    &.light {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg) scale(1);
+    }
+    &.dark {
+        opacity: 0;
+        transform: translateY(15px) rotate(-180deg) scale(0.8);
     }
 }
 
@@ -308,7 +345,7 @@
     justify-content: center;
     align-items: center;
     flex: 1;
-    gap: 0.3em;
+    gap: 0;
     margin: 0;
 }
 

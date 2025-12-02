@@ -13,7 +13,6 @@ import Footer from "../Footer/Footer";
 import Stars from "../Stars/Stars";
 
 import MenuIcon from "../../icons/social/Menu";
-import Logo from "../../icons/branding/Logo";
 import Sun from "../../icons/controls/Sun";
 import Moon from "../../icons/controls/Moon";
 import EmailMethod from '../../icons/social/EmailMethod';
@@ -90,29 +89,11 @@ function LayoutContent({ children }) {
 
     const getMobileThemeIcon = () => {
         return (
-            <div style={{ position: 'relative', width: '3.5em', height: '3.5em' }}>
-                <div style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '3.5em',
-                    height: '3.5em',
-                    opacity: theme === 'dark' ? 1 : 0,
-                    transform: theme === 'dark' ? 'translateY(0) rotate(0deg) scale(1)' : 'translateY(-15px) rotate(180deg) scale(0.8)',
-                    transition: 'opacity 0.4s ease, transform 0.4s ease'
-                }}>
+            <div className={styles.mobileThemeIconContainer}>
+                <div className={`${styles.mobileThemeIconWrapper} ${styles.mobileSunIcon} ${styles[theme]}`}>
                     <Sun className={styles.themeIcon} />
                 </div>
-                <div style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '3.5em',
-                    height: '3.5em',
-                    opacity: theme === 'light' ? 1 : 0,
-                    transform: theme === 'light' ? 'translateY(0) rotate(0deg) scale(1)' : 'translateY(15px) rotate(-180deg) scale(0.8)',
-                    transition: 'opacity 0.4s ease, transform 0.4s ease'
-                }}>
+                <div className={`${styles.mobileThemeIconWrapper} ${styles.mobileMoonIcon} ${styles[theme]}`}>
                     <Moon className={styles.themeIcon} />
                 </div>
             </div>
@@ -208,15 +189,12 @@ function LayoutContent({ children }) {
                         className={`${styles.menu} ${menuOpen ? styles.visible : ''}`}
                         onTransitionEnd={handleTransitionEnd}>
                         <div className={styles.menuheader}>
-                            <Link href="/" onClick={handleMenuClose}>
-                                <Logo extraClass={styles.menulogo} />
-                            </Link>
                             <div className={styles.menucontrols}>
                                 <button className={styles.menuThemeToggle} onClick={toggleTheme} aria-label="Toggle theme">
                                     {getMobileThemeIcon()}
                                 </button>
-                                <button 
-                                    className={styles.menuclose} 
+                                <button
+                                    className={styles.menuclose}
                                     onClick={handleMenuClose}
                                     aria-label="Close menu">
                                     <CloseIcon extraClass={styles.menucloseicon} />
