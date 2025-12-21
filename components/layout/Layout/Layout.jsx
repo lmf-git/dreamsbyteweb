@@ -33,6 +33,7 @@ function LayoutContent({ children }) {
     const { setHeaderAnimationComplete } = useHeaderAnimation();
     const pathname = usePathname();
     const [menuOpen, setMenuOpen] = useState(false);
+    const [scrollPosition, setScrollPosition] = useState(0);
     
     // Check if we're on the landing page (home page)
     const isLandingPage = pathname === '/';
@@ -106,16 +107,30 @@ function LayoutContent({ children }) {
     useEffect(() => {
         if (isLandingPage && !heroComplete) {
             document.body.style.overflow = 'hidden';
+            document.body.classList.remove(styles.clipped);
         } else if (menuOpen) {
-            document.body.style.overflow = 'hidden';
+            // Save current scroll position
+            const scrollY = window.scrollY;
+            setScrollPosition(scrollY);
+
+            // Apply fixed positioning and prevent scroll
+            document.body.style.overflow = '';
+            document.body.style.top = `-${scrollY}px`;
+            document.body.classList.add(styles.clipped);
         } else {
+            // Restore scroll position when menu closes
+            document.body.classList.remove(styles.clipped);
             document.body.style.overflow = 'auto';
+            document.body.style.top = '';
+            window.scrollTo(0, scrollPosition);
         }
-        
+
         return () => {
             document.body.style.overflow = 'auto';
+            document.body.style.top = '';
+            document.body.classList.remove(styles.clipped);
         };
-    }, [heroComplete, menuOpen, isLandingPage]);
+    }, [heroComplete, menuOpen, isLandingPage, scrollPosition]);
 
     // Clear URL fragments - only needed on landing page
     useEffect(() => {
@@ -126,22 +141,10 @@ function LayoutContent({ children }) {
         }
     }, [isLandingPage]);
 
-    // Modified menu handling with transition end
+    // Menu close handler
     const handleMenuClose = () => {
         setMenuOpen(false);
     };
-
-    const handleTransitionEnd = (e) => {
-        // Only handle menu transition end
-        if (e.target.classList.contains(styles.menu) && !menuOpen) {
-            document.body.classList.remove(styles.clipped);
-        }
-    };
-
-    // Only add clipped class when opening
-    useEffect(() => {
-        if (menuOpen) document.body.classList.add(styles.clipped);
-    }, [menuOpen]);
 
     return (
         <>
@@ -186,9 +189,7 @@ function LayoutContent({ children }) {
 
                 {/* Mobile Menu */}
                 {menuOpen && (
-                    <div 
-                        className={`${styles.menu} ${menuOpen ? styles.visible : ''}`}
-                        onTransitionEnd={handleTransitionEnd}>
+                    <div className={`${styles.menu} ${menuOpen ? styles.visible : ''}`}>
                         <div className={styles.menuheader}>
                             <Link href="/" onClick={handleMenuClose}>
                                 <Logo extraClass={styles.menulogo} />

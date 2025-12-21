@@ -25,7 +25,10 @@
 }
 
 .clipped {
-    overflow: hidden;
+    overflow: hidden !important;
+    position: fixed;
+    width: 100%;
+    height: 100%;
 }
 
 
