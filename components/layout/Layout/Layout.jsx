@@ -59,7 +59,7 @@ function LayoutContent({ children }) {
             return () => clearTimeout(timer);
         } else {
             // Navigation - handle animated pages specially (including landing page)
-            const animatedPages = ['/', '/services', '/testimonials', '/education'];
+            const animatedPages = ['/', '/services', '/testimonials', '/blog'];
             const isAnimatedPage = animatedPages.includes(pathname);
             
             if (isAnimatedPage) {
@@ -179,7 +179,7 @@ function LayoutContent({ children }) {
                         <Link href="/portfolio" className={`${styles.headercta} ${pathname === '/portfolio' ? styles.active : ''}`}>Portfolio</Link>
                         <Link href="/services" className={`${styles.headercta} ${pathname === '/services' ? styles.active : ''}`}>Services</Link>
                         <Link href="/testimonials" className={`${styles.headercta} ${pathname === '/testimonials' ? styles.active : ''}`}>Reviews</Link>
-                        <Link href="/education" className={`${styles.headercta} ${pathname.startsWith('/education') ? styles.active : ''}`}>Education</Link>
+                        <Link href="/blog" className={`${styles.headercta} ${pathname.startsWith('/blog') ? styles.active : ''}`}>Blog</Link>
                         <button className={`${styles.headercta} ${styles.headerctaprimary}`} onClick={() => openContact()}>CONTACT</button>
                         <button className={styles.menutoggle} onClick={() => setMenuOpen(true)}>
                             <MenuIcon extraClass={styles.menutoggleicon} />
@@ -211,7 +211,7 @@ function LayoutContent({ children }) {
                             <Link href="/portfolio" className={`${styles.item} ${pathname === '/portfolio' ? styles.activeItem : ''}`} onClick={handleMenuClose}>Portfolio</Link>
                             <Link href="/services" className={`${styles.item} ${pathname === '/services' ? styles.activeItem : ''}`} onClick={handleMenuClose}>Services</Link>
                             <Link href="/testimonials" className={`${styles.item} ${pathname === '/testimonials' ? styles.activeItem : ''}`} onClick={handleMenuClose}>Reviews</Link>
-                            <Link href="/education" className={`${styles.item} ${pathname.startsWith('/education') ? styles.activeItem : ''}`} onClick={handleMenuClose}>Education</Link>
+                            <Link href="/blog" className={`${styles.item} ${pathname.startsWith('/blog') ? styles.activeItem : ''}`} onClick={handleMenuClose}>Blog</Link>
                             <button className={styles.item} onClick={() => { handleMenuClose(); openContact(); }}>Contact</button>
                             
                             <div className={styles.mobileCtas}>

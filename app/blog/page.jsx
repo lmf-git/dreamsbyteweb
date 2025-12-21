@@ -3,23 +3,23 @@
 import { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useHeaderAnimation } from '../../contexts/HeaderAnimationContext';
-import styles from './education.module.scss';
+import styles from './blog.module.scss';
 
-export default function Education() {
+export default function Blog() {
     const sectionRef = useRef(null);
     const { headerAnimationComplete } = useHeaderAnimation();
-    const [educationVisible, setEducationVisible] = useState(false);
+    const [blogVisible, setBlogVisible] = useState(false);
 
-    // Handle education visibility timing like other animated pages
+    // Handle blog visibility timing like other animated pages
     useEffect(() => {
-        // Only show education content after header animation completes
+        // Only show blog content after header animation completes
         if (headerAnimationComplete) {
             const timer = setTimeout(() => {
-                setEducationVisible(true);
+                setBlogVisible(true);
             }, 200); // Brief delay after header completes
             return () => clearTimeout(timer);
         } else {
-            setEducationVisible(false);
+            setBlogVisible(false);
         }
     }, [headerAnimationComplete]);
     
@@ -41,44 +41,44 @@ export default function Education() {
     ];
 
     return (
-        <div 
-            ref={sectionRef} 
-            className={`${styles.education} ${educationVisible ? styles.visible : ''}`}
-            style={{ opacity: educationVisible ? 1 : 0 }}
+        <div
+            ref={sectionRef}
+            className={`${styles.blog} ${blogVisible ? styles.visible : ''}`}
+            style={{ opacity: blogVisible ? 1 : 0 }}
         >
-            <div 
-                className={`${styles.hero} ${educationVisible ? styles.visible : ''}`}
-                style={{ opacity: educationVisible ? 1 : 0 }}
+            <div
+                className={`${styles.hero} ${blogVisible ? styles.visible : ''}`}
+                style={{ opacity: blogVisible ? 1 : 0 }}
             >
-                <h1 className={styles.title}>Client Education</h1>
+                <h1 className={styles.title}>Blog</h1>
                 <p className={styles.subtitle}>
                     Understanding web development, digital solutions, and how DreamsByte can help grow your business online.
                 </p>
             </div>
 
-            <div 
-                className={`${styles.posts} ${educationVisible ? styles.visible : ''}`}
-                style={{ opacity: educationVisible ? 1 : 0 }}
+            <div
+                className={`${styles.posts} ${blogVisible ? styles.visible : ''}`}
+                style={{ opacity: blogVisible ? 1 : 0 }}
             >
                 {posts.map((post, index) => (
-                    <article 
-                        key={post.id} 
-                        className={`${styles.post} ${educationVisible ? styles.visible : ''}`}
-                        style={{ 
+                    <article
+                        key={post.id}
+                        className={`${styles.post} ${blogVisible ? styles.visible : ''}`}
+                        style={{
                             transitionDelay: `${index * 0.1}s`,
-                            opacity: educationVisible ? 1 : 0 
+                            opacity: blogVisible ? 1 : 0
                         }}
                     >
                         <div className={styles.postContent}>
                             <h2 className={styles.postTitle}>
-                                <Link href={`/education/${post.slug}`} className={styles.postLink}>
+                                <Link href={`/blog/${post.slug}`} className={styles.postLink}>
                                     {post.title}
                                 </Link>
                             </h2>
                             <p className={styles.postExcerpt}>{post.excerpt}</p>
                             <div className={styles.postMeta}>
                                 <time className={styles.postDate}>{post.date}</time>
-                                <Link href={`/education/${post.slug}`} className={styles.readMore}>
+                                <Link href={`/blog/${post.slug}`} className={styles.readMore}>
                                     Read More →
                                 </Link>
                             </div>
