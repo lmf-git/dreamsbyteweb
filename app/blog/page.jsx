@@ -61,29 +61,24 @@ export default function Blog() {
                 style={{ opacity: blogVisible ? 1 : 0 }}
             >
                 {posts.map((post, index) => (
-                    <article
+                    <Link
                         key={post.id}
+                        href={`/blog/${post.slug}`}
                         className={`${styles.post} ${blogVisible ? styles.visible : ''}`}
                         style={{
                             transitionDelay: `${index * 0.1}s`,
                             opacity: blogVisible ? 1 : 0
                         }}
                     >
-                        <div className={styles.postContent}>
-                            <h2 className={styles.postTitle}>
-                                <Link href={`/blog/${post.slug}`} className={styles.postLink}>
-                                    {post.title}
-                                </Link>
-                            </h2>
+                        <article>
+                            <h2 className={styles.postTitle}>{post.title}</h2>
                             <p className={styles.postExcerpt}>{post.excerpt}</p>
                             <div className={styles.postMeta}>
                                 <time className={styles.postDate}>{post.date}</time>
-                                <Link href={`/blog/${post.slug}`} className={styles.readMore}>
-                                    Read More →
-                                </Link>
+                                <span className={styles.readMore}>Read More →</span>
                             </div>
-                        </div>
-                    </article>
+                        </article>
+                    </Link>
                 ))}
             </div>
         </div>

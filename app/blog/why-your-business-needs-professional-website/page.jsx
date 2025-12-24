@@ -1,14 +1,33 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useContact } from '../../../contexts/ContactContext';
+import { useHeaderAnimation } from '../../../contexts/HeaderAnimationContext';
+import CallToAction from '../../../components/layout/CallToAction/CallToAction';
 import styles from '../post.module.scss';
 
 export default function WhyYourBusinessNeedsWebsite() {
     const { openContact } = useContact();
+    const { headerAnimationComplete } = useHeaderAnimation();
+    const [contentVisible, setContentVisible] = useState(false);
+
+    useEffect(() => {
+        if (headerAnimationComplete) {
+            const timer = setTimeout(() => {
+                setContentVisible(true);
+            }, 200);
+            return () => clearTimeout(timer);
+        } else {
+            setContentVisible(false);
+        }
+    }, [headerAnimationComplete]);
 
     return (
-        <article className={styles.post}>
+        <article
+            className={`${styles.post} ${contentVisible ? styles.visible : ''}`}
+            style={{ opacity: contentVisible ? 1 : 0 }}
+        >
             <div className={styles.container}>
                 <header className={styles.header}>
                     <h1 className={styles.title}>Why Your Business Needs a Professional Website in 2024</h1>
@@ -57,6 +76,8 @@ export default function WhyYourBusinessNeedsWebsite() {
                         </button> to discuss how we can help transform your business with a professional website that drives real results.</p>
                     </div>
                 </div>
+
+                <CallToAction />
 
                 <footer className={styles.footer}>
                     <div className={styles.navigation}>
