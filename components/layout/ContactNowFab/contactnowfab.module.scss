@@ -1,6 +1,5 @@
 
 @use '../animations';
-@use '../colours';
 
 
 .fab {
@@ -20,10 +19,10 @@
 
 .fab:hover {
     & .fabtext > path {
-        fill: colours.$hoverwhite;
+        fill: #E0E0E0;
     }
     & .fabicon > path {
-        fill: colours.$hoverwhite;
+        fill: #E0E0E0;
     }
 }
 
