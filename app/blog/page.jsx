@@ -37,6 +37,34 @@ export default function Blog() {
             excerpt: "Learn how a well-designed website can transform your business and drive growth in today's digital landscape.",
             date: "2024-01-20",
             slug: "why-your-business-needs-professional-website"
+        },
+        {
+            id: 3,
+            title: "SEO Snake Oil: Why Most SEO Services Are Selling You Empty Promises",
+            excerpt: "Cut through the noise and learn what actually matters for search engine visibility without falling for expensive SEO gimmicks.",
+            date: "2024-02-01",
+            slug: "seo-snake-oil-empty-promises"
+        },
+        {
+            id: 4,
+            title: "The True Cost of Vendor Lock-In: Why Subscription Platforms Are Holding Your Business Hostage",
+            excerpt: "Break free from monthly fees and platform dependencies. Discover why owning your digital infrastructure makes financial sense.",
+            date: "2024-02-10",
+            slug: "vendor-lock-in-subscription-costs"
+        },
+        {
+            id: 5,
+            title: "AI Won't Build Your Business: Why Human Expertise Still Matters in Web Development",
+            excerpt: "AI tools promise instant solutions, but they can't replace strategic thinking and genuine craftsmanship. Here's why.",
+            date: "2024-02-15",
+            slug: "ai-wont-build-your-business"
+        },
+        {
+            id: 6,
+            title: "The Cloud Infrastructure Illusion: Why Enterprise Businesses Don't Need AWS",
+            excerpt: "When AWS goes down, your business stops. Learn why owning your infrastructure across multiple regions beats cloud dependency.",
+            date: "2024-02-20",
+            slug: "cloud-infrastructure-illusion"
         }
     ];
 
