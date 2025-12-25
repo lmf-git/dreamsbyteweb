@@ -52,11 +52,12 @@
 .description {
     font-size: 1.1em;
     line-height: 1.6;
-    color: var(--text-secondary);
+    color: var(--text-primary);
     margin-bottom: 2em;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    opacity: 0.9;
 }
 
 .button {
