@@ -65,13 +65,6 @@ export default function Blog() {
             excerpt: "When AWS goes down, your business stops. Learn why owning infrastructure across multiple regions beats cloud dependency.",
             date: "2024-02-20",
             slug: "cloud-infrastructure-illusion"
-        },
-        {
-            id: 7,
-            title: "Take Back Control from Distraction: A Guide to a More Focused Digital Life",
-            excerpt: "Learn how to use user scripts to customize your browsing experience and take back control of your digital life.",
-            date: "2024-03-15",
-            slug: "take-back-control-from-distraction"
         }
     ];
 
