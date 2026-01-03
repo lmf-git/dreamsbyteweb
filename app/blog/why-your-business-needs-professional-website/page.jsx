@@ -30,7 +30,7 @@ export default function WhyYourBusinessNeedsWebsite() {
         >
             <div className={styles.container}>
                 <header className={styles.header}>
-                    <h1 className={styles.title}>Why Your Business Needs a Professional Website in 2024</h1>
+                    <h1 className={styles.title}>Professional Website For Your Business</h1>
                     <div className={styles.meta}>
                         <span className={styles.author}>By DreamsByte Team</span>
                         <span className={styles.date}>2024-01-20</span>

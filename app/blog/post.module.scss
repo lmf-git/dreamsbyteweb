@@ -121,6 +121,11 @@
         }
     }
 
+    .inline-code-block {
+        margin: 0.5em 0; // Reduced margin for inline code blocks
+        padding: 0.5em; // Adjusted padding
+    }
+
     code {
         background: var(--code-bg);
         color: var(--code-text);
@@ -149,6 +154,14 @@
         border-radius: 0 8px 8px 0;
         font-style: italic;
         color: var(--text-muted);
+    }
+
+    .icon {
+        display: inline-block;
+        width: 1.2em; /* Adjust size as needed */
+        height: 1.2em; /* Adjust size as needed */
+        vertical-align: -0.2em; /* Adjust for better vertical alignment with text */
+        margin-right: 0.5em;
     }
 }
 

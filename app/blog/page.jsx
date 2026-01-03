@@ -26,45 +26,52 @@ export default function Blog() {
     const posts = [
         {
             id: 1,
-            title: "Understanding Website Development: What Goes Into Building Your Digital Presence",
+            title: "Website Development: Digital Presence",
             excerpt: "Discover the complete process behind creating a professional website and what to expect when working with DreamsByte.",
             date: "2024-01-15",
             slug: "understanding-website-development"
         },
         {
             id: 2,
-            title: "Why Your Business Needs a Professional Website in Today's Digital Landscape",
+            title: "Professional Website For Your Business",
             excerpt: "Learn how a well-designed website transforms your business and drives real growth in today's competitive market.",
             date: "2024-01-20",
             slug: "why-your-business-needs-professional-website"
         },
         {
             id: 3,
-            title: "SEO Snake Oil: Why Most SEO Services Are Selling You Nothing But Empty Promises",
+            title: "SEO Snake Oil: Empty Promises",
             excerpt: "Cut through the noise and learn what actually matters for search visibility without falling for expensive gimmicks.",
             date: "2024-02-01",
             slug: "seo-snake-oil-empty-promises"
         },
         {
             id: 4,
-            title: "The True Cost of Vendor Lock-In: Why Subscription Platforms Hold You Hostage",
+            title: "Vendor Lock-In: Subscription Costs",
             excerpt: "Break free from monthly fees and platform dependencies. Discover why owning your infrastructure makes financial sense.",
             date: "2024-02-10",
             slug: "vendor-lock-in-subscription-costs"
         },
         {
             id: 5,
-            title: "AI Won't Build Your Business: Why Human Expertise Still Matters in Development",
+            title: "AI Won't Build Your Business",
             excerpt: "AI tools promise instant solutions, but they can't replace strategic thinking and genuine craftsmanship. Here's why.",
             date: "2024-02-15",
             slug: "ai-wont-build-your-business"
         },
         {
             id: 6,
-            title: "The Cloud Infrastructure Illusion: Why Enterprise Businesses Don't Actually Need AWS",
+            title: "Cloud Illusion: Beyond AWS for Enterprise",
             excerpt: "When AWS goes down, your business stops. Learn why owning infrastructure across multiple regions beats cloud dependency.",
             date: "2024-02-20",
             slug: "cloud-infrastructure-illusion"
+        },
+        {
+            id: 7,
+            title: "Take Back Control: Digital Distraction",
+            excerpt: "Learn to use user scripts and your hosts file to block distracting websites and regain control of your digital life.",
+            date: "2024-03-15",
+            slug: "take-back-control-from-distraction"
         }
     ];
 

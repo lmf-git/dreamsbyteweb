@@ -30,7 +30,7 @@ export default function CloudInfrastructureIllusion() {
         >
             <div className={styles.container}>
                 <header className={styles.header}>
-                    <h1 className={styles.title}>The Cloud Infrastructure Illusion: Why Enterprise Businesses Don't Need AWS</h1>
+                    <h1 className={styles.title}>Cloud Illusion: Beyond AWS for Enterprise</h1>
                     <div className={styles.meta}>
                         <span className={styles.author}>By DreamsByte Team</span>
                         <span className={styles.date}>2024-02-20</span>

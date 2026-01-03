@@ -30,7 +30,7 @@ export default function VendorLockIn() {
         >
             <div className={styles.container}>
                 <header className={styles.header}>
-                    <h1 className={styles.title}>The True Cost of Vendor Lock-In: Why Subscription Platforms Are Holding Your Business Hostage</h1>
+                    <h1 className={styles.title}>Vendor Lock-In: Subscription Costs</h1>
                     <div className={styles.meta}>
                         <span className={styles.author}>By DreamsByte Team</span>
                         <span className={styles.date}>2024-02-10</span>

@@ -45,11 +45,11 @@ export default function Footer() {
           <a href="https://github.com/lmf-git" className={styles.social} rel="noopener noreferrer" target="_blank" aria-label="Visit our GitHub profile">
             <Github className={styles.socialicon} />
           </a>
-          <a href="https://www.youtube.com/@dreamsbyte" className={styles.social} rel="noopener noreferrer" target="_blank" aria-label="Subscribe to our YouTube channel">
-            <Youtube className={styles.socialicon} />
-          </a>
           <a href="https://www.instagram.com/dreamsbyte_ig/" className={styles.social} rel="noopener noreferrer" target="_blank" aria-label="Follow us on Instagram">
             <Instagram className={styles.socialicon} />
+          </a>
+          <a href="https://www.youtube.com/@dreamsbyte" className={styles.social} rel="noopener noreferrer" target="_blank" aria-label="Subscribe to our YouTube channel">
+            <Youtube className={styles.socialicon} />
           </a>
         </div>
 

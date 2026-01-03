@@ -30,7 +30,7 @@ export default function AIWontBuildYourBusiness() {
         >
             <div className={styles.container}>
                 <header className={styles.header}>
-                    <h1 className={styles.title}>AI Won't Build Your Business: Why Human Expertise Still Matters in Web Development</h1>
+                    <h1 className={styles.title}>AI Won't Build Your Business</h1>
                     <div className={styles.meta}>
                         <span className={styles.author}>By DreamsByte Team</span>
                         <span className={styles.date}>2024-02-15</span>
