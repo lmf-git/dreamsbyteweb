@@ -109,6 +109,10 @@ export default function AIWontBuildYourBusiness() {
                         <h3>Problem-Solving Creativity</h3>
                         <p>Every business has unique challenges. Cookie-cutter solutions fail. Custom problems require creative solutions.</p>
 
+                        <h3>AI Limitations: The Prompting Challenge</h3>
+                        <p>An AI model is a powerful engine, but it has no driver. It cannot decide where to go, what questions to ask, or what problems to solve. As McKinsey leaders have pointed out, the most critical skills in the age of AI are precisely the ones the AI lacks: higher-order thinking, complex problem-solving, and creativity. The quality of an AI's output is a direct reflection of the quality of the prompt it receives.</p>
+                        <p>Crafting a perfect prompt requires a deep understanding of the problem, the ability to articulate nuance, and the creative foresight to ask the right questions. The AI can't do this for you. If you don't know how to ask for a secure, scalable, and maintainable authentication system, the AI won't magically provide one. It will give you a generic, likely flawed, answer based on the simplistic question it was asked. The critical thinking happens before you even talk to the AI.</p>
+
                         <h3>Long-Term Maintenance</h3>
                         <p>Code needs to evolve as businesses grow. AI can't maintain codebases over time, adapt to changing requirements, or refactor aging systems.</p>
 

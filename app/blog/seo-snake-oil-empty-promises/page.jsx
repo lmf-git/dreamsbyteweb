@@ -67,6 +67,10 @@ export default function SEOSnakeOil() {
                         <h3>Bulk Directory Submissions</h3>
                         <p>Submitting your site to hundreds of low-quality directories doesn't help and can actively hurt your rankings. Quality over quantity applies to backlinks more than anything else.</p>
 
+                        <h3>Poor English & Grammar</h3>
+                        <p>This is the ultimate litmus test. Scrutinize the emails and proposals you receive from potential SEO providers. Are they riddled with grammatical errors, spelling mistakes, or awkward phrasing? If an 'expert' can't write a professional sentence, how can you possibly trust them to write compelling, high-quality content for your website?</p>
+                        <p>Content is the bedrock of modern SEO. It's not just about sprinkling in keywords; it's about building authority and trust with your audience. Poorly written articles, blog posts, and page copy make your brand look unprofessional and actively harm your credibility. Search engines are increasingly sophisticated, and their algorithms are designed to penalize low-quality, poorly constructed content. Their own communication is a direct sample of the best work you can expect. If it's subpar, run the other way.</p>
+
                         <h2>What You Should Actually Invest In</h2>
                         <p>Instead of expensive monthly SEO retainers, focus your resources on:</p>
 
