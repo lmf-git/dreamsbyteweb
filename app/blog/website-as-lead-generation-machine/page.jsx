@@ -33,7 +33,7 @@ export default function WebsiteAsLeadGenMachine() {
                     <h1 className={styles.title}>Your Website, Your 24/7 Sales Machine: Engineering for Lead Generation and Conversion Funnels</h1>
                     <div className={styles.meta}>
                         <span className={styles.author}>By DreamsByte Team</span>
-                        <span className={styles.date}>2026-01-11</span>
+                        <span className={styles.date}>2025-12-14</span>
                         <span className={styles.readTime}>9 min read</span>
                     </div>
                 </header>

@@ -33,7 +33,7 @@ export default function DevOpsForSmallBusiness() {
                     <h1 className={styles.title}>DevOps Isn't Just for Startups</h1>
                     <div className={styles.meta}>
                         <span className={styles.author}>By DreamsByte Team</span>
-                        <span className={styles.date}>2026-01-11</span>
+                        <span className={styles.date}>2025-11-16</span>
                         <span className={styles.readTime}>8 min read</span>
                     </div>
                 </header>

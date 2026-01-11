@@ -49,11 +49,11 @@ export default function AIWontBuildYourBusiness() {
                         <p className={styles.paragraph}>AI website builders create the digital equivalent of fast food: technically edible, superficially similar to the real thing, but lacking any substance, quality, or care. They generate:</p>
 
                         <ul className={styles.list}>
-                            <li className={styles.listItem}><strong>Generic Templates:</strong> The same cookie-cutter layouts everyone else has</li>
-                            <li className={styles.listItem}><strong>Bloated Code:</strong> Inefficient, poorly structured code that loads slowly and breaks easily</li>
-                            <li className={styles.listItem}><strong>SEO Mediocrity:</strong> Technically compliant but strategically clueless</li>
-                            <li className={styles.listItem}><strong>Zero Strategic Thinking:</strong> No understanding of your business goals or user needs</li>
-                            <li className={styles.listItem}><strong>Maintenance Nightmares:</strong> Code so convoluted that humans can't maintain it</li>
+                            <li className={styles.listItem}><strong>Generic Templates:</strong> The same cookie-cutter layouts everyone else has. AI-generated websites often lack the human intuition and strategic vision that differentiate a brand.<sup><a href="#footnote-2" id="footnote-ref-2" className={styles.link}>2</a></sup></li>
+                            <li className={styles.listItem}><strong>Bloated Code:</strong> Inefficient, poorly structured code that loads slowly and breaks easily.</li>
+                            <li className={styles.listItem}><strong>SEO Mediocrity:</strong> Technically compliant but strategically clueless. Many AI website builders don't prioritize robust SEO features, leading to poor mobile responsiveness, limited meta tags, and thin content.<sup><a href="#footnote-3" id="footnote-ref-3" className={styles.link}>3</a></sup></li>
+                            <li className={styles.listItem}><strong>Zero Strategic Thinking:</strong> No understanding of your business goals or user needs.</li>
+                            <li className={styles.listItem}><strong>Maintenance Nightmares:</strong> Code so convoluted that humans can't maintain it.</li>
                         </ul>
 
                         <h2 className={styles.heading2}>AI Doesn't Understand Your Business</h2>
@@ -79,9 +79,13 @@ export default function AIWontBuildYourBusiness() {
                         <h3 className={styles.heading3}>Inconsistent Patterns</h3>
                         <p className={styles.paragraph}>AI doesn't understand architectural consistency. It might use five different approaches to solve the same type of problem because it lacks the conceptual understanding to recognize the pattern.</p>
 
-                        <h3 className={styles.heading3}>Security Vulnerabilities</h3>
+                        <h3 className={styles.heading3}>Security Vulnerabilities & Ethical Failures</h3>
                         <p className={styles.paragraph}>AI is trained on public code, including code with security flaws. It happily reproduces vulnerable patterns without understanding why they're dangerous. This literal-mindedness is its greatest weakness. An AI doesn't distinguish between a quick prototype and a production-ready application; it operates without the crucial context that a human developer brings instinctively.</p>
+                        <p className={styles.paragraph}>Beyond technical vulnerabilities, AI systems have demonstrated alarming ethical failures. Examples include Google Photos mislabeling photos of Black people as gorillas, and AI recruiting tools rejecting female candidates based on historical biases in training data.<sup><a href="#footnote-4" id="footnote-ref-4" className={styles.link}>4</a></sup> Chatbots have also made legally binding offers or provided factually incorrect and even offensive responses.<sup><a href="#footnote-5" id="footnote-ref-5" className={styles.link}>5</a></sup></p>
                         <p className={styles.paragraph}>It will not spontaneously decide to conduct a security audit, harden an API endpoint, or sanitize user inputs unless explicitly commanded to do so. An expert knows when an application is ready to move from a development sandbox to the real world, and they know the long checklist of security measures that transition requires. They know <em>how</em> to ask the AI to "check for SQL injection vulnerabilities" or "implement rate-limiting on the login endpoint." Without that expert guidance, the AI will happily build a house with no locks on the doors, simply because no one told it to install them.</p>
+
+                        <h3 className={styles.heading3}>Plagiarism & Lack of Originality</h3>
+                        <p className={styles.paragraph}>AI models are trained on vast datasets of existing content, and their output is a remix of this data. This can lead to significant plagiarism issues. Large language models have been shown to reproduce substantial passages from their training data without proper citation, leading to copyright infringement claims, such as those made against OpenAI by The New York Times.<sup><a href="#footnote-6" id="footnote-ref-6" className={styles.link}>6</a></sup> AI content often lacks true originality and can produce generic copy that fails to distinguish a brand.<sup><a href="#footnote-7" id="footnote-ref-7" className={styles.link}>7</a></sup></p>
 
                         <h3 className={styles.heading3}>No Performance Optimization</h3>
                         <p className={styles.paragraph}>AI doesn't care that your site takes 8 seconds to load. It doesn't understand the business impact of slow performance or the user experience implications of bloated JavaScript.</p>
@@ -198,3 +202,4 @@ export default function AIWontBuildYourBusiness() {
         </article>
     );
 }
+

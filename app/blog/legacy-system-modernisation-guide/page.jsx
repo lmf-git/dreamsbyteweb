@@ -33,7 +33,7 @@ export default function LegacySystemModernisation() {
                     <h1 className={styles.title}>Don't Polish a Turd: A Guide to Legacy System Modernisation</h1>
                     <div className={styles.meta}>
                         <span className={styles.author}>By DreamsByte Team</span>
-                        <span className={styles.date}>2026-01-11</span>
+                        <span className={styles.date}>2025-10-19</span>
                         <span className={styles.readTime}>9 min read</span>
                     </div>
                 </header>

@@ -33,7 +33,7 @@ export default function FromProblemToProfit() {
                     <h1 className={styles.title}>From Problem to Profit: Real-World Transformations Through Custom Software Development</h1>
                     <div className={styles.meta}>
                         <span className={styles.author}>By DreamsByte Team</span>
-                        <span className={styles.date}>2026-01-11</span>
+                        <span className={styles.date}>2025-11-30</span>
                         <span className={styles.readTime}>10 min read</span>
                     </div>
                 </header>

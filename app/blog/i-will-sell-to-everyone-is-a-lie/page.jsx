@@ -33,7 +33,7 @@ export default function TargetAudienceIsEverything() {
                     <h1 className={styles.title}>"I'll Sell to Everyone": The Most Expensive Lie in Business</h1>
                     <div className={styles.meta}>
                         <span className={styles.author}>By DreamsByte Team</span>
-                        <span className={styles.date}>2026-01-11</span>
+                        <span className={styles.date}>2025-09-07</span>
                         <span className={styles.readTime}>8 min read</span>
                     </div>
                 </header>
