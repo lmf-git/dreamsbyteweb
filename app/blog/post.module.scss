@@ -153,6 +153,12 @@
         font-style: italic;
         color: var(--text-muted);
     }
+    
+    .icon {
+        display: inline-block;
+        width: 1.2em;
+        margin-right: 0.5em;
+    }
 }
 
 .contactButton {

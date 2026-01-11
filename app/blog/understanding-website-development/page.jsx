@@ -61,7 +61,7 @@ export default function UnderstandingWebsiteDevelopment() {
                         <p className={styles.paragraph}>We begin by understanding your business, target audience, and objectives. This foundation ensures every decision we make serves your business goals.</p>
 
                         <h3 className={styles.heading3}>Design & User Experience</h3>
-                        <p className={styles.paragraph}>Our design process focuses on creating an intuitive, engaging experience for your visitors while maintaining your brand identity and professional appearance.</p>
+                        <p className={styles.paragraph}>Our design process focuses on creating an intuitive, engaging experience for your visitors while maintaining your brand identity and professional appearance. With 75% of consumers judging a business's credibility by its website design, this is not just an aesthetic choice, but a crucial business investment.<sup><a href="#footnote-2" id="footnote-ref-2" className={styles.link}>2</a></sup></p>
 
                         <h3 className={styles.heading3}>Development & Implementation</h3>
                         <p className={styles.paragraph}>Using modern, secure technologies, we build your website to be fast, reliable, and easy to manage. We ensure your site works perfectly on all devices and browsers.</p>
@@ -69,7 +69,7 @@ export default function UnderstandingWebsiteDevelopment() {
                         <h2 className={styles.heading2}>What Makes DreamsByte Different</h2>
                         <ul className={styles.list}>
                             <li className={styles.listItem}><strong>Complete Ownership:</strong> You own all the code and content</li>
-                            <li className={styles.listItem}><strong>No Hidden Fees:</strong> Transparent pricing with no surprise costs</li>
+                            <li className={styles.listItem}><strong>Cost-Effective Marketing:</strong> Your website is the core of your digital marketing. Content marketing, centered around your site, can generate three times more leads while costing 62% less than traditional advertising.<sup><a href="#footnote-3" id="footnote-ref-3" className={styles.link}>3</a></sup></li>
                             <li className={styles.listItem}><strong>Free Hosting:</strong> We include hosting for the first year</li>
                             <li className={styles.listItem}><strong>Ongoing Support:</strong> We're here to help even after launch</li>
                         </ul>
@@ -95,6 +95,24 @@ export default function UnderstandingWebsiteDevelopment() {
                                         https://userguiding.com/blog/ux-statistics/
                                     </a>
                                     <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
+                                </p>
+                            </li>
+                            <li id="footnote-2" className={styles.listItem}>
+                                <p className={styles.paragraph}>
+                                    "28+ Web Design Statistics You Need to Know in 2024", Rare Form New Media.
+                                    <a href="https://www.rareformnewmedia.com/blog/28-web-design-statistics-you-need-to-know-in-2022/" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.rareformnewmedia.com/blog/28-web-design-statistics-you-need-to-know-in-2022/
+                                    </a>
+                                    <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
+                                </p>
+                            </li>
+                            <li id="footnote-3" className={styles.listItem}>
+                                <p className={styles.paragraph}>
+                                    "Content Marketing vs Traditional Marketing: Which is Better?", Bluetone Media.
+                                    <a href="https://www.bluetonemedia.com/blog/content-marketing-vs-traditional-marketing" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.bluetonemedia.com/blog/content-marketing-vs-traditional-marketing
+                                    </a>
+                                    <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                         </ol>

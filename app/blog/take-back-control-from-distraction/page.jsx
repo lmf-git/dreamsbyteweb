@@ -51,7 +51,7 @@ export default function TakeBackControlFromDistraction() {
                 <div className={styles.content}>
                     <div className={styles.prose}>
                         <h2 className={styles.heading2}>The Age of Distraction</h2>
-                        <p className={styles.paragraph}>In our hyper-connected world, distractions are everywhere. From social media notifications to clickbait articles, our attention is constantly under siege. But what if you could take back control? What if you could shape your digital environment to serve your needs, not the other way around?</p>
+                        <p className={styles.paragraph}>In our hyper-connected world, distractions are everywhere. From social media notifications to clickbait articles, our attention is constantly under siege. It can take an average of over 23 minutes to regain focus after a digital interruption, a significant blow to productivity.<sup><a href="#footnote-2" id="footnote-ref-2" className={styles.link}>2</a></sup> But what if you could take back control? What if you could shape your digital environment to serve your needs, not the other way around?</p>
 
                         <p className={styles.paragraph}>Studies have shown that it can take anywhere from 18 to 254 days to form a new habit, with the average being 66 days.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup> Taking control of your digital environment is a great first step.</p>
 
@@ -122,7 +122,7 @@ export default function TakeBackControlFromDistraction() {
                         <p className={styles.paragraph}>Tired of sponsored segments, intros, and outros interrupting your YouTube viewing? <a href="https://chrome.google.com/webstore/detail/sponsorblock-for-youtube/mnjggfcpnkjswgmpjcebnaarcdgchpge" target="_blank" rel="noopener noreferrer" className={styles.link}>SponsorBlock for Chrome</a> (also available for <a href="https://microsoftedge.microsoft.com/addons/detail/sponsorblock-for-youtube/fjhbipklglgbpeplpcebgojbdjgoijcp" target="_blank" rel="noopener noreferrer" className={styles.link}>Edge</a>, and <a href="https://apps.apple.com/us/app/sponsorblock-for-youtube/id1573024036" target="_blank" rel="noopener noreferrer" className={styles.link}>Safari</a>) is a crowdsourced browser extension that automatically skips these segments, letting you get straight to the content you care about. It relies on a community of users to identify and submit the start and end times of various categories within videos.</p>
 
                         <h3 className={styles.heading3}><AdGuard className={styles.icon} /> AdGuard AdBlocker (Chrome/Edge/Firefox/Safari)</h3>
-                        <p className={styles.paragraph}>Beyond just an ad blocker, <a href="https://chrome.google.com/webstore/detail/adguard-adblocker/bgnkhhnnamicmpekafmjoowakgpkanhd" target="_blank" rel="noopener noreferrer" className={styles.link}>AdGuard AdBlocker for Chrome</a> (and for <a href="https://microsoftedge.microsoft.com/addons/detail/adguard-adblocker/mpcegpcjcohmmdjfojchfphhpgmkpbko" target="_blank" rel="noopener noreferrer" className={styles.link}>Edge</a>, and <a href="https://apps.apple.com/us/app/adguard-for-safari/id1047223162" target="_blank" rel="noopener noreferrer" className={styles.link}>Safari</a>) is a powerful tool to remove annoying ads, pop-ups, and banners, but also to protect your privacy by blocking trackers and spyware. A cleaner browsing experience directly translates to fewer distractions and improved focus.</p>
+                        <p className={styles.paragraph}>Beyond just an ad blocker, <a href="https://chrome.google.com/webstore/detail/adguard-adblocker/bgnkhhnnamicmpekafmjoowakgpkanhd" target="_blank" rel="noopener noreferrer" className={styles.link}>AdGuard AdBlocker for Chrome</a> (and for <a href="https://microsoftedge.microsoft.com/addons/detail/adguard-adblocker/mpcegpcjcohmmdjfojchfphhpgmkpbko" target="_blank" rel="noopener noreferrer" className={styles.link}>Edge</a>, and <a href="https://apps.apple.com/us/app/adguard-for-safari/id1047223162" target="_blank" rel="noopener noreferrer" className={styles.link}>Safari</a>) is a powerful tool to remove annoying ads, pop-ups, and banners, but also to protect your privacy by blocking trackers and spyware. With nearly a billion people using ad blockers worldwide, these tools are a mainstream solution for a less cluttered, more focused online experience.<sup><a href="#footnote-3" id="footnote-ref-3" className={styles.link}>3</a></sup></p>
 
                         <h2 className={styles.heading2}>The Possibilities are Endless</h2>
                         <p className={styles.paragraph}>Whether you use a simple user script or edit your hosts file, the goal is the same: to create a digital environment that serves your goals, not the goals of tech companies vying for your attention. The possibilities are endless, and the power is in your hands.</p>
@@ -141,6 +141,24 @@ export default function TakeBackControlFromDistraction() {
                                     https://discovery.ucl.ac.uk/id/eprint/135709/
                                     </a>
                                     <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
+                                </p>
+                            </li>
+                            <li id="footnote-2" className={styles.listItem}>
+                                <p className={styles.paragraph}>
+                                    "Workplace Distraction Statistics 2024", TeamStage.
+                                    <a href="https://teamstage.io/workplace-distraction-statistics/" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://teamstage.io/workplace-distraction-statistics/
+                                    </a>
+                                    <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
+                                </p>
+                            </li>
+                            <li id="footnote-3" className={styles.listItem}>
+                                <p className={styles.paragraph}>
+                                    "Ad Blocking Usage & Demographics", Exploding Topics, Feb 26, 2024.
+                                    <a href="https://explodingtopics.com/blog/ad-blocking" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://explodingtopics.com/blog/ad-blocking
+                                    </a>
+                                    <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                         </ol>
