@@ -113,6 +113,29 @@ export default function AIWontBuildYourBusiness() {
                         <p>An AI model is a powerful engine, but it has no driver. It cannot decide where to go, what questions to ask, or what problems to solve. As McKinsey leaders have pointed out, the most critical skills in the age of AI are precisely the ones the AI lacks: higher-order thinking, complex problem-solving, and creativity. The quality of an AI's output is a direct reflection of the quality of the prompt it receives.</p>
                         <p>Crafting a perfect prompt requires a deep understanding of the problem, the ability to articulate nuance, and the creative foresight to ask the right questions. The AI can't do this for you. If you don't know how to ask for a secure, scalable, and maintainable authentication system, the AI won't magically provide one. It will give you a generic, likely flawed, answer based on the simplistic question it was asked. The critical thinking happens before you even talk to the AI.</p>
 
+                        <h3>You Don't Know What You Don't Know: The Language Barrier</h3>
+                        <p>
+                            Beyond crafting the initial prompt, the real challenge emerges when things go wrong. Software is complex, and bugs are inevitable. A trained developer possesses the experience and vocabulary to diagnose issues and guide an AI toward a solution. A non-technical person does not. They can see a problem, but they lack the language to describe it effectively, especially within the expensive and limited token constraints of modern AI models.
+                        </p>
+                        <p>
+                            Pasting endless, cryptic error messages into an AI chat window is the equivalent of shouting symptoms at a doctor in a language they barely understand. It’s inefficient, costly, and rarely leads to a correct diagnosis. The AI gets choked on irrelevant information, and your token budget evaporates.
+                        </p>
+                        <p>
+                            Consider these common-but-complex bugs that a non-developer would struggle to articulate:
+                        </p>
+                        <ul>
+                            <li>
+                                <strong>JavaScript/Node.js Example:</strong> Your application seems to crash randomly, and the log shows a <code>TypeError: Cannot read properties of null</code>. A developer's intuition points toward a potential race condition in asynchronous code—perhaps a database connection wasn't ready before a query was executed. They would ask the AI to "review the async/await logic in the user authentication flow for potential race conditions." A non-developer would just paste the error, leaving the AI to guess at the vast context of the entire application.
+                            </li>
+                            <li>
+                                <strong>PostgreSQL Example:</strong> A user tries to sign up, and the application returns a generic "Internal Server Error." The logs contain a cryptic <code>violates not-null constraint "users_email_non_null"</code>. A developer immediately knows this is a data integrity issue: a user record is being saved without an email. They could ask the AI to "check the user creation service to ensure the email field is properly validated and passed to the database query." The user would just say, "Sign up is broken," a prompt so vague it's useless.
+                            </li>
+                        </ul>
+                        <p>
+                            In each case, the developer's experience provides the crucial context. They know <em>what</em> to ask and <em>where</em> to point the AI. Without this expertise, you are simply throwing undigested errors at a system that lacks the intuition to navigate the complexity, burning through tokens with each failed attempt.
+                        </p>
+
+
                         <h3>Long-Term Maintenance</h3>
                         <p>Code needs to evolve as businesses grow. AI can't maintain codebases over time, adapt to changing requirements, or refactor aging systems.</p>
 
