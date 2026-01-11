@@ -40,48 +40,64 @@ export default function UnderstandingWebsiteDevelopment() {
 
                 <div className={styles.content}>
                     <div className={styles.prose}>
-                        <h2>Introduction</h2>
-                        <p>Building a professional website is more than just putting together some pages and images. At DreamsByte, we follow a comprehensive process to ensure your website not only looks great but also drives results for your business.</p>
+                        <h2 className={styles.heading2}>Introduction</h2>
+                        <p className={styles.paragraph}>Building a professional website is more than just putting together some pages and images. The user's experience on your site has a direct and measurable impact on your business's success. In fact, studies show that 88% of online consumers are less likely to return to a site after a bad experience.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup></p>
+                        <p className={styles.paragraph}>At DreamsByte, we follow a comprehensive development process to ensure your website not only looks great and avoids user frustration, but also actively drives results for your business.</p>
 
-                        <h2>What Goes Into Website Development</h2>
-                        <ul>
-                            <li>Business analysis and goal setting</li>
-                            <li>User experience (UX) design and planning</li>
-                            <li>Visual design and branding integration</li>
-                            <li>Technical development and programming</li>
-                            <li>Content management system setup</li>
-                            <li>Testing, optimization, and launch</li>
+                        <h2 className={styles.heading2}>What Goes Into Website Development</h2>
+                        <ul className={styles.list}>
+                            <li className={styles.listItem}>Business analysis and goal setting</li>
+                            <li className={styles.listItem}>User experience (UX) design and planning</li>
+                            <li className={styles.listItem}>Visual design and branding integration</li>
+                            <li className={styles.listItem}>Technical development and programming</li>
+                            <li className={styles.listItem}>Content management system setup</li>
+                            <li className={styles.listItem}>Testing, optimization, and launch</li>
                         </ul>
 
-                        <h2>Our Development Process</h2>
-                        <p>We start every project with a thorough understanding of your business goals. This helps us create a website that not only represents your brand but also converts visitors into customers.</p>
+                        <h2 className={styles.heading2}>Our Development Process</h2>
+                        <p className={styles.paragraph}>We start every project with a thorough understanding of your business goals. This helps us create a website that not only represents your brand but also converts visitors into customers.</p>
 
-                        <h3>Discovery & Planning</h3>
-                        <p>We begin by understanding your business, target audience, and objectives. This foundation ensures every decision we make serves your business goals.</p>
+                        <h3 className={styles.heading3}>Discovery & Planning</h3>
+                        <p className={styles.paragraph}>We begin by understanding your business, target audience, and objectives. This foundation ensures every decision we make serves your business goals.</p>
 
-                        <h3>Design & User Experience</h3>
-                        <p>Our design process focuses on creating an intuitive, engaging experience for your visitors while maintaining your brand identity and professional appearance.</p>
+                        <h3 className={styles.heading3}>Design & User Experience</h3>
+                        <p className={styles.paragraph}>Our design process focuses on creating an intuitive, engaging experience for your visitors while maintaining your brand identity and professional appearance.</p>
 
-                        <h3>Development & Implementation</h3>
-                        <p>Using modern, secure technologies, we build your website to be fast, reliable, and easy to manage. We ensure your site works perfectly on all devices and browsers.</p>
+                        <h3 className={styles.heading3}>Development & Implementation</h3>
+                        <p className={styles.paragraph}>Using modern, secure technologies, we build your website to be fast, reliable, and easy to manage. We ensure your site works perfectly on all devices and browsers.</p>
 
-                        <h2>What Makes DreamsByte Different</h2>
-                        <ul>
-                            <li><strong>Complete Ownership:</strong> You own all the code and content</li>
-                            <li><strong>No Hidden Fees:</strong> Transparent pricing with no surprise costs</li>
-                            <li><strong>Free Hosting:</strong> We include hosting for the first year</li>
-                            <li><strong>Ongoing Support:</strong> We're here to help even after launch</li>
+                        <h2 className={styles.heading2}>What Makes DreamsByte Different</h2>
+                        <ul className={styles.list}>
+                            <li className={styles.listItem}><strong>Complete Ownership:</strong> You own all the code and content</li>
+                            <li className={styles.listItem}><strong>No Hidden Fees:</strong> Transparent pricing with no surprise costs</li>
+                            <li className={styles.listItem}><strong>Free Hosting:</strong> We include hosting for the first year</li>
+                            <li className={styles.listItem}><strong>Ongoing Support:</strong> We're here to help even after launch</li>
                         </ul>
 
-                        <h2>Ready to Get Started?</h2>
-                        <p>Every business deserves a professional online presence. Whether you're starting from scratch or need to modernize an existing site, we're here to help you succeed online.</p>
+                        <h2 className={styles.heading2}>Ready to Get Started?</h2>
+                        <p className={styles.paragraph}>Every business deserves a professional online presence. Whether you're starting from scratch or need to modernize an existing site, we're here to help you succeed online.</p>
 
-                        <p>Ready to discuss your project? <button
+                        <p className={styles.paragraph}>Ready to discuss your project? <button
                             onClick={() => openContact()}
                             className={styles.contactButton}
                         >
                             Contact us today
                         </button> for a free consultation and see how we can help grow your business online.</p>
+                    </div>
+
+                    <div className={styles.footnotes}>
+                        <h2 className={styles.heading2}>Sources</h2>
+                        <ol className={styles.orderedList}>
+                            <li id="footnote-1" className={styles.listItem}>
+                                <p className={styles.paragraph}>
+                                    "27 UX Statistics You Should Not Ignore in 2024", UserGuiding Blog.
+                                    <a href="https://userguiding.com/blog/ux-statistics/" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://userguiding.com/blog/ux-statistics/
+                                    </a>
+                                    <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
+                                </p>
+                            </li>
+                        </ol>
                     </div>
                 </div>
 

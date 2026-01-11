@@ -40,63 +40,96 @@ export default function SEOSnakeOil() {
 
                 <div className={styles.content}>
                     <div className={styles.prose}>
-                        <h2>The SEO Industry's Dirty Secret</h2>
-                        <p>Every week, businesses receive cold emails promising "first page Google rankings" or "guaranteed SEO results." The reality? Most of these services are selling expensive smoke and mirrors while the fundamentals of good SEO remain surprisingly simple.</p>
+                        <h2 className={styles.heading2}>The SEO Industry's Dirty Secret</h2>
+                        <p className={styles.paragraph}>Every week, businesses receive cold emails promising "first page Google rankings" or "guaranteed SEO results." The reality? Most of these services are selling expensive smoke and mirrors while the fundamentals of good SEO remain surprisingly simple.</p>
 
-                        <h2>What Actually Matters for SEO</h2>
-                        <p>Search engines have one goal: deliver relevant, high-quality content to users. Despite what expensive SEO agencies want you to believe, ranking well comes down to three core principles:</p>
+                        <h2 className={styles.heading2}>What Actually Matters for SEO</h2>
+                        <p className={styles.paragraph}>Search engines have one goal: deliver relevant, high-quality content to users. Despite what expensive SEO agencies want you to believe, ranking well comes down to three core principles:</p>
 
-                        <ul>
-                            <li><strong>Quality Content:</strong> Write genuinely useful content that answers real questions your audience is asking</li>
-                            <li><strong>Technical Fundamentals:</strong> Fast loading times, mobile responsiveness, and proper HTML structure</li>
-                            <li><strong>Genuine Authority:</strong> Build real relationships and earn natural backlinks through quality work</li>
+                        <ul className={styles.list}>
+                            <li className={styles.listItem}><strong>Quality Content:</strong> Write genuinely useful content that answers real questions your audience is asking</li>
+                            <li className={styles.listItem}><strong>Technical Fundamentals:</strong> Fast loading times, mobile responsiveness, and proper HTML structure</li>
+                            <li className={styles.listItem}><strong>Genuine Authority:</strong> Build real relationships and earn natural backlinks through quality work</li>
                         </ul>
 
-                        <h2>The Red Flags of SEO Snake Oil</h2>
-                        <p>Here's how to spot services that are wasting your money:</p>
+                        <h2 className={styles.heading2}>The Red Flags of SEO Snake Oil</h2>
+                        <p className={styles.paragraph}>Here's how to spot services that are wasting your money:</p>
 
-                        <h3>Guaranteed Rankings</h3>
-                        <p>No one can guarantee specific rankings. Search algorithms change constantly, and Google explicitly states that guaranteed rankings are impossible. Anyone promising otherwise is either lying or using black-hat techniques that will eventually get your site penalized.</p>
+                        <h3 className={styles.heading3}>Guaranteed Rankings</h3>
+                        <p className={styles.paragraph}>No one can guarantee specific rankings. Search algorithms change constantly, and Google explicitly states that guaranteed rankings are impossible.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup> Anyone promising otherwise is either lying or using black-hat techniques that will eventually get your site penalized.</p>
 
-                        <h3>Mysterious "Secret Techniques"</h3>
-                        <p>Good SEO isn't mysterious. It's documented, well-understood, and freely available information. If an agency won't explain their methods in plain English, they're probably doing nothing of value or worse, using tactics that could harm your site.</p>
+                        <h3 className={styles.heading3}>Mysterious "Secret Techniques"</h3>
+                        <p className={styles.paragraph}>Good SEO isn't mysterious. It's documented, well-understood, and freely available information. If an agency won't explain their methods in plain English, they're probably doing nothing of value or worse, using tactics that could harm your site.</p>
 
-                        <h3>Obsession with Keyword Density</h3>
-                        <p>Keyword stuffing died a decade ago. Modern search engines understand context and semantic meaning. Writing naturally for humans always beats writing awkwardly for search engines.</p>
+                        <h3 className={styles.heading3}>Obsession with Keyword Density</h3>
+                        <p className={styles.paragraph}>Keyword stuffing died a decade ago. Modern search engines, since updates like Google's Hummingbird, understand context and semantic meaning.<sup><a href="#footnote-2" id="footnote-ref-2" className={styles.link}>2</a></sup> Writing naturally for humans always beats writing awkwardly for search engines.</p>
 
-                        <h3>Bulk Directory Submissions</h3>
-                        <p>Submitting your site to hundreds of low-quality directories doesn't help and can actively hurt your rankings. Quality over quantity applies to backlinks more than anything else.</p>
+                        <h3 className={styles.heading3}>Bulk Directory Submissions</h3>
+                        <p className={styles.paragraph}>Submitting your site to hundreds of low-quality directories doesn't help and can actively hurt your rankings. Quality over quantity applies to backlinks more than anything else.</p>
 
-                        <h3>Poor English & Grammar</h3>
-                        <p>This is the ultimate litmus test. Scrutinize the emails and proposals you receive from potential SEO providers. Are they riddled with grammatical errors, spelling mistakes, or awkward phrasing? If an 'expert' can't write a professional sentence, how can you possibly trust them to write compelling, high-quality content for your website?</p>
-                        <p>Content is the bedrock of modern SEO. It's not just about sprinkling in keywords; it's about building authority and trust with your audience. Poorly written articles, blog posts, and page copy make your brand look unprofessional and actively harm your credibility. Search engines are increasingly sophisticated, and their algorithms are designed to penalize low-quality, poorly constructed content. Their own communication is a direct sample of the best work you can expect. If it's subpar, run the other way.</p>
+                        <h3 className={styles.heading3}>Poor English & Grammar</h3>
+                        <p className={styles.paragraph}>This is the ultimate litmus test. Scrutinize the emails and proposals you receive from potential SEO providers. Are they riddled with grammatical errors, spelling mistakes, or awkward phrasing? If an 'expert' can't write a professional sentence, how can you possibly trust them to write compelling, high-quality content for your website?</p>
+                        <p className={styles.paragraph}>Content is the bedrock of modern SEO. It's not just about sprinkling in keywords; it's about building authority and trust with your audience. Poorly written articles, blog posts, and page copy make your brand look unprofessional and actively harm your credibility. Search engines are increasingly sophisticated, and their algorithms are designed to penalize low-quality, poorly constructed content. Their own communication is a direct sample of the best work you can expect. If it's subpar, run the other way.</p>
 
-                        <h2>What You Should Actually Invest In</h2>
-                        <p>Instead of expensive monthly SEO retainers, focus your resources on:</p>
+                        <h2 className={styles.heading2}>What You Should Actually Invest In</h2>
+                        <p className={styles.paragraph}>Instead of expensive monthly SEO retainers, focus your resources on:</p>
 
-                        <ul>
-                            <li><strong>A Fast, Well-Built Website:</strong> Performance is a ranking factor, and it directly impacts user experience</li>
-                            <li><strong>Creating Valuable Content:</strong> Blog posts, guides, and resources that genuinely help your audience</li>
-                            <li><strong>Building Genuine Relationships:</strong> Network with real people and businesses in your industry</li>
-                            <li><strong>Understanding Your Analytics:</strong> Learn what your audience actually searches for and creates content around that</li>
+                        <ul className={styles.list}>
+                            <li className={styles.listItem}><strong>A Fast, Well-Built Website:</strong> Performance, measured by metrics like Core Web Vitals, is a ranking factor, and it directly impacts user experience.<sup><a href="#footnote-3" id="footnote-ref-3" className={styles.link}>3</a></sup></li>
+                            <li className={styles.listItem}><strong>Creating Valuable Content:</strong> Blog posts, guides, and resources that genuinely help your audience</li>
+                            <li className={styles.listItem}><strong>Building Genuine Relationships:</strong> Network with real people and businesses in your industry</li>
+                            <li className={styles.listItem}><strong>Understanding Your Analytics:</strong> Learn what your audience actually searches for and creates content around that</li>
                         </ul>
 
-                        <h2>The DreamsByte Approach</h2>
-                        <p>We build SEO-friendly websites from the ground up with proper technical foundations: clean semantic HTML, fast loading times, mobile responsiveness, and proper meta tags. But we don't sell ongoing SEO services because the best SEO strategy is simply creating a great website and filling it with quality content.</p>
+                        <h2 className={styles.heading2}>The DreamsByte Approach</h2>
+                        <p className={styles.paragraph}>We build SEO-friendly websites from the ground up with proper technical foundations: clean semantic HTML, fast loading times, mobile responsiveness, and proper meta tags. But we don't sell ongoing SEO services because the best SEO strategy is simply creating a great website and filling it with quality content.</p>
 
-                        <p>We'll teach you the basics, set up your site correctly from day one, and give you the tools to succeed. No mysterious monthly reports, no proprietary dashboards, no vendor lock-in.</p>
+                        <p className={styles.paragraph}>We'll teach you the basics, set up your site correctly from day one, and give you the tools to succeed. No mysterious monthly reports, no proprietary dashboards, no vendor lock-in.</p>
 
-                        <h2>The Bottom Line</h2>
-                        <p>Good SEO is important, but it's not magic, and it shouldn't be expensive. Anyone trying to sell you complicated, ongoing SEO services is probably overcomplicating something simple to justify their fees.</p>
+                        <h2 className={styles.heading2}>The Bottom Line</h2>
+                        <p className={styles.paragraph}>Good SEO is important, but it's not magic, and it shouldn't be expensive. Anyone trying to sell you complicated, ongoing SEO services is probably overcomplicating something simple to justify their fees.</p>
 
-                        <p>Build a fast, well-structured website. Create genuinely useful content. Focus on your actual business. That's the SEO strategy that works.</p>
+                        <p className={styles.paragraph}>Build a fast, well-structured website. Create genuinely useful content. Focus on your actual business. That's the SEO strategy that works.</p>
 
-                        <p>Want a website built right from day one? <button
+                        <p className={styles.paragraph}>Want a website built right from day one? <button
                             onClick={() => openContact('I want a properly built website')}
                             className={styles.contactButton}
                         >
                             Let's talk
                         </button> about creating a solid foundation for your online presence.</p>
+                    </div>
+
+                    <div className={styles.footnotes}>
+                        <h2 className={styles.heading2}>Sources</h2>
+                        <ol className={styles.orderedList}>
+                            <li id="footnote-1" className={styles.listItem}>
+                                <p className={styles.paragraph}>
+                                    "No one can guarantee a #1 ranking on Google. Beware of SEOs that claim to guarantee rankings...", Google Search Central.
+                                    <a href="https://developers.google.com/search/docs/fundamentals/do-i-need-seo#no-one-can-guarantee-a-1-ranking-on-google" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://developers.google.com/search/docs/fundamentals/do-i-need-seo#no-one-can-guarantee-a-1-ranking-on-google
+                                    </a>
+                                    <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
+                                </p>
+                            </li>
+                            <li id="footnote-2" className={styles.listItem}>
+                                <p className={styles.paragraph}>
+                                    Matt Southern, "Google Hummingbird: How The 2013 Algorithm Change Still Affects SEO", Search Engine Journal, October 2, 2023.
+                                    <a href="https://www.searchenginejournal.com/google-hummingbird-seo/206437/" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.searchenginejournal.com/google-hummingbird-seo/206437/
+                                    </a>
+                                    <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
+                                </p>
+                            </li>
+                            <li id="footnote-3" className={styles.listItem}>
+                                <p className={styles.paragraph}>
+                                    "Understanding Core Web Vitals and Google search results", Google Search Central.
+                                    <a href="https://developers.google.com/search/docs/appearance/page-experience" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://developers.google.com/search/docs/appearance/page-experience
+                                    </a>
+                                    <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
+                                </p>
+                            </li>
+                        </ol>
                     </div>
                 </div>
 

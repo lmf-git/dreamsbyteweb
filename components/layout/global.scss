@@ -60,6 +60,10 @@
     --logo-fill: #ffffff;
     --footer-logo: #b3b3b3;
     --footer-text: #c5c5c5;
+    --link-color: #8ab4f8;
+    --link-underline: rgba(138, 180, 248, 0.5);
+    --link-hover-color: #a7c5ff;
+    --link-hover-underline: rgba(167, 197, 255, 0.8);
 }
 
 .light-theme {
@@ -120,6 +124,10 @@
     --logo-fill: #1a1a1a;
     --footer-logo: #333333;
     --footer-text: #444444;
+    --link-color: #1a0dab;
+    --link-underline: rgba(26, 13, 171, 0.5);
+    --link-hover-color: #2b1fff;
+    --link-hover-underline: rgba(43, 31, 255, 0.8);
 }
 
 html, body, #__next, #__next > div {
