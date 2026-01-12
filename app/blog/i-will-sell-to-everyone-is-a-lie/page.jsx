@@ -81,7 +81,7 @@ export default function TargetAudienceIsEverything() {
                         </ul>
 
                         <h2 className={styles.heading2}>Your Website is Your #1 Salesperson—If It Knows Who It's Talking To</h2>
-                        <p className={styles.paragraph}>Once you know your audience, it transforms your website from a passive brochure into an active salesperson. Every element should be crafted for them:</p>
+                        <p className={styles.paragraph}>Once you know your audience, it <Link href="/blog/website-as-lead-generation-machine" className={styles.link}>transforms your website from a passive brochure into an active salesperson</Link>. Every element should be crafted for them:</p>
                         <ul className={styles.list}>
                             <li className={styles.listItem}>The **visual design** should match their aesthetic.</li>
                             <li className={styles.listItem}>The **language** should mirror how they speak.</li>

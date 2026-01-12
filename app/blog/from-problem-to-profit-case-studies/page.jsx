@@ -44,7 +44,7 @@ export default function FromProblemToProfit() {
                         <p className={styles.paragraph}>Every business faces unique challenges. Often, these challenges are rooted in inefficient processes, outdated technology, or a lack of tailored tools. While off-the-shelf software promises a quick fix, it rarely addresses the nuanced complexities that make your business unique. This is where custom software development shines—it transforms problems into quantifiable profits.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup></p>
                         <p className={styles.paragraph}>At DreamsByte, we don't just build software; we engineer solutions that streamline operations, unlock new revenue streams, and provide a distinct competitive advantage.<sup><a href="#footnote-2" id="footnote-ref-2" className={styles.link}>2</a></sup> Our portfolio is filled with examples of businesses that have moved beyond generic tools to embrace systems designed precisely for their success.</p>
 
-                        <h2 className={styles.heading2}>Case Study 1: The Logistics Company & the Legacy System Headache</h2>
+                        <h2 className={styles.heading2}>Case Study 1: The Logistics Company & <Link href="/blog/legacy-system-modernisation-guide" className={styles.link}>the Legacy System Headache</Link></h2>
                         <h3 className={styles.heading3}>The Problem: Manual Processes and Costly Errors</h3>
                         <p className={styles.paragraph}>A growing logistics company relied on a combination of spreadsheets, manual data entry, and an ancient, difficult-to-maintain internal system to manage its complex network of deliveries, routes, and inventory. This led to:</p>
                         <ul className={styles.list}>
@@ -72,7 +72,7 @@ export default function FromProblemToProfit() {
                             <li className={styles.listItem}>The company was able to **expand into two new regions** without increasing administrative staff, demonstrating significant scalability.</li>
                         </ul>
 
-                        <h2 className={styles.heading2}>Case Study 2: The E-commerce Retailer & the Shopify Ceiling</h2>
+                        <h2 className={styles.heading2}>Case Study 2: The E-commerce Retailer & <Link href="/blog/beyond-shopify-custom-ecommerce" className={styles.link}>the Shopify Ceiling</Link></h2>
                         <h3 className={styles.heading3}>The Problem: Generic Experience and Spiraling Costs</h3>
                         <p className={styles.paragraph}>A successful niche e-commerce retailer, initially thriving on Shopify, began to encounter severe limitations as they scaled. Their unique product customization options required a complex web of third-party apps, leading to:</p>
                         <ul className={styles.list}>

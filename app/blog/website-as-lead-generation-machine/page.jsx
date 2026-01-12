@@ -41,13 +41,13 @@ export default function WebsiteAsLeadGenMachine() {
                 <div className={styles.content}>
                     <div className={styles.prose}>
                         <h2 className={styles.heading2}>Beyond the Digital Brochure</h2>
-                        <p className={styles.paragraph}>For many businesses, their website is simply an online brochure—a static collection of pages that exist primarily to provide information. While information is crucial, a truly effective website should be far more: it should be your hardest-working salesperson, operating 24 hours a day, 7 days a week, actively generating leads and guiding potential customers through a conversion funnel.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup></p>
+                        <p className={styles.paragraph}>For many businesses, their website is simply an online brochure—a static collection of pages that exist primarily to provide information. While information is crucial, a truly effective website should be far more: it should be your hardest-working salesperson, operating 24 hours a day, 7 days a week, actively generating leads and <Link href="/blog/i-will-sell-to-everyone-is-a-lie" className={styles.link}>guiding potential customers</Link> through a conversion funnel.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup></p>
                         <p className={styles.paragraph}>At DreamsByte, we engineer websites to be dynamic lead generation machines. We don't just build pretty pages; we build strategic digital assets designed to capture interest, nurture prospects, and drive measurable business growth.</p>
 
                         <h2 className={styles.heading2}>What is a Conversion Funnel?</h2>
                         <p className={styles.paragraph}>A conversion funnel illustrates the journey a potential customer takes from initial awareness to becoming a paying client. It typically involves several stages:<sup><a href="#footnote-2" id="footnote-ref-2" className={styles.link}>2</a></sup></p>
                         <ul className={styles.list}>
-                            <li className={styles.listItem}><strong>Awareness:</strong> The prospect discovers your business (e.g., through search, social media, ads).</li>
+                            <li className={styles.listItem}><strong>Awareness:</strong> The prospect discovers your business (e.g., through <Link href="/blog/seo-snake-oil-empty-promises" className={styles.link}>search</Link>, social media, ads).</li>
                             <li className={styles.listItem}><strong>Interest:</strong> They explore your website, learning more about your offerings.</li>
                             <li className={styles.listItem}><strong>Consideration:</strong> They evaluate your solution against alternatives, often seeking more detailed information.</li>
                             <li className={styles.listItem}><strong>Intent:</strong> They show clear signs of wanting to engage (e.g., download a guide, start a free trial).</li>
@@ -62,7 +62,7 @@ export default function WebsiteAsLeadGenMachine() {
                             <li className={styles.listItem}><strong>Clear Value Proposition:</strong> What problem do you solve?</li>
                             <li className={styles.listItem}><strong>Compelling Headline:</strong> Grab attention instantly.</li>
                             <li className={styles.listItem}><strong>Strong Call-to-Action (CTA):</strong> Tell users exactly what to do next.</li>
-                            <li className={styles.listItem}><strong>Social Proof:</strong> Testimonials, client logos, case studies build trust.</li>
+                            <li className={styles.listItem}><Link href="/blog/from-problem-to-profit-case-studies" className={styles.link}><strong>Social Proof:</strong> Testimonials, client logos, case studies build trust.</Link></li>
                         </ul>
 
                         <h3 className={styles.heading3}>2. Content that Converts: Solving Problems and Building Authority</h3>

@@ -52,13 +52,13 @@ export default function CustomCRMFSM() {
                         <p className={styles.paragraph}>You pay for hundreds of features you'll never use, yet still find yourself missing that one critical function that's unique to your operation. These gaps often lead to manual data entry, external spreadsheets, or reliance on yet another third-party tool, fragmenting your data and creating new inefficiencies.</p>
 
                         <h3 className={styles.heading3}>3. Spiraling Subscription and Customization Fees</h3>
-                        <p className={styles.paragraph}>The monthly per-user fees add up quickly. Then come the "integration fees," the "premium feature" add-ons, and the consulting costs to customize the platform to even vaguely resemble your needs. What starts as an "affordable" solution can become a substantial, ongoing drain on your resources.<sup><a href="#footnote-2" id="footnote-ref-2" className={styles.link}>2</a></sup></p>
+                        <p className={styles.paragraph}>The monthly per-user fees add up quickly. Then come the "integration fees," the "premium feature" add-ons, and the consulting costs to customize the platform to even vaguely resemble your needs. What starts as an "affordable" solution can become a <Link href="/blog/vendor-lock-in-subscription-costs" className={styles.link}>substantial, ongoing drain on your resources</Link>.<sup><a href="#footnote-2" id="footnote-ref-2" className={styles.link}>2</a></sup></p>
 
                         <h3 className={styles.heading3}>4. Data Silos and Integration Headaches</h3>
                         <p className={styles.paragraph}>Your CRM often doesn't "talk" seamlessly with your ERP, accounting software, or even your website. This creates data silos, leading to inconsistencies, redundant data entry, and a lack of a unified view of your customer or operations.</p>
 
                         <h2 className={styles.heading2}>The Power of Precision: Custom CRM & Business Management Systems</h2>
-                        <p className={styles.paragraph}>Imagine a system built specifically for *your* business—reflecting your exact workflows, integrating with your existing tools, and providing precisely the data you need, when you need it. That's the power of a custom CRM or FSM system.<sup><a href="#footnote-3" id="footnote-ref-3" className={styles.link}>3</a></sup></p>
+                        <p className={styles.paragraph}>Imagine a system built specifically for *your* business—reflecting your exact workflows, integrating with your existing tools, and providing precisely the data you need, when you need it. That's the power of a <Link href="/blog/legacy-system-modernisation-guide" className={styles.link}>custom CRM or FSM system</Link>.<sup><a href="#footnote-3" id="footnote-ref-3" className={styles.link}>3</a></sup></p>
                         <p className={styles.paragraph}>At DreamsByte, we build these systems from the ground up, transforming your operations from a tangled mess into a streamlined, efficient, and intelligent ecosystem.</p>
 
                         <h3 className={styles.heading3}>What Custom Systems Unlock:</h3>
@@ -71,7 +71,7 @@ export default function CustomCRMFSM() {
                         </ul>
 
                         <h2 className={styles.heading2}>Real-World Impact: The "Electric Doctors" Case</h2>
-                        <p className={styles.paragraph}>One of our clients, an electrical contractor (like our "Electric Doctors" project), was struggling with a fragmented system of spreadsheets, emails, and paper forms to manage their customer appointments, job tracking, and invoicing. Customer communication was inconsistent, and billing was prone to delays and errors.</p>
+                        <p className={styles.paragraph}>One of our clients, an electrical contractor <Link href="/blog/from-problem-to-profit-case-studies" className={styles.link}>(like our "Electric Doctors" project)</Link>, was struggling with a fragmented system of spreadsheets, emails, and paper forms to manage their customer appointments, job tracking, and invoicing. Customer communication was inconsistent, and billing was prone to delays and errors.</p>
                         <p className={styles.paragraph}>We built them a custom Field Service Management (FSM) system.<sup><a href="#footnote-4" id="footnote-ref-4" className={styles.link}>4</a></sup> It included a client portal for booking and tracking jobs, automated technician dispatch and routing, on-site mobile reporting, and integrated invoicing directly to their accounting software. The result was a dramatic improvement in efficiency, a reduction in administrative overhead, and a significant boost in customer satisfaction due to transparent communication and faster service.</p>
 
                         <h2 className={styles.heading2}>Invest in Software That Works For You</h2>

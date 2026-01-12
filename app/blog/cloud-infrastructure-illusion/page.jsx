@@ -77,7 +77,7 @@ export default function CloudInfrastructureIllusion() {
                         <p className={styles.paragraph}>Cloud-native architecture requires constant optimization to avoid bill shock. You employ engineers specifically to manage cloud costs. You architect around pricing quirks rather than technical merit.</p>
 
                         <h3 className={styles.heading3}>Vendor Lock-In</h3>
-                        <p className={styles.paragraph}>Once you're deep into AWS-specific services—Lambda, DynamoDB, Kinesis—migrating away becomes prohibitively expensive. They know this. Prices creep up over time because switching costs are enormous.</p>
+                        <p className={styles.paragraph}>Once you're deep into AWS-specific services—Lambda, DynamoDB, Kinesis—<Link href="/blog/vendor-lock-in-subscription-costs" className={styles.link}>migrating away becomes prohibitively expensive</Link>. They know this. Prices creep up over time because switching costs are enormous.</p>
 
                         <h2 className={styles.heading2}>The Alternative: Own Your Infrastructure</h2>
                         <p className={styles.paragraph}>For enterprise businesses, owned infrastructure in each served region provides:</p>
@@ -98,7 +98,7 @@ export default function CloudInfrastructureIllusion() {
                         <p className={styles.paragraph}>AWS outage? Your infrastructure keeps running. AWS price increases? Irrelevant. AWS deprecates a service you depend on? Not your problem.</p>
 
                         <h2 className={styles.heading2}>But What About Management Complexity?</h2>
-                        <p className={styles.paragraph}>Cloud providers sell the myth that managing your own infrastructure is impossibly complex. It's not—it's just different from their abstracted services.</p>
+                        <p className={styles.paragraph}>Cloud providers sell the myth that <Link href="/blog/devops-for-small-business" className={styles.link}>managing your own infrastructure is impossibly complex</Link>. It's not—it's just different from their abstracted services.</p>
 
                         <p className={styles.paragraph}>Modern tools make infrastructure management straightforward:</p>
                         <ul className={styles.list}>

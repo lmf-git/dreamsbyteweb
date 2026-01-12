@@ -61,7 +61,7 @@ export default function AIWontBuildYourBusiness() {
 
                         <p className={styles.paragraph}>A human developer starts with questions:</p>
                         <ul className={styles.list}>
-                            <li className={styles.listItem}>Who is your target customer?</li>
+                            <li className={styles.listItem}><Link href="/blog/i-will-sell-to-everyone-is-a-lie" className={styles.link}>Who is your target customer?</Link></li>
                             <li className={styles.listItem}>What action do you want visitors to take?</li>
                             <li className={styles.listItem}>How does your business differ from competitors?</li>
                             <li className={styles.listItem}>What problems are you solving for your customers?</li>
@@ -88,7 +88,7 @@ export default function AIWontBuildYourBusiness() {
                         <p className={styles.paragraph}>AI models are trained on vast datasets of existing content, and their output is a remix of this data. This can lead to significant plagiarism issues. Large language models have been shown to reproduce substantial passages from their training data without proper citation, leading to copyright infringement claims, such as those made against OpenAI by The New York Times.<sup><a href="#footnote-6" id="footnote-ref-6" className={styles.link}>6</a></sup> AI content often lacks true originality and can produce generic copy that fails to distinguish a brand.<sup><a href="#footnote-7" id="footnote-ref-7" className={styles.link}>7</a></sup></p>
 
                         <h3 className={styles.heading3}>No Performance Optimization</h3>
-                        <p className={styles.paragraph}>AI doesn't care that your site takes 8 seconds to load. It doesn't understand the business impact of slow performance or the user experience implications of bloated JavaScript.</p>
+                        <p className={styles.paragraph}>AI doesn't care that your site takes 8 seconds to load. It doesn't understand the <Link href="/blog/performance-first-website-lighthouse" className={styles.link}>business impact of slow performance</Link> or the user experience implications of bloated JavaScript.</p>
 
                         <h2 className={styles.heading2}>Where AI Actually Helps</h2>
                         <p className={styles.paragraph}>We're not AI luddites. AI is genuinely useful for specific tasks:</p>
@@ -106,7 +106,7 @@ export default function AIWontBuildYourBusiness() {
                         <p className={styles.paragraph}>Building great software requires capabilities AI fundamentally lacks:</p>
 
                         <h3 className={styles.heading3}>Strategic Thinking</h3>
-                        <p className={styles.paragraph}>Understanding business goals and translating them into technical architecture requires experience and insight, not pattern matching.</p>
+                        <p className={styles.paragraph}>Understanding business goals and <Link href="/blog/our-approach-to-software" className={styles.link}>translating them into technical architecture</Link> requires experience and insight, not pattern matching.</p>
 
                         <h3 className={styles.heading3}>User Empathy</h3>
                         <p className={styles.paragraph}>Creating intuitive user experiences requires understanding human behavior, frustration, and motivation—things AI simulates but doesn't understand.</p>

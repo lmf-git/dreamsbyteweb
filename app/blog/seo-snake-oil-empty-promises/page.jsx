@@ -75,8 +75,8 @@ export default function SEOSnakeOil() {
                         <p className={styles.paragraph}>Instead of expensive monthly SEO retainers, focus your resources on:</p>
 
                         <ul className={styles.list}>
-                            <li className={styles.listItem}><strong>A Fast, Well-Built Website:</strong> Performance, measured by metrics like Core Web Vitals, is a ranking factor, and it directly impacts user experience.<sup><a href="#footnote-3" id="footnote-ref-3" className={styles.link}>3</a></sup></li>
-                            <li className={styles.listItem}><strong>Creating Valuable Content:</strong> Blog posts, guides, and resources that genuinely help your audience</li>
+                            <li className={styles.listItem}><Link href="/blog/performance-first-website-lighthouse" className={styles.link}><strong>A Fast, Well-Built Website:</strong> Performance, measured by metrics like Core Web Vitals, is a ranking factor, and it directly impacts user experience.<sup><a href="#footnote-3" id="footnote-ref-3" className={styles.link}>3</a></sup></Link></li>
+                            <li className={styles.listItem}><Link href="/blog/i-will-sell-to-everyone-is-a-lie" className={styles.link}><strong>Creating Valuable Content:</strong> Blog posts, guides, and resources that genuinely help your audience</Link></li>
                             <li className={styles.listItem}><strong>Building Genuine Relationships:</strong> Network with real people and businesses in your industry</li>
                             <li className={styles.listItem}><strong>Understanding Your Analytics:</strong> Learn what your audience actually searches for and creates content around that</li>
                         </ul>

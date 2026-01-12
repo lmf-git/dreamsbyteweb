@@ -41,7 +41,7 @@ export default function VendorLockIn() {
                 <div className={styles.content}>
                     <div className={styles.prose}>
                         <h2 className={styles.heading2}>The Subscription Trap</h2>
-                        <p className={styles.paragraph}>Website builders and SaaS platforms advertise low monthly fees and promise simplicity. But over the years, those "affordable" subscriptions add up to tens of thousands of pounds while you own nothing and control less with each platform update.</p>
+                        <p className={styles.paragraph}><Link href="/blog/beyond-shopify-custom-ecommerce" className={styles.link}>Website builders</Link> and <Link href="/blog/hidden-cost-of-no-code" className={styles.link}>SaaS platforms</Link> advertise low monthly fees and promise simplicity. But over the years, those "affordable" subscriptions add up to tens of thousands of pounds while you own nothing and control less with each platform update.</p>
 
                         <h2 className={styles.heading2}>The Math Doesn't Lie</h2>
                         <p className={styles.paragraph}>Let's run the numbers on a typical website builder subscription:</p>
@@ -57,7 +57,7 @@ export default function VendorLockIn() {
                         <p className={styles.paragraph}>After five years, you've paid £5,400. After ten years, £10,800. And what do you own? Nothing. Stop paying, and your entire online presence vanishes.</p>
 
                         <h2 className={styles.heading2}>What Vendor Lock-In Actually Means</h2>
-                        <p className={styles.paragraph}>When you build on someone else's platform, you're accepting several critical limitations:</p>
+                        <p className={styles.paragraph}>When you build on <Link href="/blog/stop-buying-software-custom-crm-fsm" className={styles.link}>someone else's platform</Link>, you're accepting several critical limitations:</p>
 
                         <h3 className={styles.heading3}>You Don't Own Your Data</h3>
                         <p className={styles.paragraph}>Your customer data, content, and digital assets live on their servers under their terms. Many platforms make it deliberately difficult to export your data, and even when you can, it's often in formats that are useless without their proprietary tools.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup></p>
@@ -83,7 +83,7 @@ export default function VendorLockIn() {
                         </ul>
 
                         <h2 className={styles.heading2}>The Alternative: Ownership</h2>
-                        <p className={styles.paragraph}>When you own your website and infrastructure, you control your destiny:</p>
+                        <p className={styles.paragraph}>When you own your website and infrastructure, you <Link href="/blog/our-approach-to-software" className={styles.link}>control your destiny</Link>:</p>
 
                         <ul className={styles.list}>
                             <li className={styles.listItem}><strong>One-Time Investment:</strong> Pay once for development, own it forever</li>
@@ -108,6 +108,25 @@ export default function VendorLockIn() {
                         <p className={styles.paragraph}>We build websites you own outright. No monthly fees beyond basic hosting. No proprietary systems. No vendor lock-in. Just clean, modern code that you can host anywhere, modify freely, and own forever.</p>
 
                         <p className={styles.paragraph}>Our upfront costs are transparent and competitive. Over any reasonable time horizon, ownership is dramatically cheaper than subscription platforms. And it's not just about money—it's about control, flexibility, and building a real asset for your business.</p>
+
+                        <h2 className={styles.heading2}>An Asset That Pays For Itself</h2>
+                        <p className={styles.paragraph}>Our philosophy is simple: we don’t charge fees on top of fees, and we don’t aim to lock you into a subscription. We build you an asset. The goal is for our work to pay for itself by providing more value than it costs, giving you a permanent tool for growth rather than a recurring line item in your budget.</p>
+                        <p className={styles.paragraph}>Consider a common scenario for a growing business: the need for a robust e-commerce solution. Many "full-service" digital agencies or premium SaaS platforms will charge a hefty monthly retainer for this. This often includes the platform fee, mandatory plugins, "priority support," and maintenance that does little more than keep the lights on.</p>
+
+                        <h3 className={styles.heading3}>Let's Do the Math: Ownership vs. A High-Cost "Rental"</h3>
+                        <p className={styles.paragraph}>A typical all-inclusive e-commerce subscription or agency maintenance plan can easily cost <strong>$450 per month</strong>. Over time, this rental model becomes incredibly expensive.</p>
+                        <ul className={styles.list}>
+                            <li className={styles.listItem}>Cost after 1 Year: $5,400</li>
+                            <li className={styles.listItem}>Cost after 3 Years: $16,200</li>
+                            <li className={styles.listItem}><strong>Asset Owned after 3 Years: $0.</strong> You've spent a fortune and still own nothing.</li>
+                        </ul>
+                        <p className={styles.paragraph}>Now, let's compare that to a one-time investment in a custom solution. Based on our own <Link href="/services" className={styles.link}>service pricing</Link>, a powerful, custom-built <strong>E-commerce Application</strong> might be a one-time project cost of around <strong>$8,000</strong>.</p>
+                        <p className={styles.paragraph}>The break-even point is reached in just under 18 months ($8,000 ÷ $450/month ≈ 17.8 months). After that, the savings are substantial.</p>
+                        <ul className={styles.list}>
+                            <li className={styles.listItem}><strong>Total cost after 3 years: $8,000.</strong></li>
+                            <li className={styles.listItem}><strong>Total savings compared to subscription: $8,200.</strong></li>
+                        </ul>
+                        <p className={styles.paragraph}>In three years, not only have you saved over eight thousand dollars, but you also own a high-performance, scalable asset tailored specifically to your business. You are free from vendor lock-in, arbitrary price hikes, and transaction fees. The work has more than paid for itself.</p>
 
                         <h2 className={styles.heading2}>Break Free</h2>
                         <p className={styles.paragraph}>If you're currently trapped in a subscription platform, it's not too late to escape. Yes, there's an upfront cost to migrate. But every month you wait is another month of payments toward something you'll never own.</p>

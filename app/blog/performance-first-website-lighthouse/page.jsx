@@ -77,13 +77,13 @@ export default function PerformanceFirstWebsite() {
                     <h2 className={styles.heading2}>Why Most Websites are Slow</h2>
                     <p className={styles.paragraph}>If this is all possible, why are so many websites slow? It usually comes down to a few common culprits that we consciously avoid:</p>
                     <ul className={styles.list}>
-                        <li className={styles.listItem}><strong>Website Builders (Wix, Squarespace):</strong> They are loaded with bloated, one-size-fits-all code to support thousands of templates and features you're not even using.</li>
+                        <li className={styles.listItem}><Link href="/blog/beyond-shopify-custom-ecommerce" className={styles.link}><strong>Website Builders (Wix, Squarespace):</strong> They are loaded with bloated, one-size-fits-all code to support thousands of templates and features you're not even using.</Link></li>
                         <li className={styles.listItem}><strong>Clunky WordPress Themes and Plugins:</strong> Many popular themes and plugins are notoriously inefficient, loading dozens of scripts and stylesheets on every page, whether they are needed or not.</li>
                         <li className={styles.listItem}><strong>Excessive Third-Party Scripts:</strong> Unnecessary tracking scripts, chatbot widgets, and social media embeds can kill performance.</li>
                     </ul>
 
                     <h2 className={styles.heading2}>Performance is a Business Metric</h2>
-                    <p className={styles.paragraph}>A fast website isn't just a technical vanity metric. It has a direct impact on your bottom line. It improves user engagement, increases conversion rates, and is a confirmed ranking factor for Google SEO.<sup><a href="#footnote-3" id="footnote-ref-3" className={styles.link}>3</a></sup> A faster site will literally make you more money.</p>
+                    <p className={styles.paragraph}>A fast website isn't just a technical vanity metric. It has a direct impact on your bottom line. It improves user engagement, increases conversion rates, and is a confirmed <Link href="/blog/seo-snake-oil-empty-promises" className={styles.link}>ranking factor for Google SEO</Link>.<sup><a href="#footnote-3" id="footnote-ref-3" className={styles.link}>3</a></sup> A faster site will literally make you more money.</p>
                     <p className={styles.paragraph}>Investing in a performance-first website is one of the most direct investments you can make in the growth and success of your online presence.</p>
 
                     <p className={styles.paragraph}>Is your current website slow, clunky, and failing its Lighthouse audit? Are you losing customers to a frustrating user experience? <button
