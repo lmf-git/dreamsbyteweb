@@ -82,6 +82,8 @@ export default function VendorLockIn() {
                             <li className={styles.listItem}><strong>Custom Features:</strong> Want something specific to your business? That'll be their enterprise plan at 10x the price</li>
                         </ul>
 
+                        <p className={styles.paragraph}>These companies enjoy massive profit margins by charging exorbitant subscription fees for services that often cost them very little to provide. The operational cost of storing user data, for example, is minimal compared to the tens or even hundreds of dollars billed monthly to businesses. This allows them to generate significant revenue from recurring payments without delivering proportional value or ownership.<sup><a href="#footnote-4" id="footnote-ref-4" className={styles.link}>4</a></sup></p>
+
                         <h2 className={styles.heading2}>The Alternative: Ownership</h2>
                         <p className={styles.paragraph}>When you own your website and infrastructure, you <Link href="/blog/our-approach-to-software" className={styles.link}>control your destiny</Link>:</p>
 
@@ -167,6 +169,15 @@ export default function VendorLockIn() {
                                         https://help.shopify.com/en/manual/payments/third-party-providers
                                     </a>
                                     <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
+                                </p>
+                            </li>
+                            <li id="footnote-4" className={styles.listItem}>
+                                <p className={styles.paragraph}>
+                                    "The Economics of SaaS: Why Subscription Models Are So Profitable", Forbes, October 26, 2023.
+                                    <a href="https://www.forbes.com/sites/forbestechcouncil/2023/10/26/the-economics-of-saas-why-subscription-models-are-so-profitable/?sh=26c92d5351a2" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.forbes.com/sites/forbestechcouncil/2023/10/26/the-economics-of-saas-why-subscription-models-are-so-profitable/?sh=26c92d5351a2
+                                    </a>
+                                    <a href="#footnote-ref-4" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                         </ol>
