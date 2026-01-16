@@ -32,7 +32,7 @@ export default function WhyYourBusinessNeedsWebsite() {
                 <header className={styles.header}>
                     <h1 className={styles.title}>Professional Website For Your Business</h1>
                     <div className={styles.meta}>
-                        <span className={styles.author}>By DreamsByte Team</span>
+                        <span className={styles.author}>By Liam Fielding</span>
                         <span className={styles.date}>2024-01-20</span>
                         <span className={styles.readTime}>5 min read</span>
                     </div>

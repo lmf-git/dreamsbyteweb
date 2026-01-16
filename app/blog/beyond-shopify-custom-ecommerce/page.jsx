@@ -32,7 +32,7 @@ export default function BeyondShopify() {
                 <header className={styles.header}>
                     <h1 className={styles.title}>Beyond Shopify: When to Build Custom E-commerce</h1>
                     <div className={styles.meta}>
-                        <span className={styles.author}>By DreamsByte Team</span>
+                        <span className={styles.author}>By Liam Fielding</span>
                         <span className={styles.date}>2025-10-05</span>
                         <span className={styles.readTime}>10 min read</span>
                     </div>

@@ -30,7 +30,7 @@ export default function PerformanceFirstWebsite() {
             <header className={styles.header}>
                 <h1 className={styles.title}>The Performance-First Website: How We Guarantee 90+ Lighthouse Scores</h1>
                 <div className={styles.meta}>
-                                                                    <span className={styles.author}>By DreamsByte Team</span>
+                                                                    <span className={styles.author}>By Liam Fielding</span>
                                                                     <span className={styles.date}>2025-11-02</span>
                                                                     <span className={styles.readTime}>10 min read</span>                </div>
             </header>

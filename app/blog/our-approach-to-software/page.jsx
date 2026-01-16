@@ -36,7 +36,7 @@ export default function OurApproachToSoftware() {
                 <header className={styles.header}>
                     <h1 className={styles.title}>The Orchestrated Singleton: A Full-Stack Manifesto on Control</h1>
                     <div className={styles.meta}>
-                        <span className={styles.author}>By DreamsByte Team</span>
+                        <span className={styles.author}>By Liam Fielding</span>
                         <span className={styles.date}>2026-01-11</span>
                         <span className={styles.readTime}>15 min read</span>
                     </div>

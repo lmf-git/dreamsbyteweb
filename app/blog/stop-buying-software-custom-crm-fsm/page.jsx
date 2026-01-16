@@ -32,7 +32,7 @@ export default function CustomCRMFSM() {
                 <header className={styles.header}>
                     <h1 className={styles.title}>Stop Buying Software: The Power of Custom CRM and Business Management Systems</h1>
                     <div className={styles.meta}>
-                        <span className={styles.author}>By DreamsByte Team</span>
+                        <span className={styles.author}>By Liam Fielding</span>
                         <span className={styles.date}>2025-12-28</span>
                         <span className={styles.readTime}>9 min read</span>
                     </div>

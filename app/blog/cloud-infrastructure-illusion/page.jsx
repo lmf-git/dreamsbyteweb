@@ -32,7 +32,7 @@ export default function CloudInfrastructureIllusion() {
                 <header className={styles.header}>
                     <h1 className={styles.title}>Cloud Illusion: Beyond AWS for Enterprise</h1>
                     <div className={styles.meta}>
-                        <span className={styles.author}>By DreamsByte Team</span>
+                        <span className={styles.author}>By Liam Fielding</span>
                         <span className={styles.date}>2024-02-20</span>
                         <span className={styles.readTime}>9 min read</span>
                     </div>

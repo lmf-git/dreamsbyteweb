@@ -32,7 +32,7 @@ export default function VendorLockIn() {
                 <header className={styles.header}>
                     <h1 className={styles.title}>Vendor Lock-In: Subscription Costs</h1>
                     <div className={styles.meta}>
-                        <span className={styles.author}>By DreamsByte Team</span>
+                        <span className={styles.author}>By Liam Fielding</span>
                         <span className={styles.date}>2024-02-10</span>
                         <span className={styles.readTime}>8 min read</span>
                     </div>

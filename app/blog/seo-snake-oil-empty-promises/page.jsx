@@ -32,7 +32,7 @@ export default function SEOSnakeOil() {
                 <header className={styles.header}>
                     <h1 className={styles.title}>SEO Snake Oil: Empty Promises</h1>
                     <div className={styles.meta}>
-                        <span className={styles.author}>By DreamsByte Team</span>
+                        <span className={styles.author}>By Liam Fielding</span>
                         <span className={styles.date}>2024-02-01</span>
                         <span className={styles.readTime}>7 min read</span>
                     </div>

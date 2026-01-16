@@ -32,7 +32,7 @@ export default function HiddenCostOfNoCode() {
                 <header className={styles.header}>
                     <h1 className={styles.title}>The Hidden Cost of 'No-Code'</h1>
                     <div className={styles.meta}>
-                        <span className={styles.author}>By DreamsByte Team</span>
+                        <span className={styles.author}>By Liam Fielding</span>
                         <span className={styles.date}>2025-09-21</span>
                         <span className={styles.readTime}>8 min read</span>
                     </div>
