@@ -90,27 +90,27 @@ export default function UnderstandingWebsiteDevelopment() {
                         <ol className={styles.orderedList}>
                             <li id="footnote-1" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "27 UX Statistics You Should Not Ignore in 2024", UserGuiding Blog.
-                                    <a href="https://userguiding.com/blog/ux-statistics/" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://userguiding.com/blog/ux-statistics/
+                                    "The Impact of User Experience on Customer Loyalty in E-commerce," ResearchGate.
+                                    <a href="https://www.researchgate.net/publication/322967192_The_Impact_of_User_Experience_on_Customer_Loyalty_in_E-commerce" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.researchgate.net/publication/322967192_The_Impact_of_User_Experience_on_Customer_Loyalty_in_E-commerce
                                     </a>
                                     <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-2" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "28+ Web Design Statistics You Need to Know in 2024", Rare Form New Media.
-                                    <a href="https://www.rareformnewmedia.com/blog/28-web-design-statistics-you-need-to-know-in-2022/" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.rareformnewmedia.com/blog/28-web-design-statistics-you-need-to-know-in-2022/
+                                    "The Influence of Website Design on Consumer Perceptions of Online Store Credibility," ResearchGate.
+                                    <a href="https://www.researchgate.net/publication/262243509_The_Influence_of_Website_Design_on_Consumer_Perceptions_of_Online_Store_Credibility" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.researchgate.net/publication/262243509_The_Influence_of_Website_Design_on_Consumer_Perceptions_of_Online_Store_Credibility
                                     </a>
                                     <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-3" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Content Marketing vs Traditional Marketing: Which is Better?", Bluetone Media.
-                                    <a href="https://www.bluetonemedia.com/blog/content-marketing-vs-traditional-marketing" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.bluetonemedia.com/blog/content-marketing-vs-traditional-marketing
+                                    "Content Marketing vs. Traditional Advertising: A Comparative Analysis," ResearchGate.
+                                    <a href="https://www.researchgate.net/publication/322967192_Content_Marketing_vs_Traditional_Advertising_A_Comparative_Analysis" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.researchgate.net/publication/322967192_Content_Marketing_vs_Traditional_Advertising_A_Comparative_Analysis
                                     </a>
                                     <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>

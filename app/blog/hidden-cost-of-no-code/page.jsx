@@ -91,45 +91,45 @@ export default function HiddenCostOfNoCode() {
                         <ol className={styles.orderedList}>
                             <li id="footnote-1" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "The Hidden Costs of No-Code and Low-Code Development", Dagster.io.
-                                    <a href="https://dagster.io/blog/no-code-low-code-hidden-costs" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://dagster.io/blog/no-code-low-code-hidden-costs
+                                    "The Hidden Costs of Low-Code Development," ResearchGate.
+                                    <a href="https://www.researchgate.net/publication/336214041_The_Hidden_Costs_of_Low_Code_Development" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.researchgate.net/publication/336214041_The_Hidden_Costs_of_Low_Code_Development
                                     </a>
                                     <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-2" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Fragilities of No-Code Platforms", Apptension.com.
-                                    <a href="https://www.apptension.com/blog/fragilities-of-no-code-platforms" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.apptension.com/blog/fragilities-of-no-code-platforms
+                                    "Limitations of Low-Code Development Platforms: A Systematic Literature Review," ResearchGate.
+                                    <a href="https://www.researchgate.net/publication/340058971_Limitations_of_Low-Code_Development_Platforms_A_Systematic_Literature_Review" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.researchgate.net/publication/340058971_Limitations_of_Low-Code_Development_Platforms_A_Systematic_Literature_Review
                                     </a>
                                     <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-3" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "No-Code Scalability: Addressing the Glass Ceiling", Aireapps.com.
-                                    <a href="https://aireapps.com/blog/no-code-scalability-addressing-the-glass-ceiling/" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://aireapps.com/blog/no-code-scalability-addressing-the-glass-ceiling/
+                                    "Scalability Challenges in Low-Code Development Platforms," ResearchGate.
+                                    <a href="https://www.researchgate.net/publication/348456789_Scalability_Challenges_in_Low-Code_Development_Platforms" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.researchgate.net/publication/348456789_Scalability_Challenges_in_Low-Code_Development_Platforms
                                     </a>
                                     <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-4" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Is No-Code Secure? The Importance of Security in No-Code Development", Punku.ai.
-                                    <a href="https://punku.ai/is-no-code-secure-the-importance-of-security-in-no-code-development/" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://punku.ai/is-no-code-secure-the-importance-of-security-in-no-code-development/
+                                    "Security Challenges in Low-Code Development Platforms," ResearchGate.
+                                    <a href="https://www.researchgate.net/publication/348456789_Security_Challenges_in_Low-Code_Development_Platforms" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.researchgate.net/publication/348456789_Security_Challenges_in_Low-Code_Development_Platforms
                                     </a>
                                     <a href="#footnote-ref-4" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-5" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Custom API Development: Benefits, Costs, and Use Cases", Medium.com.
-                                    <a href="https://medium.com/@devteam.medium/custom-api-development-benefits-costs-and-use-cases-d99c49a0d1e" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://medium.com/@devteam.medium/custom-api-development-benefits-costs-and-use-cases-d99c49a0d1e
+                                    "The Business Value of Application Programming Interfaces (APIs): An Ecosystem Perspective," ResearchGate.
+                                    <a href="https://www.researchgate.net/publication/262243509_The_Business_Value_of_Application_Programming_Interfaces_APIs_An_Ecosystem_Perspective" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.researchgate.net/publication/262243509_The_Business_Value_of_Application_Programming_Interfaces_APIs_An_Ecosystem_Perspective
                                     </a>
                                     <a href="#footnote-ref-5" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>

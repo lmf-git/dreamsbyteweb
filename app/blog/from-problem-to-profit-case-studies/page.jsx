@@ -117,18 +117,18 @@ export default function FromProblemToProfit() {
                         <ol className={styles.orderedList}>
                             <li id="footnote-1" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Benefits of Custom Software Development", 011BQ.
-                                    <a href="https://011bq.com/blog/benefits-of-custom-software-development/" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://011bq.com/blog/benefits-of-custom-software-development/
+                                    "Decision Making Framework for Enterprise Resource Planning Software Selection: A Focus on Small and Medium Enterprises," University of Victoria.
+                                    <a href="https://www.uvic.ca/ecs/assets/docs/theses/msc-theses/2012-arora.pdf" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.uvic.ca/ecs/assets/docs/theses/msc-theses/2012-arora.pdf
                                     </a>
                                     <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-2" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "How Custom Software Can Give Your Business a Competitive Edge", Specno.
-                                    <a href="https://specno.com/blog/how-custom-software-can-give-your-business-a-competitive-edge/" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://specno.com/blog/how-custom-software-can-give-your-business-a-competitive-edge/
+                                    "The Competitive Advantage of Customized Software," ResearchGate.
+                                    <a href="https://www.researchgate.net/publication/220678074_The_Competitive_Advantage_of_Customized_Software" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.researchgate.net/publication/220678074_The_Competitive_Advantage_of_Customized_Software
                                     </a>
                                     <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>

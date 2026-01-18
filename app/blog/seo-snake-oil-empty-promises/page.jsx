@@ -113,9 +113,9 @@ export default function SEOSnakeOil() {
                             </li>
                             <li id="footnote-2" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    Matt Southern, "Google Hummingbird: How The 2013 Algorithm Change Still Affects SEO", Search Engine Journal, October 2, 2023.
-                                    <a href="https://www.searchenginejournal.com/google-hummingbird-seo/206437/" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.searchenginejournal.com/google-hummingbird-seo/206437/
+                                    "How Google's New Algorithm, Hummingbird, Promotes Content and Inbound Marketing," ResearchGate.
+                                    <a href="https://www.researchgate.net/publication/262243509_How_Google's_New_Algorithm_Hummingbird_Promotes_Content_and_Inbound_Marketing" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.researchgate.net/publication/262243509_How_Google's_New_Algorithm_Hummingbird_Promotes_Content_and_Inbound_Marketing
                                     </a>
                                     <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>

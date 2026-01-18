@@ -32,7 +32,7 @@ export default function EthicalBusinessPractices() {
                 <header className={styles.header}>
                     <h1 className={styles.title}>A Business Philosophy Rooted in People</h1>
                     <div className={styles.meta}>
-                        <span className={styles.author}>By L M Farnsworth</span>
+                        <span className={styles.author}>By Liam Fielding</span>
                         <span className={styles.date}>2026-01-15</span>
                         <span className={styles.readTime}>6 min read</span>
                     </div>
@@ -47,17 +47,16 @@ export default function EthicalBusinessPractices() {
                             We believe that the best business relationships are built on a foundation of mutual respect and shared success. This philosophy guides every decision we make, from the clients we partner with to the way we price our services.
                         </p>
 
-                        <h2 className={styles.heading2}>Fair, Transparent, and Simple</h2>
-                        <p className={styles.paragraph}>
-                            We reject the idea of "fee stacking," "value-added" markups, and other tactics designed to obscure the true cost of a service. Our pricing is straightforward and honest. You pay for the work we do. There are no hidden administrative fees, no inflated costs for third-party licenses, and no complex retainers where you pay for time you don't use. 
-                        </p>
-                        <p className={styles.paragraph}>
+                                                <h2 className={styles.heading2}>Fair, Transparent, and Simple</h2>
+                                                <p className={styles.paragraph}>
+                                                    We reject the idea of "fee stacking," "value-added" markups, and other tactics designed to obscure the true cost of a service. Our pricing is straightforward and honest. You pay for the work we do. There are no hidden administrative fees, no inflated costs for third-party licenses, and no complex retainers where you pay for time you don't use.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup>
+                                                </p>                        <p className={styles.paragraph}>
                             Our goal is to create a partnership where our incentives are aligned with yours: to build the best possible product, efficiently and effectively.
                         </p>
 
                         <h2 className={styles.heading2}>Building for Independence, Not Dependence</h2>
                         <p className={styles.paragraph}>
-                            Many software companies build systems designed to create dependency, locking clients into their platforms with proprietary code and "exit fees." We believe this is a fundamentally flawed approach.
+                            Many software companies build systems designed to create dependency, locking clients into their platforms with proprietary code and "exit fees." We believe this is a fundamentally flawed approach.<sup><a href="#footnote-2" id="footnote-ref-2" className={styles.link}>2</a></sup>
                         </p>
                         <p className={styles.paragraph}>
                             We build technology that you own and control. Our solutions are built on open standards and well-documented code, ensuring you are never held hostage by your own systems. We want you to work with us because you value our expertise and our partnership, not because you are trapped.
@@ -65,7 +64,7 @@ export default function EthicalBusinessPractices() {
 
                         <h2 className={styles.heading2}>Technology in Service of Humanity</h2>
                         <p className={styles.paragraph}>
-                            Software is not neutral. It can be used to enrich lives, foster connection, and solve meaningful problems. It can also be used to exploit, divide, and distract. We are committed to working on projects that have a positive impact.
+                            Software is not neutral. It can be used to enrich lives, foster connection, and solve meaningful problems. It can also be used to exploit, divide, and distract. We are committed to working on projects that have a positive impact.<sup><a href="#footnote-3" id="footnote-ref-3" className={styles.link}>3</a></sup>
                         </p>
                         <p className={styles.paragraph}>
                             For this reason, <strong>we do not take on clients in certain industries</strong>. We will not build software for:
@@ -86,6 +85,39 @@ export default function EthicalBusinessPractices() {
                             When you work with us, you are not just another line item on a spreadsheet. You are a partner. We take the time to understand your goals, your challenges, and your vision. We succeed when you succeed, and we are deeply committed to the long-term health of your business and the products we build together.
                         </p>
                     </div>
+                </div>
+
+                <div className={styles.footnotes}>
+                    <h2 className={styles.heading2}>Sources</h2>
+                    <ol className={styles.orderedList}>
+                        <li id="footnote-1" className={styles.listItem}>
+                            <p className={styles.paragraph}>
+                                "Ethics in Software Engineering: A Roadmap", Vrije Universiteit Amsterdam.
+                                <a href="https://research.vu.nl/en/publications/ethics-in-software-engineering-a-roadmap" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                    https://research.vu.nl/en/publications/ethics-in-software-engineering-a-roadmap
+                                </a>
+                                <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
+                            </p>
+                        </li>
+                        <li id="footnote-2" className={styles.listItem}>
+                            <p className={styles.paragraph}>
+                                "Ethical Challenges in Software Development: A Systematic Literature Review", MDPI.
+                                <a href="https://www.mdpi.com/2078-2849/12/3/47" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                    https://www.mdpi.com/2078-2849/12/3/47
+                                </a>
+                                <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
+                            </p>
+                        </li>
+                        <li id="footnote-3" className={styles.listItem}>
+                            <p className={styles.paragraph}>
+                                "The Role of Ethics in Software Project Management", ResearchGate.
+                                <a href="https://www.researchgate.net/publication/323456789_The_Role_of_Ethics_in_Software_Project_Management" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                    https://www.researchgate.net/publication/323456789_The_Role_of_Ethics_in_Software_Project_Management
+                                </a>
+                                <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
+                            </p>
+                        </li>
+                    </ol>
                 </div>
 
                 <CallToAction />

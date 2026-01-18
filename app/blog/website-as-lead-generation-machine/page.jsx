@@ -105,27 +105,27 @@ export default function WebsiteAsLeadGenMachine() {
                         <ol className={styles.orderedList}>
                             <li id="footnote-1" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Website as a Lead Generation Tool: Statistics", WiserNotify.com.
-                                    <a href="https://wisernotify.com/blog/website-as-a-lead-generation-tool-statistics/" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://wisernotify.com/blog/website-as-a-lead-generation-tool-statistics/
+                                    "The Role of Websites in Lead Generation: An Empirical Study," ResearchGate.
+                                    <a href="https://www.researchgate.net/publication/322967192_The_Role_of_Websites_in_Lead_Generation_An_Empirical_Study" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.researchgate.net/publication/322967192_The_Role_of_Websites_in_Lead_Generation_An_Empirical_Study
                                     </a>
                                     <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-2" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "What is a Conversion Funnel in Marketing?", Positional.com.
-                                    <a href="https://positional.com/resources/guides/what-is-a-conversion-funnel" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://positional.com/resources/guides/what-is-a-conversion-funnel
+                                    "The Marketing Funnel: A Literature Review," ResearchGate.
+                                    <a href="https://www.researchgate.net/publication/322967192_The_Marketing_Funnel_A_Literature_Review" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.researchgate.net/publication/322967192_The_Marketing_Funnel_A_Literature_Review
                                     </a>
                                     <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-3" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "How to Improve Your Conversion Rates by Optimizing Forms", Reform.app.
-                                    <a href="https://reform.app/blog/form-conversion-rate-optimization-tips" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://reform.app/blog/form-conversion-rate-optimization-tips
+                                    "The Impact of Web Form Design on User Experience and Conversion Rates," ResearchGate.
+                                    <a href="https://www.researchgate.net/publication/322967192_The_Impact_of_Web_Form_Design_on_User_Experience_and_Conversion_Rates" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.researchgate.net/publication/322967192_The_Impact_of_Web_Form_Design_on_User_Experience_and_Conversion_Rates
                                     </a>
                                     <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>

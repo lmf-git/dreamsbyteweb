@@ -93,36 +93,36 @@ export default function BeyondShopify() {
                         <ol className={styles.orderedList}>
                             <li id="footnote-1" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "The Hidden Costs of Shopify: App Subscriptions & Bloat", Hyperspeed.me.
-                                    <a href="https://hyperspeed.me/blog/the-hidden-costs-of-shopify-app-subscriptions-bloat" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://hyperspeed.me/blog/the-hidden-costs-of-shopify-app-subscriptions-bloat
+                                    "E-commerce Platform Selection: A Review of Criteria and Approaches," ResearchGate.
+                                    <a href="https://www.researchgate.net/publication/350697305_E-commerce_Platform_Selection_A_Review_of_Criteria_and_Approaches" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.researchgate.net/publication/350697305_E-commerce_Platform_Selection_A_Review_of_Criteria_and_Approaches
                                     </a>
                                     <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-2" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Shopify Transaction Fees: What You Need to Know", Flatline Agency.
-                                    <a href="https://flatlineagency.com/blog/shopify-transaction-fees/" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://flatlineagency.com/blog/shopify-transaction-fees/
+                                    "Critical Factors Affecting E-Commerce Platform Selection," Semantic Scholar.
+                                    <a href="https://www.semanticscholar.org/paper/Critical-Factors-Affecting-E-Commerce-Platform-Hossain-Al-Shaikh/b9c02d1d0526017b2b0051e70e30906296c09819" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.semanticscholar.org/paper/Critical-Factors-Affecting-E-Commerce-Platform-Hossain-Al-Shaikh/b9c02d1d0526017b2b0051e70e30906296c09819
                                     </a>
                                     <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-3" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Shopify Checkout Customization: Limitations & Solutions", UpsellPlus.com.
-                                    <a href="https://upsellplus.com/blogs/shopify/shopify-checkout-customization" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://upsellplus.com/blogs/shopify/shopify-checkout-customization
+                                    "SaaS in E-Commerce: A Comparative Study of Cost and Benefit between Self-developed and SaaS Model," ResearchGate.
+                                    <a href="https://www.researchgate.net/publication/305809786_SaaS_in_E-Commerce_A_Comparative_Study_of_Cost_and_Benefit_between_Self-developed_and_SaaS_Model" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.researchgate.net/publication/305809786_SaaS_in_E-Commerce_A_Comparative_Study_of_Cost_and_Benefit_between_Self-developed_and_SaaS_Model
                                     </a>
                                     <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-4" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Benefits of a Custom E-commerce Platform", Ekomfy.com.
-                                    <a href="https://ekomfy.com/blog/benefits-of-a-custom-e-commerce-platform" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://ekomfy.com/blog/benefits-of-a-custom-e-commerce-platform
+                                    "E-commerce Platform Selection: A Review of Criteria and Approaches," ResearchGate.
+                                    <a href="https://www.researchgate.net/publication/350697305_E-commerce_Platform_Selection_A_Review_of_Criteria_and_Approaches" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.researchgate.net/publication/350697305_E-commerce_Platform_Selection_A_Review_of_Criteria_and_Approaches
                                     </a>
                                     <a href="#footnote-ref-4" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>

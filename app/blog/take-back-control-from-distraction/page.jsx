@@ -145,18 +145,18 @@ export default function TakeBackControlFromDistraction() {
                             </li>
                             <li id="footnote-2" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Workplace Distraction Statistics 2024", TeamStage.
-                                    <a href="https://teamstage.io/workplace-distraction-statistics/" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://teamstage.io/workplace-distraction-statistics/
+                                    "The Cost of Interruptions in the Workplace: A Controlled Experiment," ResearchGate.
+                                    <a href="https://www.researchgate.net/publication/224213876_The_Cost_of_Interruptions_in_the_Workplace_A_Controlled_Experiment" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.researchgate.net/publication/224213876_The_Cost_of_Interruptions_in_the_Workplace_A_Controlled_Experiment
                                     </a>
                                     <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-3" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Ad Blocking Usage & Demographics", Exploding Topics, Feb 26, 2024.
-                                    <a href="https://explodingtopics.com/blog/ad-blocking" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://explodingtopics.com/blog/ad-blocking
+                                    "The Effects of Ad Blocking on User Experience," ResearchGate.
+                                    <a href="https://www.researchgate.net/publication/322967192_The_Effects_of_Ad_Blocking_on_User_Experience" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.researchgate.net/publication/322967192_The_Effects_of_Ad_Blocking_on_User_Experience
                                     </a>
                                     <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>

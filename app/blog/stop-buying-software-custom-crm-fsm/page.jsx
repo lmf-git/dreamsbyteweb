@@ -91,36 +91,36 @@ export default function CustomCRMFSM() {
                         <ol className={styles.orderedList}>
                             <li id="footnote-1" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Custom CRM vs. Off-the-Shelf CRM: Which is Right for Your Business?", Concise Studio.
-                                    <a href="https://concise-studio.com/custom-crm-vs-off-the-shelf/" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://concise-studio.com/custom-crm-vs-off-the-shelf/
+                                    "Custom vs. Standard Software: Which One to Choose?," ResearchGate.
+                                    <a href="https://www.researchgate.net/publication/262243509_Custom_vs_Standard_Software_Which_One_to_Choose" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.researchgate.net/publication/262243509_Custom_vs_Standard_Software_Which_One_to_Choose
                                     </a>
                                     <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-2" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Hidden Costs of Generic CRM Software", Myware.asia.
-                                    <a href="https://myware.asia/hidden-costs-of-generic-crm-software/" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://myware.asia/hidden-costs-of-generic-crm-software/
+                                    "7 Disadvantages of Off-the-Shelf CRM Software," Phaleracrm.com.
+                                    <a href="https://www.phaleracrm.com/blog/disadvantages-of-off-the-shelf-crm-software" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.phaleracrm.com/blog/disadvantages-of-off-the-shelf-crm-software
                                     </a>
                                     <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-3" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Benefits of a Custom CRM Solution", Convergine.com.
-                                    <a href="https://convergine.com/blog/benefits-of-custom-crm-solution/" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://convergine.com/blog/benefits-of-custom-crm-solution/
+                                    "Benefits of a Custom CRM Solution: Why Tailored Software Wins," Kanhasoft.com.
+                                    <a href="https://kanhasoft.com/blog/benefits-of-custom-crm-solution/" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://kanhasoft.com/blog/benefits-of-custom-crm-solution/
                                     </a>
                                     <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-4" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Key Benefits of Field Service Management (FSM) Software", Quixy.com.
-                                    <a href="https://quixy.com/blog/key-benefits-of-field-service-management-fsm-software/" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://quixy.com/blog/key-benefits-of-field-service-management-fsm-software/
+                                    "The Benefits of Field Service Management Software," Totalmobile.
+                                    <a href="https://www.totalmobile.com/blog/the-benefits-of-field-service-management-software/" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.totalmobile.com/blog/the-benefits-of-field-service-management-software/
                                     </a>
                                     <a href="#footnote-ref-4" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>

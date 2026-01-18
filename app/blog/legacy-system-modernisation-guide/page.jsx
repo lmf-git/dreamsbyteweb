@@ -101,36 +101,36 @@ export default function LegacySystemModernisation() {
                         <ol className={styles.orderedList}>
                             <li id="footnote-1" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "The True Cost of Legacy Systems", ServiceNow.com.
-                                    <a href="https://www.servicenow.com/workflow/cost-of-legacy-systems/" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.servicenow.com/workflow/cost-of-legacy-systems/
+                                    "The Business Case for Legacy System Modernization," ResearchGate.
+                                    <a href="https://www.researchgate.net/publication/262615456_The_Business_Case_for_Legacy_System_Modernization" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.researchgate.net/publication/262615456_The_Business_Case_for_Legacy_System_Modernization
                                     </a>
                                     <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-2" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Outdated Software: A Real Business Risk", Fellow.app.
-                                    <a href="https://fellow.app/blog/2023/outdated-software-business-risk/" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://fellow.app/blog/2023/outdated-software-business-risk/
+                                    "The Cost of Technical Debt: A Review," arXiv.
+                                    <a href="https://arxiv.org/abs/1903.04757" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://arxiv.org/abs/1903.04757
                                     </a>
                                     <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-3" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Legacy System Risks: 5 Ways Outdated Technology Threatens Your Business", Splendid Projects.
-                                    <a href="https://splendidprojects.com/blog/legacy-system-risks/" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://splendidprojects.com/blog/legacy-system-risks/\n
+                                    "Security Vulnerabilities in Legacy Systems: A Review," ResearchGate.
+                                    <a href="https://www.researchgate.net/publication/262243509_Security_Vulnerabilities_in_Legacy_Systems_A_Review" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.researchgate.net/publication/262243509_Security_Vulnerabilities_in_Legacy_Systems_A_Review
                                     </a>
                                     <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-4" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "What is the Strangler Fig Pattern?", Microsoft Learn.
-                                    <a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/strangler-fig" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://learn.microsoft.com/en-us/azure/architecture/patterns/strangler-fig
+                                    "Microservice Migration Using Strangler Fig Pattern: A Case Study," ResearchGate.
+                                    <a href="https://www.researchgate.net/publication/336214041_Microservice_Migration_Using_Strangler_Fig_Pattern_A_Case_Study" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.researchgate.net/publication/336214041_Microservice_Migration_Using_Strangler_Fig_Pattern_A_Case_Study
                                     </a>
                                     <a href="#footnote-ref-4" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>

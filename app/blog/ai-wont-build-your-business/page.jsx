@@ -153,27 +153,27 @@ export default function AIWontBuildYourBusiness() {
                             <h2>References</h2>
                             <ol>
                                 <li><a href="https://arxiv.org/abs/2004.09846" target="_blank" rel="noopener noreferrer">"Anisotropy and the Crowding Problem in Pre-trained Language Models," arXiv.</a></li>
-                                <li><a href="https://huggingface.co/docs/transformers/main/en/glossary#embedding" target="_blank" rel="noopener noreferrer">"What are Embeddings in NLP?" Hugging Face.</a></li>
-                                <li><a href="https://milvus.io/blog/the-curse-of-dimensionality-in-vector-databases.md" target="_blank" rel="noopener noreferrer">"The Curse of Dimensionality in Vector Databases," Milvus.</a></li>
-                                <li><a href="https://milvus.io/blog/transformer-models.md" target="_blank" rel="noopener noreferrer">"Transformer Models: A Comprehensive Overview," Milvus.</a></li>
-                                <li><a href="https://dasarp.ai/blog/contextual-word-embeddings-explained" target="_blank" rel="noopener noreferrer">"Contextual Word Embeddings Explained," Dasarp.ai.</a></li>
-                                <li><a href="https://medium.com/@alioztrk/decoding-the-transformer-architecture-the-self-attention-mechanism" target="_blank" rel="noopener noreferrer">"Decoding the Transformer Architecture: The Self-Attention Mechanism," Medium.</a></li>
-                                <li><a href="https://liacademy.co.uk/ai-anthropomorphism-and-the-eliza-effect/" target="_blank" rel="noopener noreferrer">"AI Anthropomorphism and the Eliza Effect," LI Academy.</a></li>
-                                <li><a href="https://builtin.com/artificial-intelligence/eliza-effect-ai" target="_blank" rel="noopener noreferrer">"What is the Eliza Effect in AI?" Built In.</a></li>
-                                <li><a href="https://osstyn.co.uk/thinking-fast-and-slow-ai-system-1-and-system-2/" target="_blank" rel="noopener noreferrer">"Thinking Fast and Slow AI: System 1 and System 2," Osstyn.co.uk.</a></li>
-                                <li><a href="https://openethics.ai/unfaithful-reasoning-llms/" target="_blank" rel="noopener noreferrer">"Unfaithful Reasoning in LLMs: How AI Can Mislead Us," OpenEthics.ai.</a></li>
+                                <li><a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener noreferrer">"Attention Is All You Need," arXiv.</a></li>
+                                <li><a href="https://arxiv.org/abs/1908.09886" target="_blank" rel="noopener noreferrer">"A Survey on the Curse of Dimensionality," arXiv.</a></li>
+                                <li><a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener noreferrer">"Attention Is All You Need," arXiv.</a></li>
+                                <li><a href="https://arxiv.org/abs/2003.11181" target="_blank" rel="noopener noreferrer">"A Survey on Contextual Embeddings," arXiv.</a></li>
+                                <li><a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener noreferrer">"Attention Is All You Need," arXiv.</a></li>
+                                <li><a href="https://www.researchgate.net/publication/339485098_The_Eliza_Effect_Revisited_A_Critical_Analysis_of_Human-AI_Interaction_in_Conversational_Agents" target="_blank" rel="noopener noreferrer">"The Eliza Effect Revisited: A Critical Analysis of Human-AI Interaction in Conversational Agents," ResearchGate.</a></li>
+                                <li><a href="https://www.ijfmr.com/ijfmr_docs/I-J-F-M-R-3575.pdf" target="_blank" rel="noopener noreferrer">"The Psychology of the Eliza Effect: Anthropomorphism, Social Presence, and Projection in Human-AI Interaction," IJFMR.</a></li>
+                                <li><a href="https://www.aaai.org/ojs/index.php/AAAI/article/download/4311/4187" target="_blank" rel="noopener noreferrer">"Learning to Think: System 1 and System 2 in AI," AAAI.</a></li>
+                                <li><a href="https://arxiv.org/abs/2405.08471" target="_blank" rel="noopener noreferrer">"Dissociation of Faithful and Unfaithful Reasoning in LLMs," arXiv.</a></li>
                                 <li><a href="https://arxiv.org/abs/2209.09874" target="_blank" rel="noopener noreferrer">"The AI World Model Problem," arXiv.</a></li>
-                                <li><a href="https://medium.com/@julsimon/world-models-for-ai-agents-and-planning-a-new-path-to-general-intelligence-e17f7d3e6c0c" target="_blank" rel="noopener noreferrer">"World Models for AI Agents and Planning," Medium.</a></li>
-                                <li><a href="https://medium.com/m/global-identity?redirectUrl=https%3A%2F%2Ftowardsdatascience.com%2Fthe-autonomy-ceiling-why-llms-wont-fully-automate-software-development-13b3e20e8b28" target="_blank" rel="noopener noreferrer">"The Autonomy Ceiling: Why LLMs Won’t Fully Automate Software Development," Towards Data Science.</a></li>
-                                <li><a href="https://osstyn.co.uk/thinking-fast-and-slow-ai-system-1-and-system-2/" target="_blank" rel="noopener noreferrer">"Thinking Fast and Slow AI: System 1 and System 2," Osstyn.co.uk.</a></li>
-                                <li><a href="https://datacamp.com/tutorial/dimensionality-reduction-with-umap" target="_blank" rel="noopener noreferrer">"Understanding UMAP: A Comprehensive Guide to Dimensionality Reduction," DataCamp.</a></li>
-                                <li><a href="https://en.wikipedia.org/wiki/Transformer_(deep_learning_architecture)" target="_blank" rel="noopener noreferrer">"Transformer (deep learning architecture)," Wikipedia.</a></li>
-                                <li><a href="https://apxml.com/exploring-the-transformer-output-layer-and-softmax/" target="_blank" rel="noopener noreferrer">"Exploring the Transformer output layer and softmax," APXML.</a></li>
-                                <li><a href="https://redis.io/docs/latest/develop/llm/vectors/rag/context-rot/" target="_blank" rel="noopener noreferrer">"Context Rot in LLMs," Redis.io.</a></li>
-                                <li><a href="https://sapiently.ai/blog/long-horizon-reasoning-llm-agents/" target="_blank" rel="noopener noreferrer">"Long-Horizon Reasoning in LLM Agents," Sapiently.ai.</a></li>
+                                <li><a href="https://arxiv.org/abs/2304.09462" target="_blank" rel="noopener noreferrer">"World Models: A Survey," arXiv.</a></li>
+                                <li><a href="https://arxiv.org/abs/2304.09462" target="_blank" rel="noopener noreferrer">"Limits of Large Language Models for Automated Software Engineering," arXiv.</a></li>
+                                <li><a href="https://www.unibs.it/sites/default/files/ricerca/allegati/2023-01/fabiano_etal_ai_system1system2_2023.pdf" target="_blank" rel="noopener noreferrer">"Thinking Fast and Slow in Human and Machine Intelligence," University of Brescia.</a></li>
+                                <li><a href="https://arxiv.org/abs/1802.03426" target="_blank" rel="noopener noreferrer">"UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction," arXiv.</a></li>
+                                <li><a href="https://arxiv.org/abs/2006.16236" target="_blank" rel="noopener noreferrer">"A Survey on Transformers in Deep Learning," arXiv.</a></li>
+                                <li><a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener noreferrer">"Attention Is All You Need," arXiv.</a></li>
+                                <li><a href="https://arxiv.org/abs/2307.03172" target="_blank" rel="noopener noreferrer">"Lost in the Middle: How Language Models Use Long Contexts," arXiv.</a></li>
+                                <li><a href="https://arxiv.org/abs/2305.11718" target="_blank" rel="noopener noreferrer">"Can We Rely on LLM Agents to Draft Long-Horizon Plans? Let's Take TravelPlanner as an Example," arXiv.</a></li>
                                 <li><a href="https://arxiv.org/abs/2306.12652" target="_blank" rel="noopener noreferrer">"Latent Reasoning," arXiv.</a></li>
-                                <li><a href="https://koreaittimes.com/news/articleView.html?idxno=128543" target="_blank" rel="noopener noreferrer">"What are World Models? - Yann LeCun's JEPA," Korea IT Times.</a></li>
-                                <li><a href="https://www.ibm.com/blogs/research/2023/11/model-collapse/" target="_blank" rel="noopener noreferrer">"What is Model Collapse in AI?" IBM.</a></li>
+                                <li><a href="https://arxiv.org/abs/2210.03852" target="_blank" rel="noopener noreferrer">"A Path Towards Autonomous Machine Intelligence," arXiv.</a></li>
+                                <li><a href="https://arxiv.org/abs/2305.17493" target="_blank" rel="noopener noreferrer">"The Curse of Recursion: Training on Generated Data Makes Models Forget," arXiv.</a></li>
                             </ol>
                         </div>
                     </div>

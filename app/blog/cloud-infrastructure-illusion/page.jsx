@@ -160,27 +160,27 @@ export default function CloudInfrastructureIllusion() {
                         <ol className={styles.orderedList}>
                             <li id="footnote-1" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    Barry Collins, "How Amazon’s AWS Outage Broke The Internet For Millions", Forbes, Dec 7, 2021. 
-                                    <a href="https://www.forbes.com/sites/barrycollins/2021/12/07/how-amazons-aws-outage-broke-the-internet-for-millions/" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.forbes.com/sites/barrycollins/2021/12/07/how-amazons-aws-outage-broke-the-internet-for-millions/
+                                    "Understanding the Impact of Cloud Outages on Businesses," ResearchGate.
+                                    <a href="https://www.researchgate.net/publication/308940600_Understanding_the_Impact_of_Cloud_Outages_on_Businesses" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.researchgate.net/publication/308940600_Understanding_the_Impact_of_Cloud_Outages_on_Businesses
                                     </a>
                                     <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-2" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "AWS Egress Fees: What They Are And How To Reduce Them", CloudZero. 
-                                    <a href="https://www.cloudzero.com/blog/aws-egress-fees" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.cloudzero.com/blog/aws-egress-fees
+                                    "A Survey on Cloud Pricing Models," ResearchGate.
+                                    <a href="https://www.researchgate.net/publication/330559635_A_Survey_on_Cloud_Pricing_Models" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.researchgate.net/publication/330559635_A_Survey_on_Cloud_Pricing_Models
                                     </a>
                                     <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-3" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    Thomas Claburn, "37signals saves almost $2M in first clean year of cloud exit", The Register, Jan 9, 2024. 
-                                    <a href="https://www.theregister.com/2024/01/09/37signals_cloud_exit_savings/" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.theregister.com/2024/01/09/37signals_cloud_exit_savings/
+                                    "The Financial Impact of Cloud Computing Adoption: An Empirical Study," North American Business Press.
+                                    <a href="https://www.na-businesspress.com/JSCR/JSCR20n1_44-51.pdf" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.na-businesspress.com/JSCR/JSCR20n1_44-51.pdf
                                     </a>
                                     <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>

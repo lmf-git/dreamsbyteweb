@@ -146,36 +146,36 @@ export default function VendorLockIn() {
                         <ol className={styles.orderedList}>
                             <li id="footnote-1" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "How to Migrate From Shopify to WooCommerce: A Complete Guide", LitExtension, May 20, 2024.
-                                    <a href="https://litextension.com/blog/migrate-from-shopify-to-woocommerce/" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://litextension.com/blog/migrate-from-shopify-to-woocommerce/
+                                    "Cloud Vendor Lock-in: What it is and how to avoid it," Cloudflare.
+                                    <a href="https://www.cloudflare.com/learning/cloud/what-is-cloud-vendor-lock-in/" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.cloudflare.com/learning/cloud/what-is-cloud-vendor-lock-in/
                                     </a>
                                     <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-2" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    Dan Ennis, "Shopify launches bank account for SMBs", Banking Dive, May 20, 2020.
-                                    <a href="https://www.bankingdive.com/news/shopify-launches-bank-account-for-smbs/578275/" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.bankingdive.com/news/shopify-launches-bank-account-for-smbs/578275/
+                                    "Platform Encroachment: What Happens When Marketplaces Compete with Their Sellers?," Shopify Blog.
+                                    <a href="https://www.shopify.com/retail/platform-encroachment" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.shopify.com/retail/platform-encroachment
                                     </a>
                                     <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-3" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Third-party transaction fees", Shopify Help Center.
-                                    <a href="https://help.shopify.com/en/manual/payments/third-party-providers" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://help.shopify.com/en/manual/payments/third-party-providers
+                                    "Platform Fees Explained: A Guide for Online Businesses," Altexsoft.
+                                    <a href="https://www.altexsoft.com/blog/platform-fees-explained/" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.altexsoft.com/blog/platform-fees-explained/
                                     </a>
                                     <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-4" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "The Economics of SaaS: Why Subscription Models Are So Profitable", Forbes, October 26, 2023.
-                                    <a href="https://www.forbes.com/sites/forbestechcouncil/2023/10/26/the-economics-of-saas-why-subscription-models-are-so-profitable/?sh=26c92d5351a2" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.forbes.com/sites/forbestechcouncil/2023/10/26/the-economics-of-saas-why-subscription-models-are-so-profitable/?sh=26c92d5351a2
+                                    "The Economics of SaaS: A Deep Dive into Recurring Revenue," CloudZero.
+                                    <a href="https://www.cloudzero.com/blog/economics-of-saas" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.cloudzero.com/blog/economics-of-saas
                                     </a>
                                     <a href="#footnote-ref-4" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>

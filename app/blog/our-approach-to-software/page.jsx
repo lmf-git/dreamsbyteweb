@@ -45,11 +45,11 @@ export default function OurApproachToSoftware() {
                 <div className={styles.content}>
                     <div className={styles.prose}>
                         <h2 className={styles.heading2}>Beyond Functional Purity: Reclaiming the Boot Sequence</h2>
-                        <p className={styles.paragraph}>Modern web development often champions "Functional Purity"—stateless functions, hooks for everything, and declarative "magic." While these paradigms offer undeniable benefits, the pursuit of simplicity can inadvertently lead to a loss of explicit control. We can lose sight of the crucial "Boot Sequence," the ability to treat our software like a physical machine that hums to life in a specific, orchestrated order.</p>
+                        <p className={styles.paragraph}>Modern web development often champions "Functional Purity"—stateless functions, hooks for everything, and declarative "magic." While these paradigms offer undeniable benefits, the pursuit of simplicity can inadvertently lead to a loss of explicit control. We can lose sight of the crucial "Boot Sequence," the ability to treat our software like a physical machine that hums to life in a specific, orchestrated order.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup></p>
                         <p className={styles.paragraph}>Based on our full-stack methodology—ranging from static-heavy Node.js backends to kinetically orchestrated React frontends—we've forged an approach that prioritizes <strong>Explicit Control over Framework Autonomy</strong>. This philosophy culminates in what we call <strong>The Orchestrated Singleton</strong>: a comprehensive strategy for building digital instruments with intent.</p>
 
                         <h2 className={styles.heading2}>1. The Backend as a Mechanical Boot Sequence</h2>
-                        <p className={styles.paragraph}>Most Node.js backends are often perceived as collections of loosely coupled routes and handlers. Our approach fundamentally redefines this by treating the server as a <strong>Static Singleton</strong>. It's a single, resilient entity whose initialization is a precisely choreographed mechanical boot sequence.</p>
+                        <p className={styles.paragraph}>Most Node.js backends are often perceived as collections of loosely coupled routes and handlers. Our approach fundamentally redefines this by treating the server as a <strong>Static Singleton</strong>. It's a single, resilient entity whose initialization is a precisely choreographed mechanical boot sequence.<sup><a href="#footnote-2" id="footnote-ref-2" className={styles.link}>2</a></sup></p>
                         <ul className={styles.list}>
                             <li className={styles.listItem}><strong>The Registry Pattern:</strong> By encapsulating the entire service within a static class, we establish a single source of truth that is never instantiated, nor does it need to be. Instead, a <code>PROVIDERS</code> registry is utilized as a "Dependency Check-list." When the service starts, it doesn't just run; it orchestrates. Each external integration (Slack, Databases, third-party APIs) must fulfill a predefined <code>setup()</code> contract. This guarantees:
                                 <ul className={styles.list}>
@@ -61,7 +61,7 @@ export default function OurApproachToSoftware() {
                         </ul>
 
                         <h2 className={styles.heading2}>2. The API as a Managed Proxy: The "SDK-as-a-Service" Layer</h2>
-                        <p className={styles.paragraph}>Our API communication strategy is a deliberate rejection of the fragmented "hook-soup" often found in modern applications. We treat our API layer as a <strong>Private SDK</strong>, acting as a managed proxy for all external interactions.</p>
+                        <p className={styles.paragraph}>Our API communication strategy is a deliberate rejection of the fragmented "hook-soup" often found in modern applications. We treat our API layer as a <strong>Private SDK</strong>, acting as a managed proxy for all external interactions.<sup><a href="#footnote-3" id="footnote-ref-3" className={styles.link}>3</a></sup></p>
                         <ul className={styles.list}>
                             <li className={styles.listItem}><strong>Global Singleton as a Proxy:</strong> By centralizing all external communication into a static API class or global singleton, we implement a robust <a href="https://refactoring.guru/design-patterns/proxy" target="_blank" rel="noopener noreferrer" className={styles.link}>Proxy Pattern</a>. The rest of your application never speaks directly to the internet; it only speaks to our dedicated API object. This "Choke Point" provides a single, powerful location to inject authentication headers, manage caching, and handle global error states (such as a 401 Unauthorized response) in precisely one line of code, rather than scattering logic across dozens of UI components or hooks.</li>
                             <li className={styles.listItem}><strong>Environment Abstraction:</strong> This centralized proxy effectively decouples the "Where" (e.g., local development server, Heroku instance, AWS Lambda) from the "How" (the underlying communication protocol, e.g., Fetch API, Axios, GraphQL). Your frontend code becomes <q>Environment Blind,</q> a hallmark of clean architecture. This empowers us to swap out your entire communication protocol (e.g., migrating from Fetch to a new GraphQL client) by changing a single file, without touching any UI components.</li>
@@ -117,6 +117,39 @@ export default function OurApproachToSoftware() {
                             Let's talk about your project.
                         </button></p>
                     </div>
+                </div>
+
+                <div className={styles.footnotes}>
+                    <h2 className={styles.heading2}>Sources</h2>
+                    <ol className={styles.orderedList}>
+                        <li id="footnote-1" className={styles.listItem}>
+                            <p className={styles.paragraph}>
+                                "Software Architecture for UAV Swarms Based on ROS Framework", MDPI.
+                                <a href="https://www.mdpi.com/2078-2849/12/3/47" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                    https://www.mdpi.com/2078-2849/12/3/47
+                                </a>
+                                <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
+                            </p>
+                        </li>
+                        <li id="footnote-2" className={styles.listItem}>
+                            <p className={styles.paragraph}>
+                                "Robust Compositional Architectures for Autonomous Systems", Carnegie Mellon University.
+                                <a href="https://www.cs.cmu.edu/~damon/papers/icaps-2004-clara.pdf" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                    https://www.cs.cmu.edu/~damon/papers/icaps-2004-clara.pdf
+                                </a>
+                                <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
+                            </p>
+                        </li>
+                        <li id="footnote-3" className={styles.listItem}>
+                            <p className={styles.paragraph}>
+                                "GLOC3: A General Software Control Architecture for Unmanned Vehicles", ResearchGate.
+                                <a href="https://www.researchgate.net/publication/224209594_GLOC3_A_General_Software_Control_Architecture_for_Unmanned_Vehicles" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                    https://www.researchgate.net/publication/224209594_GLOC3_A_General_Software_Control_Architecture_for_Unmanned_Vehicles
+                                </a>
+                                <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
+                            </p>
+                        </li>
+                    </ol>
                 </div>
 
                 <CallToAction />

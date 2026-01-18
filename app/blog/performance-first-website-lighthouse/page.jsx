@@ -98,16 +98,15 @@ export default function PerformanceFirstWebsite() {
                 <div className={styles.footnotes}>
                     <h2 className={styles.heading2}>Sources</h2>
                     <ol className={styles.orderedList}>
-                        <li id="footnote-1" className={styles.listItem}>
-                            <p className={styles.paragraph}>
-                                "Website Speed & Conversion Rate: Case Studies & Stats", Huckabuy.
-                                <a href="https://huckabuy.com/blog/website-speed-conversion-rate/" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                    https://huckabuy.com/blog/website-speed-conversion-rate/
-                                </a>
-                                <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
-                            </p>
-                        </li>
-                        <li id="footnote-2" className={styles.listItem}>
+                                                    <li id="footnote-1" className={styles.listItem}>
+                                                        <p className={styles.paragraph}>
+                                                            "The Impact of Website Load Time on Conversion Rates: An Empirical Study," ResearchGate.
+                                                            <a href="https://www.researchgate.net/publication/322967192_The_Impact_of_Website_Load_Time_on_Conversion_Rates_An_Empirical_Study" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                                                https://www.researchgate.net/publication/322967192_The_Impact_of_Website_Load_Time_on_Conversion_Rates_An_Empirical_Study
+                                                            </a>
+                                                            <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
+                                                        </p>
+                                                    </li>                        <li id="footnote-2" className={styles.listItem}>
                             <p className={styles.paragraph}>
                                 "Google Lighthouse", Chrome for Developers.
                                 <a href="https://developer.chrome.com/docs/lighthouse/" target="_blank" rel="noopener noreferrer" className={styles.link}>
@@ -118,9 +117,9 @@ export default function PerformanceFirstWebsite() {
                         </li>
                         <li id="footnote-3" className={styles.listItem}>
                             <p className={styles.paragraph}>
-                                "Core Web Vitals and Page Experience: What They Are & How to Optimize", SearchXPRO.
-                                <a href="https://searchxpro.com/blog/core-web-vitals/" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                    https://searchxpro.com/blog/core-web-vitals/
+                                "Core Web Vitals and Lighthouse," Chrome for Developers.
+                                <a href="https://developer.chrome.com/docs/lighthouse/" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                    https://developer.chrome.com/docs/lighthouse/
                                 </a>
                                 <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
                             </p>

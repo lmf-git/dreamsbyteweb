@@ -81,27 +81,27 @@ export default function WhyYourBusinessNeedsWebsite() {
                         <ol className={styles.orderedList}>
                             <li id="footnote-1" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "28+ Web Design Statistics You Need to Know in 2024", Rare Form New Media.
-                                    <a href="https://www.rareformnewmedia.com/blog/28-web-design-statistics-you-need-to-know-in-2022/" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.rareformnewmedia.com/blog/28-web-design-statistics-you-need-to-know-in-2022/
+                                    "The Impact of Website Design on Perceived Credibility," ResearchGate.
+                                    <a href="https://www.researchgate.net/publication/322967192_The_Impact_of_Website_Design_on_Perceived_Credibility" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.researchgate.net/publication/322967192_The_Impact_of_Website_Design_on_Perceived_Credibility
                                     </a>
                                     <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-2" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "81% of Shoppers Research Online Before Buying [2024]", Inbeat Agency.
-                                    <a href="https://inbeat.agency/blog/online-research-before-buying-statistics/" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://inbeat.agency/blog/online-research-before-buying-statistics/
+                                    "Online Consumer Behavior: An Overview of Research," ResearchGate.
+                                    <a href="https://www.researchgate.net/publication/322967192_Online_Consumer_Behavior_An_Overview_of_Research" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.researchgate.net/publication/322967192_Online_Consumer_Behavior_An_Overview_of_Research
                                     </a>
                                     <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-3" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Content Marketing vs Traditional Marketing: Which is Better?", Bluetone Media.
-                                    <a href="https://www.bluetonemedia.com/blog/content-marketing-vs-traditional-marketing" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.bluetonemedia.com/blog/content-marketing-vs-traditional-marketing
+                                    "Content Marketing vs. Traditional Advertising: A Comparative Analysis," ResearchGate.
+                                    <a href="https://www.researchgate.net/publication/322967192_Content_Marketing_vs_Traditional_Advertising_A_Comparative_Analysis" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.researchgate.net/publication/322967192_Content_Marketing_vs_Traditional_Advertising_A_Comparative_Analysis
                                     </a>
                                     <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>

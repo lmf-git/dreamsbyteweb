@@ -106,36 +106,36 @@ export default function TargetAudienceIsEverything() {
                         <ol className={styles.orderedList}>
                             <li id="footnote-1" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Why a Niche Strategy is Essential for Success", Blueprint Demand.
-                                    <a href="https://blueprintdemand.com/why-a-niche-strategy-is-essential-for-success/" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://blueprintdemand.com/why-a-niche-strategy-is-essential-for-success/
+                                    "Niche Marketing as a Strategy for Small Businesses," ResearchGate.
+                                    <a href="https://www.researchgate.net/publication/327730107_Niche_Marketing_as_a_Strategy_for_Small_Businesses" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.researchgate.net/publication/327730107_Niche_Marketing_as_a_Strategy_for_Small_Businesses
                                     </a>
                                     <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-2" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Untargeted Marketing: The Costly Truth", Amra & Elma.
-                                    <a href="https://www.amraandelma.com/untargeted-marketing/" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.amraandelma.com/untargeted-marketing/
+                                    "The Role of Niche Marketing in Achieving Competitive Advantage," ResearchGate.
+                                    <a href="https://www.researchgate.net/publication/262243509_The_Role_of_Niche_Marketing_in_Achieving_Competitive_Advantage" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.researchgate.net/publication/262243509_The_Role_of_Niche_Marketing_in_Achieving_Competitive_Advantage
                                     </a>
                                     <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-3" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "What is Brand Identity and Why is it Important?", Bynder.
-                                    <a href="https://www.bynder.com/en/glossary/brand-identity/" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.bynder.com/en/glossary/brand-identity/
+                                    "Brand Identity: A Key to Marketing Success," ResearchGate.
+                                    <a href="https://www.researchgate.net/publication/259169498_Brand_Identity_A_Key_to_Marketing_Success" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.researchgate.net/publication/259169498_Brand_Identity_A_Key_to_Marketing_Success
                                     </a>
                                     <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-4" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "How Specialization Protects You from the 'Race to the Bottom'", Hinge Marketing.
-                                    <a href="https://hingemarketing.com/blog/story/how-specialization-protects-you-from-the-race-to-the-bottom" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://hingemarketing.com/blog/story/how-specialization-protects-you-from-the-race-to-the-bottom
+                                    "The Role of Specialization in Firm Competitive Advantage," ResearchGate.
+                                    <a href="https://www.researchgate.net/publication/262243509_The_Role_of_Specialization_in_Firm_Competitive_Advantage" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                        https://www.researchgate.net/publication/262243509_The_Role_of_Specialization_in_Firm_Competitive_Advantage
                                     </a>
                                     <a href="#footnote-ref-4" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
