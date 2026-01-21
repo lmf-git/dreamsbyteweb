@@ -91,10 +91,7 @@ export default function CustomCRMFSM() {
                         <ol className={styles.orderedList}>
                             <li id="footnote-1" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Custom vs. Standard Software: Which One to Choose?," ResearchGate.
-                                    <a href="https://www.researchgate.net/publication/262243509_Custom_vs_Standard_Software_Which_One_to_Choose" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.researchgate.net/publication/262243509_Custom_vs_Standard_Software_Which_One_to_Choose
-                                    </a>
+                                    "Custom Software vs Off-the-Shelf Software: Which is the Better Choice?," <a href="https://www.fingent.com/blog/custom-software-vs-off-the-shelf-software-which-is-the-better-choice" target="_blank" rel="noopener noreferrer" className={styles.link}>Fingent</a>.
                                     <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>

@@ -124,10 +124,7 @@ export default function OurApproachToSoftware() {
                     <ol className={styles.orderedList}>
                         <li id="footnote-1" className={styles.listItem}>
                             <p className={styles.paragraph}>
-                                "Software Architecture for UAV Swarms Based on ROS Framework", MDPI.
-                                <a href="https://www.mdpi.com/2078-2849/12/3/47" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                    https://www.mdpi.com/2078-2849/12/3/47
-                                </a>
+                                "Functional Programming Oriented Software Design: A Systematic Literature Review," <a href="https://ieeexplore.ieee.org/abstract/document/9483321" target="_blank" rel="noopener noreferrer" className={styles.link}>IEEE Xplore</a>.
                                 <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
                             </p>
                         </li>

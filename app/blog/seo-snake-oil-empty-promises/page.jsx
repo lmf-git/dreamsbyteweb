@@ -113,10 +113,7 @@ export default function SEOSnakeOil() {
                             </li>
                             <li id="footnote-2" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "How Google's New Algorithm, Hummingbird, Promotes Content and Inbound Marketing," ResearchGate.
-                                    <a href="https://www.researchgate.net/publication/262243509_How_Google's_New_Algorithm_Hummingbird_Promotes_Content_and_Inbound_Marketing" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.researchgate.net/publication/262243509_How_Google's_New_Algorithm_Hummingbird_Promotes_Content_and_Inbound_Marketing
-                                    </a>
+                                    "Google Hummingbird: Everything You Need To Know," <a href="https://www.searchenginejournal.com/google-hummingbird-everything-need-know/4 Hummingbird" target="_blank" rel="noopener noreferrer" className={styles.link}>Search Engine Journal</a>.
                                     <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>

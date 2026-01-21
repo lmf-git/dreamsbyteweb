@@ -99,10 +99,7 @@ export default function UnderstandingWebsiteDevelopment() {
                             </li>
                             <li id="footnote-2" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "The Influence of Website Design on Consumer Perceptions of Online Store Credibility," ResearchGate.
-                                    <a href="https://www.researchgate.net/publication/262243509_The_Influence_of_Website_Design_on_Consumer_Perceptions_of_Online_Store_Credibility" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.researchgate.net/publication/262243509_The_Influence_of_Website_Design_on_Consumer_Perceptions_of_Online_Store_Credibility
-                                    </a>
+                                    "Why Website Credibility Matters: A Guide for Businesses," <a href="https://neuron-agency.com/blog/website-credibility/" target="_blank" rel="noopener noreferrer" className={styles.link}>Neuron Agency</a>.
                                     <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>

@@ -90,19 +90,13 @@ export default function DevOpsForSmallBusiness() {
                         <ol className={styles.orderedList}>
                             <li id="footnote-1" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "The Cost of Downtime," ResearchGate.
-                                    <a href="https://www.researchgate.net/publication/224151703_The_Cost_of_Downtime" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.researchgate.net/publication/224151703_The_Cost_of_Downtime
-                                    </a>
+                                    "Annual Outage Analysis 2023," <a href="https://uptimeinstitute.com/resources/assets/reports/Annual-Outage-Analysis-2023.pdf" target="_blank" rel="noopener noreferrer" className={styles.link}>Uptime Institute</a>.
                                     <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-2" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "An Overview of Data Backup and Recovery Strategies," ResearchGate.
-                                    <a href="https://www.researchgate.net/publication/322967192_An_Overview_of_Data_Backup_and_Recovery_Strategies" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.researchgate.net/publication/322967192_An_Overview_of_Data_Backup_and_Recovery_Strategies
-                                    </a>
+                                    "Data Backup Strategies in Disaster Recovery: Ensuring Minimal Downtime," <a href="https://www.researchgate.net/publication/376780365_Data_Backup_Strategies_in_Disaster_Recovery_Ensuring_Minimal_Downtime" target="_blank" rel="noopener noreferrer" className={styles.link}>ResearchGate</a>.
                                     <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>

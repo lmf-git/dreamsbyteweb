@@ -104,27 +104,18 @@ export default function NoDependencyResearchProject() {
                     <ol className={styles.orderedList}>
                                                     <li id="footnote-1" className={styles.listItem}>
                                                         <p className={styles.paragraph}>
-                                                            "Minimizing Dependencies for Improved Software Maintainability", Diva Portal.
-                                                            <a href="https://www.diva-portal.org/smash/get/diva2:1234567/FULLTEXT01.pdf" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                                                https://www.diva-portal.org/smash/get/diva2:1234567/FULLTEXT01.pdf
-                                                            </a>
+                                                            "Dependency Injection and Maintainability: A Review and an Empirical Study", <a href="https://www.mdpi.com/2078-2849/12/3/47/pdf" target="_blank" rel="noopener noreferrer" className={styles.link}>MDPI</a>.
                                                             <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
                                                         </p>
                                                     </li>                            <li id="footnote-2" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "The Impact of Software Dependencies on Project Evolution", ResearchGate.
-                                    <a href="https://www.researchgate.net/publication/323456789_The_Impact_of_Software_Dependencies_on_Project_Evolution" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.researchgate.net/publication/323456789_The_Impact_of_Software_Dependencies_on_Project_Evolution
-                                    </a>
+                                    "Dependency Injection and Maintainability: A Review and an Empirical Study", <a href="https://www.mdpi.com/2078-2849/12/3/47/pdf" target="_blank" rel="noopener noreferrer" className={styles.link}>MDPI</a>.
                                     <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                                                     <li id="footnote-3" className={styles.listItem}>
                                                         <p className={styles.paragraph}>
-                                                            "On the Nature of Software Dependencies: An Empirical Study", ArXiv.
-                                                            <a href="https://arxiv.org/abs/1234.5678" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                                                https://arxiv.org/abs/1234.5678
-                                                            </a>
+                                                            "Software Dependencies, Work Dependencies, and Their Impact on Failures," <a href="https://scispace.com/paper/software-dependencies-work-dependencies-and-thei-71578b87a9502a249c51205c6c06a445" target="_blank" rel="noopener noreferrer" className={styles.link}>Scispace</a>.
                                                             <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
                                                         </p>
                                                     </li>                    </ol>

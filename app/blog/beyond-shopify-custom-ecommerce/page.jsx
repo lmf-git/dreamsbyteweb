@@ -93,10 +93,7 @@ export default function BeyondShopify() {
                         <ol className={styles.orderedList}>
                             <li id="footnote-1" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "E-commerce Platform Selection: A Review of Criteria and Approaches," ResearchGate.
-                                    <a href="https://www.researchgate.net/publication/350697305_E-commerce_Platform_Selection_A_Review_of_Criteria_and_Approaches" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.researchgate.net/publication/350697305_E-commerce_Platform_Selection_A_Review_of_Criteria_and_Approaches
-                                    </a>
+                                    "Critical Factors Affecting E-Commerce Platform Selection," <a href="https://www.semanticscholar.org/paper/Critical-Factors-Affecting-E-Commerce-Platform-Hossain-Al-Shaikh/b9c02d1d0526017b2b0051e70e30906296c09819" target="_blank" rel="noopener noreferrer" className={styles.link}>Semantic Scholar</a>.
                                     <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
@@ -111,19 +108,13 @@ export default function BeyondShopify() {
                             </li>
                             <li id="footnote-3" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "SaaS in E-Commerce: A Comparative Study of Cost and Benefit between Self-developed and SaaS Model," ResearchGate.
-                                    <a href="https://www.researchgate.net/publication/305809786_SaaS_in_E-Commerce_A_Comparative_Study_of_Cost_and_Benefit_between_Self-developed_and_SaaS_Model" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.researchgate.net/publication/305809786_SaaS_in_E-Commerce_A_Comparative_Study_of_Cost_and_Benefit_between_Self-developed_and_SaaS_Model
-                                    </a>
+                                    "Analysis of SaaS-Based E-Commerce Platform," <a href="https://www.researchgate.net/publication/320491322_Analysis_of_SaaS-Based_E-Commerce_Platform" target="_blank" rel="noopener noreferrer" className={styles.link}>ResearchGate</a>.
                                     <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-4" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "E-commerce Platform Selection: A Review of Criteria and Approaches," ResearchGate.
-                                    <a href="https://www.researchgate.net/publication/350697305_E-commerce_Platform_Selection_A_Review_of_Criteria_and_Approaches" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.researchgate.net/publication/350697305_E-commerce_Platform_Selection_A_Review_of_Criteria_and_Approaches
-                                    </a>
+                                    "Critical Factors Affecting E-Commerce Platform Selection," <a href="https://www.semanticscholar.org/paper/Critical-Factors-Affecting-E-Commerce-Platform-Hossain-Al-Shaikh/b9c02d1d0526017b2b0051e70e30906296c09819" target="_blank" rel="noopener noreferrer" className={styles.link}>Semantic Scholar</a>.
                                     <a href="#footnote-ref-4" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>

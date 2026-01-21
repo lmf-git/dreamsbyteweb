@@ -160,28 +160,19 @@ export default function CloudInfrastructureIllusion() {
                         <ol className={styles.orderedList}>
                             <li id="footnote-1" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Understanding the Impact of Cloud Outages on Businesses," ResearchGate.
-                                    <a href="https://www.researchgate.net/publication/308940600_Understanding_the_Impact_of_Cloud_Outages_on_Businesses" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.researchgate.net/publication/308940600_Understanding_the_Impact_of_Cloud_Outages_on_Businesses
-                                    </a>
+                                    "Annual Outage Analysis 2023," <a href="https://uptimeinstitute.com/resources/assets/reports/Annual-Outage-Analysis-2023.pdf" target="_blank" rel="noopener noreferrer" className={styles.link}>Uptime Institute</a>.
                                     <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-2" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "A Survey on Cloud Pricing Models," ResearchGate.
-                                    <a href="https://www.researchgate.net/publication/330559635_A_Survey_on_Cloud_Pricing_Models" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.researchgate.net/publication/330559635_A_Survey_on_Cloud_Pricing_Models
-                                    </a>
+                                    "Cloud Pricing Models," <a href="https://www.semanticscholar.org/paper/Cloud-Pricing-Models-Wu-Buyya-Ramamohanarao/31201d4a04d5d278b0e8b1b519b168a7b0a7c4a1" target="_blank" rel="noopener noreferrer" className={styles.link}>ACM Computing Surveys</a>.
                                     <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-3" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "The Financial Impact of Cloud Computing Adoption: An Empirical Study," North American Business Press.
-                                    <a href="https://www.na-businesspress.com/JSCR/JSCR20n1_44-51.pdf" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.na-businesspress.com/JSCR/JSCR20n1_44-51.pdf
-                                    </a>
+                                    "Financial Impact of Moving to Cloud Computing," <a href="https://www.na-businesspress.com/JSCR/JSCR20n1_44-51.pdf" target="_blank" rel="noopener noreferrer" className={styles.link}>North American Business Press</a>.
                                     <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>

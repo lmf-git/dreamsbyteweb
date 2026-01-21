@@ -115,10 +115,7 @@ export default function TargetAudienceIsEverything() {
                             </li>
                             <li id="footnote-2" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "The Role of Niche Marketing in Achieving Competitive Advantage," ResearchGate.
-                                    <a href="https://www.researchgate.net/publication/262243509_The_Role_of_Niche_Marketing_in_Achieving_Competitive_Advantage" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.researchgate.net/publication/262243509_The_Role_of_Niche_Marketing_in_Achieving_Competitive_Advantage
-                                    </a>
+                                    "Niche Marketing: A Deep Dive," <a href="https://thestrategyinstitute.org/niche-marketing/" target="_blank" rel="noopener noreferrer" className={styles.link}>The Strategy Institute</a>.
                                     <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
@@ -133,10 +130,7 @@ export default function TargetAudienceIsEverything() {
                             </li>
                             <li id="footnote-4" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "The Role of Specialization in Firm Competitive Advantage," ResearchGate.
-                                    <a href="https://www.researchgate.net/publication/262243509_The_Role_of_Specialization_in_Firm_Competitive_Advantage" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.researchgate.net/publication/262243509_The_Role_of_Specialization_in_Firm_Competitive_Advantage
-                                    </a>
+                                    "Specialization: What It Is in Economics and Business," <a href="https://www.investopedia.com/terms/s/specialization.asp" target="_blank" rel="noopener noreferrer" className={styles.link}>Investopedia</a>.
                                     <a href="#footnote-ref-4" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>

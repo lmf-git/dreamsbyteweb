@@ -119,10 +119,7 @@ export default function LegacySystemModernisation() {
                             </li>
                             <li id="footnote-3" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Security Vulnerabilities in Legacy Systems: A Review," ResearchGate.
-                                    <a href="https://www.researchgate.net/publication/262243509_Security_Vulnerabilities_in_Legacy_Systems_A_Review" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.researchgate.net/publication/262243509_Security_Vulnerabilities_in_Legacy_Systems_A_Review
-                                    </a>
+                                    "Legacy Systems Vulnerabilities," <a href="https://infoguardsecurity.com/legacy-systems-vulnerabilities/" target="_blank" rel="noopener noreferrer" className={styles.link}>InfoGuard Security</a>.
                                     <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>

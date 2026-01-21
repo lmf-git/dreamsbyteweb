@@ -109,14 +109,10 @@ export default function EthicalBusinessPractices() {
                             </p>
                         </li>
                         <li id="footnote-3" className={styles.listItem}>
-                            <p className={styles.paragraph}>
-                                "The Role of Ethics in Software Project Management", ResearchGate.
-                                <a href="https://www.researchgate.net/publication/323456789_The_Role_of_Ethics_in_Software_Project_Management" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                    https://www.researchgate.net/publication/323456789_The_Role_of_Ethics_in_Software_Project_Management
-                                </a>
-                                <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
-                            </p>
-                        </li>
+                                                                                            <p className={styles.paragraph}>
+                                                                                                "Ethical Dilemmas and Use of Code of Ethics in Software Project Management," <a href="https://www.researchpublish.com/download.php?file=Ethical%20Dilemmas%20and%20Use%20of%20Code%20of%20Ethics%20in%20Software%20Project%20Management-1786.pdf&act=book" target="_blank" rel="noopener noreferrer" className={styles.link}>Research Publish</a>.
+                                                                                                <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
+                                                                                            </p>                        </li>
                     </ol>
                 </div>
 

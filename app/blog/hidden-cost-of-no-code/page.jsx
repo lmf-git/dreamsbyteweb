@@ -127,10 +127,7 @@ export default function HiddenCostOfNoCode() {
                             </li>
                             <li id="footnote-5" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "The Business Value of Application Programming Interfaces (APIs): An Ecosystem Perspective," ResearchGate.
-                                    <a href="https://www.researchgate.net/publication/262243509_The_Business_Value_of_Application_Programming_Interfaces_APIs_An_Ecosystem_Perspective" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.researchgate.net/publication/262243509_The_Business_Value_of_Application_Programming_Interfaces_APIs_An_Ecosystem_Perspective
-                                    </a>
+                                    "The Business Value of APIs: An Ecosystem Perspective," <a href="https://gravitee.io/blog/api-business-value" target="_blank" rel="noopener noreferrer" className={styles.link}>Gravitee</a>.
                                     <a href="#footnote-ref-5" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>

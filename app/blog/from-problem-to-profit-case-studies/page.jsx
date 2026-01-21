@@ -126,10 +126,7 @@ export default function FromProblemToProfit() {
                             </li>
                             <li id="footnote-2" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "The Competitive Advantage of Customized Software," ResearchGate.
-                                    <a href="https://www.researchgate.net/publication/220678074_The_Competitive_Advantage_of_Customized_Software" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.researchgate.net/publication/220678074_The_Competitive_Advantage_of_Customized_Software
-                                    </a>
+                                    "CUSTOMIZED SOFTWARE Strategies for Acquiring and Sustaining Competitive Advantage: A Japanese Perspective," <a href="https://www.uvic.ca/ecs/assets/docs/theses/msc-theses/2009-suzuki.pdf" target="_blank" rel="noopener noreferrer" className={styles.link}>University of Victoria</a>.
                                     <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
