@@ -96,16 +96,13 @@ export default function DevOpsForSmallBusiness() {
                             </li>
                             <li id="footnote-2" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Data Backup Strategies in Disaster Recovery: Ensuring Minimal Downtime," <a href="https://www.researchgate.net/publication/376780365_Data_Backup_Strategies_in_Disaster_Recovery_Ensuring_Minimal_Downtime" target="_blank" rel="noopener noreferrer" className={styles.link}>ResearchGate</a>.
+                                    "15 Backup and Disaster Recovery Best Practices to Consider," <a href="https://solutionsreview.com/backup-recovery/backup-and-disaster-recovery-best-practices/" target="_blank" rel="noopener noreferrer" className={styles.link}>Solutions Review</a>.
                                     <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-3" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Software Security Patch Management—A Systematic Literature Review of Challenges, Approaches, Tools and Practices," arXiv.
-                                    <a href="https://arxiv.org/abs/2004.09846" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://arxiv.org/abs/2004.09846
-                                    </a>
+                                    "Software Security Patch Management—A Systematic Literature Review of Challenges, Approaches, Tools and Practices," <a href="https://arxiv.org/abs/2004.09846" target="_blank" rel="noopener noreferrer" className={styles.link}>arXiv</a>.
                                     <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>

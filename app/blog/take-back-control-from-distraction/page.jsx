@@ -137,10 +137,7 @@ export default function TakeBackControlFromDistraction() {
                             <li id="footnote-1" className={styles.listItem}>
                                 <p className={styles.paragraph}>
                                     Lally, P., van Jaarsveld, C. H. M., Potts, H. W. W., & Wardle, J. (2010). How are habits formed: Modelling habit formation in the real world. <em>European Journal of Social Psychology, 40</em>(6), 998–1009. 
-                                    <a href="https://discovery.ucl.ac.uk/id/eprint/135709/" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                    https://discovery.ucl.ac.uk/id/eprint/135709/
-                                    </a>
-                                    <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
+                                                                        <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-2" className={styles.listItem}>

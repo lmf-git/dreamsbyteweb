@@ -146,37 +146,25 @@ export default function VendorLockIn() {
                         <ol className={styles.orderedList}>
                             <li id="footnote-1" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Cloud Vendor Lock-in: What it is and how to avoid it," Cloudflare.
-                                    <a href="https://www.cloudflare.com/learning/cloud/what-is-cloud-vendor-lock-in/" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.cloudflare.com/learning/cloud/what-is-cloud-vendor-lock-in/
-                                    </a>
+                                    "Cloud Vendor Lock-in: What it is and how to avoid it," <a href="https://www.cloudflare.com/learning/cloud/what-is-cloud-vendor-lock-in/" target="_blank" rel="noopener noreferrer" className={styles.link}>Cloudflare</a>.
                                     <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-2" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Platform Encroachment: What Happens When Marketplaces Compete with Their Sellers?," Shopify Blog.
-                                    <a href="https://www.shopify.com/retail/platform-encroachment" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.shopify.com/retail/platform-encroachment
-                                    </a>
+                                    "Platform Encroachment: What Happens When Marketplaces Compete with Their Sellers?," <a href="https://www.shopify.com/retail/platform-encroachment" target="_blank" rel="noopener noreferrer" className={styles.link}>Shopify Blog</a>.
                                     <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-3" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Platform Fees Explained: A Guide for Online Businesses," Altexsoft.
-                                    <a href="https://www.altexsoft.com/blog/platform-fees-explained/" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.altexsoft.com/blog/platform-fees-explained/
-                                    </a>
+                                    "Platform Fees Explained: A Guide for Online Businesses," <a href="https://www.altexsoft.com/blog/platform-fees-explained/" target="_blank" rel="noopener noreferrer" className={styles.link}>Altexsoft</a>.
                                     <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-4" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "The Economics of SaaS: A Deep Dive into Recurring Revenue," CloudZero.
-                                    <a href="https://www.cloudzero.com/blog/economics-of-saas" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.cloudzero.com/blog/economics-of-saas
-                                    </a>
+                                    "The Economics of SaaS: A Deep Dive into Recurring Revenue," <a href="https://www.cloudzero.com/blog/economics-of-saas" target="_blank" rel="noopener noreferrer" className={styles.link}>CloudZero</a>.
                                     <a href="#footnote-ref-4" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>

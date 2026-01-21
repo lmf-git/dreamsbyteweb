@@ -92,20 +92,12 @@ export default function EthicalBusinessPractices() {
                     <ol className={styles.orderedList}>
                         <li id="footnote-1" className={styles.listItem}>
                             <p className={styles.paragraph}>
-                                "Ethics in Software Engineering: A Roadmap", Vrije Universiteit Amsterdam.
-                                <a href="https://research.vu.nl/en/publications/ethics-in-software-engineering-a-roadmap" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                    https://research.vu.nl/en/publications/ethics-in-software-engineering-a-roadmap
-                                </a>
-                                <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
+                                        "Ethics in Software Engineering: A Roadmap", <a href="https://research.vu.nl/en/publications/ethics-in-software-engineering-a-roadmap" target="_blank" rel="noopener noreferrer" className={styles.link}>Vrije Universiteit Amsterdam</a>.                                <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
                             </p>
                         </li>
                         <li id="footnote-2" className={styles.listItem}>
                             <p className={styles.paragraph}>
-                                "Ethical Challenges in Software Development: A Systematic Literature Review", MDPI.
-                                <a href="https://www.mdpi.com/2078-2849/12/3/47" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                    https://www.mdpi.com/2078-2849/12/3/47
-                                </a>
-                                <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
+                                        "Ethical Challenges in Software Development: A Systematic Literature Review", <a href="https://www.mdpi.com/2078-2849/12/3/47" target="_blank" rel="noopener noreferrer" className={styles.link}>MDPI</a>.                                <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
                             </p>
                         </li>
                         <li id="footnote-3" className={styles.listItem}>

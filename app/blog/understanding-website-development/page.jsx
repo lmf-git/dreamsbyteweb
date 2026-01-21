@@ -90,10 +90,7 @@ export default function UnderstandingWebsiteDevelopment() {
                         <ol className={styles.orderedList}>
                             <li id="footnote-1" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "The Impact of User Experience on Customer Loyalty in E-commerce," ResearchGate.
-                                    <a href="https://www.researchgate.net/publication/322967192_The_Impact_of_User_Experience_on_Customer_Loyalty_in_E-commerce" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.researchgate.net/publication/322967192_The_Impact_of_User_Experience_on_Customer_Loyalty_in_E-commerce
-                                    </a>
+                                    "The impact of User Experience (UX) on Customer Loyalty," <a href="https://impresee.com/blog/the-impact-of-user-experience-ux-on-customer-loyalty/" target="_blank" rel="noopener noreferrer" className={styles.link}>Impresee</a>.
                                     <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
@@ -105,10 +102,7 @@ export default function UnderstandingWebsiteDevelopment() {
                             </li>
                             <li id="footnote-3" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Content Marketing vs. Traditional Advertising: A Comparative Analysis," ResearchGate.
-                                    <a href="https://www.researchgate.net/publication/322967192_Content_Marketing_vs_Traditional_Advertising_A_Comparative_Analysis" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.researchgate.net/publication/322967192_Content_Marketing_vs_Traditional_Advertising_A_Comparative_Analysis
-                                    </a>
+                                    "Content Marketing vs. Traditional Advertising: What's the Difference?", <a href="https://copypress.com/blog/content-marketing-vs-traditional-advertising-whats-the-difference/" target="_blank" rel="noopener noreferrer" className={styles.link}>Copypress</a>.
                                     <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>

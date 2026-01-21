@@ -117,10 +117,7 @@ export default function FromProblemToProfit() {
                         <ol className={styles.orderedList}>
                             <li id="footnote-1" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Decision Making Framework for Enterprise Resource Planning Software Selection: A Focus on Small and Medium Enterprises," University of Victoria.
-                                    <a href="https://www.uvic.ca/ecs/assets/docs/theses/msc-theses/2012-arora.pdf" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.uvic.ca/ecs/assets/docs/theses/msc-theses/2012-arora.pdf
-                                    </a>
+                                    "Decision Making Framework for Enterprise Resource Planning Software Selection: A Focus on Small and Medium Enterprises," <a href="https://www.uvic.ca/ecs/assets/docs/theses/msc-theses/2012-arora.pdf" target="_blank" rel="noopener noreferrer" className={styles.link}>University of Victoria</a>.
                                     <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>

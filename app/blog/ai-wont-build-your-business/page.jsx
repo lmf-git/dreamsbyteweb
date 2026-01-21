@@ -152,14 +152,14 @@ export default function AIWontBuildYourBusiness() {
                         <div className={styles.footnotes}>
                             <h2>References</h2>
                             <ol>
-                                <li><a href="https://arxiv.org/abs/2004.09846" target="_blank" rel="noopener noreferrer">"Anisotropy and the Crowding Problem in Pre-trained Language Models," arXiv.</a></li>
+                                <li>"Anisotropy and the Crowding Problem in Pre-trained Language Models," <a href="https://arxiv.org/abs/2004.09846" target="_blank" rel="noopener noreferrer">arXiv</a>.</li>
                                 <li><a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener noreferrer">"Attention Is All You Need," arXiv.</a></li>
                                 <li><a href="https://arxiv.org/abs/1908.09886" target="_blank" rel="noopener noreferrer">"A Survey on the Curse of Dimensionality," arXiv.</a></li>
                                 <li><a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener noreferrer">"Attention Is All You Need," arXiv.</a></li>
                                 <li><a href="https://arxiv.org/abs/2003.11181" target="_blank" rel="noopener noreferrer">"A Survey on Contextual Embeddings," arXiv.</a></li>
                                 <li><a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener noreferrer">"Attention Is All You Need," arXiv.</a></li>
-                                <li>"The Psychology of the Eliza Effect: Anthropomorphism, Social Presence, and Projection in Human-AI Interaction," <a href="https://www.researchgate.net/publication/380582047_The_Psychology_of_the_Eliza_Effect_Anthropomorphism_Social_Presence_and_Projection_in_Human-AI_Interaction" target="_blank" rel="noopener noreferrer">ResearchGate</a>.</li>
-                                <li>"The Psychology of the Eliza Effect: Anthropomorphism, Social Presence, and Projection in Human-AI Interaction," <a href="https://www.researchgate.net/publication/380582047_The_Psychology_of_the_Eliza_Effect_Anthropomorphism_Social_Presence_and_Projection_in_Human-AI_Interaction" target="_blank" rel="noopener noreferrer">ResearchGate</a>.</li>
+                                <li>"The ELIZA Effect: Avoiding emotional attachment to AI coworkers," <a href="https://www.ibm.com/blogs/research/2023/10/26/the-eliza-effect/" target="_blank" rel="noopener noreferrer">IBM</a>.</li>
+                                <li>"The ELIZA Effect: Avoiding emotional attachment to AI coworkers," <a href="https://www.ibm.com/blogs/research/2023/10/26/the-eliza-effect/" target="_blank" rel="noopener noreferrer">IBM</a>.</li>
                                 <li>"Cognitive Dual-Process Theories Applied to Artificial Intelligence," <a href="https://osstyn.co.uk/articles/cognitive-dual-process-theories-applied-to-artificial-intelligence/" target="_blank" rel="noopener noreferrer">Osstyn</a>.</li>
                                 <li><a href="https://arxiv.org/abs/2405.08471" target="_blank" rel="noopener noreferrer">"Dissociation of Faithful and Unfaithful Reasoning in LLMs," arXiv.</a></li>
                                 <li><a href="https://arxiv.org/abs/2209.09874" target="_blank" rel="noopener noreferrer">"The AI World Model Problem," arXiv.</a></li>

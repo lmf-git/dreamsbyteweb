@@ -91,37 +91,25 @@ export default function HiddenCostOfNoCode() {
                         <ol className={styles.orderedList}>
                             <li id="footnote-1" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "The Hidden Costs of Low-Code Development," ResearchGate.
-                                    <a href="https://www.researchgate.net/publication/336214041_The_Hidden_Costs_of_Low_Code_Development" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.researchgate.net/publication/336214041_The_Hidden_Costs_of_Low_Code_Development
-                                    </a>
+                                    "Low-Code/No-Code Platforms: Hidden Limitations and Costs," <a href="https://depalma.io/blog/low-code-no-code-hidden-limitations-and-costs" target="_blank" rel="noopener noreferrer" className={styles.link}>DePalma</a>.
                                     <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-2" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Limitations of Low-Code Development Platforms: A Systematic Literature Review," ResearchGate.
-                                    <a href="https://www.researchgate.net/publication/340058971_Limitations_of_Low-Code_Development_Platforms_A_Systematic_Literature_Review" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.researchgate.net/publication/340058971_Limitations_of_Low-Code_Development_Platforms_A_Systematic_Literature_Review
-                                    </a>
+                                    "What are the Disadvantages of Low-Code Platforms? - Quixy," <a href="https://quixy.com/blog/disadvantages-of-low-code/" target="_blank" rel="noopener noreferrer" className={styles.link}>Quixy</a>.
                                     <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-3" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Scalability Challenges in Low-Code Development Platforms," ResearchGate.
-                                    <a href="https://www.researchgate.net/publication/348456789_Scalability_Challenges_in_Low-Code_Development_Platforms" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.researchgate.net/publication/348456789_Scalability_Challenges_in_Low-Code_Development_Platforms
-                                    </a>
+                                    "Why Most Low-Code Platforms Eventually Face Limitations—and Strategic Considerations for the Future," <a href="https://baytechconsulting.com/blog/low-code-limitations/" target="_blank" rel="noopener noreferrer" className={styles.link}>Baytech Consulting</a>.
                                     <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-4" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Security Challenges in Low-Code Development Platforms," ResearchGate.
-                                    <a href="https://www.researchgate.net/publication/348456789_Security_Challenges_in_Low-Code_Development_Platforms" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.researchgate.net/publication/348456789_Security_Challenges_in_Low-Code_Development_Platforms
-                                    </a>
+                                    "Security Risks of Low-Code Development Platforms," <a href="https://thescimus.com/security-risks-of-low-code-development-platforms/" target="_blank" rel="noopener noreferrer" className={styles.link}>SCIMUS</a>.
                                     <a href="#footnote-ref-4" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>

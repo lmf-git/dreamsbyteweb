@@ -128,18 +128,17 @@ export default function OurApproachToSoftware() {
                                 <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
                             </p>
                         </li>
-                        <li id="footnote-2" className={styles.listItem}>
-                            <p className={styles.paragraph}>
-                                "Booting an Intel System Architecture", <a href="https://www.researchgate.net/publication/262243509_Booting_an_Intel_System_Architecture" target="_blank" rel="noopener noreferrer" className={styles.link}>ResearchGate</a>.
-                                <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
-                            </p>
-                        </li>
-                        <li id="footnote-3" className={styles.listItem}>
-                            <p className={styles.paragraph}>
-                                "Systematic Review of API Gateway Patterns for Scalable and Secure Application Architecture", <a href="https://www.researchgate.net/publication/350485960_Systematic_Review_of_API_Gateway_Patterns_for_Scalable_and_Secure_Application_Architecture" target="_blank" rel="noopener noreferrer" className={styles.link}>ResearchGate</a>.
-                                <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
-                            </p>
-                        </li>
+                                                    <li id="footnote-2" className={styles.listItem}>
+                                                        <p className={styles.paragraph}>
+                                                            "Boot Loader Choices for Small and Fast System Initialization Requirements", <a href="https://www.intel.com/content/www/us/en/developer/articles/technical/boot-loader-choices-for-small-and-fast-system-initialization-requirements.html" target="_blank" rel="noopener noreferrer" className={styles.link}>Intel</a>.
+                                                            <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
+                                                        </p>
+                                                    </li>                            <li id="footnote-3" className={styles.listItem}>
+                                <p className={styles.paragraph}>
+                                    "API Gateway Pattern: 5 Design Options and How to Choose", <a href="https://www.solo.io/blog/api-gateway-pattern-5-design-options-and-how-to-choose/" target="_blank" rel="noopener noreferrer" className={styles.link}>Solo.io</a>.
+                                    <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
+                                </p>
+                            </li>
                     </ol>
                 </div>
 

@@ -99,16 +99,13 @@ export default function BeyondShopify() {
                             </li>
                             <li id="footnote-2" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Critical Factors Affecting E-Commerce Platform Selection," Semantic Scholar.
-                                    <a href="https://www.semanticscholar.org/paper/Critical-Factors-Affecting-E-Commerce-Platform-Hossain-Al-Shaikh/b9c02d1d0526017b2b0051e70e30906296c09819" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.semanticscholar.org/paper/Critical-Factors-Affecting-E-Commerce-Platform-Hossain-Al-Shaikh/b9c02d1d0526017b2b0051e70e30906296c09819
-                                    </a>
+                                    "Critical Factors Affecting E-Commerce Platform Selection," <a href="https://www.semanticscholar.org/paper/Critical-Factors-Affecting-E-Commerce-Platform-Hossain-Al-Shaikh/b9c02d1d0526017b2b0051e70e30906296c09819" target="_blank" rel="noopener noreferrer" className={styles.link}>Semantic Scholar</a>.
                                     <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-3" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Analysis of SaaS-Based E-Commerce Platform," <a href="https://www.researchgate.net/publication/320491322_Analysis_of_SaaS-Based_E-Commerce_Platform" target="_blank" rel="noopener noreferrer" className={styles.link}>ResearchGate</a>.
+                                    "E-commerce Made Easy: Key Factors to Consider When Choosing Your Platform," <a href="https://www.sunzinet.com/en/magazine/e-commerce-made-easy-key-factors-to-consider-when-choosing-your-platform/" target="_blank" rel="noopener noreferrer" className={styles.link}>Sunzinet</a>.
                                     <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>

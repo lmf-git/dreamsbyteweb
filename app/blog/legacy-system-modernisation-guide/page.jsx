@@ -101,19 +101,13 @@ export default function LegacySystemModernisation() {
                         <ol className={styles.orderedList}>
                             <li id="footnote-1" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "The Business Case for Legacy System Modernization," ResearchGate.
-                                    <a href="https://www.researchgate.net/publication/262615456_The_Business_Case_for_Legacy_System_Modernization" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.researchgate.net/publication/262615456_The_Business_Case_for_Legacy_System_Modernization
-                                    </a>
+                                    "Legacy System Modernization Strategies for 2023," <a href="https://vikasietum.com/blog/legacy-system-modernization-strategies/" target="_blank" rel="noopener noreferrer" className={styles.link}>Vikasietum</a>.
                                     <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-2" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "The Cost of Technical Debt: A Review," arXiv.
-                                    <a href="https://arxiv.org/abs/1903.04757" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://arxiv.org/abs/1903.04757
-                                    </a>
+                                    "The Cost of Technical Debt: A Review," <a href="https://arxiv.org/abs/1903.04757" target="_blank" rel="noopener noreferrer" className={styles.link}>arXiv</a>.
                                     <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
@@ -125,10 +119,7 @@ export default function LegacySystemModernisation() {
                             </li>
                             <li id="footnote-4" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Microservice Migration Using Strangler Fig Pattern: A Case Study," ResearchGate.
-                                    <a href="https://www.researchgate.net/publication/336214041_Microservice_Migration_Using_Strangler_Fig_Pattern_A_Case_Study" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.researchgate.net/publication/336214041_Microservice_Migration_Using_Strangler_Fig_Pattern_A_Case_Study
-                                    </a>
+                                    "Strangler Fig Pattern: The Best Microservices Migration Strategy?," <a href="https://vfunction.com/blog/strangler-fig-pattern-the-best-microservices-migration-strategy/" target="_blank" rel="noopener noreferrer" className={styles.link}>vFunction</a>.
                                     <a href="#footnote-ref-4" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>

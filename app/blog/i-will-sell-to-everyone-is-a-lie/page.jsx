@@ -106,10 +106,7 @@ export default function TargetAudienceIsEverything() {
                         <ol className={styles.orderedList}>
                             <li id="footnote-1" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Niche Marketing as a Strategy for Small Businesses," ResearchGate.
-                                    <a href="https://www.researchgate.net/publication/327730107_Niche_Marketing_as_a_Strategy_for_Small_Businesses" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.researchgate.net/publication/327730107_Niche_Marketing_as_a_Strategy_for_Small_Businesses
-                                    </a>
+                                    "Examples of Niche Marketing for Small Business," <a href="https://www.indeed.com/career-advice/career-development/niche-marketing-small-business" target="_blank" rel="noopener noreferrer" className={styles.link}>Indeed</a>.
                                     <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
@@ -121,10 +118,7 @@ export default function TargetAudienceIsEverything() {
                             </li>
                             <li id="footnote-3" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Brand Identity: A Key to Marketing Success," ResearchGate.
-                                    <a href="https://www.researchgate.net/publication/259169498_Brand_Identity_A_Key_to_Marketing_Success" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.researchgate.net/publication/259169498_Brand_Identity_A_Key_to_Marketing_Success
-                                    </a>
+                                    "Why is brand identity important: building trust, recognition, & loyalty," <a href="https://ikon.london/blog/why-is-brand-identity-important" target="_blank" rel="noopener noreferrer" className={styles.link}>ikon.london</a>.
                                     <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>

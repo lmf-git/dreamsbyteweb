@@ -105,28 +105,19 @@ export default function WebsiteAsLeadGenMachine() {
                         <ol className={styles.orderedList}>
                             <li id="footnote-1" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "The Role of Websites in Lead Generation: An Empirical Study," ResearchGate.
-                                    <a href="https://www.researchgate.net/publication/322967192_The_Role_of_Websites_in_Lead_Generation_An_Empirical_Study" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.researchgate.net/publication/322967192_The_Role_of_Websites_in_Lead_Generation_An_Empirical_Study
-                                    </a>
+                                    "How to Generate Leads: 43 Strategies, Tips, & Ideas," <a href="https://blog.hubspot.com/sales/how-to-generate-leads" target="_blank" rel="noopener noreferrer" className={styles.link}>HubSpot</a>.
                                     <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-2" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "The Marketing Funnel: A Literature Review," ResearchGate.
-                                    <a href="https://www.researchgate.net/publication/322967192_The_Marketing_Funnel_A_Literature_Review" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.researchgate.net/publication/322967192_The_Marketing_Funnel_A_Literature_Review
-                                    </a>
+                                    "A STUDY ON MARKETING FUNNEL AND ITS UTILITY WITH REFERENCE TO CERTAIN IDENTIFIED PRODUCTS," <a href="https://eprajournals.com/index.php/IJMR/article/view/528" target="_blank" rel="noopener noreferrer" className={styles.link}>EPRA Journals</a>.
                                     <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-3" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "The Impact of Web Form Design on User Experience and Conversion Rates," ResearchGate.
-                                    <a href="https://www.researchgate.net/publication/322967192_The_Impact_of_Web_Form_Design_on_User_Experience_and_Conversion_Rates" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.researchgate.net/publication/322967192_The_Impact_of_Web_Form_Design_on_User_Experience_and_Conversion_Rates
-                                    </a>
+                                    "How to Improve your Form Conversion Rates - 12 Effective Ways," <a href="https://zuko.io/blog/how-to-improve-form-conversion-rates" target="_blank" rel="noopener noreferrer" className={styles.link}>Zuko</a>.
                                     <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>

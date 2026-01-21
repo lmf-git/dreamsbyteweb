@@ -104,10 +104,7 @@ export default function SEOSnakeOil() {
                         <ol className={styles.orderedList}>
                             <li id="footnote-1" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "No one can guarantee a #1 ranking on Google. Beware of SEOs that claim to guarantee rankings...", Google Search Central.
-                                    <a href="https://developers.google.com/search/docs/fundamentals/do-i-need-seo#no-one-can-guarantee-a-1-ranking-on-google" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://developers.google.com/search/docs/fundamentals/do-i-need-seo#no-one-can-guarantee-a-1-ranking-on-google
-                                    </a>
+                                    "No one can guarantee a #1 ranking on Google. Beware of SEOs that claim to guarantee rankings...", <a href="https://developers.google.com/search/docs/fundamentals/do-i-need-seo#no-one-can-guarantee-a-1-ranking-on-google" target="_blank" rel="noopener noreferrer" className={styles.link}>Google Search Central</a>.
                                     <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
@@ -119,10 +116,7 @@ export default function SEOSnakeOil() {
                             </li>
                             <li id="footnote-3" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Understanding Core Web Vitals and Google search results", Google Search Central.
-                                    <a href="https://developers.google.com/search/docs/appearance/page-experience" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://developers.google.com/search/docs/appearance/page-experience
-                                    </a>
+                                    "Understanding Core Web Vitals and Google search results", <a href="https://developers.google.com/search/docs/appearance/page-experience" target="_blank" rel="noopener noreferrer" className={styles.link}>Google Search Central</a>.
                                     <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>

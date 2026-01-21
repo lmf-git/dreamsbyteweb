@@ -118,28 +118,18 @@ export default function UnethicalBusinessPractices() {
                     <ol className={styles.orderedList}>
                         <li id="footnote-1" className={styles.listItem}>
                             <p className={styles.paragraph}>
-                                "Vendor Lock-in Strategies in the Software Industry", University of Twente.
-                                <a href="https://ris.utwente.nl/ws/portalfiles/portal/5162407/master_thesis_Nijhof.pdf" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                    https://ris.utwente.nl/ws/portalfiles/portal/5162407/master_thesis_Nijhof.pdf
-                                </a>
+                                "Vendor Lock-in Strategies in the Software Industry", <a href="https://ris.utwente.nl/ws/portalfiles/portal/5162407/master_thesis_Nijhof.pdf" target="_blank" rel="noopener noreferrer" className={styles.link}>University of Twente</a>.
                                 <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
                             </p>
                         </li>
-                        <li id="footnote-2" className={styles.listItem}>
+                                                    <li id="footnote-2" className={styles.listItem}>
+                                                        <p className={styles.paragraph}>
+                                                            "What Is Cloud Vendor Lock-In (And How To Break Free)?", <a href="https://cast.ai/blog/what-is-cloud-vendor-lock-in/" target="_blank" rel="noopener noreferrer" className={styles.link}>Cast AI</a>.
+                                                            <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
+                                                        </p>
+                                                    </li>                        <li id="footnote-3" className={styles.listItem}>
                             <p className={styles.paragraph}>
-                                "Vendor Lock-in in the Cloud Computing Era", ResearchGate.
-                                <a href="https://www.researchgate.net/publication/262691523_Vendor_Lock-in_in_the_Cloud_Computing_Era" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                    https://www.researchgate.net/publication/262691523_Vendor_Lock-in_in_the_Cloud_Computing_Era
-                                </a>
-                                <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
-                            </p>
-                        </li>
-                        <li id="footnote-3" className={styles.listItem}>
-                            <p className={styles.paragraph}>
-                                "Dark Patterns in UI: A Classification", ArXiv.
-                                <a href="https://arxiv.org/abs/1907.04505" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                    https://arxiv.org/abs/1907.04505
-                                </a>
+                                "Dark Patterns in UI: A Classification", <a href="https://arxiv.org/abs/1907.04505" target="_blank" rel="noopener noreferrer" className={styles.link}>ArXiv</a>.
                                 <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
                             </p>
                         </li>
