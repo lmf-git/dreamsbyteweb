@@ -100,27 +100,18 @@ export default function PerformanceFirstWebsite() {
                     <ol className={styles.orderedList}>
                                                     <li id="footnote-1" className={styles.listItem}>
                                                         <p className={styles.paragraph}>
-                                                            "The Impact of Website Load Time on Conversion Rates: An Empirical Study," ResearchGate.
-                                                            <a href="https://www.researchgate.net/publication/322967192_The_Impact_of_Website_Load_Time_on_Conversion_Rates_An_Empirical_Study" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                                                https://www.researchgate.net/publication/322967192_The_Impact_of_Website_Load_Time_on_Conversion_Rates_An_Empirical_Study
-                                                            </a>
+                                                            "The Impact of Web Pages' Load Time on the Conversion Rate of an E-Commerce Platform," <a href="https://www.semanticscholar.org/paper/The-Impact-of-Web-Pages'-Load-Time-on-the-Stadnik-Nowak/a6d0f62d18f5d02324f7e6f966144e543e0d8f07" target="_blank" rel="noopener noreferrer" className={styles.link}>Semantic Scholar</a>.
                                                             <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
                                                         </p>
                                                     </li>                        <li id="footnote-2" className={styles.listItem}>
                             <p className={styles.paragraph}>
-                                "Google Lighthouse", Chrome for Developers.
-                                <a href="https://developer.chrome.com/docs/lighthouse/" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                    https://developer.chrome.com/docs/lighthouse/
-                                </a>
+                                "Google Lighthouse", <a href="https://developer.chrome.com/docs/lighthouse/" target="_blank" rel="noopener noreferrer" className={styles.link}>Chrome for Developers</a>.
                                 <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
                             </p>
                         </li>
                         <li id="footnote-3" className={styles.listItem}>
                             <p className={styles.paragraph}>
-                                "Core Web Vitals and Lighthouse," Chrome for Developers.
-                                <a href="https://developer.chrome.com/docs/lighthouse/" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                    https://developer.chrome.com/docs/lighthouse/
-                                </a>
+                                "Core Web Vitals and Lighthouse," <a href="https://developer.chrome.com/docs/lighthouse/" target="_blank" rel="noopener noreferrer" className={styles.link}>Chrome for Developers</a>.
                                 <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
                             </p>
                         </li>

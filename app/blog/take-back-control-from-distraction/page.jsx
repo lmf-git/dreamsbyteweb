@@ -145,19 +145,13 @@ export default function TakeBackControlFromDistraction() {
                             </li>
                             <li id="footnote-2" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "The Cost of Interruptions in the Workplace: A Controlled Experiment," ResearchGate.
-                                    <a href="https://www.researchgate.net/publication/224213876_The_Cost_of_Interruptions_in_the_Workplace_A_Controlled_Experiment" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.researchgate.net/publication/224213876_The_Cost_of_Interruptions_in_the_Workplace_A_Controlled_Experiment
-                                    </a>
+                                    "The Cost of Interrupted Work: More Speed and Stress," <a href="https://sci-hub.st/https://dl.acm.org/citation.cfm?id=1240673" target="_blank" rel="noopener noreferrer" className={styles.link}>ScienceDirect</a>.
                                     <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-3" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "The Effects of Ad Blocking on User Experience," ResearchGate.
-                                    <a href="https://www.researchgate.net/publication/322967192_The_Effects_of_Ad_Blocking_on_User_Experience" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.researchgate.net/publication/322967192_The_Effects_of_Ad_Blocking_on_User_Experience
-                                    </a>
+                                    "Adblockers and user experience: A holistic view," <a href="https://www.semanticscholar.org/paper/Adblockers-and-user-experience%3A-A-holistic-view-Pala-H%C3%B6l%C3%A4-V%C3%A4%C3%A4n%C3%A4nen/bf6a6f05f7823f05b0351722e0e5272a27b8786e" target="_blank" rel="noopener noreferrer" className={styles.link}>Semantic Scholar</a>.
                                     <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>

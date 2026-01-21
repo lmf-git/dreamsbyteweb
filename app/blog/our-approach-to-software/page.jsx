@@ -130,19 +130,13 @@ export default function OurApproachToSoftware() {
                         </li>
                         <li id="footnote-2" className={styles.listItem}>
                             <p className={styles.paragraph}>
-                                "Robust Compositional Architectures for Autonomous Systems", Carnegie Mellon University.
-                                <a href="https://www.cs.cmu.edu/~damon/papers/icaps-2004-clara.pdf" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                    https://www.cs.cmu.edu/~damon/papers/icaps-2004-clara.pdf
-                                </a>
+                                "Booting an Intel System Architecture", <a href="https://www.researchgate.net/publication/262243509_Booting_an_Intel_System_Architecture" target="_blank" rel="noopener noreferrer" className={styles.link}>ResearchGate</a>.
                                 <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
                             </p>
                         </li>
                         <li id="footnote-3" className={styles.listItem}>
                             <p className={styles.paragraph}>
-                                "GLOC3: A General Software Control Architecture for Unmanned Vehicles", ResearchGate.
-                                <a href="https://www.researchgate.net/publication/224209594_GLOC3_A_General_Software_Control_Architecture_for_Unmanned_Vehicles" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                    https://www.researchgate.net/publication/224209594_GLOC3_A_General_Software_Control_Architecture_for_Unmanned_Vehicles
-                                </a>
+                                "Systematic Review of API Gateway Patterns for Scalable and Secure Application Architecture", <a href="https://www.researchgate.net/publication/350485960_Systematic_Review_of_API_Gateway_Patterns_for_Scalable_and_Secure_Application_Architecture" target="_blank" rel="noopener noreferrer" className={styles.link}>ResearchGate</a>.
                                 <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
                             </p>
                         </li>

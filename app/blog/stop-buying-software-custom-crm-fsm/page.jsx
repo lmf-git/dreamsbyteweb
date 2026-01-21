@@ -97,28 +97,19 @@ export default function CustomCRMFSM() {
                             </li>
                             <li id="footnote-2" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "7 Disadvantages of Off-the-Shelf CRM Software," Phaleracrm.com.
-                                    <a href="https://www.phaleracrm.com/blog/disadvantages-of-off-the-shelf-crm-software" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.phaleracrm.com/blog/disadvantages-of-off-the-shelf-crm-software
-                                    </a>
+                                    "7 Disadvantages of Off-the-Shelf CRM Software," <a href="https://www.phaleracrm.com/blog/disadvantages-of-off-the-shelf-crm-software" target="_blank" rel="noopener noreferrer" className={styles.link}>Phaleracrm.com</a>.
                                     <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-3" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "Benefits of a Custom CRM Solution: Why Tailored Software Wins," Kanhasoft.com.
-                                    <a href="https://kanhasoft.com/blog/benefits-of-custom-crm-solution/" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://kanhasoft.com/blog/benefits-of-custom-crm-solution/
-                                    </a>
+                                    "Benefits of a Custom CRM Solution: Why Tailored Software Wins," <a href="https://kanhasoft.com/blog/benefits-of-custom-crm-solution/" target="_blank" rel="noopener noreferrer" className={styles.link}>Kanhasoft.com</a>.
                                     <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
                             <li id="footnote-4" className={styles.listItem}>
                                 <p className={styles.paragraph}>
-                                    "The Benefits of Field Service Management Software," Totalmobile.
-                                    <a href="https://www.totalmobile.com/blog/the-benefits-of-field-service-management-software/" target="_blank" rel="noopener noreferrer" className={styles.link}>
-                                        https://www.totalmobile.com/blog/the-benefits-of-field-service-management-software/
-                                    </a>
+                                    "The Benefits of Field Service Management Software," <a href="https://www.totalmobile.com/blog/the-benefits-of-field-service-management-software/" target="_blank" rel="noopener noreferrer" className={styles.link}>Totalmobile</a>.
                                     <a href="#footnote-ref-4" aria-label="Back to content" className={styles.link}> ↩</a>
                                 </p>
                             </li>
