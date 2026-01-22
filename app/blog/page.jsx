@@ -25,6 +25,14 @@ export default function Blog() {
     
     const posts = [
         {
+            id: 20,
+            title: "Social Proof: The Shifting Goalposts of Value",
+            excerpt: "We're in an era where 'social proof' is less about genuine influence and more about shifting goalposts to justify a lack of tangible results.",
+            date: "2026-01-22",
+            slug: "social-proof-shifting-goalposts",
+            readTime: "8 min read"
+        },
+        {
             id: 1,
             title: "A Business Philosophy Rooted in People",
             excerpt: "We believe that technology should serve humanity, not the other way around. Our business is built on a foundation of respect, transparency, and a commitment to creating real value.",
