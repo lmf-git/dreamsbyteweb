@@ -12,6 +12,7 @@ import Whatsapp from '../../icons/social/Whatsapp';
 import Youtube from '../../icons/social/Youtube';
 import Github from '../../icons/social/Github';
 import Instagram from '../../icons/social/Instagram';
+import Substack from '../../icons/social/Substack';
 
 import styles from './footer.module.scss';
 
@@ -50,6 +51,9 @@ export default function Footer() {
           </a>
           <a href="https://www.youtube.com/@dreamsbyte" className={styles.social} rel="noopener noreferrer" target="_blank" aria-label="Subscribe to our YouTube channel">
             <Youtube className={styles.socialicon} />
+          </a>
+          <a href="httpshttps://substack.com/@dreamsbyte?" className={styles.social} rel="noopener noreferrer" target="_blank" aria-label="Follow us on Substack">
+            <Substack className={styles.socialicon} />
           </a>
         </div>
 

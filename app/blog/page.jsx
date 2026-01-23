@@ -98,7 +98,7 @@ export default function Blog() {
         },
         {
             id: 9,
-            title: "Don't Polish a Turd: Legacy System Modernisation",
+            title: "A Pragmatic Guide to Legacy System Modernisation",
             excerpt: "Stop wasting money on outdated software. Strategic modernization transforms your operations and drives innovation, not just patches.",
             date: "2025-10-19",
             slug: "legacy-system-modernisation-guide",
