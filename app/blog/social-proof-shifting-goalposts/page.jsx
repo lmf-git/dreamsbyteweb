@@ -34,7 +34,7 @@ export default function SocialProofShiftingGoalposts() {
                     <div className={styles.meta}>
                         <span className={styles.author}>By Liam Fielding</span>
                         <span className={styles.date}>2026-01-22</span>
-                        <span className={styles.readTime}>8 min read</span>
+                        <span className={styles.readTime}>15 min read</span>
                     </div>
                 </header>
 
@@ -85,14 +85,46 @@ export default function SocialProofShiftingGoalposts() {
                             <li className={styles.listItem}><strong>Lens Protocol:</strong> Built by the Aave team, this turns every "follow" into an NFT. This means your relationship with your audience is a digital asset that you own, not Meta.</li>
                         </ul>
 
-                        <h3 className={styles.heading3}>2. Community "Gated" Hubs</h3>
+                        <h4 className={styles.heading4}>3. Google’s E-E-A-T and "User Signals"</h4>
                         <p className={styles.paragraph}>
-                            Many creators and businesses are treating big social media only as a "discovery" top-funnel and moving the real "Social Proof" into private, owned spaces.
+                            In 2024 and 2025, leaked Google documents confirmed that "user signals" (like Click-Through Rate and "pogo-sticking") are used for rankings.
                         </p>
                         <ul className={styles.list}>
-                            <li className={styles.listItem}><strong>Discord "Quests":</strong> In 2026, Discord has moved beyond gaming. Brands use "Quests" to reward users for actual engagement with digital or physical perks. It’s "proof" through participation, not just a "Like" button.</li>
-                            <li className={styles.listItem}><strong>Substack "Social":</strong> Substack has evolved into a full social network. Because it’s built on top of an email list, you own the "Social Proof." If Substack disappears tomorrow, you still have the email addresses.</li>
-                            <li className={styles.listItem}><strong>WhatsApp/Telegram Channels:</strong> These have become the primary way to bypass the "Facebook Tax." Open rates on Telegram "Mini Apps" are currently averaging 10–30%, compared to the 1–2% organic reach on Facebook.</li>
+                            <li className={styles.listItem}><strong>The Indirect Admission:</strong> Google officially tells creators to focus on E-E-A-T (Experience, Expertise, Authoritativeness, and Trustworthiness).</li>
+                            <li className={styles.listItem}><strong>The Paradox:</strong> They admit that they can’t actually read your mind to know if you are an expert. Instead, they look for signals of social proof (like other people linking to you). By shifting the goalposts to AI-generated overviews (SGE), they are effectively saying: "We trust your social proof enough to use your answer, but not enough to give you the click."</li>
+                        </ul>
+
+                        <h3 className={styles.heading3}>More Smoking Guns: Technical Features and Hidden Realities</h3>
+                        <p className={styles.paragraph}>
+                            There are a few "smoking guns" in the current 2026 landscape that the platforms acknowledge as "technical features," but which are actually the mechanics of the "Social Proof Gaslight" the blog mentioned. Beyond what we’ve discussed, here are three critical, lesser-known pieces of the puzzle:
+                        </p>
+
+                        <h4 className={styles.heading4}>1. The "Meta Verified" Tier System (The Pay-for-Proof Model)</h4>
+                        <p className={styles.paragraph}>
+                            As of late 2025/early 2026, Meta has fully transitioned verification from a "badge of honor" to a multi-tiered subscription service.
+                        </p>
+                        <ul className={styles.list}>
+                            <li className={styles.listItem}><strong>The Indirect Admission:</strong> By creating Tiers 1 through 5 (with prices ranging from $11.99 to over $100+ per month for businesses), Meta has officially decoupled "Authority" from "Achievement."</li>
+                            <li className={styles.listItem}><strong>The Catch:</strong> They openly admit in their terms that Meta Verified doesn't guarantee viral growth, but they do mention "increased visibility in search and comments." This is a quiet acknowledgment that the algorithm is now "weighted" in favor of those who pay for the proof of their own identity.</li>
+                        </ul>
+
+                        <h4 className={styles.heading4}>2. Google’s "Citation Share" vs. Clicks</h4>
+                        <p className={styles.paragraph}>
+                            With the full rollout of AI Overviews (SGE), Google has introduced a new internal metric they discuss with large advertisers: Citation Share.
+                        </p>
+                        <ul className={styles.list}>
+                            <li className={styles.listItem}><strong>The Reality:</strong> Google acknowledges that clicks are dropping—in some categories, "Zero-Click" searches now account for 65% to 70% of all queries.</li>
+                            <li className={styles.listItem}><strong>The Gaslight:</strong> Instead of apologizing for the loss of traffic, Google is framing this as a benefit. They argue that being "cited" by the AI is a form of "Implicit Social Proof" that builds brand trust. However, they provide no way to track if a user who read your expert advice in an AI snippet actually remembered your brand or just thanked Google for the answer.</li>
+                        </ul>
+
+                        <h4 className={styles.heading4}>3. The "Creative-as-Targeting" Shift</h4>
+                        <p className={styles.paragraph}>
+                            In 2026, Meta’s Advantage+ and Lattice AI architectures have almost entirely removed the ability for advertisers to pick their own audience (e.g., "People who like Yoga").
+                        </p>
+                        <ul className={styles.list}>
+                            <li className={styles.listItem}><strong>The Indirect Admission:</strong> Meta now tells advertisers that "The Creative is the Targeting."</li>
+                            <li className={styles.listItem}><strong>The Trap:</strong> They acknowledge that because they’ve limited tracking (due to privacy laws), you must now use "Social Proof" (UGC, testimonials, reviews) within the ad itself to "signal" to the AI who should see it.</li>
+                            <li className={styles.listItem}><strong>The Result:</strong> You are essentially doing the work of the algorithm. You provide the "social proof" to train their AI, and then pay them to show that training data to the audience you already helped them identify.</li>
                         </ul>
 
                         <h2 className={styles.heading2}>The "Micro-Community" Shift</h2>
@@ -100,12 +132,7 @@ export default function SocialProofShiftingGoalposts() {
                             The most successful people in 2026 are stopping the "numbers game." They realize that 1,000 "True Fans" in a Discord or a private newsletter are worth more than 100,000 "Followers" on Instagram that they have to pay $2,000 a month to reach.
                         </p>
 
-                        <p className={styles.paragraph}>Ready to build marketing strategies that deliver tangible results, not just empty metrics? <button
-                            onClick={() => openContact('I want results-driven marketing, not just social proof')}
-                            className={styles.contactButton}
-                        >
-                            Let's talk
-                        </button> about how to achieve genuine growth.</p>
+
                     </div>
                 </div>
 
