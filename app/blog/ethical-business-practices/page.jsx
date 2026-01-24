@@ -47,10 +47,11 @@ export default function EthicalBusinessPractices() {
                             We believe that the best business relationships are built on a foundation of mutual respect and shared success. This philosophy guides every decision we make, from the clients we partner with to the way we price our services.
                         </p>
 
-                                                <h2 className={styles.heading2}>Fair, Transparent, and Simple</h2>
-                                                <p className={styles.paragraph}>
-                                                    We reject the idea of "fee stacking," "value-added" markups, and other tactics designed to obscure the true cost of a service. Our pricing is straightforward and honest. You pay for the work we do. There are no hidden administrative fees, no inflated costs for third-party licenses, and no complex retainers where you pay for time you don't use.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup>
-                                                </p>                        <p className={styles.paragraph}>
+                        <h2 className={styles.heading2}>Fair, Transparent, and Simple</h2>
+                        <p className={styles.paragraph}>
+                            We reject the idea of "fee stacking," "value-added" markups, and other tactics designed to obscure the true cost of a service. Our pricing is straightforward and honest. You pay for the work we do. There are no hidden administrative fees, no inflated costs for third-party licenses, and no complex retainers where you pay for time you don't use.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup>
+                        </p>
+                        <p className={styles.paragraph}>
                             Our goal is to create a partnership where our incentives are aligned with yours: to build the best possible product, efficiently and effectively.
                         </p>
 
@@ -59,12 +60,15 @@ export default function EthicalBusinessPractices() {
                             Many software companies build systems designed to create dependency, locking clients into their platforms with proprietary code and "exit fees." We believe this is a fundamentally flawed approach.<sup><a href="#footnote-2" id="footnote-ref-2" className={styles.link}>2</a></sup>
                         </p>
                         <p className={styles.paragraph}>
+                            We actively work to free our clients from the common traps of the software industry: exorbitant subscription fees, restrictive vendor lock-ins, and opaque pricing models. Our approach prioritizes your long-term autonomy and success, rather than creating perpetual reliance on our services.<sup><a href="#footnote-3" id="footnote-ref-3" className={styles.link}>3</a></sup>
+                        </p>
+                        <p className={styles.paragraph}>
                             We build technology that you own and control. Our solutions are built on open standards and well-documented code, ensuring you are never held hostage by your own systems. We want you to work with us because you value our expertise and our partnership, not because you are trapped.
                         </p>
 
                         <h2 className={styles.heading2}>Technology in Service of Humanity</h2>
                         <p className={styles.paragraph}>
-                            Software is not neutral. It can be used to enrich lives, foster connection, and solve meaningful problems. It can also be used to exploit, divide, and distract. We are committed to working on projects that have a positive impact.<sup><a href="#footnote-3" id="footnote-ref-3" className={styles.link}>3</a></sup>
+                            Software is not neutral. It can be used to enrich lives, foster connection, and solve meaningful problems. It can also be used to exploit, divide, and distract. We are committed to working on projects that have a positive impact.<sup><a href="#footnote-4" id="footnote-ref-4" className={styles.link}>4</a></sup>
                         </p>
                         <p className={styles.paragraph}>
                             For this reason, <strong>we do not take on clients in certain industries</strong>. We will not build software for:
@@ -92,19 +96,58 @@ export default function EthicalBusinessPractices() {
                     <ol className={styles.orderedList}>
                         <li id="footnote-1" className={styles.listItem}>
                             <p className={styles.paragraph}>
-                                        "Ethics in Software Engineering: A Roadmap", <a href="https://research.vu.nl/en/publications/ethics-in-software-engineering-a-roadmap" target="_blank" rel="noopener noreferrer" className={styles.link}>Vrije Universiteit Amsterdam</a>.                                <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
+                                        "Ethics in Software Engineering: A Roadmap", <a href="https://research.vu.nl/en/publications/ethics-in-software-engineering-a-roadmap" target="_blank" rel="noopener noreferrer" className={styles.link}>Vrije Universiteit Amsterdam</a>.
+                                <a href="#footnote-ref-1" aria-label="Back to content" className={styles.link}> ↩</a>
                             </p>
                         </li>
                         <li id="footnote-2" className={styles.listItem}>
                             <p className={styles.paragraph}>
-                                        "Ethical Challenges in Software Development: A Systematic Literature Review", <a href="https://www.mdpi.com/2078-2849/12/3/47" target="_blank" rel="noopener noreferrer" className={styles.link}>MDPI</a>.                                <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
+                                        "Ethical Challenges in Software Development: A Systematic Literature Review", <a href="https://www.mdpi.com/2078-2849/12/3/47" target="_blank" rel="noopener noreferrer" className={styles.link}>MDPI</a>.
+                                <a href="#footnote-ref-2" aria-label="Back to content" className={styles.link}> ↩</a>
                             </p>
                         </li>
                         <li id="footnote-3" className={styles.listItem}>
-                                                                                            <p className={styles.paragraph}>
-                                                                                                "Ethical Dilemmas and Use of Code of Ethics in Software Project Management," <a href="https://www.researchpublish.com/download.php?file=Ethical%20Dilemmas%20and%20Use%20of%20Code%20of%20Ethics%20in%20Software%20Project%20Management-1786.pdf&act=book" target="_blank" rel="noopener noreferrer" className={styles.link}>Research Publish</a>.
-                                                                                                <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
-                                                                                            </p>                        </li>
+                            <p className={styles.paragraph}>
+                                "The Heart of Business: Purpose, People, Profit", <a href="https://chrislehnes.substack.com/p/the-heart-of-business-purpose-people" target="_blank" rel="noopener noreferrer" className={styles.link}>Chris Lehnes on Substack</a>.
+                                <a href="#footnote-ref-3" aria-label="Back to content" className={styles.link}> ↩</a>
+                            </p>
+                        </li>
+                        <li id="footnote-4" className={styles.listItem}>
+                            <p className={styles.paragraph}>
+                                "Ethical Dilemmas and Use of Code of Ethics in Software Project Management," <a href="https://www.researchpublish.com/download.php?file=Ethical%20Dilemmas%20and%20Use%20of%20Code%20of%20Ethics%20in%20Software%20Project%20Management-1786.pdf&act=book" target="_blank" rel="noopener noreferrer" className={styles.link}>Research Publish</a>.
+                                <a href="#footnote-ref-4" aria-label="Back to content" className={styles.link}> ↩</a>
+                            </p>
+                        </li>
+                        <li id="footnote-5" className={styles.listItem}>
+                            <p className={styles.paragraph}>
+                                "Thriving Together: Mastering The Art Of Running A People-Centered Business", <a href="https://www.forbes.com/councils/forbesbusinesscouncil/2023/09/19/thriving-together-mastering-the-art-of-running-a-people-centered-business/" target="_blank" rel="noopener noreferrer" className={styles.link}>Forbes Business Council</a>.
+                                <a href="#footnote-ref-5" aria-label="Back to content" className={styles.link}> ↩</a>
+                            </p>
+                        </li>
+                        <li id="footnote-6" className={styles.listItem}>
+                            <p className={styles.paragraph}>
+                                "The Philosophy of Business: Key Concepts and Insights", <a href="https://medium.com/@colin-cooper/the-philosophy-of-business-key-concepts-and-insights-ebf5aa1220d6" target="_blank" rel="noopener noreferrer" className={styles.link}>Colin Cooper on Medium</a>.
+                                <a href="#footnote-ref-6" aria-label="Back to content" className={styles.link}> ↩</a>
+                            </p>
+                        </li>
+                        <li id="footnote-7" className={styles.listItem}>
+                            <p className={styles.paragraph}>
+                                "IEEE Code of Ethics", <a href="https://www.computer.org/education/code-of-ethics" target="_blank" rel="noopener noreferrer" className={styles.link}>IEEE Computer Society</a>.
+                                <a href="#footnote-ref-7" aria-label="Back to content" className={styles.link}> ↩</a>
+                            </p>
+                        </li>
+                        <li id="footnote-8" className={styles.listItem}>
+                            <p className={styles.paragraph}>
+                                "Code of Ethics in Software Engineers", <a href="https://www.geeksforgeeks.org/software-engineering/code-of-ethics-in-software-engineers/" target="_blank" rel="noopener noreferrer" className={styles.link}>GeeksforGeeks</a>.
+                                <a href="#footnote-ref-8" aria-label="Back to content" className={styles.link}> ↩</a>
+                            </p>
+                        </li>
+                        <li id="footnote-9" className={styles.listItem}>
+                            <p className={styles.paragraph}>
+                                "Understanding Code-Based Value Drift & Debt: The Unseen Ethical Shifts in Software Development", <a href="https://diversedaily.com/understanding-code-based-value-drift-debt-the-unseen-ethical-shifts-in-software-development/" target="_blank" rel="noopener noreferrer" className={styles.link}>DiverseDaily</a>.
+                                <a href="#footnote-ref-9" aria-label="Back to content" className={styles.link}> ↩</a>
+                            </p>
+                        </li>
                     </ol>
                 </div>
 
