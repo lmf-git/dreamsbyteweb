@@ -26,8 +26,8 @@ export default function Blog() {
     const posts = [
         {
             id: 20,
-            title: "Social Proof: The Shifting Goalposts of Value",
-            excerpt: "We're in an era where 'social proof' is less about genuine influence and more about shifting goalposts to justify a lack of tangible results.",
+            title: "Social Proof: Shifting Goalposts of Value",
+            excerpt: "In an era where 'social proof' often serves to justify a lack of tangible results, true influence stems from genuine value. We explore this evolving landscape.",
             date: "2026-01-22",
             slug: "social-proof-shifting-goalposts",
             readTime: "8 min read"
@@ -35,7 +35,7 @@ export default function Blog() {
         {
             id: 1,
             title: "A Business Philosophy Rooted in People",
-            excerpt: "We believe that technology should serve humanity, not the other way around. Our business is built on a foundation of respect, transparency, and a commitment to creating real value.",
+            excerpt: "We believe technology should serve humanity, not the other way around. Our business is built on respect, transparency, and a commitment to real value.",
             date: "2026-01-15",
             slug: "ethical-business-practices",
             readTime: "6 min read"
@@ -50,31 +50,31 @@ export default function Blog() {
         },
         {
             id: 3,
-            title: "Our Approach to Software: The Orchestrated Singleton",
-            excerpt: "Discover our unique methodology prioritizing explicit control over framework autonomy, building digital instruments with precision and intent.",
+            title: "Software Approach: Orchestrated Singleton",
+            excerpt: "Our unique methodology prioritizes explicit control over framework autonomy, crafting digital instruments with precision and clear intent.",
             date: "2026-01-11",
             slug: "our-approach-to-software",
             readTime: "15 min read"
         },
         {
             id: 4,
-            title: "Stop Buying Software: Custom CRM & Business Systems",
-            excerpt: "Generic CRM/FSM software forces compromises. Custom systems perfectly match workflows, streamline operations, and provide a competitive edge.",
+            title: "Stop Buying Software: Custom CRM",
+            excerpt: "Generic CRM/FSM software forces compromises. Custom systems streamline operations, deliver a competitive edge by matching workflows precisely.",
             date: "2025-12-28",
             slug: "stop-buying-software-custom-crm-fsm",
             readTime: "9 min read"
         },
         {
             id: 5,
-            title: "Your Website: A 24/7 Lead Generation Machine",
-            excerpt: "Turn your website into an active lead generation engine. Strategic design and content capture interest and drive conversions around the clock.",
+            title: "Your Website: 24/7 Lead Gen",
+            excerpt: "Transform your website into an active lead generation engine. Strategic design, content capture interest, and drive conversions around the clock.",
             date: "2025-12-14",
             slug: "website-as-lead-generation-machine",
             readTime: "9 min read"
         },
         {
             id: 6,
-            title: "Problem to Profit: Custom Software Case Studies",
+            title: "Problem to Profit: Custom Software",
             excerpt: "Explore real-world case studies: custom software development solves unique challenges and delivers measurable ROI for businesses.",
             date: "2025-11-30",
             slug: "from-problem-to-profit-case-studies",
@@ -83,31 +83,31 @@ export default function Blog() {
         {
             id: 7,
             title: "DevOps Isn't Just for Startups",
-            excerpt: "Discover why robust infrastructure, automated backups, and proactive security are critical for small businesses to thrive.",
+            excerpt: "Robust infrastructure, automated backups, and proactive security are critical for small businesses to thrive, not just large enterprises.",
             date: "2025-11-16",
             slug: "devops-for-small-business",
             readTime: "8 min read"
         },
         {
             id: 8,
-            title: "Performance-First Websites: 90+ Lighthouse Scores",
-            excerpt: "Speed is paramount. Our disciplined approach to engineering achieves top Google Lighthouse scores, boosting conversions and SEO.",
+            title: "Performance-First: 90+ Lighthouse",
+            excerpt: "Speed is paramount. Our disciplined engineering achieves top Google Lighthouse scores, boosting conversions and SEO for your website.",
             date: "2025-11-02",
             slug: "performance-first-website-lighthouse",
             readTime: "10 min read"
         },
         {
             id: 9,
-            title: "A Pragmatic Guide to Legacy System Modernisation",
-            excerpt: "Stop wasting money on outdated software. Strategic modernization transforms your operations and drives innovation, not just patches.",
+            title: "Legacy System Modernisation Guide",
+            excerpt: "Stop wasting money on outdated software. Strategic modernization transforms operations and drives innovation, not just patches.",
             date: "2025-10-19",
             slug: "legacy-system-modernisation-guide",
             readTime: "9 min read"
         },
         {
             id: 10,
-            title: "Beyond Shopify: When to Build Custom E-commerce",
-            excerpt: "Outgrowing Shopify? Discover the signs it's time for a custom e-commerce app that eliminates fees and reflects your brand.",
+            title: "Beyond Shopify: Custom E-commerce",
+            excerpt: "Outgrowing Shopify? Discover the signs it's time for a custom e-commerce app that eliminates fees and truly reflects your brand's unique identity.",
             date: "2025-10-05",
             slug: "beyond-shopify-custom-ecommerce",
             readTime: "10 min read"
@@ -115,7 +115,7 @@ export default function Blog() {
         {
             id: 11,
             title: "The Hidden Cost of 'No-Code'",
-            excerpt: "No-code tools promise simplicity, but building core business logic on them can lead to fragility, insecurity, and high costs.",
+            excerpt: "No-code tools promise simplicity, but building core business logic on them can lead to fragility, security vulnerabilities, and higher long-term costs. Choose wisely.",
             date: "2025-09-21",
             slug: "hidden-cost-of-no-code",
             readTime: "8 min read"

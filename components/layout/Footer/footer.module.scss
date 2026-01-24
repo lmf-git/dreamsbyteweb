@@ -51,17 +51,21 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 1.825em;
+	height: 1.825em;
+}
+
+.social:hover .socialicon {
+	fill: var(--social-icon-hover);
 }
 
 .socialicon {
-	width: 100%;
+	height: 100%;
 	fill: var(--social-icon);
 	transition: fill 0.3s ease;
+}
 
-	&:hover, &:hover > path:first-child {
-		fill: var(--social-icon-hover);
-	}
+.socialiconContrast {
+  fill: var(--youtube-contrast-fill);
 }
 
 .logo {
@@ -198,6 +202,19 @@
 	}
 
 	.meta {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75em;
+	}
+
+	.metatext {
 		width: 25em;
+		margin-bottom: 0;
+	}
+
+	.metaActions {
+		display: flex;
+		align-items: center;
+		gap: 1.5em;
 	}
 }

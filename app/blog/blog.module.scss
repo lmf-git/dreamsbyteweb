@@ -59,7 +59,9 @@
 }
 
 .post {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    min-height: 250px;
     background: var(--card-bg);
     border-radius: 12px;
     padding: 2em;
