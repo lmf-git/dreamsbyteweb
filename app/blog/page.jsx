@@ -115,7 +115,7 @@ export default function Blog() {
         {
             id: 11,
             title: "The Hidden Cost of 'No-Code'",
-            excerpt: "No-code tools promise simplicity, but building core business logic on them can lead to fragility, security vulnerabilities, and higher long-term costs. Choose wisely.",
+            excerpt: "No-code tools promise simplicity, but building core business logic can lead to fragility, security vulnerabilities, and higher long-term costs. Choose wisely.",
             date: "2025-09-21",
             slug: "hidden-cost-of-no-code",
             readTime: "8 min read"
@@ -123,7 +123,7 @@ export default function Blog() {
         {
             id: 12,
             title: "\"I'll Sell to Everyone\": The Most Expensive Lie",
-            excerpt: "Why trying to appeal to everyone dilutes your message and wastes budget. Discover how to find your true target audience.",
+            excerpt: "Trying to appeal to everyone dilutes your message and wastes budget. Discover how to effectively define and find your true target audience to maximize impact.",
             date: "2025-09-07",
             slug: "i-will-sell-to-everyone-is-a-lie",
             readTime: "8 min read"
@@ -131,14 +131,14 @@ export default function Blog() {
         {
             id: 13,
             title: "Take Back Control: Digital Distraction",
-            excerpt: "Learn to use user scripts and your hosts file to block distracting websites and regain control of your digital life.",
+            excerpt: "Learn to use user scripts and your hosts file to block distracting websites, regain focus, and take back control of your digital life and productivity.",
             date: "2024-03-15",
             slug: "take-back-control-from-distraction"
         },
         {
             id: 14,
             title: "Cloud Illusion: Beyond AWS for Enterprise",
-            excerpt: "When AWS goes down, your business stops. Learn why owning infrastructure across multiple regions beats cloud dependency.",
+            excerpt: "When AWS goes down, your business stops. Learn why owning infrastructure across multiple regions offers superior resilience and beats single cloud dependency.",
             date: "2024-02-20",
             slug: "cloud-infrastructure-illusion"
         },
@@ -153,31 +153,35 @@ export default function Blog() {
         {
             id: 16,
             title: "Vendor Lock-In: Subscription Costs",
-            excerpt: "Break free from monthly fees and platform dependencies. Discover why owning your infrastructure makes financial sense.",
+            excerpt: "Break free from monthly fees and platform dependencies. Discover why owning your infrastructure and code makes financial sense and offers true business freedom.",
             date: "2024-02-10",
-            slug: "vendor-lock-in-subscription-costs"
+            slug: "vendor-lock-in-subscription-costs",
+            readTime: "9 min read"
         },
         {
             id: 17,
             title: "SEO Snake Oil: Empty Promises",
-            excerpt: "Cut through the noise and learn what actually matters for search visibility without falling for expensive gimmicks.",
+            excerpt: "Cut through the noise and learn what truly matters for search visibility. Avoid falling for expensive gimmicks and focus on strategies that deliver genuine, lasting results.",
             date: "2024-02-01",
-            slug: "seo-snake-oil-empty-promises"
+            slug: "seo-snake-oil-empty-promises",
+            readTime: "9 min read"
         },
         {
             id: 18,
             title: "Professional Website For Your Business",
-            excerpt: "Learn how a well-designed website transforms your business and drives real growth in today's competitive market.",
+            excerpt: "Learn how a well-designed website transforms your business, drives real growth in today's competitive market, and becomes a powerful asset for your brand.",
             date: "2024-01-20",
-            slug: "why-your-business-needs-professional-website"
+            slug: "why-your-business-needs-professional-website",
+            readTime: "9 min read"
         },
         {
             id: 19,
             title: "Website Development: Digital Presence",
-            excerpt: "Discover the complete process behind creating a professional website and what to expect when working with DreamsByte.",
+            excerpt: "Discover the complete process behind creating a professional website. Learn what to expect when working with DreamsByte for an impactful digital presence.",
             date: "2024-01-15",
-            slug: "understanding-website-development"
-        }
+            slug: "understanding-website-development",
+            readTime: "9 min read"
+        },
     ];
 
     return (
