@@ -77,12 +77,7 @@ export default function UnderstandingWebsiteDevelopment() {
                         <h2 className={styles.heading2}>Ready to Get Started?</h2>
                         <p className={styles.paragraph}>Every business deserves a professional online presence. Whether you're starting from scratch or need to modernize an existing site, we're here to help you succeed online.</p>
 
-                        <p className={styles.paragraph}>Ready to discuss your project? <button
-                            onClick={() => openContact()}
-                            className={styles.contactButton}
-                        >
-                            Contact us today
-                        </button> for a free consultation and see how we can help grow your business online.</p>
+
                     </div>
 
                     <div className={styles.footnotes}>

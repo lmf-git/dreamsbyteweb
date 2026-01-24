@@ -86,12 +86,7 @@ export default function PerformanceFirstWebsite() {
                     <p className={styles.paragraph}>A fast website isn't just a technical vanity metric. It has a direct impact on your bottom line. It improves user engagement, increases conversion rates, and is a confirmed <Link href="/blog/seo-snake-oil-empty-promises" className={styles.link}>ranking factor for Google SEO</Link>.<sup><a href="#footnote-3" id="footnote-ref-3" className={styles.link}>3</a></sup> A faster site will literally make you more money.</p>
                     <p className={styles.paragraph}>Investing in a performance-first website is one of the most direct investments you can make in the growth and success of your online presence.</p>
 
-                    <p className={styles.paragraph}>Is your current website slow, clunky, and failing its Lighthouse audit? Are you losing customers to a frustrating user experience? <button
-                        onClick={() => openContact("I need a faster website")}
-                        className={styles.contactButton}
-                    >
-                        Let's talk about what a 90+ performance score could do for your business.
-                    </button></p>
+
                 </div>
             </div>
 

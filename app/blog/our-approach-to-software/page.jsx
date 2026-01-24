@@ -110,12 +110,7 @@ export default function OurApproachToSoftware() {
 
                         <h2 className={styles.heading2}>Conclusion: The Case for Explicit Control</h2>
                         <p className={styles.paragraph}>Our methodology is a direct rebuttal to the idea that software is merely a functional tool. By meticulously engineering the backend boot sequence, abstracting API communication, orchestrating high-fidelity frontend interactions, and atomizing animation manifests, we transform mere code into a digital instrument. This approach ensures not only that your software works flawlessly, but that it provides an intuitive, reliable, and delightful experience that stands the test of time and truly serves your business goals.</p>
-                        <p className={styles.paragraph}>Ready to build software with a philosophy of explicit control and enduring value? <button
-                            onClick={() => openContact("I'm interested in building digital instruments")}
-                            className={styles.contactButton}
-                        >
-                            Let's talk about your project.
-                        </button></p>
+
                     </div>
                 </div>
 

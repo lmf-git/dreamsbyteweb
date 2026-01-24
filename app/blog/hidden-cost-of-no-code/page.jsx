@@ -78,12 +78,7 @@ export default function HiddenCostOfNoCode() {
                         <p className={styles.paragraph}>Relying on no-code for your core operations is like building a skyscraper on a foundation of sand. It's fast at first, but the long-term cost of instability, insecurity, and spiraling fees is immense.</p>
                         <p className={styles.paragraph}>A custom API is a strategic investment in a stable, secure, and scalable future. It's the digital engine that will power your growth for years to come, without compromise.</p>
 
-                        <p className={styles.paragraph}>Tired of your zaps breaking? Worried about the security of your automated workflows? <button
-                            onClick={() => openContact("I need to own my business logic")}
-                            className={styles.contactButton}
-                        >
-                            Let's talk about building a custom API.
-                        </button></p>
+
                     </div>
 
                     <div className={styles.footnotes}>

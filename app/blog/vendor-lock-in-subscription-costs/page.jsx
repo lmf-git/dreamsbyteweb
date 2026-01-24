@@ -133,12 +133,7 @@ export default function VendorLockIn() {
                         <h2 className={styles.heading2}>Break Free</h2>
                         <p className={styles.paragraph}>If you're currently trapped in a subscription platform, it's not too late to escape. Yes, there's an upfront cost to migrate. But every month you wait is another month of payments toward something you'll never own.</p>
 
-                        <p className={styles.paragraph}>Ready to own your digital infrastructure? <button
-                            onClick={() => openContact('I want to break free from subscription platforms')}
-                            className={styles.contactButton}
-                        >
-                            Let's talk
-                        </button> about building something you actually own.</p>
+
                     </div>
 
                     <div className={styles.footnotes}>

@@ -68,12 +68,7 @@ export default function WhyYourBusinessNeedsWebsite() {
                         <h2 className={styles.heading2}>Ready to Transform Your Business Online?</h2>
                         <p className={styles.paragraph}>Don't let your competitors get ahead. A professional website is an investment in your business's future success and growth.</p>
 
-                        <p className={styles.paragraph}><button
-                            onClick={() => openContact()}
-                            className={styles.contactButton}
-                        >
-                            Contact us today
-                        </button> to discuss how we can help transform your business with a professional website that drives real results.</p>
+
                     </div>
 
                     <div className={styles.footnotes}>

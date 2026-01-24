@@ -87,12 +87,7 @@ export default function LegacySystemModernisation() {
 
                         <h2 className={styles.heading2}>Stop Paying the Legacy Tax</h2>
                         <p className={styles.paragraph}>Every day you keep that old system running, you are paying a tax on your business's future. It's time to stop polishing and start replacing.</p>
-                        <p className={styles.paragraph}>Is your business being held hostage by old software? Are you ready to invest in a tool that will empower your team and grow with your business? <button
-                            onClick={() => openContact("I'm stuck with a legacy system")}
-                            className={styles.contactButton}
-                        >
-                            Let's schedule a call to discuss a modernisation strategy.
-                        </button></p>
+
                     </div>
                 </div>
 

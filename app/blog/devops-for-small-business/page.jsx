@@ -76,12 +76,7 @@ export default function DevOpsForSmallBusiness() {
                         <h2 className={styles.heading2}>Invest in Peace of Mind</h2>
                         <p className={styles.paragraph}>You don't need to become a DevOps expert. But you do need to partner with someone who takes the stability and security of your digital presence as seriously as you take your business itself.</p>
                         <p className={styles.paragraph}>Does your current website have automated, off-site backups? Is it being proactively monitored and patched? Do you have a plan for when things go wrong? If the answer to any of these is "I don't know," then it's time for a conversation.</p>
-                        <p className={styles.paragraph}><button
-                            onClick={() => openContact("I need to talk about my site's reliability and security")}
-                            className={styles.contactButton}
-                        >
-                            Let's schedule a free infrastructure and security review.
-                        </button></p>
+
                     </div>
                 </div>
 

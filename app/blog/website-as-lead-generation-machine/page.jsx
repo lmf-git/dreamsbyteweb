@@ -91,12 +91,7 @@ export default function WebsiteAsLeadGenMachine() {
 
                         <h2 className={styles.heading2}>Turn Your Website into Your Best Salesperson</h2>
                         <p className={styles.paragraph}>Stop thinking of your website as an expense and start seeing it as an investment—a powerful, always-on sales and marketing asset. By engineering a clear and efficient conversion funnel, you can consistently generate high-quality leads and drive sustainable growth for your business.</p>
-                        <p className={styles.paragraph}>Is your website working as hard as it could be? Are you capturing every potential lead? <button
-                            onClick={() => openContact("I want my website to generate more leads")}
-                            className={styles.contactButton}
-                        >
-                            Let's map out your perfect lead generation machine.
-                        </button></p>
+
                     </div>
                 </div>
 

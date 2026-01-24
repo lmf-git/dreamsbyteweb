@@ -147,12 +147,7 @@ export default function CloudInfrastructureIllusion() {
 
                         <p className={styles.paragraph}>Your business is mature enough to own its infrastructure. The question is whether you want to keep paying rent on computing power or invest in assets you control.</p>
 
-                        <p className={styles.paragraph}>Ready to explore infrastructure independence? <button
-                            onClick={() => openContact('I want to discuss owned infrastructure')}
-                            className={styles.contactButton}
-                        >
-                            Let's talk
-                        </button> about what it would take to break free from cloud dependency.</p>
+
                     </div>
 
                     <div className={styles.footnotes}>

@@ -79,12 +79,7 @@ export default function BeyondShopify() {
                         <p className={styles.paragraph}>Making the leap from Shopify to a custom solution is a significant decision. It's not for businesses just starting out. But if you are an established, growing business feeling constrained by your platform, the question isn't *if* you'll need to move, but *when*.</p>
                         <p className={styles.paragraph}>Calculate the true cost of your current platform: subscription fees + app fees + transaction fees + the cost of manual workarounds. Then consider the opportunity cost of a generic brand experience and stunted growth. The ROI on owning your e-commerce infrastructure is often clearer and faster than you think.</p>
 
-                        <p className={styles.paragraph}>Feeling boxed in by your e-commerce platform? Is your app stack starting to wobble? <button
-                            onClick={() => openContact("I think I'm outgrowing Shopify")}
-                            className={styles.contactButton}
-                        >
-                            Let's analyze your situation and see if a custom solution makes sense.
-                        </button></p>
+
                     </div>
                 </div>
 

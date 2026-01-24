@@ -79,12 +79,7 @@ export default function AIWontBuildYourBusiness() {
                         <h2 className={styles.heading2}>Invest in Expertise, Not Illusions</h2>
                         <p className={styles.paragraph}>Your digital presence is the face of your business. That impression should reflect quality, professionalism, and strategic foresight—not the generic, fragile output of an algorithm. The real cost of a "cheap" AI solution is the time and money spent rebuilding it correctly from scratch.</p>
 
-                        <p className={styles.paragraph}>Ready to work with humans who understand your business? <button
-                            onClick={() => openContact('I want real expertise, not AI templates')}
-                            className={styles.contactButton}
-                        >
-                            Let's talk
-                        </button> about building something genuinely great.</p>
+
 
                         <h2 className={styles.heading2}>The Fundamental Limitations of AI: Beyond the Hype</h2>
 

@@ -77,12 +77,7 @@ export default function CustomCRMFSM() {
                         <h2 className={styles.heading2}>Invest in Software That Works For You</h2>
                         <p className={styles.paragraph}>The decision to invest in custom CRM or business management software is a strategic one. It's about taking control of your core operations and building a digital asset that truly serves your unique business needs, rather than renting a generic solution that forces compromises.</p>
                         <p className={styles.paragraph}>Stop spending endless hours and money trying to fit your square business peg into a round software hole. It's time to build a system that empowers your team, delights your customers, and drives your growth.</p>
-                        <p className={styles.paragraph}><button
-                            onClick={() => openContact("I'm interested in a custom CRM/FSM solution")}
-                            className={styles.contactButton}
-                        >
-                            Let's discuss how custom software can transform your business.
-                        </button></p>
+
                     </div>
                 </div>
 

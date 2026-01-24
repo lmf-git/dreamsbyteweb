@@ -103,12 +103,7 @@ export default function FromProblemToProfit() {
                         <h2 className={styles.heading2}>Your Challenges, Our Solutions</h2>
                         <p className={styles.paragraph}>These are just two examples of how a strategic investment in custom software can lead to profound business improvements. Whether you're struggling with outdated systems, inefficient workflows, or generic online platforms, there's an opportunity to build a solution that precisely fits your needs.</p>
                         <p className={styles.paragraph}>Stop adapting your business to your software. Let your software adapt to your business.</p>
-                        <p className={styles.paragraph}><button
-                            onClick={() => openContact("I'm interested in a custom software solution")}
-                            className={styles.contactButton}
-                        >
-                            Let's discuss your unique business challenges.
-                        </button></p>
+
                     </div>
                 </div>
 

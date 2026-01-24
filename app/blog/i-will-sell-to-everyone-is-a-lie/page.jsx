@@ -93,12 +93,7 @@ export default function TargetAudienceIsEverything() {
                         <p className={styles.paragraph}>Defining a target audience isn't about excluding people. It's about focusing your finite resources—time, money, and energy—on creating a powerful, magnetic brand that attracts the *right* people. The ones who need you, value you, and are happy to pay for your expertise.</p>
                         <p className={styles.paragraph}>It's time to stop trying to sell to everyone. Who is the one person you can help the most? Start there.</p>
 
-                        <p className={styles.paragraph}>Ready to build a website that speaks directly to your ideal customer? <button
-                            onClick={() => openContact("I'm ready to focus on my target audience")}
-                            className={styles.contactButton}
-                        >
-                            Let's talk about it.
-                        </button></p>
+
                     </div>
 
                     <div className={styles.footnotes}>

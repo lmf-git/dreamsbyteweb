@@ -91,12 +91,7 @@ export default function SEOSnakeOil() {
 
                         <p className={styles.paragraph}>Build a fast, well-structured website. Create genuinely useful content. Focus on your actual business. That's the SEO strategy that works.</p>
 
-                        <p className={styles.paragraph}>Want a website built right from day one? <button
-                            onClick={() => openContact('I want a properly built website')}
-                            className={styles.contactButton}
-                        >
-                            Let's talk
-                        </button> about creating a solid foundation for your online presence.</p>
+
                     </div>
 
                     <div className={styles.footnotes}>
