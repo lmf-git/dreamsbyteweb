@@ -486,6 +486,7 @@ export default function Stars() {
 
     // Track the star creation intervals separately
     const intervalRef = useRef(null);
+    const isVisibleRef = useRef(true);
 
     // Define createStarGroup function outside useEffects so it can be shared
     const createStarGroup = () => {
@@ -523,6 +524,49 @@ export default function Stars() {
             }
     };
 
+    // Handle visibility changes to prevent star buildup when tabbed out
+    useEffect(() => {
+        const handleVisibilityChange = () => {
+            if (document.hidden) {
+                isVisibleRef.current = false;
+                // Stop animation when hidden
+                if (animationRef.current) {
+                    cancelAnimationFrame(animationRef.current);
+                    animationRef.current = null;
+                }
+                // Clear star creation interval
+                if (intervalRef.current) {
+                    clearTimeout(intervalRef.current);
+                    intervalRef.current = null;
+                }
+            } else {
+                isVisibleRef.current = true;
+                // Reset all star timestamps so they don't jump forward
+                setStars(currentStars =>
+                    currentStars.map(star => ({ ...star, startTime: null }))
+                );
+                setExplosions(currentExplosions =>
+                    currentExplosions.map(exp => ({ ...exp, startTime: null }))
+                );
+                setFragments(currentFragments =>
+                    currentFragments.map(frag => ({ ...frag, startTime: null }))
+                );
+                setFadingTrails(currentTrails =>
+                    currentTrails.map(trail => ({ ...trail, startTime: null }))
+                );
+                // Restart animation loop if heroComplete
+                if (heroComplete && !animationRef.current) {
+                    animationRef.current = requestAnimationFrame(animate.current);
+                }
+            }
+        };
+
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+        return () => {
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
+        };
+    }, [heroComplete]);
+
     useEffect(() => {
         if (!heroComplete) return;
 
@@ -544,30 +588,49 @@ export default function Stars() {
     useEffect(() => {
         if (!heroComplete) return;
 
-        // Clear any existing interval
-        if (intervalRef.current) {
-            clearTimeout(intervalRef.current);
-        }
-
-        const settings = dangerMode 
+        const settings = dangerMode
             ? { initialDelay: 500, minInterval: 800, maxInterval: 2000 }     // High frequency (danger mode)
             : { initialDelay: 5000, minInterval: 12000, maxInterval: 25000 }; // Calm frequency
 
         const scheduleNextGroup = () => {
+            if (!isVisibleRef.current) return; // Don't schedule if hidden
             const delay = Math.random() * (settings.maxInterval - settings.minInterval) + settings.minInterval;
             intervalRef.current = setTimeout(() => {
-                createStarGroup();
+                if (isVisibleRef.current) {
+                    createStarGroup();
+                }
                 scheduleNextGroup();
             }, delay);
         };
 
-        // Start the initial group
-        intervalRef.current = setTimeout(() => {
-            createStarGroup();
-            scheduleNextGroup();
-        }, settings.initialDelay);
+        const startStarCreation = () => {
+            // Clear any existing interval
+            if (intervalRef.current) {
+                clearTimeout(intervalRef.current);
+            }
+            if (!isVisibleRef.current) return;
+
+            // Start the initial group
+            intervalRef.current = setTimeout(() => {
+                if (isVisibleRef.current) {
+                    createStarGroup();
+                }
+                scheduleNextGroup();
+            }, settings.initialDelay);
+        };
+
+        // Handle visibility restore for star creation
+        const handleVisibilityForStars = () => {
+            if (!document.hidden && isVisibleRef.current) {
+                startStarCreation();
+            }
+        };
+
+        document.addEventListener('visibilitychange', handleVisibilityForStars);
+        startStarCreation();
 
         return () => {
+            document.removeEventListener('visibilitychange', handleVisibilityForStars);
             if (intervalRef.current) {
                 clearTimeout(intervalRef.current);
             }
