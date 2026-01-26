@@ -6,11 +6,14 @@ import { useContact } from '../../../contexts/ContactContext';
 import { useHeaderAnimation } from '../../../contexts/HeaderAnimationContext';
 import CallToAction from '../../../components/layout/CallToAction/CallToAction';
 import styles from '../post.module.scss';
+import { posts } from '../posts';
 
 export default function AIWontBuildYourBusiness() {
     const { openContact } = useContact();
     const { headerAnimationComplete } = useHeaderAnimation();
     const [contentVisible, setContentVisible] = useState(false);
+
+    const post = posts.find(p => p.slug === 'ai-wont-build-your-business');
 
     useEffect(() => {
         if (headerAnimationComplete) {
@@ -30,11 +33,12 @@ export default function AIWontBuildYourBusiness() {
         >
             <div className={styles.container}>
                 <header className={styles.header}>
-                    <h1 className={styles.title}>AI Won't Build Your Business</h1>
+                    <h1 className={styles.title}>{post?.title || `AI Won't Build Your Business`}</h1>
+                    {post?.excerpt && <p className={styles.excerpt}>{post.excerpt}</p>}
                     <div className={styles.meta}>
                         <span className={styles.author}>By Liam Fielding</span>
-                        <span className={styles.date}>2024-02-15</span>
-                        <span className={styles.readTime}>9 min read</span>
+                        <span className={styles.date}>{post?.date || '2024-02-15'}</span>
+                        <span className={styles.readTime}>{post?.readTime || '9 min read'}</span>
                     </div>
                 </header>
 
@@ -43,13 +47,13 @@ export default function AIWontBuildYourBusiness() {
                         <h2 className={styles.heading2}>The New Commodity Trap: From WordPress to AI</h2>
                         <p className={styles.paragraph}>History is repeating itself. In the 2010s, clients asked, "Why pay for custom PHP when a $50 WordPress theme looks fine?" Today, the question has evolved: "Why pay for a senior developer when I can prompt an LLM?"</p>
 
-                        <p className={styles.paragraph}>This is the Commodity Trap. Technology evolves, but client literacy regarding the "last 20%" of a project—where the real value lies—remains stagnant. AI, like WordPress before it, has made it dangerously easy to create a "finished-looking" product in minutes, fueling a fundamental misunderstanding of what it takes to build professional, secure, and strategic software.</p>
+                        <p className={styles.paragraph}>This is the <Link href="/blog/vendor-lock-in-subscription-costs" className={styles.link}>Commodity Trap</Link>. Technology evolves, but client literacy regarding the "last 20%" of a project—where the real value lies—remains stagnant. AI, like WordPress before it, has made it dangerously easy to create a "finished-looking" product in minutes, fueling a fundamental misunderstanding of what it takes to build professional, secure, and strategic software.</p>
 
-                        <h2 className={styles.heading2}>The "Dunning-Kruger" of AI Development</h2>
+                        <h2 className={styles.heading2}>The "<Link href="/blog/social-proof-shifting-goalposts" className={styles.link}>Dunning-Kruger</Link>" of AI Development</h2>
                         <p className={styles.paragraph}>AI induces a powerful Dunning-Kruger effect. It generates a high-fidelity prototype or a block of code that looks correct, giving the user an inflated sense of their own technical capability.</p>
                         <ul className={styles.list}>
                             <li className={styles.listItem}><strong>The WordPress Era Misconception:</strong> "It’s just dragging and dropping blocks." (Ignoring security, database optimization, and scalability).</li>
-                            <li className={styles.listItem}><strong>The AI Era Misconception:</strong> "It’s just asking the AI to write the code." (Ignoring technical debt, edge-case logic, and architectural integrity).</li>
+                            <li className={styles.listItem}><strong>The AI Era Misconception:</strong> "It’s just asking the AI to write the code." (Ignoring <Link href="/blog/legacy-system-modernisation-guide" className={styles.link}>technical debt</Link>, edge-case logic, and <Link href="/blog/our-approach-to-software" className={styles.link}>architectural integrity</Link>).</li>
                         </ul>
                         <p className={styles.paragraph}>The tool creates an illusion of completeness, making the invisible, high-stakes work of a professional developer seem unnecessary.</p>
                         
@@ -60,7 +64,7 @@ export default function AIWontBuildYourBusiness() {
                         <p className={styles.paragraph}>An AI doesn't understand your three-year business roadmap. It cannot design a system that scales with your growth, pivots with market changes, or integrates with future tools. It builds for the prompt it was given, not for the business you're trying to build.</p>
 
                         <h3 className={styles.heading3}>Risk Mitigation and Accountability</h3>
-                        <p className={styles.paragraph}>AI cannot take accountability. When a "prompted" application leaks customer data or fails a PCI compliance audit, the "cost savings" from using AI evaporate instantly. A professional developer's value lies not just in writing code, but in taking responsibility for its security and integrity.</p>
+                        <p className={styles.paragraph}>AI cannot take accountability. When a "prompted" application leaks customer data or fails a <Link href="/blog/devops-for-small-business" className={styles.link}>PCI compliance audit</Link>, the "cost savings" from using AI evaporate instantly. A professional developer's value lies not just in writing code, but in taking responsibility for its security and integrity.</p>
 
                         <h2 className={styles.heading2}>A New Approach: Consultative Implementation</h2>
                         <p className={styles.paragraph}>If you find clients constantly benchmarking your quotes against "what an AI can do," it's time to change your positioning.</p>
@@ -74,7 +78,7 @@ export default function AIWontBuildYourBusiness() {
                         <h2 className={styles.heading2}>AI is a Tool, Not a Strategist</h2>
                         <p className={styles.paragraph}>We use AI every day to accelerate routine tasks. It helps us generate boilerplate, write documentation, and catch simple bugs. But these are tools that enhance our developers, not replace them.</p>
 
-                        <p className={styles.paragraph}>An AI is a powerful engine, but it has no driver. It cannot decide where to go, what questions to ask, or what problems to solve. The critical thinking happens before you even talk to the AI. Building great software requires capabilities that AI fundamentally lacks: strategic thinking, user empathy, and creative problem-solving.</p>
+                        <p className={styles.paragraph}>An AI is a powerful engine, but it has no driver. It cannot decide where to go, what questions to ask, or what problems to solve. The critical thinking happens before you even talk to the AI. Building great software requires capabilities that AI fundamentally lacks: <Link href="/blog/ethical-business-practices" className={styles.link}>strategic thinking</Link>, user empathy, and creative problem-solving.</p>
                         
                         <h2 className={styles.heading2}>Invest in Expertise, Not Illusions</h2>
                         <p className={styles.paragraph}>Your digital presence is the face of your business. That impression should reflect quality, professionalism, and strategic foresight—not the generic, fragile output of an algorithm. The real cost of a "cheap" AI solution is the time and money spent rebuilding it correctly from scratch.</p>

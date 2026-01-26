@@ -31,6 +31,10 @@ export default function HiddenCostOfNoCode() {
             <div className={styles.container}>
                 <header className={styles.header}>
                     <h1 className={styles.title}>The Hidden Cost of 'No-Code'</h1>
+                    <p className={styles.excerpt}>
+                        No-code and low-code platforms like Zapier, Make, and Airtable have become incredibly popular. They promise to democratize development, allowing anyone to connect apps and automate workflows with a few clicks. For simple, non-critical tasks, they can be fantastic. Need to post a tweet whenever you publish a blog post? A no-code tool is perfect.
+                        But a dangerous trend has emerged: businesses are building their core operational logic on these platforms. They are using a patchwork of zaps and scenarios to handle things like customer onboarding, order processing, and data synchronization. This seems fast and cheap at first, but it creates a fragile, unscalable, and expensive "scaffolding" around your business that is destined to collapse.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup>
+                    </p>
                     <div className={styles.meta}>
                         <span className={styles.author}>By Liam Fielding</span>
                         <span className={styles.date}>2025-09-21</span>
@@ -41,9 +45,6 @@ export default function HiddenCostOfNoCode() {
                 <div className={styles.content}>
                     <div className={styles.prose}>
                         <h2 className={styles.heading2}>The No-Code Promise</h2>
-                        <p className={styles.paragraph}>No-code and low-code platforms like Zapier, Make, and Airtable have become incredibly popular. They promise to democratize development, allowing anyone to connect apps and automate workflows with a few clicks. For simple, non-critical tasks, they can be fantastic. Need to post a tweet whenever you publish a blog post? A no-code tool is perfect.</p>
-                        <p className={styles.paragraph}>But a dangerous trend has emerged: businesses are building their core operational logic on these platforms. They are using a patchwork of zaps and scenarios to handle things like customer onboarding, order processing, and data synchronization. This seems fast and cheap at first, but it creates a fragile, unscalable, and expensive "scaffolding" around your business that is destined to collapse.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup></p>
-
                         <h2 className={styles.heading2}>Your Business Logic is Your Most Valuable Asset</h2>
                         <p className={styles.paragraph}>Every business has a unique way of doing things. The specific steps you take to qualify a lead, process an order, or manage a project—that is your core business logic. It's the "secret sauce" of your operations. Entrusting this logic to a third-party, point-and-click interface is a massive strategic error.</p>
                         <p className={styles.paragraph}>When you build your business on a web of no-code automations, you are creating a "distributed monolith" of hidden dependencies, where a single change in one app can cause a cascade of failures in another.</p>

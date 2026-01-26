@@ -31,6 +31,10 @@ export default function CustomCRMFSM() {
             <div className={styles.container}>
                 <header className={styles.header}>
                     <h1 className={styles.title}>Stop Buying Software: The Power of Custom CRM and Business Management Systems</h1>
+                    <p className={styles.excerpt}>
+                        CRM (Customer Relationship Management) and FSM (Field Service Management) systems are the backbone of many modern businesses. They promise to streamline operations, enhance customer interactions, and boost efficiency. Off-the-shelf solutions like Salesforce, Zoho, or ServiceTitan offer robust features and quick deployment. And for many generic use cases, they are perfectly adequate.
+                        However, the moment your business workflow deviates—even slightly—from the software's predefined path, the promise begins to unravel. You find yourself bending your unique processes to fit the software, paying for features you don't need, and spending countless hours on expensive customizations and workarounds. What was pitched as a solution quickly becomes a straitjacket.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup>
+                    </p>
                     <div className={styles.meta}>
                         <span className={styles.author}>By Liam Fielding</span>
                         <span className={styles.date}>2025-12-28</span>
@@ -40,10 +44,6 @@ export default function CustomCRMFSM() {
 
                 <div className={styles.content}>
                     <div className={styles.prose}>
-                        <h2 className={styles.heading2}>The Promise vs. The Reality of Off-the-Shelf Software</h2>
-                        <p className={styles.paragraph}>CRM (Customer Relationship Management) and FSM (Field Service Management) systems are the backbone of many modern businesses. They promise to streamline operations, enhance customer interactions, and boost efficiency. Off-the-shelf solutions like Salesforce, Zoho, or ServiceTitan offer robust features and quick deployment. And for many generic use cases, they are perfectly adequate.</p>
-                        <p className={styles.paragraph}>However, the moment your business workflow deviates—even slightly—from the software's predefined path, the promise begins to unravel. You find yourself bending your unique processes to fit the software, paying for features you don't need, and spending countless hours on expensive customizations and workarounds. What was pitched as a solution quickly becomes a straitjacket.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup></p>
-
                         <h2 className={styles.heading2}>The Hidden Costs of Generic CRM/FSM</h2>
                         <h3 className={styles.heading3}>1. Workflow Compromise</h3>
                         <p className={styles.paragraph}>Your business has evolved specific, often complex, processes to serve your customers and operate efficiently. Generic software forces you to conform to its logic, not yours. This can lead to inefficient workarounds, frustrated employees, and a diluted customer experience.</p>

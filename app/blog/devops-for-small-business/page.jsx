@@ -6,11 +6,14 @@ import { useContact } from '../../../contexts/ContactContext';
 import { useHeaderAnimation } from '../../../contexts/HeaderAnimationContext';
 import CallToAction from '../../../components/layout/CallToAction/CallToAction';
 import styles from '../post.module.scss';
+import { posts } from '../posts';
 
 export default function DevOpsForSmallBusiness() {
     const { openContact } = useContact();
     const { headerAnimationComplete } = useHeaderAnimation();
     const [contentVisible, setContentVisible] = useState(false);
+
+    const post = posts.find(p => p.slug === 'devops-for-small-business');
 
     useEffect(() => {
         if (headerAnimationComplete) {
@@ -30,11 +33,12 @@ export default function DevOpsForSmallBusiness() {
         >
             <div className={styles.container}>
                 <header className={styles.header}>
-                    <h1 className={styles.title}>DevOps Isn't Just for Startups</h1>
+                    <h1 className={styles.title}>{post?.title || `DevOps Isn't Just for Startups`}</h1>
+                    {post?.excerpt && <p className={styles.excerpt}>{post.excerpt}</p>}
                     <div className={styles.meta}>
                         <span className={styles.author}>By Liam Fielding</span>
-                        <span className={styles.date}>2025-11-16</span>
-                        <span className={styles.readTime}>8 min read</span>
+                        <span className={styles.date}>{post?.date || '2025-11-16'}</span>
+                        <span className={styles.readTime}>{post?.readTime || '8 min read'}</span>
                     </div>
                 </header>
 

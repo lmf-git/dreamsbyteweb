@@ -31,6 +31,10 @@ export default function NoDependencyResearchProject() {
             <div className={styles.container}>
                 <header className={styles.header}>
                     <h1 className={styles.title}>No-dependency Research Project: A Manifesto for Pure Development</h1>
+                    <h2 className={styles.heading2}>The Philosophy of Zero-Dependency</h2>
+                    <p className={styles.excerpt}>
+                        In an era dominated by sprawling node_modules, intricate build tools, and an ever-shifting landscape of frameworks, the concept of a "no-dependency" research project stands as a radical act of rebellion. This approach champions the creation of software with the absolute minimum external libraries, frameworks, or tools. It is a philosophy rooted in the pursuit of understanding, control, and longevity.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup>
+                    </p>
                     <div className={styles.meta}>
                         <span className={styles.author}>By Liam Fielding</span>
                         <span className={styles.date}>2026-01-18</span> {/* Today's date */}
@@ -40,9 +44,6 @@ export default function NoDependencyResearchProject() {
 
                 <div className={styles.content}>
                     <div className={styles.prose}>
-                        <h2 className={styles.heading2}>The Philosophy of Zero-Dependency</h2>
-                        <p className={styles.paragraph}>In an era dominated by sprawling node_modules, intricate build tools, and an ever-shifting landscape of frameworks, the concept of a "no-dependency" research project stands as a radical act of rebellion. This approach champions the creation of software with the absolute minimum external libraries, frameworks, or tools. It is a philosophy rooted in the pursuit of understanding, control, and longevity.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup></p>
-
                         <h3 className={styles.heading3}>Why Go No-Dependency?</h3>
                         <ol className={styles.orderedList}>
                             <li className={styles.listItem}><strong>Deep Understanding:</strong> By eschewing external libraries, developers are forced to confront and solve problems at a fundamental level. This cultivates a profound understanding of core algorithms, data structures, and system interactions that are often abstracted away by third-party tools.</li>

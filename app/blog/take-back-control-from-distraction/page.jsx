@@ -41,6 +41,10 @@ export default function TakeBackControlFromDistraction() {
             <div className={styles.container}>
                 <header className={styles.header}>
                     <h1 className={styles.title}>Take Back Control: Digital Distraction</h1>
+                    <p className={styles.excerpt}>
+                        In our hyper-connected world, distractions are everywhere. From social media notifications to clickbait articles, our attention is constantly under siege. It can take an average of over 23 minutes to regain focus after a digital interruption, a significant blow to productivity.<sup><a href="#footnote-2" id="footnote-ref-2" className={styles.link}>2</a></sup> But what if you could take back control? What if you could shape your digital environment to serve your needs, not the other way around?
+                        Studies have shown that it can take anywhere from 18 to 254 days to form a new habit, with the average being 66 days.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup> Taking control of your digital environment is a great first step.
+                    </p>
                     <div className={styles.meta}>
                         <span className={styles.author}>By Liam Fielding</span>
                         <span className={styles.date}>2024-03-15</span>
@@ -50,11 +54,6 @@ export default function TakeBackControlFromDistraction() {
 
                 <div className={styles.content}>
                     <div className={styles.prose}>
-                        <h2 className={styles.heading2}>The Age of Distraction</h2>
-                        <p className={styles.paragraph}>In our hyper-connected world, distractions are everywhere. From social media notifications to clickbait articles, our attention is constantly under siege. It can take an average of over 23 minutes to regain focus after a digital interruption, a significant blow to productivity.<sup><a href="#footnote-2" id="footnote-ref-2" className={styles.link}>2</a></sup> But what if you could take back control? What if you could shape your digital environment to serve your needs, not the other way around?</p>
-
-                        <p className={styles.paragraph}>Studies have shown that it can take anywhere from 18 to 254 days to form a new habit, with the average being 66 days.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup> Taking control of your digital environment is a great first step.</p>
-
                         <h2 className={styles.heading2}>Introducing User Scripts</h2>
                         <p className={styles.paragraph}>User scripts are small pieces of JavaScript that can be run on any website to customize its appearance and functionality. With user scripts, you can block ads, hide annoying elements, and even add new features to your favorite sites. They are a powerful tool for taking back control of your digital life.</p>
 

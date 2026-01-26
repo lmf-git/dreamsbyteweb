@@ -29,6 +29,10 @@ export default function PerformanceFirstWebsite() {
         <div className={styles.container}>
             <header className={styles.header}>
                 <h1 className={styles.title}>The Performance-First Website: How We Guarantee 90+ Lighthouse Scores</h1>
+                <p className={styles.excerpt}>
+                    In the world of web development, we often talk about features, design, and content. But there's one crucial element that underpins all of them: performance. A slow website is a broken website. It doesn't matter how beautiful your design is or how compelling your copy is if your users get frustrated and leave before they even see it. The data is unequivocal: a 1-second delay in page load time can result in a 7% reduction in conversions.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup>
+                    At DreamsByte, we don't treat performance as an afterthought or something to "fix" later. We build it into the core of our process. It's a non-negotiable metric of quality, which is why we can confidently guarantee a Google Lighthouse performance score of 90+ for the sites we build.
+                </p>
                 <div className={styles.meta}>
                                                                     <span className={styles.author}>By Liam Fielding</span>
                                                                     <span className={styles.date}>2025-11-02</span>
@@ -38,9 +42,6 @@ export default function PerformanceFirstWebsite() {
             <div className={styles.content}>
                 <div className={styles.prose}>
                     <h2 className={styles.heading2}>Speed is Not a Feature, It's The Feature</h2>
-                    <p className={styles.paragraph}>In the world of web development, we often talk about features, design, and content. But there's one crucial element that underpins all of them: performance. A slow website is a broken website. It doesn't matter how beautiful your design is or how compelling your copy is if your users get frustrated and leave before they even see it. The data is unequivocal: a 1-second delay in page load time can result in a 7% reduction in conversions.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup></p>
-                    <p className={styles.paragraph}>At DreamsByte, we don't treat performance as an afterthought or something to "fix" later. We build it into the core of our process. It's a non-negotiable metric of quality, which is why we can confidently guarantee a Google Lighthouse performance score of 90+ for the sites we build.</p>
-
                     <h2 className={styles.heading2}>What is Google Lighthouse?</h2>
                     <p className={styles.paragraph}>Google Lighthouse is an open-source, automated tool for improving the quality of web pages.<sup><a href="#footnote-2" id="footnote-ref-2" className={styles.link}>2</a></sup> It runs a series of audits against a page and generates a report on how well it did. The "Performance" score is a weighted average of several key metrics, including:</p>
                     <ul className={styles.list}>

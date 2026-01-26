@@ -31,6 +31,10 @@ export default function TargetAudienceIsEverything() {
             <div className={styles.container}>
                 <header className={styles.header}>
                     <h1 className={styles.title}>"I'll Sell to Everyone": The Most Expensive Lie in Business</h1>
+                    <p className={styles.excerpt}>
+                        It’s a tempting thought, one that almost every new business owner has: "My product is so great, everyone will want it." The logic seems sound. Why limit your potential customer base? Why fish in a small pond when you can have the whole ocean? This desire to "sell to everyone" is the single most common—and costly—mistake in marketing.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup>
+                        Trying to be everything to everyone results in being nothing to anyone. It’s the business equivalent of shouting into a hurricane and expecting a clear response.
+                    </p>
                     <div className={styles.meta}>
                         <span className={styles.author}>By Liam Fielding</span>
                         <span className={styles.date}>2025-09-07</span>
@@ -41,9 +45,6 @@ export default function TargetAudienceIsEverything() {
                 <div className={styles.content}>
                     <div className={styles.prose}>
                         <h2 className={styles.heading2}>The Allure of the Biggest Pond</h2>
-                        <p className={styles.paragraph}>It’s a tempting thought, one that almost every new business owner has: "My product is so great, everyone will want it." The logic seems sound. Why limit your potential customer base? Why fish in a small pond when you can have the whole ocean? This desire to "sell to everyone" is the single most common—and costly—mistake in marketing.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup></p>
-                        <p className={styles.paragraph}>Trying to be everything to everyone results in being nothing to anyone. It’s the business equivalent of shouting into a hurricane and expecting a clear response.</p>
-
                         <h2 className={styles.heading2}>Why "Everyone" is the Worst Target Audience</h2>
                         <p className={styles.paragraph}>When your target is "everyone," your marketing efforts become diluted, ineffective, and incredibly expensive. Here’s why:</p>
                         <ul className={styles.list}>

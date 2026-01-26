@@ -31,6 +31,10 @@ export default function LegacySystemModernisation() {
             <div className={styles.container}>
                 <header className={styles.header}>
                     <h1 className={styles.title}>A Pragmatic Guide to Legacy System Modernisation</h1>
+                    <p className={styles.excerpt}>
+                        Every established business has one: that critical piece of internal software. Maybe it’s an old Access database, a clunky Java application from 2005, or a PHP script that a long-gone freelancer hacked together. It’s ugly, it’s slow, and everyone hates using it. But it runs your business, so you’re stuck with it. You keep applying patches, paying for expensive maintenance, and trying to ignore the inevitable. In essence, you're investing resources in a system that offers diminishing returns.
+                        This isn't just a technical problem; it's a business problem. That legacy system is actively costing you money, stifling growth, and exposing you to catastrophic risk.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup>
+                    </p>
                     <div className={styles.meta}>
                         <span className={styles.author}>By Liam Fielding</span>
                         <span className={styles.date}>2025-10-19</span>
@@ -41,9 +45,6 @@ export default function LegacySystemModernisation() {
                 <div className={styles.content}>
                     <div className={styles.prose}>
                         <h2 className={styles.heading2}>The Software That Runs Your Business is Holding it Hostage</h2>
-                        <p className={styles.paragraph}>Every established business has one: that critical piece of internal software. Maybe it’s an old Access database, a clunky Java application from 2005, or a PHP script that a long-gone freelancer hacked together. It’s ugly, it’s slow, and everyone hates using it. But it runs your business, so you’re stuck with it. You keep applying patches, paying for expensive maintenance, and trying to ignore the inevitable. In essence, you're investing resources in a system that offers diminishing returns.</p>
-                        <p className={styles.paragraph}>This isn't just a technical problem; it's a business problem. That legacy system is actively costing you money, stifling growth, and exposing you to catastrophic risk.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup></p>
-
                         <h2 className={styles.heading2}>The True Cost of "Just Keeping it Running"</h2>
                         <p className={styles.paragraph}>The cost of a legacy system isn't just the maintenance contract. It's a cascade of hidden expenses and opportunity costs:</p>
                         <ul className={styles.list}>

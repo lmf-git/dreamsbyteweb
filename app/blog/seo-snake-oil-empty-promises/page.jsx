@@ -31,6 +31,10 @@ export default function SEOSnakeOil() {
             <div className={styles.container}>
                 <header className={styles.header}>
                     <h1 className={styles.title}>SEO Snake Oil: Empty Promises</h1>
+                    <h2 className={styles.heading2}>The SEO Industry's Dirty Secret</h2>
+                    <p className={styles.excerpt}>
+                        Every week, businesses receive cold emails promising "first page Google rankings" or "guaranteed SEO results." The reality? Most of these services are selling expensive smoke and mirrors while the fundamentals of good SEO remain surprisingly simple.
+                    </p>
                     <div className={styles.meta}>
                         <span className={styles.author}>By Liam Fielding</span>
                         <span className={styles.date}>2024-02-01</span>
@@ -40,9 +44,6 @@ export default function SEOSnakeOil() {
 
                 <div className={styles.content}>
                     <div className={styles.prose}>
-                        <h2 className={styles.heading2}>The SEO Industry's Dirty Secret</h2>
-                        <p className={styles.paragraph}>Every week, businesses receive cold emails promising "first page Google rankings" or "guaranteed SEO results." The reality? Most of these services are selling expensive smoke and mirrors while the fundamentals of good SEO remain surprisingly simple.</p>
-
                         <h2 className={styles.heading2}>What Actually Matters for SEO</h2>
                         <p className={styles.paragraph}>Search engines have one goal: deliver relevant, high-quality content to users. Despite what expensive SEO agencies want you to believe, ranking well comes down to three core principles:</p>
 

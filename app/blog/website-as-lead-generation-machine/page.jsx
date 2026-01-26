@@ -31,6 +31,10 @@ export default function WebsiteAsLeadGenMachine() {
             <div className={styles.container}>
                 <header className={styles.header}>
                     <h1 className={styles.title}>Your Website, Your 24/7 Sales Machine: Engineering for Lead Generation and Conversion Funnels</h1>
+                    <p className={styles.excerpt}>
+                        For many businesses, their website is simply an online brochure—a static collection of pages that exist primarily to provide information. While information is crucial, a truly effective website should be far more: it should be your hardest-working salesperson, operating 24 hours a day, 7 days a week, actively generating leads and <Link href="/blog/i-will-sell-to-everyone-is-a-lie" className={styles.link}>guiding potential customers</Link> through a conversion funnel.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup>
+                        At DreamsByte, we engineer websites to be dynamic lead generation machines. We don't just build pretty pages; we build strategic digital assets designed to capture interest, nurture prospects, and drive measurable business growth.
+                    </p>
                     <div className={styles.meta}>
                         <span className={styles.author}>By Liam Fielding</span>
                         <span className={styles.date}>2025-12-14</span>
@@ -41,9 +45,6 @@ export default function WebsiteAsLeadGenMachine() {
                 <div className={styles.content}>
                     <div className={styles.prose}>
                         <h2 className={styles.heading2}>Beyond the Digital Brochure</h2>
-                        <p className={styles.paragraph}>For many businesses, their website is simply an online brochure—a static collection of pages that exist primarily to provide information. While information is crucial, a truly effective website should be far more: it should be your hardest-working salesperson, operating 24 hours a day, 7 days a week, actively generating leads and <Link href="/blog/i-will-sell-to-everyone-is-a-lie" className={styles.link}>guiding potential customers</Link> through a conversion funnel.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup></p>
-                        <p className={styles.paragraph}>At DreamsByte, we engineer websites to be dynamic lead generation machines. We don't just build pretty pages; we build strategic digital assets designed to capture interest, nurture prospects, and drive measurable business growth.</p>
-
                         <h2 className={styles.heading2}>What is a Conversion Funnel?</h2>
                         <p className={styles.paragraph}>A conversion funnel illustrates the journey a potential customer takes from initial awareness to becoming a paying client. It typically involves several stages:<sup><a href="#footnote-2" id="footnote-ref-2" className={styles.link}>2</a></sup></p>
                         <ul className={styles.list}>

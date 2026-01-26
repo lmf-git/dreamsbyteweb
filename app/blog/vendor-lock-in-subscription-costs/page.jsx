@@ -31,6 +31,10 @@ export default function VendorLockIn() {
             <div className={styles.container}>
                 <header className={styles.header}>
                     <h1 className={styles.title}>Vendor Lock-In: Subscription Costs</h1>
+                    <h2 className={styles.heading2}>The Subscription Trap</h2>
+                    <p className={styles.excerpt}>
+                        <Link href="/blog/beyond-shopify-custom-ecommerce" className={styles.link}>Website builders</Link> and <Link href="/blog/hidden-cost-of-no-code" className={styles.link}>SaaS platforms</Link> advertise low monthly fees and promise simplicity. But over the years, those "affordable" subscriptions add up to tens of thousands of pounds while you own nothing and control less with each platform update.
+                    </p>
                     <div className={styles.meta}>
                         <span className={styles.author}>By Liam Fielding</span>
                         <span className={styles.date}>2024-02-10</span>
@@ -40,9 +44,6 @@ export default function VendorLockIn() {
 
                 <div className={styles.content}>
                     <div className={styles.prose}>
-                        <h2 className={styles.heading2}>The Subscription Trap</h2>
-                        <p className={styles.paragraph}><Link href="/blog/beyond-shopify-custom-ecommerce" className={styles.link}>Website builders</Link> and <Link href="/blog/hidden-cost-of-no-code" className={styles.link}>SaaS platforms</Link> advertise low monthly fees and promise simplicity. But over the years, those "affordable" subscriptions add up to tens of thousands of pounds while you own nothing and control less with each platform update.</p>
-
                         <h2 className={styles.heading2}>The Math Doesn't Lie</h2>
                         <p className={styles.paragraph}>Let's run the numbers on a typical website builder subscription:</p>
 

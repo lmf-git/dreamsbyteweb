@@ -6,6 +6,7 @@ import { useContact } from '../../../contexts/ContactContext';
 import { useHeaderAnimation } from '../../../contexts/HeaderAnimationContext';
 import CallToAction from '../../../components/layout/CallToAction/CallToAction';
 import styles from '../post.module.scss';
+import { posts } from '../posts';
 
 export default function EthicalBusinessPractices() {
     const { openContact } = useContact();
@@ -31,6 +32,10 @@ export default function EthicalBusinessPractices() {
             <div className={styles.container}>
                 <header className={styles.header}>
                     <h1 className={styles.title}>A Business Philosophy Rooted in People</h1>
+                    <p className={styles.excerpt}>
+                        In an industry often defined by opaque practices and profit-at-all-costs mentalities, we choose to operate differently. Our work is not just about building software; it’s about forging partnerships and creating tools that empower people and build stronger communities.
+                        We believe that the best business relationships are built on a foundation of mutual respect and shared success. This philosophy guides every decision we make, from the clients we partner with to the way we price our services.
+                    </p>
                     <div className={styles.meta}>
                         <span className={styles.author}>By Liam Fielding</span>
                         <span className={styles.date}>2026-01-15</span>
@@ -40,27 +45,20 @@ export default function EthicalBusinessPractices() {
 
                 <div className={styles.content}>
                     <div className={styles.prose}>
-                        <p className={styles.paragraph}>
-                            In an industry often defined by opaque practices and profit-at-all-costs mentalities, we choose to operate differently. Our work is not just about building software; it’s about forging partnerships and creating tools that empower people and build stronger communities.
-                        </p>
-                        <p className={styles.paragraph}>
-                            We believe that the best business relationships are built on a foundation of mutual respect and shared success. This philosophy guides every decision we make, from the clients we partner with to the way we price our services.
-                        </p>
-
                         <h2 className={styles.heading2}>Fair, Transparent, and Simple</h2>
                         <p className={styles.paragraph}>
-                            We reject the idea of "fee stacking," "value-added" markups, and other tactics designed to obscure the true cost of a service. Our pricing is straightforward and honest. You pay for the work we do. There are no hidden administrative fees, no inflated costs for third-party licenses, and no complex retainers where you pay for time you don't use.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup>
+                            We reject the idea of "<Link href="/blog/unethical-business-practices" className={styles.link}>fee stacking</Link>," "value-added" markups, and other tactics designed to obscure the true cost of a service. Our pricing is straightforward and honest. You pay for the work we do. There are no hidden administrative fees, no inflated costs for third-party licenses, and no complex retainers where you pay for time you don't use.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup>
                         </p>
                         <p className={styles.paragraph}>
-                            Our goal is to create a partnership where our incentives are aligned with yours: to build the best possible product, efficiently and effectively.
+                            Our goal is to create a partnership where our incentives are aligned with yours: to build the best possible product, <Link href="/blog/our-approach-to-software" className={styles.link}>efficiently and effectively</Link>.
                         </p>
 
                         <h2 className={styles.heading2}>Building for Independence, Not Dependence</h2>
                         <p className={styles.paragraph}>
-                            Many software companies build systems designed to create dependency, locking clients into their platforms with proprietary code and "exit fees." We believe this is a fundamentally flawed approach.<sup><a href="#footnote-2" id="footnote-ref-2" className={styles.link}>2</a></sup>
+                            Many software companies build systems designed to create dependency, locking clients into their platforms with proprietary code and "<Link href="/blog/vendor-lock-in-subscription-costs" className={styles.link}>exit fees</Link>." We believe this is a fundamentally flawed approach.<sup><a href="#footnote-2" id="footnote-ref-2" className={styles.link}>2</a></sup>
                         </p>
                         <p className={styles.paragraph}>
-                            We actively work to free our clients from the common traps of the software industry: exorbitant subscription fees, restrictive vendor lock-ins, and opaque pricing models. Our approach prioritizes your long-term autonomy and success, rather than creating perpetual reliance on our services.<sup><a href="#footnote-3" id="footnote-ref-3" className={styles.link}>3</a></sup>
+                            We actively work to free our clients from the <Link href="/blog/hidden-cost-of-no-code" className={styles.link}>common traps of the software industry</Link>: <Link href="/blog/vendor-lock-in-subscription-costs" className={styles.link}>exorbitant subscription fees</Link>, <Link href="/blog/vendor-lock-in-subscription-costs" className={styles.link}>restrictive vendor lock-ins</Link>, and <Link href="/blog/unethical-business-practices" className={styles.link}>opaque pricing models</Link>. Our approach prioritizes your long-term autonomy and success, rather than creating perpetual reliance on our services.<sup><a href="#footnote-3" id="footnote-ref-3" className={styles.link}>3</a></sup>
                         </p>
                         <p className={styles.paragraph}>
                             We build technology that you own and control. Our solutions are built on open standards and well-documented code, ensuring you are never held hostage by your own systems. We want you to work with us because you value our expertise and our partnership, not because you are trapped.

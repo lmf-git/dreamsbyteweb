@@ -31,6 +31,10 @@ export default function UnderstandingWebsiteDevelopment() {
             <div className={styles.container}>
                 <header className={styles.header}>
                     <h1 className={styles.title}>Website Development: Digital Presence</h1>
+                    <p className={styles.excerpt}>
+                        <Link href="/blog/why-your-business-needs-professional-website" className={styles.link}>Building a professional website</Link> is more than just putting together some pages and images. The user's experience on your site has a direct and measurable impact on your business's success. In fact, studies show that 88% of online consumers are less likely to return to a site after a bad experience.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup>
+                        At DreamsByte, we follow a comprehensive development process to ensure your website not only looks great and avoids user frustration, but also actively drives results for your business.
+                    </p>
                     <div className={styles.meta}>
                         <span className={styles.author}>By Liam Fielding</span>
                         <span className={styles.date}>2024-01-15</span>
@@ -40,10 +44,6 @@ export default function UnderstandingWebsiteDevelopment() {
 
                 <div className={styles.content}>
                     <div className={styles.prose}>
-                        <h2 className={styles.heading2}>Introduction</h2>
-                        <p className={styles.paragraph}><Link href="/blog/why-your-business-needs-professional-website" className={styles.link}>Building a professional website</Link> is more than just putting together some pages and images. The user's experience on your site has a direct and measurable impact on your business's success. In fact, studies show that 88% of online consumers are less likely to return to a site after a bad experience.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup></p>
-                        <p className={styles.paragraph}>At DreamsByte, we follow a comprehensive development process to ensure your website not only looks great and avoids user frustration, but also actively drives results for your business.</p>
-
                         <h2 className={styles.heading2}>What Goes Into Website Development</h2>
                         <ul className={styles.list}>
                             <li className={styles.listItem}>Business analysis and goal setting</li>

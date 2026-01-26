@@ -31,6 +31,9 @@ export default function WhyYourBusinessNeedsWebsite() {
             <div className={styles.container}>
                 <header className={styles.header}>
                     <h1 className={styles.title}>Professional Website For Your Business</h1>
+                    <p className={styles.excerpt}>
+                        In today's digital-first world, your website is often the first impression potential customers have of your business. A <Link href="/blog/seo-snake-oil-empty-promises" className={styles.link}>professional online presence</Link> isn't just nice to have—it's essential for growth, especially when 75% of consumers judge a business's credibility based on its website design alone.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup>
+                    </p>
                     <div className={styles.meta}>
                         <span className={styles.author}>By Liam Fielding</span>
                         <span className={styles.date}>2024-01-20</span>
@@ -41,8 +44,6 @@ export default function WhyYourBusinessNeedsWebsite() {
                 <div className={styles.content}>
                     <div className={styles.prose}>
                         <h2 className={styles.heading2}>The Digital Landscape in 2024</h2>
-                        <p className={styles.paragraph}>In today's digital-first world, your website is often the first impression potential customers have of your business. A <Link href="/blog/seo-snake-oil-empty-promises" className={styles.link}>professional online presence</Link> isn't just nice to have—it's essential for growth, especially when 75% of consumers judge a business's credibility based on its website design alone.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup></p>
-
                         <h2 className={styles.heading2}>Key Benefits of a Professional Website</h2>
                         <ul className={styles.list}>
                             <li className={styles.listItem}><strong>24/7 Accessibility:</strong> With 81% of consumers researching products online before buying, your website acts as your always-on storefront.<sup><a href="#footnote-2" id="footnote-ref-2" className={styles.link}>2</a></sup></li>

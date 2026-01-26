@@ -6,11 +6,14 @@ import { useContact } from '../../../contexts/ContactContext';
 import { useHeaderAnimation } from '../../../contexts/HeaderAnimationContext';
 import CallToAction from '../../../components/layout/CallToAction/CallToAction';
 import styles from '../post.module.scss';
+import { posts } from '../posts';
 
 export default function CloudInfrastructureIllusion() {
     const { openContact } = useContact();
     const { headerAnimationComplete } = useHeaderAnimation();
     const [contentVisible, setContentVisible] = useState(false);
+
+    const post = posts.find(p => p.slug === 'cloud-infrastructure-illusion');
 
     useEffect(() => {
         if (headerAnimationComplete) {
@@ -30,11 +33,12 @@ export default function CloudInfrastructureIllusion() {
         >
             <div className={styles.container}>
                 <header className={styles.header}>
-                    <h1 className={styles.title}>Cloud Illusion: Beyond AWS for Enterprise</h1>
+                    <h1 className={styles.title}>{post?.title || 'Cloud Illusion: Beyond AWS for Enterprise'}</h1>
+                    {post?.excerpt && <p className={styles.excerpt}>{post.excerpt}</p>}
                     <div className={styles.meta}>
                         <span className={styles.author}>By Liam Fielding</span>
-                        <span className={styles.date}>2024-02-20</span>
-                        <span className={styles.readTime}>9 min read</span>
+                        <span className={styles.date}>{post?.date || '2024-02-20'}</span>
+                        <span className={styles.readTime}>{post?.readTime || '9 min read'}</span>
                     </div>
                 </header>
 
@@ -65,7 +69,7 @@ export default function CloudInfrastructureIllusion() {
                         <p className={styles.paragraph}>If you serve customers in the UK, EU, US, and Asia, you need infrastructure in those regions regardless. But cloud "global deployment" just means paying premium prices in multiple regions. Own servers in each region and you control everything.</p>
 
                         <h2 className={styles.heading2}>The Real Costs of Cloud Dependency</h2>
-                        <p className={styles.paragraph}>Beyond the obvious price premium, cloud lock-in creates costs most businesses don't calculate:</p>
+                        <p className={styles.paragraph}>Beyond the obvious price premium, <Link href="/blog/vendor-lock-in-subscription-costs" className={styles.link}>cloud lock-in</Link> creates costs most businesses don't calculate:</p>
 
                         <h3 className={styles.heading3}>Egress Fees</h3>
                         <p className={styles.paragraph}>AWS charges you to move your own data out of their network. Serving files to customers? That's egress. Backing up your data? Egress. Moving between their own services in different regions? Believe it or not, egress. These fees compound at scale.<sup><a href="#footnote-2" id="footnote-ref-2" className={styles.link}>2</a></sup></p>

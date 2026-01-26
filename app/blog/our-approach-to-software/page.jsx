@@ -35,6 +35,10 @@ export default function OurApproachToSoftware() {
             <div className={styles.container}>
                 <header className={styles.header}>
                     <h1 className={styles.title}>The Orchestrated Singleton: A Full-Stack Manifesto on Control</h1>
+                    <p className={styles.excerpt}>
+                        Modern web development often champions "<Link href="/blog/no-dependency-research-project" className={styles.link}>Functional Purity</Link>"—stateless functions, hooks for everything, and declarative "magic." While these paradigms offer undeniable benefits, the pursuit of simplicity can inadvertently lead to a loss of explicit control. We can lose sight of the crucial "Boot Sequence," the ability to treat our software like a physical machine that hums to life in a specific, orchestrated order.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup>
+                        Based on our full-stack methodology—ranging from static-heavy Node.js backends to kinetically orchestrated React frontends—we've forged an approach that prioritizes <strong>Explicit Control over Framework Autonomy</strong>. This philosophy culminates in what we call <strong><Link href="/blog/stop-buying-software-custom-crm-fsm" className={styles.link}>The Orchestrated Singleton</Link></strong>: a comprehensive strategy for building digital instruments with intent.
+                    </p>
                     <div className={styles.meta}>
                         <span className={styles.author}>By Liam Fielding</span>
                         <span className={styles.date}>2026-01-11</span>
@@ -45,11 +49,8 @@ export default function OurApproachToSoftware() {
                 <div className={styles.content}>
                     <div className={styles.prose}>
                         <h2 className={styles.heading2}>Beyond Functional Purity: Reclaiming the Boot Sequence</h2>
-                        <p className={styles.paragraph}>Modern web development often champions "Functional Purity"—stateless functions, hooks for everything, and declarative "magic." While these paradigms offer undeniable benefits, the pursuit of simplicity can inadvertently lead to a loss of explicit control. We can lose sight of the crucial "Boot Sequence," the ability to treat our software like a physical machine that hums to life in a specific, orchestrated order.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup></p>
-                        <p className={styles.paragraph}>Based on our full-stack methodology—ranging from static-heavy Node.js backends to kinetically orchestrated React frontends—we've forged an approach that prioritizes <strong>Explicit Control over Framework Autonomy</strong>. This philosophy culminates in what we call <strong>The Orchestrated Singleton</strong>: a comprehensive strategy for building digital instruments with intent.</p>
-
                         <h2 className={styles.heading2}>1. The Backend as a Mechanical Boot Sequence</h2>
-                        <p className={styles.paragraph}>Most Node.js backends are often perceived as collections of loosely coupled routes and handlers. Our approach fundamentally redefines this by treating the server as a <strong>Static Singleton</strong>. It's a single, resilient entity whose initialization is a precisely choreographed mechanical boot sequence.<sup><a href="#footnote-2" id="footnote-ref-2" className={styles.link}>2</a></sup></p>
+                        <p className={styles.paragraph}>Most Node.js backends are often perceived as collections of loosely coupled routes and handlers. Our approach fundamentally redefines this by treating the server as a <strong><Link href="/blog/cloud-infrastructure-illusion" className={styles.link}>Static Singleton</Link></strong>. It's a single, resilient entity whose initialization is a precisely choreographed mechanical boot sequence.<sup><a href="#footnote-2" id="footnote-ref-2" className={styles.link}>2</a></sup></p>
                         <ul className={styles.list}>
                             <li className={styles.listItem}><strong>The Registry Pattern:</strong> By encapsulating the entire service within a static class, we establish a single source of truth that is never instantiated, nor does it need to be. Instead, a <code>PROVIDERS</code> registry is utilized as a "Dependency Check-list." When the service starts, it doesn't just run; it orchestrates. Each external integration (Slack, Databases, third-party APIs) must fulfill a predefined <code>setup()</code> contract. This guarantees:
                                 <ul className={styles.list}>

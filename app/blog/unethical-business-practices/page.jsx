@@ -41,15 +41,16 @@ export default function UnethicalBusinessPractices() {
                 <div className={styles.content}>
                                         <div className={styles.prose}>
                                             <h2 className={styles.heading2}>Understanding Opaque Cost Structures in Business</h2>
-                                            <p className={styles.paragraph}>In various industries, particularly in professional services and contracting, cost structures can often appear complex due to the way different fees and margins are applied. Understanding these practices is crucial for businesses to ensure transparency and fair pricing in their engagements.</p>
-                    
+                                            <p className={styles.excerpt}>
+                                                In various industries, particularly in professional services and contracting, cost structures can often appear complex due to the way different fees and margins are applied. Understanding these practices is crucial for businesses to ensure transparency and fair pricing in their engagements.
+                                            </p>
                                             <h3 className={styles.heading3}>1. Markup</h3>
                                             <p className={styles.paragraph}>Markup refers to the amount added to the cost price of goods or services to cover overheads and generate profit. It is a standard practice where the client is charged a price higher than the direct cost incurred by the service provider.</p>
                     
                                             <h3 className={styles.heading3}>2. Burden (or Labor Burden)</h3>
                                             <p className={styles.paragraph}>Labor burden includes all additional costs associated with an employee beyond their base salary, such as payroll taxes, workers' compensation, health insurance, and other benefits. These costs are often factored into the hourly rates charged to clients, representing the true cost of labor for a project.</p>
                     
-                                            <h3 className={styles.heading3}>3. Tiered Markup / Compounding Fees</h3>
+                                            <h3 className={styles.heading3}>3. <Link href="/blog/ethical-business-practices" className={styles.link}>Tiered Markup / Compounding Fees</Link></h3>
                                             <p className={styles.paragraph}>This practice involves applying successive layers of fees or margins on top of existing costs. For example, a subcontractor might mark up their materials, and then the general contractor might apply another markup on the subcontractor's total bill. This can lead to a significant increase in the final cost to the client.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup></p>
                     
                                             <h3 className={styles.heading3}>4. Cost-Plus Pricing</h3>
@@ -64,8 +65,8 @@ export default function UnethicalBusinessPractices() {
                                             <h3 className={styles.heading3}>1. "Material" Markups (SaaS & Cloud Services)</h3>
                                             <p className={styles.paragraph}>Instead of physical materials, software companies may apply markups on digital licenses and usage-based services:</p>
                                             <ul className={styles.list}>
-                                                <li className={styles.listItem}><strong>White-Labeling:</strong> A service provider licenses a software product from a vendor, rebrands it, and sells it to a client at a premium. The client may perceive this as a custom-built solution, leading to a significant margin on the "material" software.<sup><a href="#footnote-2" id="footnote-ref-2" className={styles.link}>2</a></sup></li>
-                                                <li className={styles.listItem}><strong>Cloud Uplift:</strong> In cloud computing, Managed Service Providers (MSPs) often pay a base rate for cloud usage (e.g., AWS, Azure) but charge their clients an additional percentage on top, ostensibly for management and support.</li>
+                                                <li className={styles.listItem}><strong><Link href="/blog/beyond-shopify-custom-ecommerce" className={styles.link}>White-Labeling</Link>:</strong> A service provider licenses a software product from a vendor, rebrands it, and sells it to a client at a premium. The client may perceive this as a custom-built solution, leading to a significant margin on the "material" software.<sup><a href="#footnote-2" id="footnote-ref-2" className={styles.link}>2</a></sup></li>
+                                                <li className={styles.listItem}><strong><Link href="/blog/cloud-infrastructure-illusion" className={styles.link}>Cloud Uplift</Link>:</strong> In cloud computing, Managed Service Providers (MSPs) often pay a base rate for cloud usage (e.g., AWS, Azure) but charge their clients an additional percentage on top, ostensibly for management and support.</li>
                                                 <li className={styles.listItem}><strong>Value-Added Reselling (VAR):</strong> Companies purchase software or hardware and resell it to end-users at a markup, justifying the margin by adding a service layer like installation or configuration.</li>
                                                 <li className={styles.listItem}><strong>Pass-Through with Admin Fee:</strong> An agency purchases third-party tools (e.g., stock images, fonts, hosting) for a client and then bills the client for the cost plus an administrative percentage (typically 10-20%).</li>
                                             </ul>
@@ -75,7 +76,7 @@ export default function UnethicalBusinessPractices() {
                                             <ul className={styles.list}>
                                                 <li className={styles.listItem}><strong>The "Spread" (Labor Arbitrage):</strong> This refers to the difference between the actual cost of a developer (e.g., their hourly wage) and the hourly rate billed to the client. This can be significant in global software development where talent is sourced from lower-cost regions while billed at market rates in higher-cost regions.<sup><a href="#footnote-3" id="footnote-ref-3" className={styles.link}>3</a></sup></li>
                                                 <li className={styles.listItem}><strong>Blended Rate:</strong> A single, flat hourly rate charged for all development personnel, regardless of their individual skill level or actual cost. This tactic can obscure higher margins if less experienced developers are utilized more frequently.</li>
-                                                <li className={styles.listItem}><strong>Retainers (Availability Margins):</strong> Charging a fixed monthly fee to reserve development capacity. If the client does not fully utilize the allotted hours, the unspent time often becomes pure profit margin for the service provider.</li>
+                                                <li className={styles.listItem}><strong><Link href="/blog/vendor-lock-in-subscription-costs" className={styles.link}>Retainers (Availability Margins)</Link>:</strong> Charging a fixed monthly fee to reserve development capacity. If the client does not fully utilize the allotted hours, the unspent time often becomes pure profit margin for the service provider.</li>
                                             </ul>
                     
                                             <h3 className={styles.heading3}>3. "Fee Stacking" and Proprietary Tactics</h3>
@@ -100,7 +101,7 @@ export default function UnethicalBusinessPractices() {
                                             <p className={styles.paragraph}>These are "side" fees that contribute to stacking costs:</p>
                                             <ul className={styles.list}>
                                                 <li className={styles.listItem}><strong>"Integration Tax":</strong> SaaS platforms may charge additional fees to enable API access or specific connectors to other popular tools, even when the underlying API infrastructure costs the vendor little to maintain.</li>
-                                                <li className={styles.listItem}><strong>Exit Fees (Egress):</strong> In cloud storage, data ingestion (uploading data) is often free, but egress (downloading data) incurs a per-GB fee. This acts as a deterrent to switching providers, effectively locking in customer data.</li>
+                                                <li className={styles.listItem}><strong><Link href="/blog/vendor-lock-in-subscription-costs" className={styles.link}>Exit Fees (Egress)</Link>:</strong> In cloud storage, data ingestion (uploading data) is often free, but egress (downloading data) incurs a per-GB fee. This acts as a deterrent to switching providers, effectively locking in customer data.</li>
                                             </ul>
                                             <h3 className={styles.heading3}>3. Contractual & Financial Structures</h3>
                                             <p className={styles.paragraph}>Specific contractual and financial models can also drive up costs:</p>
