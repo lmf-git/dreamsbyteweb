@@ -9,6 +9,7 @@ export default function Blog() {
     const sectionRef = useRef(null);
     const { headerAnimationComplete } = useHeaderAnimation();
     const [blogVisible, setBlogVisible] = useState(false);
+    const [revealsComplete, setRevealsComplete] = useState(false);
 
     // Handle blog visibility timing like other animated pages
     useEffect(() => {
@@ -20,9 +21,22 @@ export default function Blog() {
             return () => clearTimeout(timer);
         } else {
             setBlogVisible(false);
+            setRevealsComplete(false);
         }
     }, [headerAnimationComplete]);
-    
+
+    // Clear transition delays after reveal animations complete so hover effects work instantly
+    useEffect(() => {
+        if (blogVisible && !revealsComplete) {
+            // Last post's delay + transition duration: (posts.length - 1) * 100ms + 500ms
+            const totalRevealTime = 19 * 100 + 500;
+            const timer = setTimeout(() => {
+                setRevealsComplete(true);
+            }, totalRevealTime);
+            return () => clearTimeout(timer);
+        }
+    }, [blogVisible, revealsComplete]);
+
     const posts = [
         {
             id: 20,
@@ -210,7 +224,7 @@ export default function Blog() {
                         href={`/blog/${post.slug}`}
                         className={`${styles.post} ${blogVisible ? styles.visible : ''}`}
                         style={{
-                            transitionDelay: `${index * 0.1}s`,
+                            transitionDelay: revealsComplete ? '0s' : `${index * 0.1}s`,
                             opacity: blogVisible ? 1 : 0
                         }}
                     >

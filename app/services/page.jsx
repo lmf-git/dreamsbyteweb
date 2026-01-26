@@ -74,10 +74,13 @@ const technologies = [
 
 export default function ServicesPage() {
   const sectionRef = useRef(null);
+  const providersRef = useRef(null);
   const { heroComplete } = useHero();
   const { headerAnimationComplete } = useHeaderAnimation();
   const { openContact } = useContact();
   const [servicesVisible, setServicesVisible] = useState(false);
+  const [providersVisible, setProvidersVisible] = useState(false);
+  const [providersRevealsComplete, setProvidersRevealsComplete] = useState(false);
 
   // Handle services visibility timing like intro page
   useEffect(() => {
@@ -89,8 +92,43 @@ export default function ServicesPage() {
       return () => clearTimeout(timer);
     } else {
       setServicesVisible(false);
+      setProvidersVisible(false);
+      setProvidersRevealsComplete(false);
     }
   }, [headerAnimationComplete]);
+
+  // Intersection Observer for providers section
+  useEffect(() => {
+    if (!servicesVisible) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setProvidersVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (providersRef.current) {
+      observer.observe(providersRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [servicesVisible]);
+
+  // Clear transition delays after provider reveals complete so hover effects work instantly
+  useEffect(() => {
+    if (providersVisible && !providersRevealsComplete) {
+      // Last provider's delay + transition duration: (0.05 + 18 * 0.02)s + 0.3s ≈ 0.75s
+      const totalRevealTime = 750;
+      const timer = setTimeout(() => {
+        setProvidersRevealsComplete(true);
+      }, totalRevealTime);
+      return () => clearTimeout(timer);
+    }
+  }, [providersVisible, providersRevealsComplete]);
 
 
   const handleAdvantageClick = (title) => () => {
@@ -227,19 +265,14 @@ export default function ServicesPage() {
         </div>
 
         <div
-
-          className={`${styles.providers} ${servicesVisible ? styles.visible : ''}`}
-
+          ref={providersRef}
+          className={`${styles.providers} ${providersVisible ? styles.visible : ''}`}
           style={{
-
-            transitionDelay: '0.2s',
-
-            opacity: servicesVisible ? 1 : 0
-
-          }}>              
+            opacity: providersVisible ? 1 : 0
+          }}>
         <div
-          className={`${styles.providersHeading} ${servicesVisible ? styles.visible : ''}`}
-          style={{ opacity: servicesVisible ? 1 : 0 }}>
+          className={`${styles.providersHeading} ${providersVisible ? styles.visible : ''}`}
+          style={{ opacity: providersVisible ? 1 : 0 }}>
             Technologies We Use
           </div>
           <div className={styles.providersList}>
@@ -249,10 +282,10 @@ export default function ServicesPage() {
                 href={tech.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`${styles.provider} ${servicesVisible ? styles.visible : ''}`}
+                className={`${styles.provider} ${providersVisible ? styles.visible : ''}`}
                 style={{
-                  transitionDelay: `${0.05 + index * 0.02}s`,
-                  opacity: servicesVisible ? 1 : 0
+                  transitionDelay: providersRevealsComplete ? '0s' : `${0.05 + index * 0.02}s`,
+                  opacity: providersVisible ? 1 : 0
                 }}
               >
                 { tech.Icon && <tech.Icon extraClass={styles.providericon} /> }

@@ -81,7 +81,13 @@ export default function SocialProofShiftingGoalposts() {
                             Instead of a "platform" owning your data, these are protocols where you own your "Social Graph." If you don't like the app you're using, you can move your entire audience to a different app instantly.
                         </p>
                         <ul className={styles.list}>
-                            <li className={styles.listItem}><strong>Farcaster (Warpcast):</strong> This is the current leader in decentralized social. It feels like Twitter but operates on a "hub" system. You pay a small storage fee (around $5/year) to host your own data. In exchange, there is no algorithm throttling your reach. "Frames" allow you to turn a social post into a mini-app (a shop, a poll, or a mint) where the transaction happens inside the feed, cutting out the "link in bio" friction.</li>
+                            <li className={styles.listItem}><strong>Farcaster (Warpcast):</strong> A leader in "sovereign social," Farcaster offers a decentralized alternative that feels like early Twitter. While it promises freedom from algorithmic suppression, it's not without its own complexities.
+                                <ul style={{marginTop: '10px'}}>
+                                    <li><strong>Dynamic Costs:</strong> The initial $5/year storage fee is misleading. By 2026, Farcaster's growth has led to a more dynamic "unit" system where high-volume creators pay more for storage.</li>
+                                    <li><strong>The Web3 Hurdle:</strong> The article glosses over the significant friction of Web3. For the average user, managing a seed phrase or a crypto wallet is still a massive barrier to entry, making it less of a seamless utopia than it appears.</li>
+                                    <li><strong>Frictionless Commerce:</strong> Its "Frames" feature remains revolutionary, allowing users to build mini-apps directly into a post. This cuts out the "link in bio" step and enables commerce to happen natively within the feed.</li>
+                                </ul>
+                            </li>
                             <li className={styles.listItem}><strong>Lens Protocol:</strong> Built by the Aave team, this turns every "follow" into an NFT. This means your relationship with your audience is a digital asset that you own, not Meta.</li>
                         </ul>
 
@@ -99,40 +105,75 @@ export default function SocialProofShiftingGoalposts() {
                             There are a few "smoking guns" in the current 2026 landscape that the platforms acknowledge as "technical features," but which are actually the mechanics of the "Social Proof Gaslight" the blog mentioned. Beyond what we’ve discussed, here are three critical, lesser-known pieces of the puzzle:
                         </p>
 
-                        <h4 className={styles.heading4}>1. The "Meta Verified" Tier System (The Pay-for-Proof Model)</h4>
+                        <h4 className={styles.heading4}>1. The "Meta Verified" Tier System: Pay-for-Support, Not Just Status</h4>
                         <p className={styles.paragraph}>
-                            As of late 2025/early 2026, Meta has fully transitioned verification from a "badge of honor" to a multi-tiered subscription service.
+                            As of 2026, Meta has expanded its verification system into a multi-tiered subscription. While it's easy to see this as simply "paying for status," the reality is more nuanced.
                         </p>
                         <ul className={styles.list}>
-                            <li className={styles.listItem}><strong>The Indirect Admission:</strong> By creating Tiers 1 through 5 (with prices ranging from $11.99 to over $100+ per month for businesses), Meta has officially decoupled "Authority" from "Achievement."</li>
-                            <li className={styles.listItem}><strong>The Catch:</strong> They openly admit in their terms that Meta Verified doesn't guarantee viral growth, but they do mention "increased visibility in search and comments." This is a quiet acknowledgment that the algorithm is now "weighted" in favor of those who pay for the proof of their own identity.</li>
+                            <li className={styles.listItem}><strong>The Reality of Tiers:</strong> For high-end business tiers, costs can reach as high as <strong>$349.99/month</strong>. However, this price isn't just for a blue checkmark. It's primarily for a VIP pass to Meta’s business support, which was notoriously non-existent for years. It's less about "buying authority" and more about buying insurance for account security and access to technical assistance.</li>
+                            <li className={styles.listItem}><strong>The Algorithmic Edge:</strong> While Meta's terms state that verification doesn't guarantee viral growth, it does offer "increased visibility." This suggests a subtle algorithmic preference for paying customers, blending the lines between authentic reach and paid priority.</li>
                         </ul>
 
-                        <h4 className={styles.heading4}>2. Google’s "Citation Share" vs. Clicks</h4>
+                        <h4 className={styles.heading4}>2. Google’s "Citation Share": The New SEO</h4>
                         <p className={styles.paragraph}>
-                            With the full rollout of AI Overviews (SGE), Google has introduced a new internal metric they discuss with large advertisers: Citation Share.
+                            The rise of AI Overviews (formerly SGE) has created a "zero-click" environment where Google answers user queries directly. In response, Google is shifting the goalposts from clicks to a new metric: "Citation Share."
                         </p>
                         <ul className={styles.list}>
-                            <li className={styles.listItem}><strong>The Reality:</strong> Google acknowledges that clicks are dropping—in some categories, "Zero-Click" searches now account for 65% to 70% of all queries.</li>
-                            <li className={styles.listItem}><strong>The Gaslight:</strong> Instead of apologizing for the loss of traffic, Google is framing this as a benefit. They argue that being "cited" by the AI is a form of "Implicit Social Proof" that builds brand trust. However, they provide no way to track if a user who read your expert advice in an AI snippet actually remembered your brand or just thanked Google for the answer.</li>
+                            <li className={styles.listItem}><strong>A Half-Truth:</strong> Calling this metric a complete gaslight is a half-truth. While it reduces direct traffic, Citation Share is becoming the new frontier of SEO. Being the cited source in an AI overview is often the only way to appear "above the fold."</li>
+                            <li className={styles.listItem}><strong>From Traffic to Attribution:</strong> The game is no longer about winning the click; it's about winning the "Expertise" battle. If the AI says, "According to [Your Brand]...", you are building top-of-mind awareness and brand authority, even if the user never visits your site. It's a shift from measuring traffic to measuring brand attribution.</li>
                         </ul>
 
-                        <h4 className={styles.heading4}>3. The "Creative-as-Targeting" Shift</h4>
+                        <h4 className={styles.heading4}>3. The "Creative-as-Targeting" Shift: An Algorithmic Reality</h4>
                         <p className={styles.paragraph}>
-                            In 2026, Meta’s Advantage+ and Lattice AI architectures have almost entirely removed the ability for advertisers to pick their own audience (e.g., "People who like Yoga").
+                            In 2026, Meta's ad platform has largely automated audience targeting, leading to the mantra: "The creative is the targeting." This isn't just a trap to get advertisers to "train the AI for free," but a technical evolution.
                         </p>
                         <ul className={styles.list}>
-                            <li className={styles.listItem}><strong>The Indirect Admission:</strong> Meta now tells advertisers that "The Creative is the Targeting."</li>
-                            <li className={styles.listItem}><strong>The Trap:</strong> They acknowledge that because they’ve limited tracking (due to privacy laws), you must now use "Social Proof" (UGC, testimonials, reviews) within the ad itself to "signal" to the AI who should see it.</li>
-                            <li className={styles.listItem}><strong>The Result:</strong> You are essentially doing the work of the algorithm. You provide the "social proof" to train their AI, and then pay them to show that training data to the audience you already helped them identify.</li>
+                            <li className={styles.listItem}><strong>Meet Andromeda:</strong> Meta's 2026 retrieval algorithm, known as Andromeda, is now so fast that it can't rely on slow, manual interest-targeting. It needs signals from the creative itself.</li>
+                            <li className={styles.listItem}><strong>Speaking to the User:</strong> By embedding social proof (like user-generated content and reviews) directly into your ads, you're not just training an AI; you are speaking directly to user psychology. The algorithm is simply the delivery mechanism. You provide the "Who" (your brand voice and proof), and the AI handles the "How" (the targeting).</li>
                         </ul>
 
-                        <h2 className={styles.heading2}>The "Micro-Community" Shift</h2>
+                        <h2 className={styles.heading2}>The Verdict: A Shift in Perspective</h2>
                         <p className={styles.paragraph}>
-                            The most successful people in 2026 are stopping the "numbers game." They realize that 1,000 "True Fans" in a Discord or a private newsletter are worth more than 100,000 "Followers" on Instagram that they have to pay $2,000 a month to reach.
+                            This article began as a sharp critique of platforms as purely predatory entities. While the frustration with "enshittification" is real, the "Social Proof Gaslight" is often a side effect of hyper-automation, not just malice. The landscape of 2026 requires a more balanced view.
                         </p>
 
+                        <div className={styles.table_container}>
+                            <table className={styles.table}>
+                                <thead>
+                                    <tr>
+                                        <th>Feature</th>
+                                        <th>The Article's Original View</th>
+                                        <th>The 2026 Industry Reality</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Social Proof</td>
+                                        <td>A "linguistic sleight of hand"</td>
+                                        <td>Still the #1 driver of conversion, just harder to earn.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Reach</td>
+                                        <td>Held "hostage" by algorithms</td>
+                                        <td>Reach is abundant; attention is what's scarce.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SGE/AI Overviews</td>
+                                        <td>Content "scraping"</td>
+                                        <td>A shift from "Traffic" to "Brand Attribution."</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Verification</td>
+                                        <td>Pay-to-play identity</td>
+                                        <td>An insurance policy for account security and support.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
 
+                        <p className={styles.paragraph}>
+                            The platforms are moving toward a world where businesses provide the <strong>"Who"</strong> (a strong brand voice and authentic social proof) and they handle the <strong>"How"</strong> (the automated targeting and delivery). The call for digital sovereignty is more relevant than ever, but winning in this environment means understanding these new rules, not just fighting them. The most successful businesses in 2026 are not just building micro-communities; they are learning to leverage their sovereign assets (their expertise, their customer stories) within the automated systems of the giants.
+                        </p>
                     </div>
                 </div>
 

@@ -239,6 +239,15 @@
             font-size: 0.8em;
         }
     }
+
+    /* Table specific styles for mobile */
+    .table {
+        font-size: 0.8rem; /* Slightly smaller font for condensation */
+    }
+
+    .table th, .table td {
+        padding: 0.5rem 0.75rem; /* Reduced padding */
+    }
 }
 
 .prose sup {
@@ -289,3 +298,28 @@
         }
     }
 }
+.table_container {
+    overflow-x: auto;
+    margin: 2rem 0;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+
+    th, td {
+        border: 1px solid var(--border-color);
+        padding: 0.75rem 1rem;
+        text-align: left;
+    }
+
+    th {
+        background-color: var(--background-light);
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: var(--background-extra-light);
+    }
+}
+
