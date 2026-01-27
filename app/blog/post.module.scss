@@ -343,6 +343,7 @@
                 text-decoration: none;
 
                 &:hover {
+                    color: var(--brand-primary);
                     text-decoration: underline;
                 }
                 &:visited {
@@ -354,8 +355,10 @@
 
     .link {
         text-decoration: none;
+        color: var(--brand-primary);
 
         &:hover {
+            color: var(--brand-primary);
             text-decoration: underline;
         }
     }
