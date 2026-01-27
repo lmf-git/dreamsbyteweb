@@ -44,7 +44,6 @@ export default function HiddenCostOfNoCode() {
 
                 <div className={styles.content}>
                     <div className={styles.prose}>
-                        <h2 className={styles.heading2}>The No-Code Promise</h2>
                         <h2 className={styles.heading2}>Your Business Logic is Your Most Valuable Asset</h2>
                         <p className={styles.paragraph}>Every business has a unique way of doing things. The specific steps you take to qualify a lead, process an order, or manage a project—that is your core business logic. It's the "secret sauce" of your operations. Entrusting this logic to a third-party, point-and-click interface is a massive strategic error.</p>
                         <p className={styles.paragraph}>When you build your business on a web of no-code automations, you are creating a "distributed monolith" of hidden dependencies, where a single change in one app can cause a cascade of failures in another.</p>

@@ -27,7 +27,7 @@
         font-size: 1.2em;
         font-style: italic;
         color: var(--text-secondary);
-        margin-top: 1.5em;
+        margin: 0;
     }
 }
 
@@ -35,8 +35,8 @@
     font-size: 2.5em;
     font-weight: 700;
     color: var(--text-primary);
-    margin-bottom: 1em;
     line-height: 1.2;
+    margin: 0;
 }
 
 .meta {
@@ -44,8 +44,9 @@
     justify-content: center;
     align-items: center;
     gap: 1.5em;
+    margin-top: 0.75em;
     color: var(--text-secondary);
-    font-size: 0.9em;
+    font-size: 1.1em;
 }
 
 .author, .date, .readTime {
@@ -303,7 +304,7 @@
     font-size: 0.8em;
     vertical-align: super;
     line-height: 0;
-    margin-left: 2px;
+    margin-right: 0.2em;
 }
 
 .prose sup a {
@@ -339,6 +340,7 @@
             a {
                 color: var(--brand-primary);
                 word-break: break-all;
+                text-decoration: none;
 
                 &:hover {
                     text-decoration: underline;
@@ -347,6 +349,14 @@
                     color: var(--brand-primary);
                 }
             }
+        }
+    }
+
+    .link {
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
         }
     }
 }

@@ -31,9 +31,8 @@ export default function SEOSnakeOil() {
             <div className={styles.container}>
                 <header className={styles.header}>
                     <h1 className={styles.title}>SEO Snake Oil: Empty Promises</h1>
-                    <h2 className={styles.heading2}>The SEO Industry's Dirty Secret</h2>
                     <p className={styles.excerpt}>
-                        Every week, businesses receive cold emails promising "first page Google rankings" or "guaranteed SEO results." The reality? Most of these services are selling expensive smoke and mirrors while the fundamentals of good SEO remain surprisingly simple.
+                        Cut through the noise and learn what truly matters for search visibility. Avoid falling for expensive gimmicks and focus on strategies that deliver genuine, lasting results.
                     </p>
                     <div className={styles.meta}>
                         <span className={styles.author}>By Liam Fielding</span>

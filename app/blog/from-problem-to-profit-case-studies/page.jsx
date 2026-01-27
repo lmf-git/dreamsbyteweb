@@ -44,7 +44,6 @@ export default function FromProblemToProfit() {
 
                 <div className={styles.content}>
                     <div className={styles.prose}>
-                        <h2 className={styles.heading2}>The Untapped Potential Within Your Business</h2>
                         <h2 className={styles.heading2}>Case Study 1: The Logistics Company & <Link href="/blog/legacy-system-modernisation-guide" className={styles.link}>the Legacy System Headache</Link></h2>
                         <h3 className={styles.heading3}>The Problem: Manual Processes and Costly Errors</h3>
                         <p className={styles.paragraph}>A growing logistics company relied on a combination of spreadsheets, manual data entry, and an ancient, difficult-to-maintain internal system to manage its complex network of deliveries, routes, and inventory. This led to:</p>

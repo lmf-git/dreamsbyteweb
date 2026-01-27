@@ -30,10 +30,9 @@ export default function NoDependencyResearchProject() {
         >
             <div className={styles.container}>
                 <header className={styles.header}>
-                    <h1 className={styles.title}>No-dependency Research Project: A Manifesto for Pure Development</h1>
-                    <h2 className={styles.heading2}>The Philosophy of Zero-Dependency</h2>
+                    <h1 className={styles.title}>No-dependency Research Project</h1>
                     <p className={styles.excerpt}>
-                        In an era dominated by sprawling node_modules, intricate build tools, and an ever-shifting landscape of frameworks, the concept of a "no-dependency" research project stands as a radical act of rebellion. This approach champions the creation of software with the absolute minimum external libraries, frameworks, or tools. It is a philosophy rooted in the pursuit of understanding, control, and longevity.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup>
+                        In an era of sprawling node_modules and ever-shifting frameworks, zero-dependency development is a radical act of rebellion rooted in understanding, control, and longevity.
                     </p>
                     <div className={styles.meta}>
                         <span className={styles.author}>By Liam Fielding</span>

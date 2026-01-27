@@ -44,7 +44,6 @@ export default function WebsiteAsLeadGenMachine() {
 
                 <div className={styles.content}>
                     <div className={styles.prose}>
-                        <h2 className={styles.heading2}>Beyond the Digital Brochure</h2>
                         <h2 className={styles.heading2}>What is a Conversion Funnel?</h2>
                         <p className={styles.paragraph}>A conversion funnel illustrates the journey a potential customer takes from initial awareness to becoming a paying client. It typically involves several stages:<sup><a href="#footnote-2" id="footnote-ref-2" className={styles.link}>2</a></sup></p>
                         <ul className={styles.list}>

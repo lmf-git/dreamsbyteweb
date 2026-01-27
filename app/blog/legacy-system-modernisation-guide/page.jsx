@@ -44,7 +44,6 @@ export default function LegacySystemModernisation() {
 
                 <div className={styles.content}>
                     <div className={styles.prose}>
-                        <h2 className={styles.heading2}>The Software That Runs Your Business is Holding it Hostage</h2>
                         <h2 className={styles.heading2}>The True Cost of "Just Keeping it Running"</h2>
                         <p className={styles.paragraph}>The cost of a legacy system isn't just the maintenance contract. It's a cascade of hidden expenses and opportunity costs:</p>
                         <ul className={styles.list}>

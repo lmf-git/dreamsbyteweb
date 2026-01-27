@@ -44,7 +44,6 @@ export default function TargetAudienceIsEverything() {
 
                 <div className={styles.content}>
                     <div className={styles.prose}>
-                        <h2 className={styles.heading2}>The Allure of the Biggest Pond</h2>
                         <h2 className={styles.heading2}>Why "Everyone" is the Worst Target Audience</h2>
                         <p className={styles.paragraph}>When your target is "everyone," your marketing efforts become diluted, ineffective, and incredibly expensive. Here’s why:</p>
                         <ul className={styles.list}>

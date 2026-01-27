@@ -48,7 +48,6 @@ export default function OurApproachToSoftware() {
 
                 <div className={styles.content}>
                     <div className={styles.prose}>
-                        <h2 className={styles.heading2}>Beyond Functional Purity: Reclaiming the Boot Sequence</h2>
                         <h2 className={styles.heading2}>1. The Backend as a Mechanical Boot Sequence</h2>
                         <p className={styles.paragraph}>Most Node.js backends are often perceived as collections of loosely coupled routes and handlers. Our approach fundamentally redefines this by treating the server as a <strong><Link href="/blog/cloud-infrastructure-illusion" className={styles.link}>Static Singleton</Link></strong>. It's a single, resilient entity whose initialization is a precisely choreographed mechanical boot sequence.<sup><a href="#footnote-2" id="footnote-ref-2" className={styles.link}>2</a></sup></p>
                         <ul className={styles.list}>

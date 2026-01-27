@@ -31,9 +31,8 @@ export default function VendorLockIn() {
             <div className={styles.container}>
                 <header className={styles.header}>
                     <h1 className={styles.title}>Vendor Lock-In: Subscription Costs</h1>
-                    <h2 className={styles.heading2}>The Subscription Trap</h2>
                     <p className={styles.excerpt}>
-                        <Link href="/blog/beyond-shopify-custom-ecommerce" className={styles.link}>Website builders</Link> and <Link href="/blog/hidden-cost-of-no-code" className={styles.link}>SaaS platforms</Link> advertise low monthly fees and promise simplicity. But over the years, those "affordable" subscriptions add up to tens of thousands of pounds while you own nothing and control less with each platform update.
+                        Break free from monthly fees and platform dependencies. Discover why owning your infrastructure and code makes financial sense and offers true business freedom.
                     </p>
                     <div className={styles.meta}>
                         <span className={styles.author}>By Liam Fielding</span>

@@ -31,6 +31,9 @@ export default function UnethicalBusinessPractices() {
             <div className={styles.container}>
                 <header className={styles.header}>
                     <h1 className={styles.title}>Unethical Business Practices</h1>
+                    <p className={styles.excerpt}>
+                        In the software industry, adding fees onto fees or margins onto materials often hides behind technical jargon and service-level tiers.
+                    </p>
                     <div className={styles.meta}>
                         <span className={styles.author}>By Liam Fielding</span>
                         <span className={styles.date}>2026-01-14</span>

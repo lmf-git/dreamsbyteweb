@@ -41,7 +41,6 @@ export default function PerformanceFirstWebsite() {
 
             <div className={styles.content}>
                 <div className={styles.prose}>
-                    <h2 className={styles.heading2}>Speed is Not a Feature, It's The Feature</h2>
                     <h2 className={styles.heading2}>What is Google Lighthouse?</h2>
                     <p className={styles.paragraph}>Google Lighthouse is an open-source, automated tool for improving the quality of web pages.<sup><a href="#footnote-2" id="footnote-ref-2" className={styles.link}>2</a></sup> It runs a series of audits against a page and generates a report on how well it did. The "Performance" score is a weighted average of several key metrics, including:</p>
                     <ul className={styles.list}>
