@@ -46,12 +46,12 @@ export default function BeyondShopify() {
                     <div className={styles.prose}>
                         <h2 className={styles.heading2}>The Shopify Ceiling</h2>
                         <p className={styles.paragraph}>Shopify is a phenomenal tool. It has empowered millions of entrepreneurs to launch online stores quickly and affordably. For a straightforward business that sells standard products, it's often the perfect place to start. You can get a store up and running in a weekend, and that's a powerful thing.</p>
-                        <p className={styles.paragraph}>But as your business grows, you may start to feel the constraints. The "one-size-fits-all" model begins to chafe. <Link href="/blog/vendor-lock-in-subscription-costs" className={styles.link}>The transaction fees, the app subscription costs</Link>, and the creative limitations start to add up. You hit the "Shopify Ceiling"—the point where the platform that helped you grow is now holding you back.</p>
+                        <p className={styles.paragraph}>But as your business grows, you may start to feel the constraints. The one-size-fits-all model begins to chafe. <Link href="/blog/vendor-lock-in-subscription-costs" className={styles.link}>The transaction fees, the app subscription costs</Link>, and the creative limitations start to add up. You hit the Shopify ceiling—the point where the platform that helped you grow is now holding you back.</p>
 
                         <h2 className={styles.heading2}>Signs You're Outgrowing Shopify</h2>
                         <p className={styles.paragraph}>How do you know you've hit the ceiling? Look for these common pain points:</p>
                         
-                        <h3 className={styles.heading3}>1. Your "App Stack" is a Jenga Tower</h3>
+                        <h3 className={styles.heading3}>1. Your App Stack is a Jenga Tower</h3>
                         <p className={styles.paragraph}>Your store relies on a dozen different third-party apps for subscriptions, loyalty programs, wholesale pricing, and custom product options. Each app has its own monthly fee, <Link href="/blog/performance-first-website-lighthouse" className={styles.link}>adds bloat to your site</Link>, and creates potential conflicts. Your cost of goods sold is being eaten alive by a Frankenstein's monster of app subscriptions.<sup><a href="#footnote-1" id="footnote-ref-1" className={styles.link}>1</a></sup></p>
 
                         <h3 className={styles.heading3}>2. You Have Unique Business Logic</h3>
@@ -70,7 +70,7 @@ export default function BeyondShopify() {
                         <ul className={styles.list}>
                             <li className={styles.listItem}><strong>Perfectly Tailored Workflows:</strong> Your admin dashboard is built for *your* process. Manage complex orders, unique fulfillment logic, and specific customer needs with an interface designed for your team.</li>
                             <li className={styles.listItem}><strong>Zero Transaction Fees (Beyond Processing):</strong> The 0.5% to 2% platform tax vanishes overnight. That money goes directly to your bottom line, often paying for the custom development within a year or two.</li>
-                            <li className={styles.listItem}><strong>Complete Brand Control:</strong> From the landing page to the final "thank you," every pixel is on-brand. Create a checkout experience that builds trust and maximizes conversions, without being constrained by a template.</li>
+                            <li className={styles.listItem}><strong>Complete Brand Control:</strong> From the landing page to the final thank you, every pixel is on-brand. Create a checkout experience that builds trust and maximizes conversions, without being constrained by a template.</li>
                             <li className={styles.listItem}><strong>Deeper Integrations:</strong> Connect your store directly to your accounting software, warehouse management system (WMS), or customer relationship manager (CRM) in a deep, robust way that off-the-shelf apps can't match.</li>
                             <li className={styles.listItem}><strong>Superior Performance:</strong> A custom build is lean and optimized. No app bloat, no unnecessary scripts. Just a fast, responsive experience that delights customers and boosts search rankings.</li>
                         </ul>

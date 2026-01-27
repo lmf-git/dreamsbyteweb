@@ -113,9 +113,9 @@ export default function VendorLockIn() {
 
                         <h2 className={styles.heading2}>An Asset That Pays For Itself</h2>
                         <p className={styles.paragraph}>Our philosophy is simple: we don’t charge fees on top of fees, and we don’t aim to lock you into a subscription. We build you an asset. The goal is for our work to pay for itself by providing more value than it costs, giving you a permanent tool for growth rather than a recurring line item in your budget.</p>
-                        <p className={styles.paragraph}>Consider a common scenario for a growing business: the need for a robust e-commerce solution. Many "full-service" digital agencies or premium SaaS platforms will charge a hefty monthly retainer for this. This often includes the platform fee, mandatory plugins, "priority support," and maintenance that does little more than keep the lights on.</p>
+                        <p className={styles.paragraph}>Consider a common scenario for a growing business: the need for a robust e-commerce solution. Many full-service digital agencies or premium SaaS platforms will charge a hefty monthly retainer for this. This often includes the platform fee, mandatory plugins, priority support, and maintenance that does little more than keep the lights on.</p>
 
-                        <h3 className={styles.heading3}>Let's Do the Math: Ownership vs. A High-Cost "Rental"</h3>
+                        <h3 className={styles.heading3}>Let's Do the Math: Ownership vs. A High-Cost Rental</h3>
                         <p className={styles.paragraph}>A typical all-inclusive e-commerce subscription or agency maintenance plan can easily cost <strong>$450 per month</strong>. Over time, this rental model becomes incredibly expensive.</p>
                         <ul className={styles.list}>
                             <li className={styles.listItem}>Cost after 1 Year: $5,400</li>

@@ -64,16 +64,16 @@ export default function LegacySystemModernisation() {
                         </ul>
 
                         <h2 className={styles.heading2}>The Modernisation Process: It's Not as Scary as You Think</h2>
-                        <p className={styles.paragraph}>A full "rip and replace" sounds terrifying, but a modern approach to system modernisation is incremental, strategic, and focused on de-risking the entire process.</p>
+                        <p className={styles.paragraph}>A full rip and replace sounds terrifying, but a modern approach to system modernisation is incremental, strategic, and focused on de-risking the entire process.</p>
                         
                         <h3 className={styles.heading3}>Step 1: Discover and Document</h3>
-                        <p className={styles.paragraph}>The first step isn't to write code. It's to talk to the people who actually use the system. We map out the real-world business processes, not just what the old software does. We identify the core functions that provide 80% of the value and the "features" that no one has used in a decade.</p>
+                        <p className={styles.paragraph}>The first step isn't to write code. It's to talk to the people who actually use the system. We map out the real-world business processes, not just what the old software does. We identify the core functions that provide 80% of the value and the features that no one has used in a decade.</p>
 
                         <h3 className={styles.heading3}>Step 2: Build the New Core</h3>
                         <p className={styles.paragraph}>We start by building a clean, modern, and stable core for the new system using modern technologies. We focus on getting the most critical piece of functionality up and running first. This becomes the new foundation.</p>
 
                         <h3 className={styles.heading3}>Step 3: The Incremental Changeover (The Strangler Fig Pattern)</h3>
-                        <p className={styles.paragraph}>We don't switch everything at once. We use a method called the "Strangler Fig Pattern."<sup><a href="#footnote-4" id="footnote-ref-4" className={styles.link}>4</a></sup> <Link href="/blog/our-approach-to-software" className={styles.link}>The new system is put in place *around* the old one</Link>. We start by redirecting one small piece of functionality to the new application. For example, all new customer entries might go into the new system, while the old system still handles invoicing. Over time, more and more functionality is "strangled" from the old system and replaced by the new one, until the legacy application has no responsibilities left and can be safely turned off.</p>
+                        <p className={styles.paragraph}>We don't switch everything at once. We use a method called the "Strangler Fig Pattern."<sup><a href="#footnote-4" id="footnote-ref-4" className={styles.link}>4</a></sup> <Link href="/blog/our-approach-to-software" className={styles.link}>The new system is put in place *around* the old one</Link>. We start by redirecting one small piece of functionality to the new application. For example, all new customer entries might go into the new system, while the old system still handles invoicing. Over time, more and more functionality is strangled from the old system and replaced by the new one, until the legacy application has no responsibilities left and can be safely turned off.</p>
                         <p className={styles.paragraph}>This approach minimizes disruption, allows your team to learn the new system gradually, and provides immediate value at each stage.</p>
 
                         <h2 className={styles.heading2}>The Payoff: A System That Accelerates Your Business</h2>
