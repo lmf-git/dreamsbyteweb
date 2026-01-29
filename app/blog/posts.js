@@ -10,7 +10,7 @@ export const posts = [
     {
         id: 1,
         title: "A Business Philosophy Rooted in People",
-        excerpt: "We believe technology should serve humanity, not the other way around. Our business is built on respect, transparency, and a commitment to real value.",
+        excerpt: "We believe technology should serve humanity, not the other way around. Our business is built on respect, transparency, and commitment to real value.",
         date: "2026-01-15",
         slug: "ethical-business-practices",
         readTime: "6 min read"
@@ -90,7 +90,7 @@ export const posts = [
     {
         id: 11,
         title: "The Hidden Cost of 'No-Code'",
-        excerpt: "No-code tools promise simplicity, but building core business logic can lead to fragility, security vulnerabilities, and higher long-term costs. Choose wisely.",
+        excerpt: "No-code tools promise simplicity, but building core logic can lead to fragility, security vulnerabilities, and higher long-term costs. Choose wisely.",
         date: "2025-09-21",
         slug: "hidden-cost-of-no-code",
         readTime: "8 min read"
@@ -98,7 +98,7 @@ export const posts = [
     {
         id: 12,
         title: "\"I'll Sell to Everyone\": The Most Expensive Lie",
-        excerpt: "Trying to appeal to everyone dilutes your message and wastes budget. Discover how to effectively define and find your true target audience to maximize impact.",
+        excerpt: "Trying to appeal to everyone dilutes your message, wastes budget. Discover how to define your true target audience to maximize impact.",
         date: "2025-09-07",
         slug: "i-will-sell-to-everyone-is-a-lie",
         readTime: "8 min read"
@@ -119,7 +119,7 @@ export const posts = [
     },
     {
         id: 15,
-        title: "AI Won't Build Your Business: The Human Factor",
+        title: "AI Won't Build Your Business: Human Factor",
         excerpt: "AI tools promise instant solutions, but they can't replace strategic thinking, architectural integrity, and risk mitigation a professional developer provides.",
         date: "2024-02-15",
         slug: "ai-wont-build-your-business",
