@@ -144,7 +144,7 @@ export const posts = [
     {
         id: 18,
         title: "Professional Website For Your Business",
-        excerpt: "Learn how a well-designed website transforms your business, drives real growth in today's competitive market, and becomes a powerful asset for your brand.",
+        excerpt: "Learn how a well-designed website transforms your business, drives real growth in today's competitive market, becomes a powerful asset for your brand.",
         date: "2024-01-20",
         slug: "why-your-business-needs-professional-website",
         readTime: "9 min read"
@@ -152,7 +152,7 @@ export const posts = [
     {
         id: 19,
         title: "Website Development: Digital Presence",
-        excerpt: "Discover the full process behind creating a professional website. Learn what to expect when working with DreamsByte for an impactful digital presence.",
+        excerpt: "Discover the full process behind creating a professional website. Learn what to expect working with DreamsByte for an impactful digital presence.",
         date: "2024-01-15",
         slug: "understanding-website-development",
         readTime: "9 min read"
