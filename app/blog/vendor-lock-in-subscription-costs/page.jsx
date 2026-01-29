@@ -32,7 +32,7 @@ export default function VendorLockIn() {
                 <header className={styles.header}>
                     <h1 className={styles.title}>Vendor Lock-In: Subscription Costs</h1>
                     <p className={styles.excerpt}>
-                        Break free from monthly fees and platform dependencies. Discover why owning your infrastructure and code makes financial sense and offers true business freedom.
+                        Break free from monthly fees and platform dependencies. Discover why owning infrastructure, code makes financial sense, offering true business freedom.
                     </p>
                     <div className={styles.meta}>
                         <span className={styles.author}>By Liam Fielding</span>

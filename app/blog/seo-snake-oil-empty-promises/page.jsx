@@ -32,7 +32,7 @@ export default function SEOSnakeOil() {
                 <header className={styles.header}>
                     <h1 className={styles.title}>SEO Snake Oil: Empty Promises</h1>
                     <p className={styles.excerpt}>
-                        Cut through the noise and learn what truly matters for search visibility. Avoid falling for expensive gimmicks and focus on strategies that deliver genuine, lasting results.
+                        Cut through noise, learn what truly matters for search visibility. Avoid expensive gimmicks; focus on strategies delivering genuine, lasting results.
                     </p>
                     <div className={styles.meta}>
                         <span className={styles.author}>By Liam Fielding</span>

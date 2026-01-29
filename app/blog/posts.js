@@ -128,7 +128,7 @@ export const posts = [
     {
         id: 16,
         title: "Vendor Lock-In: Subscription Costs",
-        excerpt: "Break free from monthly fees and platform dependencies. Discover why owning your infrastructure and code makes financial sense and offers true business freedom.",
+        excerpt: "Break free from monthly fees and platform dependencies. Discover why owning infrastructure, code makes financial sense, offering true business freedom.",
         date: "2024-02-10",
         slug: "vendor-lock-in-subscription-costs",
         readTime: "9 min read"
@@ -136,7 +136,7 @@ export const posts = [
     {
         id: 17,
         title: "SEO Snake Oil: Empty Promises",
-        excerpt: "Cut through the noise and learn what truly matters for search visibility. Avoid falling for expensive gimmicks and focus on strategies that deliver genuine, lasting results.",
+        excerpt: "Cut through noise, learn what truly matters for search visibility. Avoid expensive gimmicks; focus on strategies delivering genuine, lasting results.",
         date: "2024-02-01",
         slug: "seo-snake-oil-empty-promises",
         readTime: "9 min read"
@@ -152,7 +152,7 @@ export const posts = [
     {
         id: 19,
         title: "Website Development: Digital Presence",
-        excerpt: "Discover the complete process behind creating a professional website. Learn what to expect when working with DreamsByte for an impactful digital presence.",
+        excerpt: "Discover the full process behind creating a professional website. Learn what to expect when working with DreamsByte for an impactful digital presence.",
         date: "2024-01-15",
         slug: "understanding-website-development",
         readTime: "9 min read"
