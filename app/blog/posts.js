@@ -10,7 +10,7 @@ export const posts = [
     {
         id: 1,
         title: "A Business Philosophy Rooted in People",
-        excerpt: "We believe technology should serve humanity, not the other way around. Our business is built on respect, transparency, and commitment to real value.",
+        excerpt: "We believe technology should serve humanity, not the other way around. Our business is built on respect, transparency, commitment to real value.",
         date: "2026-01-15",
         slug: "ethical-business-practices",
         readTime: "6 min read"
