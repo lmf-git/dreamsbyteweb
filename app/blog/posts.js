@@ -113,14 +113,14 @@ export const posts = [
     {
         id: 14,
         title: "Cloud Illusion: Beyond AWS for Enterprise",
-        excerpt: "When AWS goes down, your business stops. Learn why owning infrastructure across multiple regions offers superior resilience and beats single cloud dependency.",
+        excerpt: "When AWS goes down, your business stops. Learn why owning infrastructure across regions offers superior resilience and beats single cloud dependency.",
         date: "2024-02-20",
         slug: "cloud-infrastructure-illusion"
     },
     {
         id: 15,
-        title: "AI Won't Build Your Business",
-        excerpt: "AI tools promise instant solutions, but they can't replace the strategic thinking, architectural integrity, and risk mitigation that a professional developer provides.",
+        title: "AI Won't Build Your Business: The Human Factor",
+        excerpt: "AI tools promise instant solutions, but they can't replace strategic thinking, architectural integrity, and risk mitigation a professional developer provides.",
         date: "2024-02-15",
         slug: "ai-wont-build-your-business",
         readTime: "9 min read"

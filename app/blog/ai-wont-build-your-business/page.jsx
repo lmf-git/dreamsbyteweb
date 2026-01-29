@@ -33,8 +33,8 @@ export default function AIWontBuildYourBusiness() {
         >
             <div className={styles.container}>
                 <header className={styles.header}>
-                    <h1 className={styles.title}>{post?.title || `AI Won't Build Your Business`}</h1>
-                    {post?.excerpt && <p className={styles.excerpt}>{post.excerpt}</p>}
+                    <h1 className={styles.title}>AI Won't Build Your Business: The Human Factor</h1>
+                    <p className={styles.excerpt}>AI tools promise instant solutions, but they can't replace strategic thinking, architectural integrity, and risk mitigation a professional developer provides.</p>
                     <div className={styles.meta}>
                         <span className={styles.author}>By Liam Fielding</span>
                         <span className={styles.date}>{post?.date || '2024-02-15'}</span>
