@@ -113,7 +113,7 @@ export const posts = [
     {
         id: 14,
         title: "Cloud Illusion: Beyond AWS for Enterprise",
-        excerpt: "When AWS goes down, your business stops. Learn why owning infrastructure across regions offers superior resilience and beats single cloud dependency.",
+        excerpt: "When AWS goes down, your business stops. Owning infrastructure across regions offers superior resilience, beating single cloud dependency.",
         date: "2024-02-20",
         slug: "cloud-infrastructure-illusion"
     },
@@ -128,7 +128,7 @@ export const posts = [
     {
         id: 16,
         title: "Vendor Lock-In: Subscription Costs",
-        excerpt: "Break free from monthly fees and platform dependencies. Discover why owning infrastructure, code makes financial sense, offering true business freedom.",
+        excerpt: "Break free from monthly fees and platform dependencies. Owning infrastructure, code makes financial sense, offering true business freedom.",
         date: "2024-02-10",
         slug: "vendor-lock-in-subscription-costs",
         readTime: "9 min read"
