@@ -69,8 +69,8 @@ export default function Blog() {
                         }}
                     >
                         <article>
-                            <h2 className={styles.postTitle}>{post.title}</h2>
-                            <p className={styles.postExcerpt}>{post.excerpt}</p>
+                            <h2 className={styles.postTitle}>{t.blog.posts[post.slug]?.title}</h2>
+                            <p className={styles.postExcerpt}>{t.blog.posts[post.slug]?.excerpt}</p>
                             <div className={styles.postMeta}>
                                 <time className={styles.postDate}>{post.date}</time>
                                 <span className={styles.readMore}>{t.blog.readMore}</span>

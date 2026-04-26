@@ -21,7 +21,6 @@ import EmailMethod from '../../icons/social/EmailMethod';
 import Whatsapp from '../../icons/social/Whatsapp';
 import Youtube from '../../icons/social/Youtube';
 import Github from '../../icons/social/Github';
-import CloseIcon from "../../icons/social/Close";
 import AnimatedLogo from "../../icons/branding/AnimatedLogo";
 import Instagram from "../../icons/social/Instagram";
 
@@ -200,12 +199,6 @@ function LayoutContent({ children }) {
                                 {getLangSwitcher(true)}
                                 <button className={styles.menuThemeToggle} onClick={toggleTheme} aria-label="Toggle theme">
                                     {getMobileThemeIcon()}
-                                </button>
-                                <button
-                                    className={styles.menuclose}
-                                    onClick={handleMenuClose}
-                                    aria-label="Close menu">
-                                    <CloseIcon extraClass={styles.menucloseicon} />
                                 </button>
                             </div>
                         </div>

@@ -314,33 +314,6 @@
     fill: var(--logo-fill);
 }
 
-.menuclose {
-    padding: 0;
-    border: 0;
-    background: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 3.5em;
-    height: 3.5em;
-
-    &:hover {
-        .menucloseicon {
-            fill: var(--text-secondary);
-        }
-    }
-
-    transition: background 0.3s ease-in-out;
-}
-
-.menucloseicon {
-    height: 3.5em;
-    width: 3.5em;
-    fill: var(--text-muted);
-    transition: fill 0.3s ease;
-}
-
 .items {
     display: flex;
     flex-direction: column;
