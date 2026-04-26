@@ -265,6 +265,7 @@
     }
 
     .title {
+        font-size: clamp(1.4em, 5vw, 2.5em);
         white-space: normal;
         height: 1.2em;
     }
@@ -275,17 +276,17 @@
 
     .actions {
         flex-direction: row;
-        gap: 0.75em;
+        gap: 0.5em;
     }
 
     .primaryAction {
-        padding: 0.9em 1.5em;
-        font-size: 1em;
+        padding: 0.6em 1em;
+        font-size: 0.85em;
     }
 
     .secondaryAction {
-        padding: 0.9em 1.25em;
-        font-size: 1em;
+        padding: 0.6em 0.9em;
+        font-size: 0.85em;
     }
 
     .desktopText {
