@@ -466,8 +466,11 @@
     font-weight: 700;
     letter-spacing: 0.05em;
     padding: 0.4em 0.5em;
-    transition: opacity 0.2s ease;
     order: 998;
+    opacity: 0;
+    animation: start-content 1s linear forwards;
+    animation-delay: 2.05s;
+    transition: opacity 0.2s ease;
 
     &:hover {
         opacity: 0.8;
