@@ -227,7 +227,7 @@ function LayoutContent({ children }) {
                                 <Github className={styles.socialicon} />
                             </a>
                             <a href="https://www.youtube.com/@dreamsbyte" className={styles.social} rel="noopener noreferrer" target="_blank" aria-label="Subscribe to our YouTube channel">
-                                <Youtube className={styles.socialicon} />
+                                <Youtube className={styles.socialicon} secondaryClassName={styles.socialiconContrast} />
                             </a>
                             <a href="https://www.instagram.com/dreamsbyte_ig/" className={styles.social} rel="noopener noreferrer" target="_blank" aria-label="Follow us on Instagram">
                                 <Instagram className={styles.socialicon} />
