@@ -3,12 +3,14 @@
 import { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useHeaderAnimation } from '../../contexts/HeaderAnimationContext';
-import { posts } from './posts'; // Import posts from the new file
+import { useLanguage } from '../../contexts/LanguageContext';
+import { posts } from './posts';
 import styles from './blog.module.scss';
 
 export default function Blog() {
     const sectionRef = useRef(null);
     const { headerAnimationComplete } = useHeaderAnimation();
+    const { t } = useLanguage();
     const [blogVisible, setBlogVisible] = useState(false);
     const [revealsComplete, setRevealsComplete] = useState(false);
 
@@ -48,10 +50,8 @@ export default function Blog() {
                 className={`${styles.hero} ${blogVisible ? styles.visible : ''}`}
                 style={{ opacity: blogVisible ? 1 : 0 }}
             >
-                <h1 className={styles.title}>Blog</h1>
-                <p className={styles.subtitle}>
-                    Understanding web development, digital solutions, and how DreamsByte can help grow your business online.
-                </p>
+                <h1 className={styles.title}>{t.blog.title}</h1>
+                <p className={styles.subtitle}>{t.blog.subtitle}</p>
             </div>
 
             <div
@@ -73,7 +73,7 @@ export default function Blog() {
                             <p className={styles.postExcerpt}>{post.excerpt}</p>
                             <div className={styles.postMeta}>
                                 <time className={styles.postDate}>{post.date}</time>
-                                <span className={styles.readMore}>Read More →</span>
+                                <span className={styles.readMore}>{t.blog.readMore}</span>
                             </div>
                         </article>
                     </Link>

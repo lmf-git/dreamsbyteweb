@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useContact } from '../contexts/ContactContext';
 import { useHero } from '../contexts/HeroContext';
 import { useHeaderAnimation } from '../contexts/HeaderAnimationContext';
+import { useLanguage } from '../contexts/LanguageContext';
 import styles from './intro.module.scss';
 
 export default function Index() {
@@ -14,31 +15,27 @@ export default function Index() {
     const { openContact } = useContact();
     const { setHeroComplete } = useHero();
     const { headerAnimationComplete } = useHeaderAnimation();
-    
-    const changingWords = ["Solutions", "Applications", "Websites", "Platforms", "Software", "Systems", "Experiences", "Products"];
+    const { t } = useLanguage();
+
+    const changingWords = t.home.changingWords;
 
     useEffect(() => {
         if (introComplete && headerAnimationComplete) {
-            // Don't reset if already complete and header is done
             return;
         }
-        
-        // Reset intro state only when headerAnimationComplete changes
+
         setIntroComplete(false);
-        
-        // If header animation is already complete (navigation), show immediately
-        // Otherwise wait for header animation to complete
-        const delay = headerAnimationComplete ? 100 : 2500; // Wait longer for header to finish
-        
+
+        const delay = headerAnimationComplete ? 100 : 2500;
+
         const timer = setTimeout(() => {
             setIntroComplete(true);
-            setHeroComplete(true); // This controls the scroll lock in Layout
+            setHeroComplete(true);
         }, delay);
 
         return () => clearTimeout(timer);
     }, [headerAnimationComplete, setHeroComplete]);
 
-    // Handle intro visibility timing like testimonials page
     useEffect(() => {
         if (headerAnimationComplete) {
             const timer = setTimeout(() => {
@@ -51,10 +48,14 @@ export default function Index() {
     }, [headerAnimationComplete]);
 
     useEffect(() => {
+        setCurrentWordIndex(0);
+    }, [t]);
+
+    useEffect(() => {
         const interval = setInterval(() => {
             setCurrentWordIndex((prev) => (prev + 1) % changingWords.length);
         }, 3000);
-        
+
         return () => clearInterval(interval);
     }, [changingWords.length]);
 
@@ -81,24 +82,22 @@ export default function Index() {
 
             <div className={styles.description}>
                 <p className={styles.text} style={{ opacity: introVisible ? 1 : 0 }}>
-                    We specialise in full-stack development, e-commerce solutions, captivating design, 
-                    and cutting-edge technology implementations. Whether you're a startup with a vision 
-                    or an established business looking to innovate, we're here to bring your ideas to life.
+                    {t.home.description}
                 </p>
             </div>
 
             <div className={styles.actions} style={{ opacity: introVisible ? 1 : 0 }}>
-                <button 
-                    className={styles.primaryAction} 
-                    onClick={() => openContact('I would like to start a new project')}>
-                    <span className={styles.desktopText}>Start Your Project</span>
-                    <span className={styles.mobileText}>Start Project</span>
+                <button
+                    className={styles.primaryAction}
+                    onClick={() => openContact(t.home.contactMessage)}>
+                    <span className={styles.desktopText}>{t.home.startProject}</span>
+                    <span className={styles.mobileText}>{t.home.startProjectMobile}</span>
                 </button>
-                <Link 
-                    href="/portfolio" 
+                <Link
+                    href="/portfolio"
                     className={styles.secondaryAction}>
-                    <span className={styles.desktopText}>View Our Work</span>
-                    <span className={styles.mobileText}>Our Work</span>
+                    <span className={styles.desktopText}>{t.home.viewWork}</span>
+                    <span className={styles.mobileText}>{t.home.viewWorkMobile}</span>
                 </Link>
             </div>
         </div>

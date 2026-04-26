@@ -1,4 +1,5 @@
 import { Syne, Inter } from 'next/font/google';
+import { cookies } from 'next/headers';
 import '../components/layout/global.scss';
 
 const syne = Syne({
@@ -69,10 +70,14 @@ export const viewport = {
 
 import Layout from '../components/layout/Layout/Layout';
 
-export default function RootLayout({ children }) {
-  return <html lang="en" className={`${syne.variable} ${inter.variable}`}>
+export default async function RootLayout({ children }) {
+  const cookieStore = await cookies();
+  const initialLanguage = cookieStore.get('language')?.value || 'en';
+  const htmlLang = initialLanguage === 'es' ? 'es-AR' : 'en';
+
+  return <html lang={htmlLang} className={`${syne.variable} ${inter.variable}`}>
     <body>
-      <Layout>
+      <Layout initialLanguage={initialLanguage}>
         {children}
       </Layout>
     </body>

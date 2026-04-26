@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from 'react';
 import { useHero } from '../../contexts/HeroContext';
 import { useHeaderAnimation } from '../../contexts/HeaderAnimationContext';
 import { useContact } from '../../contexts/ContactContext';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 import HTML from '../../components/icons/brands/HTML';
 import CSS from '../../components/icons/brands/CSS';
@@ -27,27 +28,35 @@ import Proton from '../../components/icons/brands/Proton';
 
 import styles from './services.module.scss';
 
-const advantages = [
+const serviceGroups = [
   {
-    title: 'Free Hosting Included',
-    description: 'We include premium hosting at no additional cost, ensuring your project stays online and performs optimally.'
+    key: 'web',
+    items: [
+      { key: 'businessWebsite', amount: 900, monthly: false },
+      { key: 'landingPage', amount: 225, monthly: false },
+      { key: 'cmsImplementation', amount: 2400, monthly: false },
+      { key: 'websiteMaintenance', amount: 200, monthly: true },
+      { key: 'webApplications', amount: 2000, monthly: false },
+    ],
   },
   {
-    title: 'No Hidden Fees',
-    description: 'Transparent pricing with no surprise costs. What we quote is what you pay.'
+    key: 'software',
+    items: [
+      { key: 'desktopMobile', amount: 4000, monthly: false },
+      { key: 'customApi', amount: 1600, monthly: false },
+      { key: 'ecommerce', amount: 2800, monthly: false },
+      { key: 'legacySystem', amount: 6500, monthly: false },
+    ],
   },
   {
-    title: 'Complete Code Control',
-    description: 'Full access to your project\'s source code and infrastructure with clean, documented implementations.'
+    key: 'technical',
+    items: [
+      { key: 'performanceOpt', amount: 600, monthly: false },
+      { key: 'devops', amount: 1200, monthly: false },
+      { key: 'systemIntegration', amount: 1400, monthly: false },
+      { key: 'consultation', amount: 500, monthly: false },
+    ],
   },
-  {
-    title: 'Transparent Process',
-    description: 'Regular updates and clear communication throughout development with access to our project management tools.'
-  },
-  {
-    title: 'High Performance',
-    description: 'Optimised for speed and efficiency with industry-leading performance scores and best practices.'
-  }
 ];
 
 const technologies = [
@@ -69,7 +78,7 @@ const technologies = [
   { name: 'React', url: 'https://reactjs.org/', Icon: React },
   { name: 'Svelte', url: 'https://svelte.dev/', Icon: Svelte },
   { name: 'Vite', url: 'https://vitejs.dev/', Icon: Vite },
-  { name: 'VS Code', url: 'https://code.visualstudio.com/', Icon: VSCode }
+  { name: 'VS Code', url: 'https://code.visualstudio.com/', Icon: VSCode },
 ];
 
 export default function ServicesPage() {
@@ -78,17 +87,16 @@ export default function ServicesPage() {
   const { heroComplete } = useHero();
   const { headerAnimationComplete } = useHeaderAnimation();
   const { openContact } = useContact();
+  const { t } = useLanguage();
   const [servicesVisible, setServicesVisible] = useState(false);
   const [providersVisible, setProvidersVisible] = useState(false);
   const [providersRevealsComplete, setProvidersRevealsComplete] = useState(false);
 
-  // Handle services visibility timing like intro page
   useEffect(() => {
-    // Only show services after header animation completes
     if (headerAnimationComplete) {
       const timer = setTimeout(() => {
         setServicesVisible(true);
-      }, 200); // Brief delay after header completes
+      }, 200);
       return () => clearTimeout(timer);
     } else {
       setServicesVisible(false);
@@ -97,7 +105,6 @@ export default function ServicesPage() {
     }
   }, [headerAnimationComplete]);
 
-  // Intersection Observer for providers section
   useEffect(() => {
     if (!servicesVisible) return;
 
@@ -118,10 +125,8 @@ export default function ServicesPage() {
     return () => observer.disconnect();
   }, [servicesVisible]);
 
-  // Clear transition delays after provider reveals complete so hover effects work instantly
   useEffect(() => {
     if (providersVisible && !providersRevealsComplete) {
-      // Last provider's delay + transition duration: (0.05 + 18 * 0.02)s + 0.3s ≈ 0.75s
       const totalRevealTime = 750;
       const timer = setTimeout(() => {
         setProvidersRevealsComplete(true);
@@ -130,30 +135,26 @@ export default function ServicesPage() {
     }
   }, [providersVisible, providersRevealsComplete]);
 
-
   const handleAdvantageClick = (title) => () => {
-    openContact(`Hi, I'm interested in learning more about "${title}"`);
+    openContact(`${t.services.advantageContactPrefix} "${title}"`);
   };
 
-  const handleExampleClick = (service) => (e) => {
-    const dot = e.currentTarget.querySelector('::before');
-    if (dot) {
-      dot.style.animation = 'none';
-      void dot.offsetWidth;
-      dot.style.animation = `${styles.ripple} 0.6s ease-out`;
-    }
-
-    openContact(`Hi, I'm interested in ${service}`);
+  const handleExampleClick = (itemName) => () => {
+    openContact(`${t.services.serviceContactPrefix} ${itemName}`);
   };
 
-  const calculateEstimatedHours = (priceString) => {
-    const match = priceString.match(/\$(\d+(?:,\d+)*)/);
-    if (match) {
-      const price = parseInt(match[1].replace(',', ''));
-      const hours = Math.round(price / 75);
-      return `est > ${hours}hrs`;
+  const formatPrice = (item) => {
+    const formatted = item.amount.toLocaleString('en-US');
+    if (item.monthly) {
+      return `${t.services.startingAt} $${formatted}${t.services.perMonth}`;
     }
-    return '';
+    const estimatedHours = Math.round(item.amount / 75);
+    return (
+      <>
+        {t.services.startingAt} ${formatted}
+        <span className={styles.estimatedHours}> (est &gt; {estimatedHours}hrs)</span>
+      </>
+    );
   };
 
   return (
@@ -168,92 +169,62 @@ export default function ServicesPage() {
           className={`${styles.heading} ${servicesVisible ? styles.visible : ''}`}
           style={{ opacity: servicesVisible ? 1 : 0 }}
         >
-          <span className={styles.preamble}>From Concept to Reality</span>
-          <h2 className={styles.title}>Our Services</h2>
-          <span className={styles.baseRate}>Base Rate: $75/hr</span>
+          <span className={styles.preamble}>{t.services.preamble}</span>
+          <h2 className={styles.title}>{t.services.title}</h2>
+          <span className={styles.baseRate}>{t.services.baseRate}</span>
         </div>
 
         <div
           className={`${styles.list} ${servicesVisible ? styles.visible : ''}`}
           style={{ opacity: servicesVisible ? 1 : 0 }}
         >
-          {[
-            {
-              name: 'Web', items: [
-                { name: 'Business Website', price: 'Starting at $900' },
-                { name: 'Landing Page / Conversion Funnel', price: 'Starting at $225' },
-                { name: 'CMS Implementation', price: 'Starting at $2,400' },
-                { name: 'Website Maintenance', price: 'Starting at $200/month' },
-                { name: 'Web Applications', price: 'Starting at $2,000' }
-              ]
-            },
-            {
-              name: 'Software', items: [
-                { name: 'Desktop & Mobile Applications', price: 'Starting at $4,000' },
-                { name: 'Custom API Creation', price: 'Starting at $1,600' },
-                { name: 'E-commerce Application', price: 'Starting at $2,800' },
-                { name: 'Legacy System Modernisation', price: 'Starting at $6,500' }
-              ]
-            },
-            {
-              name: 'Technical', items: [
-                { name: 'Performance Optimisation', price: 'Starting at $600' },
-                { name: 'DevOps & Security', price: 'Starting at $1,200' },
-                { name: 'System Integration', price: 'Starting at $1,400' },
-                { name: 'Technical Consultation', price: 'Starting at $500' }
-              ]
-            }
-          ].map((serviceGroup, index) => (
+          {serviceGroups.map((group, index) => (
             <div
-              key={serviceGroup.name}
+              key={group.key}
               className={`${styles.service} ${servicesVisible ? styles.visible : ''}`}
               style={{
                 transitionDelay: `${index * 0.2}s`,
-                opacity: servicesVisible ? 1 : 0
+                opacity: servicesVisible ? 1 : 0,
               }}
             >
-              <span className={styles.name}>{serviceGroup.name}</span>
-              {serviceGroup.items.map((item, itemIndex) => (
-                <span
-                  key={item.name}
-                  className={styles.example}
-                  onClick={handleExampleClick(item.name)}
-                >
-                  <div className={styles.serviceName}>{item.name}</div>
-                  {item.price && (
-                    <div className={styles.price}>
-                      {item.price}
-                      {!item.price.includes('/month') && (
-                        <span className={styles.estimatedHours}> ({calculateEstimatedHours(item.price)})</span>
-                      )}
-                    </div>
-                  )}
-                </span>
-              ))}
+              <span className={styles.name}>{t.services.groups[group.key]}</span>
+              {group.items.map((item) => {
+                const itemName = t.services.items[item.key];
+                return (
+                  <span
+                    key={item.key}
+                    className={styles.example}
+                    onClick={handleExampleClick(itemName)}
+                  >
+                    <div className={styles.serviceName}>{itemName}</div>
+                    <div className={styles.price}>{formatPrice(item)}</div>
+                  </span>
+                );
+              })}
             </div>
           ))}
         </div>
 
         <div
           className={`section ${styles.comparison} ${servicesVisible ? styles.visible : ''}`}
-          id="comparison">              
-        <div
-          className={`${styles.heading} ${servicesVisible ? styles.visible : ''}`}
-          style={{ opacity: servicesVisible ? 1 : 0 }}>
-            <span className={styles.preamble}>Why Choose Us</span>
-            <h2 className={styles.title}>Our Advantages</h2>
+          id="comparison">
+          <div
+            className={`${styles.heading} ${servicesVisible ? styles.visible : ''}`}
+            style={{ opacity: servicesVisible ? 1 : 0 }}>
+            <span className={styles.preamble}>{t.services.whyChooseUs}</span>
+            <h2 className={styles.title}>{t.services.ourAdvantages}</h2>
           </div>
 
           <div
             className={`${styles.advantages} ${servicesVisible ? styles.visible : ''}`}
             style={{ opacity: servicesVisible ? 1 : 0 }}>
-            { advantages.map((advantage, index) => (
+            {t.services.advantages.map((advantage, index) => (
               <div
                 key={index}
                 className={`${styles.advantage} ${servicesVisible ? styles.visible : ''}`}
                 style={{
                   transitionDelay: `${0.4 + index * 0.1}s`,
-                  opacity: servicesVisible ? 1 : 0
+                  opacity: servicesVisible ? 1 : 0,
                 }}
                 onClick={handleAdvantageClick(advantage.title)}
               >
@@ -267,13 +238,11 @@ export default function ServicesPage() {
         <div
           ref={providersRef}
           className={`${styles.providers} ${providersVisible ? styles.visible : ''}`}
-          style={{
-            opacity: providersVisible ? 1 : 0
-          }}>
-        <div
-          className={`${styles.providersHeading} ${providersVisible ? styles.visible : ''}`}
           style={{ opacity: providersVisible ? 1 : 0 }}>
-            Technologies We Use
+          <div
+            className={`${styles.providersHeading} ${providersVisible ? styles.visible : ''}`}
+            style={{ opacity: providersVisible ? 1 : 0 }}>
+            {t.services.technologiesTitle}
           </div>
           <div className={styles.providersList}>
             {technologies.map((tech, index) => (
@@ -285,29 +254,23 @@ export default function ServicesPage() {
                 className={`${styles.provider} ${providersVisible ? styles.visible : ''}`}
                 style={{
                   transitionDelay: providersRevealsComplete ? '0s' : `${0.05 + index * 0.02}s`,
-                  opacity: providersVisible ? 1 : 0
+                  opacity: providersVisible ? 1 : 0,
                 }}
               >
-                { tech.Icon && <tech.Icon extraClass={styles.providericon} /> }
-                { !tech.hideLabel && tech.name }
+                {tech.Icon && <tech.Icon extraClass={styles.providericon} />}
+                {!tech.hideLabel && tech.name}
               </a>
             ))}
           </div>
         </div>
 
-                    <div
-
-                      className={`${styles.additionalSection} ${servicesVisible ? styles.visible : ''}`}
-
-                      style={{
-
-                        opacity: servicesVisible ? 1 : 0
-
-                      }}>              
+        <div
+          className={`${styles.additionalSection} ${servicesVisible ? styles.visible : ''}`}
+          style={{ opacity: servicesVisible ? 1 : 0 }}>
           <p className={`${styles.additional} ${styles.additionalText}`}>
-            All services are tailored to your specific needs<br />
-            with our base rate of $75/hr and project-based pricing available.<br />
-            <button className={styles.additionallink} onClick={() => openContact()}>Contact us</button> to start realising your dreams.
+            {t.services.additionalLine1}<br />
+            {t.services.additionalLine2}<br />
+            <button className={styles.additionallink} onClick={() => openContact()}>{t.services.contactUs}</button> {t.services.additionalLine3}
           </p>
         </div>
       </div>

@@ -1,0 +1,116 @@
+export const es = {
+  nav: {
+    portfolio: 'Portfolio',
+    services: 'Servicios',
+    reviews: 'Reseñas',
+    blog: 'Blog',
+    contact: 'CONTACTO',
+    startProject: 'Iniciar Proyecto',
+    ourWork: 'Nuestro Trabajo',
+  },
+
+  home: {
+    changingWords: ['Soluciones', 'Aplicaciones', 'Sitios Web', 'Plataformas', 'Software', 'Sistemas', 'Experiencias', 'Productos'],
+    description: 'Nos especializamos en desarrollo full-stack, soluciones de e-commerce, diseño cautivador e implementaciones tecnológicas de vanguardia. Ya seas una startup con una visión o una empresa establecida que busca innovar, estamos aquí para hacer realidad tus ideas.',
+    startProject: 'Iniciá tu Proyecto',
+    startProjectMobile: 'Iniciar Proyecto',
+    viewWork: 'Ver Nuestro Trabajo',
+    viewWorkMobile: 'Nuestro Trabajo',
+    contactMessage: 'Me gustaría iniciar un nuevo proyecto',
+  },
+
+  services: {
+    preamble: 'Del Concepto a la Realidad',
+    title: 'Nuestros Servicios',
+    baseRate: 'Tarifa Base: $75/hr',
+    groups: {
+      web: 'Web',
+      software: 'Software',
+      technical: 'Técnico',
+    },
+    items: {
+      businessWebsite: 'Sitio Web Empresarial',
+      landingPage: 'Landing Page / Embudo de Conversión',
+      cmsImplementation: 'Implementación de CMS',
+      websiteMaintenance: 'Mantenimiento Web',
+      webApplications: 'Aplicaciones Web',
+      desktopMobile: 'Aplicaciones de Escritorio y Móviles',
+      customApi: 'Creación de API Personalizada',
+      ecommerce: 'Aplicación de E-commerce',
+      legacySystem: 'Modernización de Sistemas Legados',
+      performanceOpt: 'Optimización de Rendimiento',
+      devops: 'DevOps y Seguridad',
+      systemIntegration: 'Integración de Sistemas',
+      consultation: 'Consultoría Técnica',
+    },
+    startingAt: 'Desde',
+    perMonth: '/mes',
+    whyChooseUs: '¿Por Qué Elegirnos?',
+    ourAdvantages: 'Nuestras Ventajas',
+    advantages: [
+      { title: 'Hosting Incluido sin Costo', description: 'Incluimos hosting premium sin costo adicional, garantizando que tu proyecto esté en línea y funcione de manera óptima.' },
+      { title: 'Sin Costos Ocultos', description: 'Precios transparentes sin sorpresas. Lo que cotizamos es lo que pagás.' },
+      { title: 'Control Total del Código', description: 'Acceso completo al código fuente e infraestructura de tu proyecto con implementaciones limpias y documentadas.' },
+      { title: 'Proceso Transparente', description: 'Actualizaciones regulares y comunicación clara durante todo el desarrollo con acceso a nuestras herramientas de gestión de proyectos.' },
+      { title: 'Alto Rendimiento', description: 'Optimizado para velocidad y eficiencia con puntajes de rendimiento líderes en la industria y mejores prácticas.' },
+    ],
+    technologiesTitle: 'Tecnologías que Utilizamos',
+    additionalLine1: 'Todos los servicios están adaptados a tus necesidades específicas',
+    additionalLine2: 'con nuestra tarifa base de $75/hr y precios por proyecto disponibles.',
+    contactUs: 'Contáctanos',
+    additionalLine3: 'para comenzar a hacer realidad tus sueños.',
+    advantageContactPrefix: 'Hola, me interesa obtener más información sobre',
+    serviceContactPrefix: 'Hola, me interesa',
+  },
+
+  portfolio: {
+    title: 'Trabajos Recientes',
+    problem: 'PROBLEMA:',
+    solution: 'SOLUCIÓN:',
+    goToSite: 'VER SITIO',
+  },
+
+  testimonials: {
+    title: 'Testimonios de nuestros clientes:',
+    dragInstruction: 'Arrastrá para pausar el scroll',
+    seeResults: 'Ver resultados',
+  },
+
+  blog: {
+    title: 'Blog',
+    subtitle: 'Comprendé el desarrollo web, las soluciones digitales y cómo DreamsByte puede ayudarte a hacer crecer tu negocio en línea.',
+    readMore: 'Leer Más →',
+  },
+
+  footer: {
+    metaText: 'Nos aseguramos de que todos nuestros clientes tengan todos los activos y el código fuente disponibles y bajo su propiedad.',
+    calm: 'Calma',
+    danger: 'Peligro',
+    sourceCode: 'Código fuente de este sitio web',
+  },
+
+  contact: {
+    heading: 'Contáctanos',
+    headingCallback: 'Te contactaremos',
+    instructionWithMessage: 'Para comenzar a hacer realidad tus sueños digitales, escribinos hoy.',
+    instructionCallback: 'Dejá tu email y te contactaremos.',
+    emailPlaceholder: 'nombre@dominio.com',
+    messagePlaceholder: 'Tu mensaje aquí',
+    addMessage: 'Agregar mensaje',
+    submit: 'Enviar',
+    orDirectly: 'O contáctanos directamente:',
+    email: 'Email',
+    emailAriaLabel: 'Envianos un email',
+    whatsappAriaLabel: 'Contáctanos por WhatsApp',
+    thankYou: '¡Gracias!',
+    messageReceived: '¡Mensaje recibido! Nos pondremos en contacto muy pronto.',
+    close: 'Cerrar',
+  },
+
+  cta: {
+    title: '¿Listo para Hacer Realidad tus Ideas?',
+    description: 'Convirtamos tu visión en una poderosa solución digital. Ya sea que estés empezando desde cero o necesités mejorar una plataforma existente, estamos aquí para hacerlo realidad.',
+    button: 'Iniciá tu Proyecto',
+    contactMessage: 'Me gustaría hablar sobre un proyecto',
+  },
+};

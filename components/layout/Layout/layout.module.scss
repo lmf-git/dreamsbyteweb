@@ -455,11 +455,68 @@
     fill: var(--social-icon-hover);
 }
 
+.langSwitcher {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    gap: 0.25em;
+    font-size: 1em;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 0.4em 0.5em;
+    transition: opacity 0.2s ease;
+    order: 998;
+
+    &:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (min-width: 1000px) {
+        display: flex;
+    }
+}
+
+.mobileLangSwitcher {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.25em;
+    font-size: 1em;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 0.4em 0.5em;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+.langActive {
+    color: var(--text-primary);
+    opacity: 1;
+}
+
+.langInactive {
+    color: var(--nav-link);
+    opacity: 0.4;
+}
+
+.langDivider {
+    color: var(--nav-link);
+    opacity: 0.3;
+    font-weight: 300;
+}
+
 @media screen and (min-width: 1000px) {
     .menu {
         display: none;
     }
-    
+
     .header {
         padding: 1.85em 4.25em 0;
     }
@@ -468,12 +525,12 @@
         display: block;
         font-size: 1.5em;
     }
-    
+
     .headerctaprimary {
         font-size: 1.65em;
     }
-    
-    
+
+
     .themeIcon {
         width: 2.25em;
         height: 2.25em;

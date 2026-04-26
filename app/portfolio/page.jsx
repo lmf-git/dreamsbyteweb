@@ -11,13 +11,16 @@ import Dot from '../../components/icons/controls/Dot';
 import Screen from '../../components/specific/portfolio/Screen/Screen';
 import Mobile from '../../components/specific/portfolio/Mobile/Mobile';
 
+import { useLanguage } from '../../contexts/LanguageContext';
 import styles from './portfolio.module.scss';
 
 const projects = [
     {
         name: 'ICTALLY',
         problem: 'IT professionals needed a trusted marketplace to showcase skills and connect with businesses.',
+        problem_es: 'Los profesionales de IT necesitaban un mercado de confianza para mostrar sus habilidades y conectarse con empresas.',
         solution: 'Built a platform connecting IT integrators, businesses, and vendors with reviews and portfolios.',
+        solution_es: 'Construimos una plataforma que conecta integradores de IT, empresas y proveedores con reseñas y portfolios.',
         url: 'https://ictally.com',
         image: '/projects/ictally/ictally-mobile.png',
         desktopimage: '/projects/ictally/ictally-desktop.png',
@@ -26,7 +29,9 @@ const projects = [
     {
         name: 'Lvolt Networking',
         problem: 'Security contractor needed to expand CCTV and low voltage services.',
+        problem_es: 'Un contratista de seguridad necesitaba expandir sus servicios de CCTV y baja tensión.',
         solution: 'Built website with service area targeting and lead generation.',
+        solution_es: 'Construimos un sitio web con segmentación por área de servicio y generación de leads.',
         url: 'https://www.lvolt.net',
         image: '/projects/lvolt/lvolt-mobile.png',
         desktopimage: '/projects/lvolt/lvolt-desktop.png',
@@ -35,7 +40,9 @@ const projects = [
     {
         name: 'Allied Construction',
         problem: 'Construction supplier needed to replace expensive outdated wholesale system.',
+        problem_es: 'Un proveedor de construcción necesitaba reemplazar su costoso sistema mayorista desactualizado.',
         solution: 'Built custom wholesale platform with business-specific pricing.',
+        solution_es: 'Construimos una plataforma mayorista personalizada con precios específicos por cliente.',
         url: 'https://alliedconstruction.vercel.app/',
         image: '/projects/allied/allied-mobile.png',
         desktopimage: '/projects/allied/allied-desktop.png',
@@ -44,7 +51,9 @@ const projects = [
     {
         name: 'MetaTicket',
         problem: 'Event discovery needed to be more accessible and supportive of local talent.',
+        problem_es: 'El descubrimiento de eventos necesitaba ser más accesible y apoyar el talento local.',
         solution: 'Created a platform making live events affordable and connecting users with local venues.',
+        solution_es: 'Creamos una plataforma que hace los eventos en vivo más accesibles y conecta a los usuarios con venues locales.',
         url: 'https://metaticket.org',
         image: '/projects/metaticket/metaticket-mobile.png',
         desktopimage: '/projects/metaticket/metaticket-desktop.png',
@@ -53,7 +62,9 @@ const projects = [
     {
         name: 'The Right Direction',
         problem: 'Community service needed a way to showcase programs and handle bookings.',
+        problem_es: 'Un servicio comunitario necesitaba una forma de mostrar sus programas y gestionar reservas.',
         solution: 'Created a website with booking system and program information.',
+        solution_es: 'Creamos un sitio web con sistema de reservas e información sobre los programas.',
         url: 'https://trd.vercel.app',
         image: '/projects/trd/trd-mobile.png',
         desktopimage: '/projects/trd/trd-desktop.png',
@@ -62,7 +73,9 @@ const projects = [
     {
         name: 'Electric Doctors',
         problem: 'Electrical contractor needed better customer communication and invoicing.',
+        problem_es: 'Un contratista eléctrico necesitaba mejorar la comunicación con clientes y la facturación.',
         solution: 'Created website with customer management and business tools.',
+        solution_es: 'Creamos un sitio web con gestión de clientes y herramientas de negocio.',
         url: 'https://www.electricdrs.com',
         image: '/projects/eds/eds-mobile.png',
         desktopimage: '/projects/eds/eds-desktop.png',
@@ -71,7 +84,9 @@ const projects = [
     {
         name: 'TRK Civils LTD',
         problem: 'New civil engineering company needed a website and complete digital presence.',
+        problem_es: 'Una nueva empresa de ingeniería civil necesitaba un sitio web y presencia digital completa.',
         solution: 'Built a modern website with inquiry tools and marketing setup.',
+        solution_es: 'Construimos un sitio web moderno con herramientas de consulta y configuración de marketing.',
         url: 'https://trk-amber.vercel.app',
         image: '/projects/trk/trk-mobile.png',
         desktopimage: '/projects/trk/trk-desktop.png',
@@ -82,6 +97,7 @@ const projects = [
 export default function PortfolioPage() {
     const { setHeroComplete } = useHero();
     const { headerAnimationComplete } = useHeaderAnimation();
+    const { t, language } = useLanguage();
     const [project, setProject] = useState(null);
     const [showPreview, setShowPreview] = useState(false);
     const [showContent, setShowContent] = useState(false);
@@ -329,18 +345,18 @@ export default function PortfolioPage() {
             {currentProject !== null && (
                 <div className={styles.projects}>
                     <div className={styles.projectdesc}>
-                        <h1 className={styles.title}>Latest Work</h1>
+                        <h1 className={styles.title}>{t.portfolio.title}</h1>
 
                         <div className={`${styles.contentContainer} ${showContent ? styles.visible : ''} ${
                             contentFading ? styles.fading : ''
                         }`}>
                             <h1 className={styles.projectname}>{projects[currentProject].name}</h1>
                             
-                            <h2 className={styles.projectproblems}>PROBLEM:</h2>
-                            <p className={styles.projectparagraph}>{projects[currentProject].problem}</p>
+                            <h2 className={styles.projectproblems}>{t.portfolio.problem}</h2>
+                            <p className={styles.projectparagraph}>{language === 'es' ? projects[currentProject].problem_es : projects[currentProject].problem}</p>
 
-                            <h2 className={styles.projectsolutions}>SOLUTION:</h2>
-                            <p className={styles.projectparagraph}>{projects[currentProject].solution}</p>
+                            <h2 className={styles.projectsolutions}>{t.portfolio.solution}</h2>
+                            <p className={styles.projectparagraph}>{language === 'es' ? projects[currentProject].solution_es : projects[currentProject].solution}</p>
 
                             <div className={`${styles.navigation} ${showNav ? styles.visible : ''}`}>
                                 <a 
@@ -349,7 +365,7 @@ export default function PortfolioPage() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    GO TO SITE
+                                    {t.portfolio.goToSite}
                                 </a>
 
                                 <div className={`${styles.dots} ${dotsReady ? styles.visible : ''}`}>

@@ -3,12 +3,14 @@
 import { useRef, useState, useEffect } from 'react';
 import { testimonials } from '../../data.mjs';
 import { useHeaderAnimation } from '../../contexts/HeaderAnimationContext';
+import { useLanguage } from '../../contexts/LanguageContext';
 import DragRight from '../../components/icons/controls/DragRight';
 import styles from './testimonials.module.scss';
 
 export default function TestimonialsPage() {
     const sectionRef = useRef(null);
     const { headerAnimationComplete } = useHeaderAnimation();
+    const { t, language } = useLanguage();
     const [testimonialsVisible, setTestimonialsVisible] = useState(false);
     
     // Handle testimonials visibility timing like intro page
@@ -111,7 +113,7 @@ export default function TestimonialsPage() {
             id="testimonials"
             style={{ opacity: testimonialsVisible ? 1 : 0 }}
         >
-            <h2 className={styles.title}>Our client testimonials:</h2>
+            <h2 className={styles.title}>{t.testimonials.title}</h2>
             <div
                 className={styles.list}
                 ref={listRef}
@@ -129,28 +131,28 @@ export default function TestimonialsPage() {
                 onTouchCancel={stopDragging}
             >
                 <div className={styles.plane} ref={planeRef}>
-                    {testimonials.map((t, i) => (
-                        <div 
-                            className={`${styles.testimonial} ${testimonialsVisible ? styles.visible : ''}`} 
+                    {testimonials.map((item, i) => (
+                        <div
+                            className={`${styles.testimonial} ${testimonialsVisible ? styles.visible : ''}`}
                             key={i}
-                            style={{ 
+                            style={{
                                 transitionDelay: `${0.2 + i * 0.1}s`,
-                                opacity: testimonialsVisible ? 1 : 0 
+                                opacity: testimonialsVisible ? 1 : 0
                             }}
                         >
                             <div className={styles.brand}>
-                                {t?.logo ? t.logo : (
+                                {item?.logo ? item.logo : (
                                     <>
-                                        {t.company && <span className={styles.company}>{t.company}</span>}
-                                        <span className={styles.name}>{t.name}</span>
+                                        {item.company && <span className={styles.company}>{item.company}</span>}
+                                        <span className={styles.name}>{item.name}</span>
                                     </>
                                 )}
                             </div>
                             <div className={styles.text}>
-                                <p className={styles.quote}>{t.testimonial}</p>
-                                {t?.reporturl && (
-                                    <a href={t.reporturl} className={styles.report} target="_blank" rel="noopener noreferrer">
-                                        See results
+                                <p className={styles.quote}>{language === 'es' && item.testimonial_es ? item.testimonial_es : item.testimonial}</p>
+                                {item?.reporturl && (
+                                    <a href={item.reporturl} className={styles.report} target="_blank" rel="noopener noreferrer">
+                                        {t.testimonials.seeResults}
                                     </a>
                                 )}
                             </div>
@@ -159,7 +161,7 @@ export default function TestimonialsPage() {
                 </div>
             </div>
             <div className={styles.instruction}>
-                <span>Drag to pause scrolling</span>
+                <span>{t.testimonials.dragInstruction}</span>
                 <DragRight extraClass={styles.dragIcon} />
             </div>
         </div>

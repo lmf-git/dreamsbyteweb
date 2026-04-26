@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import { useHero } from '../../../contexts/HeroContext';
 import { useStars } from '../../../contexts/StarsContext';
+import { useLanguage } from '../../../contexts/LanguageContext';
 
 import Logo from '../../icons/branding/Logo';
 
@@ -22,6 +23,7 @@ export default function Footer() {
   const pathname = usePathname();
   const { heroComplete } = useHero();
   const { dangerMode, setDangerMode } = useStars();
+  const { t } = useLanguage();
   const isLandingPage = pathname === '/';
   
   // Footer shows immediately - no intersection observer needed
@@ -61,7 +63,7 @@ export default function Footer() {
         
         <div className={styles.meta}>
           <p className={styles.metatext}>
-            We ensure that all our clients have all assets and source code available to them and under their ownership.
+            {t.footer.metaText}
           </p>
           <div className={styles.metaActions}>
             <button
@@ -69,10 +71,10 @@ export default function Footer() {
               onClick={() => setDangerMode(!dangerMode)}
               aria-label="Toggle stars danger mode"
             >
-              {dangerMode ? 'Danger' : 'Calm'}
+              {dangerMode ? t.footer.danger : t.footer.calm}
             </button>
-            <a className={styles.metalink} target="_blank" href="https://github.com/lmf-git/dreamsbyteweb" rel="noopener noreferrer" >
-              Source code for this website
+            <a className={styles.metalink} target="_blank" href="https://github.com/lmf-git/dreamsbyteweb" rel="noopener noreferrer">
+              {t.footer.sourceCode}
             </a>
           </div>        </div>
       </div>

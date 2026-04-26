@@ -8,6 +8,7 @@ import { ThemeProvider, useTheme } from '../../../contexts/ThemeContext';
 import { ContactProvider, useContact } from '../../../contexts/ContactContext';
 import { HeaderAnimationProvider, useHeaderAnimation } from '../../../contexts/HeaderAnimationContext';
 import { StarsProvider } from '../../../contexts/StarsContext';
+import { LanguageProvider, useLanguage } from '../../../contexts/LanguageContext';
 import Contact from "../Contact/Contact";
 import Footer from "../Footer/Footer";
 import Stars from "../Stars/Stars";
@@ -31,23 +32,20 @@ function LayoutContent({ children }) {
     const { theme, toggleTheme } = useTheme();
     const { contactOpen, message, openContact, closeContact } = useContact();
     const { setHeaderAnimationComplete } = useHeaderAnimation();
+    const { language, setLanguage, t } = useLanguage();
     const pathname = usePathname();
     const [menuOpen, setMenuOpen] = useState(false);
     const [scrollPosition, setScrollPosition] = useState(0);
-    
-    // Check if we're on the landing page (home page)
+
     const isLandingPage = pathname === '/';
 
-    // Track if this is the initial page load
     const [isInitialLoad, setIsInitialLoad] = useState(true);
     const [hasNavigated, setHasNavigated] = useState(false);
-    
-    // Set header animation complete after header navigation reveals (at 2s)
+
     useEffect(() => {
         console.log('Header animation effect:', { pathname, isInitialLoad });
-        
+
         if (isInitialLoad) {
-            // First page load - wait for header animation on all pages
             console.log('Initial load - waiting 2s for header animation');
             setHeaderAnimationComplete(false);
             const timer = setTimeout(() => {
@@ -58,22 +56,21 @@ function LayoutContent({ children }) {
             }, 2000);
             return () => clearTimeout(timer);
         } else {
-            // Navigation - handle animated pages specially (including landing page)
             const animatedPages = ['/', '/services', '/testimonials', '/blog'];
             const isAnimatedPage = animatedPages.includes(pathname);
-            
+
             if (isAnimatedPage) {
                 console.log('Navigation to animated page - triggering re-animation');
                 setHeaderAnimationComplete(false);
                 const timer = setTimeout(() => {
                     setHeaderAnimationComplete(true);
-                }, 100); // Brief delay to trigger animation
+                }, 100);
                 return () => clearTimeout(timer);
             } else {
                 console.log('Navigation - ensuring header stays complete');
                 setHeaderAnimationComplete(true);
             }
-            
+
             if (!hasNavigated) {
                 setHasNavigated(true);
             }
@@ -102,23 +99,32 @@ function LayoutContent({ children }) {
         );
     };
 
-    // Control body overflow based on Hero completion and mobile menu
-    // Only apply hero-related overflow control on landing page
+    const toggleLanguage = () => setLanguage(language === 'en' ? 'es' : 'en');
+
+    const getLangSwitcher = (isMobile = false) => (
+        <button
+            className={isMobile ? styles.mobileLangSwitcher : styles.langSwitcher}
+            onClick={toggleLanguage}
+            aria-label={language === 'en' ? 'Switch to Spanish' : 'Switch to English'}
+        >
+            <span className={language === 'en' ? styles.langActive : styles.langInactive}>EN</span>
+            <span className={styles.langDivider}>|</span>
+            <span className={language === 'es' ? styles.langActive : styles.langInactive}>ES</span>
+        </button>
+    );
+
     useEffect(() => {
         if (isLandingPage && !heroComplete) {
             document.body.style.overflow = 'hidden';
             document.body.classList.remove(styles.clipped);
         } else if (menuOpen) {
-            // Save current scroll position
             const scrollY = window.scrollY;
             setScrollPosition(scrollY);
 
-            // Apply fixed positioning and prevent scroll
             document.body.style.overflow = '';
             document.body.style.top = `-${scrollY}px`;
             document.body.classList.add(styles.clipped);
         } else {
-            // Restore scroll position when menu closes
             document.body.classList.remove(styles.clipped);
             document.body.style.overflow = 'auto';
             document.body.style.top = '';
@@ -132,40 +138,36 @@ function LayoutContent({ children }) {
         };
     }, [heroComplete, menuOpen, isLandingPage, scrollPosition]);
 
-    // Clear URL fragments - only needed on landing page
     useEffect(() => {
         if (isLandingPage && window.location.hash) {
-            // Remove the hash without triggering a page reload
             const cleanUrl = window.location.href.split('#')[0];
             window.history.replaceState({}, document.title, cleanUrl);
         }
     }, [isLandingPage]);
 
-    // Menu close handler
     const handleMenuClose = () => {
         setMenuOpen(false);
     };
 
     return (
         <>
-            {/* Theme transition overlays */}
-            <div 
+            <div
                 className={styles.darkGradient}
-                style={{ 
+                style={{
                     opacity: theme === 'dark' ? 1 : 0,
                     transition: 'opacity 0.8s ease-in-out'
                 }}
             />
-            <div 
+            <div
                 className={styles.lightGradient}
-                style={{ 
+                style={{
                     opacity: theme === 'light' ? 1 : 0,
                     transition: 'opacity 0.8s ease-in-out'
                 }}
             />
-            
+
             <Stars />
-            
+
             <main className={styles.index}>
                 <header className={styles.header}>
                     <Link href="/">
@@ -176,18 +178,18 @@ function LayoutContent({ children }) {
                         <button className={styles.themeToggle} onClick={toggleTheme} aria-label="Toggle theme">
                             {getThemeIcon()}
                         </button>
-                        <Link href="/portfolio" className={`${styles.headercta} ${pathname === '/portfolio' ? styles.active : ''}`}>Portfolio</Link>
-                        <Link href="/services" className={`${styles.headercta} ${pathname === '/services' ? styles.active : ''}`}>Services</Link>
-                        <Link href="/testimonials" className={`${styles.headercta} ${pathname === '/testimonials' ? styles.active : ''}`}>Reviews</Link>
-                        <Link href="/blog" className={`${styles.headercta} ${pathname.startsWith('/blog') ? styles.active : ''}`}>Blog</Link>
-                        <button className={`${styles.headercta} ${styles.headerctaprimary}`} onClick={() => openContact()}>CONTACT</button>
+                        <Link href="/portfolio" className={`${styles.headercta} ${pathname === '/portfolio' ? styles.active : ''}`}>{t.nav.portfolio}</Link>
+                        <Link href="/services" className={`${styles.headercta} ${pathname === '/services' ? styles.active : ''}`}>{t.nav.services}</Link>
+                        <Link href="/testimonials" className={`${styles.headercta} ${pathname === '/testimonials' ? styles.active : ''}`}>{t.nav.reviews}</Link>
+                        <Link href="/blog" className={`${styles.headercta} ${pathname.startsWith('/blog') ? styles.active : ''}`}>{t.nav.blog}</Link>
+                        <button className={`${styles.headercta} ${styles.headerctaprimary}`} onClick={() => openContact()}>{t.nav.contact}</button>
+                        {getLangSwitcher(false)}
                         <button className={styles.menutoggle} onClick={() => setMenuOpen(true)}>
                             <MenuIcon extraClass={styles.menutoggleicon} />
                         </button>
                     </div>
                 </header>
 
-                {/* Mobile Menu */}
                 {menuOpen && (
                     <div className={`${styles.menu} ${menuOpen ? styles.visible : ''}`}>
                         <div className={styles.menuheader}>
@@ -195,6 +197,7 @@ function LayoutContent({ children }) {
                                 <Logo extraClass={styles.menulogo} />
                             </Link>
                             <div className={styles.menucontrols}>
+                                {getLangSwitcher(true)}
                                 <button className={styles.menuThemeToggle} onClick={toggleTheme} aria-label="Toggle theme">
                                     {getMobileThemeIcon()}
                                 </button>
@@ -208,15 +211,15 @@ function LayoutContent({ children }) {
                         </div>
 
                         <div className={styles.items}>
-                            <Link href="/portfolio" className={`${styles.item} ${pathname === '/portfolio' ? styles.activeItem : ''}`} onClick={handleMenuClose}>Portfolio</Link>
-                            <Link href="/services" className={`${styles.item} ${pathname === '/services' ? styles.activeItem : ''}`} onClick={handleMenuClose}>Services</Link>
-                            <Link href="/testimonials" className={`${styles.item} ${pathname === '/testimonials' ? styles.activeItem : ''}`} onClick={handleMenuClose}>Reviews</Link>
-                            <Link href="/blog" className={`${styles.item} ${pathname.startsWith('/blog') ? styles.activeItem : ''}`} onClick={handleMenuClose}>Blog</Link>
-                            <button className={styles.item} onClick={() => { handleMenuClose(); openContact(); }}>Contact</button>
-                            
+                            <Link href="/portfolio" className={`${styles.item} ${pathname === '/portfolio' ? styles.activeItem : ''}`} onClick={handleMenuClose}>{t.nav.portfolio}</Link>
+                            <Link href="/services" className={`${styles.item} ${pathname === '/services' ? styles.activeItem : ''}`} onClick={handleMenuClose}>{t.nav.services}</Link>
+                            <Link href="/testimonials" className={`${styles.item} ${pathname === '/testimonials' ? styles.activeItem : ''}`} onClick={handleMenuClose}>{t.nav.reviews}</Link>
+                            <Link href="/blog" className={`${styles.item} ${pathname.startsWith('/blog') ? styles.activeItem : ''}`} onClick={handleMenuClose}>{t.nav.blog}</Link>
+                            <button className={styles.item} onClick={() => { handleMenuClose(); openContact(); }}>{t.nav.contact.charAt(0) + t.nav.contact.slice(1).toLowerCase()}</button>
+
                             <div className={styles.mobileCtas}>
-                                <button className={styles.mobileCta} onClick={() => { handleMenuClose(); openContact('I would like to start a new project'); }}>Start Project</button>
-                                <Link href="/portfolio" className={styles.mobileCta} onClick={handleMenuClose}>Our Work</Link>
+                                <button className={styles.mobileCta} onClick={() => { handleMenuClose(); openContact(t.home.contactMessage); }}>{t.nav.startProject}</button>
+                                <Link href="/portfolio" className={styles.mobileCta} onClick={handleMenuClose}>{t.nav.ourWork}</Link>
                             </div>
                         </div>
 
@@ -241,33 +244,35 @@ function LayoutContent({ children }) {
                 )}
 
                 {children}
-                
+
                 <Footer />
-                
-                <Contact 
-                    isOpen={contactOpen} 
-                    onClose={closeContact} 
+
+                <Contact
+                    isOpen={contactOpen}
+                    onClose={closeContact}
                     initialMessage={message}
-                />    
+                />
             </main>
         </>
     );
 }
 
-export default function Layout({ children }) {
+export default function Layout({ children, initialLanguage = 'en' }) {
     return (
-        <ThemeProvider>
-            <HeroProvider>
-                <ContactProvider>
-                    <HeaderAnimationProvider>
-                        <StarsProvider>
-                            <LayoutContent>
-                                {children}
-                            </LayoutContent>
-                        </StarsProvider>
-                    </HeaderAnimationProvider>
-                </ContactProvider>
-            </HeroProvider>
-        </ThemeProvider>
+        <LanguageProvider initialLanguage={initialLanguage}>
+            <ThemeProvider>
+                <HeroProvider>
+                    <ContactProvider>
+                        <HeaderAnimationProvider>
+                            <StarsProvider>
+                                <LayoutContent>
+                                    {children}
+                                </LayoutContent>
+                            </StarsProvider>
+                        </HeaderAnimationProvider>
+                    </ContactProvider>
+                </HeroProvider>
+            </ThemeProvider>
+        </LanguageProvider>
     );
 }

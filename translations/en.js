@@ -1,0 +1,116 @@
+export const en = {
+  nav: {
+    portfolio: 'Portfolio',
+    services: 'Services',
+    reviews: 'Reviews',
+    blog: 'Blog',
+    contact: 'CONTACT',
+    startProject: 'Start Project',
+    ourWork: 'Our Work',
+  },
+
+  home: {
+    changingWords: ['Solutions', 'Applications', 'Websites', 'Platforms', 'Software', 'Systems', 'Experiences', 'Products'],
+    description: "We specialise in full-stack development, e-commerce solutions, captivating design, and cutting-edge technology implementations. Whether you're a startup with a vision or an established business looking to innovate, we're here to bring your ideas to life.",
+    startProject: 'Start Your Project',
+    startProjectMobile: 'Start Project',
+    viewWork: 'View Our Work',
+    viewWorkMobile: 'Our Work',
+    contactMessage: 'I would like to start a new project',
+  },
+
+  services: {
+    preamble: 'From Concept to Reality',
+    title: 'Our Services',
+    baseRate: 'Base Rate: $75/hr',
+    groups: {
+      web: 'Web',
+      software: 'Software',
+      technical: 'Technical',
+    },
+    items: {
+      businessWebsite: 'Business Website',
+      landingPage: 'Landing Page / Conversion Funnel',
+      cmsImplementation: 'CMS Implementation',
+      websiteMaintenance: 'Website Maintenance',
+      webApplications: 'Web Applications',
+      desktopMobile: 'Desktop & Mobile Applications',
+      customApi: 'Custom API Creation',
+      ecommerce: 'E-commerce Application',
+      legacySystem: 'Legacy System Modernisation',
+      performanceOpt: 'Performance Optimisation',
+      devops: 'DevOps & Security',
+      systemIntegration: 'System Integration',
+      consultation: 'Technical Consultation',
+    },
+    startingAt: 'Starting at',
+    perMonth: '/month',
+    whyChooseUs: 'Why Choose Us',
+    ourAdvantages: 'Our Advantages',
+    advantages: [
+      { title: 'Free Hosting Included', description: 'We include premium hosting at no additional cost, ensuring your project stays online and performs optimally.' },
+      { title: 'No Hidden Fees', description: 'Transparent pricing with no surprise costs. What we quote is what you pay.' },
+      { title: 'Complete Code Control', description: "Full access to your project's source code and infrastructure with clean, documented implementations." },
+      { title: 'Transparent Process', description: 'Regular updates and clear communication throughout development with access to our project management tools.' },
+      { title: 'High Performance', description: 'Optimised for speed and efficiency with industry-leading performance scores and best practices.' },
+    ],
+    technologiesTitle: 'Technologies We Use',
+    additionalLine1: 'All services are tailored to your specific needs',
+    additionalLine2: 'with our base rate of $75/hr and project-based pricing available.',
+    contactUs: 'Contact us',
+    additionalLine3: 'to start realising your dreams.',
+    advantageContactPrefix: "Hi, I'm interested in learning more about",
+    serviceContactPrefix: "Hi, I'm interested in",
+  },
+
+  portfolio: {
+    title: 'Latest Work',
+    problem: 'PROBLEM:',
+    solution: 'SOLUTION:',
+    goToSite: 'GO TO SITE',
+  },
+
+  testimonials: {
+    title: 'Our client testimonials:',
+    dragInstruction: 'Drag to pause scrolling',
+    seeResults: 'See results',
+  },
+
+  blog: {
+    title: 'Blog',
+    subtitle: 'Understanding web development, digital solutions, and how DreamsByte can help grow your business online.',
+    readMore: 'Read More →',
+  },
+
+  footer: {
+    metaText: 'We ensure that all our clients have all assets and source code available to them and under their ownership.',
+    calm: 'Calm',
+    danger: 'Danger',
+    sourceCode: 'Source code for this website',
+  },
+
+  contact: {
+    heading: 'Contact us',
+    headingCallback: 'We will contact you',
+    instructionWithMessage: 'To start realising your digital dreams, email us today.',
+    instructionCallback: "Leave your email and we'll contact you.",
+    emailPlaceholder: 'name@domain.tld',
+    messagePlaceholder: 'Your message here',
+    addMessage: 'Add message',
+    submit: 'Submit',
+    orDirectly: 'Or contact us directly:',
+    email: 'Email',
+    emailAriaLabel: 'Send us an email',
+    whatsappAriaLabel: 'Contact us on WhatsApp',
+    thankYou: 'Thank you!',
+    messageReceived: "Message received! We'll be in touch very soon.",
+    close: 'Close',
+  },
+
+  cta: {
+    title: 'Ready to Bring Your Ideas to Life?',
+    description: "Let's turn your vision into a powerful digital solution. Whether you're starting from scratch or need to enhance an existing platform, we're here to make it happen.",
+    button: 'Start Your Project',
+    contactMessage: "I'd like to discuss a project",
+  },
+};

@@ -4,12 +4,14 @@ import { useState, useEffect } from 'react';
 import EmailSend from '../../icons/EmailSend';
 import EmailMethod from '../../icons/social/EmailMethod';
 import Whatsapp from '../../icons/social/Whatsapp';
+import { useLanguage } from '../../../contexts/LanguageContext';
 import styles from './contact.module.scss';
 
 export default function Contact({ isOpen, onClose, initialMessage = '' }) {
   const [message, setMessage] = useState(initialMessage);
   const [messageVisible, setMessageVisible] = useState(true);
   const [formStatus, setFormStatus] = useState(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     if (isOpen) {
@@ -54,29 +56,29 @@ export default function Contact({ isOpen, onClose, initialMessage = '' }) {
         <button className={styles.closeButton} onClick={onClose} aria-label="Close modal">
           ×
         </button>
-        
+
         {formStatus !== 'success' ? (
           <form className={styles.contact} onSubmit={onSubmit}>
             <label className={styles.label} htmlFor="contactform">
-              {messageVisible ? 'Contact us' : 'We will contact you'}
+              {messageVisible ? t.contact.heading : t.contact.headingCallback}
             </label>
             <p className={styles.instructions}>
-              {messageVisible ? 'To start realising your digital dreams, email us today.' : 'Leave your email and we\'ll contact you.'}
+              {messageVisible ? t.contact.instructionWithMessage : t.contact.instructionCallback}
             </p>
 
-            <input 
-              type="email" 
-              name="email" 
-              className={styles.input} 
-              placeholder="name@domain.tld" 
-              required 
+            <input
+              type="email"
+              name="email"
+              className={styles.input}
+              placeholder={t.contact.emailPlaceholder}
+              required
             />
 
             {messageVisible && (
-              <textarea 
-                name="message" 
-                className={styles.textarea} 
-                placeholder="Your message here"
+              <textarea
+                name="message"
+                className={styles.textarea}
+                placeholder={t.contact.messagePlaceholder}
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
               />
@@ -84,39 +86,39 @@ export default function Contact({ isOpen, onClose, initialMessage = '' }) {
 
             <div className={styles.actions}>
               {!messageVisible && (
-                <button 
-                  type="button" 
-                  className={`${styles.action} ${styles.add}`} 
+                <button
+                  type="button"
+                  className={`${styles.action} ${styles.add}`}
                   onClick={() => setMessageVisible(true)}
                 >
-                  Add message
+                  {t.contact.addMessage}
                 </button>
               )}
               <button type="submit" className={`${styles.action} ${styles.submit}`}>
-                Submit
+                {t.contact.submit}
                 <EmailSend className={styles['submit-icon']} />
               </button>
             </div>
-            
+
             <div className={styles.alternatives}>
-              <p className={styles.alternativeText}>Or contact us directly:</p>
+              <p className={styles.alternativeText}>{t.contact.orDirectly}</p>
               <div className={styles.alternativeLinks}>
-                <a 
-                  href="mailto:contact@dreamsbyte.com" 
-                  className={styles.alternativeLink} 
-                  rel="noopener noreferrer" 
-                  target="_blank" 
-                  aria-label="Send us an email"
+                <a
+                  href="mailto:contact@dreamsbyte.com"
+                  className={styles.alternativeLink}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  aria-label={t.contact.emailAriaLabel}
                 >
                   <EmailMethod className={styles.alternativeIcon} />
-                  <span>Email</span>
+                  <span>{t.contact.email}</span>
                 </a>
-                <a 
-                  href="https://api.whatsapp.com/send?phone=447389805421" 
-                  className={styles.alternativeLink} 
-                  rel="noopener noreferrer" 
-                  target="_blank" 
-                  aria-label="Contact us on WhatsApp"
+                <a
+                  href="https://api.whatsapp.com/send?phone=447389805421"
+                  className={styles.alternativeLink}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  aria-label={t.contact.whatsappAriaLabel}
                 >
                   <Whatsapp className={styles.alternativeIcon} />
                   <span>WhatsApp</span>
@@ -127,16 +129,16 @@ export default function Contact({ isOpen, onClose, initialMessage = '' }) {
         ) : (
           <div className={`${styles.contact} ${styles.success}`}>
             <label className={styles.label}>
-              Thank you!
+              {t.contact.thankYou}
             </label>
             <p className={styles.instructions}>
-              Message received! We'll be in touch very soon.
+              {t.contact.messageReceived}
             </p>
-            <button 
+            <button
               className={`${styles.action} ${styles.submit}`}
               onClick={onClose}
             >
-              Close
+              {t.contact.close}
             </button>
           </div>
         )}
