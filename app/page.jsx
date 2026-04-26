@@ -60,26 +60,27 @@ export default function Index() {
     }, [changingWords.length]);
 
     return (
-        <div className={`section ${styles.intro} ${introVisible ? styles.visible : ''}`}>
-            <h1 className={styles.title} style={{ opacity: introVisible ? 1 : 0 }}>
-                {changingWords.map((word, index) => (
-                    <span
-                        key={word}
-                        className={`${styles.word} ${index === currentWordIndex ? styles.entering : ''} ${index === (currentWordIndex - 1 + changingWords.length) % changingWords.length ? styles.leaving : ''}`}
-                    >
-                        {word.split('').map((letter, letterIndex) => (
-                            <span
-                                key={letterIndex}
-                                className={styles.letter}
-                                style={{ '--delay': `${letterIndex * 0.04}s` }}
-                            >
-                                {letter}
-                            </span>
-                        ))}
-                    </span>
-                ))}
-            </h1>
+        <>
+        <h1 className={`${styles.title} ${introVisible ? styles.visible : ''}`}>
+            {changingWords.map((word, index) => (
+                <span
+                    key={word}
+                    className={`${styles.word} ${index === currentWordIndex ? styles.entering : ''} ${index === (currentWordIndex - 1 + changingWords.length) % changingWords.length ? styles.leaving : ''}`}
+                >
+                    {word.split('').map((letter, letterIndex) => (
+                        <span
+                            key={letterIndex}
+                            className={styles.letter}
+                            style={{ '--delay': `${letterIndex * 0.04}s` }}
+                        >
+                            {letter}
+                        </span>
+                    ))}
+                </span>
+            ))}
+        </h1>
 
+        <div className={`section ${styles.intro} ${introVisible ? styles.visible : ''}`}>
             <div className={styles.description}>
                 <p className={styles.text} style={{ opacity: introVisible ? 1 : 0 }}>
                     {t.home.description}
@@ -101,5 +102,6 @@ export default function Index() {
                 </Link>
             </div>
         </div>
+        </>
     );
 };

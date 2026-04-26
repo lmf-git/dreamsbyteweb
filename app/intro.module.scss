@@ -1,7 +1,7 @@
 @use '../components/layout/animations';
 
 .intro {
-    padding: 6em 2em 2em 2em;
+    padding: 1em 2em 2em 2em;
     text-align: center;
     min-height: calc(100vh - 10em);
 }
@@ -10,7 +10,7 @@
     font-size: clamp(2em, 6vw, 5.2em);
     font-weight: 800;
     color: var(--text-primary);
-    margin: 0;
+    margin: 5em 0 0;
     line-height: 1.1;
     white-space: nowrap;
     text-align: center;
@@ -22,7 +22,7 @@
     transform: translateY(1.25em);
     transition: opacity 1s ease-out, transform 1s ease-out;
 
-    .visible & {
+    &.visible {
         opacity: 1;
         transform: translateY(0);
     }
@@ -261,19 +261,26 @@
 // Mobile first, then desktop breakpoints
 @media screen and (max-width: 768px) {
     .intro {
-        padding: 5em 1em 1em 1em;
+        padding: 0.5em 1em 1em 1em;
     }
 
     .title {
-        font-size: clamp(2.5em, 8vw, 4em);
         white-space: normal;
         height: 1.2em;
-        width: 100vw;
-        margin-left: -1em;
+        margin-top: 4em;
     }
 
     .subtitle {
         font-size: 1.25em;
+    }
+
+    .text {
+        line-height: 1.4;
+        width: 100%;
+    }
+
+    .description {
+        margin-bottom: 1.5em;
     }
 
     .actions {
@@ -302,10 +309,11 @@
 
 @media screen and (min-width: 769px) {
     .intro {
-        padding: 7em 2em 2em 2em;
+        padding: 1em 2em 2em 2em;
     }
-    
+
     .title {
         height: 1.4em;
+        margin-top: 5.5em;
     }
 }
