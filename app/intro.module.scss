@@ -18,6 +18,7 @@
     perspective: 1000px;
     transform-style: preserve-3d;
     height: 1.4em;
+    overflow: hidden;
     opacity: 0;
     transform: translateY(1.25em);
     transition: opacity 1s ease-out, transform 1s ease-out;
@@ -193,17 +194,28 @@
     }
 }
 
+.primaryAction,
+.secondaryAction {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    line-height: 1;
+    font-family: inherit;
+    font-size: 1.2em;
+    border-radius: 0.5em;
+    border: 0.125em solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
 .primaryAction {
     background: var(--nav-primary);
     color: var(--nav-primary-text);
-    border: 0.125em solid transparent;
     padding: 1em 2.5em;
-    font-size: 1.2em;
     font-weight: 600;
-    border-radius: 0.5em;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    
+
     &:hover {
         background: var(--nav-primary-hover);
         transform: translateY(-0.125em);
@@ -212,15 +224,10 @@
 
 .secondaryAction {
     color: var(--text-primary);
-    text-decoration: none;
     padding: 1em 2em;
-    font-size: 1.2em;
     font-weight: 500;
-    border: 0.125em solid var(--text-primary);
-    border-radius: 0.5em;
-    transition: all 0.3s ease;
-    display: inline-block;
-    
+    border-color: var(--text-primary);
+
     &:hover {
         background: var(--text-primary);
         color: var(--bg-primary);
