@@ -31,7 +31,7 @@ export default function Contact({ isOpen, onClose, initialMessage = '' }) {
   const onSubmit = async ev => {
     ev.preventDefault();
 
-    const endpoint = 'https://formcarry.com/s/YtWDCwGINV1G';
+    const endpoint = 'https://formcarry.com/s/2snG5GV8Mbr';
     const data = new FormData(ev.target);
     const body = JSON.stringify({ email: data.get('email'), message: data.get('message') });
     const headers = { "Accept": "application/json", "Content-Type": "application/json" };
