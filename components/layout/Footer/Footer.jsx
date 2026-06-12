@@ -65,6 +65,9 @@ export default function Footer() {
           <p className={styles.metatext}>
             {t.footer.metaText}
           </p>
+          <a className={styles.metaPartner} href="https://isoleucine.co.uk/" target="_blank" rel="noopener noreferrer">
+            {t.footer.metaPartner}
+          </a>
           <div className={styles.metaActions}>
             <button
               className={styles.starsToggle}
@@ -76,7 +79,8 @@ export default function Footer() {
             <a className={styles.metalink} target="_blank" href="https://github.com/lmf-git/dreamsbyteweb" rel="noopener noreferrer">
               {t.footer.sourceCode}
             </a>
-          </div>        </div>
+          </div>        
+        </div>
       </div>
     </div>
   );

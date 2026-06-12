@@ -186,6 +186,7 @@ export const es = {
 
   footer: {
     metaText: 'Nos aseguramos de que todos nuestros clientes tengan todos los activos y el código fuente disponibles y bajo su propiedad.',
+    metaPartner: 'Colaboradora frecuente',
     calm: 'Calma',
     danger: 'Peligro',
     sourceCode: 'Código fuente de este sitio web',
